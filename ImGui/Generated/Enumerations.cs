@@ -104,44 +104,44 @@ namespace HexaEngine.ImGuiNET
 		Key7 = unchecked(543),
 		Key8 = unchecked(544),
 		Key9 = unchecked(545),
-		A = unchecked(546),
-		B = unchecked(547),
-		C = unchecked(548),
-		D = unchecked(549),
-		E = unchecked(550),
-		F = unchecked(551),
-		G = unchecked(552),
-		H = unchecked(553),
-		I = unchecked(554),
-		J = unchecked(555),
-		K = unchecked(556),
-		L = unchecked(557),
-		M = unchecked(558),
-		N = unchecked(559),
-		O = unchecked(560),
-		P = unchecked(561),
-		Q = unchecked(562),
-		R = unchecked(563),
-		S = unchecked(564),
-		T = unchecked(565),
-		U = unchecked(566),
-		V = unchecked(567),
-		W = unchecked(568),
-		X = unchecked(569),
-		Y = unchecked(570),
-		Z = unchecked(571),
-		F1 = unchecked(572),
-		F2 = unchecked(573),
-		F3 = unchecked(574),
-		F4 = unchecked(575),
-		F5 = unchecked(576),
-		F6 = unchecked(577),
-		F7 = unchecked(578),
-		F8 = unchecked(579),
-		F9 = unchecked(580),
-		F10 = unchecked(581),
-		F11 = unchecked(582),
-		F12 = unchecked(583),
+		Keya = unchecked(546),
+		Keyb = unchecked(547),
+		Keyc = unchecked(548),
+		Keyd = unchecked(549),
+		Keye = unchecked(550),
+		Keyf = unchecked(551),
+		Keyg = unchecked(552),
+		Keyh = unchecked(553),
+		Keyi = unchecked(554),
+		Keyj = unchecked(555),
+		Keyk = unchecked(556),
+		Keyl = unchecked(557),
+		Keym = unchecked(558),
+		Keyn = unchecked(559),
+		Keyo = unchecked(560),
+		Keyp = unchecked(561),
+		Keyq = unchecked(562),
+		Keyr = unchecked(563),
+		Keys = unchecked(564),
+		Keyt = unchecked(565),
+		Keyu = unchecked(566),
+		Keyv = unchecked(567),
+		Keyw = unchecked(568),
+		Keyx = unchecked(569),
+		Keyy = unchecked(570),
+		Keyz = unchecked(571),
+		Keyf1 = unchecked(572),
+		Keyf2 = unchecked(573),
+		Keyf3 = unchecked(574),
+		Keyf4 = unchecked(575),
+		Keyf5 = unchecked(576),
+		Keyf6 = unchecked(577),
+		Keyf7 = unchecked(578),
+		Keyf8 = unchecked(579),
+		Keyf9 = unchecked(580),
+		Keyf10 = unchecked(581),
+		Keyf11 = unchecked(582),
+		Keyf12 = unchecked(583),
 		/// <summary>
 		/// '<br/>
 		/// </summary>
@@ -271,80 +271,80 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// L Bumper (Xbox)  L (Switch)   L1 (PS)             Tweak Slower  Focus Previous (in Windowing mode)<br/>
 		/// </summary>
-		GamepadL1 = unchecked(627),
+		Gamepadl1 = unchecked(627),
 
 		/// <summary>
 		/// R Bumper (Xbox)  R (Switch)   R1 (PS)             Tweak Faster  Focus Next (in Windowing mode)<br/>
 		/// </summary>
-		GamepadR1 = unchecked(628),
+		Gamepadr1 = unchecked(628),
 
 		/// <summary>
 		/// L Trig. (Xbox)   ZL (Switch)  L2 (PS) [Analog]<br/>
 		/// </summary>
-		GamepadL2 = unchecked(629),
+		Gamepadl2 = unchecked(629),
 
 		/// <summary>
 		/// R Trig. (Xbox)   ZR (Switch)  R2 (PS) [Analog]<br/>
 		/// </summary>
-		GamepadR2 = unchecked(630),
+		Gamepadr2 = unchecked(630),
 
 		/// <summary>
 		/// L Stick (Xbox)   L3 (Switch)  L3 (PS)<br/>
 		/// </summary>
-		GamepadL3 = unchecked(631),
+		Gamepadl3 = unchecked(631),
 
 		/// <summary>
 		/// R Stick (Xbox)   R3 (Switch)  R3 (PS)<br/>
 		/// </summary>
-		GamepadR3 = unchecked(632),
+		Gamepadr3 = unchecked(632),
 
 		/// <summary>
 		/// [Analog]                                          Move Window (in Windowing mode)<br/>
 		/// </summary>
-		GamepadLStickLeft = unchecked(633),
+		GamepadlStickLeft = unchecked(633),
 
 		/// <summary>
 		/// [Analog]                                          Move Window (in Windowing mode)<br/>
 		/// </summary>
-		GamepadLStickRight = unchecked(634),
+		GamepadlStickRight = unchecked(634),
 
 		/// <summary>
 		/// [Analog]                                          Move Window (in Windowing mode)<br/>
 		/// </summary>
-		GamepadLStickUp = unchecked(635),
+		GamepadlStickUp = unchecked(635),
 
 		/// <summary>
 		/// [Analog]                                          Move Window (in Windowing mode)<br/>
 		/// </summary>
-		GamepadLStickDown = unchecked(636),
+		GamepadlStickDown = unchecked(636),
 
 		/// <summary>
 		/// [Analog]<br/>
 		/// </summary>
-		GamepadRStickLeft = unchecked(637),
+		GamepadrStickLeft = unchecked(637),
 
 		/// <summary>
 		/// [Analog]<br/>
 		/// </summary>
-		GamepadRStickRight = unchecked(638),
+		GamepadrStickRight = unchecked(638),
 
 		/// <summary>
 		/// [Analog]<br/>
 		/// </summary>
-		GamepadRStickUp = unchecked(639),
+		GamepadrStickUp = unchecked(639),
 
 		/// <summary>
 		/// [Analog]<br/>
 		/// </summary>
-		GamepadRStickDown = unchecked(640),
+		GamepadrStickDown = unchecked(640),
 
 		MouseLeft = unchecked(641),
 		MouseRight = unchecked(642),
 		MouseMiddle = unchecked(643),
-		MouseX1 = unchecked(644),
-		MouseX2 = unchecked(645),
-		MouseWheelX = unchecked(646),
-		MouseWheelY = unchecked(647),
+		Mousex1 = unchecked(644),
+		Mousex2 = unchecked(645),
+		MouseWheelx = unchecked(646),
+		MouseWheely = unchecked(647),
 		ReservedForModCtrl = unchecked(648),
 		ReservedForModShift = unchecked(649),
 		ReservedForModAlt = unchecked(650),
@@ -422,8 +422,8 @@ namespace HexaEngine.ImGuiNET
 	public enum ImGuiAxis
 	{
 		None = unchecked(-1),
-		X = unchecked(0),
-		Y = unchecked(1),
+		Axisx = unchecked(0),
+		Axisy = unchecked(1),
 	}
 
 	public enum ImGuiContextHookType
@@ -1042,32 +1042,32 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Draw horizontal borders between rows.<br/>
 		/// </summary>
-		BordersInnerH = unchecked(128),
+		BordersInnerh = unchecked(128),
 
 		/// <summary>
 		/// Draw horizontal borders at the top and bottom.<br/>
 		/// </summary>
-		BordersOuterH = unchecked(256),
+		BordersOuterh = unchecked(256),
 
 		/// <summary>
 		/// Draw vertical borders between columns.<br/>
 		/// </summary>
-		BordersInnerV = unchecked(512),
+		BordersInnerv = unchecked(512),
 
 		/// <summary>
 		/// Draw vertical borders on the left and right sides.<br/>
 		/// </summary>
-		BordersOuterV = unchecked(1024),
+		BordersOuterv = unchecked(1024),
 
 		/// <summary>
 		/// Draw horizontal borders.<br/>
 		/// </summary>
-		BordersH = unchecked(384),
+		Bordersh = unchecked(384),
 
 		/// <summary>
 		/// Draw vertical borders.<br/>
 		/// </summary>
-		BordersV = unchecked(1536),
+		Bordersv = unchecked(1536),
 
 		/// <summary>
 		/// Draw inner borders.<br/>
@@ -1117,12 +1117,12 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Make outer width auto-fit to columns, overriding outer_size.x value. Only available when ScrollXScrollY are disabled and Stretch columns are not used.<br/>
 		/// </summary>
-		NoHostExtendX = unchecked(65536),
+		NoHostExtendx = unchecked(65536),
 
 		/// <summary>
 		/// Make outer height stop exactly at outer_size.y (prevent auto-extending table past the limit). Only available when ScrollXScrollY are disabled. Data below the limit will be clipped and not visible.<br/>
 		/// </summary>
-		NoHostExtendY = unchecked(131072),
+		NoHostExtendy = unchecked(131072),
 
 		/// <summary>
 		/// Disable keeping column always minimally visible when ScrollX is off and table gets too small. Not recommended if columns are resizable.<br/>
@@ -1142,27 +1142,27 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Default if BordersOuterV is on. Enable outermost padding. Generally desirable if you have headers.<br/>
 		/// </summary>
-		PadOuterX = unchecked(2097152),
+		PadOuterx = unchecked(2097152),
 
 		/// <summary>
 		/// Default if BordersOuterV is off. Disable outermost padding.<br/>
 		/// </summary>
-		NoPadOuterX = unchecked(4194304),
+		NoPadOuterx = unchecked(4194304),
 
 		/// <summary>
 		/// Disable inner padding between columns (double inner padding if BordersOuterV is on, single inner padding if BordersOuterV is off).<br/>
 		/// </summary>
-		NoPadInnerX = unchecked(8388608),
+		NoPadInnerx = unchecked(8388608),
 
 		/// <summary>
 		/// Enable horizontal scrolling. Require 'outer_size' parameter of BeginTable() to specify the container size. Changes default sizing policy. Because this creates a child window, ScrollY is currently generally recommended when using ScrollX.<br/>
 		/// </summary>
-		ScrollX = unchecked(16777216),
+		Scrollx = unchecked(16777216),
 
 		/// <summary>
 		/// Enable vertical scrolling. Require 'outer_size' parameter of BeginTable() to specify the container size.<br/>
 		/// </summary>
-		ScrollY = unchecked(33554432),
+		Scrolly = unchecked(33554432),
 
 		/// <summary>
 		/// Hold shift when clicking headers to sort on multiple column. TableGetSortSpecs() may return specs where (SpecsCount &gt; 1).<br/>
@@ -1553,42 +1553,42 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// signed char  char (with sensible compilers)<br/>
 		/// </summary>
-		S8 = unchecked(0),
+		Types8 = unchecked(0),
 
 		/// <summary>
 		/// unsigned char<br/>
 		/// </summary>
-		U8 = unchecked(1),
+		Typeu8 = unchecked(1),
 
 		/// <summary>
 		/// short<br/>
 		/// </summary>
-		S16 = unchecked(2),
+		Types16 = unchecked(2),
 
 		/// <summary>
 		/// unsigned short<br/>
 		/// </summary>
-		U16 = unchecked(3),
+		Typeu16 = unchecked(3),
 
 		/// <summary>
 		/// int<br/>
 		/// </summary>
-		S32 = unchecked(4),
+		Types32 = unchecked(4),
 
 		/// <summary>
 		/// unsigned int<br/>
 		/// </summary>
-		U32 = unchecked(5),
+		Typeu32 = unchecked(5),
 
 		/// <summary>
 		/// long long  __int64<br/>
 		/// </summary>
-		S64 = unchecked(6),
+		Types64 = unchecked(6),
 
 		/// <summary>
 		/// unsigned long long  unsigned __int64<br/>
 		/// </summary>
-		U64 = unchecked(7),
+		Typeu64 = unchecked(7),
 
 		/// <summary>
 		/// float<br/>
@@ -1638,10 +1638,10 @@ namespace HexaEngine.ImGuiNET
 		DpadRight = unchecked(5),
 		DpadUp = unchecked(6),
 		DpadDown = unchecked(7),
-		LStickLeft = unchecked(8),
-		LStickRight = unchecked(9),
-		LStickUp = unchecked(10),
-		LStickDown = unchecked(11),
+		InputlStickLeft = unchecked(8),
+		InputlStickRight = unchecked(9),
+		InputlStickUp = unchecked(10),
+		InputlStickDown = unchecked(11),
 		FocusPrev = unchecked(12),
 		FocusNext = unchecked(13),
 		TweakSlow = unchecked(14),
@@ -2973,40 +2973,40 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// If item is not visible: scroll as little as possible on X axis to bring item back into view [default for X axis]<br/>
 		/// </summary>
-		KeepVisibleEdgeX = unchecked(1),
+		KeepVisibleEdgex = unchecked(1),
 
 		/// <summary>
 		/// If item is not visible: scroll as little as possible on Y axis to bring item back into view [default for Y axis for windows that are already visible]<br/>
 		/// </summary>
-		KeepVisibleEdgeY = unchecked(2),
+		KeepVisibleEdgey = unchecked(2),
 
 		/// <summary>
 		/// If item is not visible: scroll to make the item centered on X axis [rarely used]<br/>
 		/// </summary>
-		KeepVisibleCenterX = unchecked(4),
+		KeepVisibleCenterx = unchecked(4),
 
 		/// <summary>
 		/// If item is not visible: scroll to make the item centered on Y axis<br/>
 		/// </summary>
-		KeepVisibleCenterY = unchecked(8),
+		KeepVisibleCentery = unchecked(8),
 
 		/// <summary>
 		/// Always center the result item on X axis [rarely used]<br/>
 		/// </summary>
-		AlwaysCenterX = unchecked(16),
+		AlwaysCenterx = unchecked(16),
 
 		/// <summary>
 		/// Always center the result item on Y axis [default for Y axis for appearing window)<br/>
 		/// </summary>
-		AlwaysCenterY = unchecked(32),
+		AlwaysCentery = unchecked(32),
 
 		/// <summary>
 		/// Disable forwarding scrolling to parent window if required to keep itemrect visible (only scroll window the function was applied to).<br/>
 		/// </summary>
 		NoScrollParent = unchecked(64),
 
-		MaskX = unchecked(21),
-		MaskY = unchecked(42),
+		Maskx = unchecked(21),
+		Masky = unchecked(42),
 	}
 
 	public enum ImGuiNavHighlightFlags
@@ -3028,18 +3028,18 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// On failed request, restart from opposite side<br/>
 		/// </summary>
-		LoopX = unchecked(1),
+		Loopx = unchecked(1),
 
-		LoopY = unchecked(2),
+		Loopy = unchecked(2),
 		/// <summary>
 		/// On failed request, request from opposite side one line down (when NavDir==right) or one line up (when NavDir==left)<br/>
 		/// </summary>
-		WrapX = unchecked(4),
+		Wrapx = unchecked(4),
 
 		/// <summary>
 		/// This is not super useful but provided for completeness<br/>
 		/// </summary>
-		WrapY = unchecked(8),
+		Wrapy = unchecked(8),
 
 		WrapMask = unchecked(15),
 		/// <summary>
@@ -3055,7 +3055,7 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Force scrolling to minmax (used by HomeEnd)  FIXME-NAV: Aim to remove or reword, probably unnecessary<br/>
 		/// </summary>
-		ScrollToEdgeY = unchecked(64),
+		ScrollToEdgey = unchecked(64),
 
 		Forwarded = unchecked(128),
 		/// <summary>
@@ -3185,12 +3185,12 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// [EXPERIMENTAL]<br/>
 		/// </summary>
-		NoResizeX = unchecked(4194304),
+		NoResizex = unchecked(4194304),
 
 		/// <summary>
 		/// [EXPERIMENTAL]<br/>
 		/// </summary>
-		NoResizeY = unchecked(8388608),
+		NoResizey = unchecked(8388608),
 
 		SharedFlagsInheritMask = unchecked(-1),
 		NoResizeFlagsMask = unchecked(12582944),

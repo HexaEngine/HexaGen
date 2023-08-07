@@ -30,30 +30,30 @@ namespace HexaEngine.Shaderc
 	}
 
 	/// <summary>
-	/// An include result.
+	/// An include result.<br/>
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercIncludeResult
 	{
 		/// <summary>
-		/// The name of the source file.  The name should be fully resolved
-		/// in the sense that it should be a unique name in the context of the
-		/// includer.  For example, if the includer maps source names to files in
-		/// a filesystem, then this name should be the absolute path of the file.
-		/// For a failed inclusion, this string is empty.
+		/// The name of the source file.  The name should be fully resolved<br/>
+		/// in the sense that it should be a unique name in the context of the<br/>
+		/// includer.  For example, if the includer maps source names to files in<br/>
+		/// a filesystem, then this name should be the absolute path of the file.<br/>
+		/// For a failed inclusion, this string is empty.<br/>
 		/// </summary>
 		public unsafe byte* SourceName;
 
 		public nuint SourceNameLength;
 		/// <summary>
-		/// The text contents of the source file in the normal case.
-		/// For a failed inclusion, this contains the error message.
+		/// The text contents of the source file in the normal case.<br/>
+		/// For a failed inclusion, this contains the error message.<br/>
 		/// </summary>
 		public unsafe byte* Content;
 
 		public nuint ContentLength;
 		/// <summary>
-		/// User data to be passed along with this request.
+		/// User data to be passed along with this request.<br/>
 		/// </summary>
 		public unsafe void* UserData;
 

@@ -14,25 +14,25 @@ namespace HexaEngine.Shaderc
 	public enum ShadercTargetEnv
 	{
 		/// <summary>
-		/// SPIR-V under Vulkan semantics
+		/// SPIR-V under Vulkan semantics<br/>
 		/// </summary>
 		Vulkan = unchecked(0),
 
 		/// <summary>
-		/// SPIR-V under OpenGL semantics
+		/// SPIR-V under OpenGL semantics<br/>
 		/// </summary>
 		Opengl = unchecked(1),
 
 		/// <summary>
-		/// SPIR-V under OpenGL semantics,
-		/// including compatibility profile
-		/// functions
+		/// SPIR-V under OpenGL semantics,<br/>
+		/// including compatibility profile<br/>
+		/// functions<br/>
 		/// </summary>
 		OpenglCompat = unchecked(2),
 
 		/// <summary>
-		/// Deprecated, SPIR-V under WebGPU
-		/// semantics
+		/// Deprecated, SPIR-V under WebGPU<br/>
+		/// semantics<br/>
 		/// </summary>
 		Webgpu = unchecked(3),
 
@@ -42,128 +42,128 @@ namespace HexaEngine.Shaderc
 	public enum ShadercEnvVersion
 	{
 		/// <summary>
-		/// For Vulkan, use Vulkan's mapping of version numbers to integers.
-		/// See vulkan.h
+		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
+		/// See vulkan.h<br/>
 		/// </summary>
 		Vulkan10 = unchecked((int)((1U<<22))),
 
 		/// <summary>
-		/// For Vulkan, use Vulkan's mapping of version numbers to integers.
-		/// See vulkan.h
+		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
+		/// See vulkan.h<br/>
 		/// </summary>
 		Vulkan11 = unchecked((int)((1U<<22)|(1<<12))),
 
 		/// <summary>
-		/// For Vulkan, use Vulkan's mapping of version numbers to integers.
-		/// See vulkan.h
+		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
+		/// See vulkan.h<br/>
 		/// </summary>
 		Vulkan12 = unchecked((int)((1U<<22)|(2<<12))),
 
 		/// <summary>
-		/// For Vulkan, use Vulkan's mapping of version numbers to integers.
-		/// See vulkan.h
+		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
+		/// See vulkan.h<br/>
 		/// </summary>
 		Vulkan13 = unchecked((int)((1U<<22)|(3<<12))),
 
 		/// <summary>
-		/// For OpenGL, use the number from #version in shaders.
-		/// TODO(dneto): Currently no difference between OpenGL 4.5 and 4.6.
-		/// See glslang/Standalone/Standalone.cpp
-		/// TODO(dneto): Glslang doesn't accept a OpenGL client version of 460.
+		/// For OpenGL, use the number from #version in shaders.<br/>
+		/// TODO(dneto): Currently no difference between OpenGL 4.5 and 4.6.<br/>
+		/// See glslang/Standalone/Standalone.cpp<br/>
+		/// TODO(dneto): Glslang doesn't accept a OpenGL client version of 460.<br/>
 		/// </summary>
 		Opengl45 = unchecked(450),
 
 		/// <summary>
-		/// Deprecated, WebGPU env never defined versions
+		/// Deprecated, WebGPU env never defined versions<br/>
 		/// </summary>
 		Webgpu = unchecked(451),
 
 	}
 
 	/// <summary>
-	/// The known versions of SPIR-V.
+	/// The known versions of SPIR-V.<br/>
 	/// </summary>
 	public enum ShadercSpirvVersion
 	{
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version10 = unchecked((int)0x010000u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version11 = unchecked((int)0x010100u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version12 = unchecked((int)0x010200u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version13 = unchecked((int)0x010300u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version14 = unchecked((int)0x010400u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version15 = unchecked((int)0x010500u),
 
 		/// <summary>
-		/// Use the values used for word 1 of a SPIR-V binary:
-		/// - bits 24 to 31: zero
-		/// - bits 16 to 23: major version number
-		/// - bits 8 to 15: minor version number
-		/// - bits 0 to 7: zero
+		/// Use the values used for word 1 of a SPIR-V binary:<br/>
+		/// - bits 24 to 31: zero<br/>
+		/// - bits 16 to 23: major version number<br/>
+		/// - bits 8 to 15: minor version number<br/>
+		/// - bits 0 to 7: zero<br/>
 		/// </summary>
 		Version16 = unchecked((int)0x010600u),
 
 	}
 
 	/// <summary>
-	/// Indicate the status of a compilation.
+	/// Indicate the status of a compilation.<br/>
 	/// </summary>
 	public enum ShadercCompilationStatus
 	{
 		Success = unchecked(0),
 		/// <summary>
-		/// error stage deduction
+		/// error stage deduction<br/>
 		/// </summary>
 		InvalidStage = unchecked(1),
 
 		Error = unchecked(2),
 		/// <summary>
-		/// unexpected failure
+		/// unexpected failure<br/>
 		/// </summary>
 		InternalError = unchecked(3),
 
@@ -175,7 +175,7 @@ namespace HexaEngine.Shaderc
 	}
 
 	/// <summary>
-	/// Source language kind.
+	/// Source language kind.<br/>
 	/// </summary>
 	public enum ShadercSourceLanguage
 	{
@@ -186,297 +186,297 @@ namespace HexaEngine.Shaderc
 	public enum ShadercShaderKind
 	{
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		VertexShader = unchecked(0),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		FragmentShader = unchecked(1),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		ComputeShader = unchecked(2),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GeometryShader = unchecked(3),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		TessControlShader = unchecked(4),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		TessEvaluationShader = unchecked(5),
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslVertexShader = VertexShader,
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslFragmentShader = FragmentShader,
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslComputeShader = ComputeShader,
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslGeometryShader = GeometryShader,
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslTessControlShader = TessControlShader,
 
 		/// <summary>
-		/// Forced shader kinds. These shader kinds force the compiler to compile the
-		/// source code as the specified kind of shader.
+		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
+		/// source code as the specified kind of shader.<br/>
 		/// </summary>
 		GlslTessEvaluationShader = TessEvaluationShader,
 
 		/// <summary>
-		/// Deduce the shader kind from #pragma annotation in the source code. Compiler
-		/// will emit error if #pragma annotation is not found.
+		/// Deduce the shader kind from #pragma annotation in the source code. Compiler<br/>
+		/// will emit error if #pragma annotation is not found.<br/>
 		/// </summary>
 		GlslInferFromSource = unchecked(6),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultVertexShader = unchecked(7),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultFragmentShader = unchecked(8),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultComputeShader = unchecked(9),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultGeometryShader = unchecked(10),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultTessControlShader = unchecked(11),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultTessEvaluationShader = unchecked(12),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		SpirvAssembly = unchecked(13),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		RaygenShader = unchecked(14),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		AnyhitShader = unchecked(15),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		ClosesthitShader = unchecked(16),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		MissShader = unchecked(17),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		IntersectionShader = unchecked(18),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		CallableShader = unchecked(19),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslRaygenShader = RaygenShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslAnyhitShader = AnyhitShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslClosesthitShader = ClosesthitShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslMissShader = MissShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslIntersectionShader = IntersectionShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslCallableShader = CallableShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultRaygenShader = unchecked(20),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultAnyhitShader = unchecked(21),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultClosesthitShader = unchecked(22),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultMissShader = unchecked(23),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultIntersectionShader = unchecked(24),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultCallableShader = unchecked(25),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		TaskShader = unchecked(26),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		MeshShader = unchecked(27),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslTaskShader = TaskShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslMeshShader = MeshShader,
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultTaskShader = unchecked(28),
 
 		/// <summary>
-		/// Default shader kinds. Compiler will fall back to compile the source code as
-		/// the specified kind of shader when #pragma annotation is not found in the
-		/// source code.
+		/// Default shader kinds. Compiler will fall back to compile the source code as<br/>
+		/// the specified kind of shader when #pragma annotation is not found in the<br/>
+		/// source code.<br/>
 		/// </summary>
 		GlslDefaultMeshShader = unchecked(29),
 
@@ -485,14 +485,14 @@ namespace HexaEngine.Shaderc
 	public enum ShadercProfile
 	{
 		/// <summary>
-		/// Used if and only if GLSL version did not specify
-		/// profiles.
+		/// Used if and only if GLSL version did not specify<br/>
+		/// profiles.<br/>
 		/// </summary>
 		None = unchecked(0),
 
 		Core = unchecked(1),
 		/// <summary>
-		/// Disabled. This generates an error
+		/// Disabled. This generates an error<br/>
 		/// </summary>
 		Compatibility = unchecked(2),
 
@@ -500,29 +500,29 @@ namespace HexaEngine.Shaderc
 	}
 
 	/// <summary>
-	/// Optimization level.
+	/// Optimization level.<br/>
 	/// </summary>
 	public enum ShadercOptimizationLevel
 	{
 		/// <summary>
-		/// no optimization
+		/// no optimization<br/>
 		/// </summary>
 		Zero = unchecked(0),
 
 		/// <summary>
-		/// optimize towards reducing code size
+		/// optimize towards reducing code size<br/>
 		/// </summary>
 		Size = unchecked(1),
 
 		/// <summary>
-		/// optimize towards performance
+		/// optimize towards performance<br/>
 		/// </summary>
 		Performance = unchecked(2),
 
 	}
 
 	/// <summary>
-	/// Resource limits.
+	/// Resource limits.<br/>
 	/// </summary>
 	public enum ShadercLimit
 	{
@@ -546,12 +546,12 @@ namespace HexaEngine.Shaderc
 		MinProgramTexelOffset = unchecked(17),
 		MaxProgramTexelOffset = unchecked(18),
 		MaxClipDistances = unchecked(19),
-		MaxComputeWorkGroupCountX = unchecked(20),
-		MaxComputeWorkGroupCountY = unchecked(21),
-		MaxComputeWorkGroupCountZ = unchecked(22),
-		MaxComputeWorkGroupSizeX = unchecked(23),
-		MaxComputeWorkGroupSizeY = unchecked(24),
-		MaxComputeWorkGroupSizeZ = unchecked(25),
+		MaxComputeWorkGroupCountx = unchecked(20),
+		MaxComputeWorkGroupCounty = unchecked(21),
+		MaxComputeWorkGroupCountz = unchecked(22),
+		MaxComputeWorkGroupSizex = unchecked(23),
+		MaxComputeWorkGroupSizey = unchecked(24),
+		MaxComputeWorkGroupSizez = unchecked(25),
 		MaxComputeUniformComponents = unchecked(26),
 		MaxComputeTextureImageUnits = unchecked(27),
 		MaxComputeImageUniforms = unchecked(28),
@@ -611,79 +611,79 @@ namespace HexaEngine.Shaderc
 		MaxSamples = unchecked(82),
 		MaxMeshOutputVerticesNv = unchecked(83),
 		MaxMeshOutputPrimitivesNv = unchecked(84),
-		MaxMeshWorkGroupSizeXNv = unchecked(85),
-		MaxMeshWorkGroupSizeYNv = unchecked(86),
-		MaxMeshWorkGroupSizeZNv = unchecked(87),
-		MaxTaskWorkGroupSizeXNv = unchecked(88),
-		MaxTaskWorkGroupSizeYNv = unchecked(89),
-		MaxTaskWorkGroupSizeZNv = unchecked(90),
+		MaxMeshWorkGroupSizexNv = unchecked(85),
+		MaxMeshWorkGroupSizeyNv = unchecked(86),
+		MaxMeshWorkGroupSizezNv = unchecked(87),
+		MaxTaskWorkGroupSizexNv = unchecked(88),
+		MaxTaskWorkGroupSizeyNv = unchecked(89),
+		MaxTaskWorkGroupSizezNv = unchecked(90),
 		MaxMeshViewCountNv = unchecked(91),
 		MaxMeshOutputVerticesExt = unchecked(92),
 		MaxMeshOutputPrimitivesExt = unchecked(93),
-		MaxMeshWorkGroupSizeXExt = unchecked(94),
-		MaxMeshWorkGroupSizeYExt = unchecked(95),
-		MaxMeshWorkGroupSizeZExt = unchecked(96),
-		MaxTaskWorkGroupSizeXExt = unchecked(97),
-		MaxTaskWorkGroupSizeYExt = unchecked(98),
-		MaxTaskWorkGroupSizeZExt = unchecked(99),
+		MaxMeshWorkGroupSizexExt = unchecked(94),
+		MaxMeshWorkGroupSizeyExt = unchecked(95),
+		MaxMeshWorkGroupSizezExt = unchecked(96),
+		MaxTaskWorkGroupSizexExt = unchecked(97),
+		MaxTaskWorkGroupSizeyExt = unchecked(98),
+		MaxTaskWorkGroupSizezExt = unchecked(99),
 		MaxMeshViewCountExt = unchecked(100),
 		MaxDualSourceDrawBuffersExt = unchecked(101),
 	}
 
 	/// <summary>
-	/// Uniform resource kinds.
-	/// In Vulkan, uniform resources are bound to the pipeline via descriptors
-	/// with numbered bindings and sets.
+	/// Uniform resource kinds.<br/>
+	/// In Vulkan, uniform resources are bound to the pipeline via descriptors<br/>
+	/// with numbered bindings and sets.<br/>
 	/// </summary>
 	public enum ShadercUniformKind
 	{
 		/// <summary>
-		/// Image and image buffer.
+		/// Image and image buffer.<br/>
 		/// </summary>
 		Image = unchecked(0),
 
 		/// <summary>
-		/// Pure sampler.
+		/// Pure sampler.<br/>
 		/// </summary>
 		Sampler = unchecked(1),
 
 		/// <summary>
-		/// Sampled texture in GLSL, and Shader Resource View in HLSL.
+		/// Sampled texture in GLSL, and Shader Resource View in HLSL.<br/>
 		/// </summary>
 		Texture = unchecked(2),
 
 		/// <summary>
-		/// Uniform Buffer Object (UBO) in GLSL.  Cbuffer in HLSL.
+		/// Uniform Buffer Object (UBO) in GLSL.  Cbuffer in HLSL.<br/>
 		/// </summary>
 		Buffer = unchecked(3),
 
 		/// <summary>
-		/// Shader Storage Buffer Object (SSBO) in GLSL.
+		/// Shader Storage Buffer Object (SSBO) in GLSL.<br/>
 		/// </summary>
 		StorageBuffer = unchecked(4),
 
 		/// <summary>
-		/// Unordered Access View, in HLSL.  (Writable storage image or storage
-		/// buffer.)
+		/// Unordered Access View, in HLSL.  (Writable storage image or storage<br/>
+		/// buffer.)<br/>
 		/// </summary>
 		UnorderedAccessView = unchecked(5),
 
 	}
 
 	/// <summary>
-	/// The kinds of include requests.
+	/// The kinds of include requests.<br/>
 	/// </summary>
 	public enum ShadercIncludeType
 	{
 		/// <summary>
-		/// E.g. #include "source"
+		/// E.g. #include "source"<br/>
 		/// </summary>
 		Relative = unchecked(0),
 
 		/// <summary>
-		/// E.g. #include 
-		/// <source
-		/// >
+		/// E.g. #include <br/>
+		/// <source<br/>
+		/// ><br/>
 		/// </summary>
 		Standard = unchecked(1),
 

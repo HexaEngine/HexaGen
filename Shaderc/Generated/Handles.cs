@@ -15,7 +15,7 @@ using HexaGen.Runtime;
 namespace HexaEngine.Shaderc
 {
 	/// <summary>
-	/// An opaque handle to an object that manages all compiler state.
+	/// An opaque handle to an object that manages all compiler state.<br/>
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompiler : IEquatable<ShadercCompiler>
@@ -38,8 +38,8 @@ namespace HexaEngine.Shaderc
 	}
 
 	/// <summary>
-	/// An opaque handle to an object that manages options to a single compilation
-	/// result.
+	/// An opaque handle to an object that manages options to a single compilation<br/>
+	/// result.<br/>
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompileOptions : IEquatable<ShadercCompileOptions>
@@ -62,8 +62,8 @@ namespace HexaEngine.Shaderc
 	}
 
 	/// <summary>
-	/// An opaque handle to the results of a call to any shaderc_compile_into_*()
-	/// function.
+	/// An opaque handle to the results of a call to any shaderc_compile_into_*()<br/>
+	/// function.<br/>
 	/// </summary>
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompilationResult : IEquatable<ShadercCompilationResult>

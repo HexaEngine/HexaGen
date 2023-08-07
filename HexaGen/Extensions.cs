@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -106,57 +107,38 @@
             return false;
         }
 
-        public static string GetCsTypeName(this CppPrimitiveType primitiveType, bool isPointer)
+        public static bool IsCOMObject(this CppClass cppClass)
         {
-            switch (primitiveType.Kind)
+            if (cppClass.Fields.Count == 0 && cppClass.Functions.Count > 0 && cppClass.IsAbstract)
+                return true;
+            return false;
+        }
+
+        public static bool IsClass(this CppType cppType, out CppClass cppClass)
+        {
+            if (cppType is CppPointerType pointerType)
             {
-                case CppPrimitiveKind.Void:
-                    return isPointer ? "void*" : "void";
-
-                case CppPrimitiveKind.Char:
-                    return isPointer ? "byte*" : "byte";
-
-                case CppPrimitiveKind.Bool:
-                    return isPointer ? "bool*" : "bool";
-
-                case CppPrimitiveKind.WChar:
-                    return isPointer ? "char*" : "char";
-
-                case CppPrimitiveKind.Short:
-                    return isPointer ? "short*" : "short";
-
-                case CppPrimitiveKind.Int:
-                    return isPointer ? "int*" : "int";
-
-                case CppPrimitiveKind.LongLong:
-                    return isPointer ? "long*" : "long";
-
-                case CppPrimitiveKind.UnsignedChar:
-                    return isPointer ? "byte*" : "byte";
-
-                case CppPrimitiveKind.UnsignedShort:
-                    return isPointer ? "ushort*" : "ushort";
-
-                case CppPrimitiveKind.UnsignedInt:
-                    return isPointer ? "uint*" : "uint";
-
-                case CppPrimitiveKind.UnsignedLongLong:
-                    return isPointer ? "ulong*" : "ulong";
-
-                case CppPrimitiveKind.Float:
-                    return isPointer ? "float*" : "float";
-
-                case CppPrimitiveKind.Double:
-                    return isPointer ? "double*" : "double";
-
-                case CppPrimitiveKind.LongDouble:
-                    break;
-
-                default:
-                    return string.Empty;
+                return IsClass(pointerType.ElementType, out cppClass);
             }
 
-            return string.Empty;
+            if (cppType is CppReferenceType referenceType)
+            {
+                return IsClass(referenceType.ElementType, out cppClass);
+            }
+
+            if (cppType is CppQualifiedType qualifiedType)
+            {
+                return IsClass(qualifiedType.ElementType, out cppClass);
+            }
+
+            if (cppType is CppClass cpp)
+            {
+                cppClass = cpp;
+                return true;
+            }
+
+            cppClass = null;
+            return false;
         }
 
         public static bool IsDelegate(this CppPointerType cppPointer, out CppFunctionType cppFunction)
@@ -191,7 +173,7 @@
 
         public static bool IsDelegate(this CppPointerType cppPointer)
         {
-            if (cppPointer.ElementType is CppFunctionType functionType)
+            if (cppPointer.ElementType is CppFunctionType)
             {
                 return true;
             }
@@ -217,9 +199,40 @@
             return false;
         }
 
-        public static string GetNumbers(this string input)
+        public static bool IsEnum(this CppType cppType)
         {
-            return new string(input.Where(c => char.IsAsciiDigit(c) || char.IsAsciiLetter(c)).ToArray());
+            if (cppType is CppTypedef cppTypedef)
+            {
+                return IsEnum(cppTypedef.ElementType);
+            }
+            if (cppType is CppPointerType cppPointer)
+            {
+                return IsEnum(cppPointer.ElementType);
+            }
+            if (cppType is CppEnum cppEnum)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsEnum(this CppType cppType, [NotNullWhen(true)] out CppEnum? cppEnum)
+        {
+            if (cppType is CppTypedef cppTypedef)
+            {
+                return IsEnum(cppTypedef.ElementType, out cppEnum);
+            }
+            if (cppType is CppPointerType cppPointer)
+            {
+                return IsEnum(cppPointer.ElementType, out cppEnum);
+            }
+            if (cppType is CppEnum cppEnum1)
+            {
+                cppEnum = cppEnum1;
+                return true;
+            }
+            cppEnum = null;
+            return false;
         }
 
         public static unsafe string ToUpperCaseOverwrite(this string str)
@@ -266,7 +279,7 @@
                 {
                     mode_ɪ = SplitByCaseModes.WhiteSpace;
                 }
-                else if ("0123456789".Contains(ɪ))
+                else if (char.IsDigit(ɪ))
                 {
                     mode_ɪ = SplitByCaseModes.Digit;
                 }
@@ -278,15 +291,15 @@
                 {
                     mode_ɪ = SplitByCaseModes.LowerCase;
                 }
-                if ((previous == SplitByCaseModes.None) || (previous == mode_ɪ))
+                if (previous == SplitByCaseModes.None || previous == mode_ɪ)
                 {
                     ᴛ.Append(ɪ);
                 }
-                else if ((previous == SplitByCaseModes.UpperCase) && (mode_ɪ == SplitByCaseModes.LowerCase))
+                else if (previous == SplitByCaseModes.UpperCase && mode_ɪ == SplitByCaseModes.LowerCase)
                 {
                     if (ᴛ.Length > 1)
                     {
-                        ʀ.Add(ᴛ.ToString().Substring(0, ᴛ.Length - 1));
+                        ʀ.Add(ᴛ.ToString()[..(ᴛ.Length - 1)]);
                         ᴛ.Remove(0, ᴛ.Length - 1);
                     }
                     ᴛ.Append(ɪ);

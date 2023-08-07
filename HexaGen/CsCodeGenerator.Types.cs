@@ -128,7 +128,7 @@
                         for (int i = 0; i < functions.Count; i++)
                         {
                             CppFunction cppFunction = FindFunction(compilation, functions[i]);
-                            var csFunctionName = settings.GetPrettyCommandName(cppFunction.Name);
+                            var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                             string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
                             CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
 
@@ -297,7 +297,7 @@
                         string csFieldName = settings.NormalizeFieldName(cppField.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunctionType.ReturnType, false);
                         string signature = settings.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
-                        returnCsName = returnCsName.Replace("bool", "byte");
+                        returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
                         if (settings.DelegatesAsVoidPointer)
                         {
                             writer.WriteLine($"public unsafe void* {csFieldName};");
@@ -326,7 +326,7 @@
                     for (int i = 0; i < constructors.Count; i++)
                     {
                         CppFunction cppFunction = FindFunction(compilation, constructors[i]);
-                        var csFunctionName = settings.GetPrettyCommandName(cppFunction.Name);
+                        var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
                         CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
 
@@ -408,7 +408,7 @@
                     for (int i = 0; i < functions.Count; i++)
                     {
                         CppFunction cppFunction = FindFunction(compilation, functions[i]);
-                        var csFunctionName = settings.GetPrettyCommandName(cppFunction.Name);
+                        var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
                         CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
 
@@ -508,7 +508,7 @@
 
                 if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
                 {
-                    csFieldType = primitive.GetCsTypeName(false);
+                    csFieldType = settings.GetCsTypeName(primitive, false);
                 }
 
                 string unsafePrefix = string.Empty;
@@ -533,7 +533,7 @@
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
                 if (csFieldType == "bool")
-                    csFieldType = "byte";
+                    csFieldType = settings.GetBoolType();
 
                 if (field.Type is CppTypedef typedef &&
                     typedef.ElementType is CppPointerType pointerType &&
@@ -552,7 +552,7 @@
                     }
 
                     string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                    returnCsName = returnCsName.Replace("bool", "byte");
+                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
                     builder.Append(returnCsName);
 
                     if (settings.DelegatesAsVoidPointer)
@@ -649,7 +649,7 @@
                     }
 
                     string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                    returnCsName = returnCsName.Replace("bool", "byte");
+                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
                     builder.Append(returnCsName);
 
                     if (settings.DelegatesAsVoidPointer)

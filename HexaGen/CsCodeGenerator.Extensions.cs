@@ -60,7 +60,7 @@
                 {
                     var extensionPrefix = settings.GetExtensionNamePrefix(handleName);
 
-                    var csFunctionName = settings.GetPrettyCommandName(cppFunction.Name);
+                    var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                     var csName = settings.GetPrettyExtensionName(csFunctionName, extensionPrefix);
                     string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
@@ -180,7 +180,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"byte ret = ");
+                        sb.Append($"{settings.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -238,7 +238,7 @@
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                             sb.Append($"(string){paramCsDefault}");
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
-                            sb.Append($"(byte)({paramCsDefault})");
+                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
                         else if (rootParam.Type.IsEnum)
                             sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
                         else if (cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
@@ -280,7 +280,7 @@
                     }
                     else if (isBool && !isRef && !isPointer)
                     {
-                        sb.Append($"{cppParameter.Name} ? (byte)1 : (byte)0");
+                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
                     }
                     else
                     {
@@ -335,93 +335,6 @@
                         writer.WriteLine("return ret;");
                     }
                 }
-
-                while (stacks > 0)
-                {
-                    stacks--;
-                    writer.EndBlock();
-                }
-            }
-
-            writer.WriteLine();
-        }
-
-        private void WriteExtension(CodeWriter writer, CppFunction cppFunction, string command, string extension, bool voidReturn, bool stringReturn, string returnCsName, string signature)
-        {
-            string[] paramList = signature.Split(',', StringSplitOptions.RemoveEmptyEntries);
-
-            cppFunction.Comment.WriteCsSummary(writer);
-            string header;
-
-            if (stringReturn)
-            {
-                header = $"public static string {extension}S({signature})";
-            }
-            else
-            {
-                header = $"public static {returnCsName} {extension}({signature})";
-            }
-
-            LogInfo("defined extension " + header);
-
-            using (writer.PushBlock(header))
-            {
-                StringBuilder sb = new();
-                if (!voidReturn)
-                {
-                    sb.Append($"{returnCsName} ret = ");
-                }
-
-                if (stringReturn)
-                {
-                    WriteStringConvertToManaged(sb, cppFunction.ReturnType);
-                }
-
-                sb.Append($"{settings.ApiName}.{command}Native(");
-                int strings = 0;
-                int stacks = 0;
-                for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                {
-                    var isRef = paramList[j].Contains("ref");
-                    var isStr = paramList[j].Contains("string");
-                    var cppParameter = cppFunction.Parameters[j];
-                    var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                    var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                    if (isRef)
-                    {
-                        writer.BeginBlock($"fixed ({paramCsTypeName} p{paramCsName} = &{paramCsName})");
-                        sb.Append($"p{paramCsName}");
-                        stacks++;
-                    }
-                    else if (isStr)
-                    {
-                        WriteStringConvertToUnmanaged(writer, cppParameter.Type, paramCsName, strings);
-                        sb.Append($"pStr{strings}");
-                        strings++;
-                    }
-                    else
-                    {
-                        sb.Append(paramCsName);
-                    }
-                    if (j != cppFunction.Parameters.Count - 1)
-                        sb.Append(", ");
-                }
-
-                if (stringReturn)
-                    sb.Append("));");
-                else
-                    sb.Append(");");
-
-                writer.WriteLine(sb.ToString());
-
-                while (strings > 0)
-                {
-                    strings--;
-                    writer.WriteLine($"Marshal.FreeHGlobal((nint)pStr{strings});");
-                }
-
-                if (!voidReturn)
-                    writer.WriteLine("return ret;");
 
                 while (stacks > 0)
                 {

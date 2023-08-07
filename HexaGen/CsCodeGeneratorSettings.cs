@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using Humanizer;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
@@ -10,7 +11,23 @@
     using System.Text.Json;
     using System.Text.Json.Serialization;
 
-    public class CsCodeGeneratorSettings
+    public struct EnumPrefix
+    {
+        public string[] Parts;
+
+        public EnumPrefix(string[] prefixes)
+        {
+            Parts = prefixes;
+        }
+    }
+
+    public enum BoolType
+    {
+        Bool8,
+        Bool32,
+    }
+
+    public partial class CsCodeGeneratorSettings
     {
         public static CsCodeGeneratorSettings Load(string file)
         {
@@ -35,6 +52,8 @@
 
         public LogSevertiy LogLevel { get; set; } = LogSevertiy.Warning;
 
+        public LogSevertiy CppLogLevel { get; set; } = LogSevertiy.Error;
+
         public bool GenerateSizeOfStructs { get; set; } = false;
 
         public bool DelegatesAsVoidPointer { get; set; } = true;
@@ -52,6 +71,8 @@
         public bool GenerateTypes { get; set; } = true;
 
         public bool GenerateDelegates { get; set; } = true;
+
+        public BoolType BoolType { get; set; } = BoolType.Bool8;
 
         public Dictionary<string, string> KnownConstantNames { get; set; } = new();
 
@@ -85,6 +106,10 @@
 
         public HashSet<string> IgnoredDelegates { get; set; } = new();
 
+        public HashSet<string> IgnoredConstants { get; set; } = new();
+
+        public Dictionary<string, string> IIDMappings { get; set; } = new();
+
         public List<ConstantMapping> ConstantMappings { get; set; } = new();
 
         public List<EnumMapping> EnumMappings { get; set; } = new();
@@ -93,13 +118,17 @@
 
         public List<HandleMapping> HandleMappings { get; set; } = new();
 
-        public List<TypeMapping> TypeMappings { get; set; } = new();
+        public List<TypeMapping> ClassMappings { get; set; } = new();
 
         public List<DelegateMapping> DelegateMappings { get; set; } = new();
 
         public List<ArrayMapping> ArrayMappings { get; set; } = new();
 
         public Dictionary<string, string> NameMappings { get; set; } = new()
+        {
+        };
+
+        public Dictionary<string, string> TypeMappings { get; set; } = new()
         {
             { "uint8_t", "byte" },
             { "uint16_t", "ushort" },
@@ -116,15 +145,17 @@
             { "size_t", "nuint" }
         };
 
-        public List<string> AllowedFunctions { get; set; } = new();
+        public HashSet<string> AllowedFunctions { get; set; } = new();
 
-        public List<string> AllowedTypes { get; set; } = new();
+        public HashSet<string> AllowedTypes { get; set; } = new();
 
-        public List<string> AllowedEnums { get; set; } = new();
+        public HashSet<string> AllowedEnums { get; set; } = new();
 
-        public List<string> AllowedTypedefs { get; set; } = new();
+        public HashSet<string> AllowedTypedefs { get; set; } = new();
 
-        public List<string> AllowedDelegates { get; set; } = new();
+        public HashSet<string> AllowedDelegates { get; set; } = new();
+
+        public HashSet<string> AllowedConstants { get; set; } = new();
 
         public List<string> Usings { get; set; } = new();
 
@@ -136,6 +167,8 @@
                 WriteIndented = true,
             }));
         }
+
+        #region Mapping Helpers
 
         public bool TryGetEnumMapping(string enumName, [NotNullWhen(true)] out EnumMapping? mapping)
         {
@@ -199,9 +232,9 @@
 
         public bool TryGetTypeMapping(string typeName, [NotNullWhen(true)] out TypeMapping? mapping)
         {
-            for (int i = 0; i < TypeMappings.Count; i++)
+            for (int i = 0; i < ClassMappings.Count; i++)
             {
-                var structMapping = TypeMappings[i];
+                var structMapping = ClassMappings[i];
                 if (structMapping.ExportedName == typeName)
                 {
                     mapping = structMapping;
@@ -215,9 +248,9 @@
 
         public TypeMapping? GetTypeMapping(string typeName)
         {
-            for (int i = 0; i < TypeMappings.Count; i++)
+            for (int i = 0; i < ClassMappings.Count; i++)
             {
-                var structMapping = TypeMappings[i];
+                var structMapping = ClassMappings[i];
                 if (structMapping.ExportedName == typeName)
                 {
                     return structMapping;
@@ -272,47 +305,7 @@
             return false;
         }
 
-        public string GetCsCleanName(string name)
-        {
-            if (NameMappings.TryGetValue(name, out string? mappedName))
-            {
-                return mappedName;
-            }
-            else if (name.StartsWith("PFN"))
-            {
-                return "nint";
-            }
-
-            StringBuilder sb = new();
-            bool wasLower = false;
-            for (int i = 0; i < name.Length; i++)
-            {
-                char c = name[i];
-                if (c == '_')
-                {
-                    wasLower = true;
-                    continue;
-                }
-                if (i == 0)
-                {
-                    c = char.ToUpper(c);
-                }
-
-                if (wasLower)
-                {
-                    c = char.ToUpper(c);
-                    wasLower = false;
-                }
-                sb.Append(c);
-            }
-
-            if (sb[^1] == 'T')
-            {
-                sb.Remove(sb.Length - 1, 1);
-            }
-
-            return sb.ToString();
-        }
+        #endregion Mapping Helpers
 
         public string GetCsTypeName(CppType? type, bool isPointer = false)
         {
@@ -324,6 +317,11 @@
             if (type is CppQualifiedType qualifiedType)
             {
                 return GetCsTypeName(qualifiedType.ElementType, isPointer);
+            }
+
+            if (type is CppReferenceType referenceType)
+            {
+                return GetCsTypeName(referenceType.ElementType, true);
             }
 
             if (type is CppEnum enumType)
@@ -417,6 +415,59 @@
             return GetCsTypeName(pointerType.ElementType, true);
         }
 
+        public string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer)
+        {
+            switch (primitiveType.Kind)
+            {
+                case CppPrimitiveKind.Void:
+                    return isPointer ? "void*" : "void";
+
+                case CppPrimitiveKind.Char:
+                    return isPointer ? "byte*" : "byte";
+
+                case CppPrimitiveKind.Bool:
+                    return isPointer ? $"{GetBoolType()}*" : "bool";
+
+                case CppPrimitiveKind.WChar:
+                    return isPointer ? "char*" : "char";
+
+                case CppPrimitiveKind.Short:
+                    return isPointer ? "short*" : "short";
+
+                case CppPrimitiveKind.Int:
+                    return isPointer ? "int*" : "int";
+
+                case CppPrimitiveKind.LongLong:
+                    return isPointer ? "long*" : "long";
+
+                case CppPrimitiveKind.UnsignedChar:
+                    return isPointer ? "byte*" : "byte";
+
+                case CppPrimitiveKind.UnsignedShort:
+                    return isPointer ? "ushort*" : "ushort";
+
+                case CppPrimitiveKind.UnsignedInt:
+                    return isPointer ? "uint*" : "uint";
+
+                case CppPrimitiveKind.UnsignedLongLong:
+                    return isPointer ? "ulong*" : "ulong";
+
+                case CppPrimitiveKind.Float:
+                    return isPointer ? "float*" : "float";
+
+                case CppPrimitiveKind.Double:
+                    return isPointer ? "double*" : "double";
+
+                case CppPrimitiveKind.LongDouble:
+                    break;
+
+                default:
+                    return string.Empty;
+            }
+
+            return string.Empty;
+        }
+
         public string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
@@ -427,6 +478,11 @@
             if (type is CppQualifiedType qualifiedType)
             {
                 return GetCsWrapperTypeName(qualifiedType.ElementType, isPointer);
+            }
+
+            if (type is CppReferenceType referenceType)
+            {
+                return GetCsWrapperTypeName(referenceType.ElementType, true);
             }
 
             if (type is CppEnum enumType)
@@ -494,7 +550,7 @@
                     return isPointer ? "ref byte" : "byte";
 
                 case CppPrimitiveKind.Bool:
-                    return isPointer ? "ref bool" : "bool";
+                    return isPointer ? $"ref {GetBoolType()}" : "bool";
 
                 case CppPrimitiveKind.WChar:
                     return isPointer ? "ref char" : "char";
@@ -589,7 +645,9 @@
                 var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
 
                 if (paramCsTypeName == "bool")
-                    paramCsTypeName = "byte";
+                {
+                    paramCsTypeName = GetBoolType();
+                }
 
                 if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
                 {
@@ -671,8 +729,6 @@
 
             if (name.StartsWith('p') && name.Length > 1 && char.IsUpper(name[1]))
             {
-                name = char.ToLower(name[1]) + name[2..];
-                return GetParameterName(type, name);
             }
 
             if (name == string.Empty)
@@ -770,6 +826,7 @@
             if (value == "true")
                 return "1";
 
+            // TODO: needs refactoring. remove the ImVec!
             if (value.StartsWith("ImVec") && sanitize)
                 return null;
             if (value.StartsWith("ImVec2"))
@@ -787,7 +844,7 @@
             return value;
         }
 
-        public string GetPrettyCommandName(string function)
+        public string GetPrettyFunctionName(string function)
         {
             if (TryGetFunctionMapping(function, out var mapping))
             {
@@ -828,7 +885,7 @@
                         }
 
                         string csName = GetCsCleanName(typedef.Name);
-                        string enumNamePrefix = GetEnumNamePrefix(typedef.Name);
+                        EnumPrefix enumNamePrefix = GetEnumNamePrefix(typedef.Name);
                         if (csName.EndsWith("_"))
                         {
                             csName = csName.Remove(csName.Length - 1);
@@ -853,44 +910,56 @@
                 return knownName;
             }
 
-            string[] parts = value.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();
-
-            bool capture = false;
-            var sb = new StringBuilder();
-            for (int i = 0; i < parts.Length; i++)
-            {
-                string part = parts[i];
-                if (IgnoredParts.Contains(part))
-                {
-                    continue;
-                }
-
-                part = part.ToLower();
-
-                sb.Append(char.ToUpper(part[0]));
-                sb.Append(part[1..]);
-                capture = true;
-            }
-
-            if (sb.Length == 0)
-                sb.Append(value);
-
-            return sb.ToString();
+            return GetCsCleanName(value);
         }
 
-        public string GetEnumNamePrefix(string typeName)
+        public EnumPrefix GetEnumNamePrefix(string typeName)
         {
             if (KnownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
             {
-                return knownValue;
+                return new(knownValue.Split('_'));
             }
 
             string[] parts = typeName.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();
+            List<string> partList = new();
+            bool mergeWithLast = false;
+            int last = 0;
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var part = parts[i];
+                if ((part.Length == 1 || part.IsNumeric()) && !mergeWithLast)
+                {
+                    if (i == 0 && parts.Length > 1)
+                    {
+                        mergeWithLast = true;
+                    }
+                    else if (i > 0)
+                    {
+                        partList[last] += part;
+                    }
+                    else
+                    {
+                        last = partList.Count;
+                        partList.Add(part);
+                    }
+                }
+                else if (mergeWithLast)
+                {
+                    last = partList.Count;
+                    partList.Add(parts[last] + part);
+                    mergeWithLast = false;
+                }
+                else
+                {
+                    last = partList.Count;
+                    partList.Add(part);
+                }
+            }
 
-            return string.Join("_", parts.Select(s => s.ToUpper()));
+            return new(partList.ToArray());
         }
 
-        public string GetPrettyEnumName(string value, string enumPrefix)
+        public string GetPrettyEnumName(string value, EnumPrefix enumPrefix)
         {
             if (KnownEnumValueNames.TryGetValue(value, out string? knownName))
             {
@@ -900,31 +969,52 @@
             if (value.StartsWith("0x"))
                 return value;
 
-            string[] parts = value.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();
-            string[] prefixParts = enumPrefix.Split('_', StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = GetEnumNamePrefix(value).Parts;
+            string[] prefixParts = enumPrefix.Parts;
 
             bool capture = false;
             var sb = new StringBuilder();
             for (int i = 0; i < parts.Length; i++)
             {
                 string part = parts[i];
-                if (IgnoredParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) || (prefixParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) && !capture))
+                if (IgnoredParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) || prefixParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) && !capture)
                 {
                     continue;
                 }
 
                 part = part.ToLower();
 
-                sb.Append(char.ToUpper(part[0]));
-                sb.Append(part[1..]);
+                bool wasNum = false;
+                for (int j = 0; j < part.Length; j++)
+                {
+                    var c = part[j];
+                    if (j == 0 || wasNum)
+                    {
+                        sb.Append(char.ToUpper(c));
+                        wasNum = false;
+                    }
+                    else if (char.IsDigit(c))
+                    {
+                        sb.Append(c);
+                        wasNum = true;
+                    }
+                    else
+                    {
+                        sb.Append(c);
+                    }
+                }
+
                 capture = true;
             }
 
             if (sb.Length == 0)
+            {
                 sb.Append(prefixParts[^1].ToCamelCase());
+            }
 
             string prettyName = sb.ToString();
-            return (char.IsNumber(prettyName[0])) ? prefixParts[^1].ToCamelCase() + prettyName : prettyName;
+
+            return char.IsNumber(prettyName[0]) ? prefixParts[^1].ToCamelCase() + prettyName : prettyName;
         }
 
         public string GetExtensionNamePrefix(string typeName)
@@ -988,7 +1078,20 @@
                 return "@" + name;
             }
 
-            return name;
+            if (name.Length == 0)
+                return name;
+
+            return char.IsDigit(name[0]) ? '_' + name : name;
+        }
+
+        public string GetBoolType()
+        {
+            return BoolType switch
+            {
+                BoolType.Bool8 => "byte",
+                BoolType.Bool32 => "int",
+                _ => throw new NotSupportedException(),
+            };
         }
     }
 }

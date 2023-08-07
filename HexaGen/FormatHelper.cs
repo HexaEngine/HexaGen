@@ -7,6 +7,19 @@
 
     public static class FormatHelper
     {
+        public static bool IsCaps(this string str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                var c = str[i];
+                if (char.IsSymbol(c))
+                    continue;
+                if (char.IsLower(c))
+                    return false;
+            }
+            return true;
+        }
+
         public static bool IsPointer(this CppType type)
         {
             if (type is CppPointerType)
@@ -20,6 +33,28 @@
             }
 
             return false;
+        }
+
+        public static bool IsPointer(this CppType type, ref int depth)
+        {
+            bool isPointer = false;
+            CppType d = type;
+            depth = 0;
+            while (true)
+            {
+                if (d is CppPointerType pointer)
+                {
+                    depth++;
+                    d = pointer.ElementType;
+                    isPointer = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return isPointer;
         }
 
         public static bool IsPointerOf(this CppType type, CppType pointer)
@@ -178,6 +213,42 @@
                 return "~0u - 3";
             }
 
+            if (value.StartsWith("L\"") && value.StartsWith("R\"") && value.StartsWith("LR\"") && value.EndsWith("\"") && value.Count(c => c == '"') > 2)
+            {
+                string[] parts = value.Split('"', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                StringBuilder sb = new();
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    var part = parts[i];
+                    if (part == "L" || part == "R" || part == "LR")
+                        continue;
+                    sb.Append(part);
+                }
+                return $"@\"{sb}\"";
+            }
+            else
+            {
+                if (value.StartsWith("L\"") && value.EndsWith("\""))
+                {
+                    return value[1..];
+                }
+
+                if (value.StartsWith("R\"") && value.EndsWith("\""))
+                {
+                    return $"@{value[1..]}";
+                }
+
+                if (value.StartsWith("LR\"") && value.EndsWith("\""))
+                {
+                    var lines = value[3..^1].Split("\n");
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        lines[i] = lines[i].TrimEnd('\r');
+                    }
+                    return $"@\"{string.Join("\n", lines)}\"";
+                }
+            }
+
             return value.Replace("ULL", "UL");
         }
 
@@ -191,6 +262,26 @@
                     return false;
             }
             return true;
+        }
+
+        public static bool IsNumeric(this string name, bool allowHex)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+            int index = 0;
+            if (allowHex && name.StartsWith("0x"))
+                index = 2;
+            for (int i = index; i < name.Length; i++)
+            {
+                if (!char.IsNumber(name[i]))
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool IsString(this string name)
+        {
+            return name.StartsWith("\"") && name.EndsWith("\"");
         }
 
         public static bool IsVoid(this CppType cppType)
@@ -285,7 +376,7 @@
             }
             if (comment is CppCommentText text)
             {
-                writer.WriteLine($"/// " + text.Text);
+                writer.WriteLine($"/// " + text.Text + "<br/>");
                 return true;
             }
 
@@ -324,7 +415,7 @@
             }
             if (cppComment is CppCommentText text)
             {
-                sb.AppendLine($"/// " + text.Text);
+                sb.AppendLine($"/// " + text.Text + "<br/>");
                 comment = sb.ToString();
                 return;
             }

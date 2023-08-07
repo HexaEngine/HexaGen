@@ -1,0 +1,88 @@
+{
+  "Namespace": "HexaEngine.X3DAudio",
+  "ApiName": "X3DAudio",
+  "LibName": "x3daudio1_7.dll",
+  "GenerateSizeOfStructs": false,
+  "Usings": [ "System.Numerics" ],
+  "BoolType": 1,
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "IgnoredConstants": [
+    "_MSC_VER",
+    "_WIN32",
+    "_M_AMD64",
+    "_M_X64",
+    "_WIN64"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "size_t": "nuint",
+    "bool": "bool",
+    "BOOL": "bool",
+    "BYTE": "byte",
+    "UCHAR": "byte",
+    "UINT8": "byte",
+    "USHORT": "ushort",
+    "UINT16": "ushort",
+    "UINT": "uint",
+    "UINT32": "uint",
+    "ULONG": "uint",
+    "DWORD": "uint",
+    "WORD": "short",
+    "INT": "int",
+    "INT32": "int",
+    "ULONGLONG": "ulong",
+    "UINT64": "ulong",
+    "LONGLONG": "long",
+    "LARGE_INTEGER": "long",
+    "FLOAT": "float",
+    "FLOAT32": "float",
+    "LPCSTR": "byte*",
+    "GUID": "Guid",
+    "HANDLE": "nint",
+    "HMODULE": "nint",
+    "HMONITOR": "nint",
+    "HWND": "nint",
+    "DXGI_USAGE": "uint",
+    "RECT": "Rect32",
+    "POINT": "Point32",
+    "SIZE_T": "nuint",
+    "LUID": "Luid",
+    "IID": "Guid",
+    "LPVOID": "void*",
+    "X3DAUDIO_VECTOR": "Vector4",
+    "X3DAUDIO_HANDLE": "X3DAudioHandle"
+  }
+}

@@ -1,8 +1,11 @@
 {
   "Namespace": "HexaEngine.D3D11",
-  "ApiName": "Shaderc",
-  "LibName": "shaderc_shared",
+  "ApiName": "D3D11",
+  "LibName": "d3d11",
+  "Usings": [ "HexaEngine.DXGI", "HexaEngine.D3DCommon" ],
   "GenerateSizeOfStructs": false,
+  "GenerateDelegates": false,
+  "BoolType": 1,
   "KnownConstantNames": {
   },
   "KnownEnumValueNames": {
@@ -26,7 +29,7 @@
     "object",
     "event"
   ],
-  "NameMappings": {
+  "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",
     "uint32_t": "uint",
@@ -40,6 +43,55 @@
     "signed char": "sbyte",
     "char": "byte",
     "size_t": "nuint",
-    "bool": "bool"
-  }
+    "bool": "int",
+    "BOOL": "int",
+    "BYTE": "byte",
+    "UCHAR": "byte",
+    "UINT8": "byte",
+    "USHORT": "ushort",
+    "UINT16": "ushort",
+    "UINT": "uint",
+    "ULONG": "uint",
+    "DWORD": "uint",
+    "WORD": "short",
+    "INT": "int",
+    "ULONGLONG": "ulong",
+    "UINT64": "ulong",
+    "LONGLONG": "long",
+    "LARGE_INTEGER": "long",
+    "FLOAT": "float",
+    "LPCSTR": "byte*",
+    "LPCWSTR": "char*",
+    "LPSTR": "byte*",
+    "LPWSTR": "char*",
+    "GUID": "Guid",
+    "HANDLE": "nint",
+    "HMODULE": "nint",
+    "HMONITOR": "nint",
+    "HWND": "nint",
+    "LPCVOID": "void*",
+    "LPVOID": "void*",
+    "SIZE": "nint",
+    "DXGI_USAGE": "uint",
+    "RECT": "Rect32",
+    "D3D11_RECT": "Rect32",
+    "POINT": "Point32",
+    "SIZE_T": "nuint",
+    "LUID": "Luid",
+    "IID": "Guid",
+    "APP_DEPRECATED_HRESULT": "HResult",
+    "SECURITY_ATTRIBUTES": "SecurityAttributes",
+    "D3D11_TRACE_COMPONENT_MASK": "uint",
+    "D3D11_TRACE_MISC_OPERATIONS_MASK": "uint",
+    "ID3DBlob": "ID3D10Blob"
+  },
+  "IgnoredEnums": [
+    "D3D_FEATURE_LEVEL",
+    "D3D_SRV_DIMENSION",
+    "DXGI_FORMAT"
+  ],
+  "IgnoredTypes": [
+    "DXGI_SAMPLE_DESC",
+    "DXGI_RATIONAL"
+  ]
 }

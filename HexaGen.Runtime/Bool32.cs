@@ -4,16 +4,16 @@
 
     public struct Bool32 : IEquatable<Bool32>
     {
-        public byte Value;
+        public int Value;
 
-        public Bool32(byte value)
+        public Bool32(int value)
         {
             Value = value;
         }
 
         public Bool32(bool value)
         {
-            Value = value ? (byte)1 : (byte)0;
+            Value = value ? 1 : 0;
         }
 
         public override readonly bool Equals(object? obj)
@@ -46,12 +46,12 @@
             return b.Value != 0;
         }
 
-        public static implicit operator byte(Bool32 b)
+        public static implicit operator int(Bool32 b)
         {
             return b.Value;
         }
 
-        public static implicit operator Bool32(byte b)
+        public static implicit operator Bool32(int b)
         {
             return new(b);
         }

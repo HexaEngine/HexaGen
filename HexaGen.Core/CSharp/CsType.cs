@@ -45,6 +45,8 @@
 
         public bool IsPointer { get; set; }
 
+        public bool IsOut { get; set; }
+
         public bool IsRef { get; set; }
 
         public bool IsString { get; set; }
@@ -102,14 +104,15 @@
 
         public string Classify()
         {
-            IsRef = Name.StartsWith("ref");
+            IsRef = Name.StartsWith("ref ");
+            IsOut = Name.StartsWith("out ");
             IsArray = Name.Contains("[]");
             IsPointer = Name.Contains('*');
             IsBool = Name.Contains("bool");
             IsString = Name.Contains("string");
             IsVoid = Name.StartsWith("void");
 
-            IsPrimitive = !IsRef && !IsArray && !IsPointer && !IsArray && !IsString;
+            IsPrimitive = !IsOut && !IsRef && !IsArray && !IsPointer && !IsArray && !IsString;
 
             if (IsString)
             {

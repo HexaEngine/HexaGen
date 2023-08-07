@@ -121,7 +121,7 @@
 
                     string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
                     string signature = settings.GetParameterSignature(functionType.Parameters, false);
-                    returnCsName = returnCsName.Replace("bool", "byte");
+                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
 
                     if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
                     {
@@ -166,7 +166,7 @@
 
                 string signature = settings.GetParameterSignature(functionType.Parameters, false);
                 string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                returnCsName = returnCsName.Replace("bool", "byte");
+                returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
 
                 if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
                 {

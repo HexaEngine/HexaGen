@@ -5,7 +5,7 @@
 
     public class CsFunctionVariation : ICsFunction
     {
-        public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters)
+        public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters)
         {
             ExportedName = exportedName;
             Name = name;
@@ -16,6 +16,7 @@
             IsDestructor = isDestructor;
             ReturnType = returnType;
             Parameters = parameters;
+            GenericParameters = genericParameters;
         }
 
         public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType)
@@ -28,6 +29,7 @@
             IsDestructor = isDestructor;
             ReturnType = returnType;
             Parameters = new();
+            GenericParameters = new();
         }
 
         public string ExportedName { get; set; }
@@ -42,9 +44,13 @@
 
         public bool IsDestructor { get; set; }
 
+        public bool IsGeneric => GenericParameters.Count > 0;
+
         public CsType ReturnType { get; set; }
 
         public List<CsParameterInfo> Parameters { get; set; }
+
+        public List<CsGenericParameterInfo> GenericParameters { get; set; }
 
         public string BuildSignature()
         {

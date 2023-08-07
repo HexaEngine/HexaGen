@@ -40,7 +40,7 @@
                 DefinedEnums.Add(cppEnum.Name);
 
                 string csName = settings.GetCsCleanName(cppEnum.Name);
-                string enumNamePrefix = settings.GetEnumNamePrefix(cppEnum.Name);
+                EnumPrefix enumNamePrefix = settings.GetEnumNamePrefix(cppEnum.Name);
                 if (csName.EndsWith("_"))
                 {
                     csName = csName.Remove(csName.Length - 1);

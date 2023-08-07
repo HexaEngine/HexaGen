@@ -30,7 +30,7 @@
       "Name": "ref Vector2"
     }
   ],
-  "NameMappings": {
+  "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",
     "uint32_t": "uint",

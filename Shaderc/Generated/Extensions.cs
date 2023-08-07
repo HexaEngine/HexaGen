@@ -16,22 +16,22 @@ namespace HexaEngine.Shaderc
 {
 	public static unsafe class Extensions
 	{
-		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.		/// After this call it is invalid to make any future calls to functions		/// involving this shaderc_compiler_t.		/// </summary>		public static void Release(this ShadercCompiler shadercCompiler)
+		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		public static void Release(this ShadercCompiler shadercCompiler)
 		{
 			Shaderc.ShadercCompilerReleaseNative(shadercCompiler);
 		}
 
-		/// <summary>		/// Releases the compilation options. It is invalid to use the given		/// shaderc_compile_options_t object in any future calls. It is safe to pass		/// NULL to this function, and doing such will have no effect.		/// </summary>		public static void Release(this ShadercCompileOptions options)
+		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		public static void Release(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsReleaseNative(options);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			Shaderc.ShadercCompileOptionsAddMacroDefinitionNative(options, name, nameLength, value, valueLength);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -39,7 +39,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -65,7 +65,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
 		{
 			fixed (byte* pvalue = &value)
 			{
@@ -73,7 +73,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -99,7 +99,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -110,7 +110,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -157,102 +157,102 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets the source language.  The default is GLSL.		/// </summary>		public static void SetSourceLanguage(this ShadercCompileOptions options, ShadercSourceLanguage lang)
+		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		public static void SetSourceLanguage(this ShadercCompileOptions options, ShadercSourceLanguage lang)
 		{
 			Shaderc.ShadercCompileOptionsSetSourceLanguageNative(options, lang);
 		}
 
-		/// <summary>		/// Sets the compiler mode to generate debug information in the output.		/// </summary>		public static void SetGenerateDebugInfo(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		public static void SetGenerateDebugInfo(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetGenerateDebugInfoNative(options);
 		}
 
-		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one		/// takes effect if multiple calls of this function exist.		/// </summary>		public static void SetOptimizationLevel(this ShadercCompileOptions options, ShadercOptimizationLevel level)
+		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		public static void SetOptimizationLevel(this ShadercCompileOptions options, ShadercOptimizationLevel level)
 		{
 			Shaderc.ShadercCompileOptionsSetOptimizationLevelNative(options, level);
 		}
 
-		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version		/// number is the same as would appear in the #version annotation in the source.		/// Version and profile specified here overrides the #version annotation in the		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not		/// define profiles, e.g. versions below 150.		/// </summary>		public static void SetForcedVersionProfile(this ShadercCompileOptions options, int version, ShadercProfile profile)
+		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		public static void SetForcedVersionProfile(this ShadercCompileOptions options, int version, ShadercProfile profile)
 		{
 			Shaderc.ShadercCompileOptionsSetForcedVersionProfileNative(options, version, profile);
 		}
 
-		/// <summary>		/// Sets includer callback functions.		/// </summary>		public static void SetIncludeCallbacks(this ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
+		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		public static void SetIncludeCallbacks(this ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
 		{
 			Shaderc.ShadercCompileOptionsSetIncludeCallbacksNative(options, resolver, resultReleaser, userData);
 		}
 
-		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors		/// mode. When both suppress-warnings and warnings-as-errors modes are		/// turned on, warning messages will be inhibited, and will not be emitted		/// as error messages.		/// </summary>		public static void SetSuppressWarnings(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		public static void SetSuppressWarnings(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetSuppressWarningsNative(options);
 		}
 
-		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will		/// be issued.  The version will be for distinguishing between different versions		/// of the target environment.  The version value should be either 0 or		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.		/// </summary>		public static void SetTargetEnv(this ShadercCompileOptions options, ShadercTargetEnv target, uint version)
+		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		public static void SetTargetEnv(this ShadercCompileOptions options, ShadercTargetEnv target, uint version)
 		{
 			Shaderc.ShadercCompileOptionsSetTargetEnvNative(options, target, version);
 		}
 
-		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version		/// of SPIR-V.  Each target environment determines what versions of SPIR-V		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is		/// required to be supported by the target environment.  E.g. Default to SPIR-V		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.		/// </summary>		public static void SetTargetSpirv(this ShadercCompileOptions options, ShadercSpirvVersion version)
+		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		public static void SetTargetSpirv(this ShadercCompileOptions options, ShadercSpirvVersion version)
 		{
 			Shaderc.ShadercCompileOptionsSetTargetSpirvNative(options, version);
 		}
 
-		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the		/// suppress-warnings mode overrides this option, i.e. if both		/// warning-as-errors and suppress-warnings modes are set, warnings will not		/// be emitted as error messages.		/// </summary>		public static void SetWarningsAsErrors(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		public static void SetWarningsAsErrors(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetWarningsAsErrorsNative(options);
 		}
 
-		/// <summary>		/// Sets a resource limit.		/// </summary>		public static void SetLimit(this ShadercCompileOptions options, ShadercLimit limit, int value)
+		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		public static void SetLimit(this ShadercCompileOptions options, ShadercLimit limit, int value)
 		{
 			Shaderc.ShadercCompileOptionsSetLimitNative(options, limit, value);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms		/// that aren't already explicitly bound in the shader source.		/// </summary>		public static void SetAutoBindUniforms(this ShadercCompileOptions options, bool autoBind)
+		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		public static void SetAutoBindUniforms(this ShadercCompileOptions options, bool autoBind)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoBindUniformsNative(options, autoBind ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables		/// and convert image variables to combined image-sampler variables.		/// </summary>		public static void SetAutoCombinedImageSampler(this ShadercCompileOptions options, bool upgrade)
+		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		public static void SetAutoCombinedImageSampler(this ShadercCompileOptions options, bool upgrade)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoCombinedImageSamplerNative(options, upgrade ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.		/// Defaults to false.		/// </summary>		public static void SetHlslIoMapping(this ShadercCompileOptions options, bool hlslIomap)
+		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		public static void SetHlslIoMapping(this ShadercCompileOptions options, bool hlslIomap)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslIoMappingNative(options, hlslIomap ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.		/// </summary>		public static void SetHlslOffsets(this ShadercCompileOptions options, bool hlslOffsets)
+		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		public static void SetHlslOffsets(this ShadercCompileOptions options, bool hlslOffsets)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslOffsetsNative(options, hlslOffsets ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets the base binding number used for for a uniform resource type when		/// automatically assigning bindings.  For GLSL compilation, sets the lowest		/// automatically assigned number.  For HLSL compilation, the regsiter number		/// assigned to the resource is added to this specified base.		/// </summary>		public static void SetBindingBase(this ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		public static void SetBindingBase(this ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
 		{
 			Shaderc.ShadercCompileOptionsSetBindingBaseNative(options, kind, baseValue);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when		/// compiling a given shader stage.  The stage is assumed to be one of vertex,		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.		/// </summary>		public static void SetBindingBaseForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		public static void SetBindingBaseForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
 		{
 			Shaderc.ShadercCompileOptionsSetBindingBaseForStageNative(options, shaderKind, kind, baseValue);
 		}
 
-		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those		/// bindings are not used.		/// </summary>		public static void SetPreserveBindings(this ShadercCompileOptions options, bool preserveBindings)
+		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		public static void SetPreserveBindings(this ShadercCompileOptions options, bool preserveBindings)
 		{
 			Shaderc.ShadercCompileOptionsSetPreserveBindingsNative(options, preserveBindings ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically assign locations to		/// uniform variables that don't have explicit locations in the shader source.		/// </summary>		public static void SetAutoMapLocations(this ShadercCompileOptions options, bool autoMap)
+		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		public static void SetAutoMapLocations(this ShadercCompileOptions options, bool autoMap)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoMapLocationsNative(options, autoMap ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(options, shaderKind, reg, set, binding);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -260,7 +260,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -286,7 +286,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -294,7 +294,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -320,7 +320,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -331,7 +331,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -378,7 +378,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -386,7 +386,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -412,7 +412,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -423,7 +423,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -470,7 +470,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -481,7 +481,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -528,7 +528,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -542,7 +542,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -610,12 +610,12 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(options, reg, set, binding);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -623,7 +623,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -649,7 +649,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -657,7 +657,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -683,7 +683,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -694,7 +694,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -741,7 +741,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -749,7 +749,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -775,7 +775,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -786,7 +786,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -833,7 +833,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -844,7 +844,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -891,7 +891,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -905,7 +905,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -973,27 +973,27 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets whether the compiler should enable extension		/// SPV_GOOGLE_hlsl_functionality1.		/// </summary>		public static void SetHlslFunctionality1(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		public static void SetHlslFunctionality1(this ShadercCompileOptions options, bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslFunctionality1Native(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.		/// </summary>		public static void SetHlsl16Types(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		public static void SetHlsl16BitTypes(this ShadercCompileOptions options, bool enable)
 		{
-			Shaderc.ShadercCompileOptionsSetHlsl16TypesNative(options, enable ? (byte)1 : (byte)0);
+			Shaderc.ShadercCompileOptionsSetHlsl16BitTypesNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.		/// </summary>		public static void SetInvertY(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		public static void SetInvertY(this ShadercCompileOptions options, bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetInvertYNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,		/// if given a NaN operand, will return the other operand. Similarly, the clamp		/// builtin will favour the non-NaN operands, as if clamp were implemented		/// as a composition of max and min.		/// </summary>		public static void SetNanClamp(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		public static void SetNanClamp(this ShadercCompileOptions options, bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetNanClampNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the		/// result object for any further operations.		/// </summary>		public static void Release(this ShadercCompilationResult result)
+		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		public static void Release(this ShadercCompilationResult result)
 		{
 			Shaderc.ShadercResultReleaseNative(result);
 		}

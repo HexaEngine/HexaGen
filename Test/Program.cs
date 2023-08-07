@@ -1,14 +1,67 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using HexaGen;
 using HexaGen.Core.Mapping;
-using System.Reflection.Emit;
+using HexaGen.Runtime.COM;
 using Test;
 
-CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d11/generator.json");
-CsComCodeGenerator generator1 = new(generatorSettings);
-generator1.Generate(new List<string>() { "d3d11/d3d11.h", "d3d11/d3d11_1.h", "d3d11/d3d11.h", "d3d11/d3d11_2.h", "d3d11/d3d11_3.h", "d3d11/d3d11_4.h" }, "../../../../D3D11/Generated");
-generator1.DisplayMessages();
-return;
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xaudio2/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    Directory.CreateDirectory("../../../../XAudio2/Generated");
+    generator1.Generate(Directory.GetFiles("xaudio2", "*.h").ToList(), "../../../../XAudio2/Generated");
+    generator1.DisplayMessages();
+}
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xd3audio/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    Directory.CreateDirectory("../../../../X3DAudio/Generated");
+    generator1.Generate("xd3audio/main.h", "../../../../X3DAudio/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcommon/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    generator1.Generate("d3dcommon/d3dcommon.h", "../../../../D3DCommon/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcompiler/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    generator1.Generate("d3dcompiler/d3dcompiler.h", "../../../../D3DCompiler/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxc/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    Directory.CreateDirectory("../../../../DXC/Generated");
+    generator1.Generate("dxc/main.h", "../../../../DXC/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxgi/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    generator1.Generate(Directory.GetFiles("dxgi", "*.h").ToList(), "../../../../DXGI/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d11/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    generator1.Generate(Directory.GetFiles("d3d11", "*.h").ToList(), "../../../../D3D11/Generated");
+    generator1.DisplayMessages();
+}
+
+{
+    CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d12/generator.json");
+    CsComCodeGenerator generator1 = new(generatorSettings);
+    generator1.Generate(Directory.GetFiles("d3d12", "*.h").ToList(), "../../../../D3D12/Generated");
+    generator1.DisplayMessages();
+}
+
 {
     CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("cimgui/generator.json");
     ImguiDefinitions imguiDefinitions = new("cimgui");
@@ -71,7 +124,7 @@ return;
             TypeFieldMapping fieldMapping = new(field.Name, null, field.Comment);
             mapping.FieldMappings.Add(fieldMapping);
         }
-        settings.TypeMappings.Add(mapping);
+        settings.ClassMappings.Add(mapping);
     }
 
     string headerFile = "cimgui/cimgui.h";

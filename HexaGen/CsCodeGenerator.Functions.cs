@@ -40,7 +40,7 @@
                     if (settings.IgnoredFunctions.Contains(cppFunction.Name))
                         continue;
 
-                    string? csName = settings.GetPrettyCommandName(cppFunction.Name);
+                    string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
                     string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
@@ -64,7 +64,7 @@
                     if (boolReturn)
                     {
                         writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
-                        writer.WriteLine($"internal static extern byte {csName}Native({argumentsString});");
+                        writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
                         writer.WriteLine();
                     }
                     else
@@ -194,7 +194,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"byte ret = ");
+                        sb.Append($"{settings.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -265,7 +265,7 @@
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                             sb.Append($"(string){paramCsDefault}");
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
-                            sb.Append($"(byte)({paramCsDefault})");
+                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
                         else if (rootParam.Type.IsEnum)
                             sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
                         else if (cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
@@ -307,7 +307,7 @@
                     }
                     else if (isBool && !isRef && !isPointer)
                     {
-                        sb.Append($"{cppParameter.Name} ? (byte)1 : (byte)0");
+                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
                     }
                     else
                     {

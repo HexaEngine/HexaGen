@@ -44,15 +44,15 @@
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error)
+                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSevertiy.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning)
+                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSevertiy.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info)
+                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSevertiy.Information)
                 {
                     LogInfo(message.ToString());
                 }
@@ -63,20 +63,58 @@
                 return;
             }
 
-            if (settings.GenerateConstants)
-                GenerateConstants(compilation, outputPath);
+            List<Task> tasks = new();
+
             if (settings.GenerateEnums)
-                GenerateEnums(compilation, outputPath);
+            {
+                Task taskEnums = new(() => GenerateEnums(compilation, outputPath));
+                tasks.Add(taskEnums);
+                taskEnums.Start();
+            }
+
+            if (settings.GenerateConstants)
+            {
+                Task taskConstants = new(() => GenerateConstants(compilation, outputPath));
+                tasks.Add(taskConstants);
+                taskConstants.Start();
+            }
+
             if (settings.GenerateHandles)
-                GenerateHandles(compilation, outputPath);
+            {
+                Task taskHandles = new(() => GenerateHandles(compilation, outputPath));
+                tasks.Add(taskHandles);
+                taskHandles.RunSynchronously();
+            }
+
             if (settings.GenerateTypes)
-                GenerateTypes(compilation, outputPath);
+            {
+                Task taskTypes = new(() => GenerateTypes(compilation, outputPath));
+                tasks.Add(taskTypes);
+                taskTypes.RunSynchronously();
+            }
+
             if (settings.GenerateFunctions)
-                GenerateFunctions(compilation, outputPath);
+            {
+                Task taskFuncs = new(() => GenerateFunctions(compilation, outputPath));
+                tasks.Add(taskFuncs);
+                taskFuncs.Start();
+            }
+
             if (settings.GenerateExtensions)
-                GenerateExtensions(compilation, outputPath);
+            {
+                Task taskExtensions = new(() => GenerateExtensions(compilation, outputPath));
+                tasks.Add(taskExtensions);
+                taskExtensions.Start();
+            }
+
             if (settings.GenerateDelegates)
-                GenerateDelegates(compilation, outputPath);
+            {
+                Task taskDelegates = new(() => GenerateDelegates(compilation, outputPath));
+                tasks.Add(taskDelegates);
+                taskDelegates.Start();
+            }
+
+            Task.WaitAll(tasks.ToArray());
         }
 
         public void Reset()

@@ -16,20 +16,20 @@ using HexaGen.Runtime;
 namespace HexaEngine.Shaderc
 {
 	/// <summary>
-	/// An includer callback type for mapping an #include request to an include
-	/// result.  The user_data parameter specifies the client context.  The
-	/// requested_source parameter specifies the name of the source being requested.
-	/// The type parameter specifies the kind of inclusion request being made.
-	/// The requesting_source parameter specifies the name of the source containing
-	/// the #include request.  The includer owns the result object and its contents,
-	/// and both must remain valid until the release callback is called on the result
-	/// object.
+	/// An includer callback type for mapping an #include request to an include<br/>
+	/// result.  The user_data parameter specifies the client context.  The<br/>
+	/// requested_source parameter specifies the name of the source being requested.<br/>
+	/// The type parameter specifies the kind of inclusion request being made.<br/>
+	/// The requesting_source parameter specifies the name of the source containing<br/>
+	/// the #include request.  The includer owns the result object and its contents,<br/>
+	/// and both must remain valid until the release callback is called on the result<br/>
+	/// object.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate ShadercIncludeResult* ShadercIncludeResolveFn(void* userData, byte* requestedSource, int type, byte* requestingSource, nuint includeDepth);
 
 	/// <summary>
-	/// An includer callback type for destroying an include result.
+	/// An includer callback type for destroying an include result.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ShadercIncludeResultReleaseFn(void* userData, ShadercIncludeResult* includeResult);

@@ -19,103 +19,103 @@ namespace HexaEngine.Shaderc
 		internal const string LibName = "shaderc_shared";
 
 		/// <summary>
-		/// Returns a shaderc_compiler_t that can be used to compile modules.
-		/// A return of NULL indicates that there was an error initializing the compiler.
-		/// Any function operating on shaderc_compiler_t must offer the basic
-		/// thread-safety guarantee.
-		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]
-		/// That is: concurrent invocation of these functions on DIFFERENT objects needs
-		/// no synchronization; concurrent invocation of these functions on the SAME
-		/// object requires synchronization IF AND ONLY IF some of them take a non-const
-		/// argument.
+		/// Returns a shaderc_compiler_t that can be used to compile modules.<br/>
+		/// A return of NULL indicates that there was an error initializing the compiler.<br/>
+		/// Any function operating on shaderc_compiler_t must offer the basic<br/>
+		/// thread-safety guarantee.<br/>
+		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]<br/>
+		/// That is: concurrent invocation of these functions on DIFFERENT objects needs<br/>
+		/// no synchronization; concurrent invocation of these functions on the SAME<br/>
+		/// object requires synchronization IF AND ONLY IF some of them take a non-const<br/>
+		/// argument.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compiler_initialize")]
 		internal static extern ShadercCompiler ShadercCompilerInitializeNative();
 
-		/// <summary>		/// Returns a shaderc_compiler_t that can be used to compile modules.		/// A return of NULL indicates that there was an error initializing the compiler.		/// Any function operating on shaderc_compiler_t must offer the basic		/// thread-safety guarantee.		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]		/// That is: concurrent invocation of these functions on DIFFERENT objects needs		/// no synchronization; concurrent invocation of these functions on the SAME		/// object requires synchronization IF AND ONLY IF some of them take a non-const		/// argument.		/// </summary>		public static ShadercCompiler ShadercCompilerInitialize()
+		/// <summary>		/// Returns a shaderc_compiler_t that can be used to compile modules.<br/>		/// A return of NULL indicates that there was an error initializing the compiler.<br/>		/// Any function operating on shaderc_compiler_t must offer the basic<br/>		/// thread-safety guarantee.<br/>		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]<br/>		/// That is: concurrent invocation of these functions on DIFFERENT objects needs<br/>		/// no synchronization; concurrent invocation of these functions on the SAME<br/>		/// object requires synchronization IF AND ONLY IF some of them take a non-const<br/>		/// argument.<br/>		/// </summary>		public static ShadercCompiler ShadercCompilerInitialize()
 		{
 			ShadercCompiler ret = ShadercCompilerInitializeNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Releases the resources held by the shaderc_compiler_t.
-		/// After this call it is invalid to make any future calls to functions
-		/// involving this shaderc_compiler_t.
+		/// Releases the resources held by the shaderc_compiler_t.<br/>
+		/// After this call it is invalid to make any future calls to functions<br/>
+		/// involving this shaderc_compiler_t.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compiler_release")]
 		internal static extern void ShadercCompilerReleaseNative(ShadercCompiler shadercCompiler);
 
-		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.		/// After this call it is invalid to make any future calls to functions		/// involving this shaderc_compiler_t.		/// </summary>		public static void ShadercCompilerRelease(ShadercCompiler shadercCompiler)
+		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		public static void ShadercCompilerRelease(ShadercCompiler shadercCompiler)
 		{
 			ShadercCompilerReleaseNative(shadercCompiler);
 		}
 
 		/// <summary>
-		/// Returns a default-initialized shaderc_compile_options_t that can be used
-		/// to modify the functionality of a compiled module.
-		/// A return of NULL indicates that there was an error initializing the options.
-		/// Any function operating on shaderc_compile_options_t must offer the
-		/// basic thread-safety guarantee.
+		/// Returns a default-initialized shaderc_compile_options_t that can be used<br/>
+		/// to modify the functionality of a compiled module.<br/>
+		/// A return of NULL indicates that there was an error initializing the options.<br/>
+		/// Any function operating on shaderc_compile_options_t must offer the<br/>
+		/// basic thread-safety guarantee.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_initialize")]
 		internal static extern ShadercCompileOptions ShadercCompileOptionsInitializeNative();
 
-		/// <summary>		/// Returns a default-initialized shaderc_compile_options_t that can be used		/// to modify the functionality of a compiled module.		/// A return of NULL indicates that there was an error initializing the options.		/// Any function operating on shaderc_compile_options_t must offer the		/// basic thread-safety guarantee.		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsInitialize()
+		/// <summary>		/// Returns a default-initialized shaderc_compile_options_t that can be used<br/>		/// to modify the functionality of a compiled module.<br/>		/// A return of NULL indicates that there was an error initializing the options.<br/>		/// Any function operating on shaderc_compile_options_t must offer the<br/>		/// basic thread-safety guarantee.<br/>		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsInitialize()
 		{
 			ShadercCompileOptions ret = ShadercCompileOptionsInitializeNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns a copy of the given shaderc_compile_options_t.
-		/// If NULL is passed as the parameter the call is the same as
-		/// shaderc_compile_options_init.
+		/// Returns a copy of the given shaderc_compile_options_t.<br/>
+		/// If NULL is passed as the parameter the call is the same as<br/>
+		/// shaderc_compile_options_init.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_clone")]
 		internal static extern ShadercCompileOptions ShadercCompileOptionsCloneNative(ShadercCompileOptions options);
 
-		/// <summary>		/// Returns a copy of the given shaderc_compile_options_t.		/// If NULL is passed as the parameter the call is the same as		/// shaderc_compile_options_init.		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsClone(ShadercCompileOptions options)
+		/// <summary>		/// Returns a copy of the given shaderc_compile_options_t.<br/>		/// If NULL is passed as the parameter the call is the same as<br/>		/// shaderc_compile_options_init.<br/>		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsClone(ShadercCompileOptions options)
 		{
 			ShadercCompileOptions ret = ShadercCompileOptionsCloneNative(options);
 			return ret;
 		}
 
 		/// <summary>
-		/// Releases the compilation options. It is invalid to use the given
-		/// shaderc_compile_options_t object in any future calls. It is safe to pass
-		/// NULL to this function, and doing such will have no effect.
+		/// Releases the compilation options. It is invalid to use the given<br/>
+		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>
+		/// NULL to this function, and doing such will have no effect.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_release")]
 		internal static extern void ShadercCompileOptionsReleaseNative(ShadercCompileOptions options);
 
-		/// <summary>		/// Releases the compilation options. It is invalid to use the given		/// shaderc_compile_options_t object in any future calls. It is safe to pass		/// NULL to this function, and doing such will have no effect.		/// </summary>		public static void ShadercCompileOptionsRelease(ShadercCompileOptions options)
+		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		public static void ShadercCompileOptionsRelease(ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsReleaseNative(options);
 		}
 
 		/// <summary>
-		/// Adds a predefined macro to the compilation options. This has the same
-		/// effect as passing -Dname=value to the command-line compiler.  If value
-		/// is NULL, it has the same effect as passing -Dname to the command-line
-		/// compiler. If a macro definition with the same name has previously been
-		/// added, the value is replaced with the new value. The macro name and
-		/// value are passed in with char pointers, which point to their data, and
-		/// the lengths of their data. The strings that the name and value pointers
-		/// point to must remain valid for the duration of the call, but can be
-		/// modified or deleted after this function has returned. In case of adding
-		/// a valueless macro, the value argument should be a null pointer or the
-		/// value_length should be 0u.
+		/// Adds a predefined macro to the compilation options. This has the same<br/>
+		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>
+		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>
+		/// compiler. If a macro definition with the same name has previously been<br/>
+		/// added, the value is replaced with the new value. The macro name and<br/>
+		/// value are passed in with char pointers, which point to their data, and<br/>
+		/// the lengths of their data. The strings that the name and value pointers<br/>
+		/// point to must remain valid for the duration of the call, but can be<br/>
+		/// modified or deleted after this function has returned. In case of adding<br/>
+		/// a valueless macro, the value argument should be a null pointer or the<br/>
+		/// value_length should be 0u.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_add_macro_definition")]
 		internal static extern void ShadercCompileOptionsAddMacroDefinitionNative(ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength);
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			ShadercCompileOptionsAddMacroDefinitionNative(options, name, nameLength, value, valueLength);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -123,7 +123,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -149,7 +149,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
 		{
 			fixed (byte* pvalue = &value)
 			{
@@ -157,7 +157,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -183,7 +183,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -194,7 +194,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same		/// effect as passing -Dname=value to the command-line compiler.  If value		/// is NULL, it has the same effect as passing -Dname to the command-line		/// compiler. If a macro definition with the same name has previously been		/// added, the value is replaced with the new value. The macro name and		/// value are passed in with char pointers, which point to their data, and		/// the lengths of their data. The strings that the name and value pointers		/// point to must remain valid for the duration of the call, but can be		/// modified or deleted after this function has returned. In case of adding		/// a valueless macro, the value argument should be a null pointer or the		/// value_length should be 0u.		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -242,247 +242,247 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Sets the source language.  The default is GLSL.
+		/// Sets the source language.  The default is GLSL.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_source_language")]
 		internal static extern void ShadercCompileOptionsSetSourceLanguageNative(ShadercCompileOptions options, ShadercSourceLanguage lang);
 
-		/// <summary>		/// Sets the source language.  The default is GLSL.		/// </summary>		public static void ShadercCompileOptionsSetSourceLanguage(ShadercCompileOptions options, ShadercSourceLanguage lang)
+		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetSourceLanguage(ShadercCompileOptions options, ShadercSourceLanguage lang)
 		{
 			ShadercCompileOptionsSetSourceLanguageNative(options, lang);
 		}
 
 		/// <summary>
-		/// Sets the compiler mode to generate debug information in the output.
+		/// Sets the compiler mode to generate debug information in the output.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_generate_debug_info")]
 		internal static extern void ShadercCompileOptionsSetGenerateDebugInfoNative(ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to generate debug information in the output.		/// </summary>		public static void ShadercCompileOptionsSetGenerateDebugInfo(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		public static void ShadercCompileOptionsSetGenerateDebugInfo(ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetGenerateDebugInfoNative(options);
 		}
 
 		/// <summary>
-		/// Sets the compiler optimization level to the given level. Only the last one
-		/// takes effect if multiple calls of this function exist.
+		/// Sets the compiler optimization level to the given level. Only the last one<br/>
+		/// takes effect if multiple calls of this function exist.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_optimization_level")]
 		internal static extern void ShadercCompileOptionsSetOptimizationLevelNative(ShadercCompileOptions options, ShadercOptimizationLevel level);
 
-		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one		/// takes effect if multiple calls of this function exist.		/// </summary>		public static void ShadercCompileOptionsSetOptimizationLevel(ShadercCompileOptions options, ShadercOptimizationLevel level)
+		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		public static void ShadercCompileOptionsSetOptimizationLevel(ShadercCompileOptions options, ShadercOptimizationLevel level)
 		{
 			ShadercCompileOptionsSetOptimizationLevelNative(options, level);
 		}
 
 		/// <summary>
-		/// Forces the GLSL language version and profile to a given pair. The version
-		/// number is the same as would appear in the #version annotation in the source.
-		/// Version and profile specified here overrides the #version annotation in the
-		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not
-		/// define profiles, e.g. versions below 150.
+		/// Forces the GLSL language version and profile to a given pair. The version<br/>
+		/// number is the same as would appear in the #version annotation in the source.<br/>
+		/// Version and profile specified here overrides the #version annotation in the<br/>
+		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>
+		/// define profiles, e.g. versions below 150.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_forced_version_profile")]
 		internal static extern void ShadercCompileOptionsSetForcedVersionProfileNative(ShadercCompileOptions options, int version, ShadercProfile profile);
 
-		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version		/// number is the same as would appear in the #version annotation in the source.		/// Version and profile specified here overrides the #version annotation in the		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not		/// define profiles, e.g. versions below 150.		/// </summary>		public static void ShadercCompileOptionsSetForcedVersionProfile(ShadercCompileOptions options, int version, ShadercProfile profile)
+		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		public static void ShadercCompileOptionsSetForcedVersionProfile(ShadercCompileOptions options, int version, ShadercProfile profile)
 		{
 			ShadercCompileOptionsSetForcedVersionProfileNative(options, version, profile);
 		}
 
 		/// <summary>
-		/// Sets includer callback functions.
+		/// Sets includer callback functions.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_include_callbacks")]
 		internal static extern void ShadercCompileOptionsSetIncludeCallbacksNative(ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData);
 
-		/// <summary>		/// Sets includer callback functions.		/// </summary>		public static void ShadercCompileOptionsSetIncludeCallbacks(ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
+		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		public static void ShadercCompileOptionsSetIncludeCallbacks(ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
 		{
 			ShadercCompileOptionsSetIncludeCallbacksNative(options, resolver, resultReleaser, userData);
 		}
 
 		/// <summary>
-		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors
-		/// mode. When both suppress-warnings and warnings-as-errors modes are
-		/// turned on, warning messages will be inhibited, and will not be emitted
-		/// as error messages.
+		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>
+		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>
+		/// turned on, warning messages will be inhibited, and will not be emitted<br/>
+		/// as error messages.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_suppress_warnings")]
 		internal static extern void ShadercCompileOptionsSetSuppressWarningsNative(ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors		/// mode. When both suppress-warnings and warnings-as-errors modes are		/// turned on, warning messages will be inhibited, and will not be emitted		/// as error messages.		/// </summary>		public static void ShadercCompileOptionsSetSuppressWarnings(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetSuppressWarnings(ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetSuppressWarningsNative(options);
 		}
 
 		/// <summary>
-		/// Sets the target shader environment, affecting which warnings or errors will
-		/// be issued.  The version will be for distinguishing between different versions
-		/// of the target environment.  The version value should be either 0 or
-		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if
-		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.
+		/// Sets the target shader environment, affecting which warnings or errors will<br/>
+		/// be issued.  The version will be for distinguishing between different versions<br/>
+		/// of the target environment.  The version value should be either 0 or<br/>
+		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>
+		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_target_env")]
 		internal static extern void ShadercCompileOptionsSetTargetEnvNative(ShadercCompileOptions options, ShadercTargetEnv target, uint version);
 
-		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will		/// be issued.  The version will be for distinguishing between different versions		/// of the target environment.  The version value should be either 0 or		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.		/// </summary>		public static void ShadercCompileOptionsSetTargetEnv(ShadercCompileOptions options, ShadercTargetEnv target, uint version)
+		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetTargetEnv(ShadercCompileOptions options, ShadercTargetEnv target, uint version)
 		{
 			ShadercCompileOptionsSetTargetEnvNative(options, target, version);
 		}
 
 		/// <summary>
-		/// Sets the target SPIR-V version. The generated module will use this version
-		/// of SPIR-V.  Each target environment determines what versions of SPIR-V
-		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is
-		/// required to be supported by the target environment.  E.g. Default to SPIR-V
-		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.
+		/// Sets the target SPIR-V version. The generated module will use this version<br/>
+		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>
+		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>
+		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>
+		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_target_spirv")]
 		internal static extern void ShadercCompileOptionsSetTargetSpirvNative(ShadercCompileOptions options, ShadercSpirvVersion version);
 
-		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version		/// of SPIR-V.  Each target environment determines what versions of SPIR-V		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is		/// required to be supported by the target environment.  E.g. Default to SPIR-V		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.		/// </summary>		public static void ShadercCompileOptionsSetTargetSpirv(ShadercCompileOptions options, ShadercSpirvVersion version)
+		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		public static void ShadercCompileOptionsSetTargetSpirv(ShadercCompileOptions options, ShadercSpirvVersion version)
 		{
 			ShadercCompileOptionsSetTargetSpirvNative(options, version);
 		}
 
 		/// <summary>
-		/// Sets the compiler mode to treat all warnings as errors. Note the
-		/// suppress-warnings mode overrides this option, i.e. if both
-		/// warning-as-errors and suppress-warnings modes are set, warnings will not
-		/// be emitted as error messages.
+		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>
+		/// suppress-warnings mode overrides this option, i.e. if both<br/>
+		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>
+		/// be emitted as error messages.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_warnings_as_errors")]
 		internal static extern void ShadercCompileOptionsSetWarningsAsErrorsNative(ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the		/// suppress-warnings mode overrides this option, i.e. if both		/// warning-as-errors and suppress-warnings modes are set, warnings will not		/// be emitted as error messages.		/// </summary>		public static void ShadercCompileOptionsSetWarningsAsErrors(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetWarningsAsErrors(ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetWarningsAsErrorsNative(options);
 		}
 
 		/// <summary>
-		/// Sets a resource limit.
+		/// Sets a resource limit.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_limit")]
 		internal static extern void ShadercCompileOptionsSetLimitNative(ShadercCompileOptions options, ShadercLimit limit, int value);
 
-		/// <summary>		/// Sets a resource limit.		/// </summary>		public static void ShadercCompileOptionsSetLimit(ShadercCompileOptions options, ShadercLimit limit, int value)
+		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		public static void ShadercCompileOptionsSetLimit(ShadercCompileOptions options, ShadercLimit limit, int value)
 		{
 			ShadercCompileOptionsSetLimitNative(options, limit, value);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should automatically assign bindings to uniforms
-		/// that aren't already explicitly bound in the shader source.
+		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>
+		/// that aren't already explicitly bound in the shader source.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_bind_uniforms")]
 		internal static extern void ShadercCompileOptionsSetAutoBindUniformsNative(ShadercCompileOptions options, byte autoBind);
 
-		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms		/// that aren't already explicitly bound in the shader source.		/// </summary>		public static void ShadercCompileOptionsSetAutoBindUniforms(ShadercCompileOptions options, bool autoBind)
+		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoBindUniforms(ShadercCompileOptions options, bool autoBind)
 		{
 			ShadercCompileOptionsSetAutoBindUniformsNative(options, autoBind ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should automatically remove sampler variables
-		/// and convert image variables to combined image-sampler variables.
+		/// Sets whether the compiler should automatically remove sampler variables<br/>
+		/// and convert image variables to combined image-sampler variables.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_combined_image_sampler")]
 		internal static extern void ShadercCompileOptionsSetAutoCombinedImageSamplerNative(ShadercCompileOptions options, byte upgrade);
 
-		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables		/// and convert image variables to combined image-sampler variables.		/// </summary>		public static void ShadercCompileOptionsSetAutoCombinedImageSampler(ShadercCompileOptions options, bool upgrade)
+		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoCombinedImageSampler(ShadercCompileOptions options, bool upgrade)
 		{
 			ShadercCompileOptionsSetAutoCombinedImageSamplerNative(options, upgrade ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.
-		/// Defaults to false.
+		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>
+		/// Defaults to false.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_io_mapping")]
 		internal static extern void ShadercCompileOptionsSetHlslIoMappingNative(ShadercCompileOptions options, byte hlslIomap);
 
-		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.		/// Defaults to false.		/// </summary>		public static void ShadercCompileOptionsSetHlslIoMapping(ShadercCompileOptions options, bool hlslIomap)
+		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslIoMapping(ShadercCompileOptions options, bool hlslIomap)
 		{
 			ShadercCompileOptionsSetHlslIoMappingNative(options, hlslIomap ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should determine block member offsets using HLSL
-		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only
-		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.
+		/// Sets whether the compiler should determine block member offsets using HLSL<br/>
+		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>
+		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_offsets")]
 		internal static extern void ShadercCompileOptionsSetHlslOffsetsNative(ShadercCompileOptions options, byte hlslOffsets);
 
-		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.		/// </summary>		public static void ShadercCompileOptionsSetHlslOffsets(ShadercCompileOptions options, bool hlslOffsets)
+		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslOffsets(ShadercCompileOptions options, bool hlslOffsets)
 		{
 			ShadercCompileOptionsSetHlslOffsetsNative(options, hlslOffsets ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets the base binding number used for for a uniform resource type when
-		/// automatically assigning bindings.  For GLSL compilation, sets the lowest
-		/// automatically assigned number.  For HLSL compilation, the regsiter number
-		/// assigned to the resource is added to this specified base.
+		/// Sets the base binding number used for for a uniform resource type when<br/>
+		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>
+		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>
+		/// assigned to the resource is added to this specified base.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_binding_base")]
 		internal static extern void ShadercCompileOptionsSetBindingBaseNative(ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue);
 
-		/// <summary>		/// Sets the base binding number used for for a uniform resource type when		/// automatically assigning bindings.  For GLSL compilation, sets the lowest		/// automatically assigned number.  For HLSL compilation, the regsiter number		/// assigned to the resource is added to this specified base.		/// </summary>		public static void ShadercCompileOptionsSetBindingBase(ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		public static void ShadercCompileOptionsSetBindingBase(ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
 		{
 			ShadercCompileOptionsSetBindingBaseNative(options, kind, baseValue);
 		}
 
 		/// <summary>
-		/// Like shaderc_compile_options_set_binding_base, but only takes effect when
-		/// compiling a given shader stage.  The stage is assumed to be one of vertex,
-		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.
+		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>
+		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>
+		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_binding_base_for_stage")]
 		internal static extern void ShadercCompileOptionsSetBindingBaseForStageNative(ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue);
 
-		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when		/// compiling a given shader stage.  The stage is assumed to be one of vertex,		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.		/// </summary>		public static void ShadercCompileOptionsSetBindingBaseForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		public static void ShadercCompileOptionsSetBindingBaseForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
 		{
 			ShadercCompileOptionsSetBindingBaseForStageNative(options, shaderKind, kind, baseValue);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should preserve all bindings, even when those
-		/// bindings are not used.
+		/// Sets whether the compiler should preserve all bindings, even when those<br/>
+		/// bindings are not used.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_preserve_bindings")]
 		internal static extern void ShadercCompileOptionsSetPreserveBindingsNative(ShadercCompileOptions options, byte preserveBindings);
 
-		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those		/// bindings are not used.		/// </summary>		public static void ShadercCompileOptionsSetPreserveBindings(ShadercCompileOptions options, bool preserveBindings)
+		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		public static void ShadercCompileOptionsSetPreserveBindings(ShadercCompileOptions options, bool preserveBindings)
 		{
 			ShadercCompileOptionsSetPreserveBindingsNative(options, preserveBindings ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should automatically assign locations to
-		/// uniform variables that don't have explicit locations in the shader source.
+		/// Sets whether the compiler should automatically assign locations to<br/>
+		/// uniform variables that don't have explicit locations in the shader source.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_map_locations")]
 		internal static extern void ShadercCompileOptionsSetAutoMapLocationsNative(ShadercCompileOptions options, byte autoMap);
 
-		/// <summary>		/// Sets whether the compiler should automatically assign locations to		/// uniform variables that don't have explicit locations in the shader source.		/// </summary>		public static void ShadercCompileOptionsSetAutoMapLocations(ShadercCompileOptions options, bool autoMap)
+		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoMapLocations(ShadercCompileOptions options, bool autoMap)
 		{
 			ShadercCompileOptionsSetAutoMapLocationsNative(options, autoMap ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets a descriptor set and binding for an HLSL register in the given stage.
-		/// This method keeps a copy of the string data.
+		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>
+		/// This method keeps a copy of the string data.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
 		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding);
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
 		{
 			ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(options, shaderKind, reg, set, binding);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -490,7 +490,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -516,7 +516,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -524,7 +524,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -550,7 +550,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -561,7 +561,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -608,7 +608,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -616,7 +616,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -642,7 +642,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -653,7 +653,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -700,7 +700,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -711,7 +711,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -758,7 +758,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -772,7 +772,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.		/// This method keeps a copy of the string data.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -841,18 +841,18 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,
-		/// but affects all shader stages.
+		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>
+		/// but affects all shader stages.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_register_set_and_binding")]
 		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(ShadercCompileOptions options, byte* reg, byte* set, byte* binding);
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
 		{
 			ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(options, reg, set, binding);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -860,7 +860,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -886,7 +886,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -894,7 +894,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -920,7 +920,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -931,7 +931,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -978,7 +978,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -986,7 +986,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1012,7 +1012,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -1023,7 +1023,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1070,7 +1070,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -1081,7 +1081,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1128,7 +1128,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -1142,7 +1142,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,		/// but affects all shader stages.		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1211,84 +1211,84 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should enable extension
-		/// SPV_GOOGLE_hlsl_functionality1.
+		/// Sets whether the compiler should enable extension<br/>
+		/// SPV_GOOGLE_hlsl_functionality1.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_functionality1")]
 		internal static extern void ShadercCompileOptionsSetHlslFunctionality1Native(ShadercCompileOptions options, byte enable);
 
-		/// <summary>		/// Sets whether the compiler should enable extension		/// SPV_GOOGLE_hlsl_functionality1.		/// </summary>		public static void ShadercCompileOptionsSetHlslFunctionality1(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslFunctionality1(ShadercCompileOptions options, bool enable)
 		{
 			ShadercCompileOptionsSetHlslFunctionality1Native(options, enable ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether 16-bit types are supported in HLSL or not.
+		/// Sets whether 16-bit types are supported in HLSL or not.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_16bit_types")]
-		internal static extern void ShadercCompileOptionsSetHlsl16TypesNative(ShadercCompileOptions options, byte enable);
+		internal static extern void ShadercCompileOptionsSetHlsl16BitTypesNative(ShadercCompileOptions options, byte enable);
 
-		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.		/// </summary>		public static void ShadercCompileOptionsSetHlsl16Types(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlsl16BitTypes(ShadercCompileOptions options, bool enable)
 		{
-			ShadercCompileOptionsSetHlsl16TypesNative(options, enable ? (byte)1 : (byte)0);
+			ShadercCompileOptionsSetHlsl16BitTypesNative(options, enable ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler should invert position.Y output in vertex shader.
+		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_invert_y")]
 		internal static extern void ShadercCompileOptionsSetInvertYNative(ShadercCompileOptions options, byte enable);
 
-		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.		/// </summary>		public static void ShadercCompileOptionsSetInvertY(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		public static void ShadercCompileOptionsSetInvertY(ShadercCompileOptions options, bool enable)
 		{
 			ShadercCompileOptionsSetInvertYNative(options, enable ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Sets whether the compiler generates code for max and min builtins which,
-		/// if given a NaN operand, will return the other operand. Similarly, the clamp
-		/// builtin will favour the non-NaN operands, as if clamp were implemented
-		/// as a composition of max and min.
+		/// Sets whether the compiler generates code for max and min builtins which,<br/>
+		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>
+		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>
+		/// as a composition of max and min.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_nan_clamp")]
 		internal static extern void ShadercCompileOptionsSetNanClampNative(ShadercCompileOptions options, byte enable);
 
-		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,		/// if given a NaN operand, will return the other operand. Similarly, the clamp		/// builtin will favour the non-NaN operands, as if clamp were implemented		/// as a composition of max and min.		/// </summary>		public static void ShadercCompileOptionsSetNanClamp(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		public static void ShadercCompileOptionsSetNanClamp(ShadercCompileOptions options, bool enable)
 		{
 			ShadercCompileOptionsSetNanClampNative(options, enable ? (byte)1 : (byte)0);
 		}
 
 		/// <summary>
-		/// Takes a GLSL source string and the associated shader kind, input file
-		/// name, compiles it according to the given additional_options. If the shader
-		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,
-		/// the compiler will try to deduce the shader kind from the source
-		/// string and a failure in deducing will generate an error. Currently only
-		/// #pragma annotation is supported. If the shader kind is set to one of the
-		/// default shader kinds, the compiler will fall back to the default shader
-		/// kind in case it failed to deduce the shader kind from source string.
-		/// The input_file_name is a null-termintated string. It is used as a tag to
-		/// identify the source string in cases like emitting error messages. It
-		/// doesn't have to be a 'file name'.
-		/// The source string will be compiled into SPIR-V binary and a
-		/// shaderc_compilation_result will be returned to hold the results.
-		/// The entry_point_name null-terminated string defines the name of the entry
-		/// point to associate with this GLSL source. If the additional_options
-		/// parameter is not null, then the compilation is modified by any options
-		/// present.  May be safely called from multiple threads without explicit
-		/// synchronization. If there was failure in allocating the compiler object,
-		/// null will be returned.
+		/// Takes a GLSL source string and the associated shader kind, input file<br/>
+		/// name, compiles it according to the given additional_options. If the shader<br/>
+		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>
+		/// the compiler will try to deduce the shader kind from the source<br/>
+		/// string and a failure in deducing will generate an error. Currently only<br/>
+		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>
+		/// default shader kinds, the compiler will fall back to the default shader<br/>
+		/// kind in case it failed to deduce the shader kind from source string.<br/>
+		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>
+		/// identify the source string in cases like emitting error messages. It<br/>
+		/// doesn't have to be a 'file name'.<br/>
+		/// The source string will be compiled into SPIR-V binary and a<br/>
+		/// shaderc_compilation_result will be returned to hold the results.<br/>
+		/// The entry_point_name null-terminated string defines the name of the entry<br/>
+		/// point to associate with this GLSL source. If the additional_options<br/>
+		/// parameter is not null, then the compilation is modified by any options<br/>
+		/// present.  May be safely called from multiple threads without explicit<br/>
+		/// synchronization. If there was failure in allocating the compiler object,<br/>
+		/// null will be returned.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_spv")]
 		internal static extern ShadercCompilationResult ShadercCompileIntoSpvNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoSpvNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1297,7 +1297,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1324,7 +1324,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1333,7 +1333,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1360,7 +1360,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1372,7 +1372,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1420,7 +1420,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -1429,7 +1429,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1456,7 +1456,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1468,7 +1468,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1516,7 +1516,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1528,7 +1528,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1576,7 +1576,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1591,7 +1591,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file		/// name, compiles it according to the given additional_options. If the shader		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,		/// the compiler will try to deduce the shader kind from the source		/// string and a failure in deducing will generate an error. Currently only		/// #pragma annotation is supported. If the shader kind is set to one of the		/// default shader kinds, the compiler will fall back to the default shader		/// kind in case it failed to deduce the shader kind from source string.		/// The input_file_name is a null-termintated string. It is used as a tag to		/// identify the source string in cases like emitting error messages. It		/// doesn't have to be a 'file name'.		/// The source string will be compiled into SPIR-V binary and a		/// shaderc_compilation_result will be returned to hold the results.		/// The entry_point_name null-terminated string defines the name of the entry		/// point to associate with this GLSL source. If the additional_options		/// parameter is not null, then the compilation is modified by any options		/// present.  May be safely called from multiple threads without explicit		/// synchronization. If there was failure in allocating the compiler object,		/// null will be returned.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1661,20 +1661,20 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text
-		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined
-		/// by the SPIRV-Tools open source project.
+		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>
+		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>
+		/// by the SPIRV-Tools open source project.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_spv_assembly")]
 		internal static extern ShadercCompilationResult ShadercCompileIntoSpvAssemblyNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoSpvAssemblyNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1683,7 +1683,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1710,7 +1710,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1719,7 +1719,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1746,7 +1746,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1758,7 +1758,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1806,7 +1806,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -1815,7 +1815,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1842,7 +1842,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1854,7 +1854,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1902,7 +1902,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1914,7 +1914,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1962,7 +1962,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1977,7 +1977,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined		/// by the SPIRV-Tools open source project.		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2047,19 +2047,19 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Like shaderc_compile_into_spv, but the result contains preprocessed source
-		/// code instead of a SPIR-V binary module
+		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>
+		/// code instead of a SPIR-V binary module<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_preprocessed_text")]
 		internal static extern ShadercCompilationResult ShadercCompileIntoPreprocessedTextNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoPreprocessedTextNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2068,7 +2068,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2095,7 +2095,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -2104,7 +2104,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2131,7 +2131,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2143,7 +2143,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2191,7 +2191,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -2200,7 +2200,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2227,7 +2227,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2239,7 +2239,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2287,7 +2287,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -2299,7 +2299,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2347,7 +2347,7 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2362,7 +2362,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source		/// code instead of a SPIR-V binary module		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2432,26 +2432,26 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Takes an assembly string of the format defined in the SPIRV-Tools project
-		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),
-		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be
-		/// returned to hold the results.
-		/// The assembling will pick options suitable for assembling specified in the
-		/// additional_options parameter.
-		/// May be safely called from multiple threads without explicit synchronization.
-		/// If there was failure in allocating the compiler object, null will be
-		/// returned.
+		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>
+		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>
+		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>
+		/// returned to hold the results.<br/>
+		/// The assembling will pick options suitable for assembling specified in the<br/>
+		/// additional_options parameter.<br/>
+		/// May be safely called from multiple threads without explicit synchronization.<br/>
+		/// If there was failure in allocating the compiler object, null will be<br/>
+		/// returned.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_assemble_into_spv")]
 		internal static extern ShadercCompilationResult ShadercAssembleIntoSpvNative(ShadercCompiler compiler, byte* sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be		/// returned to hold the results.		/// The assembling will pick options suitable for assembling specified in the		/// additional_options parameter.		/// May be safely called from multiple threads without explicit synchronization.		/// If there was failure in allocating the compiler object, null will be		/// returned.		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, byte* sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, byte* sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercAssembleIntoSpvNative(compiler, sourceAssembly, sourceAssemblySize, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be		/// returned to hold the results.		/// The assembling will pick options suitable for assembling specified in the		/// additional_options parameter.		/// May be safely called from multiple threads without explicit synchronization.		/// If there was failure in allocating the compiler object, null will be		/// returned.		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, ref byte sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, ref byte sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceAssembly = &sourceAssembly)
 			{
@@ -2460,7 +2460,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be		/// returned to hold the results.		/// The assembling will pick options suitable for assembling specified in the		/// additional_options parameter.		/// May be safely called from multiple threads without explicit synchronization.		/// If there was failure in allocating the compiler object, null will be		/// returned.		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, string sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, string sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2488,123 +2488,123 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Releases the resources held by the result object. It is invalid to use the
-		/// result object for any further operations.
+		/// Releases the resources held by the result object. It is invalid to use the<br/>
+		/// result object for any further operations.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_release")]
 		internal static extern void ShadercResultReleaseNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the		/// result object for any further operations.		/// </summary>		public static void ShadercResultRelease(ShadercCompilationResult result)
+		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		public static void ShadercResultRelease(ShadercCompilationResult result)
 		{
 			ShadercResultReleaseNative(result);
 		}
 
 		/// <summary>
-		/// Returns the number of bytes of the compilation output data in a result
-		/// object.
+		/// Returns the number of bytes of the compilation output data in a result<br/>
+		/// object.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_length")]
 		internal static extern nuint ShadercResultGetLengthNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of bytes of the compilation output data in a result		/// object.		/// </summary>		public static nuint ShadercResultGetLength(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of bytes of the compilation output data in a result<br/>		/// object.<br/>		/// </summary>		public static nuint ShadercResultGetLength(ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetLengthNative(result);
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns the number of warnings generated during the compilation.
+		/// Returns the number of warnings generated during the compilation.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_num_warnings")]
 		internal static extern nuint ShadercResultGetNumWarningsNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of warnings generated during the compilation.		/// </summary>		public static nuint ShadercResultGetNumWarnings(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of warnings generated during the compilation.<br/>		/// </summary>		public static nuint ShadercResultGetNumWarnings(ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetNumWarningsNative(result);
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns the number of errors generated during the compilation.
+		/// Returns the number of errors generated during the compilation.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_num_errors")]
 		internal static extern nuint ShadercResultGetNumErrorsNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of errors generated during the compilation.		/// </summary>		public static nuint ShadercResultGetNumErrors(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of errors generated during the compilation.<br/>		/// </summary>		public static nuint ShadercResultGetNumErrors(ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetNumErrorsNative(result);
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns the compilation status, indicating whether the compilation succeeded,
-		/// or failed due to some reasons, like invalid shader stage or compilation
-		/// errors.
+		/// Returns the compilation status, indicating whether the compilation succeeded,<br/>
+		/// or failed due to some reasons, like invalid shader stage or compilation<br/>
+		/// errors.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_compilation_status")]
 		internal static extern ShadercCompilationStatus ShadercResultGetCompilationStatusNative(ShadercCompilationResult shaderc_compilation_result_t);
 
-		/// <summary>		/// Returns the compilation status, indicating whether the compilation succeeded,		/// or failed due to some reasons, like invalid shader stage or compilation		/// errors.		/// </summary>		public static ShadercCompilationStatus ShadercResultGetCompilationStatus(ShadercCompilationResult shaderc_compilation_result_t)
+		/// <summary>		/// Returns the compilation status, indicating whether the compilation succeeded,<br/>		/// or failed due to some reasons, like invalid shader stage or compilation<br/>		/// errors.<br/>		/// </summary>		public static ShadercCompilationStatus ShadercResultGetCompilationStatus(ShadercCompilationResult shaderc_compilation_result_t)
 		{
 			ShadercCompilationStatus ret = ShadercResultGetCompilationStatusNative(shaderc_compilation_result_t);
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns a pointer to the start of the compilation output data bytes, either
-		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V
-		/// binary, this is guaranteed to be castable to a uint32_t*. If the result
-		/// contains assembly text or preprocessed source text, the pointer will point to
-		/// the resulting array of characters.
+		/// Returns a pointer to the start of the compilation output data bytes, either<br/>
+		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>
+		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>
+		/// contains assembly text or preprocessed source text, the pointer will point to<br/>
+		/// the resulting array of characters.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_bytes")]
 		internal static extern byte* ShadercResultGetBytesNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V		/// binary, this is guaranteed to be castable to a uint32_t*. If the result		/// contains assembly text or preprocessed source text, the pointer will point to		/// the resulting array of characters.		/// </summary>		public static byte* ShadercResultGetBytes(ShadercCompilationResult result)
+		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		public static byte* ShadercResultGetBytes(ShadercCompilationResult result)
 		{
 			byte* ret = ShadercResultGetBytesNative(result);
 			return ret;
 		}
 
-		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V		/// binary, this is guaranteed to be castable to a uint32_t*. If the result		/// contains assembly text or preprocessed source text, the pointer will point to		/// the resulting array of characters.		/// </summary>		public static string ShadercResultGetBytesS(ShadercCompilationResult result)
+		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		public static string ShadercResultGetBytesS(ShadercCompilationResult result)
 		{
 			string ret = Utils.DecodeStringUTF8(ShadercResultGetBytesNative(result));
 			return ret;
 		}
 
 		/// <summary>
-		/// Returns a null-terminated string that contains any error messages generated
-		/// during the compilation.
+		/// Returns a null-terminated string that contains any error messages generated<br/>
+		/// during the compilation.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_error_message")]
 		internal static extern byte* ShadercResultGetErrorMessageNative(ShadercCompilationResult result);
 
-		/// <summary>		/// Returns a null-terminated string that contains any error messages generated		/// during the compilation.		/// </summary>		public static byte* ShadercResultGetErrorMessage(ShadercCompilationResult result)
+		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		public static byte* ShadercResultGetErrorMessage(ShadercCompilationResult result)
 		{
 			byte* ret = ShadercResultGetErrorMessageNative(result);
 			return ret;
 		}
 
-		/// <summary>		/// Returns a null-terminated string that contains any error messages generated		/// during the compilation.		/// </summary>		public static string ShadercResultGetErrorMessageS(ShadercCompilationResult result)
+		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		public static string ShadercResultGetErrorMessageS(ShadercCompilationResult result)
 		{
 			string ret = Utils.DecodeStringUTF8(ShadercResultGetErrorMessageNative(result));
 			return ret;
 		}
 
 		/// <summary>
-		/// Provides the version 
-		/// &
-		/// revision of the SPIR-V which will be produced
+		/// Provides the version <br/>
+		/// &<br/>
+		/// revision of the SPIR-V which will be produced<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_get_spv_version")]
 		internal static extern void ShadercGetSpvVersionNative(uint* version, uint* revision);
 
-		/// <summary>		/// Provides the version 		/// &		/// revision of the SPIR-V which will be produced		/// </summary>		public static void ShadercGetSpvVersion(uint* version, uint* revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(uint* version, uint* revision)
 		{
 			ShadercGetSpvVersionNative(version, revision);
 		}
 
-		/// <summary>		/// Provides the version 		/// &		/// revision of the SPIR-V which will be produced		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, uint* revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, uint* revision)
 		{
 			fixed (uint* pversion = &version)
 			{
@@ -2612,7 +2612,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Provides the version 		/// &		/// revision of the SPIR-V which will be produced		/// </summary>		public static void ShadercGetSpvVersion(uint* version, ref uint revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(uint* version, ref uint revision)
 		{
 			fixed (uint* prevision = &revision)
 			{
@@ -2620,7 +2620,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Provides the version 		/// &		/// revision of the SPIR-V which will be produced		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, ref uint revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, ref uint revision)
 		{
 			fixed (uint* pversion = &version)
 			{
@@ -2632,21 +2632,21 @@ namespace HexaEngine.Shaderc
 		}
 
 		/// <summary>
-		/// Parses the version and profile from a given null-terminated string
-		/// containing both version and profile, like: '450core'. Returns false if
-		/// the string can not be parsed. Returns true when the parsing succeeds. The
-		/// parsed version and profile are returned through arguments.
+		/// Parses the version and profile from a given null-terminated string<br/>
+		/// containing both version and profile, like: '450core'. Returns false if<br/>
+		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>
+		/// parsed version and profile are returned through arguments.<br/>
 		/// </summary>
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_parse_version_profile")]
 		internal static extern byte ShadercParseVersionProfileNative(byte* str, int* version, ShadercProfile* profile);
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ShadercProfile* profile)
 		{
 			byte ret = ShadercParseVersionProfileNative(str, version, profile);
 			return ret != 0;
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ShadercProfile* profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2655,7 +2655,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ShadercProfile* profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2682,7 +2682,7 @@ namespace HexaEngine.Shaderc
 			return ret != 0;
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ShadercProfile* profile)
 		{
 			fixed (int* pversion = &version)
 			{
@@ -2691,7 +2691,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ShadercProfile* profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2703,7 +2703,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ShadercProfile* profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2733,7 +2733,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ref ShadercProfile profile)
 		{
 			fixed (ShadercProfile* pprofile = &profile)
 			{
@@ -2742,7 +2742,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ref ShadercProfile profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2754,7 +2754,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ref ShadercProfile profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2784,7 +2784,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ref ShadercProfile profile)
 		{
 			fixed (int* pversion = &version)
 			{
@@ -2796,7 +2796,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ref ShadercProfile profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2811,7 +2811,7 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string		/// containing both version and profile, like: '450core'. Returns false if		/// the string can not be parsed. Returns true when the parsing succeeds. The		/// parsed version and profile are returned through arguments.		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ref ShadercProfile profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;

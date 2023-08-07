@@ -25191,9 +25191,9 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Define an optional rectangular hole where mouse will pass-through the window.<br/>
 		/// </summary>
-		public ImVec2ih HitTestHoleSize;
+		public ImVec2Ih HitTestHoleSize;
 
-		public ImVec2ih HitTestHoleOffset;
+		public ImVec2Ih HitTestHoleOffset;
 		/// <summary>
 		/// Last frame number the window was Active.<br/>
 		/// </summary>
@@ -25957,8 +25957,8 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// Define an optional rectangular hole where mouse will pass-through the window.<br/>
 		/// </summary>
-		public ref ImVec2ih HitTestHoleSize => ref Unsafe.AsRef<ImVec2ih>(&Handle->HitTestHoleSize);
-		public ref ImVec2ih HitTestHoleOffset => ref Unsafe.AsRef<ImVec2ih>(&Handle->HitTestHoleOffset);
+		public ref ImVec2Ih HitTestHoleSize => ref Unsafe.AsRef<ImVec2Ih>(&Handle->HitTestHoleSize);
+		public ref ImVec2Ih HitTestHoleOffset => ref Unsafe.AsRef<ImVec2Ih>(&Handle->HitTestHoleOffset);
 		/// <summary>
 		/// Last frame number the window was Active.<br/>
 		/// </summary>
@@ -27339,20 +27339,20 @@ namespace HexaEngine.ImGuiNET
 			}
 		}
 
-		public unsafe bool* GetBoolRef(int key, bool defaultVal)
+		public unsafe byte* GetBoolRef(int key, bool defaultVal)
 		{
 			fixed (ImGuiStorage* @this = &this)
 			{
-				bool* ret = ImGui.GetBoolRefNative(@this, key, defaultVal ? (byte)1 : (byte)0);
+				byte* ret = ImGui.GetBoolRefNative(@this, key, defaultVal ? (byte)1 : (byte)0);
 				return ret;
 			}
 		}
 
-		public unsafe bool* GetBoolRef(int key)
+		public unsafe byte* GetBoolRef(int key)
 		{
 			fixed (ImGuiStorage* @this = &this)
 			{
-				bool* ret = ImGui.GetBoolRefNative(@this, key, (byte)(0));
+				byte* ret = ImGui.GetBoolRefNative(@this, key, (byte)(0));
 				return ret;
 			}
 		}
@@ -27554,15 +27554,15 @@ namespace HexaEngine.ImGuiNET
 			return ret != 0;
 		}
 
-		public unsafe bool* GetBoolRef(int key, bool defaultVal)
+		public unsafe byte* GetBoolRef(int key, bool defaultVal)
 		{
-			bool* ret = ImGui.GetBoolRefNative(Handle, key, defaultVal ? (byte)1 : (byte)0);
+			byte* ret = ImGui.GetBoolRefNative(Handle, key, defaultVal ? (byte)1 : (byte)0);
 			return ret;
 		}
 
-		public unsafe bool* GetBoolRef(int key)
+		public unsafe byte* GetBoolRef(int key)
 		{
-			bool* ret = ImGui.GetBoolRefNative(Handle, key, (byte)(0));
+			byte* ret = ImGui.GetBoolRefNative(Handle, key, (byte)(0));
 			return ret;
 		}
 
@@ -28293,7 +28293,7 @@ namespace HexaEngine.ImGuiNET
 	/// Helper: ImVec2ih (2D vector, half-size integer, for long-term packed storage)<br/>
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct ImVec2ih
+	public partial struct ImVec2Ih
 	{
 		public short X;
 		public short Y;
@@ -28303,7 +28303,7 @@ namespace HexaEngine.ImGuiNET
 
 		public unsafe void Destroy()
 		{
-			fixed (ImVec2ih* @this = &this)
+			fixed (ImVec2Ih* @this = &this)
 			{
 				ImGui.DestroyNative(@this);
 			}
@@ -28312,37 +28312,37 @@ namespace HexaEngine.ImGuiNET
 	}
 
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct ImVec2ihPtr : IEquatable<ImVec2ihPtr>
+	public unsafe struct ImVec2IhPtr : IEquatable<ImVec2IhPtr>
 	{
-		public ImVec2ihPtr(ImVec2ih* handle) { Handle = handle; }
+		public ImVec2IhPtr(ImVec2Ih* handle) { Handle = handle; }
 
-		public ImVec2ih* Handle;
+		public ImVec2Ih* Handle;
 
 		public bool IsNull => Handle == null;
 
-		public static ImVec2ihPtr Null => new ImVec2ihPtr(null);
+		public static ImVec2IhPtr Null => new ImVec2IhPtr(null);
 
-		public static implicit operator ImVec2ihPtr(ImVec2ih* handle) => new ImVec2ihPtr(handle);
+		public static implicit operator ImVec2IhPtr(ImVec2Ih* handle) => new ImVec2IhPtr(handle);
 
-		public static implicit operator ImVec2ih*(ImVec2ihPtr handle) => handle.Handle;
+		public static implicit operator ImVec2Ih*(ImVec2IhPtr handle) => handle.Handle;
 
-		public static bool operator ==(ImVec2ihPtr left, ImVec2ihPtr right) => left.Handle == right.Handle;
+		public static bool operator ==(ImVec2IhPtr left, ImVec2IhPtr right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ImVec2ihPtr left, ImVec2ihPtr right) => left.Handle != right.Handle;
+		public static bool operator !=(ImVec2IhPtr left, ImVec2IhPtr right) => left.Handle != right.Handle;
 
-		public static bool operator ==(ImVec2ihPtr left, ImVec2ih* right) => left.Handle == right;
+		public static bool operator ==(ImVec2IhPtr left, ImVec2Ih* right) => left.Handle == right;
 
-		public static bool operator !=(ImVec2ihPtr left, ImVec2ih* right) => left.Handle != right;
+		public static bool operator !=(ImVec2IhPtr left, ImVec2Ih* right) => left.Handle != right;
 
-		public bool Equals(ImVec2ihPtr other) => Handle == other.Handle;
+		public bool Equals(ImVec2IhPtr other) => Handle == other.Handle;
 
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is ImVec2ihPtr handle && Equals(handle);
+		public override bool Equals(object obj) => obj is ImVec2IhPtr handle && Equals(handle);
 
 		/// <inheritdoc/>
 		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
 
-		private string DebuggerDisplay => string.Format("ImVec2ihPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		private string DebuggerDisplay => string.Format("ImVec2IhPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref short X => ref Unsafe.AsRef<short>(&Handle->X);
 		public ref short Y => ref Unsafe.AsRef<short>(&Handle->Y);
 
@@ -39402,10 +39402,10 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// NB: Settings position are stored RELATIVE to the viewport! Whereas runtime ones are absolute positions.<br/>
 		/// </summary>
-		public ImVec2ih Pos;
+		public ImVec2Ih Pos;
 
-		public ImVec2ih Size;
-		public ImVec2ih ViewportPos;
+		public ImVec2Ih Size;
+		public ImVec2Ih ViewportPos;
 		public int ViewportId;
 		/// <summary>
 		/// ID of last known DockNode (even if the DockNode is invisible because it has only 1 active window), or 0 if none.<br/>
@@ -39501,9 +39501,9 @@ namespace HexaEngine.ImGuiNET
 		/// <summary>
 		/// NB: Settings position are stored RELATIVE to the viewport! Whereas runtime ones are absolute positions.<br/>
 		/// </summary>
-		public ref ImVec2ih Pos => ref Unsafe.AsRef<ImVec2ih>(&Handle->Pos);
-		public ref ImVec2ih Size => ref Unsafe.AsRef<ImVec2ih>(&Handle->Size);
-		public ref ImVec2ih ViewportPos => ref Unsafe.AsRef<ImVec2ih>(&Handle->ViewportPos);
+		public ref ImVec2Ih Pos => ref Unsafe.AsRef<ImVec2Ih>(&Handle->Pos);
+		public ref ImVec2Ih Size => ref Unsafe.AsRef<ImVec2Ih>(&Handle->Size);
+		public ref ImVec2Ih ViewportPos => ref Unsafe.AsRef<ImVec2Ih>(&Handle->ViewportPos);
 		public ref int ViewportId => ref Unsafe.AsRef<int>(&Handle->ViewportId);
 		/// <summary>
 		/// ID of last known DockNode (even if the DockNode is invisible because it has only 1 active window), or 0 if none.<br/>
