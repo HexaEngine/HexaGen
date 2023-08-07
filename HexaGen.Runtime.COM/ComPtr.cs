@@ -1,7 +1,9 @@
 ﻿namespace HexaGen.Runtime.COM
 {
     using System.Runtime.CompilerServices;
+    using System.Runtime.Versioning;
 
+    [SupportedOSPlatform("windows")]
     public unsafe struct ComPtr<T> : IComObject, IComObject<T>, IDisposable where T : unmanaged, IComObject<T>
     {
         public T* Handle;
@@ -31,7 +33,7 @@
             return @this.Handle;
         }
 
-        public unsafe ComObject AsComObject()
+        public unsafe ComObject? AsComObject()
         {
             return ComObject.FromPtr((IUnknown*)Handle);
         }
