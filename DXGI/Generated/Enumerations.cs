@@ -9,9 +9,9 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaGen.Runtime.COM;
 using HexaEngine.D3DCommon;
 using System.Numerics;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.DXGI
 {

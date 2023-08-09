@@ -12,9 +12,9 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaGen.Runtime.COM;
 using HexaEngine.DXGI;
 using HexaEngine.D3DCommon;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.D3D11
 {

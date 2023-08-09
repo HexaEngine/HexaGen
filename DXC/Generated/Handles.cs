@@ -11,6 +11,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.DXC
 {

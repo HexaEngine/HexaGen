@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaEngine.D3DCommon;
 using System.Numerics;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.DXGI
 {

@@ -17,10 +17,12 @@ using HexaGen.Runtime.COM;
 namespace HexaEngine.DXC
 {
 	[NativeName(NativeNameType.Delegate, "DxcCreateInstanceProc")]
+	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate HResult DxcCreateInstanceProc([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
 	[NativeName(NativeNameType.Delegate, "DxcCreateInstance2Proc")]
+	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate HResult DxcCreateInstance2Proc([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 

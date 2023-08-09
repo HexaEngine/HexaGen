@@ -1,9 +1,9 @@
 ﻿namespace HexaGen
 {
-    using ClangSharp;
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -11,210 +11,76 @@
 
     public partial class CsCodeGenerator
     {
-        private readonly HashSet<string> LibDefinedTypes = new();
-
+        protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
+        protected readonly Dictionary<string, string> WrappedPointers = new();
 
-        private readonly Dictionary<string, string> WrappedPointers = new();
+        protected virtual List<string> SetupTypeUsings()
+        {
+            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            usings.AddRange(settings.Usings);
+            return usings;
+        }
+
+        protected virtual bool FilterType(GenContext context, CppClass cppClass, out TypeMapping? mapping, [NotNullWhen(false)] out string? csName, bool bypassDef = false)
+        {
+            csName = null;
+            mapping = null;
+            if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+                return true;
+            if (settings.IgnoredTypes.Contains(cppClass.Name))
+                return true;
+            if (LibDefinedTypes.Contains(cppClass.Name))
+                return true;
+
+            if (DefinedTypes.Contains(cppClass.Name) && !bypassDef)
+            {
+                LogWarn($"{context.FilePath}: {cppClass} is already defined!");
+                return true;
+            }
+
+            if (!bypassDef)
+                DefinedTypes.Add(cppClass.Name);
+
+            csName = settings.GetCsCleanName(cppClass.Name);
+            mapping = settings.GetTypeMapping(cppClass.Name);
+            csName = mapping?.FriendlyName ?? csName;
+
+            if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         protected virtual void GenerateTypes(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Structures.cs");
-            string[] usings = { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
 
             // Generate Structures
-            using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupTypeUsings());
+            GenContext context = new(compilation, filePath, writer);
 
             // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
-                CppClass? cppClass = compilation.Classes[i];
-                if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
-                    continue;
-                if (settings.IgnoredTypes.Contains(cppClass.Name))
-                    continue;
-                if (LibDefinedTypes.Contains(cppClass.Name))
-                    continue;
-
-                if (DefinedTypes.Contains(cppClass.Name))
-                {
-                    LogWarn($"{filePath}: {cppClass} is already defined!");
-                    continue;
-                }
-
-                DefinedTypes.Add(cppClass.Name);
-
-                string csName = settings.GetCsCleanName(cppClass.Name);
-
-                var mapping = settings.GetTypeMapping(cppClass.Name);
-
-                csName = mapping?.FriendlyName ?? csName;
-
-                WriteClass(writer, compilation, cppClass, mapping, csName);
-                if (cppClass.IsUsedAsPointer(compilation, out var depths))
-                {
-                    for (int j = 0; j < depths.Count; j++)
-                    {
-                        int depth = depths[j];
-                        LogDebug("used as pointer: " + cppClass.Name + ", depth: " + depth);
-                        StringBuilder sb1 = new();
-                        StringBuilder sb2 = new();
-                        sb1.Append(csName);
-                        sb2.Append(csName);
-                        for (int jj = 0; jj < depth; jj++)
-                        {
-                            sb1.Append("Ptr");
-                            sb2.Append('*');
-                        }
-
-                        WriteStructHandle(writer, compilation, cppClass, mapping, sb1.ToString(), sb2.ToString());
-                        WrappedPointers.Add(sb2.ToString(), sb1.ToString());
-                    }
-                }
+                WriteClass(context, compilation.Classes[i]);
+                WriteHandle(context, compilation.Classes[i]);
             }
         }
 
-        private void WriteStructHandle(CodeWriter writer, CppCompilation compilation, CppClass cppClass, TypeMapping mapping, string csName, string handleType)
+        protected virtual void WriteClass(GenContext context, CppClass cppClass)
         {
-            bool isUnion = cppClass.ClassKind == CppClassKind.Union;
-            LogInfo("defined handle " + csName);
-            cppClass.Comment.WriteCsSummary(writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
-            writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
-            using (writer.PushBlock($"public unsafe struct {csName} : IEquatable<{csName}>"))
-            {
-                string nullValue = "null";
-
-                writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
-                writer.WriteLine();
-                writer.WriteLine($"public {handleType} Handle;");
-                writer.WriteLine();
-                writer.WriteLine($"public bool IsNull => Handle == null;");
-                writer.WriteLine();
-                writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
-                writer.WriteLine();
-                writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
-                writer.WriteLine();
-                writer.WriteLine($"public static implicit operator {handleType}({csName} handle) => handle.Handle;");
-                writer.WriteLine();
-                writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
-                writer.WriteLine();
-                writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
-                writer.WriteLine();
-                writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
-                writer.WriteLine();
-                writer.WriteLine($"public static bool operator !=({csName} left, {handleType} right) => left.Handle != right;");
-                writer.WriteLine();
-                writer.WriteLine($"public bool Equals({csName} other) => Handle == other.Handle;");
-                writer.WriteLine();
-                writer.WriteLine("/// <inheritdoc/>");
-                writer.WriteLine($"public override bool Equals(object obj) => obj is {csName} handle && Equals(handle);");
-                writer.WriteLine();
-                writer.WriteLine("/// <inheritdoc/>");
-                writer.WriteLine($"public override int GetHashCode() => ((nuint)Handle).GetHashCode();");
-                writer.WriteLine();
-                writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", ((nuint)Handle).ToString(\"X\"));");
-                var pCount = handleType.Count(x => x == '*');
-                if (pCount == 1)
-                {
-                    for (int j = 0; j < cppClass.Fields.Count; j++)
-                    {
-                        CppField cppField = cppClass.Fields[j];
-                        var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
-                        WriteProperty(writer, cppClass, handleType, cppField, fieldMapping, isUnion, false);
-                    }
-
-                    if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
-                    {
-                        HashSet<string> definedFunctions = new();
-                        writer.WriteLine();
-                        List<CsFunction> commands = new();
-                        for (int i = 0; i < functions.Count; i++)
-                        {
-                            CppFunction cppFunction = FindFunction(compilation, functions[i]);
-                            var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                            string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                            CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
-
-                            CsFunction? function = null;
-                            for (int j = 0; j < commands.Count; j++)
-                            {
-                                if (commands[j].Name == csFunctionName)
-                                {
-                                    function = commands[j];
-                                    break;
-                                }
-                            }
-
-                            if (function == null)
-                            {
-                                cppFunction.Comment.WriteCsSummary(out string? comment);
-                                function = new(csFunctionName, comment);
-                                commands.Add(function);
-                            }
-
-                            CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                            overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                            overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                            for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                            {
-                                var cppParameter = cppFunction.Parameters[j];
-                                var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                                var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                                var direction = cppParameter.Type.GetDirection();
-                                var kind = cppParameter.Type.GetPrimitiveKind(false);
-
-                                CsType csType = new(paramCsTypeName, kind);
-
-                                CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                                csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                                csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                                overload.Parameters.Add(csParameter);
-                                if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                                {
-                                    overload.DefaultValues.Add(paramCsName, defaultValue);
-                                }
-                            }
-
-                            function.Overloads.Add(overload);
-                            funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
-
-                            bool useThisRef = false;
-                            if (cppFunction.Parameters.Count > 0 && cppClass.IsPointerOf(cppFunction.Parameters[0].Type))
-                            {
-                                useThisRef = true;
-                            }
-
-                            bool useThis = false;
-                            if (cppFunction.Parameters.Count > 0 && cppClass.IsType(cppFunction.Parameters[0].Type))
-                            {
-                                useThis = true;
-                            }
-
-                            if (useThis || useThisRef)
-                            {
-                                WriteFunctions(writer, definedFunctions, function, overload, false, true, "public unsafe");
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    using (writer.PushBlock($"public {csName[..^3]} this[int index]"))
-                    {
-                        writer.WriteLine($"get => Handle[index]; set => Handle[index] = value;");
-                    }
-                }
-            }
-            writer.WriteLine();
-        }
-
-        public void WriteClass(CodeWriter writer, CppCompilation compilation, CppClass cppClass, TypeMapping? mapping, string csName)
-        {
-            if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
-            {
+            if (FilterType(context, cppClass, out var mapping, out var csNameDefault))
                 return;
-            }
+
+            WriteClass(context, cppClass, mapping, csNameDefault);
+        }
+
+        protected virtual void WriteClass(GenContext context, CppClass cppClass, TypeMapping? mapping, string csName)
+        {
+            var writer = context.Writer;
 
             bool isReadOnly = false;
             string modifier = "partial";
@@ -259,7 +125,7 @@
 
                     csSubName = subClassMapping?.FriendlyName ?? csSubName;
 
-                    WriteClass(writer, compilation, subClass, subClassMapping, csSubName);
+                    WriteClass(context, subClass, subClassMapping, csSubName);
                     subClasses.Add((subClass, csSubName, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));
                 }
 
@@ -342,52 +208,10 @@
                     List<CsFunction> commands = new();
                     for (int i = 0; i < constructors.Count; i++)
                     {
-                        CppFunction cppFunction = FindFunction(compilation, constructors[i]);
+                        CppFunction cppFunction = FindFunction(context.Compilation, constructors[i]);
                         var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                        string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                        CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
 
-                        CsFunction? function = null;
-                        for (int j = 0; j < commands.Count; j++)
-                        {
-                            if (commands[j].Name == csFunctionName)
-                            {
-                                function = commands[j];
-                                break;
-                            }
-                        }
-
-                        if (function == null)
-                        {
-                            cppFunction.Comment.WriteCsSummary(out string? comment);
-                            function = new(csFunctionName, comment);
-                            commands.Add(function);
-                        }
-
-                        CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                        overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                        overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                        for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                        {
-                            var cppParameter = cppFunction.Parameters[j];
-                            var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                            var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                            var direction = cppParameter.Type.GetDirection();
-                            var kind = cppParameter.Type.GetPrimitiveKind(false);
-
-                            CsType csType = new(paramCsTypeName, kind);
-
-                            CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                            csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                            csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                            overload.Parameters.Add(csParameter);
-                            if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                            {
-                                overload.DefaultValues.Add(paramCsName, defaultValue);
-                            }
-                        }
-
-                        function.Overloads.Add(overload);
+                        CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
                         funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
 
                         bool useThisRef = false;
@@ -422,80 +246,38 @@
 
                 if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
                 {
-                    HashSet<string> definedFunctions = new();
-                    writer.WriteLine();
-                    List<CsFunction> commands = new();
-                    for (int i = 0; i < functions.Count; i++)
-                    {
-                        CppFunction cppFunction = FindFunction(compilation, functions[i]);
-                        var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                        string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                        CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind(false);
-
-                        CsFunction? function = null;
-                        for (int j = 0; j < commands.Count; j++)
-                        {
-                            if (commands[j].Name == csFunctionName)
-                            {
-                                function = commands[j];
-                                break;
-                            }
-                        }
-
-                        if (function == null)
-                        {
-                            cppFunction.Comment.WriteCsSummary(out string? comment);
-                            function = new(csFunctionName, comment);
-                            commands.Add(function);
-                        }
-
-                        CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                        overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                        overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                        for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                        {
-                            var cppParameter = cppFunction.Parameters[j];
-                            var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                            var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                            var direction = cppParameter.Type.GetDirection();
-                            var kind = cppParameter.Type.GetPrimitiveKind(false);
-
-                            CsType csType = new(paramCsTypeName, kind);
-
-                            CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                            csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                            csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                            overload.Parameters.Add(csParameter);
-                            if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                            {
-                                overload.DefaultValues.Add(paramCsName, defaultValue);
-                            }
-                        }
-
-                        function.Overloads.Add(overload);
-                        funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
-
-                        bool useThisRef = false;
-                        if (cppFunction.Parameters.Count > 0 && cppClass.IsPointerOf(cppFunction.Parameters[0].Type))
-                        {
-                            useThisRef = true;
-                        }
-
-                        bool useThis = false;
-                        if (cppFunction.Parameters.Count > 0 && cppClass.IsType(cppFunction.Parameters[0].Type))
-                        {
-                            useThis = true;
-                        }
-
-                        if (useThis || useThisRef)
-                        {
-                            WriteFunctions(writer, definedFunctions, function, overload, useThis || useThisRef, false, "public unsafe");
-                        }
-                    }
+                    WriteMemberFunctions(context, cppClass, functions, true, false);
                 }
             }
 
             writer.WriteLine();
+        }
+
+        protected virtual void WriteHandle(GenContext context, CppClass cppClass)
+        {
+            if (FilterType(context, cppClass, out var mapping, out var csName, true))
+                return;
+
+            if (cppClass.IsUsedAsPointer(context.Compilation, out var depths))
+            {
+                for (int j = 0; j < depths.Count; j++)
+                {
+                    int depth = depths[j];
+                    LogDebug("used as pointer: " + cppClass.Name + ", depth: " + depth);
+                    StringBuilder sb1 = new();
+                    StringBuilder sb2 = new();
+                    sb1.Append(csName);
+                    sb2.Append(csName);
+                    for (int jj = 0; jj < depth; jj++)
+                    {
+                        sb1.Append("Ptr");
+                        sb2.Append('*');
+                    }
+
+                    WriteStructHandle(context, cppClass, mapping, sb1.ToString(), sb2.ToString());
+                    WrappedPointers.Add(sb2.ToString(), sb1.ToString());
+                }
+            }
         }
 
         private static void WriteConstructors(CodeWriter writer, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string typeName, params string[] modifiers)
@@ -789,6 +571,106 @@
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private void WriteStructHandle(GenContext context, CppClass cppClass, TypeMapping? mapping, string csName, string handleType)
+        {
+            var writer = context.Writer;
+            bool isUnion = cppClass.ClassKind == CppClassKind.Union;
+            LogInfo("defined handle " + csName);
+            cppClass.Comment.WriteCsSummary(writer);
+            writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
+            writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
+            using (writer.PushBlock($"public unsafe struct {csName} : IEquatable<{csName}>"))
+            {
+                string nullValue = "null";
+
+                writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
+                writer.WriteLine();
+                writer.WriteLine($"public {handleType} Handle;");
+                writer.WriteLine();
+                writer.WriteLine($"public bool IsNull => Handle == null;");
+                writer.WriteLine();
+                writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
+                writer.WriteLine();
+                writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
+                writer.WriteLine();
+                writer.WriteLine($"public static implicit operator {handleType}({csName} handle) => handle.Handle;");
+                writer.WriteLine();
+                writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
+                writer.WriteLine();
+                writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
+                writer.WriteLine();
+                writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
+                writer.WriteLine();
+                writer.WriteLine($"public static bool operator !=({csName} left, {handleType} right) => left.Handle != right;");
+                writer.WriteLine();
+                writer.WriteLine($"public bool Equals({csName} other) => Handle == other.Handle;");
+                writer.WriteLine();
+                writer.WriteLine("/// <inheritdoc/>");
+                writer.WriteLine($"public override bool Equals(object obj) => obj is {csName} handle && Equals(handle);");
+                writer.WriteLine();
+                writer.WriteLine("/// <inheritdoc/>");
+                writer.WriteLine($"public override int GetHashCode() => ((nuint)Handle).GetHashCode();");
+                writer.WriteLine();
+                writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", ((nuint)Handle).ToString(\"X\"));");
+                var pCount = handleType.Count(x => x == '*');
+                if (pCount == 1)
+                {
+                    for (int j = 0; j < cppClass.Fields.Count; j++)
+                    {
+                        CppField cppField = cppClass.Fields[j];
+                        var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
+                        WriteProperty(writer, cppClass, handleType, cppField, fieldMapping, isUnion, false);
+                    }
+
+                    if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
+                    {
+                        WriteMemberFunctions(context, cppClass, functions, false, true);
+                    }
+                }
+                else
+                {
+                    using (writer.PushBlock($"public {csName[..^3]} this[int index]"))
+                    {
+                        writer.WriteLine($"get => Handle[index]; set => Handle[index] = value;");
+                    }
+                }
+            }
+            writer.WriteLine();
+        }
+
+        private void WriteMemberFunctions(GenContext context, CppClass cppClass, List<string> functions, bool useThisWrite, bool useHandleWrite)
+        {
+            var writer = context.Writer;
+            HashSet<string> definedFunctions = new();
+            writer.WriteLine();
+            List<CsFunction> commands = new();
+            for (int i = 0; i < functions.Count; i++)
+            {
+                CppFunction cppFunction = FindFunction(context.Compilation, functions[i]);
+                var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
+
+                CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
+                funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
+
+                bool useThisRef = false;
+                if (cppFunction.Parameters.Count > 0 && cppClass.IsPointerOf(cppFunction.Parameters[0].Type))
+                {
+                    useThisRef = true;
+                }
+
+                bool useThis = false;
+                if (cppFunction.Parameters.Count > 0 && cppClass.IsType(cppFunction.Parameters[0].Type))
+                {
+                    useThis = true;
+                }
+
+                if (useThis || useThisRef)
+                {
+                    WriteFunctions(context, definedFunctions, function, overload, useThisWrite, useHandleWrite, "public unsafe");
                 }
             }
         }

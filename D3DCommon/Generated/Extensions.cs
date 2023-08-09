@@ -17,12 +17,51 @@ namespace HexaEngine.D3DCommon
 {
 	public static unsafe class Extensions
 	{
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<ID3D10Blob> comObj) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<ID3D10Blob> comObj) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "GetBufferPointer")]
 		[return: NativeName(NativeNameType.Type, "LPVOID")]
 		public static void* GetBufferPointer(this ComPtr<ID3D10Blob> comObj) 
 		{
 			ID3D10Blob* handle = comObj.Handle;
-			void* ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, void*>)(*handle->LpVtbl))(handle);
+			void* ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, void*>)(handle->LpVtbl[4]))(handle);
 			return ret;
 		}
 
@@ -31,7 +70,46 @@ namespace HexaEngine.D3DCommon
 		public static nuint GetBufferSize(this ComPtr<ID3D10Blob> comObj) 
 		{
 			ID3D10Blob* handle = comObj.Handle;
-			nuint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, nuint>)(handle->LpVtbl[1]))(handle);
+			nuint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, nuint>)(handle->LpVtbl[5]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<ID3DDestructionNotifier> comObj) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<ID3DDestructionNotifier> comObj) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(handle->LpVtbl[2]))(handle);
 			return ret;
 		}
 
@@ -40,7 +118,7 @@ namespace HexaEngine.D3DCommon
 		public static HResult RegisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] uint* pCallbackID) 
 		{
 			ID3DDestructionNotifier* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(*handle->LpVtbl))(handle, callbackFn, pData, pCallbackID);
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(handle->LpVtbl[4]))(handle, callbackFn, pData, pCallbackID);
 			return ret;
 		}
 
@@ -51,7 +129,7 @@ namespace HexaEngine.D3DCommon
 			ID3DDestructionNotifier* handle = comObj.Handle;
 			fixed (uint* ppCallbackID = &pCallbackID)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(*handle->LpVtbl))(handle, callbackFn, pData, (uint*)ppCallbackID);
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(handle->LpVtbl[4]))(handle, callbackFn, pData, (uint*)ppCallbackID);
 				return ret;
 			}
 		}
@@ -61,7 +139,7 @@ namespace HexaEngine.D3DCommon
 		public static HResult UnregisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "callbackID")] [NativeName(NativeNameType.Type, "UINT")] uint callbackID) 
 		{
 			ID3DDestructionNotifier* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint, HResult>)(handle->LpVtbl[1]))(handle, callbackID);
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint, HResult>)(handle->LpVtbl[5]))(handle, callbackID);
 			return ret;
 		}
 

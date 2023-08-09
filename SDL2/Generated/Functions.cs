@@ -684,21 +684,6 @@ namespace HexaEngine.SDL2
 			return ret;
 		}
 
-		/// <summary>
-		/// Note that memset() is a byte assignment and this is a 32-bit assignment, so they're not directly equivalent. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_memset4")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_memset4")]
-		internal static extern void SDLMemset4Native([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "val")] [NativeName(NativeNameType.Type, "Uint32")] uint val, [NativeName(NativeNameType.Param, "dwords")] [NativeName(NativeNameType.Type, "size_t")] nuint dwords);
-
-		/// <summary>		/// Note that memset() is a byte assignment and this is a 32-bit assignment, so they're not directly equivalent. <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_memset4")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMemset4([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "val")] [NativeName(NativeNameType.Type, "Uint32")] uint val, [NativeName(NativeNameType.Param, "dwords")] [NativeName(NativeNameType.Type, "size_t")] nuint dwords)
-		{
-			SDLMemset4Native(dst, val, dwords);
-		}
-
 		[NativeName(NativeNameType.Func, "SDL_memcpy")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_memcpy")]
@@ -8657,134 +8642,6 @@ namespace HexaEngine.SDL2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_memcpy4")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_memcpy4")]
-		internal static extern void* SDLMemcpy4Native([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "dwords")] [NativeName(NativeNameType.Type, "size_t")] nuint dwords);
-
-		[NativeName(NativeNameType.Func, "SDL_memcpy4")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLMemcpy4([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "dwords")] [NativeName(NativeNameType.Type, "size_t")] nuint dwords)
-		{
-			void* ret = SDLMemcpy4Native(dst, src, dwords);
-			return ret;
-		}
-
-		/// <summary>
-		/// If a * b would overflow, return -1. Otherwise store a * b via ret<br/>
-		/// and return 0.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_size_mul_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_size_mul_overflow")]
-		internal static extern int SDLSizeMulOverflowNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret);
-
-		/// <summary>		/// If a * b would overflow, return -1. Otherwise store a * b via ret<br/>		/// and return 0.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_size_mul_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeMulOverflow([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret)
-		{
-			int ret = SDLSizeMulOverflowNative(a, b, ret);
-			return ret;
-		}
-
-		/// <summary>		/// If a * b would overflow, return -1. Otherwise store a * b via ret<br/>		/// and return 0.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_size_mul_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeMulOverflow([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint ret)
-		{
-			fixed (nuint* pret = &ret)
-			{
-				int ret = SDLSizeMulOverflowNative(a, b, (nuint*)pret);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>
-		/// because __builtin_mul_overflow() is type-generic, but we want to be<br/>
-		/// consistent about interpreting a and b as size_t. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "_SDL_size_mul_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_SDL_size_mul_overflow_builtin")]
-		internal static extern int SDLSizeMulOverflowBuiltinNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret);
-
-		/// <summary>		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>		/// because __builtin_mul_overflow() is type-generic, but we want to be<br/>		/// consistent about interpreting a and b as size_t. <br/>		/// </summary>		[NativeName(NativeNameType.Func, "_SDL_size_mul_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeMulOverflowBuiltin([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret)
-		{
-			int ret = SDLSizeMulOverflowBuiltinNative(a, b, ret);
-			return ret;
-		}
-
-		/// <summary>		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>		/// because __builtin_mul_overflow() is type-generic, but we want to be<br/>		/// consistent about interpreting a and b as size_t. <br/>		/// </summary>		[NativeName(NativeNameType.Func, "_SDL_size_mul_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeMulOverflowBuiltin([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint ret)
-		{
-			fixed (nuint* pret = &ret)
-			{
-				int ret = SDLSizeMulOverflowBuiltinNative(a, b, (nuint*)pret);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// If a + b would overflow, return -1. Otherwise store a + b via ret<br/>
-		/// and return 0.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_size_add_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_size_add_overflow")]
-		internal static extern int SDLSizeAddOverflowNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret);
-
-		/// <summary>		/// If a + b would overflow, return -1. Otherwise store a + b via ret<br/>		/// and return 0.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_size_add_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeAddOverflow([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret)
-		{
-			int ret = SDLSizeAddOverflowNative(a, b, ret);
-			return ret;
-		}
-
-		/// <summary>		/// If a + b would overflow, return -1. Otherwise store a + b via ret<br/>		/// and return 0.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_size_add_overflow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeAddOverflow([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint ret)
-		{
-			fixed (nuint* pret = &ret)
-			{
-				int ret = SDLSizeAddOverflowNative(a, b, (nuint*)pret);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>
-		/// the same as the call to __builtin_mul_overflow() above. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "_SDL_size_add_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_SDL_size_add_overflow_builtin")]
-		internal static extern int SDLSizeAddOverflowBuiltinNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret);
-
-		/// <summary>		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>		/// the same as the call to __builtin_mul_overflow() above. <br/>		/// </summary>		[NativeName(NativeNameType.Func, "_SDL_size_add_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeAddOverflowBuiltin([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] nuint* ret)
-		{
-			int ret = SDLSizeAddOverflowBuiltinNative(a, b, ret);
-			return ret;
-		}
-
-		/// <summary>		/// This needs to be wrapped in an inline rather than being a direct #define,<br/>		/// the same as the call to __builtin_mul_overflow() above. <br/>		/// </summary>		[NativeName(NativeNameType.Func, "_SDL_size_add_overflow_builtin")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSizeAddOverflowBuiltin([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "size_t")] nuint a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "size_t")] nuint b, [NativeName(NativeNameType.Param, "ret")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint ret)
-		{
-			fixed (nuint* pret = &ret)
-			{
-				int ret = SDLSizeAddOverflowBuiltinNative(a, b, (nuint*)pret);
-				return ret;
-			}
-		}
-
 		[NativeName(NativeNameType.Func, "SDL_main")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_main")]
@@ -9662,31 +9519,6 @@ namespace HexaEngine.SDL2
 		public static int SDLError([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code)
 		{
 			int ret = SDLErrorNative(code);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "_m_prefetch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "_m_prefetch")]
-		internal static extern void MPrefetchNative([NativeName(NativeNameType.Param, "__P")] [NativeName(NativeNameType.Type, "void*")] void* p);
-
-		[NativeName(NativeNameType.Func, "_m_prefetch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MPrefetch([NativeName(NativeNameType.Param, "__P")] [NativeName(NativeNameType.Type, "void*")] void* p)
-		{
-			MPrefetchNative(p);
-		}
-
-		[NativeName(NativeNameType.Func, "SDL_SwapFloat")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_SwapFloat")]
-		internal static extern float SDLSwapFloatNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float")] float x);
-
-		[NativeName(NativeNameType.Func, "SDL_SwapFloat")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float SDLSwapFloat([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float")] float x)
-		{
-			float ret = SDLSwapFloatNative(x);
 			return ret;
 		}
 
@@ -16094,137 +15926,6 @@ namespace HexaEngine.SDL2
 		}
 
 		/// <summary>
-		/// Returns true if point resides inside a rectangle.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PointInRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_PointInRect")]
-		internal static extern SDLBool SDLPointInRectNative([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* r);
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPointPtr p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr r)
-		{
-			SDLBool ret = SDLPointInRectNative(p, r);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr r)
-		{
-			fixed (SDLPoint* pp = &p)
-			{
-				SDLBool ret = SDLPointInRectNative((SDLPoint*)pp, r);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPointPtr p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect r)
-		{
-			fixed (SDLRect* pr = &r)
-			{
-				SDLBool ret = SDLPointInRectNative(p, (SDLRect*)pr);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect r)
-		{
-			fixed (SDLPoint* pp = &p)
-			{
-				fixed (SDLRect* pr = &r)
-				{
-					SDLBool ret = SDLPointInRectNative((SDLPoint*)pp, (SDLRect*)pr);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Returns true if the rectangle has no area.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RectEmpty")]
-		internal static extern SDLBool SDLRectEmptyNative([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* r);
-
-		/// <summary>		/// Returns true if the rectangle has no area.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEmpty([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr r)
-		{
-			SDLBool ret = SDLRectEmptyNative(r);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if the rectangle has no area.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEmpty([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect r)
-		{
-			fixed (SDLRect* pr = &r)
-			{
-				SDLBool ret = SDLRectEmptyNative((SDLRect*)pr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Returns true if the two rectangles are equal.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_RectEquals")]
-		internal static extern SDLBool SDLRectEqualsNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b);
-
-		/// <summary>		/// Returns true if the two rectangles are equal.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr b)
-		{
-			SDLBool ret = SDLRectEqualsNative(a, b);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr b)
-		{
-			fixed (SDLRect* pa = &a)
-			{
-				SDLBool ret = SDLRectEqualsNative((SDLRect*)pa, b);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b)
-		{
-			fixed (SDLRect* pb = &b)
-			{
-				SDLBool ret = SDLRectEqualsNative(a, (SDLRect*)pb);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_RectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b)
-		{
-			fixed (SDLRect* pa = &a)
-			{
-				fixed (SDLRect* pb = &b)
-				{
-					SDLBool ret = SDLRectEqualsNative((SDLRect*)pa, (SDLRect*)pb);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
 		/// Determine whether two rectangles intersect.<br/>
 		/// If either pointer is NULL the function will return SDL_FALSE.<br/>
 		/// <br/>
@@ -17113,191 +16814,6 @@ namespace HexaEngine.SDL2
 							}
 						}
 					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Returns true if point resides inside a rectangle.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PointInFRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_PointInFRect")]
-		internal static extern SDLBool SDLPointInFRectNative([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* r);
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInFRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInFRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPointPtr p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr r)
-		{
-			SDLBool ret = SDLPointInFRectNative(p, r);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInFRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInFRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr r)
-		{
-			fixed (SDLFPoint* pp = &p)
-			{
-				SDLBool ret = SDLPointInFRectNative((SDLFPoint*)pp, r);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInFRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInFRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPointPtr p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect r)
-		{
-			fixed (SDLFRect* pr = &r)
-			{
-				SDLBool ret = SDLPointInFRectNative(p, (SDLFRect*)pr);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if point resides inside a rectangle.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_PointInFRect")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPointInFRect([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint p, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect r)
-		{
-			fixed (SDLFPoint* pp = &p)
-			{
-				fixed (SDLFRect* pr = &r)
-				{
-					SDLBool ret = SDLPointInFRectNative((SDLFPoint*)pp, (SDLFRect*)pr);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Returns true if the rectangle has no area.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FRectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_FRectEmpty")]
-		internal static extern SDLBool SDLFRectEmptyNative([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* r);
-
-		/// <summary>		/// Returns true if the rectangle has no area.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEmpty([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr r)
-		{
-			SDLBool ret = SDLFRectEmptyNative(r);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if the rectangle has no area.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEmpty")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEmpty([NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect r)
-		{
-			fixed (SDLFRect* pr = &r)
-			{
-				SDLBool ret = SDLFRectEmptyNative((SDLFRect*)pr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Returns true if the two rectangles are equal, within some given epsilon.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FRectEqualsEpsilon")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_FRectEqualsEpsilon")]
-		internal static extern SDLBool SDLFRectEqualsEpsilonNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "epsilon")] [NativeName(NativeNameType.Type, "const float")] float epsilon);
-
-		/// <summary>		/// Returns true if the two rectangles are equal, within some given epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEqualsEpsilon")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEqualsEpsilon([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr b, [NativeName(NativeNameType.Param, "epsilon")] [NativeName(NativeNameType.Type, "const float")] float epsilon)
-		{
-			SDLBool ret = SDLFRectEqualsEpsilonNative(a, b, epsilon);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, within some given epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEqualsEpsilon")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEqualsEpsilon([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr b, [NativeName(NativeNameType.Param, "epsilon")] [NativeName(NativeNameType.Type, "const float")] float epsilon)
-		{
-			fixed (SDLFRect* pa = &a)
-			{
-				SDLBool ret = SDLFRectEqualsEpsilonNative((SDLFRect*)pa, b, epsilon);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, within some given epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEqualsEpsilon")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEqualsEpsilon([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "epsilon")] [NativeName(NativeNameType.Type, "const float")] float epsilon)
-		{
-			fixed (SDLFRect* pb = &b)
-			{
-				SDLBool ret = SDLFRectEqualsEpsilonNative(a, (SDLFRect*)pb, epsilon);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, within some given epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEqualsEpsilon")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEqualsEpsilon([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "epsilon")] [NativeName(NativeNameType.Type, "const float")] float epsilon)
-		{
-			fixed (SDLFRect* pa = &a)
-			{
-				fixed (SDLFRect* pb = &b)
-				{
-					SDLBool ret = SDLFRectEqualsEpsilonNative((SDLFRect*)pa, (SDLFRect*)pb, epsilon);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Returns true if the two rectangles are equal, using a default epsilon.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FRectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_FRectEquals")]
-		internal static extern SDLBool SDLFRectEqualsNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b);
-
-		/// <summary>		/// Returns true if the two rectangles are equal, using a default epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr b)
-		{
-			SDLBool ret = SDLFRectEqualsNative(a, b);
-			return ret;
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, using a default epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr b)
-		{
-			fixed (SDLFRect* pa = &a)
-			{
-				SDLBool ret = SDLFRectEqualsNative((SDLFRect*)pa, b);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, using a default epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRectPtr a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b)
-		{
-			fixed (SDLFRect* pb = &b)
-			{
-				SDLBool ret = SDLFRectEqualsNative(a, (SDLFRect*)pb);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Returns true if the two rectangles are equal, using a default epsilon.<br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_FRectEquals")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLFRectEquals([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b)
-		{
-			fixed (SDLFRect* pa = &a)
-			{
-				fixed (SDLFRect* pb = &b)
-				{
-					SDLBool ret = SDLFRectEqualsNative((SDLFRect*)pa, (SDLFRect*)pb);
-					return ret;
 				}
 			}
 		}

@@ -199,11 +199,6 @@ namespace HexaEngine.SDL2
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SDLAudioFilter([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCV* cvt, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format);
 
-	[NativeName(NativeNameType.Delegate, "SDL_AudioFilter")]
-	[return: NativeName(NativeNameType.Type, "void")]
-	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SDLAudioFilter([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCV* cvt, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format);
-
 	/// <summary>
 	/// <br/>
 	/// </summary>

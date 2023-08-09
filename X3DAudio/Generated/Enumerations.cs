@@ -9,8 +9,8 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaGen.Runtime.COM;
 using System.Numerics;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.X3DAudio
 {

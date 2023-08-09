@@ -8,160 +8,143 @@
 
     public partial class CsCodeGenerator
     {
-        private readonly HashSet<string> LibDefinedExtensions = new();
+        protected readonly HashSet<string> LibDefinedExtensions = new();
         public readonly HashSet<string> DefinedExtensions = new();
+
+        protected virtual List<string> SetupExtensionUsings()
+        {
+            List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            usings.AddRange(settings.Usings);
+            return usings;
+        }
+
+        protected virtual bool FilterExtensionType(GenContext context, CppTypedef typedef)
+        {
+            if (settings.IgnoredTypedefs.Contains(typedef.Name))
+                return true;
+
+            if (LibDefinedExtensions.Contains(typedef.Name))
+                return true;
+
+            if (typedef.ElementType is not CppPointerType)
+            {
+                return true;
+            }
+
+            if (typedef.IsDelegate())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        protected virtual bool FilterExtensionFunction(GenContext context, CppFunction cppFunction, CppTypedef typedef, bool isCustomHandle)
+        {
+            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+                return true;
+            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+                return true;
+            if (cppFunction.Parameters.Count == 0 || cppFunction.Parameters[0].Type.TypeKind == CppTypeKind.Pointer && !isCustomHandle)
+                return true;
+
+            if (cppFunction.Parameters[0].Type.GetDisplayName() == typedef.GetDisplayName())
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected virtual bool FilterExtension(GenContext context, HashSet<string> definedExtensions, string header)
+        {
+            if (definedExtensions.Contains(header))
+            {
+                LogWarn($"{context.FilePath}: {header} extension is already defined!");
+                return true;
+            }
+
+            definedExtensions.Add(header);
+
+            return false;
+        }
 
         protected virtual void GenerateExtensions(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Extensions.cs");
-            string[] usings = { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
 
             // Generate Extensions
-            using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            GenContext context = new(compilation, filePath, writer);
+
             using (writer.PushBlock($"public static unsafe class Extensions"))
             {
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
-                    CppTypedef typedef = compilation.Typedefs[i];
-                    if (settings.IgnoredTypedefs.Contains(typedef.Name))
-                        continue;
-                    if (LibDefinedExtensions.Contains(typedef.Name))
-                        continue;
-
-                    if (typedef.ElementType is not CppPointerType)
-                    {
-                        continue;
-                    }
-
-                    if (typedef.IsDelegate())
-                    {
-                        continue;
-                    }
-
-                    WriteExtensionsForHandle(compilation, writer, typedef, typedef.Name);
+                    WriteExtensionsForHandle(context, compilation.Typedefs[i]);
                 }
             }
         }
 
-        private void WriteExtensionsForHandle(CppCompilation compilation, CodeWriter writer, CppType typedef, string handleName, bool isCustomHandle = false)
+        protected virtual void WriteExtensionsForHandle(GenContext context, CppTypedef typedef, bool isCustomHandle = false)
         {
-            List<CsFunction> commands = new();
+            if (FilterExtensionType(context, typedef))
+                return;
+
+            string handleName = typedef.Name;
+            var compilation = context.Compilation;
+            List<CsFunction> functions = new();
             for (int i = 0; i < compilation.Functions.Count; i++)
             {
                 var cppFunction = compilation.Functions[i];
-                if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
-                    continue;
-                if (settings.IgnoredFunctions.Contains(cppFunction.Name))
-                    continue;
-                if (cppFunction.Parameters.Count == 0 || cppFunction.Parameters[0].Type.TypeKind == CppTypeKind.Pointer && !isCustomHandle)
+
+                if (FilterExtensionFunction(context, cppFunction, typedef, isCustomHandle))
                     continue;
 
-                if (cppFunction.Parameters[0].Type.GetDisplayName() == typedef.GetDisplayName())
-                {
-                    var extensionPrefix = settings.GetExtensionNamePrefix(handleName);
+                var extensionPrefix = settings.GetExtensionNamePrefix(handleName);
 
-                    var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                    var csName = settings.GetPrettyExtensionName(csFunctionName, extensionPrefix);
-                    string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                    CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
+                var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
+                var csName = settings.GetPrettyExtensionName(csFunctionName, extensionPrefix);
 
-                    CsFunction? function = null;
-                    for (int j = 0; j < commands.Count; j++)
-                    {
-                        if (commands[j].Name == csName)
-                        {
-                            function = commands[j];
-                            break;
-                        }
-                    }
-
-                    if (function == null)
-                    {
-                        cppFunction.Comment.WriteCsSummary(out string? comment);
-                        function = new(csName, comment);
-                        commands.Add(function);
-                    }
-
-                    CsFunctionOverload overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                    overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                    overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                    for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                    {
-                        var cppParameter = cppFunction.Parameters[j];
-                        var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                        var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                        var direction = cppParameter.Type.GetDirection();
-                        var kind = cppParameter.Type.GetPrimitiveKind();
-
-                        CsType csType = new(paramCsTypeName, kind);
-
-                        CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                        overload.Parameters.Add(csParameter);
-                        if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                        {
-                            overload.DefaultValues.Add(paramCsName, defaultValue);
-                        }
-                    }
-
-                    function.Overloads.Add(overload);
-                    funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
-                    WriteExtensions(writer, DefinedVariationsFunctions, csFunctionName, overload, "public static");
-                }
+                CreateCsFunction(cppFunction, csName, functions, out var overload);
+                funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
+                WriteExtensions(context, DefinedVariationsFunctions, csFunctionName, overload, "public static");
             }
         }
 
-        public void WriteExtensions(CodeWriter writer, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, params string[] modifiers)
+        protected virtual void WriteExtensions(GenContext context, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteExtension(writer, definedExtensions, originalFunction, overload, overload.Variations[j], modifiers);
+                WriteExtension(context, definedExtensions, originalFunction, overload, overload.Variations[j], modifiers);
             }
         }
 
-        private void WriteExtension(CodeWriter writer, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, CsFunctionVariation variation, string[] modifiers)
+        protected virtual string BuildExtensionSignature(CsFunctionVariation variation)
         {
-            CsType csReturnType = variation.ReturnType;
-            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
-            {
-                csReturnType.Name = value;
-            }
+            var first = variation.Parameters[0];
+            return string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this {first.Type} {first.Name}").Reverse());
+        }
 
-            for (int i = 0; i < variation.Parameters.Count; i++)
-            {
-                var cppParameter = variation.Parameters[i];
-                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
-                {
-                    cppParameter.Type.Name = v;
-                    cppParameter.Type.Classify();
-                }
-            }
+        protected virtual void WriteExtension(GenContext context, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, CsFunctionVariation variation, string[] modifiers)
+        {
+            var writer = context.Writer;
+            CsType csReturnType = variation.ReturnType;
+            PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
-            string signature;
-
-            var first = variation.Parameters[0];
-            signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this {first.Type} {first.Name}").Reverse());
-
+            string signature = BuildExtensionSignature(variation);
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
 
-            if (definedExtensions.Contains(header))
-            {
-                LogWarn($"{writer.FileName}: {header} extension is already defined!");
+            if (FilterExtension(context, definedExtensions, header))
                 return;
-            }
-            definedExtensions.Add(header);
 
             LogInfo("defined extension " + header);
 
             if (overload.Comment != null)
                 writer.WriteLines(overload.Comment);
 
-            for (int i = 0; i < overload.Attributes.Count; i++)
-            {
-                writer.WriteLine(overload.Attributes[i]);
-            }
+            writer.WriteLines(overload.Attributes);
 
             using (writer.PushBlock($"{modifierString} {header}"))
             {

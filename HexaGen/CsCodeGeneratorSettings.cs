@@ -371,6 +371,11 @@
                 return arrayName + "*";
             }
 
+            if (type is CppUnexposedType unexposedType)
+            {
+                throw new();
+            }
+
             return string.Empty;
         }
 

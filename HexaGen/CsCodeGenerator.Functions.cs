@@ -7,37 +7,81 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection.PortableExecutable;
     using System.Runtime.InteropServices;
     using System.Text;
+    using System.Xml.Linq;
 
     public partial class CsCodeGenerator
     {
-        private readonly HashSet<string> LibDefinedFunctions = new();
-
+        protected readonly HashSet<string> LibDefinedFunctions = new();
         public readonly HashSet<string> DefinedFunctions = new();
+        protected readonly HashSet<string> DefinedVariationsFunctions = new();
+        protected readonly HashSet<string> OutReturnFunctions = new();
 
-        private readonly HashSet<string> DefinedVariationsFunctions = new();
+        protected virtual List<string> SetupFunctionUsings()
+        {
+            List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            usings.AddRange(settings.Usings);
+            return usings;
+        }
 
-        private readonly HashSet<string> OutReturnFunctions = new();
+        protected virtual bool FilterFunctionIgnored(GenContext context, CppFunction cppFunction)
+        {
+            if (cppFunction.Flags == CppFunctionFlags.Inline)
+                return true;
+            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+                return true;
+            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+                return true;
+
+            return false;
+        }
+
+        protected virtual bool FilterNativeFunction(GenContext context, CppFunction cppFunction, string header)
+        {
+            if (LibDefinedFunctions.Contains(header))
+                return true;
+
+            if (DefinedFunctions.Contains(header))
+            {
+                LogWarn($"{context.FilePath}: function {cppFunction}, C#: {header} is already defined!");
+                return true;
+            }
+
+            DefinedFunctions.Add(header);
+
+            return false;
+        }
+
+        protected virtual bool FilterFunction(GenContext context, HashSet<string> definedFunctions, string header)
+        {
+            if (definedFunctions.Contains(header))
+            {
+                LogWarn($"{context.FilePath}: {header} function is already defined!");
+                return true;
+            }
+            definedFunctions.Add(header);
+            return false;
+        }
 
         protected virtual void GenerateFunctions(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Functions.cs");
             DefinedVariationsFunctions.Clear();
-            string[] usings = { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+
             // Generate Functions
-            using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {
                 writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
-                List<CsFunction> commands = new();
+                List<CsFunction> functions = new();
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
                     CppFunction? cppFunction = compilation.Functions[i];
-                    if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
-                        continue;
-                    if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+                    if (FilterFunctionIgnored(context, cppFunction))
                         continue;
 
                     string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
@@ -49,16 +93,8 @@
                     var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
-                    if (LibDefinedFunctions.Contains(header))
+                    if (FilterNativeFunction(context, cppFunction, header))
                         continue;
-
-                    if (DefinedFunctions.Contains(header))
-                    {
-                        LogWarn($"{filePath}: function {cppFunction}, C#: {header} is already defined!");
-                        continue;
-                    }
-
-                    DefinedFunctions.Add(header);
 
                     cppFunction.Comment.WriteCsSummary(writer);
                     writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
@@ -76,107 +112,53 @@
                         writer.WriteLine();
                     }
 
-                    CsFunction? function = null;
-                    for (int j = 0; j < commands.Count; j++)
-                    {
-                        if (commands[j].Name == csName)
-                        {
-                            function = commands[j];
-                            break;
-                        }
-                    }
+                    var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
 
-                    if (function == null)
-                    {
-                        cppFunction.Comment.WriteCsSummary(out string? comment);
-                        function = new(csName, comment);
-                        commands.Add(function);
-                    }
-
-                    CsFunctionOverload overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                    overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                    overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                    for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                    {
-                        var cppParameter = cppFunction.Parameters[j];
-                        var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                        var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                        var direction = cppParameter.Type.GetDirection();
-                        var kind = cppParameter.Type.GetPrimitiveKind();
-
-                        CsType csType = new(paramCsTypeName, kind);
-
-                        CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                        overload.Parameters.Add(csParameter);
-                        if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                        {
-                            overload.DefaultValues.Add(paramCsName, defaultValue);
-                        }
-                    }
-
-                    function.Overloads.Add(overload);
                     funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
-                    WriteFunctions(writer, DefinedVariationsFunctions, function, overload, false, false, "public static");
+                    WriteFunctions(context, DefinedVariationsFunctions, function, overload, false, false, "public static");
                 }
             }
         }
 
-        public void WriteFunctions(CodeWriter writer, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, bool useThis, bool useHandle, params string[] modifiers)
+        protected virtual void WriteFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, bool useThis, bool useHandle, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteFunction(writer, definedFunctions, csFunction, overload, overload.Variations[j], useThis, useHandle, modifiers);
+                WriteFunction(context, definedFunctions, csFunction, overload, overload.Variations[j], useThis, useHandle, modifiers);
             }
         }
 
-        private void WriteFunction(CodeWriter writer, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, bool useThis, bool useHandle, params string[] modifiers)
+        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useThis, bool useHandle)
         {
-            CsType csReturnType = variation.ReturnType;
-            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
-            {
-                csReturnType.Name = value;
-            }
-
-            for (int i = 0; i < variation.Parameters.Count; i++)
-            {
-                var cppParameter = variation.Parameters[i];
-                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
-                {
-                    cppParameter.Type.Name = v;
-                    cppParameter.Type.Classify();
-                }
-            }
-
-            string modifierString = string.Join(" ", modifiers);
-            string signature;
-
             if (useThis || useHandle)
             {
-                signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
+                return string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
             }
             else
             {
-                signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
+                return string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
             }
+        }
 
+        protected virtual void WriteFunction(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, bool useThis, bool useHandle, params string[] modifiers)
+        {
+            var writer = context.Writer;
+            CsType csReturnType = variation.ReturnType;
+            PrepareArgs(variation, csReturnType);
+
+            string modifierString = string.Join(" ", modifiers);
+            string signature = BuildFunctionSignature(variation, useThis, useHandle);
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
 
-            if (definedFunctions.Contains(header))
-            {
+            if (FilterFunction(context, definedFunctions, header))
                 return;
-            }
-            definedFunctions.Add(header);
 
             LogInfo("defined function " + header);
 
             if (overload.Comment != null)
                 writer.WriteLines(overload.Comment);
-            for (int i = 0; i < overload.Attributes.Count; i++)
-            {
-                writer.WriteLine(overload.Attributes[i]);
-            }
+
+            writer.WriteLines(overload.Attributes);
 
             using (writer.PushBlock($"{modifierString} {header}"))
             {
@@ -383,7 +365,7 @@
             writer.WriteLine();
         }
 
-        private static void WriteStringConvertToManaged(StringBuilder sb, CppType type)
+        protected static void WriteStringConvertToManaged(StringBuilder sb, CppType type)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -396,7 +378,7 @@
             }
         }
 
-        private static void WriteStringConvertToManaged(StringBuilder sb, CsType type)
+        protected static void WriteStringConvertToManaged(StringBuilder sb, CsType type)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -408,7 +390,7 @@
             }
         }
 
-        private static void WriteStringConvertToManaged(CodeWriter writer, CppType type, string variable, string pointer)
+        protected static void WriteStringConvertToManaged(CodeWriter writer, CppType type, string variable, string pointer)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -421,7 +403,7 @@
             }
         }
 
-        private static void WriteStringConvertToManaged(CodeWriter writer, CsType type, string variable, string pointer)
+        protected static void WriteStringConvertToManaged(CodeWriter writer, CsType type, string variable, string pointer)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -433,7 +415,7 @@
             }
         }
 
-        private static void WriteStringConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
+        protected static void WriteStringConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -462,7 +444,7 @@
             }
         }
 
-        private static void WriteStringConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
+        protected static void WriteStringConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -490,7 +472,7 @@
             }
         }
 
-        private static void WriteFreeString(CodeWriter writer, int i)
+        protected static void WriteFreeString(CodeWriter writer, int i)
         {
             using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))
             {
@@ -498,7 +480,7 @@
             }
         }
 
-        private static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
+        protected static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -532,7 +514,7 @@
             }
         }
 
-        private static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
+        protected static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -565,7 +547,7 @@
             }
         }
 
-        private static void WriteFreeUnmanagedStringArray(CodeWriter writer, string name, int i)
+        protected static void WriteFreeUnmanagedStringArray(CodeWriter writer, string name, int i)
         {
             using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
             {

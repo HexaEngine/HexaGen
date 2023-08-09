@@ -1,52 +1,68 @@
 ﻿namespace HexaGen
 {
     using CppAst;
-    using HexaGen;
-    using HexaGen.Core.CSharp;
+    using System.Collections.Generic;
     using System.IO;
 
     public partial class CsCodeGenerator
     {
-        private readonly HashSet<string> LibDefinedTypedefs = new();
-
+        protected readonly HashSet<string> LibDefinedTypedefs = new();
         public readonly HashSet<string> DefinedTypedefs = new();
+
+        protected virtual List<string> SetupHandleUsings()
+        {
+            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            usings.AddRange(settings.Usings);
+            return usings;
+        }
+
+        protected virtual bool FilterHandle(GenContext context, CppTypedef typedef)
+        {
+            if (settings.AllowedTypedefs.Count != 0 && !settings.AllowedTypedefs.Contains(typedef.Name))
+                return true;
+            if (settings.IgnoredTypedefs.Contains(typedef.Name))
+                return true;
+            if (LibDefinedTypedefs.Contains(typedef.Name))
+                return true;
+
+            if (DefinedTypedefs.Contains(typedef.Name))
+            {
+                LogWarn($"{context.FilePath}: {typedef} is already defined!");
+                return true;
+            }
+
+            DefinedTypedefs.Add(typedef.Name);
+
+            if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is not CppFunctionType)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         protected virtual void GenerateHandles(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Handles.cs");
-            string[] usings = { "System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+
             // Generate Functions
-            using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupHandleUsings());
+            GenContext context = new(compilation, filePath, writer);
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
             {
-                CppTypedef typedef = compilation.Typedefs[i];
-                if (settings.AllowedTypedefs.Count != 0 && !settings.AllowedTypedefs.Contains(typedef.Name))
-                    continue;
-                if (settings.IgnoredTypedefs.Contains(typedef.Name))
-                    continue;
-                if (LibDefinedTypedefs.Contains(typedef.Name))
-                    continue;
-
-                if (DefinedTypedefs.Contains(typedef.Name))
-                {
-                    LogWarn($"{filePath}: {typedef} is already defined!");
-                    continue;
-                }
-
-                DefinedTypedefs.Add(typedef.Name);
-
-                if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is not CppFunctionType)
-                {
-                    var isDispatchable = true;
-                    var csName = settings.GetCsCleanName(typedef.Name);
-                    WriteHandle(writer, typedef, csName, isDispatchable);
-                }
+                WriteHandle(context, compilation.Typedefs[i], true);
             }
         }
 
-        private void WriteHandle(CodeWriter writer, CppTypedef typedef, string csName, bool isDispatchable)
+        protected virtual void WriteHandle(GenContext context, CppTypedef typedef, bool isDispatchable)
         {
+            if (FilterHandle(context, typedef))
+                return;
+
+            var writer = context.Writer;
+            var csName = settings.GetCsCleanName(typedef.Name);
+
             LogInfo("defined handle " + csName);
             typedef.Comment.WriteCsSummary(writer);
             writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");

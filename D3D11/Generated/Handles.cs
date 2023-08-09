@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaEngine.DXGI;
 using HexaEngine.D3DCommon;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.D3D11
 {

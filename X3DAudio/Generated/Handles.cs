@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using System.Numerics;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.X3DAudio
 {

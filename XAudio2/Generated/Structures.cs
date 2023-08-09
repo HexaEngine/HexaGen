@@ -2248,6 +2248,25 @@ namespace HexaEngine.XAudio2
 	}
 
 	/// <summary>
+	/// XAudio 2.8<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "AudioVolumeMeter")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct AudioVolumeMeter
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "AudioReverb")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct AudioReverb
+	{
+
+
+	}
+
+	/// <summary>
 	/// XAUDIO2FX_VOLUMEMETER_LEVELS: Receives results from GetEffectParameters().<br/>
 	/// The user is responsible for allocating pPeakLevels, pRMSLevels, and<br/>
 	/// initializing ChannelCount accordingly.<br/>

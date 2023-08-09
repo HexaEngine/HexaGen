@@ -4,13 +4,10 @@
     using HexaGen.Core.Logging;
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Globalization;
-    using System.Text;
     using System.Text.RegularExpressions;
-    using System.Xml.Linq;
 
-    public partial class CsComCodeGenerator : BaseGenerator
+    public partial class CsComCodeGenerator : CsCodeGenerator
     {
         private FunctionGenerator funcGen;
 
@@ -97,7 +94,7 @@
             }
         }
 
-        public void Generate(List<string> headerFiles, string outputPath)
+        public override void Generate(List<string> headerFiles, string outputPath)
         {
             var options = new CppParserOptions
             {
@@ -122,7 +119,7 @@
             Generate(compilation, outputPath);
         }
 
-        public void Generate(string headerFile, string outputPath)
+        public override void Generate(string headerFile, string outputPath)
         {
             var options = new CppParserOptions
             {
@@ -144,7 +141,7 @@
             Generate(compilation, outputPath);
         }
 
-        private void Generate(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath)
         {
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
@@ -222,17 +219,6 @@
             }
 
             Task.WaitAll(tasks.ToArray());
-        }
-
-        private CppFunction FindFunction(CppCompilation compilation, string name)
-        {
-            for (int i = 0; i < compilation.Functions.Count; i++)
-            {
-                var function = compilation.Functions[i];
-                if (function.Name == name)
-                    return function;
-            }
-            return null;
         }
     }
 }

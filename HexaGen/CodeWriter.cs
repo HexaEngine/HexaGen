@@ -11,7 +11,7 @@
 
         public string FileName { get; }
 
-        public CodeWriter(string fileName, string @namespace, params string[] namespaces)
+        public CodeWriter(string fileName, string @namespace, IEnumerable<string> namespaces)
         {
             FileName = fileName;
             _indentStrings = new string[10];
@@ -31,12 +31,12 @@
             _writer.WriteLine("// ------------------------------------------------------------------------------");
             _writer.WriteLine();
 
-            foreach (var ns in namespaces)
+            foreach (string ns in namespaces)
             {
                 _writer.WriteLine($"using {ns};");
             }
 
-            if (namespaces.Length > 0)
+            if (namespaces.Any())
             {
                 _writer.WriteLine();
             }
@@ -85,6 +85,14 @@
                 }
             }
             _shouldIndent = true;
+        }
+
+        public void WriteLines(IEnumerable<string> lines)
+        {
+            foreach (var line in lines)
+            {
+                WriteLine(line);
+            }
         }
 
         public void BeginBlock(string content)

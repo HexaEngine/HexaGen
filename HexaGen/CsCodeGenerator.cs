@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
@@ -14,7 +15,7 @@
             funcGen = new(settings);
         }
 
-        public void Generate(string headerFile, string outputPath)
+        public virtual void Generate(string headerFile, string outputPath)
         {
             var options = new CppParserOptions
             {
@@ -26,7 +27,7 @@
             Generate(compilation, outputPath);
         }
 
-        public void Generate(List<string> headerFiles, string outputPath)
+        public virtual void Generate(List<string> headerFiles, string outputPath)
         {
             var options = new CppParserOptions
             {
@@ -38,7 +39,7 @@
             Generate(compilation, outputPath);
         }
 
-        public void Generate(CppCompilation compilation, string outputPath)
+        public virtual void Generate(CppCompilation compilation, string outputPath)
         {
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
@@ -118,7 +119,7 @@
             Task.WaitAll(tasks.ToArray());
         }
 
-        public void Reset()
+        public virtual void Reset()
         {
             DefinedConstants.Clear();
             DefinedEnums.Clear();
@@ -129,7 +130,7 @@
             DefinedDelegates.Clear();
         }
 
-        public void CopyFrom(List<string> constants, List<string> enums, List<string> extensions, List<string> functions, List<string> typedefs, List<string> types, List<string> delegates)
+        public virtual void CopyFrom(List<string> constants, List<string> enums, List<string> extensions, List<string> functions, List<string> typedefs, List<string> types, List<string> delegates)
         {
             for (int i = 0; i < constants.Count; i++)
             {
@@ -161,7 +162,7 @@
             }
         }
 
-        private CppFunction FindFunction(CppCompilation compilation, string name)
+        protected static CppFunction FindFunction(CppCompilation compilation, string name)
         {
             for (int i = 0; i < compilation.Functions.Count; i++)
             {
@@ -170,6 +171,73 @@
                     return function;
             }
             return null;
+        }
+
+        protected void PrepareArgs(CsFunctionVariation variation, CsType csReturnType)
+        {
+            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
+            {
+                csReturnType.Name = value;
+            }
+
+            for (int i = 0; i < variation.Parameters.Count; i++)
+            {
+                var cppParameter = variation.Parameters[i];
+                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
+                {
+                    cppParameter.Type.Name = v;
+                    cppParameter.Type.Classify();
+                }
+            }
+        }
+
+        protected virtual CsFunction CreateCsFunction(CppFunction cppFunction, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
+        {
+            string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
+            CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
+
+            CsFunction? function = null;
+            for (int j = 0; j < functions.Count; j++)
+            {
+                if (functions[j].Name == csName)
+                {
+                    function = functions[j];
+                    break;
+                }
+            }
+
+            if (function == null)
+            {
+                cppFunction.Comment.WriteCsSummary(out string? comment);
+                function = new(csName, comment);
+                functions.Add(function);
+            }
+
+            overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+            overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+            overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
+            for (int j = 0; j < cppFunction.Parameters.Count; j++)
+            {
+                var cppParameter = cppFunction.Parameters[j];
+                var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
+                var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
+                var direction = cppParameter.Type.GetDirection();
+                var kind = cppParameter.Type.GetPrimitiveKind();
+
+                CsType csType = new(paramCsTypeName, kind);
+
+                CsParameterInfo csParameter = new(paramCsName, csType, direction);
+                csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
+                overload.Parameters.Add(csParameter);
+                if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
+                {
+                    overload.DefaultValues.Add(paramCsName, defaultValue);
+                }
+            }
+
+            function.Overloads.Add(overload);
+            return function;
         }
     }
 }

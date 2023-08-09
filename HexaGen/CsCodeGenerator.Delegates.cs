@@ -8,79 +8,84 @@
 
     public partial class CsCodeGenerator
     {
-        private readonly HashSet<string> LibDefinedDelegates = new();
+        protected readonly HashSet<string> LibDefinedDelegates = new();
 
         public readonly HashSet<string> DefinedDelegates = new();
+
+        protected virtual List<string> SetupDelegateUsings()
+        {
+            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            usings.AddRange(settings.Usings);
+            return usings;
+        }
+
+        protected virtual bool FilterIgnoredType(GenContext context, CppClass cppClass)
+        {
+            if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+                return true;
+
+            if (settings.IgnoredTypes.Contains(cppClass.Name))
+                return true;
+
+            return false;
+        }
+
+        protected virtual bool FilterDelegate(GenContext context, ICppMember member)
+        {
+            if (settings.AllowedDelegates.Count != 0 && !settings.AllowedDelegates.Contains(member.Name))
+                return true;
+            if (settings.IgnoredDelegates.Contains(member.Name))
+                return true;
+
+            if (LibDefinedDelegates.Contains(member.Name))
+                return true;
+
+            if (DefinedDelegates.Contains(member.Name))
+            {
+                LogWarn($"{context.FilePath}: {member.Name} delegate is already defined!");
+                return true;
+            }
+
+            DefinedDelegates.Add(member.Name);
+
+            return false;
+        }
 
         protected virtual void GenerateDelegates(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Delegates.cs");
-            string[] usings = { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
 
             // Generate Delegates
-            using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupDelegateUsings());
+
+            GenContext context = new(compilation, filePath, writer);
 
             // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
                 CppClass? cppClass = compilation.Classes[i];
-                if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+
+                if (FilterIgnoredType(context, cppClass))
                     continue;
 
-                if (settings.IgnoredTypes.Contains(cppClass.Name))
-                    continue;
-
-                string csName = settings.GetCsCleanName(cppClass.Name);
-                WriteClassDelegates(filePath, writer, compilation, cppClass, csName);
+                WriteClassDelegates(context, cppClass);
             }
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
             {
                 CppTypedef typedef = compilation.Typedefs[i];
-                if (settings.AllowedDelegates.Count != 0 && !settings.AllowedDelegates.Contains(typedef.Name))
-                    continue;
-                if (settings.IgnoredDelegates.Contains(typedef.Name))
-                    continue;
 
                 if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType)
                 {
-                    if (LibDefinedDelegates.Contains(typedef.Name))
-                        continue;
-
-                    if (DefinedDelegates.Contains(typedef.Name))
-                    {
-                        LogWarn($"{filePath}: {typedef} delegate is already defined!");
-                        continue;
-                    }
-                    var csName = settings.GetCsCleanName(typedef.Name);
-                    DefinedDelegates.Add(csName);
-                    WriteDelegate(writer, typedef, functionType, csName);
+                    WriteDelegate(context, typedef, functionType);
                 }
             }
         }
 
-        public void WriteDelegate(CodeWriter writer, CppTypedef typedef, CppFunctionType type, string csName)
+        protected virtual void WriteClassDelegates(GenContext context, CppClass cppClass, string? csName = null)
         {
-            string returnCsName = settings.GetCsTypeName(type.ReturnType, false);
-            string signature = settings.GetParameterSignature(type.Parameters, false);
+            csName ??= settings.GetCsCleanName(cppClass.Name);
 
-            if (settings.TryGetDelegateMapping(csName, out var mapping))
-            {
-                returnCsName = mapping.ReturnType;
-                signature = mapping.Signature;
-            }
-            string header = $"{returnCsName} {csName}({signature})";
-            LogInfo("defined delegate " + header);
-            typedef.Comment.WriteCsSummary(writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{typedef.Name}\")]");
-            writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{type.ReturnType.GetDisplayName()}\")]");
-            writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{type.CallingConvention.GetCallingConvention()})]");
-            writer.WriteLine($"public unsafe delegate {header};");
-            writer.WriteLine();
-        }
-
-        public void WriteClassDelegates(string filePath, CodeWriter writer, CppCompilation compilation, CppClass cppClass, string csName)
-        {
             if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
             {
                 return;
@@ -100,7 +105,7 @@
                     csSubName = settings.GetCsCleanName(subClass.Name);
                 }
 
-                WriteClassDelegates(filePath, writer, compilation, subClass, csSubName);
+                WriteClassDelegates(context, subClass, csSubName);
             }
 
             for (int j = 0; j < cppClass.Fields.Count; j++)
@@ -109,85 +114,41 @@
 
                 if (cppField.Type is CppPointerType cppPointer && cppPointer.IsDelegate(out var functionType))
                 {
-                    string csFieldName = settings.NormalizeFieldName(cppField.Name);
-
-                    if (LibDefinedDelegates.Contains(csFieldName))
-                        continue;
-
-                    if (DefinedDelegates.Contains(csFieldName))
-                    {
-                        LogWarn($"{filePath}: {csFieldName} delegate is already defined!");
-                        continue;
-                    }
-
-                    DefinedDelegates.Add(csFieldName);
-
-                    string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                    string signature = settings.GetParameterSignature(functionType.Parameters, false);
-                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
-
-                    if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
-                    {
-                        returnCsName = mapping.ReturnType;
-                        signature = mapping.Signature;
-                    }
-
-                    string header = $"{returnCsName} {csFieldName}({signature})";
-                    LogInfo("defined delegate " + header);
-                    cppField.Comment.WriteCsSummary(writer);
-                    writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{cppField.Name}\")]");
-                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
-                    writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
-                    writer.WriteLine($"public unsafe delegate {header};");
-                    writer.WriteLine();
+                    WriteDelegate(context, cppField, functionType);
                 }
-                else
+                else if (cppField.Type is CppTypedef typedef && typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType cppFunctionType)
                 {
-                    WriteDelegate(filePath, writer, cppField, false);
+                    WriteDelegate(context, cppField, cppFunctionType, false);
                 }
             }
         }
 
-        private void WriteDelegate(string filePath, CodeWriter writer, CppField field, bool isReadOnly = false)
+        protected virtual void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType, bool isReadOnly = false) where T : class, ICppDeclaration, ICppMember
         {
-            string csFieldName = settings.NormalizeFieldName(field.Name);
+            if (FilterDelegate(context, field))
+                return;
 
+            var writer = context.Writer;
+            string csFieldName = settings.GetCsCleanName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
+            string signature = settings.GetParameterSignature(functionType.Parameters, false);
+            string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
+            returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
 
-            if (field.Type is CppTypedef typedef &&
-                typedef.ElementType is CppPointerType pointerType &&
-                pointerType.ElementType is CppFunctionType functionType)
+            if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
             {
-                if (LibDefinedDelegates.Contains(csFieldName))
-                    return;
-
-                if (DefinedDelegates.Contains(csFieldName))
-                {
-                    LogWarn($"{filePath}: {csFieldName}, delegate is already defined!");
-                    return;
-                }
-
-                DefinedDelegates.Add(csFieldName);
-
-                string signature = settings.GetParameterSignature(functionType.Parameters, false);
-                string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
-
-                if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
-                {
-                    returnCsName = mapping.ReturnType;
-                    signature = mapping.Signature;
-                }
-
-                string header = $"{returnCsName} {csFieldName}({signature})";
-                LogInfo("defined delegate " + header);
-                field.Comment.WriteCsSummary(writer);
-                writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
-                writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
-                writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
-                writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
-                writer.WriteLine();
+                returnCsName = mapping.ReturnType;
+                signature = mapping.Signature;
             }
+
+            string header = $"{returnCsName} {csFieldName}({signature})";
+            LogInfo("defined delegate " + header);
+            field.Comment.WriteCsSummary(writer);
+            writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
+            writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
+            writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
+            writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
+            writer.WriteLine();
         }
     }
 }

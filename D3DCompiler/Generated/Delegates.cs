@@ -12,21 +12,24 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaGen.Runtime.COM;
 using HexaEngine.D3DCommon;
 using HexaEngine.D3D11;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.D3DCompiler
 {
 	[NativeName(NativeNameType.Delegate, "pD3DCompile")]
+	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate HResult PD3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
 	[NativeName(NativeNameType.Delegate, "pD3DPreprocess")]
+	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate HResult PD3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
 	[NativeName(NativeNameType.Delegate, "pD3DDisassemble")]
+	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate HResult PD3DDisassemble([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly);
 
