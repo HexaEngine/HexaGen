@@ -12,10 +12,12 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.D3DCommon
 {
+	[NativeName(NativeNameType.Delegate, "PFN_DESTRUCTION_CALLBACK")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PfnDestructionCallback(void* pData);
+	public unsafe delegate void PfnDestructionCallback([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
 
 }

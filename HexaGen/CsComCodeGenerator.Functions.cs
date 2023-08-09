@@ -62,17 +62,16 @@
                     DefinedFunctions.Add(header);
 
                     cppFunction.Comment.WriteCsSummary(writer);
+                    writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
+                    writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
                     if (boolReturn)
                     {
-                        writer.WriteLine($"[NativeName(\"{cppFunction.Name}\")]");
-                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
                         writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
                         writer.WriteLine();
                     }
                     else
                     {
-                        writer.WriteLine($"[NativeName(\"{cppFunction.Name}\")]");
-                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
                         writer.WriteLine($"internal static extern {header};");
                         writer.WriteLine();
                     }
@@ -95,6 +94,8 @@
                     }
 
                     CsFunctionOverload overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                    overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                    overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                     for (int j = 0; j < cppFunction.Parameters.Count; j++)
                     {
                         var cppParameter = cppFunction.Parameters[j];
@@ -106,7 +107,8 @@
                         CsType csType = new(paramCsTypeName, kind);
 
                         CsParameterInfo csParameter = new(paramCsName, csType, direction);
-
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                         overload.Parameters.Add(csParameter);
                         if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                         {
@@ -152,11 +154,11 @@
 
             if (useThis || useHandle)
             {
-                signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{x.Type} {x.Name}"));
+                signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
             }
             else
             {
-                signature = string.Join(", ", variation.Parameters.Select(x => $"{x.Type} {x.Name}"));
+                signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
             }
 
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
@@ -171,6 +173,10 @@
 
             if (overload.Comment != null)
                 writer.WriteLines(overload.Comment);
+            for (int i = 0; i < overload.Attributes.Count; i++)
+            {
+                writer.WriteLine(overload.Attributes[i]);
+            }
             using (writer.PushBlock($"{modifierString} {header}"))
             {
                 StringBuilder sb = new();

@@ -4,7 +4,7 @@
 
     public class CsFunctionOverload : ICsFunction
     {
-        public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations)
+        public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations, List<string> modifiers, List<string> attributes)
         {
             ExportedName = exportedName;
             Name = name;
@@ -17,6 +17,8 @@
             ReturnType = returnType;
             Parameters = parameters;
             Variations = variations;
+            Modifiers = modifiers;
+            Attributes = attributes;
         }
 
         public CsFunctionOverload(string exportedName, string name, string? comment, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType)
@@ -32,6 +34,8 @@
             ReturnType = returnType;
             Parameters = new();
             Variations = new();
+            Modifiers = new();
+            Attributes = new();
         }
 
         public string ExportedName { get; set; }
@@ -55,6 +59,10 @@
         public List<CsParameterInfo> Parameters { get; set; }
 
         public List<CsFunctionVariation> Variations { get; set; }
+
+        public List<string> Modifiers { get; set; }
+
+        public List<string> Attributes { get; set; }
 
         public bool HasVariation(CsFunctionVariation variation)
         {

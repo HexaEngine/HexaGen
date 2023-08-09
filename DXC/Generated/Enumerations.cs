@@ -17,72 +17,72 @@ namespace HexaEngine.DXC
 	/// For use with IDxcResult::[Has|Get]Output dxcOutKind argument<br/>
 	/// Note: text outputs returned from version 2 APIs are UTF-8 or UTF-16 based on -encoding option<br/>
 	/// </summary>
-	[NativeName("DXC_OUT_KIND")]
+	[NativeName(NativeNameType.Enum, "DXC_OUT_KIND")]
 	public enum DxcOutKind
 	{
-		[NativeName("DXC_OUT_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_NONE")]
 		None = unchecked(0),
 		/// <summary>
 		/// IDxcBlob - Shader or library object<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_OBJECT")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_OBJECT")]
 		Object = unchecked(1),
 
 		/// <summary>
 		/// IDxcBlobUtf8 or IDxcBlobUtf16<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_ERRORS")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_ERRORS")]
 		Errors = unchecked(2),
 
 		/// <summary>
 		/// IDxcBlob<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_PDB")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_PDB")]
 		Pdb = unchecked(3),
 
 		/// <summary>
 		/// IDxcBlob - DxcShaderHash of shader or shader with source info (-Zsb/-Zss)<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_SHADER_HASH")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_SHADER_HASH")]
 		ShaderHash = unchecked(4),
 
 		/// <summary>
 		/// IDxcBlobUtf8 or IDxcBlobUtf16 - from Disassemble<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_DISASSEMBLY")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_DISASSEMBLY")]
 		Disassembly = unchecked(5),
 
 		/// <summary>
 		/// IDxcBlobUtf8 or IDxcBlobUtf16 - from Preprocessor or Rewriter<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_HLSL")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_HLSL")]
 		Hlsl = unchecked(6),
 
 		/// <summary>
 		/// IDxcBlobUtf8 or IDxcBlobUtf16 - other text, such as -ast-dump or -Odump<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_TEXT")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_TEXT")]
 		Text = unchecked(7),
 
 		/// <summary>
 		/// IDxcBlob - RDAT part with reflection data<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_REFLECTION")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_REFLECTION")]
 		Reflection = unchecked(8),
 
 		/// <summary>
 		/// IDxcBlob - Serialized root signature output<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_ROOT_SIGNATURE")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_ROOT_SIGNATURE")]
 		RootSignature = unchecked(9),
 
 		/// <summary>
 		/// IDxcExtraResults - Extra outputs<br/>
 		/// </summary>
-		[NativeName("DXC_OUT_EXTRA_OUTPUTS")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_EXTRA_OUTPUTS")]
 		ExtraOutputs = unchecked(10),
 
-		[NativeName("DXC_OUT_FORCE_DWORD")]
+		[NativeName(NativeNameType.EnumItem, "DXC_OUT_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xFFFFFFFF),
 	}
 

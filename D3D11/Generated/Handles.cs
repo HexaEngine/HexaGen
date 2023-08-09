@@ -16,6 +16,7 @@ using HexaEngine.D3DCommon;
 
 namespace HexaEngine.D3D11
 {
+	[NativeName(NativeNameType.Typedef, "LPD3D11SHADERREFLECTIONTYPE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Shaderreflectiontype : IEquatable<Lpd3D11Shaderreflectiontype>
 	{
@@ -36,6 +37,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Shaderreflectiontype [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11SHADERREFLECTIONVARIABLE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Shaderreflectionvariable : IEquatable<Lpd3D11Shaderreflectionvariable>
 	{
@@ -56,6 +58,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Shaderreflectionvariable [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11SHADERREFLECTIONCONSTANTBUFFER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Shaderreflectionconstantbuffer : IEquatable<Lpd3D11Shaderreflectionconstantbuffer>
 	{
@@ -76,6 +79,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Shaderreflectionconstantbuffer [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11SHADERREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Shaderreflection : IEquatable<Lpd3D11Shaderreflection>
 	{
@@ -96,6 +100,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Shaderreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11LIBRARYREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Libraryreflection : IEquatable<Lpd3D11Libraryreflection>
 	{
@@ -116,6 +121,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Libraryreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11FUNCTIONREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Functionreflection : IEquatable<Lpd3D11Functionreflection>
 	{
@@ -136,6 +142,7 @@ namespace HexaEngine.D3D11
 		private string DebuggerDisplay => string.Format("Lpd3D11Functionreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3D11FUNCTIONPARAMETERREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D11Functionparameterreflection : IEquatable<Lpd3D11Functionparameterreflection>
 	{

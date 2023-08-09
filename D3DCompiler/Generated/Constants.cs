@@ -17,73 +17,73 @@ namespace HexaEngine.D3DCompiler
 {
 	public unsafe partial class D3DCompiler
 	{
-		[NativeName("_MSC_VER")]
+		[NativeName(NativeNameType.Const, "_MSC_VER")]
 		public const uint MscVer = 1930;
 
-		[NativeName("_WIN32")]
+		[NativeName(NativeNameType.Const, "_WIN32")]
 		public const uint Win32 = 1;
 
-		[NativeName("_M_AMD64")]
+		[NativeName(NativeNameType.Const, "_M_AMD64")]
 		public const uint MAmd64 = 100;
 
-		[NativeName("_M_X64")]
+		[NativeName(NativeNameType.Const, "_M_X64")]
 		public const uint MX64 = 100;
 
-		[NativeName("_WIN64")]
+		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const uint Win64 = 1;
 
-		[NativeName("D3DCOMPILER_DLL_W")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILER_DLL_W")]
 		public const string D3DcompilerDllW = "d3dcompiler_47.dll";
 
-		[NativeName("D3DCOMPILER_DLL_A")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILER_DLL_A")]
 		public const string D3DcompilerDllA = "d3dcompiler_47.dll";
 
-		[NativeName("D3D_COMPILER_VERSION")]
+		[NativeName(NativeNameType.Const, "D3D_COMPILER_VERSION")]
 		public const uint D3DCompilerVersion = 47;
 
-		[NativeName("D3DCOMPILE_OPTIMIZATION_LEVEL1")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILE_OPTIMIZATION_LEVEL1")]
 		public const uint D3DcompileOptimizationLevel1 = 0;
 
-		[NativeName("D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_LATEST")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_LATEST")]
 		public const uint D3DcompileFlags2ForceRootSignatureLatest = 0;
 
-		[NativeName("D3DCOMPILE_SECDATA_MERGE_UAV_SLOTS")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILE_SECDATA_MERGE_UAV_SLOTS")]
 		public const uint D3DcompileSecdataMergeUavSlots = 0x00000001;
 
-		[NativeName("D3DCOMPILE_SECDATA_PRESERVE_TEMPLATE_SLOTS")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILE_SECDATA_PRESERVE_TEMPLATE_SLOTS")]
 		public const uint D3DcompileSecdataPreserveTemplateSlots = 0x00000002;
 
-		[NativeName("D3DCOMPILE_SECDATA_REQUIRE_TEMPLATE_MATCH")]
+		[NativeName(NativeNameType.Const, "D3DCOMPILE_SECDATA_REQUIRE_TEMPLATE_MATCH")]
 		public const uint D3DcompileSecdataRequireTemplateMatch = 0x00000004;
 
-		[NativeName("D3D_DISASM_ENABLE_COLOR_CODE")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_ENABLE_COLOR_CODE")]
 		public const uint D3DDisasmEnableColorCode = 0x00000001;
 
-		[NativeName("D3D_DISASM_ENABLE_DEFAULT_VALUE_PRINTS")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_ENABLE_DEFAULT_VALUE_PRINTS")]
 		public const uint D3DDisasmEnableDefaultValuePrints = 0x00000002;
 
-		[NativeName("D3D_DISASM_ENABLE_INSTRUCTION_NUMBERING")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_ENABLE_INSTRUCTION_NUMBERING")]
 		public const uint D3DDisasmEnableInstructionNumbering = 0x00000004;
 
-		[NativeName("D3D_DISASM_ENABLE_INSTRUCTION_CYCLE")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_ENABLE_INSTRUCTION_CYCLE")]
 		public const uint D3DDisasmEnableInstructionCycle = 0x00000008;
 
-		[NativeName("D3D_DISASM_DISABLE_DEBUG_INFO")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_DISABLE_DEBUG_INFO")]
 		public const uint D3DDisasmDisableDebugInfo = 0x00000010;
 
-		[NativeName("D3D_DISASM_ENABLE_INSTRUCTION_OFFSET")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_ENABLE_INSTRUCTION_OFFSET")]
 		public const uint D3DDisasmEnableInstructionOffset = 0x00000020;
 
-		[NativeName("D3D_DISASM_INSTRUCTION_ONLY")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_INSTRUCTION_ONLY")]
 		public const uint D3DDisasmInstructionOnly = 0x00000040;
 
-		[NativeName("D3D_DISASM_PRINT_HEX_LITERALS")]
+		[NativeName(NativeNameType.Const, "D3D_DISASM_PRINT_HEX_LITERALS")]
 		public const uint D3DDisasmPrintHexLiterals = 0x00000080;
 
-		[NativeName("D3D_GET_INST_OFFSETS_INCLUDE_NON_EXECUTABLE")]
+		[NativeName(NativeNameType.Const, "D3D_GET_INST_OFFSETS_INCLUDE_NON_EXECUTABLE")]
 		public const uint D3DGetInstOffsetsIncludeNonExecutable = 0x00000001;
 
-		[NativeName("D3D_COMPRESS_SHADER_KEEP_ALL_PARTS")]
+		[NativeName(NativeNameType.Const, "D3D_COMPRESS_SHADER_KEEP_ALL_PARTS")]
 		public const uint D3DCompressShaderKeepAllParts = 0x00000001;
 
 	}

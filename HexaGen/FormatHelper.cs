@@ -374,6 +374,38 @@
                 }
                 return true;
             }
+
+            if (comment is CppCommentBlockCommand blockCommand)
+            {
+                return false;
+            }
+            if (comment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+                return false;
+            }
+
+            if (comment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+                return false;
+            }
+
+            if (comment is CppCommentVerbatimLine line)
+            {
+                return false;
+            }
+
+            if (comment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+                return false;
+            }
+
+            if (comment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+                return false;
+            }
+
             if (comment is CppCommentText text)
             {
                 writer.WriteLine($"/// " + text.Text + "<br/>");
@@ -385,7 +417,7 @@
                 return false;
             }
 
-            throw new NotImplementedException();
+            throw new NotSupportedException($"The comment type {comment.GetType()} is not supported");
         }
 
         public static void WriteCsSummary(this CppComment? cppComment, out string? comment)
@@ -420,13 +452,50 @@
                 return;
             }
 
+            if (cppComment is CppCommentBlockCommand blockCommand)
+            {
+                comment = null;
+                return;
+            }
+            if (cppComment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+                comment = null;
+                return;
+            }
+
+            if (cppComment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+                comment = null;
+                return;
+            }
+
+            if (cppComment is CppCommentVerbatimLine line)
+            {
+                comment = null;
+                return;
+            }
+
+            if (cppComment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+                comment = null;
+                return;
+            }
+
+            if (cppComment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+                comment = null;
+                return;
+            }
+
             if (cppComment == null || cppComment.Kind == CppCommentKind.Null)
             {
                 comment = null;
                 return;
             }
 
-            throw new NotImplementedException();
+            throw new NotSupportedException($"The comment type {cppComment.GetType()} is not supported");
         }
     }
 }

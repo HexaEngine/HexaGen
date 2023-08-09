@@ -21,20 +21,22 @@ namespace HexaEngine.X3DAudio
 	/// Distance curve point:<br/>
 	/// Defines a DSP setting at a given normalized distance.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_DISTANCE_CURVE_POINT")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DISTANCE_CURVE_POINT")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioDistanceCurvePoint
 	{
-		[NativeName("Distance")]
 		/// <summary>
 		/// normalized distance, must be within [0.0f, 1.0f]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "Distance")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float Distance;
 
-		[NativeName("DSPSetting")]
 		/// <summary>
 		/// DSP setting<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "DSPSetting")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float DSPSetting;
 
 
@@ -58,20 +60,22 @@ namespace HexaEngine.X3DAudio
 	/// <<br/>
 	/// PointCount.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_DISTANCE_CURVE")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DISTANCE_CURVE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioDistanceCurve
 	{
-		[NativeName("pPoints")]
 		/// <summary>
 		/// distance curve point array, must have at least PointCount elements with no duplicates and be sorted in ascending order with respect to Distance<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pPoints")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE_POINT*")]
 		public unsafe X3DaudioDistanceCurvePoint* PPoints;
 
-		[NativeName("PointCount")]
 		/// <summary>
 		/// number of distance curve points, must be >= 2 as all distance curves must have at least two endpoints, defining DSP settings at 0.0f and 1.0f normalized distance<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "PointCount")]
+		[NativeName(NativeNameType.Type, "UINT32")]
 		public uint PointCount;
 
 
@@ -90,56 +94,64 @@ namespace HexaEngine.X3DAudio
 	/// inner and outer values.  Set both cone angles to 0 or X3DAUDIO_2PI for<br/>
 	/// omnidirectionality using only the outer or inner values respectively.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_CONE")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_CONE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioCone
 	{
-		[NativeName("InnerAngle")]
 		/// <summary>
 		/// inner cone angle in radians, must be within [0.0f, X3DAUDIO_2PI]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerAngle")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerAngle;
 
-		[NativeName("OuterAngle")]
 		/// <summary>
 		/// outer cone angle in radians, must be within [InnerAngle, X3DAUDIO_2PI]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OuterAngle")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float OuterAngle;
 
-		[NativeName("InnerVolume")]
 		/// <summary>
 		/// volume level scaler on/within inner cone, used only for matrix calculations, must be within [0.0f, 2.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerVolume")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerVolume;
 
-		[NativeName("OuterVolume")]
 		/// <summary>
 		/// volume level scaler on/beyond outer cone, used only for matrix calculations, must be within [0.0f, 2.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OuterVolume")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float OuterVolume;
 
-		[NativeName("InnerLPF")]
 		/// <summary>
 		/// LPF (both direct and reverb paths) coefficient subtrahend on/within inner cone, used only for LPF (both direct and reverb paths) calculations, must be within [0.0f, 1.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerLPF")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerLPF;
 
-		[NativeName("OuterLPF")]
 		/// <summary>
 		/// LPF (both direct and reverb paths) coefficient subtrahend on/beyond outer cone, used only for LPF (both direct and reverb paths) calculations, must be within [0.0f, 1.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OuterLPF")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float OuterLPF;
 
-		[NativeName("InnerReverb")]
 		/// <summary>
 		/// reverb send level scaler on/within inner cone, used only for reverb calculations, must be within [0.0f, 2.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerReverb")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerReverb;
 
-		[NativeName("OuterReverb")]
 		/// <summary>
 		/// reverb send level scaler on/beyond outer cone, used only for reverb calculations, must be within [0.0f, 2.0f] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OuterReverb")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float OuterReverb;
 
 
@@ -151,38 +163,43 @@ namespace HexaEngine.X3DAudio
 	/// Defines a point of 3D audio reception.<br/>
 	/// The cone is directed by the listener's front orientation.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_LISTENER")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_LISTENER")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioListener
 	{
-		[NativeName("OrientFront")]
 		/// <summary>
 		/// orientation of front direction, used only for matrix and delay calculations or listeners with cones for matrix, LPF (both direct and reverb paths), and reverb calculations, must be normalized when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OrientFront")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 OrientFront;
 
-		[NativeName("OrientTop")]
 		/// <summary>
 		/// orientation of top direction, used only for matrix and delay calculations, must be orthonormal with OrientFront when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OrientTop")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 OrientTop;
 
-		[NativeName("Position")]
 		/// <summary>
 		/// position in user-defined world units, does not affect Velocity<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "Position")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 Position;
 
-		[NativeName("Velocity")]
 		/// <summary>
 		/// velocity vector in user-defined world units/second, used only for doppler calculations, does not affect Position<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "Velocity")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 Velocity;
 
-		[NativeName("pCone")]
 		/// <summary>
 		/// sound cone, used only for matrix, LPF (both direct and reverb paths), and reverb calculations, NULL specifies omnidirectionality<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pCone")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_CONE*")]
 		public unsafe X3DaudioCone* PCone;
 
 
@@ -216,114 +233,131 @@ namespace HexaEngine.X3DAudio
 	/// position, with the curves being calculated independently of each other.<br/>
 	/// For instance, volume and LFE calculations do not affect one another.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_EMITTER")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_EMITTER")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioEmitter
 	{
-		[NativeName("pCone")]
 		/// <summary>
 		/// sound cone, used only with single-channel emitters for matrix, LPF (both direct and reverb paths), and reverb calculations, NULL specifies omnidirectionality<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pCone")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_CONE*")]
 		public unsafe X3DaudioCone* PCone;
 
-		[NativeName("OrientFront")]
 		/// <summary>
 		/// orientation of front direction, used only for emitter angle calculations or with multi-channel emitters for matrix calculations or single-channel emitters with cones for matrix, LPF (both direct and reverb paths), and reverb calculations, must be normalized when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OrientFront")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 OrientFront;
 
-		[NativeName("OrientTop")]
 		/// <summary>
 		/// orientation of top direction, used only with multi-channel emitters for matrix calculations, must be orthonormal with OrientFront when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "OrientTop")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 OrientTop;
 
-		[NativeName("Position")]
 		/// <summary>
 		/// position in user-defined world units, does not affect Velocity<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "Position")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 Position;
 
-		[NativeName("Velocity")]
 		/// <summary>
 		/// velocity vector in user-defined world units/second, used only for doppler calculations, does not affect Position<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "Velocity")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
 		public Vector4 Velocity;
 
-		[NativeName("InnerRadius")]
 		/// <summary>
 		/// inner radius, must be within [0.0f, FLT_MAX]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerRadius")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerRadius;
 
-		[NativeName("InnerRadiusAngle")]
 		/// <summary>
 		/// inner radius angle, must be within [0.0f, X3DAUDIO_PI/4.0)<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "InnerRadiusAngle")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float InnerRadiusAngle;
 
-		[NativeName("ChannelCount")]
 		/// <summary>
 		/// number of sound channels, must be > 0<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "ChannelCount")]
+		[NativeName(NativeNameType.Type, "UINT32")]
 		public uint ChannelCount;
 
-		[NativeName("ChannelRadius")]
 		/// <summary>
 		/// channel radius, used only with multi-channel emitters for matrix calculations, must be >= 0.0f when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "ChannelRadius")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float ChannelRadius;
 
-		[NativeName("pChannelAzimuths")]
 		/// <summary>
 		/// channel azimuth array, used only with multi-channel emitters for matrix calculations, contains positions of each channel expressed in radians along the channel radius with respect to the front orientation vector in the plane orthogonal to the top orientation vector, or X3DAUDIO_2PI to specify an LFE channel, must have at least ChannelCount elements, all within [0.0f, X3DAUDIO_2PI] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pChannelAzimuths")]
+		[NativeName(NativeNameType.Type, "FLOAT32*")]
 		public unsafe float* PChannelAzimuths;
 
-		[NativeName("pVolumeCurve")]
 		/// <summary>
 		/// volume level distance curve, used only for matrix calculations, NULL specifies a default curve that conforms to the inverse square law, calculated in user-defined world units with distances <br/>
 		/// <<br/>
 		/// = CurveDistanceScaler clamped to no attenuation<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pVolumeCurve")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
 		public unsafe X3DaudioDistanceCurve* PVolumeCurve;
 
-		[NativeName("pLFECurve")]
 		/// <summary>
 		/// LFE level distance curve, used only for matrix calculations, NULL specifies a default curve that conforms to the inverse square law, calculated in user-defined world units with distances <br/>
 		/// <<br/>
 		/// = CurveDistanceScaler clamped to no attenuation<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pLFECurve")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
 		public unsafe X3DaudioDistanceCurve* PLFECurve;
 
-		[NativeName("pLPFDirectCurve")]
 		/// <summary>
 		/// LPF direct-path coefficient distance curve, used only for LPF direct-path calculations, NULL specifies the default curve: [0.0f,1.0f], [1.0f,0.75f]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pLPFDirectCurve")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
 		public unsafe X3DaudioDistanceCurve* PLPFDirectCurve;
 
-		[NativeName("pLPFReverbCurve")]
 		/// <summary>
 		/// LPF reverb-path coefficient distance curve, used only for LPF reverb-path calculations, NULL specifies the default curve: [0.0f,0.75f], [1.0f,0.75f]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pLPFReverbCurve")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
 		public unsafe X3DaudioDistanceCurve* PLPFReverbCurve;
 
-		[NativeName("pReverbCurve")]
 		/// <summary>
 		/// reverb send level distance curve, used only for reverb calculations, NULL specifies the default curve: [0.0f,1.0f], [1.0f,0.0f]<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pReverbCurve")]
+		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
 		public unsafe X3DaudioDistanceCurve* PReverbCurve;
 
-		[NativeName("CurveDistanceScaler")]
 		/// <summary>
 		/// curve distance scaler, used to scale normalized distance curves to user-defined world units and/or exaggerate their effect, used only for matrix, LPF (both direct and reverb paths), and reverb calculations, must be within [FLT_MIN, FLT_MAX] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "CurveDistanceScaler")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float CurveDistanceScaler;
 
-		[NativeName("DopplerScaler")]
 		/// <summary>
 		/// doppler shift scaler, used to exaggerate doppler shift effect, used only for doppler calculations, must be within [0.0f, FLT_MAX] when used<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "DopplerScaler")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float DopplerScaler;
 
 
@@ -337,80 +371,92 @@ namespace HexaEngine.X3DAudio
 	/// The user is responsible for allocating the matrix coefficient table,<br/>
 	/// delay time array, and initializing the channel counts when used.<br/>
 	/// </summary>
-	[NativeName("X3DAUDIO_DSP_SETTINGS")]
+	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DSP_SETTINGS")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct X3DaudioDspSettings
 	{
-		[NativeName("pMatrixCoefficients")]
 		/// <summary>
 		/// [inout] matrix coefficient table, receives an array representing the volume level used to send from source channel S to destination channel D, stored as pMatrixCoefficients[SrcChannelCount * D + S], must have at least SrcChannelCount*DstChannelCount elements<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pMatrixCoefficients")]
+		[NativeName(NativeNameType.Type, "FLOAT32*")]
 		public unsafe float* PMatrixCoefficients;
 
-		[NativeName("pDelayTimes")]
 		/// <summary>
 		/// [inout] delay time array, receives delays for each destination channel in milliseconds, must have at least DstChannelCount elements (stereo final mix only)<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pDelayTimes")]
+		[NativeName(NativeNameType.Type, "FLOAT32*")]
 		public unsafe float* PDelayTimes;
 
-		[NativeName("SrcChannelCount")]
 		/// <summary>
 		/// [in] number of source channels, must equal number of channels in respective emitter<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "SrcChannelCount")]
+		[NativeName(NativeNameType.Type, "UINT32")]
 		public uint SrcChannelCount;
 
-		[NativeName("DstChannelCount")]
 		/// <summary>
 		/// [in] number of destination channels, must equal number of channels of the final mix<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "DstChannelCount")]
+		[NativeName(NativeNameType.Type, "UINT32")]
 		public uint DstChannelCount;
 
-		[NativeName("LPFDirectCoefficient")]
 		/// <summary>
 		/// [out] LPF direct-path coefficient<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "LPFDirectCoefficient")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float LPFDirectCoefficient;
 
-		[NativeName("LPFReverbCoefficient")]
 		/// <summary>
 		/// [out] LPF reverb-path coefficient<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "LPFReverbCoefficient")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float LPFReverbCoefficient;
 
-		[NativeName("ReverbLevel")]
 		/// <summary>
 		/// [out] reverb send level<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "ReverbLevel")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float ReverbLevel;
 
-		[NativeName("DopplerFactor")]
 		/// <summary>
 		/// [out] doppler shift factor, scales resampler ratio for doppler shift effect, where the effective frequency = DopplerFactor * original frequency<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "DopplerFactor")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float DopplerFactor;
 
-		[NativeName("EmitterToListenerAngle")]
 		/// <summary>
 		/// [out] emitter-to-listener interior angle, expressed in radians with respect to the emitter's front orientation<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "EmitterToListenerAngle")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float EmitterToListenerAngle;
 
-		[NativeName("EmitterToListenerDistance")]
 		/// <summary>
 		/// [out] distance in user-defined world units from the emitter base to listener position, always calculated<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "EmitterToListenerDistance")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float EmitterToListenerDistance;
 
-		[NativeName("EmitterVelocityComponent")]
 		/// <summary>
 		/// [out] component of emitter velocity vector projected onto emitter->listener vector in user-defined world units/second, calculated only for doppler<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "EmitterVelocityComponent")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float EmitterVelocityComponent;
 
-		[NativeName("ListenerVelocityComponent")]
 		/// <summary>
 		/// [out] component of listener velocity vector projected onto emitter->listener vector in user-defined world units/second, calculated only for doppler<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "ListenerVelocityComponent")]
+		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float ListenerVelocityComponent;
 
 

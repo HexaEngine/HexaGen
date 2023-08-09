@@ -388,7 +388,7 @@
                 }
                 else if (qualifiedType.ElementType is CppPointerType subPointerType)
                 {
-                    return GetCsTypeName(subPointerType, true) + "*";
+                    return GetCsTypeName(subPointerType.ElementType, true) + "*";
                 }
                 else if (qualifiedType.ElementType is CppTypedef typedef)
                 {
@@ -633,7 +633,7 @@
             return GetCsWrapperTypeName(pointerType.ElementType, true);
         }
 
-        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut)
+        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true)
         {
             StringBuilder argumentBuilder = new();
             int index = 0;
@@ -643,6 +643,12 @@
                 CppParameter cppParameter = parameters[i];
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
+
+                if (attributes)
+                {
+                    argumentBuilder.Append($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")] ");
+                    argumentBuilder.Append($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")] ");
+                }
 
                 if (paramCsTypeName == "bool")
                 {
@@ -722,6 +728,18 @@
             {
                 return "intValue";
             }
+            if (name == "lock")
+            {
+                return "lock0";
+            }
+            if (name == "event")
+            {
+                return "evnt";
+            }
+            if (name == "string")
+            {
+                return "str";
+            }
             if (Keywords.Contains(name))
             {
                 return "@" + name;
@@ -742,7 +760,7 @@
                         return GetParameterName((type as CppPointerType).ElementType, (type as CppPointerType).ElementType.GetDisplayName());
 
                     case CppTypeKind.Reference:
-                        break;
+                        return GetParameterName((type as CppReferenceType).ElementType, (type as CppReferenceType).ElementType.GetDisplayName());
 
                     case CppTypeKind.Array:
                         break;

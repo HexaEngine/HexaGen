@@ -8,19 +8,23 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using HexaGen.Runtime;
 
 namespace HexaEngine.Shaderc
 {
+	[NativeName(NativeNameType.Enum, "shaderc_target_env")]
 	public enum ShadercTargetEnv
 	{
 		/// <summary>
 		/// SPIR-V under Vulkan semantics<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_vulkan")]
 		Vulkan = unchecked(0),
 
 		/// <summary>
 		/// SPIR-V under OpenGL semantics<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_opengl")]
 		Opengl = unchecked(1),
 
 		/// <summary>
@@ -28,41 +32,49 @@ namespace HexaEngine.Shaderc
 		/// including compatibility profile<br/>
 		/// functions<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_opengl_compat")]
 		OpenglCompat = unchecked(2),
 
 		/// <summary>
 		/// Deprecated, SPIR-V under WebGPU<br/>
 		/// semantics<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_webgpu")]
 		Webgpu = unchecked(3),
 
+		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_default")]
 		Default = Vulkan,
 	}
 
+	[NativeName(NativeNameType.Enum, "shaderc_env_version")]
 	public enum ShadercEnvVersion
 	{
 		/// <summary>
 		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
 		/// See vulkan.h<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_vulkan_1_0")]
 		Vulkan10 = unchecked((int)((1U<<22))),
 
 		/// <summary>
 		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
 		/// See vulkan.h<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_vulkan_1_1")]
 		Vulkan11 = unchecked((int)((1U<<22)|(1<<12))),
 
 		/// <summary>
 		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
 		/// See vulkan.h<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_vulkan_1_2")]
 		Vulkan12 = unchecked((int)((1U<<22)|(2<<12))),
 
 		/// <summary>
 		/// For Vulkan, use Vulkan's mapping of version numbers to integers.<br/>
 		/// See vulkan.h<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_vulkan_1_3")]
 		Vulkan13 = unchecked((int)((1U<<22)|(3<<12))),
 
 		/// <summary>
@@ -71,11 +83,13 @@ namespace HexaEngine.Shaderc
 		/// See glslang/Standalone/Standalone.cpp<br/>
 		/// TODO(dneto): Glslang doesn't accept a OpenGL client version of 460.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_opengl_4_5")]
 		Opengl45 = unchecked(450),
 
 		/// <summary>
 		/// Deprecated, WebGPU env never defined versions<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_env_version_webgpu")]
 		Webgpu = unchecked(451),
 
 	}
@@ -83,6 +97,7 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// The known versions of SPIR-V.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_spirv_version")]
 	public enum ShadercSpirvVersion
 	{
 		/// <summary>
@@ -92,6 +107,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_0")]
 		Version10 = unchecked((int)0x010000u),
 
 		/// <summary>
@@ -101,6 +117,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_1")]
 		Version11 = unchecked((int)0x010100u),
 
 		/// <summary>
@@ -110,6 +127,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_2")]
 		Version12 = unchecked((int)0x010200u),
 
 		/// <summary>
@@ -119,6 +137,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_3")]
 		Version13 = unchecked((int)0x010300u),
 
 		/// <summary>
@@ -128,6 +147,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_4")]
 		Version14 = unchecked((int)0x010400u),
 
 		/// <summary>
@@ -137,6 +157,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_5")]
 		Version15 = unchecked((int)0x010500u),
 
 		/// <summary>
@@ -146,6 +167,7 @@ namespace HexaEngine.Shaderc
 		/// - bits 8 to 15: minor version number<br/>
 		/// - bits 0 to 7: zero<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_version_1_6")]
 		Version16 = unchecked((int)0x010600u),
 
 	}
@@ -153,114 +175,141 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// Indicate the status of a compilation.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_compilation_status")]
 	public enum ShadercCompilationStatus
 	{
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_success")]
 		Success = unchecked(0),
 		/// <summary>
 		/// error stage deduction<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_invalid_stage")]
 		InvalidStage = unchecked(1),
 
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_compilation_error")]
 		Error = unchecked(2),
 		/// <summary>
 		/// unexpected failure<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_internal_error")]
 		InternalError = unchecked(3),
 
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_null_result_object")]
 		NullResultObject = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_invalid_assembly")]
 		InvalidAssembly = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_validation_error")]
 		ValidationError = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_transformation_error")]
 		TransformationError = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_configuration_error")]
 		ConfigurationError = unchecked(8),
 	}
 
 	/// <summary>
 	/// Source language kind.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_source_language")]
 	public enum ShadercSourceLanguage
 	{
+		[NativeName(NativeNameType.EnumItem, "shaderc_source_language_glsl")]
 		Glsl = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "shaderc_source_language_hlsl")]
 		Hlsl = unchecked(1),
 	}
 
+	[NativeName(NativeNameType.Enum, "shaderc_shader_kind")]
 	public enum ShadercShaderKind
 	{
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_vertex_shader")]
 		VertexShader = unchecked(0),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_fragment_shader")]
 		FragmentShader = unchecked(1),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_compute_shader")]
 		ComputeShader = unchecked(2),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_geometry_shader")]
 		GeometryShader = unchecked(3),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_tess_control_shader")]
 		TessControlShader = unchecked(4),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_tess_evaluation_shader")]
 		TessEvaluationShader = unchecked(5),
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_vertex_shader")]
 		GlslVertexShader = VertexShader,
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_fragment_shader")]
 		GlslFragmentShader = FragmentShader,
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_compute_shader")]
 		GlslComputeShader = ComputeShader,
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_geometry_shader")]
 		GlslGeometryShader = GeometryShader,
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_tess_control_shader")]
 		GlslTessControlShader = TessControlShader,
 
 		/// <summary>
 		/// Forced shader kinds. These shader kinds force the compiler to compile the<br/>
 		/// source code as the specified kind of shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_tess_evaluation_shader")]
 		GlslTessEvaluationShader = TessEvaluationShader,
 
 		/// <summary>
 		/// Deduce the shader kind from #pragma annotation in the source code. Compiler<br/>
 		/// will emit error if #pragma annotation is not found.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_infer_from_source")]
 		GlslInferFromSource = unchecked(6),
 
 		/// <summary>
@@ -268,6 +317,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_vertex_shader")]
 		GlslDefaultVertexShader = unchecked(7),
 
 		/// <summary>
@@ -275,6 +325,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_fragment_shader")]
 		GlslDefaultFragmentShader = unchecked(8),
 
 		/// <summary>
@@ -282,6 +333,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_compute_shader")]
 		GlslDefaultComputeShader = unchecked(9),
 
 		/// <summary>
@@ -289,6 +341,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_geometry_shader")]
 		GlslDefaultGeometryShader = unchecked(10),
 
 		/// <summary>
@@ -296,6 +349,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_tess_control_shader")]
 		GlslDefaultTessControlShader = unchecked(11),
 
 		/// <summary>
@@ -303,6 +357,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_tess_evaluation_shader")]
 		GlslDefaultTessEvaluationShader = unchecked(12),
 
 		/// <summary>
@@ -310,6 +365,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_spirv_assembly")]
 		SpirvAssembly = unchecked(13),
 
 		/// <summary>
@@ -317,6 +373,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_raygen_shader")]
 		RaygenShader = unchecked(14),
 
 		/// <summary>
@@ -324,6 +381,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_anyhit_shader")]
 		AnyhitShader = unchecked(15),
 
 		/// <summary>
@@ -331,6 +389,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_closesthit_shader")]
 		ClosesthitShader = unchecked(16),
 
 		/// <summary>
@@ -338,6 +397,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_miss_shader")]
 		MissShader = unchecked(17),
 
 		/// <summary>
@@ -345,6 +405,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_intersection_shader")]
 		IntersectionShader = unchecked(18),
 
 		/// <summary>
@@ -352,6 +413,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_callable_shader")]
 		CallableShader = unchecked(19),
 
 		/// <summary>
@@ -359,6 +421,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_raygen_shader")]
 		GlslRaygenShader = RaygenShader,
 
 		/// <summary>
@@ -366,6 +429,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_anyhit_shader")]
 		GlslAnyhitShader = AnyhitShader,
 
 		/// <summary>
@@ -373,6 +437,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_closesthit_shader")]
 		GlslClosesthitShader = ClosesthitShader,
 
 		/// <summary>
@@ -380,6 +445,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_miss_shader")]
 		GlslMissShader = MissShader,
 
 		/// <summary>
@@ -387,6 +453,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_intersection_shader")]
 		GlslIntersectionShader = IntersectionShader,
 
 		/// <summary>
@@ -394,6 +461,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_callable_shader")]
 		GlslCallableShader = CallableShader,
 
 		/// <summary>
@@ -401,6 +469,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_raygen_shader")]
 		GlslDefaultRaygenShader = unchecked(20),
 
 		/// <summary>
@@ -408,6 +477,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_anyhit_shader")]
 		GlslDefaultAnyhitShader = unchecked(21),
 
 		/// <summary>
@@ -415,6 +485,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_closesthit_shader")]
 		GlslDefaultClosesthitShader = unchecked(22),
 
 		/// <summary>
@@ -422,6 +493,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_miss_shader")]
 		GlslDefaultMissShader = unchecked(23),
 
 		/// <summary>
@@ -429,6 +501,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_intersection_shader")]
 		GlslDefaultIntersectionShader = unchecked(24),
 
 		/// <summary>
@@ -436,6 +509,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_callable_shader")]
 		GlslDefaultCallableShader = unchecked(25),
 
 		/// <summary>
@@ -443,6 +517,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_task_shader")]
 		TaskShader = unchecked(26),
 
 		/// <summary>
@@ -450,6 +525,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_mesh_shader")]
 		MeshShader = unchecked(27),
 
 		/// <summary>
@@ -457,6 +533,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_task_shader")]
 		GlslTaskShader = TaskShader,
 
 		/// <summary>
@@ -464,6 +541,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_mesh_shader")]
 		GlslMeshShader = MeshShader,
 
 		/// <summary>
@@ -471,6 +549,7 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_task_shader")]
 		GlslDefaultTaskShader = unchecked(28),
 
 		/// <summary>
@@ -478,45 +557,55 @@ namespace HexaEngine.Shaderc
 		/// the specified kind of shader when #pragma annotation is not found in the<br/>
 		/// source code.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_glsl_default_mesh_shader")]
 		GlslDefaultMeshShader = unchecked(29),
 
 	}
 
+	[NativeName(NativeNameType.Enum, "shaderc_profile")]
 	public enum ShadercProfile
 	{
 		/// <summary>
 		/// Used if and only if GLSL version did not specify<br/>
 		/// profiles.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_profile_none")]
 		None = unchecked(0),
 
+		[NativeName(NativeNameType.EnumItem, "shaderc_profile_core")]
 		Core = unchecked(1),
 		/// <summary>
 		/// Disabled. This generates an error<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_profile_compatibility")]
 		Compatibility = unchecked(2),
 
+		[NativeName(NativeNameType.EnumItem, "shaderc_profile_es")]
 		Es = unchecked(3),
 	}
 
 	/// <summary>
 	/// Optimization level.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_optimization_level")]
 	public enum ShadercOptimizationLevel
 	{
 		/// <summary>
 		/// no optimization<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_optimization_level_zero")]
 		Zero = unchecked(0),
 
 		/// <summary>
 		/// optimize towards reducing code size<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_optimization_level_size")]
 		Size = unchecked(1),
 
 		/// <summary>
 		/// optimize towards performance<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_optimization_level_performance")]
 		Performance = unchecked(2),
 
 	}
@@ -524,109 +613,212 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// Resource limits.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_limit")]
 	public enum ShadercLimit
 	{
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_lights")]
 		MaxLights = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_clip_planes")]
 		MaxClipPlanes = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_units")]
 		MaxTextureUnits = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_coords")]
 		MaxTextureCoords = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_attribs")]
 		MaxVertexAttribs = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_uniform_components")]
 		MaxVertexUniformComponents = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_floats")]
 		MaxVaryingFloats = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_texture_image_units")]
 		MaxVertexTextureImageUnits = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_texture_image_units")]
 		MaxCombinedTextureImageUnits = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_image_units")]
 		MaxTextureImageUnits = unchecked(9),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_uniform_components")]
 		MaxFragmentUniformComponents = unchecked(10),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_draw_buffers")]
 		MaxDrawBuffers = unchecked(11),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_uniform_vectors")]
 		MaxVertexUniformVectors = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_vectors")]
 		MaxVaryingVectors = unchecked(13),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_uniform_vectors")]
 		MaxFragmentUniformVectors = unchecked(14),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_output_vectors")]
 		MaxVertexOutputVectors = unchecked(15),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_input_vectors")]
 		MaxFragmentInputVectors = unchecked(16),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_min_program_texel_offset")]
 		MinProgramTexelOffset = unchecked(17),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_program_texel_offset")]
 		MaxProgramTexelOffset = unchecked(18),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_clip_distances")]
 		MaxClipDistances = unchecked(19),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_x")]
 		MaxComputeWorkGroupCountx = unchecked(20),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_y")]
 		MaxComputeWorkGroupCounty = unchecked(21),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_z")]
 		MaxComputeWorkGroupCountz = unchecked(22),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_x")]
 		MaxComputeWorkGroupSizex = unchecked(23),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_y")]
 		MaxComputeWorkGroupSizey = unchecked(24),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_z")]
 		MaxComputeWorkGroupSizez = unchecked(25),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_uniform_components")]
 		MaxComputeUniformComponents = unchecked(26),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_texture_image_units")]
 		MaxComputeTextureImageUnits = unchecked(27),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_image_uniforms")]
 		MaxComputeImageUniforms = unchecked(28),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_atomic_counters")]
 		MaxComputeAtomicCounters = unchecked(29),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_atomic_counter_buffers")]
 		MaxComputeAtomicCounterBuffers = unchecked(30),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_components")]
 		MaxVaryingComponents = unchecked(31),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_output_components")]
 		MaxVertexOutputComponents = unchecked(32),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_input_components")]
 		MaxGeometryInputComponents = unchecked(33),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_output_components")]
 		MaxGeometryOutputComponents = unchecked(34),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_input_components")]
 		MaxFragmentInputComponents = unchecked(35),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_image_units")]
 		MaxImageUnits = unchecked(36),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_image_units_and_fragment_outputs")]
 		MaxCombinedImageUnitsAndFragmentOutputs = unchecked(37),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_shader_output_resources")]
 		MaxCombinedShaderOutputResources = unchecked(38),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_image_samples")]
 		MaxImageSamples = unchecked(39),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_image_uniforms")]
 		MaxVertexImageUniforms = unchecked(40),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_image_uniforms")]
 		MaxTessControlImageUniforms = unchecked(41),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_image_uniforms")]
 		MaxTessEvaluationImageUniforms = unchecked(42),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_image_uniforms")]
 		MaxGeometryImageUniforms = unchecked(43),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_image_uniforms")]
 		MaxFragmentImageUniforms = unchecked(44),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_image_uniforms")]
 		MaxCombinedImageUniforms = unchecked(45),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_texture_image_units")]
 		MaxGeometryTextureImageUnits = unchecked(46),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_output_vertices")]
 		MaxGeometryOutputVertices = unchecked(47),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_total_output_components")]
 		MaxGeometryTotalOutputComponents = unchecked(48),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_uniform_components")]
 		MaxGeometryUniformComponents = unchecked(49),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_varying_components")]
 		MaxGeometryVaryingComponents = unchecked(50),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_input_components")]
 		MaxTessControlInputComponents = unchecked(51),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_output_components")]
 		MaxTessControlOutputComponents = unchecked(52),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_texture_image_units")]
 		MaxTessControlTextureImageUnits = unchecked(53),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_uniform_components")]
 		MaxTessControlUniformComponents = unchecked(54),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_total_output_components")]
 		MaxTessControlTotalOutputComponents = unchecked(55),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_input_components")]
 		MaxTessEvaluationInputComponents = unchecked(56),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_output_components")]
 		MaxTessEvaluationOutputComponents = unchecked(57),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_texture_image_units")]
 		MaxTessEvaluationTextureImageUnits = unchecked(58),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_uniform_components")]
 		MaxTessEvaluationUniformComponents = unchecked(59),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_patch_components")]
 		MaxTessPatchComponents = unchecked(60),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_patch_vertices")]
 		MaxPatchVertices = unchecked(61),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_gen_level")]
 		MaxTessGenLevel = unchecked(62),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_viewports")]
 		MaxViewports = unchecked(63),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_atomic_counters")]
 		MaxVertexAtomicCounters = unchecked(64),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_atomic_counters")]
 		MaxTessControlAtomicCounters = unchecked(65),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_atomic_counters")]
 		MaxTessEvaluationAtomicCounters = unchecked(66),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_atomic_counters")]
 		MaxGeometryAtomicCounters = unchecked(67),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_atomic_counters")]
 		MaxFragmentAtomicCounters = unchecked(68),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_atomic_counters")]
 		MaxCombinedAtomicCounters = unchecked(69),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_atomic_counter_bindings")]
 		MaxAtomicCounterBindings = unchecked(70),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_atomic_counter_buffers")]
 		MaxVertexAtomicCounterBuffers = unchecked(71),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_atomic_counter_buffers")]
 		MaxTessControlAtomicCounterBuffers = unchecked(72),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_atomic_counter_buffers")]
 		MaxTessEvaluationAtomicCounterBuffers = unchecked(73),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_atomic_counter_buffers")]
 		MaxGeometryAtomicCounterBuffers = unchecked(74),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_atomic_counter_buffers")]
 		MaxFragmentAtomicCounterBuffers = unchecked(75),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_atomic_counter_buffers")]
 		MaxCombinedAtomicCounterBuffers = unchecked(76),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_atomic_counter_buffer_size")]
 		MaxAtomicCounterBufferSize = unchecked(77),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_transform_feedback_buffers")]
 		MaxTransformFeedbackBuffers = unchecked(78),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_transform_feedback_interleaved_components")]
 		MaxTransformFeedbackInterleavedComponents = unchecked(79),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_cull_distances")]
 		MaxCullDistances = unchecked(80),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_clip_and_cull_distances")]
 		MaxCombinedClipAndCullDistances = unchecked(81),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_samples")]
 		MaxSamples = unchecked(82),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_vertices_nv")]
 		MaxMeshOutputVerticesNv = unchecked(83),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_primitives_nv")]
 		MaxMeshOutputPrimitivesNv = unchecked(84),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_x_nv")]
 		MaxMeshWorkGroupSizexNv = unchecked(85),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_y_nv")]
 		MaxMeshWorkGroupSizeyNv = unchecked(86),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_z_nv")]
 		MaxMeshWorkGroupSizezNv = unchecked(87),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_x_nv")]
 		MaxTaskWorkGroupSizexNv = unchecked(88),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_y_nv")]
 		MaxTaskWorkGroupSizeyNv = unchecked(89),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_z_nv")]
 		MaxTaskWorkGroupSizezNv = unchecked(90),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_view_count_nv")]
 		MaxMeshViewCountNv = unchecked(91),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_vertices_ext")]
 		MaxMeshOutputVerticesExt = unchecked(92),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_primitives_ext")]
 		MaxMeshOutputPrimitivesExt = unchecked(93),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_x_ext")]
 		MaxMeshWorkGroupSizexExt = unchecked(94),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_y_ext")]
 		MaxMeshWorkGroupSizeyExt = unchecked(95),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_z_ext")]
 		MaxMeshWorkGroupSizezExt = unchecked(96),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_x_ext")]
 		MaxTaskWorkGroupSizexExt = unchecked(97),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_y_ext")]
 		MaxTaskWorkGroupSizeyExt = unchecked(98),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_z_ext")]
 		MaxTaskWorkGroupSizezExt = unchecked(99),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_view_count_ext")]
 		MaxMeshViewCountExt = unchecked(100),
+		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_dual_source_draw_buffers_ext")]
 		MaxDualSourceDrawBuffersExt = unchecked(101),
 	}
 
@@ -635,37 +827,44 @@ namespace HexaEngine.Shaderc
 	/// In Vulkan, uniform resources are bound to the pipeline via descriptors<br/>
 	/// with numbered bindings and sets.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_uniform_kind")]
 	public enum ShadercUniformKind
 	{
 		/// <summary>
 		/// Image and image buffer.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_image")]
 		Image = unchecked(0),
 
 		/// <summary>
 		/// Pure sampler.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_sampler")]
 		Sampler = unchecked(1),
 
 		/// <summary>
 		/// Sampled texture in GLSL, and Shader Resource View in HLSL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_texture")]
 		Texture = unchecked(2),
 
 		/// <summary>
 		/// Uniform Buffer Object (UBO) in GLSL.  Cbuffer in HLSL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_buffer")]
 		Buffer = unchecked(3),
 
 		/// <summary>
 		/// Shader Storage Buffer Object (SSBO) in GLSL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_storage_buffer")]
 		StorageBuffer = unchecked(4),
 
 		/// <summary>
 		/// Unordered Access View, in HLSL.  (Writable storage image or storage<br/>
 		/// buffer.)<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_uniform_kind_unordered_access_view")]
 		UnorderedAccessView = unchecked(5),
 
 	}
@@ -673,11 +872,13 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// The kinds of include requests.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Enum, "shaderc_include_type")]
 	public enum ShadercIncludeType
 	{
 		/// <summary>
 		/// E.g. #include "source"<br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_include_type_relative")]
 		Relative = unchecked(0),
 
 		/// <summary>
@@ -685,6 +886,7 @@ namespace HexaEngine.Shaderc
 		/// <source<br/>
 		/// ><br/>
 		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "shaderc_include_type_standard")]
 		Standard = unchecked(1),
 
 	}

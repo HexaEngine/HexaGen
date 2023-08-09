@@ -21,12 +21,12 @@ namespace HexaEngine.XAudio2
 	/// AUDCLNT_SHAREMODE_EXCLUSIVE - The device will be opened in exclusive mode and use the<br/>
 	/// application specified format.<br/>
 	/// </summary>
-	[NativeName("_AUDCLNT_SHAREMODE")]
+	[NativeName(NativeNameType.Enum, "_AUDCLNT_SHAREMODE")]
 	public enum AudclntSharemode
 	{
-		[NativeName("AUDCLNT_SHAREMODE_SHARED")]
+		[NativeName(NativeNameType.EnumItem, "AUDCLNT_SHAREMODE_SHARED")]
 		Shared = unchecked(0),
-		[NativeName("AUDCLNT_SHAREMODE_EXCLUSIVE")]
+		[NativeName(NativeNameType.EnumItem, "AUDCLNT_SHAREMODE_EXCLUSIVE")]
 		Exclusive = unchecked(1),
 	}
 
@@ -49,36 +49,36 @@ namespace HexaEngine.XAudio2
 	/// VoiceTyping             - Dictation, typing by voice<br/>
 	/// Other                   - All other streams (default)<br/>
 	/// </summary>
-	[NativeName("_AUDIO_STREAM_CATEGORY")]
+	[NativeName(NativeNameType.Enum, "_AUDIO_STREAM_CATEGORY")]
 	public enum AudioStreamCategory
 	{
-		[NativeName("AudioCategory_Other")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Other")]
 		Other = unchecked(0),
-		[NativeName("AudioCategory_ForegroundOnlyMedia")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_ForegroundOnlyMedia")]
 		ForegroundOnlyMedia = unchecked(1),
-		[NativeName("AudioCategory_Communications")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Communications")]
 		Communications = unchecked(3),
-		[NativeName("AudioCategory_Alerts")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Alerts")]
 		Alerts = unchecked(4),
-		[NativeName("AudioCategory_SoundEffects")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_SoundEffects")]
 		SoundEffects = unchecked(5),
-		[NativeName("AudioCategory_GameEffects")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameEffects")]
 		GameEffects = unchecked(6),
-		[NativeName("AudioCategory_GameMedia")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameMedia")]
 		GameMedia = unchecked(7),
-		[NativeName("AudioCategory_GameChat")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameChat")]
 		GameChat = unchecked(8),
-		[NativeName("AudioCategory_Speech")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Speech")]
 		Speech = unchecked(9),
-		[NativeName("AudioCategory_Movie")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Movie")]
 		Movie = unchecked(10),
-		[NativeName("AudioCategory_Media")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_Media")]
 		Media = unchecked(11),
-		[NativeName("AudioCategory_FarFieldSpeech")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_FarFieldSpeech")]
 		FarFieldSpeech = unchecked(12),
-		[NativeName("AudioCategory_UniformSpeech")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_UniformSpeech")]
 		UniformSpeech = unchecked(13),
-		[NativeName("AudioCategory_VoiceTyping")]
+		[NativeName(NativeNameType.EnumItem, "AudioCategory_VoiceTyping")]
 		VoiceTyping = unchecked(14),
 	}
 
@@ -89,57 +89,57 @@ namespace HexaEngine.XAudio2
 	/// AudioSessionStateActive - The session has active audio streams.<br/>
 	/// AudioSessionStateExpired - The session is dormant.<br/>
 	/// </summary>
-	[NativeName("_AudioSessionState")]
+	[NativeName(NativeNameType.Enum, "_AudioSessionState")]
 	public enum AudioSessionState
 	{
-		[NativeName("AudioSessionStateInactive")]
+		[NativeName(NativeNameType.EnumItem, "AudioSessionStateInactive")]
 		Inactive = unchecked(0),
-		[NativeName("AudioSessionStateActive")]
+		[NativeName(NativeNameType.EnumItem, "AudioSessionStateActive")]
 		Active = unchecked(1),
-		[NativeName("AudioSessionStateExpired")]
+		[NativeName(NativeNameType.EnumItem, "AudioSessionStateExpired")]
 		Expired = unchecked(2),
 	}
 
 	/// <summary>
 	/// Used in XAUDIO2_FILTER_PARAMETERS below<br/>
 	/// </summary>
-	[NativeName("XAUDIO2_FILTER_TYPE")]
+	[NativeName(NativeNameType.Enum, "XAUDIO2_FILTER_TYPE")]
 	public enum XAudio2FilterType
 	{
 		/// <summary>
 		/// Attenuates frequencies above the cutoff frequency (state-variable filter).<br/>
 		/// </summary>
-		[NativeName("LowPassFilter")]
+		[NativeName(NativeNameType.EnumItem, "LowPassFilter")]
 		LowPassFilter = unchecked(0),
 
 		/// <summary>
 		/// Attenuates frequencies outside a given range      (state-variable filter).<br/>
 		/// </summary>
-		[NativeName("BandPassFilter")]
+		[NativeName(NativeNameType.EnumItem, "BandPassFilter")]
 		BandPassFilter = unchecked(1),
 
 		/// <summary>
 		/// Attenuates frequencies below the cutoff frequency (state-variable filter).<br/>
 		/// </summary>
-		[NativeName("HighPassFilter")]
+		[NativeName(NativeNameType.EnumItem, "HighPassFilter")]
 		HighPassFilter = unchecked(2),
 
 		/// <summary>
 		/// Attenuates frequencies inside a given range       (state-variable filter).<br/>
 		/// </summary>
-		[NativeName("NotchFilter")]
+		[NativeName(NativeNameType.EnumItem, "NotchFilter")]
 		NotchFilter = unchecked(3),
 
 		/// <summary>
 		/// Attenuates frequencies above the cutoff frequency (one-pole filter, XAUDIO2_FILTER_PARAMETERS.OneOverQ has no effect)<br/>
 		/// </summary>
-		[NativeName("LowPassOnePoleFilter")]
+		[NativeName(NativeNameType.EnumItem, "LowPassOnePoleFilter")]
 		LowPassOnePoleFilter = unchecked(4),
 
 		/// <summary>
 		/// Attenuates frequencies below the cutoff frequency (one-pole filter, XAUDIO2_FILTER_PARAMETERS.OneOverQ has no effect)<br/>
 		/// </summary>
-		[NativeName("HighPassOnePoleFilter")]
+		[NativeName(NativeNameType.EnumItem, "HighPassOnePoleFilter")]
 		HighPassOnePoleFilter = unchecked(5),
 
 	}

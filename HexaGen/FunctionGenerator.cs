@@ -106,6 +106,22 @@
                                 }
                             }
                         }
+
+                        string paramAttr = $"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]";
+                        string typeAttr = $"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]";
+                        refParameterList[j].Attributes.Add(paramAttr);
+                        refParameterList[j].Attributes.Add(typeAttr);
+                        stringParameterList[j].Attributes.Add(paramAttr);
+                        stringParameterList[j].Attributes.Add(typeAttr);
+
+                        if (mapping != null)
+                        {
+                            for (int i = 0; i < mapping.CustomVariations.Count; i++)
+                            {
+                                customParameterList[i][j].Attributes.Add(paramAttr);
+                                customParameterList[i][j].Attributes.Add(typeAttr);
+                            }
+                        }
                     }
 
                     CsFunctionVariation refVariation = function.CreateVariationWith();
@@ -284,6 +300,24 @@
                                 {
                                     customParameterList[i][j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
                                 }
+                            }
+                        }
+
+                        string paramAttr = $"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]";
+                        string typeAttr = $"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]";
+                        refParameterList[j].Attributes.Add(paramAttr);
+                        refParameterList[j].Attributes.Add(typeAttr);
+                        stringParameterList[j].Attributes.Add(paramAttr);
+                        stringParameterList[j].Attributes.Add(typeAttr);
+                        comPtrParameterList[j].Attributes.Add(paramAttr);
+                        comPtrParameterList[j].Attributes.Add(typeAttr);
+
+                        if (mapping != null)
+                        {
+                            for (int i = 0; i < mapping.CustomVariations.Count; i++)
+                            {
+                                customParameterList[i][j].Attributes.Add(paramAttr);
+                                customParameterList[i][j].Attributes.Add(typeAttr);
                             }
                         }
                     }

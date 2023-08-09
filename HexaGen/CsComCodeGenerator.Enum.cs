@@ -66,7 +66,7 @@
 
                 EnumPrefix enumNamePrefix = settings.GetEnumNamePrefix(cppEnum.Name);
 
-                WriteEnum(writer, cppEnum, cppEnum.Name, csName, enumNamePrefix);
+                WriteEnum(writer, cppEnum, csName, enumNamePrefix);
             }
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -119,11 +119,11 @@
 
                 EnumPrefix enumNamePrefix = settings.GetEnumNamePrefix(typeDef.Name);
 
-                WriteEnum(writer, cppEnum, typeDef.Name, csName, enumNamePrefix);
+                WriteEnum(writer, cppEnum, csName, enumNamePrefix);
             }
         }
 
-        private void WriteEnum(CodeWriter writer, CppEnum cppEnum, string cppName, string csName, EnumPrefix enumNamePrefix)
+        private void WriteEnum(CodeWriter writer, CppEnum cppEnum, string csName, EnumPrefix enumNamePrefix)
         {
             if (csName.EndsWith("_"))
             {
@@ -141,7 +141,7 @@
 
             bool noneAdded = false;
             cppEnum.Comment.WriteCsSummary(writer);
-            writer.WriteLine($"[NativeName(\"{cppName}\")]");
+            writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{cppEnum.Name}\")]");
             using (writer.PushBlock($"public enum {csName}"))
             {
                 for (int j = 0; j < cppEnum.Items.Count; j++)
@@ -167,13 +167,14 @@
                     {
                         commentWritten = FormatHelper.WriteCsSummary(itemMapping?.Comment, writer);
                     }
+                    writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]");
+
                     if (enumItem.ValueExpression is CppRawExpression rawExpression)
                     {
                         string enumValueName = settings.GetPrettyEnumName(rawExpression.Text, enumNamePrefix);
 
                         if (enumItem.Name == rawExpression.Text)
                         {
-                            writer.WriteLine($"[NativeName(\"{enumItem.Name}\")]");
                             writer.WriteLine($"{enumItemName} = {j},");
                             continue;
                         }
@@ -186,7 +187,6 @@
                                 continue;
                         }
 
-                        writer.WriteLine($"[NativeName(\"{enumItem.Name}\")]");
                         if (rawExpression.Kind == CppExpressionKind.Unexposed)
                         {
                             writer.WriteLine($"{enumItemName} = unchecked((int){enumValueName.Replace("_", "")}),");
@@ -198,7 +198,6 @@
                     }
                     else
                     {
-                        writer.WriteLine($"[NativeName(\"{enumItem.Name}\")]");
                         writer.WriteLine($"{enumItemName} = unchecked({enumItem.Value}),");
                     }
 

@@ -12,13 +12,16 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
+using HexaGen.Runtime.COM;
 
 namespace HexaEngine.DXC
 {
+	[NativeName(NativeNameType.Delegate, "DxcCreateInstanceProc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult DxcCreateInstanceProc(Guid* rclsid, Guid* riid, void** ppv);
+	public unsafe delegate HResult DxcCreateInstanceProc([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
+	[NativeName(NativeNameType.Delegate, "DxcCreateInstance2Proc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult DxcCreateInstance2Proc(IMalloc* pMalloc, Guid* rclsid, Guid* riid, void** ppv);
+	public unsafe delegate HResult DxcCreateInstance2Proc([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
 }

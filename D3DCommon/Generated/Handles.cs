@@ -14,6 +14,7 @@ using HexaGen.Runtime;
 
 namespace HexaEngine.D3DCommon
 {
+	[NativeName(NativeNameType.Typedef, "LPD3D_SHADER_MACRO")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3DShaderMacro : IEquatable<Lpd3DShaderMacro>
 	{
@@ -38,6 +39,7 @@ namespace HexaEngine.D3DCommon
 	/// interface __MIDL_itf_d3dcommon_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPD3D10BLOB")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3D10Blob : IEquatable<Lpd3D10Blob>
 	{
@@ -58,6 +60,7 @@ namespace HexaEngine.D3DCommon
 		private string DebuggerDisplay => string.Format("Lpd3D10Blob [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3DBLOB")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3Dblob : IEquatable<Lpd3Dblob>
 	{
@@ -78,6 +81,7 @@ namespace HexaEngine.D3DCommon
 		private string DebuggerDisplay => string.Format("Lpd3Dblob [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "LPD3DINCLUDE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpd3Dinclude : IEquatable<Lpd3Dinclude>
 	{

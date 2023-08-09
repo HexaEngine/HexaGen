@@ -1,0 +1,73 @@
+{
+  "Namespace": "HexaEngine.SDL2",
+  "ApiName": "SDL2",
+  "LibName": "sdl2",
+  "GenerateSizeOfStructs": false,
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event",
+    "lock"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "size_t": "nuint",
+    "bool": "bool",
+    "Uint8": "byte",
+    "Uint16": "ushort",
+    "Uint32": "uint",
+    "Uint64": "ulong",
+    "Sint8": "sbyte",
+    "Sint16": "short",
+    "Sint32": "int",
+    "Sint64": "long",
+    "SDL_JoystickID": "int",
+    "SDL_GestureID": "long",
+    "SDL_TouchID": "long",
+    "SDL_FingerID": "long",
+    "SDL_Keycode": "int",
+    "SDL_AudioFormat": "ushort",
+    "SDL_SpinLock": "int",
+    "SDL_TimerID": "int",
+    "SDL_AudioDeviceID": "uint",
+    "SDL_sem": "SDLSemaphore",
+    "SDL_threadID": "uint",
+    "SDL_TLSID": "uint",
+    "SDL_JoystickGUID": "Guid",
+    "SDL_SensorID": "int",
+    "va_list": "nint",
+    "uintptr_t": "nuint"
+  },
+  "IgnoredFunctions": [
+    "SDL_ReportAssertion"
+  ]
+}

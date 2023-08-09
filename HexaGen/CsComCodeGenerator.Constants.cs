@@ -57,13 +57,13 @@
                         continue;
                     if (value.IsNumeric(true))
                     {
-                        writer.WriteLine($"[NativeName(\"{macro.Name}\")]");
+                        writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
                         writer.WriteLine($"public const uint {name} = {value};");
                         writer.WriteLine();
                     }
                     else if (value.IsString())
                     {
-                        writer.WriteLine($"[NativeName(\"{macro.Name}\")]");
+                        writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
                         writer.WriteLine($"public const string {name} = {value};");
                         writer.WriteLine();
                     }

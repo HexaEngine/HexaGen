@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen;
+    using HexaGen.Core.CSharp;
     using System.IO;
 
     public partial class CsCodeGenerator
@@ -10,7 +11,7 @@
 
         public readonly HashSet<string> DefinedTypedefs = new();
 
-        private void GenerateHandles(CppCompilation compilation, string outputPath)
+        protected virtual void GenerateHandles(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Handles.cs");
             string[] usings = { "System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
@@ -48,6 +49,7 @@
         {
             LogInfo("defined handle " + csName);
             typedef.Comment.WriteCsSummary(writer);
+            writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))
             {

@@ -18,16 +18,14 @@ namespace HexaGen
 
             StringBuilder sb = new();
             bool isCaps = name.IsCaps();
-            bool wasLower = false;
-            bool first = true;
+            bool wasLowerCase = false;
             bool wasNumber = false;
             for (int i = 0; i < name.Length; i++)
             {
                 char c = name[i];
                 if (c == '_')
                 {
-                    first = false;
-                    wasLower = true;
+                    wasLowerCase = true;
                     continue;
                 }
 
@@ -41,17 +39,17 @@ namespace HexaGen
                     c = char.ToUpper(c);
                 }
 
-                if (wasLower || wasNumber)
+                if (wasLowerCase || wasNumber)
                 {
                     c = char.ToUpper(c);
-                    wasLower = false;
+                    wasLowerCase = false;
                 }
 
                 sb.Append(c);
                 wasNumber = char.IsDigit(c);
             }
 
-            if (sb[^1] == 'T')
+            if (sb.Length > 0 && sb[^1] == 'T')
             {
                 sb.Remove(sb.Length - 1, 1);
             }

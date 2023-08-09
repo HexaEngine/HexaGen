@@ -29,10 +29,14 @@ namespace HexaEngine.Shaderc
 		/// object requires synchronization IF AND ONLY IF some of them take a non-const<br/>
 		/// argument.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compiler_initialize")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compiler_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compiler_initialize")]
 		internal static extern ShadercCompiler ShadercCompilerInitializeNative();
 
-		/// <summary>		/// Returns a shaderc_compiler_t that can be used to compile modules.<br/>		/// A return of NULL indicates that there was an error initializing the compiler.<br/>		/// Any function operating on shaderc_compiler_t must offer the basic<br/>		/// thread-safety guarantee.<br/>		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]<br/>		/// That is: concurrent invocation of these functions on DIFFERENT objects needs<br/>		/// no synchronization; concurrent invocation of these functions on the SAME<br/>		/// object requires synchronization IF AND ONLY IF some of them take a non-const<br/>		/// argument.<br/>		/// </summary>		public static ShadercCompiler ShadercCompilerInitialize()
+		/// <summary>		/// Returns a shaderc_compiler_t that can be used to compile modules.<br/>		/// A return of NULL indicates that there was an error initializing the compiler.<br/>		/// Any function operating on shaderc_compiler_t must offer the basic<br/>		/// thread-safety guarantee.<br/>		/// [http://herbsutter.com/2014/01/13/gotw-95-solution-thread-safety-and-synchronization/]<br/>		/// That is: concurrent invocation of these functions on DIFFERENT objects needs<br/>		/// no synchronization; concurrent invocation of these functions on the SAME<br/>		/// object requires synchronization IF AND ONLY IF some of them take a non-const<br/>		/// argument.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compiler_initialize")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compiler_t")]
+		public static ShadercCompiler ShadercCompilerInitialize()
 		{
 			ShadercCompiler ret = ShadercCompilerInitializeNative();
 			return ret;
@@ -43,10 +47,14 @@ namespace HexaEngine.Shaderc
 		/// After this call it is invalid to make any future calls to functions<br/>
 		/// involving this shaderc_compiler_t.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compiler_release")]
-		internal static extern void ShadercCompilerReleaseNative(ShadercCompiler shadercCompiler);
+		internal static extern void ShadercCompilerReleaseNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler shadercCompiler);
 
-		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		public static void ShadercCompilerRelease(ShadercCompiler shadercCompiler)
+		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompilerRelease([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler shadercCompiler)
 		{
 			ShadercCompilerReleaseNative(shadercCompiler);
 		}
@@ -58,10 +66,14 @@ namespace HexaEngine.Shaderc
 		/// Any function operating on shaderc_compile_options_t must offer the<br/>
 		/// basic thread-safety guarantee.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_initialize")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compile_options_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_initialize")]
 		internal static extern ShadercCompileOptions ShadercCompileOptionsInitializeNative();
 
-		/// <summary>		/// Returns a default-initialized shaderc_compile_options_t that can be used<br/>		/// to modify the functionality of a compiled module.<br/>		/// A return of NULL indicates that there was an error initializing the options.<br/>		/// Any function operating on shaderc_compile_options_t must offer the<br/>		/// basic thread-safety guarantee.<br/>		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsInitialize()
+		/// <summary>		/// Returns a default-initialized shaderc_compile_options_t that can be used<br/>		/// to modify the functionality of a compiled module.<br/>		/// A return of NULL indicates that there was an error initializing the options.<br/>		/// Any function operating on shaderc_compile_options_t must offer the<br/>		/// basic thread-safety guarantee.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_initialize")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compile_options_t")]
+		public static ShadercCompileOptions ShadercCompileOptionsInitialize()
 		{
 			ShadercCompileOptions ret = ShadercCompileOptionsInitializeNative();
 			return ret;
@@ -72,10 +84,14 @@ namespace HexaEngine.Shaderc
 		/// If NULL is passed as the parameter the call is the same as<br/>
 		/// shaderc_compile_options_init.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_clone")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compile_options_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_clone")]
-		internal static extern ShadercCompileOptions ShadercCompileOptionsCloneNative(ShadercCompileOptions options);
+		internal static extern ShadercCompileOptions ShadercCompileOptionsCloneNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions options);
 
-		/// <summary>		/// Returns a copy of the given shaderc_compile_options_t.<br/>		/// If NULL is passed as the parameter the call is the same as<br/>		/// shaderc_compile_options_init.<br/>		/// </summary>		public static ShadercCompileOptions ShadercCompileOptionsClone(ShadercCompileOptions options)
+		/// <summary>		/// Returns a copy of the given shaderc_compile_options_t.<br/>		/// If NULL is passed as the parameter the call is the same as<br/>		/// shaderc_compile_options_init.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_clone")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compile_options_t")]
+		public static ShadercCompileOptions ShadercCompileOptionsClone([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions options)
 		{
 			ShadercCompileOptions ret = ShadercCompileOptionsCloneNative(options);
 			return ret;
@@ -86,10 +102,14 @@ namespace HexaEngine.Shaderc
 		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>
 		/// NULL to this function, and doing such will have no effect.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_release")]
-		internal static extern void ShadercCompileOptionsReleaseNative(ShadercCompileOptions options);
+		internal static extern void ShadercCompileOptionsReleaseNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options);
 
-		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		public static void ShadercCompileOptionsRelease(ShadercCompileOptions options)
+		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsRelease([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsReleaseNative(options);
 		}
@@ -107,15 +127,21 @@ namespace HexaEngine.Shaderc
 		/// a valueless macro, the value argument should be a null pointer or the<br/>
 		/// value_length should be 0u.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_add_macro_definition")]
-		internal static extern void ShadercCompileOptionsAddMacroDefinitionNative(ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength);
+		internal static extern void ShadercCompileOptionsAddMacroDefinitionNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength);
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			ShadercCompileOptionsAddMacroDefinitionNative(options, name, nameLength, value, valueLength);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -123,7 +149,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -149,7 +177,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pvalue = &value)
 			{
@@ -157,7 +187,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -183,7 +215,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -194,7 +228,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void ShadercCompileOptionsAddMacroDefinition(ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsAddMacroDefinition([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -244,10 +280,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets the source language.  The default is GLSL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_source_language")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_source_language")]
-		internal static extern void ShadercCompileOptionsSetSourceLanguageNative(ShadercCompileOptions options, ShadercSourceLanguage lang);
+		internal static extern void ShadercCompileOptionsSetSourceLanguageNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "lang")] [NativeName(NativeNameType.Type, "shaderc_source_language")] ShadercSourceLanguage lang);
 
-		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetSourceLanguage(ShadercCompileOptions options, ShadercSourceLanguage lang)
+		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_source_language")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetSourceLanguage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "lang")] [NativeName(NativeNameType.Type, "shaderc_source_language")] ShadercSourceLanguage lang)
 		{
 			ShadercCompileOptionsSetSourceLanguageNative(options, lang);
 		}
@@ -255,10 +295,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets the compiler mode to generate debug information in the output.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_generate_debug_info")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_generate_debug_info")]
-		internal static extern void ShadercCompileOptionsSetGenerateDebugInfoNative(ShadercCompileOptions options);
+		internal static extern void ShadercCompileOptionsSetGenerateDebugInfoNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		public static void ShadercCompileOptionsSetGenerateDebugInfo(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_generate_debug_info")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetGenerateDebugInfo([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetGenerateDebugInfoNative(options);
 		}
@@ -267,10 +311,14 @@ namespace HexaEngine.Shaderc
 		/// Sets the compiler optimization level to the given level. Only the last one<br/>
 		/// takes effect if multiple calls of this function exist.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_optimization_level")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_optimization_level")]
-		internal static extern void ShadercCompileOptionsSetOptimizationLevelNative(ShadercCompileOptions options, ShadercOptimizationLevel level);
+		internal static extern void ShadercCompileOptionsSetOptimizationLevelNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "shaderc_optimization_level")] ShadercOptimizationLevel level);
 
-		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		public static void ShadercCompileOptionsSetOptimizationLevel(ShadercCompileOptions options, ShadercOptimizationLevel level)
+		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_optimization_level")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetOptimizationLevel([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "shaderc_optimization_level")] ShadercOptimizationLevel level)
 		{
 			ShadercCompileOptionsSetOptimizationLevelNative(options, level);
 		}
@@ -282,10 +330,14 @@ namespace HexaEngine.Shaderc
 		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>
 		/// define profiles, e.g. versions below 150.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_forced_version_profile")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_forced_version_profile")]
-		internal static extern void ShadercCompileOptionsSetForcedVersionProfileNative(ShadercCompileOptions options, int version, ShadercProfile profile);
+		internal static extern void ShadercCompileOptionsSetForcedVersionProfileNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int")] int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile")] ShadercProfile profile);
 
-		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		public static void ShadercCompileOptionsSetForcedVersionProfile(ShadercCompileOptions options, int version, ShadercProfile profile)
+		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_forced_version_profile")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetForcedVersionProfile([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int")] int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile")] ShadercProfile profile)
 		{
 			ShadercCompileOptionsSetForcedVersionProfileNative(options, version, profile);
 		}
@@ -293,10 +345,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets includer callback functions.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_include_callbacks")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_include_callbacks")]
-		internal static extern void ShadercCompileOptionsSetIncludeCallbacksNative(ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData);
+		internal static extern void ShadercCompileOptionsSetIncludeCallbacksNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "resolver")] [NativeName(NativeNameType.Type, "shaderc_include_resolve_fn")] ShadercIncludeResolveFn resolver, [NativeName(NativeNameType.Param, "result_releaser")] [NativeName(NativeNameType.Type, "shaderc_include_result_release_fn")] ShadercIncludeResultReleaseFn resultReleaser, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
 
-		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		public static void ShadercCompileOptionsSetIncludeCallbacks(ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
+		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_include_callbacks")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetIncludeCallbacks([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "resolver")] [NativeName(NativeNameType.Type, "shaderc_include_resolve_fn")] ShadercIncludeResolveFn resolver, [NativeName(NativeNameType.Param, "result_releaser")] [NativeName(NativeNameType.Type, "shaderc_include_result_release_fn")] ShadercIncludeResultReleaseFn resultReleaser, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData)
 		{
 			ShadercCompileOptionsSetIncludeCallbacksNative(options, resolver, resultReleaser, userData);
 		}
@@ -307,10 +363,14 @@ namespace HexaEngine.Shaderc
 		/// turned on, warning messages will be inhibited, and will not be emitted<br/>
 		/// as error messages.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_suppress_warnings")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_suppress_warnings")]
-		internal static extern void ShadercCompileOptionsSetSuppressWarningsNative(ShadercCompileOptions options);
+		internal static extern void ShadercCompileOptionsSetSuppressWarningsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetSuppressWarnings(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_suppress_warnings")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetSuppressWarnings([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetSuppressWarningsNative(options);
 		}
@@ -322,10 +382,14 @@ namespace HexaEngine.Shaderc
 		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>
 		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_env")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_target_env")]
-		internal static extern void ShadercCompileOptionsSetTargetEnvNative(ShadercCompileOptions options, ShadercTargetEnv target, uint version);
+		internal static extern void ShadercCompileOptionsSetTargetEnvNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "shaderc_target_env")] ShadercTargetEnv target, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "uint32_t")] uint version);
 
-		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetTargetEnv(ShadercCompileOptions options, ShadercTargetEnv target, uint version)
+		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_env")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetTargetEnv([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "shaderc_target_env")] ShadercTargetEnv target, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "uint32_t")] uint version)
 		{
 			ShadercCompileOptionsSetTargetEnvNative(options, target, version);
 		}
@@ -337,10 +401,14 @@ namespace HexaEngine.Shaderc
 		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>
 		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_spirv")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_target_spirv")]
-		internal static extern void ShadercCompileOptionsSetTargetSpirvNative(ShadercCompileOptions options, ShadercSpirvVersion version);
+		internal static extern void ShadercCompileOptionsSetTargetSpirvNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "shaderc_spirv_version")] ShadercSpirvVersion version);
 
-		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		public static void ShadercCompileOptionsSetTargetSpirv(ShadercCompileOptions options, ShadercSpirvVersion version)
+		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_spirv")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetTargetSpirv([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "shaderc_spirv_version")] ShadercSpirvVersion version)
 		{
 			ShadercCompileOptionsSetTargetSpirvNative(options, version);
 		}
@@ -351,10 +419,14 @@ namespace HexaEngine.Shaderc
 		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>
 		/// be emitted as error messages.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_warnings_as_errors")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_warnings_as_errors")]
-		internal static extern void ShadercCompileOptionsSetWarningsAsErrorsNative(ShadercCompileOptions options);
+		internal static extern void ShadercCompileOptionsSetWarningsAsErrorsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options);
 
-		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetWarningsAsErrors(ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_warnings_as_errors")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetWarningsAsErrors([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options)
 		{
 			ShadercCompileOptionsSetWarningsAsErrorsNative(options);
 		}
@@ -362,10 +434,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets a resource limit.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_limit")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_limit")]
-		internal static extern void ShadercCompileOptionsSetLimitNative(ShadercCompileOptions options, ShadercLimit limit, int value);
+		internal static extern void ShadercCompileOptionsSetLimitNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "limit")] [NativeName(NativeNameType.Type, "shaderc_limit")] ShadercLimit limit, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value);
 
-		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		public static void ShadercCompileOptionsSetLimit(ShadercCompileOptions options, ShadercLimit limit, int value)
+		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_limit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetLimit([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "limit")] [NativeName(NativeNameType.Type, "shaderc_limit")] ShadercLimit limit, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
 		{
 			ShadercCompileOptionsSetLimitNative(options, limit, value);
 		}
@@ -374,10 +450,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>
 		/// that aren't already explicitly bound in the shader source.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_bind_uniforms")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_bind_uniforms")]
-		internal static extern void ShadercCompileOptionsSetAutoBindUniformsNative(ShadercCompileOptions options, byte autoBind);
+		internal static extern void ShadercCompileOptionsSetAutoBindUniformsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_bind")] [NativeName(NativeNameType.Type, "bool")] byte autoBind);
 
-		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoBindUniforms(ShadercCompileOptions options, bool autoBind)
+		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_bind_uniforms")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetAutoBindUniforms([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_bind")] [NativeName(NativeNameType.Type, "bool")] bool autoBind)
 		{
 			ShadercCompileOptionsSetAutoBindUniformsNative(options, autoBind ? (byte)1 : (byte)0);
 		}
@@ -386,10 +466,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should automatically remove sampler variables<br/>
 		/// and convert image variables to combined image-sampler variables.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_combined_image_sampler")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_combined_image_sampler")]
-		internal static extern void ShadercCompileOptionsSetAutoCombinedImageSamplerNative(ShadercCompileOptions options, byte upgrade);
+		internal static extern void ShadercCompileOptionsSetAutoCombinedImageSamplerNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "upgrade")] [NativeName(NativeNameType.Type, "bool")] byte upgrade);
 
-		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoCombinedImageSampler(ShadercCompileOptions options, bool upgrade)
+		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_combined_image_sampler")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetAutoCombinedImageSampler([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "upgrade")] [NativeName(NativeNameType.Type, "bool")] bool upgrade)
 		{
 			ShadercCompileOptionsSetAutoCombinedImageSamplerNative(options, upgrade ? (byte)1 : (byte)0);
 		}
@@ -398,10 +482,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>
 		/// Defaults to false.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_io_mapping")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_io_mapping")]
-		internal static extern void ShadercCompileOptionsSetHlslIoMappingNative(ShadercCompileOptions options, byte hlslIomap);
+		internal static extern void ShadercCompileOptionsSetHlslIoMappingNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_iomap")] [NativeName(NativeNameType.Type, "bool")] byte hlslIomap);
 
-		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslIoMapping(ShadercCompileOptions options, bool hlslIomap)
+		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_io_mapping")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslIoMapping([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_iomap")] [NativeName(NativeNameType.Type, "bool")] bool hlslIomap)
 		{
 			ShadercCompileOptionsSetHlslIoMappingNative(options, hlslIomap ? (byte)1 : (byte)0);
 		}
@@ -411,10 +499,14 @@ namespace HexaEngine.Shaderc
 		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>
 		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_offsets")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_offsets")]
-		internal static extern void ShadercCompileOptionsSetHlslOffsetsNative(ShadercCompileOptions options, byte hlslOffsets);
+		internal static extern void ShadercCompileOptionsSetHlslOffsetsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_offsets")] [NativeName(NativeNameType.Type, "bool")] byte hlslOffsets);
 
-		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslOffsets(ShadercCompileOptions options, bool hlslOffsets)
+		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_offsets")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslOffsets([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_offsets")] [NativeName(NativeNameType.Type, "bool")] bool hlslOffsets)
 		{
 			ShadercCompileOptionsSetHlslOffsetsNative(options, hlslOffsets ? (byte)1 : (byte)0);
 		}
@@ -425,10 +517,14 @@ namespace HexaEngine.Shaderc
 		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>
 		/// assigned to the resource is added to this specified base.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_binding_base")]
-		internal static extern void ShadercCompileOptionsSetBindingBaseNative(ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue);
+		internal static extern void ShadercCompileOptionsSetBindingBaseNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue);
 
-		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		public static void ShadercCompileOptionsSetBindingBase(ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetBindingBase([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue)
 		{
 			ShadercCompileOptionsSetBindingBaseNative(options, kind, baseValue);
 		}
@@ -438,10 +534,14 @@ namespace HexaEngine.Shaderc
 		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>
 		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_binding_base_for_stage")]
-		internal static extern void ShadercCompileOptionsSetBindingBaseForStageNative(ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue);
+		internal static extern void ShadercCompileOptionsSetBindingBaseForStageNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue);
 
-		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		public static void ShadercCompileOptionsSetBindingBaseForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetBindingBaseForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue)
 		{
 			ShadercCompileOptionsSetBindingBaseForStageNative(options, shaderKind, kind, baseValue);
 		}
@@ -450,10 +550,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should preserve all bindings, even when those<br/>
 		/// bindings are not used.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_preserve_bindings")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_preserve_bindings")]
-		internal static extern void ShadercCompileOptionsSetPreserveBindingsNative(ShadercCompileOptions options, byte preserveBindings);
+		internal static extern void ShadercCompileOptionsSetPreserveBindingsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "preserve_bindings")] [NativeName(NativeNameType.Type, "bool")] byte preserveBindings);
 
-		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		public static void ShadercCompileOptionsSetPreserveBindings(ShadercCompileOptions options, bool preserveBindings)
+		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_preserve_bindings")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetPreserveBindings([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "preserve_bindings")] [NativeName(NativeNameType.Type, "bool")] bool preserveBindings)
 		{
 			ShadercCompileOptionsSetPreserveBindingsNative(options, preserveBindings ? (byte)1 : (byte)0);
 		}
@@ -462,10 +566,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should automatically assign locations to<br/>
 		/// uniform variables that don't have explicit locations in the shader source.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_map_locations")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_auto_map_locations")]
-		internal static extern void ShadercCompileOptionsSetAutoMapLocationsNative(ShadercCompileOptions options, byte autoMap);
+		internal static extern void ShadercCompileOptionsSetAutoMapLocationsNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_map")] [NativeName(NativeNameType.Type, "bool")] byte autoMap);
 
-		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		public static void ShadercCompileOptionsSetAutoMapLocations(ShadercCompileOptions options, bool autoMap)
+		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_map_locations")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetAutoMapLocations([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_map")] [NativeName(NativeNameType.Type, "bool")] bool autoMap)
 		{
 			ShadercCompileOptionsSetAutoMapLocationsNative(options, autoMap ? (byte)1 : (byte)0);
 		}
@@ -474,15 +582,21 @@ namespace HexaEngine.Shaderc
 		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>
 		/// This method keeps a copy of the string data.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
-		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding);
+		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding);
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(options, shaderKind, reg, set, binding);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -490,7 +604,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -516,7 +632,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -524,7 +642,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -550,7 +670,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -561,7 +683,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -608,7 +732,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -616,7 +742,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -642,7 +770,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -653,7 +783,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -700,7 +832,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -711,7 +845,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -758,7 +894,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -772,7 +910,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage(ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBindingForStage([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -844,15 +984,21 @@ namespace HexaEngine.Shaderc
 		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>
 		/// but affects all shader stages.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_register_set_and_binding")]
-		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(ShadercCompileOptions options, byte* reg, byte* set, byte* binding);
+		internal static extern void ShadercCompileOptionsSetHlslRegisterSetAndBindingNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding);
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(options, reg, set, binding);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -860,7 +1006,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -886,7 +1034,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -894,7 +1044,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -920,7 +1072,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -931,7 +1085,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -978,7 +1134,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -986,7 +1144,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1012,7 +1172,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -1023,7 +1185,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1070,7 +1234,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -1081,7 +1247,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, byte* reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1128,7 +1296,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -1142,7 +1312,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding(ShadercCompileOptions options, string reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslRegisterSetAndBinding([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1214,10 +1386,14 @@ namespace HexaEngine.Shaderc
 		/// Sets whether the compiler should enable extension<br/>
 		/// SPV_GOOGLE_hlsl_functionality1.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_functionality1")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_functionality1")]
-		internal static extern void ShadercCompileOptionsSetHlslFunctionality1Native(ShadercCompileOptions options, byte enable);
+		internal static extern void ShadercCompileOptionsSetHlslFunctionality1Native([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] byte enable);
 
-		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlslFunctionality1(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_functionality1")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlslFunctionality1([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			ShadercCompileOptionsSetHlslFunctionality1Native(options, enable ? (byte)1 : (byte)0);
 		}
@@ -1225,10 +1401,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets whether 16-bit types are supported in HLSL or not.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_16bit_types")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_hlsl_16bit_types")]
-		internal static extern void ShadercCompileOptionsSetHlsl16BitTypesNative(ShadercCompileOptions options, byte enable);
+		internal static extern void ShadercCompileOptionsSetHlsl16BitTypesNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] byte enable);
 
-		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		public static void ShadercCompileOptionsSetHlsl16BitTypes(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_16bit_types")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetHlsl16BitTypes([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			ShadercCompileOptionsSetHlsl16BitTypesNative(options, enable ? (byte)1 : (byte)0);
 		}
@@ -1236,10 +1416,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_invert_y")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_invert_y")]
-		internal static extern void ShadercCompileOptionsSetInvertYNative(ShadercCompileOptions options, byte enable);
+		internal static extern void ShadercCompileOptionsSetInvertYNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] byte enable);
 
-		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		public static void ShadercCompileOptionsSetInvertY(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_invert_y")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetInvertY([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			ShadercCompileOptionsSetInvertYNative(options, enable ? (byte)1 : (byte)0);
 		}
@@ -1250,10 +1434,14 @@ namespace HexaEngine.Shaderc
 		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>
 		/// as a composition of max and min.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_nan_clamp")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_options_set_nan_clamp")]
-		internal static extern void ShadercCompileOptionsSetNanClampNative(ShadercCompileOptions options, byte enable);
+		internal static extern void ShadercCompileOptionsSetNanClampNative([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] byte enable);
 
-		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		public static void ShadercCompileOptionsSetNanClamp(ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_nan_clamp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercCompileOptionsSetNanClamp([NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "shaderc_compile_options_t")] ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			ShadercCompileOptionsSetNanClampNative(options, enable ? (byte)1 : (byte)0);
 		}
@@ -1279,16 +1467,22 @@ namespace HexaEngine.Shaderc
 		/// synchronization. If there was failure in allocating the compiler object,<br/>
 		/// null will be returned.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_spv")]
-		internal static extern ShadercCompilationResult ShadercCompileIntoSpvNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
+		internal static extern ShadercCompilationResult ShadercCompileIntoSpvNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoSpvNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1297,7 +1491,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1324,7 +1520,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1333,7 +1531,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1360,7 +1560,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1372,7 +1574,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1420,7 +1624,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -1429,7 +1635,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1456,7 +1664,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1468,7 +1678,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1516,7 +1728,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1528,7 +1742,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1576,7 +1792,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1591,7 +1809,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpv(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes a GLSL source string and the associated shader kind, input file<br/>		/// name, compiles it according to the given additional_options. If the shader<br/>		/// kind is not set to a specified kind, but shaderc_glslc_infer_from_source,<br/>		/// the compiler will try to deduce the shader kind from the source<br/>		/// string and a failure in deducing will generate an error. Currently only<br/>		/// #pragma annotation is supported. If the shader kind is set to one of the<br/>		/// default shader kinds, the compiler will fall back to the default shader<br/>		/// kind in case it failed to deduce the shader kind from source string.<br/>		/// The input_file_name is a null-termintated string. It is used as a tag to<br/>		/// identify the source string in cases like emitting error messages. It<br/>		/// doesn't have to be a 'file name'.<br/>		/// The source string will be compiled into SPIR-V binary and a<br/>		/// shaderc_compilation_result will be returned to hold the results.<br/>		/// The entry_point_name null-terminated string defines the name of the entry<br/>		/// point to associate with this GLSL source. If the additional_options<br/>		/// parameter is not null, then the compilation is modified by any options<br/>		/// present.  May be safely called from multiple threads without explicit<br/>		/// synchronization. If there was failure in allocating the compiler object,<br/>		/// null will be returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1665,16 +1885,22 @@ namespace HexaEngine.Shaderc
 		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>
 		/// by the SPIRV-Tools open source project.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_spv_assembly")]
-		internal static extern ShadercCompilationResult ShadercCompileIntoSpvAssemblyNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
+		internal static extern ShadercCompilationResult ShadercCompileIntoSpvAssemblyNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoSpvAssemblyNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1683,7 +1909,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1710,7 +1938,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1719,7 +1949,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1746,7 +1978,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1758,7 +1992,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1806,7 +2042,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -1815,7 +2053,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1842,7 +2082,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1854,7 +2096,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1902,7 +2146,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -1914,7 +2160,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1962,7 +2210,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -1977,7 +2227,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains SPIR-V assembly text<br/>		/// instead of a SPIR-V binary module.  The SPIR-V assembly syntax is as defined<br/>		/// by the SPIRV-Tools open source project.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_spv_assembly")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoSpvAssembly([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2050,16 +2302,22 @@ namespace HexaEngine.Shaderc
 		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>
 		/// code instead of a SPIR-V binary module<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compile_into_preprocessed_text")]
-		internal static extern ShadercCompilationResult ShadercCompileIntoPreprocessedTextNative(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions);
+		internal static extern ShadercCompilationResult ShadercCompileIntoPreprocessedTextNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercCompileIntoPreprocessedTextNative(compiler, sourceText, sourceTextSize, shaderKind, inputFileName, entryPointName, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2068,7 +2326,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2095,7 +2355,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -2104,7 +2366,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2131,7 +2395,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2143,7 +2409,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, byte* entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] byte* entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2191,7 +2459,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pentryPointName = &entryPointName)
 			{
@@ -2200,7 +2470,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2227,7 +2499,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2239,7 +2513,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, byte* inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] byte* inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2287,7 +2563,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* pinputFileName = &inputFileName)
 			{
@@ -2299,7 +2577,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, byte* sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2347,7 +2627,9 @@ namespace HexaEngine.Shaderc
 			return ret;
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, ref byte sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, ref byte inputFileName, ref byte entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceText = &sourceText)
 			{
@@ -2362,7 +2644,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText(ShadercCompiler compiler, string sourceText, nuint sourceTextSize, ShadercShaderKind shaderKind, string inputFileName, string entryPointName, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Like shaderc_compile_into_spv, but the result contains preprocessed source<br/>		/// code instead of a SPIR-V binary module<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_into_preprocessed_text")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercCompileIntoPreprocessedText([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_text")] [NativeName(NativeNameType.Type, "const char*")] string sourceText, [NativeName(NativeNameType.Param, "source_text_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceTextSize, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "input_file_name")] [NativeName(NativeNameType.Type, "const char*")] string inputFileName, [NativeName(NativeNameType.Param, "entry_point_name")] [NativeName(NativeNameType.Type, "const char*")] string entryPointName, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2442,16 +2726,22 @@ namespace HexaEngine.Shaderc
 		/// If there was failure in allocating the compiler object, null will be<br/>
 		/// returned.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_assemble_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_assemble_into_spv")]
-		internal static extern ShadercCompilationResult ShadercAssembleIntoSpvNative(ShadercCompiler compiler, byte* sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions);
+		internal static extern ShadercCompilationResult ShadercAssembleIntoSpvNative([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_assembly")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceAssembly, [NativeName(NativeNameType.Param, "source_assembly_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceAssemblySize, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions);
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, byte* sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_assemble_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercAssembleIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_assembly")] [NativeName(NativeNameType.Type, "const char*")] byte* sourceAssembly, [NativeName(NativeNameType.Param, "source_assembly_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceAssemblySize, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			ShadercCompilationResult ret = ShadercAssembleIntoSpvNative(compiler, sourceAssembly, sourceAssemblySize, additionalOptions);
 			return ret;
 		}
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, ref byte sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_assemble_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercAssembleIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_assembly")] [NativeName(NativeNameType.Type, "const char*")] ref byte sourceAssembly, [NativeName(NativeNameType.Param, "source_assembly_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceAssemblySize, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			fixed (byte* psourceAssembly = &sourceAssembly)
 			{
@@ -2460,7 +2750,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		public static ShadercCompilationResult ShadercAssembleIntoSpv(ShadercCompiler compiler, string sourceAssembly, nuint sourceAssemblySize, ShadercCompileOptions additionalOptions)
+		/// <summary>		/// Takes an assembly string of the format defined in the SPIRV-Tools project<br/>		/// (https://github.com/KhronosGroup/SPIRV-Tools/blob/master/syntax.md),<br/>		/// assembles it into SPIR-V binary and a shaderc_compilation_result will be<br/>		/// returned to hold the results.<br/>		/// The assembling will pick options suitable for assembling specified in the<br/>		/// additional_options parameter.<br/>		/// May be safely called from multiple threads without explicit synchronization.<br/>		/// If there was failure in allocating the compiler object, null will be<br/>		/// returned.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_assemble_into_spv")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_result_t")]
+		public static ShadercCompilationResult ShadercAssembleIntoSpv([NativeName(NativeNameType.Param, "compiler")] [NativeName(NativeNameType.Type, "const shaderc_compiler_t")] ShadercCompiler compiler, [NativeName(NativeNameType.Param, "source_assembly")] [NativeName(NativeNameType.Type, "const char*")] string sourceAssembly, [NativeName(NativeNameType.Param, "source_assembly_size")] [NativeName(NativeNameType.Type, "size_t")] nuint sourceAssemblySize, [NativeName(NativeNameType.Param, "additional_options")] [NativeName(NativeNameType.Type, "const shaderc_compile_options_t")] ShadercCompileOptions additionalOptions)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2491,10 +2783,14 @@ namespace HexaEngine.Shaderc
 		/// Releases the resources held by the result object. It is invalid to use the<br/>
 		/// result object for any further operations.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_release")]
-		internal static extern void ShadercResultReleaseNative(ShadercCompilationResult result);
+		internal static extern void ShadercResultReleaseNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		public static void ShadercResultRelease(ShadercCompilationResult result)
+		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercResultRelease([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			ShadercResultReleaseNative(result);
 		}
@@ -2503,10 +2799,14 @@ namespace HexaEngine.Shaderc
 		/// Returns the number of bytes of the compilation output data in a result<br/>
 		/// object.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_length")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_length")]
-		internal static extern nuint ShadercResultGetLengthNative(ShadercCompilationResult result);
+		internal static extern nuint ShadercResultGetLengthNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of bytes of the compilation output data in a result<br/>		/// object.<br/>		/// </summary>		public static nuint ShadercResultGetLength(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of bytes of the compilation output data in a result<br/>		/// object.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_length")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static nuint ShadercResultGetLength([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetLengthNative(result);
 			return ret;
@@ -2515,10 +2815,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Returns the number of warnings generated during the compilation.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_num_warnings")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_num_warnings")]
-		internal static extern nuint ShadercResultGetNumWarningsNative(ShadercCompilationResult result);
+		internal static extern nuint ShadercResultGetNumWarningsNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of warnings generated during the compilation.<br/>		/// </summary>		public static nuint ShadercResultGetNumWarnings(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of warnings generated during the compilation.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_num_warnings")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static nuint ShadercResultGetNumWarnings([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetNumWarningsNative(result);
 			return ret;
@@ -2527,10 +2831,14 @@ namespace HexaEngine.Shaderc
 		/// <summary>
 		/// Returns the number of errors generated during the compilation.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_num_errors")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_num_errors")]
-		internal static extern nuint ShadercResultGetNumErrorsNative(ShadercCompilationResult result);
+		internal static extern nuint ShadercResultGetNumErrorsNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Returns the number of errors generated during the compilation.<br/>		/// </summary>		public static nuint ShadercResultGetNumErrors(ShadercCompilationResult result)
+		/// <summary>		/// Returns the number of errors generated during the compilation.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_num_errors")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static nuint ShadercResultGetNumErrors([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			nuint ret = ShadercResultGetNumErrorsNative(result);
 			return ret;
@@ -2541,10 +2849,14 @@ namespace HexaEngine.Shaderc
 		/// or failed due to some reasons, like invalid shader stage or compilation<br/>
 		/// errors.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_compilation_status")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_status")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_compilation_status")]
-		internal static extern ShadercCompilationStatus ShadercResultGetCompilationStatusNative(ShadercCompilationResult shaderc_compilation_result_t);
+		internal static extern ShadercCompilationStatus ShadercResultGetCompilationStatusNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult shaderc_compilation_result_t);
 
-		/// <summary>		/// Returns the compilation status, indicating whether the compilation succeeded,<br/>		/// or failed due to some reasons, like invalid shader stage or compilation<br/>		/// errors.<br/>		/// </summary>		public static ShadercCompilationStatus ShadercResultGetCompilationStatus(ShadercCompilationResult shaderc_compilation_result_t)
+		/// <summary>		/// Returns the compilation status, indicating whether the compilation succeeded,<br/>		/// or failed due to some reasons, like invalid shader stage or compilation<br/>		/// errors.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_compilation_status")]
+		[return: NativeName(NativeNameType.Type, "shaderc_compilation_status")]
+		public static ShadercCompilationStatus ShadercResultGetCompilationStatus([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult shaderc_compilation_result_t)
 		{
 			ShadercCompilationStatus ret = ShadercResultGetCompilationStatusNative(shaderc_compilation_result_t);
 			return ret;
@@ -2557,16 +2869,22 @@ namespace HexaEngine.Shaderc
 		/// contains assembly text or preprocessed source text, the pointer will point to<br/>
 		/// the resulting array of characters.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_bytes")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_bytes")]
-		internal static extern byte* ShadercResultGetBytesNative(ShadercCompilationResult result);
+		internal static extern byte* ShadercResultGetBytesNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		public static byte* ShadercResultGetBytes(ShadercCompilationResult result)
+		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_bytes")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ShadercResultGetBytes([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			byte* ret = ShadercResultGetBytesNative(result);
 			return ret;
 		}
 
-		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		public static string ShadercResultGetBytesS(ShadercCompilationResult result)
+		/// <summary>		/// Returns a pointer to the start of the compilation output data bytes, either<br/>		/// SPIR-V binary or char string. When the source string is compiled into SPIR-V<br/>		/// binary, this is guaranteed to be castable to a uint32_t*. If the result<br/>		/// contains assembly text or preprocessed source text, the pointer will point to<br/>		/// the resulting array of characters.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_bytes")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ShadercResultGetBytesS([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			string ret = Utils.DecodeStringUTF8(ShadercResultGetBytesNative(result));
 			return ret;
@@ -2576,16 +2894,22 @@ namespace HexaEngine.Shaderc
 		/// Returns a null-terminated string that contains any error messages generated<br/>
 		/// during the compilation.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_result_get_error_message")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_error_message")]
-		internal static extern byte* ShadercResultGetErrorMessageNative(ShadercCompilationResult result);
+		internal static extern byte* ShadercResultGetErrorMessageNative([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result);
 
-		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		public static byte* ShadercResultGetErrorMessage(ShadercCompilationResult result)
+		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_error_message")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ShadercResultGetErrorMessage([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			byte* ret = ShadercResultGetErrorMessageNative(result);
 			return ret;
 		}
 
-		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		public static string ShadercResultGetErrorMessageS(ShadercCompilationResult result)
+		/// <summary>		/// Returns a null-terminated string that contains any error messages generated<br/>		/// during the compilation.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_error_message")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ShadercResultGetErrorMessageS([NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult result)
 		{
 			string ret = Utils.DecodeStringUTF8(ShadercResultGetErrorMessageNative(result));
 			return ret;
@@ -2596,15 +2920,21 @@ namespace HexaEngine.Shaderc
 		/// &<br/>
 		/// revision of the SPIR-V which will be produced<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_get_spv_version")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_get_spv_version")]
-		internal static extern void ShadercGetSpvVersionNative(uint* version, uint* revision);
+		internal static extern void ShadercGetSpvVersionNative([NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* version, [NativeName(NativeNameType.Param, "revision")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* revision);
 
-		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(uint* version, uint* revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_get_spv_version")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercGetSpvVersion([NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* version, [NativeName(NativeNameType.Param, "revision")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* revision)
 		{
 			ShadercGetSpvVersionNative(version, revision);
 		}
 
-		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, uint* revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_get_spv_version")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercGetSpvVersion([NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint version, [NativeName(NativeNameType.Param, "revision")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* revision)
 		{
 			fixed (uint* pversion = &version)
 			{
@@ -2612,7 +2942,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(uint* version, ref uint revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_get_spv_version")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercGetSpvVersion([NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* version, [NativeName(NativeNameType.Param, "revision")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint revision)
 		{
 			fixed (uint* prevision = &revision)
 			{
@@ -2620,7 +2952,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		public static void ShadercGetSpvVersion(ref uint version, ref uint revision)
+		/// <summary>		/// Provides the version <br/>		/// &<br/>		/// revision of the SPIR-V which will be produced<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_get_spv_version")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ShadercGetSpvVersion([NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint version, [NativeName(NativeNameType.Param, "revision")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint revision)
 		{
 			fixed (uint* pversion = &version)
 			{
@@ -2637,16 +2971,22 @@ namespace HexaEngine.Shaderc
 		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>
 		/// parsed version and profile are returned through arguments.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_parse_version_profile")]
-		internal static extern byte ShadercParseVersionProfileNative(byte* str, int* version, ShadercProfile* profile);
+		internal static extern byte ShadercParseVersionProfileNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile);
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			byte ret = ShadercParseVersionProfileNative(str, version, profile);
 			return ret != 0;
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2655,7 +2995,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2682,7 +3024,9 @@ namespace HexaEngine.Shaderc
 			return ret != 0;
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			fixed (int* pversion = &version)
 			{
@@ -2691,7 +3035,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2703,7 +3049,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ShadercProfile* profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ShadercProfile* profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2733,7 +3081,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			fixed (ShadercProfile* pprofile = &profile)
 			{
@@ -2742,7 +3092,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2754,7 +3106,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, int* version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] int* version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2784,7 +3138,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(byte* str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			fixed (int* pversion = &version)
 			{
@@ -2796,7 +3152,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(ref byte str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -2811,7 +3169,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		public static bool ShadercParseVersionProfile(string str, ref int version, ref ShadercProfile profile)
+		/// <summary>		/// Parses the version and profile from a given null-terminated string<br/>		/// containing both version and profile, like: '450core'. Returns false if<br/>		/// the string can not be parsed. Returns true when the parsing succeeds. The<br/>		/// parsed version and profile are returned through arguments.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_parse_version_profile")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ShadercParseVersionProfile([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int*")] ref int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile*")] ref ShadercProfile profile)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;

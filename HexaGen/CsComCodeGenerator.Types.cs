@@ -94,7 +94,7 @@
             {
                 writer.WriteLine($"[Guid(\"{guid}\")]");
             }
-            writer.WriteLine($"[NativeName(\"{cppClass.Name}\")]");
+            writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
 
             StringBuilder sb = new($"IComObject, IComObject<{csName}>");
             {
@@ -194,6 +194,8 @@
                 }
 
                 CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                 for (int j = 0; j < cppFunction.Parameters.Count; j++)
                 {
                     var cppParameter = cppFunction.Parameters[j];
@@ -206,6 +208,8 @@
 
                     CsParameterInfo csParameter = new(paramCsName, csType, direction);
 
+                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                     overload.Parameters.Add(csParameter);
                     if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                     {
@@ -277,7 +281,7 @@
             string signature;
             string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}";
 
-            signature = string.Join(", ", variation.Parameters.Select(x => $"{x.Type} {x.Name}"));
+            signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
             signatureNameless += string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"));
 
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
@@ -295,6 +299,10 @@
                 writer.WriteLines(overload.Comment);
             }
 
+            for (int i = 0; i < overload.Attributes.Count; i++)
+            {
+                writer.WriteLine(overload.Attributes[i]);
+            }
             using (writer.PushBlock($"{modifierString} {header}"))
             {
                 writer.WriteLine($"{className}* ptr = ({className}*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));");
@@ -504,29 +512,6 @@
                 LogWarn($"{writer.FileName}: {cppClass}, Empty class found with functions that indicates a missing GUID for a ComObject");
             }
 
-            List<(CppType, string)> subClasses = new();
-
-            for (int j = 0; j < cppClass.Classes.Count; j++)
-            {
-                var subClass = cppClass.Classes[j];
-                string csSubName;
-                if (string.IsNullOrEmpty(subClass.Name))
-                {
-                    string label = cppClass.Classes.Count == 1 ? "" : j.ToString();
-                    csSubName = csName + "Union" + label;
-                }
-                else
-                {
-                    csSubName = settings.GetCsCleanName(subClass.Name);
-                }
-                var subClassMapping = settings.GetTypeMapping(subClass.Name);
-
-                csSubName = subClassMapping?.FriendlyName ?? csSubName;
-
-                WriteClass(writer, compilation, subClass, subClassMapping, csSubName);
-                subClasses.Add((subClass, csSubName));
-            }
-
             bool isReadOnly = false;
             string modifier = "partial";
 
@@ -537,7 +522,7 @@
                 commentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
             }
 
-            writer.WriteLine($"[NativeName(\"{cppClass.Name}\")]");
+            writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
 
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
 
@@ -561,12 +546,24 @@
                     writer.WriteLine();
                 }
 
+                List<(CppType, string, string)> subClasses = new();
+
+                for (int j = 0; j < cppClass.Classes.Count; j++)
+                {
+                    var subClass = cppClass.Classes[j];
+                    var csSubName = settings.GetCsSubTypeName(cppClass, csName, subClass, j);
+                    var subClassMapping = settings.GetTypeMapping(subClass.Name);
+
+                    csSubName = subClassMapping?.FriendlyName ?? csSubName;
+
+                    WriteClass(writer, compilation, subClass, subClassMapping, csSubName);
+                    subClasses.Add((subClass, csSubName, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));
+                }
+
                 for (int j = 0; j < cppClass.Fields.Count; j++)
                 {
                     CppField cppField = cppClass.Fields[j];
                     var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
-
-                    writer.WriteLine($"[NativeName(\"{cppField.Name}\")]");
 
                     if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                     {
@@ -575,6 +572,8 @@
                         {
                             fieldCommentWritten = fieldMapping?.Comment.WriteCsSummary(writer) ?? false;
                         }
+                        writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
+                        writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
 
                         var subClass = subClasses.FirstOrDefault(x => ReferenceEquals(x.Item1, cppClass1));
                         if (isUnion)
@@ -585,6 +584,7 @@
                         {
                             string csFieldName = settings.NormalizeFieldName(cppField.Name);
                             string csFieldType = settings.GetCsCleanName(cppClass1.Name);
+
                             writer.WriteLine($"public {csFieldType} {csFieldName};");
                             if (fieldCommentWritten)
                             {
@@ -593,12 +593,11 @@
 
                             continue;
                         }
-                        writer.WriteLine($"public {subClass.Item2} {subClass.Item2};");
+
+                        writer.WriteLine($"public {subClass.Item2} {subClass.Item3};");
 
                         if (fieldCommentWritten)
-                        {
                             writer.WriteLine();
-                        }
                     }
                     else if (cppField.Type is CppPointerType cppPointer && cppPointer.IsDelegate(out var cppFunctionType))
                     {
@@ -607,7 +606,8 @@
                         {
                             fieldCommentWritten = fieldMapping?.Comment.WriteCsSummary(writer) ?? false;
                         }
-
+                        writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
+                        writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
                         string csFieldName = settings.NormalizeFieldName(cppField.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunctionType.ReturnType, false);
                         string signature = settings.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
@@ -664,6 +664,8 @@
                         }
 
                         CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                        overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                        overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                         for (int j = 0; j < cppFunction.Parameters.Count; j++)
                         {
                             var cppParameter = cppFunction.Parameters[j];
@@ -746,6 +748,8 @@
                         }
 
                         CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                        overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                        overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                         for (int j = 0; j < cppFunction.Parameters.Count; j++)
                         {
                             var cppParameter = cppFunction.Parameters[j];
@@ -813,6 +817,9 @@
                 fieldCommentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
             }
 
+            writer.WriteLine($"[NativeName(NativeNameType.Field, \"{field.Name}\")]");
+            writer.WriteLine($"[NativeName(NativeNameType.Type, \"{field.Type.GetDisplayName()}\")]");
+
             if (isUnion)
             {
                 writer.WriteLine("[FieldOffset(0)]");
@@ -846,6 +853,10 @@
             else
             {
                 string csFieldType = settings.GetCsTypeName(field.Type, false);
+                if (string.IsNullOrEmpty(csFieldType) && isUnion)
+                {
+                    csFieldType = csFieldName + "Union";
+                }
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
                 if (csFieldType == "bool")

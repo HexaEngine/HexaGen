@@ -15,101 +15,101 @@ using HexaEngine.D3DCommon;
 
 namespace HexaEngine.D3D11
 {
-	[NativeName("D3D11_USAGE")]
+	[NativeName(NativeNameType.Enum, "D3D11_USAGE")]
 	public enum D3D11Usage
 	{
-		[NativeName("D3D11_USAGE_DEFAULT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_DEFAULT")]
 		Default = unchecked(0),
-		[NativeName("D3D11_USAGE_IMMUTABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_IMMUTABLE")]
 		Immutable = unchecked(1),
-		[NativeName("D3D11_USAGE_DYNAMIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_DYNAMIC")]
 		Dynamic = unchecked(2),
-		[NativeName("D3D11_USAGE_STAGING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_STAGING")]
 		Staging = unchecked(3),
 	}
 
-	[NativeName("D3D11_RESOURCE_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_DIMENSION")]
 	public enum D3D11ResourceDimension
 	{
-		[NativeName("D3D11_RESOURCE_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_RESOURCE_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_BUFFER")]
 		Buffer = unchecked(1),
-		[NativeName("D3D11_RESOURCE_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE1D")]
 		Texture1D = unchecked(2),
-		[NativeName("D3D11_RESOURCE_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(3),
-		[NativeName("D3D11_RESOURCE_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE3D")]
 		Texture3D = unchecked(4),
 	}
 
-	[NativeName("D3D11_UAV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_UAV_DIMENSION")]
 	public enum D3D11UavDimension
 	{
-		[NativeName("D3D11_UAV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_UAV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_BUFFER")]
 		Buffer = unchecked(1),
-		[NativeName("D3D11_UAV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE1D")]
 		Texture1D = unchecked(2),
-		[NativeName("D3D11_UAV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE1DARRAY")]
 		Texture1Darray = unchecked(3),
-		[NativeName("D3D11_UAV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(4),
-		[NativeName("D3D11_UAV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE2DARRAY")]
 		Texture2Darray = unchecked(5),
-		[NativeName("D3D11_UAV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE3D")]
 		Texture3D = unchecked(8),
 	}
 
-	[NativeName("D3D11_RTV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_RTV_DIMENSION")]
 	public enum D3D11RtvDimension
 	{
-		[NativeName("D3D11_RTV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_RTV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_BUFFER")]
 		Buffer = unchecked(1),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE1D")]
 		Texture1D = unchecked(2),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE1DARRAY")]
 		Texture1Darray = unchecked(3),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(4),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DARRAY")]
 		Texture2Darray = unchecked(5),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DMS")]
 		Texture2Dms = unchecked(6),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DMSARRAY")]
 		Texture2Dmsarray = unchecked(7),
-		[NativeName("D3D11_RTV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE3D")]
 		Texture3D = unchecked(8),
 	}
 
-	[NativeName("D3D11_DSV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_DSV_DIMENSION")]
 	public enum D3D11DsvDimension
 	{
-		[NativeName("D3D11_DSV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE1D")]
 		Texture1D = unchecked(1),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE1DARRAY")]
 		Texture1Darray = unchecked(2),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(3),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DARRAY")]
 		Texture2Darray = unchecked(4),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DMS")]
 		Texture2Dms = unchecked(5),
-		[NativeName("D3D11_DSV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DMSARRAY")]
 		Texture2Dmsarray = unchecked(6),
 	}
 
-	[NativeName("D3D11_INPUT_CLASSIFICATION")]
+	[NativeName(NativeNameType.Enum, "D3D11_INPUT_CLASSIFICATION")]
 	public enum D3D11InputClassification
 	{
-		[NativeName("D3D11_INPUT_PER_VERTEX_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_INPUT_PER_VERTEX_DATA")]
 		PerVertexData = unchecked(0),
-		[NativeName("D3D11_INPUT_PER_INSTANCE_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_INPUT_PER_INSTANCE_DATA")]
 		PerInstanceData = unchecked(1),
 	}
 
@@ -117,66 +117,66 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0002 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_BLEND")]
+	[NativeName(NativeNameType.Enum, "D3D11_BLEND")]
 	public enum D3D11Blend
 	{
-		[NativeName("D3D11_BLEND_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_ZERO")]
 		Zero = unchecked(1),
-		[NativeName("D3D11_BLEND_ONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_ONE")]
 		One = unchecked(2),
-		[NativeName("D3D11_BLEND_SRC_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_COLOR")]
 		SrcColor = unchecked(3),
-		[NativeName("D3D11_BLEND_INV_SRC_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC_COLOR")]
 		InvSrcColor = unchecked(4),
-		[NativeName("D3D11_BLEND_SRC_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_ALPHA")]
 		SrcAlpha = unchecked(5),
-		[NativeName("D3D11_BLEND_INV_SRC_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC_ALPHA")]
 		InvSrcAlpha = unchecked(6),
-		[NativeName("D3D11_BLEND_DEST_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_DEST_ALPHA")]
 		DestAlpha = unchecked(7),
-		[NativeName("D3D11_BLEND_INV_DEST_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_DEST_ALPHA")]
 		InvDestAlpha = unchecked(8),
-		[NativeName("D3D11_BLEND_DEST_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_DEST_COLOR")]
 		DestColor = unchecked(9),
-		[NativeName("D3D11_BLEND_INV_DEST_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_DEST_COLOR")]
 		InvDestColor = unchecked(10),
-		[NativeName("D3D11_BLEND_SRC_ALPHA_SAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_ALPHA_SAT")]
 		SrcAlphaSat = unchecked(11),
-		[NativeName("D3D11_BLEND_BLEND_FACTOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_BLEND_FACTOR")]
 		Factor = unchecked(14),
-		[NativeName("D3D11_BLEND_INV_BLEND_FACTOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_BLEND_FACTOR")]
 		InvBlendFactor = unchecked(15),
-		[NativeName("D3D11_BLEND_SRC1_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC1_COLOR")]
 		Src1Color = unchecked(16),
-		[NativeName("D3D11_BLEND_INV_SRC1_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC1_COLOR")]
 		InvSrc1Color = unchecked(17),
-		[NativeName("D3D11_BLEND_SRC1_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC1_ALPHA")]
 		Src1Alpha = unchecked(18),
-		[NativeName("D3D11_BLEND_INV_SRC1_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC1_ALPHA")]
 		InvSrc1Alpha = unchecked(19),
 	}
 
-	[NativeName("D3D11_BLEND_OP")]
+	[NativeName(NativeNameType.Enum, "D3D11_BLEND_OP")]
 	public enum D3D11BlendOp
 	{
-		[NativeName("D3D11_BLEND_OP_ADD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_ADD")]
 		Add = unchecked(1),
-		[NativeName("D3D11_BLEND_OP_SUBTRACT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_SUBTRACT")]
 		Subtract = unchecked(2),
-		[NativeName("D3D11_BLEND_OP_REV_SUBTRACT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_REV_SUBTRACT")]
 		RevSubtract = unchecked(3),
-		[NativeName("D3D11_BLEND_OP_MIN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_MIN")]
 		Min = unchecked(4),
-		[NativeName("D3D11_BLEND_OP_MAX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_MAX")]
 		Max = unchecked(5),
 	}
 
-	[NativeName("D3D11_DEPTH_WRITE_MASK")]
+	[NativeName(NativeNameType.Enum, "D3D11_DEPTH_WRITE_MASK")]
 	public enum D3D11DepthWriteMask
 	{
-		[NativeName("D3D11_DEPTH_WRITE_MASK_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DEPTH_WRITE_MASK_ZERO")]
 		Zero = unchecked(0),
-		[NativeName("D3D11_DEPTH_WRITE_MASK_ALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DEPTH_WRITE_MASK_ALL")]
 		All = unchecked(1),
 	}
 
@@ -184,65 +184,65 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_COMPARISON_FUNC")]
+	[NativeName(NativeNameType.Enum, "D3D11_COMPARISON_FUNC")]
 	public enum D3D11ComparisonFunc
 	{
-		[NativeName("D3D11_COMPARISON_NEVER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_NEVER")]
 		Never = unchecked(1),
-		[NativeName("D3D11_COMPARISON_LESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_LESS")]
 		Less = unchecked(2),
-		[NativeName("D3D11_COMPARISON_EQUAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_EQUAL")]
 		Equal = unchecked(3),
-		[NativeName("D3D11_COMPARISON_LESS_EQUAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_LESS_EQUAL")]
 		LessEqual = unchecked(4),
-		[NativeName("D3D11_COMPARISON_GREATER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_GREATER")]
 		Greater = unchecked(5),
-		[NativeName("D3D11_COMPARISON_NOT_EQUAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_NOT_EQUAL")]
 		NotEqual = unchecked(6),
-		[NativeName("D3D11_COMPARISON_GREATER_EQUAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_GREATER_EQUAL")]
 		GreaterEqual = unchecked(7),
-		[NativeName("D3D11_COMPARISON_ALWAYS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_ALWAYS")]
 		Always = unchecked(8),
 	}
 
-	[NativeName("D3D11_STENCIL_OP")]
+	[NativeName(NativeNameType.Enum, "D3D11_STENCIL_OP")]
 	public enum D3D11StencilOp
 	{
-		[NativeName("D3D11_STENCIL_OP_KEEP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_KEEP")]
 		Keep = unchecked(1),
-		[NativeName("D3D11_STENCIL_OP_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_ZERO")]
 		Zero = unchecked(2),
-		[NativeName("D3D11_STENCIL_OP_REPLACE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_REPLACE")]
 		Replace = unchecked(3),
-		[NativeName("D3D11_STENCIL_OP_INCR_SAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INCR_SAT")]
 		IncrSat = unchecked(4),
-		[NativeName("D3D11_STENCIL_OP_DECR_SAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_DECR_SAT")]
 		DecrSat = unchecked(5),
-		[NativeName("D3D11_STENCIL_OP_INVERT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INVERT")]
 		Invert = unchecked(6),
-		[NativeName("D3D11_STENCIL_OP_INCR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INCR")]
 		Incr = unchecked(7),
-		[NativeName("D3D11_STENCIL_OP_DECR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_DECR")]
 		Decr = unchecked(8),
 	}
 
-	[NativeName("D3D11_FILL_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_FILL_MODE")]
 	public enum D3D11FillMode
 	{
-		[NativeName("D3D11_FILL_WIREFRAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILL_WIREFRAME")]
 		Wireframe = unchecked(2),
-		[NativeName("D3D11_FILL_SOLID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILL_SOLID")]
 		Solid = unchecked(3),
 	}
 
-	[NativeName("D3D11_CULL_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_CULL_MODE")]
 	public enum D3D11CullMode
 	{
-		[NativeName("D3D11_CULL_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_NONE")]
 		None = unchecked(1),
-		[NativeName("D3D11_CULL_FRONT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_FRONT")]
 		Front = unchecked(2),
-		[NativeName("D3D11_CULL_BACK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_BACK")]
 		Back = unchecked(3),
 	}
 
@@ -250,369 +250,369 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0021 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_FILTER")]
+	[NativeName(NativeNameType.Enum, "D3D11_FILTER")]
 	public enum D3D11Filter
 	{
-		[NativeName("D3D11_FILTER_MIN_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_MIP_POINT")]
 		MinMagMipPoint = unchecked(0),
-		[NativeName("D3D11_FILTER_MIN_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_POINT_MIP_LINEAR")]
 		MinMagPointMipLinear = unchecked(1),
-		[NativeName("D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT")]
 		MinPointMagLinearMipPoint = unchecked(4),
-		[NativeName("D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR")]
 		MinPointMagMipLinear = unchecked(5),
-		[NativeName("D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT")]
 		MinLinearMagMipPoint = unchecked(16),
-		[NativeName("D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
 		MinLinearMagPointMipLinear = unchecked(17),
-		[NativeName("D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT")]
 		MinMagLinearMipPoint = unchecked(20),
-		[NativeName("D3D11_FILTER_MIN_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_MIP_LINEAR")]
 		MinMagMipLinear = unchecked(21),
-		[NativeName("D3D11_FILTER_ANISOTROPIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_ANISOTROPIC")]
 		Anisotropic = unchecked(85),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT")]
 		ComparisonMinMagMipPoint = unchecked(128),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR")]
 		ComparisonMinMagPointMipLinear = unchecked(129),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT")]
 		ComparisonMinPointMagLinearMipPoint = unchecked(132),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR")]
 		ComparisonMinPointMagMipLinear = unchecked(133),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT")]
 		ComparisonMinLinearMagMipPoint = unchecked(144),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
 		ComparisonMinLinearMagPointMipLinear = unchecked(145),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT")]
 		ComparisonMinMagLinearMipPoint = unchecked(148),
-		[NativeName("D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR")]
 		ComparisonMinMagMipLinear = unchecked(149),
-		[NativeName("D3D11_FILTER_COMPARISON_ANISOTROPIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_ANISOTROPIC")]
 		ComparisonAnisotropic = unchecked(213),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_MIP_POINT")]
 		MinimumMinMagMipPoint = unchecked(256),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_POINT_MIP_LINEAR")]
 		MinimumMinMagPointMipLinear = unchecked(257),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
 		MinimumMinPointMagLinearMipPoint = unchecked(260),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_POINT_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_POINT_MAG_MIP_LINEAR")]
 		MinimumMinPointMagMipLinear = unchecked(261),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_MIP_POINT")]
 		MinimumMinLinearMagMipPoint = unchecked(272),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
 		MinimumMinLinearMagPointMipLinear = unchecked(273),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_LINEAR_MIP_POINT")]
 		MinimumMinMagLinearMipPoint = unchecked(276),
-		[NativeName("D3D11_FILTER_MINIMUM_MIN_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_MIP_LINEAR")]
 		MinimumMinMagMipLinear = unchecked(277),
-		[NativeName("D3D11_FILTER_MINIMUM_ANISOTROPIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_ANISOTROPIC")]
 		MinimumAnisotropic = unchecked(341),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_POINT")]
 		MaximumMinMagMipPoint = unchecked(384),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_POINT_MIP_LINEAR")]
 		MaximumMinMagPointMipLinear = unchecked(385),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
 		MaximumMinPointMagLinearMipPoint = unchecked(388),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_MIP_LINEAR")]
 		MaximumMinPointMagMipLinear = unchecked(389),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_MIP_POINT")]
 		MaximumMinLinearMagMipPoint = unchecked(400),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
 		MaximumMinLinearMagPointMipLinear = unchecked(401),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_MAG_LINEAR_MIP_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_LINEAR_MIP_POINT")]
 		MaximumMinMagLinearMipPoint = unchecked(404),
-		[NativeName("D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_LINEAR")]
 		MaximumMinMagMipLinear = unchecked(405),
-		[NativeName("D3D11_FILTER_MAXIMUM_ANISOTROPIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_ANISOTROPIC")]
 		MaximumAnisotropic = unchecked(469),
 	}
 
-	[NativeName("D3D11_TEXTURE_ADDRESS_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_ADDRESS_MODE")]
 	public enum D3D11TextureAddressMode
 	{
-		[NativeName("D3D11_TEXTURE_ADDRESS_WRAP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_WRAP")]
 		Wrap = unchecked(1),
-		[NativeName("D3D11_TEXTURE_ADDRESS_MIRROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_MIRROR")]
 		Mirror = unchecked(2),
-		[NativeName("D3D11_TEXTURE_ADDRESS_CLAMP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_CLAMP")]
 		Clamp = unchecked(3),
-		[NativeName("D3D11_TEXTURE_ADDRESS_BORDER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_BORDER")]
 		Border = unchecked(4),
-		[NativeName("D3D11_TEXTURE_ADDRESS_MIRROR_ONCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_MIRROR_ONCE")]
 		MirrorOnce = unchecked(5),
 	}
 
-	[NativeName("D3D11_QUERY")]
+	[NativeName(NativeNameType.Enum, "D3D11_QUERY")]
 	public enum D3D11Query
 	{
-		[NativeName("D3D11_QUERY_EVENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_EVENT")]
 		Event = unchecked(0),
-		[NativeName("D3D11_QUERY_OCCLUSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_OCCLUSION")]
 		Occlusion = unchecked(1),
-		[NativeName("D3D11_QUERY_TIMESTAMP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_TIMESTAMP")]
 		Timestamp = unchecked(2),
-		[NativeName("D3D11_QUERY_TIMESTAMP_DISJOINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_TIMESTAMP_DISJOINT")]
 		TimestampDisjoint = unchecked(3),
-		[NativeName("D3D11_QUERY_PIPELINE_STATISTICS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_PIPELINE_STATISTICS")]
 		PipelineStatistics = unchecked(4),
-		[NativeName("D3D11_QUERY_OCCLUSION_PREDICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_OCCLUSION_PREDICATE")]
 		OcclusionPredicate = unchecked(5),
-		[NativeName("D3D11_QUERY_SO_STATISTICS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS")]
 		SoStatistics = unchecked(6),
-		[NativeName("D3D11_QUERY_SO_OVERFLOW_PREDICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE")]
 		SoOverflowPredicate = unchecked(7),
-		[NativeName("D3D11_QUERY_SO_STATISTICS_STREAM0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM0")]
 		SoStatisticsStream0 = unchecked(8),
-		[NativeName("D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM0")]
 		SoOverflowPredicateStream0 = unchecked(9),
-		[NativeName("D3D11_QUERY_SO_STATISTICS_STREAM1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM1")]
 		SoStatisticsStream1 = unchecked(10),
-		[NativeName("D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM1")]
 		SoOverflowPredicateStream1 = unchecked(11),
-		[NativeName("D3D11_QUERY_SO_STATISTICS_STREAM2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM2")]
 		SoStatisticsStream2 = unchecked(12),
-		[NativeName("D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM2")]
 		SoOverflowPredicateStream2 = unchecked(13),
-		[NativeName("D3D11_QUERY_SO_STATISTICS_STREAM3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM3")]
 		SoStatisticsStream3 = unchecked(14),
-		[NativeName("D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM3")]
 		SoOverflowPredicateStream3 = unchecked(15),
 	}
 
-	[NativeName("D3D11_COUNTER")]
+	[NativeName(NativeNameType.Enum, "D3D11_COUNTER")]
 	public enum D3D11Counter
 	{
-		[NativeName("D3D11_COUNTER_DEVICE_DEPENDENT_0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_DEVICE_DEPENDENT_0")]
 		DeviceDependent0 = unchecked(1073741824),
 	}
 
-	[NativeName("D3D11_MAP")]
+	[NativeName(NativeNameType.Enum, "D3D11_MAP")]
 	public enum D3D11Map
 	{
-		[NativeName("D3D11_MAP_READ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_READ")]
 		Read = unchecked(1),
-		[NativeName("D3D11_MAP_WRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE")]
 		Write = unchecked(2),
-		[NativeName("D3D11_MAP_READ_WRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_READ_WRITE")]
 		ReadWrite = unchecked(3),
-		[NativeName("D3D11_MAP_WRITE_DISCARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE_DISCARD")]
 		WriteDiscard = unchecked(4),
-		[NativeName("D3D11_MAP_WRITE_NO_OVERWRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE_NO_OVERWRITE")]
 		WriteNoOverwrite = unchecked(5),
 	}
 
-	[NativeName("D3D_PRIMITIVE_TOPOLOGY")]
+	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
 	public enum D3DPrimitiveTopology
 	{
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		Undefined = unchecked(0),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		Pointlist = unchecked(1),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
 		Linelist = unchecked(2),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		Linestrip = unchecked(3),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		Trianglelist = unchecked(4),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		Trianglestrip = unchecked(5),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		LinelistAdj = unchecked(10),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		LinestripAdj = unchecked(11),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		TrianglelistAdj = unchecked(12),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		TrianglestripAdj = unchecked(13),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
 		Topology1ControlPointPatchlist = unchecked(33),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
 		Topology2ControlPointPatchlist = unchecked(34),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
 		Topology3ControlPointPatchlist = unchecked(35),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
 		Topology4ControlPointPatchlist = unchecked(36),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
 		Topology5ControlPointPatchlist = unchecked(37),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
 		Topology6ControlPointPatchlist = unchecked(38),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
 		Topology7ControlPointPatchlist = unchecked(39),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
 		Topology8ControlPointPatchlist = unchecked(40),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
 		Topology9ControlPointPatchlist = unchecked(41),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
 		Topology10ControlPointPatchlist = unchecked(42),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
 		Topology11ControlPointPatchlist = unchecked(43),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
 		Topology12ControlPointPatchlist = unchecked(44),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
 		Topology13ControlPointPatchlist = unchecked(45),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
 		Topology14ControlPointPatchlist = unchecked(46),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
 		Topology15ControlPointPatchlist = unchecked(47),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
 		Topology16ControlPointPatchlist = unchecked(48),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
 		Topology17ControlPointPatchlist = unchecked(49),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
 		Topology18ControlPointPatchlist = unchecked(50),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
 		Topology19ControlPointPatchlist = unchecked(51),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
 		Topology20ControlPointPatchlist = unchecked(52),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
 		Topology21ControlPointPatchlist = unchecked(53),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
 		Topology22ControlPointPatchlist = unchecked(54),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
 		Topology23ControlPointPatchlist = unchecked(55),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
 		Topology24ControlPointPatchlist = unchecked(56),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
 		Topology25ControlPointPatchlist = unchecked(57),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
 		Topology26ControlPointPatchlist = unchecked(58),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
 		Topology27ControlPointPatchlist = unchecked(59),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
 		Topology28ControlPointPatchlist = unchecked(60),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
 		Topology29ControlPointPatchlist = unchecked(61),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
 		Topology30ControlPointPatchlist = unchecked(62),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
 		Topology31ControlPointPatchlist = unchecked(63),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
 		Topology32ControlPointPatchlist = unchecked(64),
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3D10PrimitiveTopologyUndefined = Undefined,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		D3D10PrimitiveTopologyPointlist = Pointlist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
 		D3D10PrimitiveTopologyLinelist = Linelist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		D3D10PrimitiveTopologyLinestrip = Linestrip,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		D3D10PrimitiveTopologyTrianglelist = Trianglelist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		D3D10PrimitiveTopologyTrianglestrip = Trianglestrip,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		D3D10PrimitiveTopologyLinelistAdj = LinelistAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		D3D10PrimitiveTopologyLinestripAdj = LinestripAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		D3D10PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		D3D10PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3D11PrimitiveTopologyUndefined = Undefined,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		D3D11PrimitiveTopologyPointlist = Pointlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
 		D3D11PrimitiveTopologyLinelist = Linelist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		D3D11PrimitiveTopologyLinestrip = Linestrip,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		D3D11PrimitiveTopologyTrianglelist = Trianglelist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		D3D11PrimitiveTopologyTrianglestrip = Trianglestrip,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		D3D11PrimitiveTopologyLinelistAdj = LinelistAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		D3D11PrimitiveTopologyLinestripAdj = LinestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		D3D11PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		D3D11PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology1ControlPointPatchlist = Topology1ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology2ControlPointPatchlist = Topology2ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology3ControlPointPatchlist = Topology3ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology4ControlPointPatchlist = Topology4ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology5ControlPointPatchlist = Topology5ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology6ControlPointPatchlist = Topology6ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology7ControlPointPatchlist = Topology7ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology8ControlPointPatchlist = Topology8ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology9ControlPointPatchlist = Topology9ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology10ControlPointPatchlist = Topology10ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology11ControlPointPatchlist = Topology11ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology12ControlPointPatchlist = Topology12ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology13ControlPointPatchlist = Topology13ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology14ControlPointPatchlist = Topology14ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology15ControlPointPatchlist = Topology15ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology16ControlPointPatchlist = Topology16ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology17ControlPointPatchlist = Topology17ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology18ControlPointPatchlist = Topology18ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology19ControlPointPatchlist = Topology19ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology20ControlPointPatchlist = Topology20ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology21ControlPointPatchlist = Topology21ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology22ControlPointPatchlist = Topology22ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology23ControlPointPatchlist = Topology23ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology24ControlPointPatchlist = Topology24ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology25ControlPointPatchlist = Topology25ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology26ControlPointPatchlist = Topology26ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology27ControlPointPatchlist = Topology27ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology28ControlPointPatchlist = Topology28ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology29ControlPointPatchlist = Topology29ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology30ControlPointPatchlist = Topology30ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology31ControlPointPatchlist = Topology31ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
 		D3D11PrimitiveTopology32ControlPointPatchlist = Topology32ControlPointPatchlist,
 	}
 
-	[NativeName("D3D11_DEVICE_CONTEXT_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_DEVICE_CONTEXT_TYPE")]
 	public enum D3D11DeviceContextType
 	{
-		[NativeName("D3D11_DEVICE_CONTEXT_IMMEDIATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DEVICE_CONTEXT_IMMEDIATE")]
 		Immediate = unchecked(0),
-		[NativeName("D3D11_DEVICE_CONTEXT_DEFERRED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DEVICE_CONTEXT_DEFERRED")]
 		Deferred = unchecked(1),
 	}
 
-	[NativeName("D3D11_COUNTER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_COUNTER_TYPE")]
 	public enum D3D11CounterType
 	{
-		[NativeName("D3D11_COUNTER_TYPE_FLOAT32")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_FLOAT32")]
 		Float32 = unchecked(0),
-		[NativeName("D3D11_COUNTER_TYPE_UINT16")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT16")]
 		Uint16 = unchecked(1),
-		[NativeName("D3D11_COUNTER_TYPE_UINT32")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT32")]
 		Uint32 = unchecked(2),
-		[NativeName("D3D11_COUNTER_TYPE_UINT64")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT64")]
 		Uint64 = unchecked(3),
 	}
 
@@ -620,93 +620,93 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0029 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_FEATURE")]
+	[NativeName(NativeNameType.Enum, "D3D11_FEATURE")]
 	public enum D3D11Feature
 	{
-		[NativeName("D3D11_FEATURE_THREADING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_THREADING")]
 		Threading = unchecked(0),
-		[NativeName("D3D11_FEATURE_DOUBLES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_DOUBLES")]
 		Doubles = unchecked(1),
-		[NativeName("D3D11_FEATURE_FORMAT_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_FORMAT_SUPPORT")]
 		FormatSupport = unchecked(2),
-		[NativeName("D3D11_FEATURE_FORMAT_SUPPORT2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_FORMAT_SUPPORT2")]
 		FormatSupport2 = unchecked(3),
-		[NativeName("D3D11_FEATURE_D3D10_X_HARDWARE_OPTIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D10_X_HARDWARE_OPTIONS")]
 		Featured3D10xHardwareOptions = unchecked(4),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS")]
 		Featured3D11Options = unchecked(5),
-		[NativeName("D3D11_FEATURE_ARCHITECTURE_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_ARCHITECTURE_INFO")]
 		ArchitectureInfo = unchecked(6),
-		[NativeName("D3D11_FEATURE_D3D9_OPTIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_OPTIONS")]
 		Featured3D9Options = unchecked(7),
-		[NativeName("D3D11_FEATURE_SHADER_MIN_PRECISION_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_SHADER_MIN_PRECISION_SUPPORT")]
 		ShaderMinPrecisionSupport = unchecked(8),
-		[NativeName("D3D11_FEATURE_D3D9_SHADOW_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_SHADOW_SUPPORT")]
 		Featured3D9ShadowSupport = unchecked(9),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS1")]
 		Featured3D11Options1 = unchecked(10),
-		[NativeName("D3D11_FEATURE_D3D9_SIMPLE_INSTANCING_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_SIMPLE_INSTANCING_SUPPORT")]
 		Featured3D9SimpleInstancingSupport = unchecked(11),
-		[NativeName("D3D11_FEATURE_MARKER_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_MARKER_SUPPORT")]
 		MarkerSupport = unchecked(12),
-		[NativeName("D3D11_FEATURE_D3D9_OPTIONS1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_OPTIONS1")]
 		Featured3D9Options1 = unchecked(13),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS2")]
 		Featured3D11Options2 = unchecked(14),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS3")]
 		Featured3D11Options3 = unchecked(15),
-		[NativeName("D3D11_FEATURE_GPU_VIRTUAL_ADDRESS_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_GPU_VIRTUAL_ADDRESS_SUPPORT")]
 		GpuVirtualAddressSupport = unchecked(16),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS4")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS4")]
 		Featured3D11Options4 = unchecked(17),
-		[NativeName("D3D11_FEATURE_SHADER_CACHE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_SHADER_CACHE")]
 		ShaderCache = unchecked(18),
-		[NativeName("D3D11_FEATURE_D3D11_OPTIONS5")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS5")]
 		Featured3D11Options5 = unchecked(19),
-		[NativeName("D3D11_FEATURE_DISPLAYABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_DISPLAYABLE")]
 		Displayable = unchecked(20),
 	}
 
-	[NativeName("D3D11_VIDEO_FRAME_FORMAT")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_FRAME_FORMAT")]
 	public enum D3D11VideoFrameFormat
 	{
-		[NativeName("D3D11_VIDEO_FRAME_FORMAT_PROGRESSIVE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_PROGRESSIVE")]
 		Progressive = unchecked(0),
-		[NativeName("D3D11_VIDEO_FRAME_FORMAT_INTERLACED_TOP_FIELD_FIRST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_INTERLACED_TOP_FIELD_FIRST")]
 		InterlacedTopFieldFirst = unchecked(1),
-		[NativeName("D3D11_VIDEO_FRAME_FORMAT_INTERLACED_BOTTOM_FIELD_FIRST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_INTERLACED_BOTTOM_FIELD_FIRST")]
 		InterlacedBottomFieldFirst = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_USAGE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_USAGE")]
 	public enum D3D11VideoUsage
 	{
-		[NativeName("D3D11_VIDEO_USAGE_PLAYBACK_NORMAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_PLAYBACK_NORMAL")]
 		PlaybackNormal = unchecked(0),
-		[NativeName("D3D11_VIDEO_USAGE_OPTIMAL_SPEED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_OPTIMAL_SPEED")]
 		OptimalSpeed = unchecked(1),
-		[NativeName("D3D11_VIDEO_USAGE_OPTIMAL_QUALITY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_OPTIMAL_QUALITY")]
 		OptimalQuality = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_FILTER")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER")]
 	public enum D3D11VideoProcessorFilter
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_BRIGHTNESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_BRIGHTNESS")]
 		Brightness = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CONTRAST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CONTRAST")]
 		Contrast = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_HUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_HUE")]
 		Hue = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_SATURATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_SATURATION")]
 		Saturation = unchecked(3),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_NOISE_REDUCTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_NOISE_REDUCTION")]
 		NoiseReduction = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_EDGE_ENHANCEMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_EDGE_ENHANCEMENT")]
 		EdgeEnhancement = unchecked(5),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_ANAMORPHIC_SCALING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_ANAMORPHIC_SCALING")]
 		AnamorphicScaling = unchecked(6),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_STEREO_ADJUSTMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_STEREO_ADJUSTMENT")]
 		StereoAdjustment = unchecked(7),
 	}
 
@@ -714,12 +714,12 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0035 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_VDOV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_VDOV_DIMENSION")]
 	public enum D3D11VdovDimension
 	{
-		[NativeName("D3D11_VDOV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VDOV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_VDOV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VDOV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(1),
 	}
 
@@ -727,12 +727,12 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0036 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_VPIV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_VPIV_DIMENSION")]
 	public enum D3D11VpivDimension
 	{
-		[NativeName("D3D11_VPIV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VPIV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_VPIV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VPIV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(1),
 	}
 
@@ -740,232 +740,232 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0037 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_VPOV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D11_VPOV_DIMENSION")]
 	public enum D3D11VpovDimension
 	{
-		[NativeName("D3D11_VPOV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_VPOV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_TEXTURE2D")]
 		Texture2D = unchecked(1),
-		[NativeName("D3D11_VPOV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_TEXTURE2DARRAY")]
 		Texture2Darray = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_DECODER_BUFFER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_BUFFER_TYPE")]
 	public enum D3D11VideoDecoderBufferType
 	{
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_PICTURE_PARAMETERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_PICTURE_PARAMETERS")]
 		PictureParameters = unchecked(0),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_MACROBLOCK_CONTROL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_MACROBLOCK_CONTROL")]
 		MacroblockControl = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_RESIDUAL_DIFFERENCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_RESIDUAL_DIFFERENCE")]
 		ResidualDifference = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_DEBLOCKING_CONTROL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_DEBLOCKING_CONTROL")]
 		DeblockingControl = unchecked(3),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_INVERSE_QUANTIZATION_MATRIX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_INVERSE_QUANTIZATION_MATRIX")]
 		InverseQuantizationMatrix = unchecked(4),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_SLICE_CONTROL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_SLICE_CONTROL")]
 		SliceControl = unchecked(5),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_BITSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_BITSTREAM")]
 		Bitstream = unchecked(6),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_MOTION_VECTOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_MOTION_VECTOR")]
 		MotionVector = unchecked(7),
-		[NativeName("D3D11_VIDEO_DECODER_BUFFER_FILM_GRAIN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_FILM_GRAIN")]
 		FilmGrain = unchecked(8),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE")]
 	public enum D3D11VideoProcessorAlphaFillMode
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_OPAQUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_OPAQUE")]
 		Opaque = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_BACKGROUND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_BACKGROUND")]
 		Background = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_DESTINATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_DESTINATION")]
 		Destination = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_SOURCE_STREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_SOURCE_STREAM")]
 		SourceStream = unchecked(3),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_OUTPUT_RATE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE")]
 	public enum D3D11VideoProcessorOutputRate
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_NORMAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_NORMAL")]
 		Normal = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_HALF")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_HALF")]
 		Half = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_CUSTOM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_CUSTOM")]
 		Custom = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT")]
 	public enum D3D11VideoProcessorStereoFormat
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO")]
 		Mono = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_HORIZONTAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_HORIZONTAL")]
 		Horizontal = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_VERTICAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_VERTICAL")]
 		Vertical = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_SEPARATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_SEPARATE")]
 		Separate = unchecked(3),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO_OFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO_OFFSET")]
 		MonoOffset = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_ROW_INTERLEAVED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_ROW_INTERLEAVED")]
 		RowInterleaved = unchecked(5),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_COLUMN_INTERLEAVED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_COLUMN_INTERLEAVED")]
 		ColumnInterleaved = unchecked(6),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_CHECKERBOARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_CHECKERBOARD")]
 		Checkerboard = unchecked(7),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE")]
 	public enum D3D11VideoProcessorStereoFlipMode
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FLIP_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_NONE")]
 		None = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME0")]
 		Frame0 = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME1")]
 		Frame1 = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_ROTATION")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ROTATION")]
 	public enum D3D11VideoProcessorRotation
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_ROTATION_IDENTITY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_IDENTITY")]
 		Identity = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ROTATION_90")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_90")]
 		Rotation90 = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ROTATION_180")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_180")]
 		Rotation180 = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ROTATION_270")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_270")]
 		Rotation270 = unchecked(3),
 	}
 
-	[NativeName("D3D11_AUTHENTICATED_CHANNEL_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_CHANNEL_TYPE")]
 	public enum D3D11AuthenticatedChannelType
 	{
-		[NativeName("D3D11_AUTHENTICATED_CHANNEL_D3D11")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_D3D11")]
 		Channeld3D11 = unchecked(1),
-		[NativeName("D3D11_AUTHENTICATED_CHANNEL_DRIVER_SOFTWARE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_DRIVER_SOFTWARE")]
 		DriverSoftware = unchecked(2),
-		[NativeName("D3D11_AUTHENTICATED_CHANNEL_DRIVER_HARDWARE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_DRIVER_HARDWARE")]
 		DriverHardware = unchecked(3),
 	}
 
-	[NativeName("D3D11_BIND_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_BIND_FLAG")]
 	public enum D3D11BindFlag
 	{
-		[NativeName("D3D11_BIND_VERTEX_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_VERTEX_BUFFER")]
 		VertexBuffer = unchecked((int)0x1L),
-		[NativeName("D3D11_BIND_INDEX_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_INDEX_BUFFER")]
 		IndexBuffer = unchecked((int)0x2L),
-		[NativeName("D3D11_BIND_CONSTANT_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_CONSTANT_BUFFER")]
 		ConstantBuffer = unchecked((int)0x4L),
-		[NativeName("D3D11_BIND_SHADER_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_SHADER_RESOURCE")]
 		ShaderResource = unchecked((int)0x8L),
-		[NativeName("D3D11_BIND_STREAM_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_STREAM_OUTPUT")]
 		StreamOutput = unchecked((int)0x10L),
-		[NativeName("D3D11_BIND_RENDER_TARGET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_RENDER_TARGET")]
 		RenderTarget = unchecked((int)0x20L),
-		[NativeName("D3D11_BIND_DEPTH_STENCIL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_DEPTH_STENCIL")]
 		DepthStencil = unchecked((int)0x40L),
-		[NativeName("D3D11_BIND_UNORDERED_ACCESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_UNORDERED_ACCESS")]
 		UnorderedAccess = unchecked((int)0x80L),
-		[NativeName("D3D11_BIND_DECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_DECODER")]
 		Decoder = unchecked((int)0x200L),
-		[NativeName("D3D11_BIND_VIDEO_ENCODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_VIDEO_ENCODER")]
 		VideoEncoder = unchecked((int)0x400L),
 	}
 
-	[NativeName("D3D11_CPU_ACCESS_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_CPU_ACCESS_FLAG")]
 	public enum D3D11CpuAccessFlag
 	{
-		[NativeName("D3D11_CPU_ACCESS_WRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CPU_ACCESS_WRITE")]
 		Write = unchecked((int)0x10000L),
-		[NativeName("D3D11_CPU_ACCESS_READ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CPU_ACCESS_READ")]
 		Read = unchecked((int)0x20000L),
 	}
 
-	[NativeName("D3D11_RESOURCE_MISC_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_MISC_FLAG")]
 	public enum D3D11ResourceMiscFlag
 	{
-		[NativeName("D3D11_RESOURCE_MISC_GENERATE_MIPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GENERATE_MIPS")]
 		GenerateMips = unchecked((int)0x1L),
-		[NativeName("D3D11_RESOURCE_MISC_SHARED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED")]
 		Shared = unchecked((int)0x2L),
-		[NativeName("D3D11_RESOURCE_MISC_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TEXTURECUBE")]
 		Texturecube = unchecked((int)0x4L),
-		[NativeName("D3D11_RESOURCE_MISC_DRAWINDIRECT_ARGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_DRAWINDIRECT_ARGS")]
 		DrawindirectArgs = unchecked((int)0x10L),
-		[NativeName("D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS")]
 		BufferAllowRawViews = unchecked((int)0x20L),
-		[NativeName("D3D11_RESOURCE_MISC_BUFFER_STRUCTURED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_BUFFER_STRUCTURED")]
 		BufferStructured = unchecked((int)0x40L),
-		[NativeName("D3D11_RESOURCE_MISC_RESOURCE_CLAMP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESOURCE_CLAMP")]
 		Clamp = unchecked((int)0x80L),
-		[NativeName("D3D11_RESOURCE_MISC_SHARED_KEYEDMUTEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_KEYEDMUTEX")]
 		SharedKeyedmutex = unchecked((int)0x100L),
-		[NativeName("D3D11_RESOURCE_MISC_GDI_COMPATIBLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GDI_COMPATIBLE")]
 		GdiCompatible = unchecked((int)0x200L),
-		[NativeName("D3D11_RESOURCE_MISC_SHARED_NTHANDLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_NTHANDLE")]
 		SharedNthandle = unchecked((int)0x800L),
-		[NativeName("D3D11_RESOURCE_MISC_RESTRICTED_CONTENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICTED_CONTENT")]
 		RestrictedContent = unchecked((int)0x1000L),
-		[NativeName("D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE")]
 		RestrictSharedResource = unchecked((int)0x2000L),
-		[NativeName("D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER")]
 		RestrictSharedResourceDriver = unchecked((int)0x4000L),
-		[NativeName("D3D11_RESOURCE_MISC_GUARDED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GUARDED")]
 		Guarded = unchecked((int)0x8000L),
-		[NativeName("D3D11_RESOURCE_MISC_TILE_POOL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TILE_POOL")]
 		TilePool = unchecked((int)0x20000L),
-		[NativeName("D3D11_RESOURCE_MISC_TILED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TILED")]
 		Tiled = unchecked((int)0x40000L),
-		[NativeName("D3D11_RESOURCE_MISC_HW_PROTECTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_HW_PROTECTED")]
 		HwProtected = unchecked((int)0x80000L),
-		[NativeName("D3D11_RESOURCE_MISC_SHARED_DISPLAYABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_DISPLAYABLE")]
 		SharedDisplayable = unchecked((int)0x100000L),
-		[NativeName("D3D11_RESOURCE_MISC_SHARED_EXCLUSIVE_WRITER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_EXCLUSIVE_WRITER")]
 		SharedExclusiveWriter = unchecked((int)0x200000L),
 	}
 
-	[NativeName("D3D11_MAP_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_MAP_FLAG")]
 	public enum D3D11MapFlag
 	{
-		[NativeName("D3D11_MAP_FLAG_DO_NOT_WAIT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_FLAG_DO_NOT_WAIT")]
 		DoNotWait = unchecked((int)0x100000L),
 	}
 
-	[NativeName("D3D11_RAISE_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_RAISE_FLAG")]
 	public enum D3D11RaiseFlag
 	{
-		[NativeName("D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR")]
 		DriverInternalError = unchecked((int)0x1L),
 	}
 
-	[NativeName("D3D11_CLEAR_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_CLEAR_FLAG")]
 	public enum D3D11ClearFlag
 	{
-		[NativeName("D3D11_CLEAR_DEPTH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CLEAR_DEPTH")]
 		Depth = unchecked((int)0x1L),
-		[NativeName("D3D11_CLEAR_STENCIL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CLEAR_STENCIL")]
 		Stencil = unchecked((int)0x2L),
 	}
 
-	[NativeName("D3D11_COLOR_WRITE_ENABLE")]
+	[NativeName(NativeNameType.Enum, "D3D11_COLOR_WRITE_ENABLE")]
 	public enum D3D11ColorWriteEnable
 	{
-		[NativeName("D3D11_COLOR_WRITE_ENABLE_RED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_RED")]
 		Red = unchecked(1),
-		[NativeName("D3D11_COLOR_WRITE_ENABLE_GREEN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_GREEN")]
 		Green = unchecked(2),
-		[NativeName("D3D11_COLOR_WRITE_ENABLE_BLUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_BLUE")]
 		Blue = unchecked(4),
-		[NativeName("D3D11_COLOR_WRITE_ENABLE_ALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_ALPHA")]
 		Alpha = unchecked(8),
-		[NativeName("D3D11_COLOR_WRITE_ENABLE_ALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_ALL")]
 		All = unchecked(15),
 	}
 
@@ -973,36 +973,36 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0009 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_TEXTURECUBE_FACE")]
+	[NativeName(NativeNameType.Enum, "D3D11_TEXTURECUBE_FACE")]
 	public enum D3D11TexturecubeFace
 	{
-		[NativeName("D3D11_TEXTURECUBE_FACE_POSITIVE_X")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_X")]
 		Positivex = unchecked(0),
-		[NativeName("D3D11_TEXTURECUBE_FACE_NEGATIVE_X")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_X")]
 		Negativex = unchecked(1),
-		[NativeName("D3D11_TEXTURECUBE_FACE_POSITIVE_Y")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_Y")]
 		Positivey = unchecked(2),
-		[NativeName("D3D11_TEXTURECUBE_FACE_NEGATIVE_Y")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_Y")]
 		Negativey = unchecked(3),
-		[NativeName("D3D11_TEXTURECUBE_FACE_POSITIVE_Z")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_Z")]
 		Positivez = unchecked(4),
-		[NativeName("D3D11_TEXTURECUBE_FACE_NEGATIVE_Z")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_Z")]
 		Negativez = unchecked(5),
 	}
 
-	[NativeName("D3D11_BUFFEREX_SRV_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_BUFFEREX_SRV_FLAG")]
 	public enum D3D11BufferexSrvFlag
 	{
-		[NativeName("D3D11_BUFFEREX_SRV_FLAG_RAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFEREX_SRV_FLAG_RAW")]
 		Raw = unchecked(1),
 	}
 
-	[NativeName("D3D11_DSV_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_DSV_FLAG")]
 	public enum D3D11DsvFlag
 	{
-		[NativeName("D3D11_DSV_READ_ONLY_DEPTH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_READ_ONLY_DEPTH")]
 		ReadOnlyDepth = unchecked((int)0x1L),
-		[NativeName("D3D11_DSV_READ_ONLY_STENCIL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_READ_ONLY_STENCIL")]
 		ReadOnlyStencil = unchecked((int)0x2L),
 	}
 
@@ -1010,36 +1010,36 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0013 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_BUFFER_UAV_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_BUFFER_UAV_FLAG")]
 	public enum D3D11BufferUavFlag
 	{
-		[NativeName("D3D11_BUFFER_UAV_FLAG_RAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_RAW")]
 		Raw = unchecked(1),
-		[NativeName("D3D11_BUFFER_UAV_FLAG_APPEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_APPEND")]
 		Append = unchecked(2),
-		[NativeName("D3D11_BUFFER_UAV_FLAG_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_COUNTER")]
 		Counter = unchecked(4),
 	}
 
-	[NativeName("D3D11_FILTER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_FILTER_TYPE")]
 	public enum D3D11FilterType
 	{
-		[NativeName("D3D11_FILTER_TYPE_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_TYPE_POINT")]
 		Point = unchecked(0),
-		[NativeName("D3D11_FILTER_TYPE_LINEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_TYPE_LINEAR")]
 		Linear = unchecked(1),
 	}
 
-	[NativeName("D3D11_FILTER_REDUCTION_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_FILTER_REDUCTION_TYPE")]
 	public enum D3D11FilterReductionType
 	{
-		[NativeName("D3D11_FILTER_REDUCTION_TYPE_STANDARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_STANDARD")]
 		Standard = unchecked(0),
-		[NativeName("D3D11_FILTER_REDUCTION_TYPE_COMPARISON")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_COMPARISON")]
 		Comparison = unchecked(1),
-		[NativeName("D3D11_FILTER_REDUCTION_TYPE_MINIMUM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_MINIMUM")]
 		Minimum = unchecked(2),
-		[NativeName("D3D11_FILTER_REDUCTION_TYPE_MAXIMUM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_MAXIMUM")]
 		Maximum = unchecked(3),
 	}
 
@@ -1047,99 +1047,99 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0022 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_FORMAT_SUPPORT")]
+	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT")]
 	public enum D3D11FormatSupport
 	{
-		[NativeName("D3D11_FORMAT_SUPPORT_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BUFFER")]
 		Buffer = unchecked(1),
-		[NativeName("D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER")]
 		IaVertexBuffer = unchecked(2),
-		[NativeName("D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER")]
 		IaIndexBuffer = unchecked(4),
-		[NativeName("D3D11_FORMAT_SUPPORT_SO_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SO_BUFFER")]
 		SoBuffer = unchecked(8),
-		[NativeName("D3D11_FORMAT_SUPPORT_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE1D")]
 		Texture1D = unchecked(16),
-		[NativeName("D3D11_FORMAT_SUPPORT_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE2D")]
 		Texture2D = unchecked(32),
-		[NativeName("D3D11_FORMAT_SUPPORT_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE3D")]
 		Texture3D = unchecked(64),
-		[NativeName("D3D11_FORMAT_SUPPORT_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURECUBE")]
 		Texturecube = unchecked(128),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_LOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_LOAD")]
 		ShaderLoad = unchecked(256),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_SAMPLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE")]
 		ShaderSample = unchecked(512),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON")]
 		ShaderSampleComparison = unchecked(1024),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT")]
 		ShaderSampleMonoText = unchecked(2048),
-		[NativeName("D3D11_FORMAT_SUPPORT_MIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MIP")]
 		Mip = unchecked(4096),
-		[NativeName("D3D11_FORMAT_SUPPORT_MIP_AUTOGEN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MIP_AUTOGEN")]
 		MipAutogen = unchecked(8192),
-		[NativeName("D3D11_FORMAT_SUPPORT_RENDER_TARGET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_RENDER_TARGET")]
 		RenderTarget = unchecked(16384),
-		[NativeName("D3D11_FORMAT_SUPPORT_BLENDABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BLENDABLE")]
 		Blendable = unchecked(32768),
-		[NativeName("D3D11_FORMAT_SUPPORT_DEPTH_STENCIL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DEPTH_STENCIL")]
 		DepthStencil = unchecked(65536),
-		[NativeName("D3D11_FORMAT_SUPPORT_CPU_LOCKABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_CPU_LOCKABLE")]
 		CpuLockable = unchecked(131072),
-		[NativeName("D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE")]
 		MultisampleResolve = unchecked(262144),
-		[NativeName("D3D11_FORMAT_SUPPORT_DISPLAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DISPLAY")]
 		Display = unchecked(524288),
-		[NativeName("D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT")]
 		CastWithinLayout = unchecked(1048576),
-		[NativeName("D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET")]
 		MultisampleRendertarget = unchecked(2097152),
-		[NativeName("D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD")]
 		MultisampleLoad = unchecked(4194304),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_GATHER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_GATHER")]
 		ShaderGather = unchecked(8388608),
-		[NativeName("D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST")]
 		BackBufferCast = unchecked(16777216),
-		[NativeName("D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW")]
 		TypedUnorderedAccessView = unchecked(33554432),
-		[NativeName("D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON")]
 		ShaderGatherComparison = unchecked(67108864),
-		[NativeName("D3D11_FORMAT_SUPPORT_DECODER_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DECODER_OUTPUT")]
 		DecoderOutput = unchecked(134217728),
-		[NativeName("D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT")]
 		VideoProcessorOutput = unchecked(268435456),
-		[NativeName("D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT")]
 		VideoProcessorInput = unchecked(536870912),
-		[NativeName("D3D11_FORMAT_SUPPORT_VIDEO_ENCODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_ENCODER")]
 		VideoEncoder = unchecked(1073741824),
 	}
 
-	[NativeName("D3D11_FORMAT_SUPPORT2")]
+	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT2")]
 	public enum D3D11FormatSupport2
 	{
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD")]
 		UavAtomicAdd = unchecked(1),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS")]
 		UavAtomicBitwiseOps = unchecked(2),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE")]
 		UavAtomicCompareStoreOrCompareExchange = unchecked(4),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE")]
 		UavAtomicExchange = unchecked(8),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX")]
 		UavAtomicSignedMinOrMax = unchecked(16),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX")]
 		UavAtomicUnsignedMinOrMax = unchecked(32),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD")]
 		UavTypedLoad = unchecked(64),
-		[NativeName("D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE")]
 		UavTypedStore = unchecked(128),
-		[NativeName("D3D11_FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP")]
 		OutputMergerLogicOp = unchecked(256),
-		[NativeName("D3D11_FORMAT_SUPPORT2_TILED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_TILED")]
 		Tiled = unchecked(512),
-		[NativeName("D3D11_FORMAT_SUPPORT2_SHAREABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_SHAREABLE")]
 		Shareable = unchecked(1024),
-		[NativeName("D3D11_FORMAT_SUPPORT2_MULTIPLANE_OVERLAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_MULTIPLANE_OVERLAY")]
 		MultiplaneOverlay = unchecked(16384),
 	}
 
@@ -1147,17 +1147,17 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0023 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_ASYNC_GETDATA_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_ASYNC_GETDATA_FLAG")]
 	public enum D3D11AsyncGetdataFlag
 	{
-		[NativeName("D3D11_ASYNC_GETDATA_DONOTFLUSH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_ASYNC_GETDATA_DONOTFLUSH")]
 		Donotflush = unchecked(1),
 	}
 
-	[NativeName("D3D11_QUERY_MISC_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_QUERY_MISC_FLAG")]
 	public enum D3D11QueryMiscFlag
 	{
-		[NativeName("D3D11_QUERY_MISC_PREDICATEHINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_MISC_PREDICATEHINT")]
 		Predicatehint = unchecked(1),
 	}
 
@@ -1165,71 +1165,71 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0026 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS")]
+	[NativeName(NativeNameType.Enum, "D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS")]
 	public enum D3D11StandardMultisampleQualityLevels
 	{
-		[NativeName("D3D11_STANDARD_MULTISAMPLE_PATTERN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_STANDARD_MULTISAMPLE_PATTERN")]
 		Pattern = unchecked((int)0xffffffff),
-		[NativeName("D3D11_CENTER_MULTISAMPLE_PATTERN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CENTER_MULTISAMPLE_PATTERN")]
 		CenterMultisamplePattern = unchecked((int)0xfffffffe),
 	}
 
-	[NativeName("D3D11_SHADER_MIN_PRECISION_SUPPORT")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_MIN_PRECISION_SUPPORT")]
 	public enum D3D11ShaderMinPrecisionSupport
 	{
-		[NativeName("D3D11_SHADER_MIN_PRECISION_10_BIT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_MIN_PRECISION_10_BIT")]
 		Precision10 = unchecked(1),
-		[NativeName("D3D11_SHADER_MIN_PRECISION_16_BIT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_MIN_PRECISION_16_BIT")]
 		Precision16 = unchecked(2),
 	}
 
-	[NativeName("D3D11_TILED_RESOURCES_TIER")]
+	[NativeName(NativeNameType.Enum, "D3D11_TILED_RESOURCES_TIER")]
 	public enum D3D11TiledResourcesTier
 	{
-		[NativeName("D3D11_TILED_RESOURCES_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
-		[NativeName("D3D11_TILED_RESOURCES_TIER_1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_1")]
 		Tier1 = unchecked(1),
-		[NativeName("D3D11_TILED_RESOURCES_TIER_2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_2")]
 		Tier2 = unchecked(2),
-		[NativeName("D3D11_TILED_RESOURCES_TIER_3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_3")]
 		Tier3 = unchecked(3),
 	}
 
-	[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_TIER")]
+	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_TIER")]
 	public enum D3D11ConservativeRasterizationTier
 	{
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_TIER_1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_1")]
 		Tier1 = unchecked(1),
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_TIER_2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_2")]
 		Tier2 = unchecked(2),
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_TIER_3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_3")]
 		Tier3 = unchecked(3),
 	}
 
-	[NativeName("D3D11_SHADER_CACHE_SUPPORT_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_CACHE_SUPPORT_FLAGS")]
 	public enum D3D11ShaderCacheSupportFlags
 	{
-		[NativeName("D3D11_SHADER_CACHE_SUPPORT_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_NONE")]
 		None = unchecked(0),
-		[NativeName("D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_INPROC_CACHE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_INPROC_CACHE")]
 		AutomaticInprocCache = unchecked(1),
-		[NativeName("D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_DISK_CACHE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_DISK_CACHE")]
 		AutomaticDiskCache = unchecked(2),
 	}
 
-	[NativeName("D3D11_SHARED_RESOURCE_TIER")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHARED_RESOURCE_TIER")]
 	public enum D3D11SharedResourceTier
 	{
-		[NativeName("D3D11_SHARED_RESOURCE_TIER_0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_0")]
 		Tier0 = unchecked(0),
-		[NativeName("D3D11_SHARED_RESOURCE_TIER_1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_1")]
 		Tier1 = unchecked(1),
-		[NativeName("D3D11_SHARED_RESOURCE_TIER_2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_2")]
 		Tier2 = unchecked(2),
-		[NativeName("D3D11_SHARED_RESOURCE_TIER_3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_3")]
 		Tier3 = unchecked(3),
 	}
 
@@ -1237,254 +1237,254 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0031 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT")]
 	public enum D3D11VideoProcessorFormatSupport
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT")]
 		Input = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT")]
 		Output = unchecked(2),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS")]
 	public enum D3D11VideoProcessorDeviceCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE")]
 		LinearSpace = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_xvYCC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_xvYCC")]
 		XvYcc = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_RGB_RANGE_CONVERSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_RGB_RANGE_CONVERSION")]
 		RgbRangeConversion = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_YCbCr_MATRIX_CONVERSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_YCbCr_MATRIX_CONVERSION")]
 		CapsyCbCrMatrixConversion = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_NOMINAL_RANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_NOMINAL_RANGE")]
 		NominalRange = unchecked(16),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS")]
 	public enum D3D11VideoProcessorFeatureCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL")]
 		AlphaFill = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_CONSTRICTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_CONSTRICTION")]
 		Constriction = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LUMA_KEY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LUMA_KEY")]
 		LumaKey = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_PALETTE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_PALETTE")]
 		AlphaPalette = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LEGACY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LEGACY")]
 		Legacy = unchecked(16),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_STEREO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_STEREO")]
 		Stereo = unchecked(32),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ROTATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ROTATION")]
 		Rotation = unchecked(64),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_STREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_STREAM")]
 		AlphaStream = unchecked(128),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_PIXEL_ASPECT_RATIO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_PIXEL_ASPECT_RATIO")]
 		PixelAspectRatio = unchecked(256),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_MIRROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_MIRROR")]
 		Mirror = unchecked(512),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_SHADER_USAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_SHADER_USAGE")]
 		ShaderUsage = unchecked(1024),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_METADATA_HDR10")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_METADATA_HDR10")]
 		MetadataHdr10 = unchecked(2048),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS")]
 	public enum D3D11VideoProcessorFilterCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS")]
 		Brightness = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_CONTRAST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_CONTRAST")]
 		Contrast = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_HUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_HUE")]
 		Hue = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_SATURATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_SATURATION")]
 		Saturation = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_NOISE_REDUCTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_NOISE_REDUCTION")]
 		NoiseReduction = unchecked(16),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_EDGE_ENHANCEMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_EDGE_ENHANCEMENT")]
 		EdgeEnhancement = unchecked(32),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_ANAMORPHIC_SCALING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_ANAMORPHIC_SCALING")]
 		AnamorphicScaling = unchecked(64),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FILTER_CAPS_STEREO_ADJUSTMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_STEREO_ADJUSTMENT")]
 		StereoAdjustment = unchecked(128),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS")]
 	public enum D3D11VideoProcessorFormatCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED")]
 		RgbInterlaced = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_PROCAMP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_PROCAMP")]
 		RgbProcamp = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_LUMA_KEY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_LUMA_KEY")]
 		RgbLumaKey = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_PALETTE_INTERLACED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_PALETTE_INTERLACED")]
 		PaletteInterlaced = unchecked(8),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS")]
 	public enum D3D11VideoProcessorAutoStreamCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE")]
 		Denoise = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DERINGING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DERINGING")]
 		Deringing = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_EDGE_ENHANCEMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_EDGE_ENHANCEMENT")]
 		EdgeEnhancement = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_COLOR_CORRECTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_COLOR_CORRECTION")]
 		ColorCorrection = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_FLESH_TONE_MAPPING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_FLESH_TONE_MAPPING")]
 		FleshToneMapping = unchecked(16),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_IMAGE_STABILIZATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_IMAGE_STABILIZATION")]
 		ImageStabilization = unchecked(32),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_SUPER_RESOLUTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_SUPER_RESOLUTION")]
 		SuperResolution = unchecked(64),
-		[NativeName("D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_ANAMORPHIC_SCALING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_ANAMORPHIC_SCALING")]
 		AnamorphicScaling = unchecked(128),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS")]
 	public enum D3D11VideoProcessorStereoCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET")]
 		MonoOffset = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS_ROW_INTERLEAVED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_ROW_INTERLEAVED")]
 		RowInterleaved = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS_COLUMN_INTERLEAVED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_COLUMN_INTERLEAVED")]
 		ColumnInterleaved = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS_CHECKERBOARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_CHECKERBOARD")]
 		Checkerboard = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_STEREO_CAPS_FLIP_MODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_FLIP_MODE")]
 		FlipMode = unchecked(16),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS")]
 	public enum D3D11VideoProcessorProcessorCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BLEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BLEND")]
 		DeinterlaceBlend = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BOB")]
 		DeinterlaceBob = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_ADAPTIVE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_ADAPTIVE")]
 		DeinterlaceAdaptive = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_MOTION_COMPENSATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_MOTION_COMPENSATION")]
 		DeinterlaceMotionCompensation = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_INVERSE_TELECINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_INVERSE_TELECINE")]
 		InverseTelecine = unchecked(16),
-		[NativeName("D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_FRAME_RATE_CONVERSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_FRAME_RATE_CONVERSION")]
 		FrameRateConversion = unchecked(32),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS")]
 	public enum D3D11VideoProcessorItelecineCaps
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32")]
 		Caps32 = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_22")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_22")]
 		Caps22 = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2224")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2224")]
 		Caps2224 = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2332")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2332")]
 		Caps2332 = unchecked(8),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32322")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32322")]
 		Caps32322 = unchecked(16),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_55")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_55")]
 		Caps55 = unchecked(32),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_64")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_64")]
 		Caps64 = unchecked(64),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_87")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_87")]
 		Caps87 = unchecked(128),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_222222222223")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_222222222223")]
 		Caps222222222223 = unchecked(256),
-		[NativeName("D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER")]
 		Other = unchecked((int)0x80000000),
 	}
 
-	[NativeName("D3D11_CONTENT_PROTECTION_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_CONTENT_PROTECTION_CAPS")]
 	public enum D3D11ContentProtectionCaps
 	{
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_SOFTWARE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_SOFTWARE")]
 		Software = unchecked(1),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE")]
 		Hardware = unchecked(2),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON")]
 		AlwaysOn = unchecked(4),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_PARTIAL_DECRYPTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_PARTIAL_DECRYPTION")]
 		PartialDecryption = unchecked(8),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_CONTENT_KEY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_CONTENT_KEY")]
 		Key = unchecked(16),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_FRESHEN_SESSION_KEY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_FRESHEN_SESSION_KEY")]
 		FreshenSessionKey = unchecked(32),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK")]
 		EncryptedReadBack = unchecked(64),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK_KEY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK_KEY")]
 		EncryptedReadBackKey = unchecked(128),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_SEQUENTIAL_CTR_IV")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_SEQUENTIAL_CTR_IV")]
 		SequentialCtrIv = unchecked(256),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_ENCRYPT_SLICEDATA_ONLY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPT_SLICEDATA_ONLY")]
 		EncryptSlicedataOnly = unchecked(512),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_DECRYPTION_BLT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_DECRYPTION_BLT")]
 		DecryptionBlt = unchecked(1024),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECT_UNCOMPRESSED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECT_UNCOMPRESSED")]
 		HardwareProtectUncompressed = unchecked(2048),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECTED_MEMORY_PAGEABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECTED_MEMORY_PAGEABLE")]
 		HardwareProtectedMemoryPageable = unchecked(4096),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_TEARDOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_TEARDOWN")]
 		HardwareTeardown = unchecked(8192),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION")]
 		HardwareDrmCommunication = unchecked(16384),
-		[NativeName("D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION_MULTI_THREADED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION_MULTI_THREADED")]
 		HardwareDrmCommunicationMultiThreaded = unchecked(32768),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE")]
 	public enum D3D11VideoProcessorNominalRange
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_UNDEFINED")]
 		Undefined = unchecked(0),
-		[NativeName("D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235")]
 		Range16235 = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_0_255")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_0_255")]
 		Range0255 = unchecked(2),
 	}
 
-	[NativeName("D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE")]
 	public enum D3D11AuthenticatedProcessIdentifierType
 	{
-		[NativeName("D3D11_PROCESSIDTYPE_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_UNKNOWN")]
 		ProcessidtypeUnknown = unchecked(0),
-		[NativeName("D3D11_PROCESSIDTYPE_DWM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_DWM")]
 		ProcessidtypeDwm = unchecked(1),
-		[NativeName("D3D11_PROCESSIDTYPE_HANDLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_HANDLE")]
 		ProcessidtypeHandle = unchecked(2),
 	}
 
-	[NativeName("D3D11_BUS_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_BUS_TYPE")]
 	public enum D3D11BusType
 	{
-		[NativeName("D3D11_BUS_TYPE_OTHER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_OTHER")]
 		Other = unchecked(0),
-		[NativeName("D3D11_BUS_TYPE_PCI")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCI")]
 		Pci = unchecked(1),
-		[NativeName("D3D11_BUS_TYPE_PCIX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCIX")]
 		Pcix = unchecked(2),
-		[NativeName("D3D11_BUS_TYPE_PCIEXPRESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCIEXPRESS")]
 		Pciexpress = unchecked(3),
-		[NativeName("D3D11_BUS_TYPE_AGP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_AGP")]
 		Agp = unchecked(4),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_INSIDE_OF_CHIPSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_INSIDE_OF_CHIPSET")]
 		ImplModifierInsideOfChipset = unchecked(65536),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP")]
 		ImplModifierTracksOnMotherBoardToChip = unchecked(131072),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET")]
 		ImplModifierTracksOnMotherBoardToSocket = unchecked(196608),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR")]
 		ImplModifierDaughterBoardConnector = unchecked(262144),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE")]
 		ImplModifierDaughterBoardConnectorInsideOfNuae = unchecked(327680),
-		[NativeName("D3D11_BUS_IMPL_MODIFIER_NON_STANDARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_NON_STANDARD")]
 		ImplModifierNonStandard = unchecked((int)0x80000000),
 	}
 
@@ -1492,2848 +1492,2848 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_0000_0041 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_CREATE_DEVICE_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_CREATE_DEVICE_FLAG")]
 	public enum D3D11CreateDeviceFlag
 	{
-		[NativeName("D3D11_CREATE_DEVICE_SINGLETHREADED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_SINGLETHREADED")]
 		Singlethreaded = unchecked(1),
-		[NativeName("D3D11_CREATE_DEVICE_DEBUG")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DEBUG")]
 		Debug = unchecked(2),
-		[NativeName("D3D11_CREATE_DEVICE_SWITCH_TO_REF")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_SWITCH_TO_REF")]
 		SwitchToRef = unchecked(4),
-		[NativeName("D3D11_CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS")]
 		PreventInternalThreadingOptimizations = unchecked(8),
-		[NativeName("D3D11_CREATE_DEVICE_BGRA_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_BGRA_SUPPORT")]
 		BgraSupport = unchecked(32),
-		[NativeName("D3D11_CREATE_DEVICE_DEBUGGABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DEBUGGABLE")]
 		Debuggable = unchecked(64),
-		[NativeName("D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY")]
 		PreventAlteringLayerSettingsFromRegistry = unchecked(128),
-		[NativeName("D3D11_CREATE_DEVICE_DISABLE_GPU_TIMEOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DISABLE_GPU_TIMEOUT")]
 		DisableGpuTimeout = unchecked(256),
-		[NativeName("D3D11_CREATE_DEVICE_VIDEO_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_VIDEO_SUPPORT")]
 		VideoSupport = unchecked(2048),
 	}
 
-	[NativeName("D3D11_RLDO_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3D11_RLDO_FLAGS")]
 	public enum D3D11RldoFlags
 	{
-		[NativeName("D3D11_RLDO_SUMMARY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_SUMMARY")]
 		Summary = unchecked(1),
-		[NativeName("D3D11_RLDO_DETAIL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_DETAIL")]
 		Detail = unchecked(2),
-		[NativeName("D3D11_RLDO_IGNORE_INTERNAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_IGNORE_INTERNAL")]
 		IgnoreInternal = unchecked(4),
 	}
 
-	[NativeName("D3D11_MESSAGE_CATEGORY")]
+	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_CATEGORY")]
 	public enum D3D11MessageCategory
 	{
-		[NativeName("D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED")]
 		ApplicationDefined = unchecked(0),
-		[NativeName("D3D11_MESSAGE_CATEGORY_MISCELLANEOUS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_MISCELLANEOUS")]
 		Miscellaneous = unchecked(1),
-		[NativeName("D3D11_MESSAGE_CATEGORY_INITIALIZATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_INITIALIZATION")]
 		Initialization = unchecked(2),
-		[NativeName("D3D11_MESSAGE_CATEGORY_CLEANUP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_CLEANUP")]
 		Cleanup = unchecked(3),
-		[NativeName("D3D11_MESSAGE_CATEGORY_COMPILATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_COMPILATION")]
 		Compilation = unchecked(4),
-		[NativeName("D3D11_MESSAGE_CATEGORY_STATE_CREATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_CREATION")]
 		StateCreation = unchecked(5),
-		[NativeName("D3D11_MESSAGE_CATEGORY_STATE_SETTING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_SETTING")]
 		StateSetting = unchecked(6),
-		[NativeName("D3D11_MESSAGE_CATEGORY_STATE_GETTING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_GETTING")]
 		StateGetting = unchecked(7),
-		[NativeName("D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION")]
 		ResourceManipulation = unchecked(8),
-		[NativeName("D3D11_MESSAGE_CATEGORY_EXECUTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_EXECUTION")]
 		Execution = unchecked(9),
-		[NativeName("D3D11_MESSAGE_CATEGORY_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_SHADER")]
 		Shader = unchecked(10),
 	}
 
-	[NativeName("D3D11_MESSAGE_SEVERITY")]
+	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_SEVERITY")]
 	public enum D3D11MessageSeverity
 	{
-		[NativeName("D3D11_MESSAGE_SEVERITY_CORRUPTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_CORRUPTION")]
 		Corruption = unchecked(0),
-		[NativeName("D3D11_MESSAGE_SEVERITY_ERROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_ERROR")]
 		Error = unchecked(1),
-		[NativeName("D3D11_MESSAGE_SEVERITY_WARNING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_WARNING")]
 		Warning = unchecked(2),
-		[NativeName("D3D11_MESSAGE_SEVERITY_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_INFO")]
 		Info = unchecked(3),
-		[NativeName("D3D11_MESSAGE_SEVERITY_MESSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_MESSAGE")]
 		Severity = unchecked(4),
 	}
 
-	[NativeName("D3D11_MESSAGE_ID")]
+	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_ID")]
 	public enum D3D11MessageId
 	{
-		[NativeName("D3D11_MESSAGE_ID_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_HAZARD")]
 		DeviceIasetvertexbuffersHazard = unchecked(1),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_HAZARD")]
 		DeviceIasetindexbufferHazard = unchecked(2),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_HAZARD")]
 		DeviceVssetshaderresourcesHazard = unchecked(3),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_HAZARD")]
 		DeviceVssetconstantbuffersHazard = unchecked(4),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_HAZARD")]
 		DeviceGssetshaderresourcesHazard = unchecked(5),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_HAZARD")]
 		DeviceGssetconstantbuffersHazard = unchecked(6),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_HAZARD")]
 		DevicePssetshaderresourcesHazard = unchecked(7),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_HAZARD")]
 		DevicePssetconstantbuffersHazard = unchecked(8),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETS_HAZARD")]
 		DeviceOmsetrendertargetsHazard = unchecked(9),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_HAZARD")]
 		DeviceSosettargetsHazard = unchecked(10),
-		[NativeName("D3D11_MESSAGE_ID_STRING_FROM_APPLICATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STRING_FROM_APPLICATION")]
 		StringFromApplication = unchecked(11),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_THIS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_THIS")]
 		CorruptedThis = unchecked(12),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER1")]
 		CorruptedParameter1 = unchecked(13),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER2")]
 		CorruptedParameter2 = unchecked(14),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER3")]
 		CorruptedParameter3 = unchecked(15),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER4")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER4")]
 		CorruptedParameter4 = unchecked(16),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER5")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER5")]
 		CorruptedParameter5 = unchecked(17),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER6")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER6")]
 		CorruptedParameter6 = unchecked(18),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER7")]
 		CorruptedParameter7 = unchecked(19),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER8")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER8")]
 		CorruptedParameter8 = unchecked(20),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER9")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER9")]
 		CorruptedParameter9 = unchecked(21),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER10")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER10")]
 		CorruptedParameter10 = unchecked(22),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER11")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER11")]
 		CorruptedParameter11 = unchecked(23),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER12")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER12")]
 		CorruptedParameter12 = unchecked(24),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER13")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER13")]
 		CorruptedParameter13 = unchecked(25),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER14")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER14")]
 		CorruptedParameter14 = unchecked(26),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_PARAMETER15")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER15")]
 		CorruptedParameter15 = unchecked(27),
-		[NativeName("D3D11_MESSAGE_ID_CORRUPTED_MULTITHREADING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_MULTITHREADING")]
 		CorruptedMultithreading = unchecked(28),
-		[NativeName("D3D11_MESSAGE_ID_MESSAGE_REPORTING_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MESSAGE_REPORTING_OUTOFMEMORY")]
 		ReportingOutofmemory = unchecked(29),
-		[NativeName("D3D11_MESSAGE_ID_IASETINPUTLAYOUT_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINPUTLAYOUT_UNBINDDELETINGOBJECT")]
 		IasetinputlayoutUnbinddeletingobject = unchecked(30),
-		[NativeName("D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_UNBINDDELETINGOBJECT")]
 		IasetvertexbuffersUnbinddeletingobject = unchecked(31),
-		[NativeName("D3D11_MESSAGE_ID_IASETINDEXBUFFER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINDEXBUFFER_UNBINDDELETINGOBJECT")]
 		IasetindexbufferUnbinddeletingobject = unchecked(32),
-		[NativeName("D3D11_MESSAGE_ID_VSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSHADER_UNBINDDELETINGOBJECT")]
 		VssetshaderUnbinddeletingobject = unchecked(33),
-		[NativeName("D3D11_MESSAGE_ID_VSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		VssetshaderresourcesUnbinddeletingobject = unchecked(34),
-		[NativeName("D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		VssetconstantbuffersUnbinddeletingobject = unchecked(35),
-		[NativeName("D3D11_MESSAGE_ID_VSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		VssetsamplersUnbinddeletingobject = unchecked(36),
-		[NativeName("D3D11_MESSAGE_ID_GSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSHADER_UNBINDDELETINGOBJECT")]
 		GssetshaderUnbinddeletingobject = unchecked(37),
-		[NativeName("D3D11_MESSAGE_ID_GSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		GssetshaderresourcesUnbinddeletingobject = unchecked(38),
-		[NativeName("D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		GssetconstantbuffersUnbinddeletingobject = unchecked(39),
-		[NativeName("D3D11_MESSAGE_ID_GSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		GssetsamplersUnbinddeletingobject = unchecked(40),
-		[NativeName("D3D11_MESSAGE_ID_SOSETTARGETS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SOSETTARGETS_UNBINDDELETINGOBJECT")]
 		SosettargetsUnbinddeletingobject = unchecked(41),
-		[NativeName("D3D11_MESSAGE_ID_PSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSHADER_UNBINDDELETINGOBJECT")]
 		PssetshaderUnbinddeletingobject = unchecked(42),
-		[NativeName("D3D11_MESSAGE_ID_PSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		PssetshaderresourcesUnbinddeletingobject = unchecked(43),
-		[NativeName("D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		PssetconstantbuffersUnbinddeletingobject = unchecked(44),
-		[NativeName("D3D11_MESSAGE_ID_PSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		PssetsamplersUnbinddeletingobject = unchecked(45),
-		[NativeName("D3D11_MESSAGE_ID_RSSETSTATE_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RSSETSTATE_UNBINDDELETINGOBJECT")]
 		RssetstateUnbinddeletingobject = unchecked(46),
-		[NativeName("D3D11_MESSAGE_ID_OMSETBLENDSTATE_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETBLENDSTATE_UNBINDDELETINGOBJECT")]
 		OmsetblendstateUnbinddeletingobject = unchecked(47),
-		[NativeName("D3D11_MESSAGE_ID_OMSETDEPTHSTENCILSTATE_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETDEPTHSTENCILSTATE_UNBINDDELETINGOBJECT")]
 		OmsetdepthstencilstateUnbinddeletingobject = unchecked(48),
-		[NativeName("D3D11_MESSAGE_ID_OMSETRENDERTARGETS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_UNBINDDELETINGOBJECT")]
 		OmsetrendertargetsUnbinddeletingobject = unchecked(49),
-		[NativeName("D3D11_MESSAGE_ID_SETPREDICATION_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPREDICATION_UNBINDDELETINGOBJECT")]
 		SetpredicationUnbinddeletingobject = unchecked(50),
-		[NativeName("D3D11_MESSAGE_ID_GETPRIVATEDATA_MOREDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETPRIVATEDATA_MOREDATA")]
 		GetprivatedataMoredata = unchecked(51),
-		[NativeName("D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFREEDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFREEDATA")]
 		SetprivatedataInvalidfreedata = unchecked(52),
-		[NativeName("D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDIUNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDIUNKNOWN")]
 		SetprivatedataInvalidiunknown = unchecked(53),
-		[NativeName("D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFLAGS")]
 		SetprivatedataInvalidflags = unchecked(54),
-		[NativeName("D3D11_MESSAGE_ID_SETPRIVATEDATA_CHANGINGPARAMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_CHANGINGPARAMS")]
 		SetprivatedataChangingparams = unchecked(55),
-		[NativeName("D3D11_MESSAGE_ID_SETPRIVATEDATA_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_OUTOFMEMORY")]
 		SetprivatedataOutofmemory = unchecked(56),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDFORMAT")]
 		CreatebufferUnrecognizedformat = unchecked(57),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSAMPLES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSAMPLES")]
 		CreatebufferInvalidsamples = unchecked(58),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDUSAGE")]
 		CreatebufferUnrecognizedusage = unchecked(59),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDBINDFLAGS")]
 		CreatebufferUnrecognizedbindflags = unchecked(60),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDCPUACCESSFLAGS")]
 		CreatebufferUnrecognizedcpuaccessflags = unchecked(61),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDMISCFLAGS")]
 		CreatebufferUnrecognizedmiscflags = unchecked(62),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCPUACCESSFLAGS")]
 		CreatebufferInvalidcpuaccessflags = unchecked(63),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDBINDFLAGS")]
 		CreatebufferInvalidbindflags = unchecked(64),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDINITIALDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDINITIALDATA")]
 		CreatebufferInvalidinitialdata = unchecked(65),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDDIMENSIONS")]
 		CreatebufferInvaliddimensions = unchecked(66),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMIPLEVELS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMIPLEVELS")]
 		CreatebufferInvalidmiplevels = unchecked(67),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMISCFLAGS")]
 		CreatebufferInvalidmiscflags = unchecked(68),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDARG_RETURN")]
 		CreatebufferInvalidargReturn = unchecked(69),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_OUTOFMEMORY_RETURN")]
 		CreatebufferOutofmemoryReturn = unchecked(70),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_NULLDESC")]
 		CreatebufferNulldesc = unchecked(71),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCONSTANTBUFFERBINDINGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCONSTANTBUFFERBINDINGS")]
 		CreatebufferInvalidconstantbufferbindings = unchecked(72),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_LARGEALLOCATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_LARGEALLOCATION")]
 		CreatebufferLargeallocation = unchecked(73),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDFORMAT")]
 		Createtexture1DUnrecognizedformat = unchecked(74),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNSUPPORTEDFORMAT")]
 		Createtexture1DUnsupportedformat = unchecked(75),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDSAMPLES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDSAMPLES")]
 		Createtexture1DInvalidsamples = unchecked(76),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDUSAGE")]
 		Createtexture1DUnrecognizedusage = unchecked(77),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDBINDFLAGS")]
 		Createtexture1DUnrecognizedbindflags = unchecked(78),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDCPUACCESSFLAGS")]
 		Createtexture1DUnrecognizedcpuaccessflags = unchecked(79),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDMISCFLAGS")]
 		Createtexture1DUnrecognizedmiscflags = unchecked(80),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDCPUACCESSFLAGS")]
 		Createtexture1DInvalidcpuaccessflags = unchecked(81),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDBINDFLAGS")]
 		Createtexture1DInvalidbindflags = unchecked(82),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDINITIALDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDINITIALDATA")]
 		Createtexture1DInvalidinitialdata = unchecked(83),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDDIMENSIONS")]
 		Createtexture1DInvaliddimensions = unchecked(84),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMIPLEVELS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMIPLEVELS")]
 		Createtexture1DInvalidmiplevels = unchecked(85),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMISCFLAGS")]
 		Createtexture1DInvalidmiscflags = unchecked(86),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDARG_RETURN")]
 		Createtexture1DInvalidargReturn = unchecked(87),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_OUTOFMEMORY_RETURN")]
 		Createtexture1DOutofmemoryReturn = unchecked(88),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_NULLDESC")]
 		Createtexture1DNulldesc = unchecked(89),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_LARGEALLOCATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_LARGEALLOCATION")]
 		Createtexture1DLargeallocation = unchecked(90),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDFORMAT")]
 		Createtexture2DUnrecognizedformat = unchecked(91),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNSUPPORTEDFORMAT")]
 		Createtexture2DUnsupportedformat = unchecked(92),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDSAMPLES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDSAMPLES")]
 		Createtexture2DInvalidsamples = unchecked(93),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDUSAGE")]
 		Createtexture2DUnrecognizedusage = unchecked(94),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDBINDFLAGS")]
 		Createtexture2DUnrecognizedbindflags = unchecked(95),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDCPUACCESSFLAGS")]
 		Createtexture2DUnrecognizedcpuaccessflags = unchecked(96),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDMISCFLAGS")]
 		Createtexture2DUnrecognizedmiscflags = unchecked(97),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDCPUACCESSFLAGS")]
 		Createtexture2DInvalidcpuaccessflags = unchecked(98),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDBINDFLAGS")]
 		Createtexture2DInvalidbindflags = unchecked(99),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDINITIALDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDINITIALDATA")]
 		Createtexture2DInvalidinitialdata = unchecked(100),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDDIMENSIONS")]
 		Createtexture2DInvaliddimensions = unchecked(101),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMIPLEVELS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMIPLEVELS")]
 		Createtexture2DInvalidmiplevels = unchecked(102),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMISCFLAGS")]
 		Createtexture2DInvalidmiscflags = unchecked(103),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDARG_RETURN")]
 		Createtexture2DInvalidargReturn = unchecked(104),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_OUTOFMEMORY_RETURN")]
 		Createtexture2DOutofmemoryReturn = unchecked(105),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_NULLDESC")]
 		Createtexture2DNulldesc = unchecked(106),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_LARGEALLOCATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_LARGEALLOCATION")]
 		Createtexture2DLargeallocation = unchecked(107),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDFORMAT")]
 		Createtexture3DUnrecognizedformat = unchecked(108),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNSUPPORTEDFORMAT")]
 		Createtexture3DUnsupportedformat = unchecked(109),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDSAMPLES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDSAMPLES")]
 		Createtexture3DInvalidsamples = unchecked(110),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDUSAGE")]
 		Createtexture3DUnrecognizedusage = unchecked(111),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDBINDFLAGS")]
 		Createtexture3DUnrecognizedbindflags = unchecked(112),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDCPUACCESSFLAGS")]
 		Createtexture3DUnrecognizedcpuaccessflags = unchecked(113),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDMISCFLAGS")]
 		Createtexture3DUnrecognizedmiscflags = unchecked(114),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDCPUACCESSFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDCPUACCESSFLAGS")]
 		Createtexture3DInvalidcpuaccessflags = unchecked(115),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDBINDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDBINDFLAGS")]
 		Createtexture3DInvalidbindflags = unchecked(116),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDINITIALDATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDINITIALDATA")]
 		Createtexture3DInvalidinitialdata = unchecked(117),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDDIMENSIONS")]
 		Createtexture3DInvaliddimensions = unchecked(118),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMIPLEVELS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMIPLEVELS")]
 		Createtexture3DInvalidmiplevels = unchecked(119),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMISCFLAGS")]
 		Createtexture3DInvalidmiscflags = unchecked(120),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDARG_RETURN")]
 		Createtexture3DInvalidargReturn = unchecked(121),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_OUTOFMEMORY_RETURN")]
 		Createtexture3DOutofmemoryReturn = unchecked(122),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_NULLDESC")]
 		Createtexture3DNulldesc = unchecked(123),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE3D_LARGEALLOCATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_LARGEALLOCATION")]
 		Createtexture3DLargeallocation = unchecked(124),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_UNRECOGNIZEDFORMAT")]
 		CreateshaderresourceviewUnrecognizedformat = unchecked(125),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDESC")]
 		CreateshaderresourceviewInvaliddesc = unchecked(126),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFORMAT")]
 		CreateshaderresourceviewInvalidformat = unchecked(127),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDIMENSIONS")]
 		CreateshaderresourceviewInvaliddimensions = unchecked(128),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDRESOURCE")]
 		CreateshaderresourceviewInvalidresource = unchecked(129),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_TOOMANYOBJECTS")]
 		CreateshaderresourceviewToomanyobjects = unchecked(130),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDARG_RETURN")]
 		CreateshaderresourceviewInvalidargReturn = unchecked(131),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_OUTOFMEMORY_RETURN")]
 		CreateshaderresourceviewOutofmemoryReturn = unchecked(132),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNRECOGNIZEDFORMAT")]
 		CreaterendertargetviewUnrecognizedformat = unchecked(133),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNSUPPORTEDFORMAT")]
 		CreaterendertargetviewUnsupportedformat = unchecked(134),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDESC")]
 		CreaterendertargetviewInvaliddesc = unchecked(135),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDFORMAT")]
 		CreaterendertargetviewInvalidformat = unchecked(136),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDIMENSIONS")]
 		CreaterendertargetviewInvaliddimensions = unchecked(137),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDRESOURCE")]
 		CreaterendertargetviewInvalidresource = unchecked(138),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_TOOMANYOBJECTS")]
 		CreaterendertargetviewToomanyobjects = unchecked(139),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDARG_RETURN")]
 		CreaterendertargetviewInvalidargReturn = unchecked(140),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_OUTOFMEMORY_RETURN")]
 		CreaterendertargetviewOutofmemoryReturn = unchecked(141),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_UNRECOGNIZEDFORMAT")]
 		CreatedepthstencilviewUnrecognizedformat = unchecked(142),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDESC")]
 		CreatedepthstencilviewInvaliddesc = unchecked(143),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFORMAT")]
 		CreatedepthstencilviewInvalidformat = unchecked(144),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDIMENSIONS")]
 		CreatedepthstencilviewInvaliddimensions = unchecked(145),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDRESOURCE")]
 		CreatedepthstencilviewInvalidresource = unchecked(146),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_TOOMANYOBJECTS")]
 		CreatedepthstencilviewToomanyobjects = unchecked(147),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDARG_RETURN")]
 		CreatedepthstencilviewInvalidargReturn = unchecked(148),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_OUTOFMEMORY_RETURN")]
 		CreatedepthstencilviewOutofmemoryReturn = unchecked(149),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_OUTOFMEMORY")]
 		CreateinputlayoutOutofmemory = unchecked(150),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TOOMANYELEMENTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TOOMANYELEMENTS")]
 		CreateinputlayoutToomanyelements = unchecked(151),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDFORMAT")]
 		CreateinputlayoutInvalidformat = unchecked(152),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INCOMPATIBLEFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INCOMPATIBLEFORMAT")]
 		CreateinputlayoutIncompatibleformat = unchecked(153),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOT")]
 		CreateinputlayoutInvalidslot = unchecked(154),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDINPUTSLOTCLASS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDINPUTSLOTCLASS")]
 		CreateinputlayoutInvalidinputslotclass = unchecked(155),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_STEPRATESLOTCLASSMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_STEPRATESLOTCLASSMISMATCH")]
 		CreateinputlayoutSteprateslotclassmismatch = unchecked(156),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOTCLASSCHANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOTCLASSCHANGE")]
 		CreateinputlayoutInvalidslotclasschange = unchecked(157),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSTEPRATECHANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSTEPRATECHANGE")]
 		CreateinputlayoutInvalidstepratechange = unchecked(158),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDALIGNMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDALIGNMENT")]
 		CreateinputlayoutInvalidalignment = unchecked(159),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_DUPLICATESEMANTIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_DUPLICATESEMANTIC")]
 		CreateinputlayoutDuplicatesemantic = unchecked(160),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNPARSEABLEINPUTSIGNATURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNPARSEABLEINPUTSIGNATURE")]
 		CreateinputlayoutUnparseableinputsignature = unchecked(161),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLSEMANTIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLSEMANTIC")]
 		CreateinputlayoutNullsemantic = unchecked(162),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_MISSINGELEMENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_MISSINGELEMENT")]
 		CreateinputlayoutMissingelement = unchecked(163),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLDESC")]
 		CreateinputlayoutNulldesc = unchecked(164),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVERTEXSHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_OUTOFMEMORY")]
 		CreatevertexshaderOutofmemory = unchecked(165),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERBYTECODE")]
 		CreatevertexshaderInvalidshaderbytecode = unchecked(166),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERTYPE")]
 		CreatevertexshaderInvalidshadertype = unchecked(167),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_OUTOFMEMORY")]
 		CreategeometryshaderOutofmemory = unchecked(168),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERBYTECODE")]
 		CreategeometryshaderInvalidshaderbytecode = unchecked(169),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERTYPE")]
 		CreategeometryshaderInvalidshadertype = unchecked(170),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTOFMEMORY")]
 		CreategeometryshaderwithstreamoutputOutofmemory = unchecked(171),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERBYTECODE")]
 		CreategeometryshaderwithstreamoutputInvalidshaderbytecode = unchecked(172),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERTYPE")]
 		CreategeometryshaderwithstreamoutputInvalidshadertype = unchecked(173),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMENTRIES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMENTRIES")]
 		CreategeometryshaderwithstreamoutputInvalidnumentries = unchecked(174),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSTREAMSTRIDEUNUSED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSTREAMSTRIDEUNUSED")]
 		CreategeometryshaderwithstreamoutputOutputstreamstrideunused = unchecked(175),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDDECL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDDECL")]
 		CreategeometryshaderwithstreamoutputUnexpecteddecl = unchecked(176),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_EXPECTEDDECL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_EXPECTEDDECL")]
 		CreategeometryshaderwithstreamoutputExpecteddecl = unchecked(177),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSLOT0EXPECTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSLOT0EXPECTED")]
 		CreategeometryshaderwithstreamoutputOutputslot0Expected = unchecked(178),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSLOT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSLOT")]
 		CreategeometryshaderwithstreamoutputInvalidoutputslot = unchecked(179),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_ONLYONEELEMENTPERSLOT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_ONLYONEELEMENTPERSLOT")]
 		CreategeometryshaderwithstreamoutputOnlyoneelementperslot = unchecked(180),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCOMPONENTCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCOMPONENTCOUNT")]
 		CreategeometryshaderwithstreamoutputInvalidcomponentcount = unchecked(181),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTARTCOMPONENTANDCOMPONENTCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTARTCOMPONENTANDCOMPONENTCOUNT")]
 		CreategeometryshaderwithstreamoutputInvalidstartcomponentandcomponentcount = unchecked(182),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDGAPDEFINITION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDGAPDEFINITION")]
 		CreategeometryshaderwithstreamoutputInvalidgapdefinition = unchecked(183),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_REPEATEDOUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_REPEATEDOUTPUT")]
 		CreategeometryshaderwithstreamoutputRepeatedoutput = unchecked(184),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSTREAMSTRIDE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSTREAMSTRIDE")]
 		CreategeometryshaderwithstreamoutputInvalidoutputstreamstride = unchecked(185),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGSEMANTIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGSEMANTIC")]
 		CreategeometryshaderwithstreamoutputMissingsemantic = unchecked(186),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MASKMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MASKMISMATCH")]
 		CreategeometryshaderwithstreamoutputMaskmismatch = unchecked(187),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_CANTHAVEONLYGAPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_CANTHAVEONLYGAPS")]
 		CreategeometryshaderwithstreamoutputCanthaveonlygaps = unchecked(188),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DECLTOOCOMPLEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DECLTOOCOMPLEX")]
 		CreategeometryshaderwithstreamoutputDecltoocomplex = unchecked(189),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGOUTPUTSIGNATURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGOUTPUTSIGNATURE")]
 		CreategeometryshaderwithstreamoutputMissingoutputsignature = unchecked(190),
-		[NativeName("D3D11_MESSAGE_ID_CREATEPIXELSHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_OUTOFMEMORY")]
 		CreatepixelshaderOutofmemory = unchecked(191),
-		[NativeName("D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERBYTECODE")]
 		CreatepixelshaderInvalidshaderbytecode = unchecked(192),
-		[NativeName("D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERTYPE")]
 		CreatepixelshaderInvalidshadertype = unchecked(193),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFILLMODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFILLMODE")]
 		CreaterasterizerstateInvalidfillmode = unchecked(194),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDCULLMODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDCULLMODE")]
 		CreaterasterizerstateInvalidcullmode = unchecked(195),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDDEPTHBIASCLAMP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDDEPTHBIASCLAMP")]
 		CreaterasterizerstateInvaliddepthbiasclamp = unchecked(196),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDSLOPESCALEDDEPTHBIAS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDSLOPESCALEDDEPTHBIAS")]
 		CreaterasterizerstateInvalidslopescaleddepthbias = unchecked(197),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_TOOMANYOBJECTS")]
 		CreaterasterizerstateToomanyobjects = unchecked(198),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_NULLDESC")]
 		CreaterasterizerstateNulldesc = unchecked(199),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHWRITEMASK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHWRITEMASK")]
 		CreatedepthstencilstateInvaliddepthwritemask = unchecked(200),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHFUNC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHFUNC")]
 		CreatedepthstencilstateInvaliddepthfunc = unchecked(201),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFAILOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFAILOP")]
 		CreatedepthstencilstateInvalidfrontfacestencilfailop = unchecked(202),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILZFAILOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILZFAILOP")]
 		CreatedepthstencilstateInvalidfrontfacestencilzfailop = unchecked(203),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILPASSOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILPASSOP")]
 		CreatedepthstencilstateInvalidfrontfacestencilpassop = unchecked(204),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFUNC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFUNC")]
 		CreatedepthstencilstateInvalidfrontfacestencilfunc = unchecked(205),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFAILOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFAILOP")]
 		CreatedepthstencilstateInvalidbackfacestencilfailop = unchecked(206),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILZFAILOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILZFAILOP")]
 		CreatedepthstencilstateInvalidbackfacestencilzfailop = unchecked(207),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILPASSOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILPASSOP")]
 		CreatedepthstencilstateInvalidbackfacestencilpassop = unchecked(208),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFUNC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFUNC")]
 		CreatedepthstencilstateInvalidbackfacestencilfunc = unchecked(209),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_TOOMANYOBJECTS")]
 		CreatedepthstencilstateToomanyobjects = unchecked(210),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_NULLDESC")]
 		CreatedepthstencilstateNulldesc = unchecked(211),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLEND")]
 		CreateblendstateInvalidsrcblend = unchecked(212),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLEND")]
 		CreateblendstateInvaliddestblend = unchecked(213),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOP")]
 		CreateblendstateInvalidblendop = unchecked(214),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLENDALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLENDALPHA")]
 		CreateblendstateInvalidsrcblendalpha = unchecked(215),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLENDALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLENDALPHA")]
 		CreateblendstateInvaliddestblendalpha = unchecked(216),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOPALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOPALPHA")]
 		CreateblendstateInvalidblendopalpha = unchecked(217),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDRENDERTARGETWRITEMASK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDRENDERTARGETWRITEMASK")]
 		CreateblendstateInvalidrendertargetwritemask = unchecked(218),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_TOOMANYOBJECTS")]
 		CreateblendstateToomanyobjects = unchecked(219),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NULLDESC")]
 		CreateblendstateNulldesc = unchecked(220),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDFILTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDFILTER")]
 		CreatesamplerstateInvalidfilter = unchecked(221),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSU")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSU")]
 		CreatesamplerstateInvalidaddressu = unchecked(222),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSV")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSV")]
 		CreatesamplerstateInvalidaddressv = unchecked(223),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSW")]
 		CreatesamplerstateInvalidaddressw = unchecked(224),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMIPLODBIAS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMIPLODBIAS")]
 		CreatesamplerstateInvalidmiplodbias = unchecked(225),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXANISOTROPY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXANISOTROPY")]
 		CreatesamplerstateInvalidmaxanisotropy = unchecked(226),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDCOMPARISONFUNC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDCOMPARISONFUNC")]
 		CreatesamplerstateInvalidcomparisonfunc = unchecked(227),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMINLOD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMINLOD")]
 		CreatesamplerstateInvalidminlod = unchecked(228),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXLOD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXLOD")]
 		CreatesamplerstateInvalidmaxlod = unchecked(229),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_TOOMANYOBJECTS")]
 		CreatesamplerstateToomanyobjects = unchecked(230),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NULLDESC")]
 		CreatesamplerstateNulldesc = unchecked(231),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDQUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDQUERY")]
 		CreatequeryorpredicateInvalidquery = unchecked(232),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDMISCFLAGS")]
 		CreatequeryorpredicateInvalidmiscflags = unchecked(233),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNEXPECTEDMISCFLAG")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNEXPECTEDMISCFLAG")]
 		CreatequeryorpredicateUnexpectedmiscflag = unchecked(234),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_NULLDESC")]
 		CreatequeryorpredicateNulldesc = unchecked(235),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNRECOGNIZED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNRECOGNIZED")]
 		DeviceIasetprimitivetopologyTopologyUnrecognized = unchecked(236),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNDEFINED")]
 		DeviceIasetprimitivetopologyTopologyUndefined = unchecked(237),
-		[NativeName("D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_INVALIDBUFFER")]
 		IasetvertexbuffersInvalidbuffer = unchecked(238),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_OFFSET_TOO_LARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_OFFSET_TOO_LARGE")]
 		DeviceIasetvertexbuffersOffsetTooLarge = unchecked(239),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_BUFFERS_EMPTY")]
 		DeviceIasetvertexbuffersBuffersEmpty = unchecked(240),
-		[NativeName("D3D11_MESSAGE_ID_IASETINDEXBUFFER_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINDEXBUFFER_INVALIDBUFFER")]
 		IasetindexbufferInvalidbuffer = unchecked(241),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_FORMAT_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_FORMAT_INVALID")]
 		DeviceIasetindexbufferFormatInvalid = unchecked(242),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_TOO_LARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_TOO_LARGE")]
 		DeviceIasetindexbufferOffsetTooLarge = unchecked(243),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_UNALIGNED")]
 		DeviceIasetindexbufferOffsetUnaligned = unchecked(244),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceVssetshaderresourcesViewsEmpty = unchecked(245),
-		[NativeName("D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		VssetconstantbuffersInvalidbuffer = unchecked(246),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceVssetconstantbuffersBuffersEmpty = unchecked(247),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceVssetsamplersSamplersEmpty = unchecked(248),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceGssetshaderresourcesViewsEmpty = unchecked(249),
-		[NativeName("D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		GssetconstantbuffersInvalidbuffer = unchecked(250),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceGssetconstantbuffersBuffersEmpty = unchecked(251),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceGssetsamplersSamplersEmpty = unchecked(252),
-		[NativeName("D3D11_MESSAGE_ID_SOSETTARGETS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SOSETTARGETS_INVALIDBUFFER")]
 		SosettargetsInvalidbuffer = unchecked(253),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_OFFSET_UNALIGNED")]
 		DeviceSosettargetsOffsetUnaligned = unchecked(254),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DevicePssetshaderresourcesViewsEmpty = unchecked(255),
-		[NativeName("D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		PssetconstantbuffersInvalidbuffer = unchecked(256),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DevicePssetconstantbuffersBuffersEmpty = unchecked(257),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DevicePssetsamplersSamplersEmpty = unchecked(258),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_INVALIDVIEWPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_INVALIDVIEWPORT")]
 		DeviceRssetviewportsInvalidviewport = unchecked(259),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_INVALIDSCISSOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_INVALIDSCISSOR")]
 		DeviceRssetscissorrectsInvalidscissor = unchecked(260),
-		[NativeName("D3D11_MESSAGE_ID_CLEARRENDERTARGETVIEW_DENORMFLUSH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARRENDERTARGETVIEW_DENORMFLUSH")]
 		ClearrendertargetviewDenormflush = unchecked(261),
-		[NativeName("D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DENORMFLUSH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DENORMFLUSH")]
 		CleardepthstencilviewDenormflush = unchecked(262),
-		[NativeName("D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_INVALID")]
 		CleardepthstencilviewInvalid = unchecked(263),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IAGETVERTEXBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IAGETVERTEXBUFFERS_BUFFERS_EMPTY")]
 		DeviceIagetvertexbuffersBuffersEmpty = unchecked(264),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceVsgetshaderresourcesViewsEmpty = unchecked(265),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceVsgetconstantbuffersBuffersEmpty = unchecked(266),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_VSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceVsgetsamplersSamplersEmpty = unchecked(267),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceGsgetshaderresourcesViewsEmpty = unchecked(268),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceGsgetconstantbuffersBuffersEmpty = unchecked(269),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceGsgetsamplersSamplersEmpty = unchecked(270),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SOGETTARGETS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOGETTARGETS_BUFFERS_EMPTY")]
 		DeviceSogettargetsBuffersEmpty = unchecked(271),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DevicePsgetshaderresourcesViewsEmpty = unchecked(272),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DevicePsgetconstantbuffersBuffersEmpty = unchecked(273),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_PSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DevicePsgetsamplersSamplersEmpty = unchecked(274),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSGETVIEWPORTS_VIEWPORTS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSGETVIEWPORTS_VIEWPORTS_EMPTY")]
 		DeviceRsgetviewportsViewportsEmpty = unchecked(275),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSGETSCISSORRECTS_RECTS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSGETSCISSORRECTS_RECTS_EMPTY")]
 		DeviceRsgetscissorrectsRectsEmpty = unchecked(276),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GENERATEMIPS_RESOURCE_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GENERATEMIPS_RESOURCE_INVALID")]
 		DeviceGeneratemipsResourceInvalid = unchecked(277),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSUBRESOURCE")]
 		CopysubresourceregionInvaliddestinationsubresource = unchecked(278),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESUBRESOURCE")]
 		CopysubresourceregionInvalidsourcesubresource = unchecked(279),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCEBOX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCEBOX")]
 		CopysubresourceregionInvalidsourcebox = unchecked(280),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCE")]
 		CopysubresourceregionInvalidsource = unchecked(281),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSTATE")]
 		CopysubresourceregionInvaliddestinationstate = unchecked(282),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESTATE")]
 		CopysubresourceregionInvalidsourcestate = unchecked(283),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCE")]
 		CopyresourceInvalidsource = unchecked(284),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDDESTINATIONSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDDESTINATIONSTATE")]
 		CopyresourceInvaliddestinationstate = unchecked(285),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCESTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCESTATE")]
 		CopyresourceInvalidsourcestate = unchecked(286),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSUBRESOURCE")]
 		UpdatesubresourceInvaliddestinationsubresource = unchecked(287),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONBOX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONBOX")]
 		UpdatesubresourceInvaliddestinationbox = unchecked(288),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSTATE")]
 		UpdatesubresourceInvaliddestinationstate = unchecked(289),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_INVALID")]
 		DeviceResolvesubresourceDestinationInvalid = unchecked(290),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_SUBRESOURCE_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_SUBRESOURCE_INVALID")]
 		DeviceResolvesubresourceDestinationSubresourceInvalid = unchecked(291),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_INVALID")]
 		DeviceResolvesubresourceSourceInvalid = unchecked(292),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_SUBRESOURCE_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_SUBRESOURCE_INVALID")]
 		DeviceResolvesubresourceSourceSubresourceInvalid = unchecked(293),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_FORMAT_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_FORMAT_INVALID")]
 		DeviceResolvesubresourceFormatInvalid = unchecked(294),
-		[NativeName("D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDMAPTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDMAPTYPE")]
 		BufferMapInvalidmaptype = unchecked(295),
-		[NativeName("D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDFLAGS")]
 		BufferMapInvalidflags = unchecked(296),
-		[NativeName("D3D11_MESSAGE_ID_BUFFER_MAP_ALREADYMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_ALREADYMAPPED")]
 		BufferMapAlreadymapped = unchecked(297),
-		[NativeName("D3D11_MESSAGE_ID_BUFFER_MAP_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_DEVICEREMOVED_RETURN")]
 		BufferMapDeviceremovedReturn = unchecked(298),
-		[NativeName("D3D11_MESSAGE_ID_BUFFER_UNMAP_NOTMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_UNMAP_NOTMAPPED")]
 		BufferUnmapNotmapped = unchecked(299),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDMAPTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDMAPTYPE")]
 		Texture1DMapInvalidmaptype = unchecked(300),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDSUBRESOURCE")]
 		Texture1DMapInvalidsubresource = unchecked(301),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDFLAGS")]
 		Texture1DMapInvalidflags = unchecked(302),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_MAP_ALREADYMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_ALREADYMAPPED")]
 		Texture1DMapAlreadymapped = unchecked(303),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_MAP_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_DEVICEREMOVED_RETURN")]
 		Texture1DMapDeviceremovedReturn = unchecked(304),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_INVALIDSUBRESOURCE")]
 		Texture1DUnmapInvalidsubresource = unchecked(305),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_NOTMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_NOTMAPPED")]
 		Texture1DUnmapNotmapped = unchecked(306),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDMAPTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDMAPTYPE")]
 		Texture2DMapInvalidmaptype = unchecked(307),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDSUBRESOURCE")]
 		Texture2DMapInvalidsubresource = unchecked(308),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDFLAGS")]
 		Texture2DMapInvalidflags = unchecked(309),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_MAP_ALREADYMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_ALREADYMAPPED")]
 		Texture2DMapAlreadymapped = unchecked(310),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_MAP_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_DEVICEREMOVED_RETURN")]
 		Texture2DMapDeviceremovedReturn = unchecked(311),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_INVALIDSUBRESOURCE")]
 		Texture2DUnmapInvalidsubresource = unchecked(312),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_NOTMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_NOTMAPPED")]
 		Texture2DUnmapNotmapped = unchecked(313),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDMAPTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDMAPTYPE")]
 		Texture3DMapInvalidmaptype = unchecked(314),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDSUBRESOURCE")]
 		Texture3DMapInvalidsubresource = unchecked(315),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDFLAGS")]
 		Texture3DMapInvalidflags = unchecked(316),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_MAP_ALREADYMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_ALREADYMAPPED")]
 		Texture3DMapAlreadymapped = unchecked(317),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_MAP_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_DEVICEREMOVED_RETURN")]
 		Texture3DMapDeviceremovedReturn = unchecked(318),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_INVALIDSUBRESOURCE")]
 		Texture3DUnmapInvalidsubresource = unchecked(319),
-		[NativeName("D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_NOTMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_NOTMAPPED")]
 		Texture3DUnmapNotmapped = unchecked(320),
-		[NativeName("D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_DEPRECATED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_DEPRECATED")]
 		CheckformatsupportFormatDeprecated = unchecked(321),
-		[NativeName("D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_FORMAT_DEPRECATED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_FORMAT_DEPRECATED")]
 		CheckmultisamplequalitylevelsFormatDeprecated = unchecked(322),
-		[NativeName("D3D11_MESSAGE_ID_SETEXCEPTIONMODE_UNRECOGNIZEDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_UNRECOGNIZEDFLAGS")]
 		SetexceptionmodeUnrecognizedflags = unchecked(323),
-		[NativeName("D3D11_MESSAGE_ID_SETEXCEPTIONMODE_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_INVALIDARG_RETURN")]
 		SetexceptionmodeInvalidargReturn = unchecked(324),
-		[NativeName("D3D11_MESSAGE_ID_SETEXCEPTIONMODE_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_DEVICEREMOVED_RETURN")]
 		SetexceptionmodeDeviceremovedReturn = unchecked(325),
-		[NativeName("D3D11_MESSAGE_ID_REF_SIMULATING_INFINITELY_FAST_HARDWARE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_SIMULATING_INFINITELY_FAST_HARDWARE")]
 		RefSimulatingInfinitelyFastHardware = unchecked(326),
-		[NativeName("D3D11_MESSAGE_ID_REF_THREADING_MODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_THREADING_MODE")]
 		RefThreadingMode = unchecked(327),
-		[NativeName("D3D11_MESSAGE_ID_REF_UMDRIVER_EXCEPTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_UMDRIVER_EXCEPTION")]
 		RefUmdriverException = unchecked(328),
-		[NativeName("D3D11_MESSAGE_ID_REF_KMDRIVER_EXCEPTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_KMDRIVER_EXCEPTION")]
 		RefKmdriverException = unchecked(329),
-		[NativeName("D3D11_MESSAGE_ID_REF_HARDWARE_EXCEPTION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_HARDWARE_EXCEPTION")]
 		RefHardwareException = unchecked(330),
-		[NativeName("D3D11_MESSAGE_ID_REF_ACCESSING_INDEXABLE_TEMP_OUT_OF_RANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_ACCESSING_INDEXABLE_TEMP_OUT_OF_RANGE")]
 		RefAccessingIndexableTempOutOfRange = unchecked(331),
-		[NativeName("D3D11_MESSAGE_ID_REF_PROBLEM_PARSING_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_PROBLEM_PARSING_SHADER")]
 		RefProblemParsingShader = unchecked(332),
-		[NativeName("D3D11_MESSAGE_ID_REF_OUT_OF_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_OUT_OF_MEMORY")]
 		RefOutOfMemory = unchecked(333),
-		[NativeName("D3D11_MESSAGE_ID_REF_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_INFO")]
 		RefInfo = unchecked(334),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEXPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEXPOS_OVERFLOW")]
 		DeviceDrawVertexposOverflow = unchecked(335),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDEXED_INDEXPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXED_INDEXPOS_OVERFLOW")]
 		DeviceDrawindexedIndexposOverflow = unchecked(336),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_VERTEXPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_VERTEXPOS_OVERFLOW")]
 		DeviceDrawinstancedVertexposOverflow = unchecked(337),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_INSTANCEPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_INSTANCEPOS_OVERFLOW")]
 		DeviceDrawinstancedInstanceposOverflow = unchecked(338),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INSTANCEPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INSTANCEPOS_OVERFLOW")]
 		DeviceDrawindexedinstancedInstanceposOverflow = unchecked(339),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INDEXPOS_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INDEXPOS_OVERFLOW")]
 		DeviceDrawindexedinstancedIndexposOverflow = unchecked(340),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_SHADER_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_SHADER_NOT_SET")]
 		DeviceDrawVertexShaderNotSet = unchecked(341),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SEMANTICNAME_NOT_FOUND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SEMANTICNAME_NOT_FOUND")]
 		DeviceShaderLinkageSemanticnameNotFound = unchecked(342),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERINDEX")]
 		DeviceShaderLinkageRegisterindex = unchecked(343),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_COMPONENTTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_COMPONENTTYPE")]
 		DeviceShaderLinkageComponenttype = unchecked(344),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERMASK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERMASK")]
 		DeviceShaderLinkageRegistermask = unchecked(345),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SYSTEMVALUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SYSTEMVALUE")]
 		DeviceShaderLinkageSystemvalue = unchecked(346),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_NEVERWRITTEN_ALWAYSREADS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_NEVERWRITTEN_ALWAYSREADS")]
 		DeviceShaderLinkageNeverwrittenAlwaysreads = unchecked(347),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_NOT_SET")]
 		DeviceDrawVertexBufferNotSet = unchecked(348),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INPUTLAYOUT_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INPUTLAYOUT_NOT_SET")]
 		DeviceDrawInputlayoutNotSet = unchecked(349),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_NOT_SET")]
 		DeviceDrawConstantBufferNotSet = unchecked(350),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_TOO_SMALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_TOO_SMALL")]
 		DeviceDrawConstantBufferTooSmall = unchecked(351),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_NOT_SET")]
 		DeviceDrawSamplerNotSet = unchecked(352),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SHADERRESOURCEVIEW_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SHADERRESOURCEVIEW_NOT_SET")]
 		DeviceDrawShaderresourceviewNotSet = unchecked(353),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VIEW_DIMENSION_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VIEW_DIMENSION_MISMATCH")]
 		DeviceDrawViewDimensionMismatch = unchecked(354),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_STRIDE_TOO_SMALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_STRIDE_TOO_SMALL")]
 		DeviceDrawVertexBufferStrideTooSmall = unchecked(355),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_TOO_SMALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_TOO_SMALL")]
 		DeviceDrawVertexBufferTooSmall = unchecked(356),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_NOT_SET")]
 		DeviceDrawIndexBufferNotSet = unchecked(357),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_FORMAT_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_FORMAT_INVALID")]
 		DeviceDrawIndexBufferFormatInvalid = unchecked(358),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_TOO_SMALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_TOO_SMALL")]
 		DeviceDrawIndexBufferTooSmall = unchecked(359),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_GS_INPUT_PRIMITIVE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_GS_INPUT_PRIMITIVE_MISMATCH")]
 		DeviceDrawGsInputPrimitiveMismatch = unchecked(360),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_RETURN_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_RETURN_TYPE_MISMATCH")]
 		DeviceDrawResourceReturnTypeMismatch = unchecked(361),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_POSITION_NOT_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_POSITION_NOT_PRESENT")]
 		DeviceDrawPositionNotPresent = unchecked(362),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_NOT_SET")]
 		DeviceDrawOutputStreamNotSet = unchecked(363),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_BOUND_RESOURCE_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_BOUND_RESOURCE_MAPPED")]
 		DeviceDrawBoundResourceMapped = unchecked(364),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_PRIMITIVETOPOLOGY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_PRIMITIVETOPOLOGY")]
 		DeviceDrawInvalidPrimitivetopology = unchecked(365),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_OFFSET_UNALIGNED")]
 		DeviceDrawVertexOffsetUnaligned = unchecked(366),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_STRIDE_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_STRIDE_UNALIGNED")]
 		DeviceDrawVertexStrideUnaligned = unchecked(367),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_OFFSET_UNALIGNED")]
 		DeviceDrawIndexOffsetUnaligned = unchecked(368),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_OFFSET_UNALIGNED")]
 		DeviceDrawOutputStreamOffsetUnaligned = unchecked(369),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_LD_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_LD_UNSUPPORTED")]
 		DeviceDrawResourceFormatLdUnsupported = unchecked(370),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_UNSUPPORTED")]
 		DeviceDrawResourceFormatSampleUnsupported = unchecked(371),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_C_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_C_UNSUPPORTED")]
 		DeviceDrawResourceFormatSamplecUnsupported = unchecked(372),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_MULTISAMPLE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_MULTISAMPLE_UNSUPPORTED")]
 		DeviceDrawResourceMultisampleUnsupported = unchecked(373),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SO_TARGETS_BOUND_WITHOUT_SOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SO_TARGETS_BOUND_WITHOUT_SOURCE")]
 		DeviceDrawSoTargetsBoundWithoutSource = unchecked(374),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SO_STRIDE_LARGER_THAN_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SO_STRIDE_LARGER_THAN_BUFFER")]
 		DeviceDrawSoStrideLargerThanBuffer = unchecked(375),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_BLENDING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_BLENDING")]
 		DeviceDrawOmRenderTargetDoesNotSupportBlending = unchecked(376),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_OM_DUAL_SOURCE_BLENDING_CAN_ONLY_HAVE_RENDER_TARGET_0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_DUAL_SOURCE_BLENDING_CAN_ONLY_HAVE_RENDER_TARGET_0")]
 		DeviceDrawOmDualSourceBlendingCanOnlyHaveRenderTarget0 = unchecked(377),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_AT_FAULT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_AT_FAULT")]
 		DeviceRemovalProcessAtFault = unchecked(378),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_POSSIBLY_AT_FAULT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_POSSIBLY_AT_FAULT")]
 		DeviceRemovalProcessPossiblyAtFault = unchecked(379),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_NOT_AT_FAULT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_NOT_AT_FAULT")]
 		DeviceRemovalProcessNotAtFault = unchecked(380),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_INVALIDARG_RETURN")]
 		DeviceOpenSharedResourceInvalidargReturn = unchecked(381),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_OUTOFMEMORY_RETURN")]
 		DeviceOpenSharedResourceOutofmemoryReturn = unchecked(382),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BADINTERFACE_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BADINTERFACE_RETURN")]
 		DeviceOpenSharedResourceBadinterfaceReturn = unchecked(383),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_VIEWPORT_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VIEWPORT_NOT_SET")]
 		DeviceDrawViewportNotSet = unchecked(384),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TRAILING_DIGIT_IN_SEMANTIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TRAILING_DIGIT_IN_SEMANTIC")]
 		CreateinputlayoutTrailingDigitInSemantic = unchecked(385),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_TRAILING_DIGIT_IN_SEMANTIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_TRAILING_DIGIT_IN_SEMANTIC")]
 		CreategeometryshaderwithstreamoutputTrailingDigitInSemantic = unchecked(386),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_DENORMFLUSH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_DENORMFLUSH")]
 		DeviceRssetviewportsDenormflush = unchecked(387),
-		[NativeName("D3D11_MESSAGE_ID_OMSETRENDERTARGETS_INVALIDVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_INVALIDVIEW")]
 		OmsetrendertargetsInvalidview = unchecked(388),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETTEXTFILTERSIZE_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETTEXTFILTERSIZE_INVALIDDIMENSIONS")]
 		DeviceSettextfiltersizeInvaliddimensions = unchecked(389),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_MISMATCH")]
 		DeviceDrawSamplerMismatch = unchecked(390),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TYPE_MISMATCH")]
 		CreateinputlayoutTypeMismatch = unchecked(391),
-		[NativeName("D3D11_MESSAGE_ID_BLENDSTATE_GETDESC_LEGACY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BLENDSTATE_GETDESC_LEGACY")]
 		BlendstateGetdescLegacy = unchecked(392),
-		[NativeName("D3D11_MESSAGE_ID_SHADERRESOURCEVIEW_GETDESC_LEGACY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADERRESOURCEVIEW_GETDESC_LEGACY")]
 		ShaderresourceviewGetdescLegacy = unchecked(393),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERY_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERY_OUTOFMEMORY_RETURN")]
 		CreatequeryOutofmemoryReturn = unchecked(394),
-		[NativeName("D3D11_MESSAGE_ID_CREATEPREDICATE_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPREDICATE_OUTOFMEMORY_RETURN")]
 		CreatepredicateOutofmemoryReturn = unchecked(395),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFRANGE_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFRANGE_COUNTER")]
 		CreatecounterOutofrangeCounter = unchecked(396),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_SIMULTANEOUS_ACTIVE_COUNTERS_EXHAUSTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_SIMULTANEOUS_ACTIVE_COUNTERS_EXHAUSTED")]
 		CreatecounterSimultaneousActiveCountersExhausted = unchecked(397),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
 		CreatecounterUnsupportedWellknownCounter = unchecked(398),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFMEMORY_RETURN")]
 		CreatecounterOutofmemoryReturn = unchecked(399),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_NONEXCLUSIVE_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_NONEXCLUSIVE_RETURN")]
 		CreatecounterNonexclusiveReturn = unchecked(400),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOUNTER_NULLDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_NULLDESC")]
 		CreatecounterNulldesc = unchecked(401),
-		[NativeName("D3D11_MESSAGE_ID_CHECKCOUNTER_OUTOFRANGE_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCOUNTER_OUTOFRANGE_COUNTER")]
 		CheckcounterOutofrangeCounter = unchecked(402),
-		[NativeName("D3D11_MESSAGE_ID_CHECKCOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
 		CheckcounterUnsupportedWellknownCounter = unchecked(403),
-		[NativeName("D3D11_MESSAGE_ID_SETPREDICATION_INVALID_PREDICATE_STATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPREDICATION_INVALID_PREDICATE_STATE")]
 		SetpredicationInvalidPredicateState = unchecked(404),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_BEGIN_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_UNSUPPORTED")]
 		QueryBeginUnsupported = unchecked(405),
-		[NativeName("D3D11_MESSAGE_ID_PREDICATE_BEGIN_DURING_PREDICATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PREDICATE_BEGIN_DURING_PREDICATION")]
 		PredicateBeginDuringPredication = unchecked(406),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_BEGIN_DUPLICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_DUPLICATE")]
 		QueryBeginDuplicate = unchecked(407),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_BEGIN_ABANDONING_PREVIOUS_RESULTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_ABANDONING_PREVIOUS_RESULTS")]
 		QueryBeginAbandoningPreviousResults = unchecked(408),
-		[NativeName("D3D11_MESSAGE_ID_PREDICATE_END_DURING_PREDICATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PREDICATE_END_DURING_PREDICATION")]
 		PredicateEndDuringPredication = unchecked(409),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_END_ABANDONING_PREVIOUS_RESULTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_END_ABANDONING_PREVIOUS_RESULTS")]
 		QueryEndAbandoningPreviousResults = unchecked(410),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_END_WITHOUT_BEGIN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_END_WITHOUT_BEGIN")]
 		QueryEndWithoutBegin = unchecked(411),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_DATASIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_DATASIZE")]
 		QueryGetdataInvalidDatasize = unchecked(412),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_FLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_FLAGS")]
 		QueryGetdataInvalidFlags = unchecked(413),
-		[NativeName("D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_CALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_CALL")]
 		QueryGetdataInvalidCall = unchecked(414),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_PS_OUTPUT_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_PS_OUTPUT_TYPE_MISMATCH")]
 		DeviceDrawPsOutputTypeMismatch = unchecked(415),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_GATHER_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_GATHER_UNSUPPORTED")]
 		DeviceDrawResourceFormatGatherUnsupported = unchecked(416),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_CENTER_MULTISAMPLE_PATTERN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_CENTER_MULTISAMPLE_PATTERN")]
 		DeviceDrawInvalidUseOfCenterMultisamplePattern = unchecked(417),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_STRIDE_TOO_LARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_STRIDE_TOO_LARGE")]
 		DeviceIasetvertexbuffersStrideTooLarge = unchecked(418),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_INVALIDRANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_INVALIDRANGE")]
 		DeviceIasetvertexbuffersInvalidrange = unchecked(419),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_EMPTY_LAYOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_EMPTY_LAYOUT")]
 		CreateinputlayoutEmptyLayout = unchecked(420),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_SAMPLE_COUNT_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_SAMPLE_COUNT_MISMATCH")]
 		DeviceDrawResourceSampleCountMismatch = unchecked(421),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY")]
 		LiveObjectSummary = unchecked(422),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BUFFER")]
 		LiveBuffer = unchecked(423),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE1D")]
 		LiveTexture1D = unchecked(424),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE2D")]
 		LiveTexture2D = unchecked(425),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE3D")]
 		LiveTexture3D = unchecked(426),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW")]
 		LiveShaderresourceview = unchecked(427),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW")]
 		LiveRendertargetview = unchecked(428),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW")]
 		LiveDepthstencilview = unchecked(429),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_VERTEXSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VERTEXSHADER")]
 		LiveVertexshader = unchecked(430),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER")]
 		LiveGeometryshader = unchecked(431),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PIXELSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PIXELSHADER")]
 		LivePixelshader = unchecked(432),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT")]
 		LiveInputlayout = unchecked(433),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SAMPLER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SAMPLER")]
 		LiveSampler = unchecked(434),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_BLENDSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BLENDSTATE")]
 		LiveBlendstate = unchecked(435),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE")]
 		LiveDepthstencilstate = unchecked(436),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE")]
 		LiveRasterizerstate = unchecked(437),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_QUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_QUERY")]
 		LiveQuery = unchecked(438),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PREDICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PREDICATE")]
 		LivePredicate = unchecked(439),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COUNTER")]
 		LiveCounter = unchecked(440),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEVICE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICE")]
 		LiveDevice = unchecked(441),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SWAPCHAIN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SWAPCHAIN")]
 		LiveSwapchain = unchecked(442),
-		[NativeName("D3D11_MESSAGE_ID_D3D10_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10_MESSAGES_END")]
 		Idd3D10MessagesEnd = unchecked(443),
-		[NativeName("D3D11_MESSAGE_ID_D3D10L9_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10L9_MESSAGES_START")]
 		Idd3D10l9MessagesStart = unchecked(1048576),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_STENCIL_NO_TWO_SIDED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_STENCIL_NO_TWO_SIDED")]
 		CreatedepthstencilstateStencilNoTwoSided = unchecked(1048577),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthBiasClamp_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthBiasClamp_NOT_SUPPORTED")]
 		CreaterasterizerstateDepthBiasClampNotSupported = unchecked(1048578),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_COMPARISON_SUPPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_COMPARISON_SUPPORT")]
 		CreatesamplerstateNoComparisonSupport = unchecked(1048579),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_EXCESSIVE_ANISOTROPY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_EXCESSIVE_ANISOTROPY")]
 		CreatesamplerstateExcessiveAnisotropy = unchecked(1048580),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_OUT_OF_RANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_OUT_OF_RANGE")]
 		CreatesamplerstateBorderOutOfRange = unchecked(1048581),
-		[NativeName("D3D11_MESSAGE_ID_VSSETSAMPLERS_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_NOT_SUPPORTED")]
 		VssetsamplersNotSupported = unchecked(1048582),
-		[NativeName("D3D11_MESSAGE_ID_VSSETSAMPLERS_TOO_MANY_SAMPLERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_TOO_MANY_SAMPLERS")]
 		VssetsamplersTooManySamplers = unchecked(1048583),
-		[NativeName("D3D11_MESSAGE_ID_PSSETSAMPLERS_TOO_MANY_SAMPLERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSAMPLERS_TOO_MANY_SAMPLERS")]
 		PssetsamplersTooManySamplers = unchecked(1048584),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_ARRAYS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_ARRAYS")]
 		CreateresourceNoArrays = unchecked(1048585),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_VB_AND_IB_BIND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_VB_AND_IB_BIND")]
 		CreateresourceNoVbAndIbBind = unchecked(1048586),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_TEXTURE_1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_TEXTURE_1D")]
 		CreateresourceNoTexture1D = unchecked(1048587),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_OUT_OF_RANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_OUT_OF_RANGE")]
 		CreateresourceDimensionOutOfRange = unchecked(1048588),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_SHADER_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_SHADER_RESOURCE")]
 		CreateresourceNotBindableAsShaderResource = unchecked(1048589),
-		[NativeName("D3D11_MESSAGE_ID_OMSETRENDERTARGETS_TOO_MANY_RENDER_TARGETS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_TOO_MANY_RENDER_TARGETS")]
 		OmsetrendertargetsTooManyRenderTargets = unchecked(1048590),
-		[NativeName("D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_DIFFERING_BIT_DEPTHS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_DIFFERING_BIT_DEPTHS")]
 		OmsetrendertargetsNoDifferingDepths = unchecked(1048591),
-		[NativeName("D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_BAD_BUFFER_INDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_BAD_BUFFER_INDEX")]
 		IasetvertexbuffersBadBufferIndex = unchecked(1048592),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_TOO_MANY_VIEWPORTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_TOO_MANY_VIEWPORTS")]
 		DeviceRssetviewportsTooManyViewports = unchecked(1048593),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_ADJACENCY_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_ADJACENCY_UNSUPPORTED")]
 		DeviceIasetprimitivetopologyAdjacencyUnsupported = unchecked(1048594),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_TOO_MANY_SCISSORS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_TOO_MANY_SCISSORS")]
 		DeviceRssetscissorrectsTooManyScissors = unchecked(1048595),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_ONLY_TEXTURE_2D_WITHIN_GPU_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_ONLY_TEXTURE_2D_WITHIN_GPU_MEMORY")]
 		CopyresourceOnlyTexture2DWithinGpuMemory = unchecked(1048596),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_3D_READBACK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_3D_READBACK")]
 		CopyresourceNoTexture3DReadback = unchecked(1048597),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_ONLY_READBACK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_ONLY_READBACK")]
 		CopyresourceNoTextureOnlyReadback = unchecked(1048598),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNSUPPORTED_FORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNSUPPORTED_FORMAT")]
 		CreateinputlayoutUnsupportedFormat = unchecked(1048599),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_ALPHA_TO_COVERAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_ALPHA_TO_COVERAGE")]
 		CreateblendstateNoAlphaToCoverage = unchecked(1048600),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthClipEnable_MUST_BE_TRUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthClipEnable_MUST_BE_TRUE")]
 		CreaterasterizerstateDepthClipEnableMustBeTrue = unchecked(1048601),
-		[NativeName("D3D11_MESSAGE_ID_DRAWINDEXED_STARTINDEXLOCATION_MUST_BE_POSITIVE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXED_STARTINDEXLOCATION_MUST_BE_POSITIVE")]
 		DrawindexedStartindexlocationMustBePositive = unchecked(1048602),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_MUST_USE_LOWEST_LOD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_MUST_USE_LOWEST_LOD")]
 		CreateshaderresourceviewMustUseLowestLod = unchecked(1048603),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MINLOD_MUST_NOT_BE_FRACTIONAL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MINLOD_MUST_NOT_BE_FRACTIONAL")]
 		CreatesamplerstateMinlodMustNotBeFractional = unchecked(1048604),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MAXLOD_MUST_BE_FLT_MAX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MAXLOD_MUST_BE_FLT_MAX")]
 		CreatesamplerstateMaxlodMustBeFltMax = unchecked(1048605),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_FIRSTARRAYSLICE_MUST_BE_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_FIRSTARRAYSLICE_MUST_BE_ZERO")]
 		CreateshaderresourceviewFirstarraysliceMustBeZero = unchecked(1048606),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_CUBES_MUST_HAVE_6_SIDES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_CUBES_MUST_HAVE_6_SIDES")]
 		CreateshaderresourceviewCubesMustHave6Sides = unchecked(1048607),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_RENDER_TARGET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_RENDER_TARGET")]
 		CreateresourceNotBindableAsRenderTarget = unchecked(1048608),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_DWORD_INDEX_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_DWORD_INDEX_BUFFER")]
 		CreateresourceNoDwordIndexBuffer = unchecked(1048609),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_MSAA_PRECLUDES_SHADER_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_MSAA_PRECLUDES_SHADER_RESOURCE")]
 		CreateresourceMsaaPrecludesShaderResource = unchecked(1048610),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_PRESENTATION_PRECLUDES_SHADER_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_PRESENTATION_PRECLUDES_SHADER_RESOURCE")]
 		CreateresourcePresentationPrecludesShaderResource = unchecked(1048611),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_BLEND_ENABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_BLEND_ENABLE")]
 		CreateblendstateNoIndependentBlendEnable = unchecked(1048612),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_WRITE_MASKS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_WRITE_MASKS")]
 		CreateblendstateNoIndependentWriteMasks = unchecked(1048613),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_STREAM_OUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_STREAM_OUT")]
 		CreateresourceNoStreamOut = unchecked(1048614),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_VB_IB_FOR_BUFFERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_VB_IB_FOR_BUFFERS")]
 		CreateresourceOnlyVbIbForBuffers = unchecked(1048615),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NO_AUTOGEN_FOR_VOLUMES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_AUTOGEN_FOR_VOLUMES")]
 		CreateresourceNoAutogenForVolumes = unchecked(1048616),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_DXGI_FORMAT_R8G8B8A8_CANNOT_BE_SHARED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DXGI_FORMAT_R8G8B8A8_CANNOT_BE_SHARED")]
 		CreateresourceDxgiFormatr8G8B8A8CannotBeShared = unchecked(1048617),
-		[NativeName("D3D11_MESSAGE_ID_VSSHADERRESOURCES_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSHADERRESOURCES_NOT_SUPPORTED")]
 		VsshaderresourcesNotSupported = unchecked(1048618),
-		[NativeName("D3D11_MESSAGE_ID_GEOMETRY_SHADER_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GEOMETRY_SHADER_NOT_SUPPORTED")]
 		GeometryShaderNotSupported = unchecked(1048619),
-		[NativeName("D3D11_MESSAGE_ID_STREAM_OUT_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STREAM_OUT_NOT_SUPPORTED")]
 		StreamOutNotSupported = unchecked(1048620),
-		[NativeName("D3D11_MESSAGE_ID_TEXT_FILTER_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXT_FILTER_NOT_SUPPORTED")]
 		TextFilterNotSupported = unchecked(1048621),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_SEPARATE_ALPHA_BLEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_SEPARATE_ALPHA_BLEND")]
 		CreateblendstateNoSeparateAlphaBlend = unchecked(1048622),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_MRT_BLEND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_MRT_BLEND")]
 		CreateblendstateNoMrtBlend = unchecked(1048623),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_OPERATION_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_OPERATION_NOT_SUPPORTED")]
 		CreateblendstateOperationNotSupported = unchecked(1048624),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_MIRRORONCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_MIRRORONCE")]
 		CreatesamplerstateNoMirroronce = unchecked(1048625),
-		[NativeName("D3D11_MESSAGE_ID_DRAWINSTANCED_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINSTANCED_NOT_SUPPORTED")]
 		DrawinstancedNotSupported = unchecked(1048626),
-		[NativeName("D3D11_MESSAGE_ID_DRAWINDEXEDINSTANCED_NOT_SUPPORTED_BELOW_9_3")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXEDINSTANCED_NOT_SUPPORTED_BELOW_9_3")]
 		DrawindexedinstancedNotSupportedBelow93 = unchecked(1048627),
-		[NativeName("D3D11_MESSAGE_ID_DRAWINDEXED_POINTLIST_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXED_POINTLIST_UNSUPPORTED")]
 		DrawindexedPointlistUnsupported = unchecked(1048628),
-		[NativeName("D3D11_MESSAGE_ID_SETBLENDSTATE_SAMPLE_MASK_CANNOT_BE_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETBLENDSTATE_SAMPLE_MASK_CANNOT_BE_ZERO")]
 		SetblendstateSampleMaskCannotBeZero = unchecked(1048629),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_EXCEEDS_FEATURE_LEVEL_DEFINITION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_EXCEEDS_FEATURE_LEVEL_DEFINITION")]
 		CreateresourceDimensionExceedsFeatureLevelDefinition = unchecked(1048630),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_SINGLE_MIP_LEVEL_DEPTH_STENCIL_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_SINGLE_MIP_LEVEL_DEPTH_STENCIL_SUPPORTED")]
 		CreateresourceOnlySingleMipLevelDepthStencilSupported = unchecked(1048631),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_NEGATIVESCISSOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_NEGATIVESCISSOR")]
 		DeviceRssetscissorrectsNegativescissor = unchecked(1048632),
-		[NativeName("D3D11_MESSAGE_ID_SLOT_ZERO_MUST_BE_D3D10_INPUT_PER_VERTEX_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SLOT_ZERO_MUST_BE_D3D10_INPUT_PER_VERTEX_DATA")]
 		SlotZeroMustBed3D10InputPerVertexData = unchecked(1048633),
-		[NativeName("D3D11_MESSAGE_ID_CREATERESOURCE_NON_POW_2_MIPMAP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NON_POW_2_MIPMAP")]
 		CreateresourceNonPow2Mipmap = unchecked(1048634),
-		[NativeName("D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_NOT_SUPPORTED")]
 		CreatesamplerstateBorderNotSupported = unchecked(1048635),
-		[NativeName("D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_SRGB_MRT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_SRGB_MRT")]
 		OmsetrendertargetsNoSrgbMrt = unchecked(1048636),
-		[NativeName("D3D11_MESSAGE_ID_COPYRESOURCE_NO_3D_MISMATCHED_UPDATES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_3D_MISMATCHED_UPDATES")]
 		CopyresourceNo3DMismatchedUpdates = unchecked(1048637),
-		[NativeName("D3D11_MESSAGE_ID_D3D10L9_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10L9_MESSAGES_END")]
 		Idd3D10l9MessagesEnd = unchecked(1048638),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_MESSAGES_START")]
 		Idd3D11MessagesStart = unchecked(2097152),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFLAGS")]
 		CreatedepthstencilviewInvalidflags = unchecked(2097153),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDCLASSLINKAGE")]
 		CreatevertexshaderInvalidclasslinkage = unchecked(2097154),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDCLASSLINKAGE")]
 		CreategeometryshaderInvalidclasslinkage = unchecked(2097155),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTREAMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTREAMS")]
 		CreategeometryshaderwithstreamoutputInvalidnumstreams = unchecked(2097156),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAMTORASTERIZER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAMTORASTERIZER")]
 		CreategeometryshaderwithstreamoutputInvalidstreamtorasterizer = unchecked(2097157),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTREAMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTREAMS")]
 		CreategeometryshaderwithstreamoutputUnexpectedstreams = unchecked(2097158),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCLASSLINKAGE")]
 		CreategeometryshaderwithstreamoutputInvalidclasslinkage = unchecked(2097159),
-		[NativeName("D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDCLASSLINKAGE")]
 		CreatepixelshaderInvalidclasslinkage = unchecked(2097160),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_COMMANDLISTFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_COMMANDLISTFLAGS")]
 		CreatedeferredcontextInvalidCommandlistflags = unchecked(2097161),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_SINGLETHREADED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_SINGLETHREADED")]
 		CreatedeferredcontextSinglethreaded = unchecked(2097162),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALIDARG_RETURN")]
 		CreatedeferredcontextInvalidargReturn = unchecked(2097163),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_CALL_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_CALL_RETURN")]
 		CreatedeferredcontextInvalidCallReturn = unchecked(2097164),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_OUTOFMEMORY_RETURN")]
 		CreatedeferredcontextOutofmemoryReturn = unchecked(2097165),
-		[NativeName("D3D11_MESSAGE_ID_FINISHDISPLAYLIST_ONIMMEDIATECONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_ONIMMEDIATECONTEXT")]
 		FinishdisplaylistOnimmediatecontext = unchecked(2097166),
-		[NativeName("D3D11_MESSAGE_ID_FINISHDISPLAYLIST_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_OUTOFMEMORY_RETURN")]
 		FinishdisplaylistOutofmemoryReturn = unchecked(2097167),
-		[NativeName("D3D11_MESSAGE_ID_FINISHDISPLAYLIST_INVALID_CALL_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_INVALID_CALL_RETURN")]
 		FinishdisplaylistInvalidCallReturn = unchecked(2097168),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAM")]
 		CreategeometryshaderwithstreamoutputInvalidstream = unchecked(2097169),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDENTRIES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDENTRIES")]
 		CreategeometryshaderwithstreamoutputUnexpectedentries = unchecked(2097170),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTRIDES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTRIDES")]
 		CreategeometryshaderwithstreamoutputUnexpectedstrides = unchecked(2097171),
-		[NativeName("D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTRIDES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTRIDES")]
 		CreategeometryshaderwithstreamoutputInvalidnumstrides = unchecked(2097172),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_HAZARD")]
 		DeviceHssetshaderresourcesHazard = unchecked(2097173),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_HAZARD")]
 		DeviceHssetconstantbuffersHazard = unchecked(2097174),
-		[NativeName("D3D11_MESSAGE_ID_HSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		HssetshaderresourcesUnbinddeletingobject = unchecked(2097175),
-		[NativeName("D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		HssetconstantbuffersUnbinddeletingobject = unchecked(2097176),
-		[NativeName("D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCALL")]
 		CreatehullshaderInvalidcall = unchecked(2097177),
-		[NativeName("D3D11_MESSAGE_ID_CREATEHULLSHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_OUTOFMEMORY")]
 		CreatehullshaderOutofmemory = unchecked(2097178),
-		[NativeName("D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERBYTECODE")]
 		CreatehullshaderInvalidshaderbytecode = unchecked(2097179),
-		[NativeName("D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERTYPE")]
 		CreatehullshaderInvalidshadertype = unchecked(2097180),
-		[NativeName("D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCLASSLINKAGE")]
 		CreatehullshaderInvalidclasslinkage = unchecked(2097181),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceHssetshaderresourcesViewsEmpty = unchecked(2097182),
-		[NativeName("D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		HssetconstantbuffersInvalidbuffer = unchecked(2097183),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceHssetconstantbuffersBuffersEmpty = unchecked(2097184),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceHssetsamplersSamplersEmpty = unchecked(2097185),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceHsgetshaderresourcesViewsEmpty = unchecked(2097186),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceHsgetconstantbuffersBuffersEmpty = unchecked(2097187),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_HSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceHsgetsamplersSamplersEmpty = unchecked(2097188),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_HAZARD")]
 		DeviceDssetshaderresourcesHazard = unchecked(2097189),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_HAZARD")]
 		DeviceDssetconstantbuffersHazard = unchecked(2097190),
-		[NativeName("D3D11_MESSAGE_ID_DSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		DssetshaderresourcesUnbinddeletingobject = unchecked(2097191),
-		[NativeName("D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		DssetconstantbuffersUnbinddeletingobject = unchecked(2097192),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCALL")]
 		CreatedomainshaderInvalidcall = unchecked(2097193),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDOMAINSHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_OUTOFMEMORY")]
 		CreatedomainshaderOutofmemory = unchecked(2097194),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERBYTECODE")]
 		CreatedomainshaderInvalidshaderbytecode = unchecked(2097195),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERTYPE")]
 		CreatedomainshaderInvalidshadertype = unchecked(2097196),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCLASSLINKAGE")]
 		CreatedomainshaderInvalidclasslinkage = unchecked(2097197),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceDssetshaderresourcesViewsEmpty = unchecked(2097198),
-		[NativeName("D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		DssetconstantbuffersInvalidbuffer = unchecked(2097199),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceDssetconstantbuffersBuffersEmpty = unchecked(2097200),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceDssetsamplersSamplersEmpty = unchecked(2097201),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceDsgetshaderresourcesViewsEmpty = unchecked(2097202),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceDsgetconstantbuffersBuffersEmpty = unchecked(2097203),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceDsgetsamplersSamplersEmpty = unchecked(2097204),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_HS_XOR_DS_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_XOR_DS_MISMATCH")]
 		DeviceDrawHsXorDsMismatch = unchecked(2097205),
-		[NativeName("D3D11_MESSAGE_ID_DEFERRED_CONTEXT_REMOVAL_PROCESS_AT_FAULT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEFERRED_CONTEXT_REMOVAL_PROCESS_AT_FAULT")]
 		DeferredContextRemovalProcessAtFault = unchecked(2097206),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_INVALID_ARG_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_INVALID_ARG_BUFFER")]
 		DeviceDrawindirectInvalidArgBuffer = unchecked(2097207),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_UNALIGNED")]
 		DeviceDrawindirectOffsetUnaligned = unchecked(2097208),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_OVERFLOW")]
 		DeviceDrawindirectOffsetOverflow = unchecked(2097209),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDMAPTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDMAPTYPE")]
 		ResourceMapInvalidmaptype = unchecked(2097210),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDSUBRESOURCE")]
 		ResourceMapInvalidsubresource = unchecked(2097211),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDFLAGS")]
 		ResourceMapInvalidflags = unchecked(2097212),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_ALREADYMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_ALREADYMAPPED")]
 		ResourceMapAlreadymapped = unchecked(2097213),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_DEVICEREMOVED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_DEVICEREMOVED_RETURN")]
 		ResourceMapDeviceremovedReturn = unchecked(2097214),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_OUTOFMEMORY_RETURN")]
 		ResourceMapOutofmemoryReturn = unchecked(2097215),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_MAP_WITHOUT_INITIAL_DISCARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_WITHOUT_INITIAL_DISCARD")]
 		ResourceMapWithoutInitialDiscard = unchecked(2097216),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_UNMAP_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_UNMAP_INVALIDSUBRESOURCE")]
 		ResourceUnmapInvalidsubresource = unchecked(2097217),
-		[NativeName("D3D11_MESSAGE_ID_RESOURCE_UNMAP_NOTMAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_UNMAP_NOTMAPPED")]
 		ResourceUnmapNotmapped = unchecked(2097218),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RASTERIZING_CONTROL_POINTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RASTERIZING_CONTROL_POINTS")]
 		DeviceDrawRasterizingControlPoints = unchecked(2097219),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNSUPPORTED")]
 		DeviceIasetprimitivetopologyTopologyUnsupported = unchecked(2097220),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_SIGNATURE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_SIGNATURE_MISMATCH")]
 		DeviceDrawHsDsSignatureMismatch = unchecked(2097221),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_HULL_SHADER_INPUT_TOPOLOGY_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HULL_SHADER_INPUT_TOPOLOGY_MISMATCH")]
 		DeviceDrawHullShaderInputTopologyMismatch = unchecked(2097222),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_CONTROL_POINT_COUNT_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_CONTROL_POINT_COUNT_MISMATCH")]
 		DeviceDrawHsDsControlPointCountMismatch = unchecked(2097223),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_TESSELLATOR_DOMAIN_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_TESSELLATOR_DOMAIN_MISMATCH")]
 		DeviceDrawHsDsTessellatorDomainMismatch = unchecked(2097224),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_CONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CONTEXT")]
 		CreateContext = unchecked(2097225),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_CONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CONTEXT")]
 		LiveContext = unchecked(2097226),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_CONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CONTEXT")]
 		DestroyContext = unchecked(2097227),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_BUFFER")]
 		CreateBuffer = unchecked(2097228),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_BUFFER_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BUFFER_WIN7")]
 		LiveBufferWin7 = unchecked(2097229),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_BUFFER")]
 		DestroyBuffer = unchecked(2097230),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE1D")]
 		CreateTexture1D = unchecked(2097231),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE1D_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE1D_WIN7")]
 		LiveTexture1DWin7 = unchecked(2097232),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE1D")]
 		DestroyTexture1D = unchecked(2097233),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE2D")]
 		CreateTexture2D = unchecked(2097234),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE2D_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE2D_WIN7")]
 		LiveTexture2DWin7 = unchecked(2097235),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE2D")]
 		DestroyTexture2D = unchecked(2097236),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE3D")]
 		CreateTexture3D = unchecked(2097237),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TEXTURE3D_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE3D_WIN7")]
 		LiveTexture3DWin7 = unchecked(2097238),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE3D")]
 		DestroyTexture3D = unchecked(2097239),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_SHADERRESOURCEVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SHADERRESOURCEVIEW")]
 		CreateShaderresourceview = unchecked(2097240),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW_WIN7")]
 		LiveShaderresourceviewWin7 = unchecked(2097241),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_SHADERRESOURCEVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SHADERRESOURCEVIEW")]
 		DestroyShaderresourceview = unchecked(2097242),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_RENDERTARGETVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_RENDERTARGETVIEW")]
 		CreateRendertargetview = unchecked(2097243),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW_WIN7")]
 		LiveRendertargetviewWin7 = unchecked(2097244),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_RENDERTARGETVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_RENDERTARGETVIEW")]
 		DestroyRendertargetview = unchecked(2097245),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILVIEW")]
 		CreateDepthstencilview = unchecked(2097246),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW_WIN7")]
 		LiveDepthstencilviewWin7 = unchecked(2097247),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILVIEW")]
 		DestroyDepthstencilview = unchecked(2097248),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_VERTEXSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VERTEXSHADER")]
 		CreateVertexshader = unchecked(2097249),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_VERTEXSHADER_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VERTEXSHADER_WIN7")]
 		LiveVertexshaderWin7 = unchecked(2097250),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_VERTEXSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VERTEXSHADER")]
 		DestroyVertexshader = unchecked(2097251),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_HULLSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_HULLSHADER")]
 		CreateHullshader = unchecked(2097252),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_HULLSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_HULLSHADER")]
 		LiveHullshader = unchecked(2097253),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_HULLSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_HULLSHADER")]
 		DestroyHullshader = unchecked(2097254),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_DOMAINSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DOMAINSHADER")]
 		CreateDomainshader = unchecked(2097255),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DOMAINSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DOMAINSHADER")]
 		LiveDomainshader = unchecked(2097256),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_DOMAINSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DOMAINSHADER")]
 		DestroyDomainshader = unchecked(2097257),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_GEOMETRYSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_GEOMETRYSHADER")]
 		CreateGeometryshader = unchecked(2097258),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER_WIN7")]
 		LiveGeometryshaderWin7 = unchecked(2097259),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_GEOMETRYSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_GEOMETRYSHADER")]
 		DestroyGeometryshader = unchecked(2097260),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_PIXELSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PIXELSHADER")]
 		CreatePixelshader = unchecked(2097261),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PIXELSHADER_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PIXELSHADER_WIN7")]
 		LivePixelshaderWin7 = unchecked(2097262),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_PIXELSHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PIXELSHADER")]
 		DestroyPixelshader = unchecked(2097263),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_INPUTLAYOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_INPUTLAYOUT")]
 		CreateInputlayout = unchecked(2097264),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT_WIN7")]
 		LiveInputlayoutWin7 = unchecked(2097265),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_INPUTLAYOUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_INPUTLAYOUT")]
 		DestroyInputlayout = unchecked(2097266),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_SAMPLER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SAMPLER")]
 		CreateSampler = unchecked(2097267),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SAMPLER_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SAMPLER_WIN7")]
 		LiveSamplerWin7 = unchecked(2097268),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_SAMPLER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SAMPLER")]
 		DestroySampler = unchecked(2097269),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_BLENDSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_BLENDSTATE")]
 		CreateBlendstate = unchecked(2097270),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_BLENDSTATE_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BLENDSTATE_WIN7")]
 		LiveBlendstateWin7 = unchecked(2097271),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_BLENDSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_BLENDSTATE")]
 		DestroyBlendstate = unchecked(2097272),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILSTATE")]
 		CreateDepthstencilstate = unchecked(2097273),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE_WIN7")]
 		LiveDepthstencilstateWin7 = unchecked(2097274),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILSTATE")]
 		DestroyDepthstencilstate = unchecked(2097275),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_RASTERIZERSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_RASTERIZERSTATE")]
 		CreateRasterizerstate = unchecked(2097276),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE_WIN7")]
 		LiveRasterizerstateWin7 = unchecked(2097277),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_RASTERIZERSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_RASTERIZERSTATE")]
 		DestroyRasterizerstate = unchecked(2097278),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_QUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_QUERY")]
 		CreateQuery = unchecked(2097279),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_QUERY_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_QUERY_WIN7")]
 		LiveQueryWin7 = unchecked(2097280),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_QUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_QUERY")]
 		DestroyQuery = unchecked(2097281),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_PREDICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PREDICATE")]
 		CreatePredicate = unchecked(2097282),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PREDICATE_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PREDICATE_WIN7")]
 		LivePredicateWin7 = unchecked(2097283),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_PREDICATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PREDICATE")]
 		DestroyPredicate = unchecked(2097284),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COUNTER")]
 		CreateCounter = unchecked(2097285),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_COUNTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COUNTER")]
 		DestroyCounter = unchecked(2097286),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_COMMANDLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COMMANDLIST")]
 		CreateCommandlist = unchecked(2097287),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_COMMANDLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COMMANDLIST")]
 		LiveCommandlist = unchecked(2097288),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_COMMANDLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COMMANDLIST")]
 		DestroyCommandlist = unchecked(2097289),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_CLASSINSTANCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CLASSINSTANCE")]
 		CreateClassinstance = unchecked(2097290),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_CLASSINSTANCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CLASSINSTANCE")]
 		LiveClassinstance = unchecked(2097291),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_CLASSINSTANCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CLASSINSTANCE")]
 		DestroyClassinstance = unchecked(2097292),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_CLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CLASSLINKAGE")]
 		CreateClasslinkage = unchecked(2097293),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_CLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CLASSLINKAGE")]
 		LiveClasslinkage = unchecked(2097294),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_CLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CLASSLINKAGE")]
 		DestroyClasslinkage = unchecked(2097295),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEVICE_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICE_WIN7")]
 		LiveDeviceWin7 = unchecked(2097296),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY_WIN7")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY_WIN7")]
 		LiveObjectSummaryWin7 = unchecked(2097297),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_COMPUTESHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COMPUTESHADER")]
 		CreateComputeshader = unchecked(2097298),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_COMPUTESHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COMPUTESHADER")]
 		LiveComputeshader = unchecked(2097299),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_COMPUTESHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COMPUTESHADER")]
 		DestroyComputeshader = unchecked(2097300),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_UNORDEREDACCESSVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_UNORDEREDACCESSVIEW")]
 		CreateUnorderedaccessview = unchecked(2097301),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_UNORDEREDACCESSVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_UNORDEREDACCESSVIEW")]
 		LiveUnorderedaccessview = unchecked(2097302),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_UNORDEREDACCESSVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_UNORDEREDACCESSVIEW")]
 		DestroyUnorderedaccessview = unchecked(2097303),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACES_FEATURELEVEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACES_FEATURELEVEL")]
 		DeviceSetshaderInterfacesFeaturelevel = unchecked(2097304),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACE_COUNT_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACE_COUNT_MISMATCH")]
 		DeviceSetshaderInterfaceCountMismatch = unchecked(2097305),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE")]
 		DeviceSetshaderInvalidInstance = unchecked(2097306),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_INDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_INDEX")]
 		DeviceSetshaderInvalidInstanceIndex = unchecked(2097307),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_TYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_TYPE")]
 		DeviceSetshaderInvalidInstanceType = unchecked(2097308),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_DATA")]
 		DeviceSetshaderInvalidInstanceData = unchecked(2097309),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_UNBOUND_INSTANCE_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_UNBOUND_INSTANCE_DATA")]
 		DeviceSetshaderUnboundInstanceData = unchecked(2097310),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETSHADER_INSTANCE_DATA_BINDINGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INSTANCE_DATA_BINDINGS")]
 		DeviceSetshaderInstanceDataBindings = unchecked(2097311),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATESHADER_CLASSLINKAGE_FULL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATESHADER_CLASSLINKAGE_FULL")]
 		DeviceCreateshaderClasslinkageFull = unchecked(2097312),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_UNRECOGNIZED_FEATURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_UNRECOGNIZED_FEATURE")]
 		DeviceCheckfeaturesupportUnrecognizedFeature = unchecked(2097313),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_MISMATCHED_DATA_SIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_MISMATCHED_DATA_SIZE")]
 		DeviceCheckfeaturesupportMismatchedDataSize = unchecked(2097314),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_INVALIDARG_RETURN")]
 		DeviceCheckfeaturesupportInvalidargReturn = unchecked(2097315),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_HAZARD")]
 		DeviceCssetshaderresourcesHazard = unchecked(2097316),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_HAZARD")]
 		DeviceCssetconstantbuffersHazard = unchecked(2097317),
-		[NativeName("D3D11_MESSAGE_ID_CSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
 		CssetshaderresourcesUnbinddeletingobject = unchecked(2097318),
-		[NativeName("D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
 		CssetconstantbuffersUnbinddeletingobject = unchecked(2097319),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCALL")]
 		CreatecomputeshaderInvalidcall = unchecked(2097320),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOMPUTESHADER_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_OUTOFMEMORY")]
 		CreatecomputeshaderOutofmemory = unchecked(2097321),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERBYTECODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERBYTECODE")]
 		CreatecomputeshaderInvalidshaderbytecode = unchecked(2097322),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERTYPE")]
 		CreatecomputeshaderInvalidshadertype = unchecked(2097323),
-		[NativeName("D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCLASSLINKAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCLASSLINKAGE")]
 		CreatecomputeshaderInvalidclasslinkage = unchecked(2097324),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceCssetshaderresourcesViewsEmpty = unchecked(2097325),
-		[NativeName("D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFER")]
 		CssetconstantbuffersInvalidbuffer = unchecked(2097326),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceCssetconstantbuffersBuffersEmpty = unchecked(2097327),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceCssetsamplersSamplersEmpty = unchecked(2097328),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSGETSHADERRESOURCES_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETSHADERRESOURCES_VIEWS_EMPTY")]
 		DeviceCsgetshaderresourcesViewsEmpty = unchecked(2097329),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
 		DeviceCsgetconstantbuffersBuffersEmpty = unchecked(2097330),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSGETSAMPLERS_SAMPLERS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETSAMPLERS_SAMPLERS_EMPTY")]
 		DeviceCsgetsamplersSamplersEmpty = unchecked(2097331),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreatevertexshaderDoublefloatopsnotsupported = unchecked(2097332),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreatehullshaderDoublefloatopsnotsupported = unchecked(2097333),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreatedomainshaderDoublefloatopsnotsupported = unchecked(2097334),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreategeometryshaderDoublefloatopsnotsupported = unchecked(2097335),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreategeometryshaderwithstreamoutputDoublefloatopsnotsupported = unchecked(2097336),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreatepixelshaderDoublefloatopsnotsupported = unchecked(2097337),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
 		DeviceCreatecomputeshaderDoublefloatopsnotsupported = unchecked(2097338),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSTRUCTURESTRIDE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSTRUCTURESTRIDE")]
 		CreatebufferInvalidstructurestride = unchecked(2097339),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFLAGS")]
 		CreateshaderresourceviewInvalidflags = unchecked(2097340),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDRESOURCE")]
 		CreateunorderedaccessviewInvalidresource = unchecked(2097341),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDESC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDESC")]
 		CreateunorderedaccessviewInvaliddesc = unchecked(2097342),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFORMAT")]
 		CreateunorderedaccessviewInvalidformat = unchecked(2097343),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDIMENSIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDIMENSIONS")]
 		CreateunorderedaccessviewInvaliddimensions = unchecked(2097344),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_UNRECOGNIZEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_UNRECOGNIZEDFORMAT")]
 		CreateunorderedaccessviewUnrecognizedformat = unchecked(2097345),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_HAZARD")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsHazard = unchecked(2097346),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_OVERLAPPING_OLD_SLOTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_OVERLAPPING_OLD_SLOTS")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsOverlappingOldSlots = unchecked(2097347),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NO_OP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NO_OP")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsNoOp = unchecked(2097348),
-		[NativeName("D3D11_MESSAGE_ID_CSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
 		CssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097349),
-		[NativeName("D3D11_MESSAGE_ID_PSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
 		PssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097350),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDARG_RETURN")]
 		CreateunorderedaccessviewInvalidargReturn = unchecked(2097351),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_OUTOFMEMORY_RETURN")]
 		CreateunorderedaccessviewOutofmemoryReturn = unchecked(2097352),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_TOOMANYOBJECTS")]
 		CreateunorderedaccessviewToomanyobjects = unchecked(2097353),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_HAZARD")]
 		DeviceCssetunorderedaccessviewsHazard = unchecked(2097354),
-		[NativeName("D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEW_DENORMFLUSH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEW_DENORMFLUSH")]
 		ClearunorderedaccessviewDenormflush = unchecked(2097355),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSS_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSS_VIEWS_EMPTY")]
 		DeviceCssetunorderedaccesssViewsEmpty = unchecked(2097356),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSGETUNORDEREDACCESSS_VIEWS_EMPTY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETUNORDEREDACCESSS_VIEWS_EMPTY")]
 		DeviceCsgetunorderedaccesssViewsEmpty = unchecked(2097357),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFLAGS")]
 		CreateunorderedaccessviewInvalidflags = unchecked(2097358),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESESOURCEVIEW_TOOMANYOBJECTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESESOURCEVIEW_TOOMANYOBJECTS")]
 		CreateshaderresesourceviewToomanyobjects = unchecked(2097359),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_INVALID_ARG_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_INVALID_ARG_BUFFER")]
 		DeviceDispatchindirectInvalidArgBuffer = unchecked(2097360),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_UNALIGNED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_UNALIGNED")]
 		DeviceDispatchindirectOffsetUnaligned = unchecked(2097361),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_OVERFLOW")]
 		DeviceDispatchindirectOffsetOverflow = unchecked(2097362),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDCONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDCONTEXT")]
 		DeviceSetresourceminlodInvalidcontext = unchecked(2097363),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDRESOURCE")]
 		DeviceSetresourceminlodInvalidresource = unchecked(2097364),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDMINLOD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDMINLOD")]
 		DeviceSetresourceminlodInvalidminlod = unchecked(2097365),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDCONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDCONTEXT")]
 		DeviceGetresourceminlodInvalidcontext = unchecked(2097366),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDRESOURCE")]
 		DeviceGetresourceminlodInvalidresource = unchecked(2097367),
-		[NativeName("D3D11_MESSAGE_ID_OMSETDEPTHSTENCIL_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETDEPTHSTENCIL_UNBINDDELETINGOBJECT")]
 		OmsetdepthstencilUnbinddeletingobject = unchecked(2097368),
-		[NativeName("D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DEPTH_READONLY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DEPTH_READONLY")]
 		CleardepthstencilviewDepthReadonly = unchecked(2097369),
-		[NativeName("D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_STENCIL_READONLY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_STENCIL_READONLY")]
 		CleardepthstencilviewStencilReadonly = unchecked(2097370),
-		[NativeName("D3D11_MESSAGE_ID_CHECKFEATURESUPPORT_FORMAT_DEPRECATED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFEATURESUPPORT_FORMAT_DEPRECATED")]
 		CheckfeaturesupportFormatDeprecated = unchecked(2097371),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RETURN_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RETURN_TYPE_MISMATCH")]
 		DeviceUnorderedaccessviewReturnTypeMismatch = unchecked(2097372),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET")]
 		DeviceUnorderedaccessviewNotSet = unchecked(2097373),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_UNORDEREDACCESSVIEW_RENDERTARGETVIEW_OVERLAP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_UNORDEREDACCESSVIEW_RENDERTARGETVIEW_OVERLAP")]
 		DeviceDrawUnorderedaccessviewRendertargetviewOverlap = unchecked(2097374),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_DIMENSION_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_DIMENSION_MISMATCH")]
 		DeviceUnorderedaccessviewDimensionMismatch = unchecked(2097375),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_APPEND_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_APPEND_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAppendUnsupported = unchecked(2097376),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMICS_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMICS_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicsUnsupported = unchecked(2097377),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_STRUCTURE_STRIDE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_STRUCTURE_STRIDE_MISMATCH")]
 		DeviceUnorderedaccessviewStructureStrideMismatch = unchecked(2097378),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_BUFFER_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_BUFFER_TYPE_MISMATCH")]
 		DeviceUnorderedaccessviewBufferTypeMismatch = unchecked(2097379),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RAW_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RAW_UNSUPPORTED")]
 		DeviceUnorderedaccessviewRawUnsupported = unchecked(2097380),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_LD_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_LD_UNSUPPORTED")]
 		DeviceUnorderedaccessviewFormatLdUnsupported = unchecked(2097381),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_STORE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_STORE_UNSUPPORTED")]
 		DeviceUnorderedaccessviewFormatStoreUnsupported = unchecked(2097382),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_ADD_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_ADD_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicAddUnsupported = unchecked(2097383),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_BITWISE_OPS_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_BITWISE_OPS_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicBitwiseOpsUnsupported = unchecked(2097384),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_CMPSTORE_CMPEXCHANGE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_CMPSTORE_CMPEXCHANGE_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicCmpstoreCmpexchangeUnsupported = unchecked(2097385),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_EXCHANGE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_EXCHANGE_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicExchangeUnsupported = unchecked(2097386),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_SIGNED_MINMAX_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_SIGNED_MINMAX_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicSignedMinmaxUnsupported = unchecked(2097387),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_UNSIGNED_MINMAX_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_UNSIGNED_MINMAX_UNSUPPORTED")]
 		DeviceUnorderedaccessviewAtomicUnsignedMinmaxUnsupported = unchecked(2097388),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCH_BOUND_RESOURCE_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_BOUND_RESOURCE_MAPPED")]
 		DeviceDispatchBoundResourceMapped = unchecked(2097389),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_OVERFLOW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_OVERFLOW")]
 		DeviceDispatchThreadgroupcountOverflow = unchecked(2097390),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_ZERO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_ZERO")]
 		DeviceDispatchThreadgroupcountZero = unchecked(2097391),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_STRUCTURE_STRIDE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_STRUCTURE_STRIDE_MISMATCH")]
 		DeviceShaderresourceviewStructureStrideMismatch = unchecked(2097392),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_BUFFER_TYPE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_BUFFER_TYPE_MISMATCH")]
 		DeviceShaderresourceviewBufferTypeMismatch = unchecked(2097393),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_RAW_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_RAW_UNSUPPORTED")]
 		DeviceShaderresourceviewRawUnsupported = unchecked(2097394),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCH_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_UNSUPPORTED")]
 		DeviceDispatchUnsupported = unchecked(2097395),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_UNSUPPORTED")]
 		DeviceDispatchindirectUnsupported = unchecked(2097396),
-		[NativeName("D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDOFFSET")]
 		CopystructurecountInvalidoffset = unchecked(2097397),
-		[NativeName("D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_LARGEOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_LARGEOFFSET")]
 		CopystructurecountLargeoffset = unchecked(2097398),
-		[NativeName("D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDDESTINATIONSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDDESTINATIONSTATE")]
 		CopystructurecountInvaliddestinationstate = unchecked(2097399),
-		[NativeName("D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDSOURCESTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDSOURCESTATE")]
 		CopystructurecountInvalidsourcestate = unchecked(2097400),
-		[NativeName("D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_NOT_SUPPORTED")]
 		CheckformatsupportFormatNotSupported = unchecked(2097401),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDVIEW")]
 		DeviceCssetunorderedaccessviewsInvalidview = unchecked(2097402),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
 		DeviceCssetunorderedaccessviewsInvalidoffset = unchecked(2097403),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
 		DeviceCssetunorderedaccessviewsToomanyviews = unchecked(2097404),
-		[NativeName("D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_INVALIDFORMAT")]
 		ClearunorderedaccessviewfloatInvalidformat = unchecked(2097405),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_COUNTER_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_COUNTER_UNSUPPORTED")]
 		DeviceUnorderedaccessviewCounterUnsupported = unchecked(2097406),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING")]
 		RefWarning = unchecked(2097407),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_PIXEL_SHADER_WITHOUT_RTV_OR_DSV")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_PIXEL_SHADER_WITHOUT_RTV_OR_DSV")]
 		DeviceDrawPixelShaderWithoutRtvOrDsv = unchecked(2097408),
-		[NativeName("D3D11_MESSAGE_ID_SHADER_ABORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_ABORT")]
 		ShaderAbort = unchecked(2097409),
-		[NativeName("D3D11_MESSAGE_ID_SHADER_MESSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_MESSAGE")]
 		ShaderMessage = unchecked(2097410),
-		[NativeName("D3D11_MESSAGE_ID_SHADER_ERROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_ERROR")]
 		ShaderError = unchecked(2097411),
-		[NativeName("D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDRESOURCE")]
 		OfferresourcesInvalidresource = unchecked(2097412),
-		[NativeName("D3D11_MESSAGE_ID_HSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		HssetsamplersUnbinddeletingobject = unchecked(2097413),
-		[NativeName("D3D11_MESSAGE_ID_DSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		DssetsamplersUnbinddeletingobject = unchecked(2097414),
-		[NativeName("D3D11_MESSAGE_ID_CSSETSAMPLERS_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSAMPLERS_UNBINDDELETINGOBJECT")]
 		CssetsamplersUnbinddeletingobject = unchecked(2097415),
-		[NativeName("D3D11_MESSAGE_ID_HSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSHADER_UNBINDDELETINGOBJECT")]
 		HssetshaderUnbinddeletingobject = unchecked(2097416),
-		[NativeName("D3D11_MESSAGE_ID_DSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSHADER_UNBINDDELETINGOBJECT")]
 		DssetshaderUnbinddeletingobject = unchecked(2097417),
-		[NativeName("D3D11_MESSAGE_ID_CSSETSHADER_UNBINDDELETINGOBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSHADER_UNBINDDELETINGOBJECT")]
 		CssetshaderUnbinddeletingobject = unchecked(2097418),
-		[NativeName("D3D11_MESSAGE_ID_ENQUEUESETEVENT_INVALIDARG_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_INVALIDARG_RETURN")]
 		EnqueueseteventInvalidargReturn = unchecked(2097419),
-		[NativeName("D3D11_MESSAGE_ID_ENQUEUESETEVENT_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_OUTOFMEMORY_RETURN")]
 		EnqueueseteventOutofmemoryReturn = unchecked(2097420),
-		[NativeName("D3D11_MESSAGE_ID_ENQUEUESETEVENT_ACCESSDENIED_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_ACCESSDENIED_RETURN")]
 		EnqueueseteventAccessdeniedReturn = unchecked(2097421),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NUMUAVS_INVALIDRANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NUMUAVS_INVALIDRANGE")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsNumuavsInvalidrange = unchecked(2097422),
-		[NativeName("D3D11_MESSAGE_ID_USE_OF_ZERO_REFCOUNT_OBJECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_USE_OF_ZERO_REFCOUNT_OBJECT")]
 		UseOfZeroRefcountObject = unchecked(2097423),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_MESSAGES_END")]
 		Idd3D11MessagesEnd = unchecked(2097424),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_1_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_1_MESSAGES_START")]
 		Idd3D111MessagesStart = unchecked(3145728),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_VIDEODECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEODECODER")]
 		CreateVideodecoder = unchecked(3145729),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSORENUM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSORENUM")]
 		CreateVideoprocessorenum = unchecked(3145730),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSOR")]
 		CreateVideoprocessor = unchecked(3145731),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_DECODEROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DECODEROUTPUTVIEW")]
 		CreateDecoderoutputview = unchecked(3145732),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_PROCESSORINPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PROCESSORINPUTVIEW")]
 		CreateProcessorinputview = unchecked(3145733),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_PROCESSOROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PROCESSOROUTPUTVIEW")]
 		CreateProcessoroutputview = unchecked(3145734),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_DEVICECONTEXTSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEVICECONTEXTSTATE")]
 		CreateDevicecontextstate = unchecked(3145735),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_VIDEODECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEODECODER")]
 		LiveVideodecoder = unchecked(3145736),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSORENUM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSORENUM")]
 		LiveVideoprocessorenum = unchecked(3145737),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSOR")]
 		LiveVideoprocessor = unchecked(3145738),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DECODEROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DECODEROUTPUTVIEW")]
 		LiveDecoderoutputview = unchecked(3145739),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PROCESSORINPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PROCESSORINPUTVIEW")]
 		LiveProcessorinputview = unchecked(3145740),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_PROCESSOROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PROCESSOROUTPUTVIEW")]
 		LiveProcessoroutputview = unchecked(3145741),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_DEVICECONTEXTSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICECONTEXTSTATE")]
 		LiveDevicecontextstate = unchecked(3145742),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_VIDEODECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEODECODER")]
 		DestroyVideodecoder = unchecked(3145743),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSORENUM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSORENUM")]
 		DestroyVideoprocessorenum = unchecked(3145744),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSOR")]
 		DestroyVideoprocessor = unchecked(3145745),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_DECODEROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DECODEROUTPUTVIEW")]
 		DestroyDecoderoutputview = unchecked(3145746),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_PROCESSORINPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PROCESSORINPUTVIEW")]
 		DestroyProcessorinputview = unchecked(3145747),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_PROCESSOROUTPUTVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PROCESSOROUTPUTVIEW")]
 		DestroyProcessoroutputview = unchecked(3145748),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_DEVICECONTEXTSTATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEVICECONTEXTSTATE")]
 		DestroyDevicecontextstate = unchecked(3145749),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFLAGS")]
 		CreatedevicecontextstateInvalidflags = unchecked(3145750),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFEATURELEVEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFEATURELEVEL")]
 		CreatedevicecontextstateInvalidfeaturelevel = unchecked(3145751),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_FEATURELEVELS_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_FEATURELEVELS_NOT_SUPPORTED")]
 		CreatedevicecontextstateFeaturelevelsNotSupported = unchecked(3145752),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDREFIID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDREFIID")]
 		CreatedevicecontextstateInvalidrefiid = unchecked(3145753),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DISCARDVIEW_INVALIDVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISCARDVIEW_INVALIDVIEW")]
 		DeviceDiscardviewInvalidview = unchecked(3145754),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION1_INVALIDCOPYFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION1_INVALIDCOPYFLAGS")]
 		Copysubresourceregion1Invalidcopyflags = unchecked(3145755),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE1_INVALIDCOPYFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE1_INVALIDCOPYFLAGS")]
 		Updatesubresource1Invalidcopyflags = unchecked(3145756),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFORCEDSAMPLECOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFORCEDSAMPLECOUNT")]
 		CreaterasterizerstateInvalidforcedsamplecount = unchecked(3145757),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_OUTOFMEMORY_RETURN")]
 		CreatevideodecoderOutofmemoryReturn = unchecked(3145758),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_NULLPARAM")]
 		CreatevideodecoderNullparam = unchecked(3145759),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_INVALIDFORMAT")]
 		CreatevideodecoderInvalidformat = unchecked(3145760),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_ZEROWIDTHHEIGHT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_ZEROWIDTHHEIGHT")]
 		CreatevideodecoderZerowidthheight = unchecked(3145761),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERSIZE")]
 		CreatevideodecoderDriverInvalidbuffersize = unchecked(3145762),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERUSAGE")]
 		CreatevideodecoderDriverInvalidbufferusage = unchecked(3145763),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERPROFILECOUNT_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILECOUNT_OUTOFMEMORY")]
 		GetvideodecoderprofilecountOutofmemory = unchecked(3145764),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_NULLPARAM")]
 		GetvideodecoderprofileNullparam = unchecked(3145765),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_INVALIDINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_INVALIDINDEX")]
 		GetvideodecoderprofileInvalidindex = unchecked(3145766),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_OUTOFMEMORY_RETURN")]
 		GetvideodecoderprofileOutofmemoryReturn = unchecked(3145767),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_NULLPARAM")]
 		CheckvideodecoderformatNullparam = unchecked(3145768),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_OUTOFMEMORY_RETURN")]
 		CheckvideodecoderformatOutofmemoryReturn = unchecked(3145769),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_NULLPARAM")]
 		GetvideodecoderconfigcountNullparam = unchecked(3145770),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_OUTOFMEMORY_RETURN")]
 		GetvideodecoderconfigcountOutofmemoryReturn = unchecked(3145771),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_NULLPARAM")]
 		GetvideodecoderconfigNullparam = unchecked(3145772),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_INVALIDINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_INVALIDINDEX")]
 		GetvideodecoderconfigInvalidindex = unchecked(3145773),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_OUTOFMEMORY_RETURN")]
 		GetvideodecoderconfigOutofmemoryReturn = unchecked(3145774),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERCREATIONPARAMS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERCREATIONPARAMS_NULLPARAM")]
 		GetdecodercreationparamsNullparam = unchecked(3145775),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERDRIVERHANDLE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERDRIVERHANDLE_NULLPARAM")]
 		GetdecoderdriverhandleNullparam = unchecked(3145776),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERBUFFER_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_NULLPARAM")]
 		GetdecoderbufferNullparam = unchecked(3145777),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDBUFFER")]
 		GetdecoderbufferInvalidbuffer = unchecked(3145778),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDTYPE")]
 		GetdecoderbufferInvalidtype = unchecked(3145779),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERBUFFER_LOCKED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_LOCKED")]
 		GetdecoderbufferLocked = unchecked(3145780),
-		[NativeName("D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NULLPARAM")]
 		ReleasedecoderbufferNullparam = unchecked(3145781),
-		[NativeName("D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_INVALIDTYPE")]
 		ReleasedecoderbufferInvalidtype = unchecked(3145782),
-		[NativeName("D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NOTLOCKED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NOTLOCKED")]
 		ReleasedecoderbufferNotlocked = unchecked(3145783),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_NULLPARAM")]
 		DecoderbeginframeNullparam = unchecked(3145784),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_HAZARD")]
 		DecoderbeginframeHazard = unchecked(3145785),
-		[NativeName("D3D11_MESSAGE_ID_DECODERENDFRAME_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERENDFRAME_NULLPARAM")]
 		DecoderendframeNullparam = unchecked(3145786),
-		[NativeName("D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_NULLPARAM")]
 		SubmitdecoderbuffersNullparam = unchecked(3145787),
-		[NativeName("D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_INVALIDTYPE")]
 		SubmitdecoderbuffersInvalidtype = unchecked(3145788),
-		[NativeName("D3D11_MESSAGE_ID_DECODEREXTENSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODEREXTENSION_NULLPARAM")]
 		DecoderextensionNullparam = unchecked(3145789),
-		[NativeName("D3D11_MESSAGE_ID_DECODEREXTENSION_INVALIDRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODEREXTENSION_INVALIDRESOURCE")]
 		DecoderextensionInvalidresource = unchecked(3145790),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_OUTOFMEMORY_RETURN")]
 		CreatevideoprocessorenumeratorOutofmemoryReturn = unchecked(3145791),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_NULLPARAM")]
 		CreatevideoprocessorenumeratorNullparam = unchecked(3145792),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDFRAMEFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDFRAMEFORMAT")]
 		CreatevideoprocessorenumeratorInvalidframeformat = unchecked(3145793),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDUSAGE")]
 		CreatevideoprocessorenumeratorInvalidusage = unchecked(3145794),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDINPUTFRAMERATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDINPUTFRAMERATE")]
 		CreatevideoprocessorenumeratorInvalidinputframerate = unchecked(3145795),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDOUTPUTFRAMERATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDOUTPUTFRAMERATE")]
 		CreatevideoprocessorenumeratorInvalidoutputframerate = unchecked(3145796),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDWIDTHHEIGHT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDWIDTHHEIGHT")]
 		CreatevideoprocessorenumeratorInvalidwidthheight = unchecked(3145797),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORCONTENTDESC_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCONTENTDESC_NULLPARAM")]
 		GetvideoprocessorcontentdescNullparam = unchecked(3145798),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMAT_NULLPARAM")]
 		CheckvideoprocessorformatNullparam = unchecked(3145799),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORCAPS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCAPS_NULLPARAM")]
 		GetvideoprocessorcapsNullparam = unchecked(3145800),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_NULLPARAM")]
 		GetvideoprocessorrateconversioncapsNullparam = unchecked(3145801),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_INVALIDINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_INVALIDINDEX")]
 		GetvideoprocessorrateconversioncapsInvalidindex = unchecked(3145802),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_NULLPARAM")]
 		GetvideoprocessorcustomrateNullparam = unchecked(3145803),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_INVALIDINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_INVALIDINDEX")]
 		GetvideoprocessorcustomrateInvalidindex = unchecked(3145804),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_NULLPARAM")]
 		GetvideoprocessorfilterrangeNullparam = unchecked(3145805),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_UNSUPPORTED")]
 		GetvideoprocessorfilterrangeUnsupported = unchecked(3145806),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_OUTOFMEMORY_RETURN")]
 		CreatevideoprocessorOutofmemoryReturn = unchecked(3145807),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_NULLPARAM")]
 		CreatevideoprocessorNullparam = unchecked(3145808),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTTARGETRECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTTARGETRECT_NULLPARAM")]
 		VideoprocessorsetoutputtargetrectNullparam = unchecked(3145809),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
 		VideoprocessorsetoutputbackgroundcolorNullparam = unchecked(3145810),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_INVALIDALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_INVALIDALPHA")]
 		VideoprocessorsetoutputbackgroundcolorInvalidalpha = unchecked(3145811),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE_NULLPARAM")]
 		VideoprocessorsetoutputcolorspaceNullparam = unchecked(3145812),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_NULLPARAM")]
 		VideoprocessorsetoutputalphafillmodeNullparam = unchecked(3145813),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_UNSUPPORTED")]
 		VideoprocessorsetoutputalphafillmodeUnsupported = unchecked(3145814),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDSTREAM")]
 		VideoprocessorsetoutputalphafillmodeInvalidstream = unchecked(3145815),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDFILLMODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDFILLMODE")]
 		VideoprocessorsetoutputalphafillmodeInvalidfillmode = unchecked(3145816),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_NULLPARAM")]
 		VideoprocessorsetoutputconstrictionNullparam = unchecked(3145817),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_NULLPARAM")]
 		VideoprocessorsetoutputstereomodeNullparam = unchecked(3145818),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_UNSUPPORTED")]
 		VideoprocessorsetoutputstereomodeUnsupported = unchecked(3145819),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTEXTENSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTEXTENSION_NULLPARAM")]
 		VideoprocessorsetoutputextensionNullparam = unchecked(3145820),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTTARGETRECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTTARGETRECT_NULLPARAM")]
 		VideoprocessorgetoutputtargetrectNullparam = unchecked(3145821),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
 		VideoprocessorgetoutputbackgroundcolorNullparam = unchecked(3145822),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE_NULLPARAM")]
 		VideoprocessorgetoutputcolorspaceNullparam = unchecked(3145823),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTALPHAFILLMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTALPHAFILLMODE_NULLPARAM")]
 		VideoprocessorgetoutputalphafillmodeNullparam = unchecked(3145824),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCONSTRICTION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCONSTRICTION_NULLPARAM")]
 		VideoprocessorgetoutputconstrictionNullparam = unchecked(3145825),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_UNSUPPORTED")]
 		VideoprocessorsetoutputconstrictionUnsupported = unchecked(3145826),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_INVALIDSIZE")]
 		VideoprocessorsetoutputconstrictionInvalidsize = unchecked(3145827),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSTEREOMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSTEREOMODE_NULLPARAM")]
 		VideoprocessorgetoutputstereomodeNullparam = unchecked(3145828),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTEXTENSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTEXTENSION_NULLPARAM")]
 		VideoprocessorgetoutputextensionNullparam = unchecked(3145829),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_NULLPARAM")]
 		VideoprocessorsetstreamframeformatNullparam = unchecked(3145830),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDFORMAT")]
 		VideoprocessorsetstreamframeformatInvalidformat = unchecked(3145831),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
 		VideoprocessorsetstreamframeformatInvalidstream = unchecked(3145832),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_NULLPARAM")]
 		VideoprocessorsetstreamcolorspaceNullparam = unchecked(3145833),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_INVALIDSTREAM")]
 		VideoprocessorsetstreamcolorspaceInvalidstream = unchecked(3145834),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_NULLPARAM")]
 		VideoprocessorsetstreamoutputrateNullparam = unchecked(3145835),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDRATE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDRATE")]
 		VideoprocessorsetstreamoutputrateInvalidrate = unchecked(3145836),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDFLAG")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDFLAG")]
 		VideoprocessorsetstreamoutputrateInvalidflag = unchecked(3145837),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDSTREAM")]
 		VideoprocessorsetstreamoutputrateInvalidstream = unchecked(3145838),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_NULLPARAM")]
 		VideoprocessorsetstreamsourcerectNullparam = unchecked(3145839),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDSTREAM")]
 		VideoprocessorsetstreamsourcerectInvalidstream = unchecked(3145840),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDRECT")]
 		VideoprocessorsetstreamsourcerectInvalidrect = unchecked(3145841),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_NULLPARAM")]
 		VideoprocessorsetstreamdestrectNullparam = unchecked(3145842),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDSTREAM")]
 		VideoprocessorsetstreamdestrectInvalidstream = unchecked(3145843),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDRECT")]
 		VideoprocessorsetstreamdestrectInvalidrect = unchecked(3145844),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_NULLPARAM")]
 		VideoprocessorsetstreamalphaNullparam = unchecked(3145845),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDSTREAM")]
 		VideoprocessorsetstreamalphaInvalidstream = unchecked(3145846),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDALPHA")]
 		VideoprocessorsetstreamalphaInvalidalpha = unchecked(3145847),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_NULLPARAM")]
 		VideoprocessorsetstreampaletteNullparam = unchecked(3145848),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDSTREAM")]
 		VideoprocessorsetstreampaletteInvalidstream = unchecked(3145849),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDCOUNT")]
 		VideoprocessorsetstreampaletteInvalidcount = unchecked(3145850),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDALPHA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDALPHA")]
 		VideoprocessorsetstreampaletteInvalidalpha = unchecked(3145851),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_NULLPARAM")]
 		VideoprocessorsetstreampixelaspectratioNullparam = unchecked(3145852),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
 		VideoprocessorsetstreampixelaspectratioInvalidstream = unchecked(3145853),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDRATIO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDRATIO")]
 		VideoprocessorsetstreampixelaspectratioInvalidratio = unchecked(3145854),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_NULLPARAM")]
 		VideoprocessorsetstreamlumakeyNullparam = unchecked(3145855),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDSTREAM")]
 		VideoprocessorsetstreamlumakeyInvalidstream = unchecked(3145856),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDRANGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDRANGE")]
 		VideoprocessorsetstreamlumakeyInvalidrange = unchecked(3145857),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_UNSUPPORTED")]
 		VideoprocessorsetstreamlumakeyUnsupported = unchecked(3145858),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_NULLPARAM")]
 		VideoprocessorsetstreamstereoformatNullparam = unchecked(3145859),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
 		VideoprocessorsetstreamstereoformatInvalidstream = unchecked(3145860),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_UNSUPPORTED")]
 		VideoprocessorsetstreamstereoformatUnsupported = unchecked(3145861),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FLIPUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FLIPUNSUPPORTED")]
 		VideoprocessorsetstreamstereoformatFlipunsupported = unchecked(3145862),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_MONOOFFSETUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_MONOOFFSETUNSUPPORTED")]
 		VideoprocessorsetstreamstereoformatMonooffsetunsupported = unchecked(3145863),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FORMATUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FORMATUNSUPPORTED")]
 		VideoprocessorsetstreamstereoformatFormatunsupported = unchecked(3145864),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDFORMAT")]
 		VideoprocessorsetstreamstereoformatInvalidformat = unchecked(3145865),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
 		VideoprocessorsetstreamautoprocessingmodeNullparam = unchecked(3145866),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
 		VideoprocessorsetstreamautoprocessingmodeInvalidstream = unchecked(3145867),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_NULLPARAM")]
 		VideoprocessorsetstreamfilterNullparam = unchecked(3145868),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDSTREAM")]
 		VideoprocessorsetstreamfilterInvalidstream = unchecked(3145869),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDFILTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDFILTER")]
 		VideoprocessorsetstreamfilterInvalidfilter = unchecked(3145870),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_UNSUPPORTED")]
 		VideoprocessorsetstreamfilterUnsupported = unchecked(3145871),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDLEVEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDLEVEL")]
 		VideoprocessorsetstreamfilterInvalidlevel = unchecked(3145872),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_NULLPARAM")]
 		VideoprocessorsetstreamextensionNullparam = unchecked(3145873),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_INVALIDSTREAM")]
 		VideoprocessorsetstreamextensionInvalidstream = unchecked(3145874),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_NULLPARAM")]
 		VideoprocessorgetstreamframeformatNullparam = unchecked(3145875),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_NULLPARAM")]
 		VideoprocessorgetstreamcolorspaceNullparam = unchecked(3145876),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_NULLPARAM")]
 		VideoprocessorgetstreamoutputrateNullparam = unchecked(3145877),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_NULLPARAM")]
 		VideoprocessorgetstreamsourcerectNullparam = unchecked(3145878),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_NULLPARAM")]
 		VideoprocessorgetstreamdestrectNullparam = unchecked(3145879),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_NULLPARAM")]
 		VideoprocessorgetstreamalphaNullparam = unchecked(3145880),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_NULLPARAM")]
 		VideoprocessorgetstreampaletteNullparam = unchecked(3145881),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_NULLPARAM")]
 		VideoprocessorgetstreampixelaspectratioNullparam = unchecked(3145882),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_NULLPARAM")]
 		VideoprocessorgetstreamlumakeyNullparam = unchecked(3145883),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_NULLPARAM")]
 		VideoprocessorgetstreamstereoformatNullparam = unchecked(3145884),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
 		VideoprocessorgetstreamautoprocessingmodeNullparam = unchecked(3145885),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_NULLPARAM")]
 		VideoprocessorgetstreamfilterNullparam = unchecked(3145886),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_NULLPARAM")]
 		VideoprocessorgetstreamextensionNullparam = unchecked(3145887),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_INVALIDSTREAM")]
 		VideoprocessorgetstreamextensionInvalidstream = unchecked(3145888),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NULLPARAM")]
 		VideoprocessorbltNullparam = unchecked(3145889),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSTREAMCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSTREAMCOUNT")]
 		VideoprocessorbltInvalidstreamcount = unchecked(3145890),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_TARGETRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_TARGETRECT")]
 		VideoprocessorbltTargetrect = unchecked(3145891),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDOUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDOUTPUT")]
 		VideoprocessorbltInvalidoutput = unchecked(3145892),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDPASTFRAMES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDPASTFRAMES")]
 		VideoprocessorbltInvalidpastframes = unchecked(3145893),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDFUTUREFRAMES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDFUTUREFRAMES")]
 		VideoprocessorbltInvalidfutureframes = unchecked(3145894),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSOURCERECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSOURCERECT")]
 		VideoprocessorbltInvalidsourcerect = unchecked(3145895),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDDESTRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDDESTRECT")]
 		VideoprocessorbltInvaliddestrect = unchecked(3145896),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDINPUTRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDINPUTRESOURCE")]
 		VideoprocessorbltInvalidinputresource = unchecked(3145897),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAYSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAYSIZE")]
 		VideoprocessorbltInvalidarraysize = unchecked(3145898),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAY")]
 		VideoprocessorbltInvalidarray = unchecked(3145899),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTEXPECTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTEXPECTED")]
 		VideoprocessorbltRightexpected = unchecked(3145900),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTNOTEXPECTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTNOTEXPECTED")]
 		VideoprocessorbltRightnotexpected = unchecked(3145901),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_STEREONOTENABLED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_STEREONOTENABLED")]
 		VideoprocessorbltStereonotenabled = unchecked(3145902),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDRIGHTRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDRIGHTRESOURCE")]
 		VideoprocessorbltInvalidrightresource = unchecked(3145903),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NOSTEREOSTREAMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NOSTEREOSTREAMS")]
 		VideoprocessorbltNostereostreams = unchecked(3145904),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INPUTHAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INPUTHAZARD")]
 		VideoprocessorbltInputhazard = unchecked(3145905),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_OUTPUTHAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_OUTPUTHAZARD")]
 		VideoprocessorbltOutputhazard = unchecked(3145906),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_OUTOFMEMORY_RETURN")]
 		CreatevideodecoderoutputviewOutofmemoryReturn = unchecked(3145907),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_NULLPARAM")]
 		CreatevideodecoderoutputviewNullparam = unchecked(3145908),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDTYPE")]
 		CreatevideodecoderoutputviewInvalidtype = unchecked(3145909),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDBIND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDBIND")]
 		CreatevideodecoderoutputviewInvalidbind = unchecked(3145910),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEDFORMAT")]
 		CreatevideodecoderoutputviewUnsupportedformat = unchecked(3145911),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDMIP")]
 		CreatevideodecoderoutputviewInvalidmip = unchecked(3145912),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEMIP")]
 		CreatevideodecoderoutputviewUnsupportemip = unchecked(3145913),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAYSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAYSIZE")]
 		CreatevideodecoderoutputviewInvalidarraysize = unchecked(3145914),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAY")]
 		CreatevideodecoderoutputviewInvalidarray = unchecked(3145915),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDDIMENSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDDIMENSION")]
 		CreatevideodecoderoutputviewInvaliddimension = unchecked(3145916),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_OUTOFMEMORY_RETURN")]
 		CreatevideoprocessorinputviewOutofmemoryReturn = unchecked(3145917),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_NULLPARAM")]
 		CreatevideoprocessorinputviewNullparam = unchecked(3145918),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDTYPE")]
 		CreatevideoprocessorinputviewInvalidtype = unchecked(3145919),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDBIND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDBIND")]
 		CreatevideoprocessorinputviewInvalidbind = unchecked(3145920),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMISC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMISC")]
 		CreatevideoprocessorinputviewInvalidmisc = unchecked(3145921),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDUSAGE")]
 		CreatevideoprocessorinputviewInvalidusage = unchecked(3145922),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFORMAT")]
 		CreatevideoprocessorinputviewInvalidformat = unchecked(3145923),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFOURCC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFOURCC")]
 		CreatevideoprocessorinputviewInvalidfourcc = unchecked(3145924),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMIP")]
 		CreatevideoprocessorinputviewInvalidmip = unchecked(3145925),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_UNSUPPORTEDMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_UNSUPPORTEDMIP")]
 		CreatevideoprocessorinputviewUnsupportedmip = unchecked(3145926),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAYSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAYSIZE")]
 		CreatevideoprocessorinputviewInvalidarraysize = unchecked(3145927),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAY")]
 		CreatevideoprocessorinputviewInvalidarray = unchecked(3145928),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDDIMENSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDDIMENSION")]
 		CreatevideoprocessorinputviewInvaliddimension = unchecked(3145929),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_OUTOFMEMORY_RETURN")]
 		CreatevideoprocessoroutputviewOutofmemoryReturn = unchecked(3145930),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_NULLPARAM")]
 		CreatevideoprocessoroutputviewNullparam = unchecked(3145931),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDTYPE")]
 		CreatevideoprocessoroutputviewInvalidtype = unchecked(3145932),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDBIND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDBIND")]
 		CreatevideoprocessoroutputviewInvalidbind = unchecked(3145933),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDFORMAT")]
 		CreatevideoprocessoroutputviewInvalidformat = unchecked(3145934),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMIP")]
 		CreatevideoprocessoroutputviewInvalidmip = unchecked(3145935),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDMIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDMIP")]
 		CreatevideoprocessoroutputviewUnsupportedmip = unchecked(3145936),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDARRAY")]
 		CreatevideoprocessoroutputviewUnsupportedarray = unchecked(3145937),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDARRAY")]
 		CreatevideoprocessoroutputviewInvalidarray = unchecked(3145938),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDDIMENSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDDIMENSION")]
 		CreatevideoprocessoroutputviewInvaliddimension = unchecked(3145939),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_FORCED_SAMPLE_COUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_FORCED_SAMPLE_COUNT")]
 		DeviceDrawInvalidUseOfForcedSampleCount = unchecked(3145940),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDLOGICOPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDLOGICOPS")]
 		CreateblendstateInvalidlogicops = unchecked(3145941),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDARRAYWITHDECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDARRAYWITHDECODER")]
 		CreateshaderresourceviewInvaliddarraywithdecoder = unchecked(3145942),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDARRAYWITHDECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDARRAYWITHDECODER")]
 		CreateunorderedaccessviewInvaliddarraywithdecoder = unchecked(3145943),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDARRAYWITHDECODER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDARRAYWITHDECODER")]
 		CreaterendertargetviewInvaliddarraywithdecoder = unchecked(3145944),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_LOCKEDOUT_INTERFACE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_LOCKEDOUT_INTERFACE")]
 		DeviceLockedoutInterface = unchecked(3145945),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING_ATOMIC_INCONSISTENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_ATOMIC_INCONSISTENT")]
 		RefWarningAtomicInconsistent = unchecked(3145946),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING_READING_UNINITIALIZED_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_READING_UNINITIALIZED_RESOURCE")]
 		RefWarningReadingUninitializedResource = unchecked(3145947),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING_RAW_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_RAW_HAZARD")]
 		RefWarningRawHazard = unchecked(3145948),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING_WAR_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_WAR_HAZARD")]
 		RefWarningWarHazard = unchecked(3145949),
-		[NativeName("D3D11_MESSAGE_ID_REF_WARNING_WAW_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_WAW_HAZARD")]
 		RefWarningWawHazard = unchecked(3145950),
-		[NativeName("D3D11_MESSAGE_ID_CREATECRYPTOSESSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECRYPTOSESSION_NULLPARAM")]
 		CreatecryptosessionNullparam = unchecked(3145951),
-		[NativeName("D3D11_MESSAGE_ID_CREATECRYPTOSESSION_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECRYPTOSESSION_OUTOFMEMORY_RETURN")]
 		CreatecryptosessionOutofmemoryReturn = unchecked(3145952),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOTYPE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOTYPE_NULLPARAM")]
 		GetcryptotypeNullparam = unchecked(3145953),
-		[NativeName("D3D11_MESSAGE_ID_GETDECODERPROFILE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERPROFILE_NULLPARAM")]
 		GetdecoderprofileNullparam = unchecked(3145954),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATESIZE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATESIZE_NULLPARAM")]
 		GetcryptosessioncertificatesizeNullparam = unchecked(3145955),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_NULLPARAM")]
 		GetcryptosessioncertificateNullparam = unchecked(3145956),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_WRONGSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_WRONGSIZE")]
 		GetcryptosessioncertificateWrongsize = unchecked(3145957),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_WRONGSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_WRONGSIZE")]
 		GetcryptosessionhandleWrongsize = unchecked(3145958),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_NULLPARAM")]
 		NegotiatecrpytosessionkeyexchangeNullparam = unchecked(3145959),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_UNSUPPORTED")]
 		EncryptionbltUnsupported = unchecked(3145960),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_NULLPARAM")]
 		EncryptionbltNullparam = unchecked(3145961),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_WRONGDEVICE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_WRONGDEVICE")]
 		EncryptionbltSrcWrongdevice = unchecked(3145962),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_WRONGDEVICE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_WRONGDEVICE")]
 		EncryptionbltDstWrongdevice = unchecked(3145963),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_FORMAT_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_FORMAT_MISMATCH")]
 		EncryptionbltFormatMismatch = unchecked(3145964),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SIZE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SIZE_MISMATCH")]
 		EncryptionbltSizeMismatch = unchecked(3145965),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MULTISAMPLED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MULTISAMPLED")]
 		EncryptionbltSrcMultisampled = unchecked(3145966),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_NOT_STAGING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_NOT_STAGING")]
 		EncryptionbltDstNotStaging = unchecked(3145967),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MAPPED")]
 		EncryptionbltSrcMapped = unchecked(3145968),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_MAPPED")]
 		EncryptionbltDstMapped = unchecked(3145969),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_OFFERED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_OFFERED")]
 		EncryptionbltSrcOffered = unchecked(3145970),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_OFFERED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_OFFERED")]
 		EncryptionbltDstOffered = unchecked(3145971),
-		[NativeName("D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
 		EncryptionbltSrcContentUndefined = unchecked(3145972),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_UNSUPPORTED")]
 		DecryptionbltUnsupported = unchecked(3145973),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_NULLPARAM")]
 		DecryptionbltNullparam = unchecked(3145974),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_WRONGDEVICE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_WRONGDEVICE")]
 		DecryptionbltSrcWrongdevice = unchecked(3145975),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_WRONGDEVICE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_WRONGDEVICE")]
 		DecryptionbltDstWrongdevice = unchecked(3145976),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_FORMAT_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_FORMAT_MISMATCH")]
 		DecryptionbltFormatMismatch = unchecked(3145977),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SIZE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SIZE_MISMATCH")]
 		DecryptionbltSizeMismatch = unchecked(3145978),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MULTISAMPLED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MULTISAMPLED")]
 		DecryptionbltDstMultisampled = unchecked(3145979),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_NOT_STAGING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_NOT_STAGING")]
 		DecryptionbltSrcNotStaging = unchecked(3145980),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_NOT_RENDER_TARGET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_NOT_RENDER_TARGET")]
 		DecryptionbltDstNotRenderTarget = unchecked(3145981),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_MAPPED")]
 		DecryptionbltSrcMapped = unchecked(3145982),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MAPPED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MAPPED")]
 		DecryptionbltDstMapped = unchecked(3145983),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_OFFERED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_OFFERED")]
 		DecryptionbltSrcOffered = unchecked(3145984),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_OFFERED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_OFFERED")]
 		DecryptionbltDstOffered = unchecked(3145985),
-		[NativeName("D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
 		DecryptionbltSrcContentUndefined = unchecked(3145986),
-		[NativeName("D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_NULLPARAM")]
 		StartsessionkeyrefreshNullparam = unchecked(3145987),
-		[NativeName("D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_INVALIDSIZE")]
 		StartsessionkeyrefreshInvalidsize = unchecked(3145988),
-		[NativeName("D3D11_MESSAGE_ID_FINISHSESSIONKEYREFRESH_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHSESSIONKEYREFRESH_NULLPARAM")]
 		FinishsessionkeyrefreshNullparam = unchecked(3145989),
-		[NativeName("D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_NULLPARAM")]
 		GetencryptionbltkeyNullparam = unchecked(3145990),
-		[NativeName("D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_INVALIDSIZE")]
 		GetencryptionbltkeyInvalidsize = unchecked(3145991),
-		[NativeName("D3D11_MESSAGE_ID_GETCONTENTPROTECTIONCAPS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCONTENTPROTECTIONCAPS_NULLPARAM")]
 		GetcontentprotectioncapsNullparam = unchecked(3145992),
-		[NativeName("D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_NULLPARAM")]
 		CheckcryptokeyexchangeNullparam = unchecked(3145993),
-		[NativeName("D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_INVALIDINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_INVALIDINDEX")]
 		CheckcryptokeyexchangeInvalidindex = unchecked(3145994),
-		[NativeName("D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_NULLPARAM")]
 		CreateauthenticatedchannelNullparam = unchecked(3145995),
-		[NativeName("D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_UNSUPPORTED")]
 		CreateauthenticatedchannelUnsupported = unchecked(3145996),
-		[NativeName("D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_INVALIDTYPE")]
 		CreateauthenticatedchannelInvalidtype = unchecked(3145997),
-		[NativeName("D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_OUTOFMEMORY_RETURN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_OUTOFMEMORY_RETURN")]
 		CreateauthenticatedchannelOutofmemoryReturn = unchecked(3145998),
-		[NativeName("D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_INVALIDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_INVALIDCHANNEL")]
 		GetauthenticatedchannelcertificatesizeInvalidchannel = unchecked(3145999),
-		[NativeName("D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_NULLPARAM")]
 		GetauthenticatedchannelcertificatesizeNullparam = unchecked(3146000),
-		[NativeName("D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_INVALIDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_INVALIDCHANNEL")]
 		GetauthenticatedchannelcertificateInvalidchannel = unchecked(3146001),
-		[NativeName("D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_NULLPARAM")]
 		GetauthenticatedchannelcertificateNullparam = unchecked(3146002),
-		[NativeName("D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_WRONGSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_WRONGSIZE")]
 		GetauthenticatedchannelcertificateWrongsize = unchecked(3146003),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDCHANNEL")]
 		NegotiateauthenticatedchannelkeyexchangeInvalidchannel = unchecked(3146004),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_NULLPARAM")]
 		NegotiateauthenticatedchannelkeyexchangeNullparam = unchecked(3146005),
-		[NativeName("D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_NULLPARAM")]
 		QueryauthenticatedchannelNullparam = unchecked(3146006),
-		[NativeName("D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
 		QueryauthenticatedchannelWrongchannel = unchecked(3146007),
-		[NativeName("D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_UNSUPPORTEDQUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_UNSUPPORTEDQUERY")]
 		QueryauthenticatedchannelUnsupportedquery = unchecked(3146008),
-		[NativeName("D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGSIZE")]
 		QueryauthenticatedchannelWrongsize = unchecked(3146009),
-		[NativeName("D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_INVALIDPROCESSINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_INVALIDPROCESSINDEX")]
 		QueryauthenticatedchannelInvalidprocessindex = unchecked(3146010),
-		[NativeName("D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_NULLPARAM")]
 		ConfigureauthenticatedchannelNullparam = unchecked(3146011),
-		[NativeName("D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
 		ConfigureauthenticatedchannelWrongchannel = unchecked(3146012),
-		[NativeName("D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_UNSUPPORTEDCONFIGURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_UNSUPPORTEDCONFIGURE")]
 		ConfigureauthenticatedchannelUnsupportedconfigure = unchecked(3146013),
-		[NativeName("D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGSIZE")]
 		ConfigureauthenticatedchannelWrongsize = unchecked(3146014),
-		[NativeName("D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_INVALIDPROCESSIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_INVALIDPROCESSIDTYPE")]
 		ConfigureauthenticatedchannelInvalidprocessidtype = unchecked(3146015),
-		[NativeName("D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		VssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146016),
-		[NativeName("D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		DssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146017),
-		[NativeName("D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		HssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146018),
-		[NativeName("D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		GssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146019),
-		[NativeName("D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		PssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146020),
-		[NativeName("D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
 		CssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146021),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_INVALIDSIZE")]
 		NegotiatecrpytosessionkeyexchangeInvalidsize = unchecked(3146022),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDSIZE")]
 		NegotiateauthenticatedchannelkeyexchangeInvalidsize = unchecked(3146023),
-		[NativeName("D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDPRIORITY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDPRIORITY")]
 		OfferresourcesInvalidpriority = unchecked(3146024),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_OUTOFMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_OUTOFMEMORY")]
 		GetcryptosessionhandleOutofmemory = unchecked(3146025),
-		[NativeName("D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_NULLPARAM")]
 		AcquirehandleforcaptureNullparam = unchecked(3146026),
-		[NativeName("D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDTYPE")]
 		AcquirehandleforcaptureInvalidtype = unchecked(3146027),
-		[NativeName("D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDBIND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDBIND")]
 		AcquirehandleforcaptureInvalidbind = unchecked(3146028),
-		[NativeName("D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDARRAY")]
 		AcquirehandleforcaptureInvalidarray = unchecked(3146029),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_NULLPARAM")]
 		VideoprocessorsetstreamrotationNullparam = unchecked(3146030),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALIDSTREAM")]
 		VideoprocessorsetstreamrotationInvalidstream = unchecked(3146031),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALID")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALID")]
 		VideoprocessorsetstreamrotationInvalid = unchecked(3146032),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_UNSUPPORTED")]
 		VideoprocessorsetstreamrotationUnsupported = unchecked(3146033),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_NULLPARAM")]
 		VideoprocessorgetstreamrotationNullparam = unchecked(3146034),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDVIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDVIEW")]
 		DeviceClearviewInvalidview = unchecked(3146035),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreatevertexshaderDoubleextensionsnotsupported = unchecked(3146036),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreatevertexshaderShaderextensionsnotsupported = unchecked(3146037),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreatehullshaderDoubleextensionsnotsupported = unchecked(3146038),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreatehullshaderShaderextensionsnotsupported = unchecked(3146039),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreatedomainshaderDoubleextensionsnotsupported = unchecked(3146040),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreatedomainshaderShaderextensionsnotsupported = unchecked(3146041),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreategeometryshaderDoubleextensionsnotsupported = unchecked(3146042),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreategeometryshaderShaderextensionsnotsupported = unchecked(3146043),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreategeometryshaderwithstreamoutputDoubleextensionsnotsupported = unchecked(3146044),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreategeometryshaderwithstreamoutputShaderextensionsnotsupported = unchecked(3146045),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreatepixelshaderDoubleextensionsnotsupported = unchecked(3146046),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreatepixelshaderShaderextensionsnotsupported = unchecked(3146047),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
 		DeviceCreatecomputeshaderDoubleextensionsnotsupported = unchecked(3146048),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_SHADEREXTENSIONSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_SHADEREXTENSIONSNOTSUPPORTED")]
 		DeviceCreatecomputeshaderShaderextensionsnotsupported = unchecked(3146049),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_MINPRECISION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_MINPRECISION")]
 		DeviceShaderLinkageMinprecision = unchecked(3146050),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_UNSUPPORTED")]
 		VideoprocessorsetstreamalphaUnsupported = unchecked(3146051),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_UNSUPPORTED")]
 		VideoprocessorsetstreampixelaspectratioUnsupported = unchecked(3146052),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_UAVSNOTSUPPORTED")]
 		DeviceCreatevertexshaderUavsnotsupported = unchecked(3146053),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_UAVSNOTSUPPORTED")]
 		DeviceCreatehullshaderUavsnotsupported = unchecked(3146054),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_UAVSNOTSUPPORTED")]
 		DeviceCreatedomainshaderUavsnotsupported = unchecked(3146055),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_UAVSNOTSUPPORTED")]
 		DeviceCreategeometryshaderUavsnotsupported = unchecked(3146056),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UAVSNOTSUPPORTED")]
 		DeviceCreategeometryshaderwithstreamoutputUavsnotsupported = unchecked(3146057),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_UAVSNOTSUPPORTED")]
 		DeviceCreatepixelshaderUavsnotsupported = unchecked(3146058),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_UAVSNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_UAVSNOTSUPPORTED")]
 		DeviceCreatecomputeshaderUavsnotsupported = unchecked(3146059),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsInvalidoffset = unchecked(3146060),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
 		DeviceOmsetrendertargetsandunorderedaccessviewsToomanyviews = unchecked(3146061),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_NOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_NOTSUPPORTED")]
 		DeviceClearviewNotsupported = unchecked(3146062),
-		[NativeName("D3D11_MESSAGE_ID_SWAPDEVICECONTEXTSTATE_NOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SWAPDEVICECONTEXTSTATE_NOTSUPPORTED")]
 		SwapdevicecontextstateNotsupported = unchecked(3146063),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE_PREFERUPDATESUBRESOURCE1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_PREFERUPDATESUBRESOURCE1")]
 		UpdatesubresourcePreferupdatesubresource1 = unchecked(3146064),
-		[NativeName("D3D11_MESSAGE_ID_GETDC_INACCESSIBLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDC_INACCESSIBLE")]
 		GetdcInaccessible = unchecked(3146065),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDRECT")]
 		DeviceClearviewInvalidrect = unchecked(3146066),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLE_MASK_IGNORED_ON_FL9")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLE_MASK_IGNORED_ON_FL9")]
 		DeviceDrawSampleMaskIgnoredOnFl9 = unchecked(3146067),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_NOT_SUPPORTED")]
 		DeviceOpenSharedResource1NotSupported = unchecked(3146068),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BY_NAME_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BY_NAME_NOT_SUPPORTED")]
 		DeviceOpenSharedResourceByNameNotSupported = unchecked(3146069),
-		[NativeName("D3D11_MESSAGE_ID_ENQUEUESETEVENT_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_NOT_SUPPORTED")]
 		EnqueueseteventNotSupported = unchecked(3146070),
-		[NativeName("D3D11_MESSAGE_ID_OFFERRELEASE_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRELEASE_NOT_SUPPORTED")]
 		OfferreleaseNotSupported = unchecked(3146071),
-		[NativeName("D3D11_MESSAGE_ID_OFFERRESOURCES_INACCESSIBLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INACCESSIBLE")]
 		OfferresourcesInaccessible = unchecked(3146072),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMSAA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMSAA")]
 		CreatevideoprocessorinputviewInvalidmsaa = unchecked(3146073),
-		[NativeName("D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMSAA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMSAA")]
 		CreatevideoprocessoroutputviewInvalidmsaa = unchecked(3146074),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDSOURCERECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDSOURCERECT")]
 		DeviceClearviewInvalidsourcerect = unchecked(3146075),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_EMPTYRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_EMPTYRECT")]
 		DeviceClearviewEmptyrect = unchecked(3146076),
-		[NativeName("D3D11_MESSAGE_ID_UPDATESUBRESOURCE_EMPTYDESTBOX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_EMPTYDESTBOX")]
 		UpdatesubresourceEmptydestbox = unchecked(3146077),
-		[NativeName("D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_EMPTYSOURCEBOX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_EMPTYSOURCEBOX")]
 		CopysubresourceregionEmptysourcebox = unchecked(3146078),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_LOGIC_OPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_LOGIC_OPS")]
 		DeviceDrawOmRenderTargetDoesNotSupportLogicOps = unchecked(3146079),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_DEPTHSTENCILVIEW_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_DEPTHSTENCILVIEW_NOT_SET")]
 		DeviceDrawDepthstencilviewNotSet = unchecked(3146080),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET")]
 		DeviceDrawRendertargetviewNotSet = unchecked(3146081),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
 		DeviceDrawRendertargetviewNotSetDueToFlipPresent = unchecked(3146082),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
 		DeviceUnorderedaccessviewNotSetDueToFlipPresent = unchecked(3146083),
-		[NativeName("D3D11_MESSAGE_ID_GETDATAFORNEWHARDWAREKEY_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDATAFORNEWHARDWAREKEY_NULLPARAM")]
 		GetdatafornewhardwarekeyNullparam = unchecked(3146084),
-		[NativeName("D3D11_MESSAGE_ID_CHECKCRYPTOSESSIONSTATUS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOSESSIONSTATUS_NULLPARAM")]
 		CheckcryptosessionstatusNullparam = unchecked(3146085),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_NULLPARAM")]
 		GetcryptosessionprivatedatasizeNullparam = unchecked(3146086),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_NULLPARAM")]
 		GetvideodecodercapsNullparam = unchecked(3146087),
-		[NativeName("D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_ZEROWIDTHHEIGHT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_ZEROWIDTHHEIGHT")]
 		GetvideodecodercapsZerowidthheight = unchecked(3146088),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_NULLPARAM")]
 		CheckvideodecoderdownsamplingNullparam = unchecked(3146089),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
 		CheckvideodecoderdownsamplingInvalidcolorspace = unchecked(3146090),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
 		CheckvideodecoderdownsamplingZerowidthheight = unchecked(3146091),
-		[NativeName("D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_NULLPARAM")]
 		VideodecoderenabledownsamplingNullparam = unchecked(3146092),
-		[NativeName("D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_UNSUPPORTED")]
 		VideodecoderenabledownsamplingUnsupported = unchecked(3146093),
-		[NativeName("D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_NULLPARAM")]
 		VideodecoderupdatedownsamplingNullparam = unchecked(3146094),
-		[NativeName("D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_UNSUPPORTED")]
 		VideodecoderupdatedownsamplingUnsupported = unchecked(3146095),
-		[NativeName("D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMATCONVERSION_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMATCONVERSION_NULLPARAM")]
 		CheckvideoprocessorformatconversionNullparam = unchecked(3146096),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE1_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE1_NULLPARAM")]
 		Videoprocessorsetoutputcolorspace1Nullparam = unchecked(3146097),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE1_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE1_NULLPARAM")]
 		Videoprocessorgetoutputcolorspace1Nullparam = unchecked(3146098),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_NULLPARAM")]
 		Videoprocessorsetstreamcolorspace1Nullparam = unchecked(3146099),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_INVALIDSTREAM")]
 		Videoprocessorsetstreamcolorspace1Invalidstream = unchecked(3146100),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_NULLPARAM")]
 		VideoprocessorsetstreammirrorNullparam = unchecked(3146101),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_INVALIDSTREAM")]
 		VideoprocessorsetstreammirrorInvalidstream = unchecked(3146102),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_UNSUPPORTED")]
 		VideoprocessorsetstreammirrorUnsupported = unchecked(3146103),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_NULLPARAM")]
 		Videoprocessorgetstreamcolorspace1Nullparam = unchecked(3146104),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_NULLPARAM")]
 		VideoprocessorgetstreammirrorNullparam = unchecked(3146105),
-		[NativeName("D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_NULLPARAM")]
 		RecommendvideodecoderdownsamplingNullparam = unchecked(3146106),
-		[NativeName("D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
 		RecommendvideodecoderdownsamplingInvalidcolorspace = unchecked(3146107),
-		[NativeName("D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
 		RecommendvideodecoderdownsamplingZerowidthheight = unchecked(3146108),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSHADERUSAGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSHADERUSAGE_NULLPARAM")]
 		VideoprocessorsetoutputshaderusageNullparam = unchecked(3146109),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSHADERUSAGE_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSHADERUSAGE_NULLPARAM")]
 		VideoprocessorgetoutputshaderusageNullparam = unchecked(3146110),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_NULLPARAM")]
 		VideoprocessorgetbehaviorhintsNullparam = unchecked(3146111),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSTREAMCOUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSTREAMCOUNT")]
 		VideoprocessorgetbehaviorhintsInvalidstreamcount = unchecked(3146112),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_TARGETRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_TARGETRECT")]
 		VideoprocessorgetbehaviorhintsTargetrect = unchecked(3146113),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSOURCERECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSOURCERECT")]
 		VideoprocessorgetbehaviorhintsInvalidsourcerect = unchecked(3146114),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDDESTRECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDDESTRECT")]
 		VideoprocessorgetbehaviorhintsInvaliddestrect = unchecked(3146115),
-		[NativeName("D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_INVALID_KEY_EXCHANGE_TYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_INVALID_KEY_EXCHANGE_TYPE")]
 		GetcryptosessionprivatedatasizeInvalidKeyExchangeType = unchecked(3146116),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_ACCESS_DENIED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_ACCESS_DENIED")]
 		DeviceOpenSharedResource1AccessDenied = unchecked(3146117),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_1_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_1_MESSAGES_END")]
 		Idd3D111MessagesEnd = unchecked(3146118),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_2_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_2_MESSAGES_START")]
 		Idd3D112MessagesStart = unchecked(3146119),
-		[NativeName("D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDUSAGE")]
 		CreatebufferInvalidusage = unchecked(3146120),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDUSAGE")]
 		Createtexture1DInvalidusage = unchecked(3146121),
-		[NativeName("D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDUSAGE")]
 		Createtexture2DInvalidusage = unchecked(3146122),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_STEPRATE_NOT_1")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_STEPRATE_NOT_1")]
 		CreateinputlayoutLevel9SteprateNot1 = unchecked(3146123),
-		[NativeName("D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_INSTANCING_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_INSTANCING_NOT_SUPPORTED")]
 		CreateinputlayoutLevel9InstancingNotSupported = unchecked(3146124),
-		[NativeName("D3D11_MESSAGE_ID_UPDATETILEMAPPINGS_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATETILEMAPPINGS_INVALID_PARAMETER")]
 		UpdatetilemappingsInvalidParameter = unchecked(3146125),
-		[NativeName("D3D11_MESSAGE_ID_COPYTILEMAPPINGS_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYTILEMAPPINGS_INVALID_PARAMETER")]
 		CopytilemappingsInvalidParameter = unchecked(3146126),
-		[NativeName("D3D11_MESSAGE_ID_COPYTILES_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYTILES_INVALID_PARAMETER")]
 		CopytilesInvalidParameter = unchecked(3146127),
-		[NativeName("D3D11_MESSAGE_ID_UPDATETILES_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATETILES_INVALID_PARAMETER")]
 		UpdatetilesInvalidParameter = unchecked(3146128),
-		[NativeName("D3D11_MESSAGE_ID_RESIZETILEPOOL_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESIZETILEPOOL_INVALID_PARAMETER")]
 		ResizetilepoolInvalidParameter = unchecked(3146129),
-		[NativeName("D3D11_MESSAGE_ID_TILEDRESOURCEBARRIER_INVALID_PARAMETER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILEDRESOURCEBARRIER_INVALID_PARAMETER")]
 		TiledresourcebarrierInvalidParameter = unchecked(3146130),
-		[NativeName("D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_WARNING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_WARNING")]
 		NullTileMappingAccessWarning = unchecked(3146131),
-		[NativeName("D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_ERROR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_ERROR")]
 		NullTileMappingAccessError = unchecked(3146132),
-		[NativeName("D3D11_MESSAGE_ID_DIRTY_TILE_MAPPING_ACCESS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DIRTY_TILE_MAPPING_ACCESS")]
 		DirtyTileMappingAccess = unchecked(3146133),
-		[NativeName("D3D11_MESSAGE_ID_DUPLICATE_TILE_MAPPINGS_IN_COVERED_AREA")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DUPLICATE_TILE_MAPPINGS_IN_COVERED_AREA")]
 		DuplicateTileMappingsInCoveredArea = unchecked(3146134),
-		[NativeName("D3D11_MESSAGE_ID_TILE_MAPPINGS_IN_COVERED_AREA_DUPLICATED_OUTSIDE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_IN_COVERED_AREA_DUPLICATED_OUTSIDE")]
 		TileMappingsInCoveredAreaDuplicatedOutside = unchecked(3146135),
-		[NativeName("D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INCOMPATIBLE_RESOURCES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INCOMPATIBLE_RESOURCES")]
 		TileMappingsSharedBetweenIncompatibleResources = unchecked(3146136),
-		[NativeName("D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INPUT_AND_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INPUT_AND_OUTPUT")]
 		TileMappingsSharedBetweenInputAndOutput = unchecked(3146137),
-		[NativeName("D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_INVALIDFLAGS")]
 		CheckmultisamplequalitylevelsInvalidflags = unchecked(3146138),
-		[NativeName("D3D11_MESSAGE_ID_GETRESOURCETILING_NONTILED_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETRESOURCETILING_NONTILED_RESOURCE")]
 		GetresourcetilingNontiledResource = unchecked(3146139),
-		[NativeName("D3D11_MESSAGE_ID_RESIZETILEPOOL_SHRINK_WITH_MAPPINGS_STILL_DEFINED_PAST_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESIZETILEPOOL_SHRINK_WITH_MAPPINGS_STILL_DEFINED_PAST_END")]
 		ResizetilepoolShrinkWithMappingsStillDefinedPastEnd = unchecked(3146140),
-		[NativeName("D3D11_MESSAGE_ID_NEED_TO_CALL_TILEDRESOURCEBARRIER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEED_TO_CALL_TILEDRESOURCEBARRIER")]
 		NeedToCallTiledresourcebarrier = unchecked(3146141),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICE_INVALIDARGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICE_INVALIDARGS")]
 		CreatedeviceInvalidargs = unchecked(3146142),
-		[NativeName("D3D11_MESSAGE_ID_CREATEDEVICE_WARNING")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICE_WARNING")]
 		CreatedeviceWarning = unchecked(3146143),
-		[NativeName("D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWUINT_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWUINT_HAZARD")]
 		ClearunorderedaccessviewuintHazard = unchecked(3146144),
-		[NativeName("D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_HAZARD")]
 		ClearunorderedaccessviewfloatHazard = unchecked(3146145),
-		[NativeName("D3D11_MESSAGE_ID_TILED_RESOURCE_TIER_1_BUFFER_TEXTURE_MISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILED_RESOURCE_TIER_1_BUFFER_TEXTURE_MISMATCH")]
 		TiledResourceTier1BufferTextureMismatch = unchecked(3146146),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_CRYPTOSESSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CRYPTOSESSION")]
 		CreateCryptosession = unchecked(3146147),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_AUTHENTICATEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_AUTHENTICATEDCHANNEL")]
 		CreateAuthenticatedchannel = unchecked(3146148),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_CRYPTOSESSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CRYPTOSESSION")]
 		LiveCryptosession = unchecked(3146149),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_AUTHENTICATEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_AUTHENTICATEDCHANNEL")]
 		LiveAuthenticatedchannel = unchecked(3146150),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_CRYPTOSESSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CRYPTOSESSION")]
 		DestroyCryptosession = unchecked(3146151),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_AUTHENTICATEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_AUTHENTICATEDCHANNEL")]
 		DestroyAuthenticatedchannel = unchecked(3146152),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_2_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_2_MESSAGES_END")]
 		Idd3D112MessagesEnd = unchecked(3146153),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_3_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_3_MESSAGES_START")]
 		Idd3D113MessagesStart = unchecked(3146154),
-		[NativeName("D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALID_CONSERVATIVERASTERMODE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALID_CONSERVATIVERASTERMODE")]
 		CreaterasterizerstateInvalidConservativerastermode = unchecked(3146155),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_SYSTEMVALUE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_SYSTEMVALUE")]
 		DeviceDrawInvalidSystemvalue = unchecked(3146156),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDCONTEXTTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDCONTEXTTYPE")]
 		CreatequeryorpredicateInvalidcontexttype = unchecked(3146157),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_DECODENOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_DECODENOTSUPPORTED")]
 		CreatequeryorpredicateDecodenotsupported = unchecked(3146158),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_ENCODENOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_ENCODENOTSUPPORTED")]
 		CreatequeryorpredicateEncodenotsupported = unchecked(3146159),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDPLANEINDEX")]
 		CreateshaderresourceviewInvalidplaneindex = unchecked(3146160),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDVIDEOPLANEINDEX")]
 		CreateshaderresourceviewInvalidvideoplaneindex = unchecked(3146161),
-		[NativeName("D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
 		CreateshaderresourceviewAmbiguousvideoplaneindex = unchecked(3146162),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDPLANEINDEX")]
 		CreaterendertargetviewInvalidplaneindex = unchecked(3146163),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDVIDEOPLANEINDEX")]
 		CreaterendertargetviewInvalidvideoplaneindex = unchecked(3146164),
-		[NativeName("D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
 		CreaterendertargetviewAmbiguousvideoplaneindex = unchecked(3146165),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDPLANEINDEX")]
 		CreateunorderedaccessviewInvalidplaneindex = unchecked(3146166),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDVIDEOPLANEINDEX")]
 		CreateunorderedaccessviewInvalidvideoplaneindex = unchecked(3146167),
-		[NativeName("D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
 		CreateunorderedaccessviewAmbiguousvideoplaneindex = unchecked(3146168),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSCANDATAOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSCANDATAOFFSET")]
 		JpegdecodeInvalidscandataoffset = unchecked(3146169),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_NOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_NOTSUPPORTED")]
 		JpegdecodeNotsupported = unchecked(3146170),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_DIMENSIONSTOOLARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DIMENSIONSTOOLARGE")]
 		JpegdecodeDimensionstoolarge = unchecked(3146171),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOMPONENTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOMPONENTS")]
 		JpegdecodeInvalidcomponents = unchecked(3146172),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_DESTINATIONNOT2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTINATIONNOT2D")]
 		JpegdecodeDestinationnot2D = unchecked(3146173),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_TILEDRESOURCESUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_TILEDRESOURCESUNSUPPORTED")]
 		JpegdecodeTiledresourcesunsupported = unchecked(3146174),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_GUARDRECTSUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_GUARDRECTSUNSUPPORTED")]
 		JpegdecodeGuardrectsunsupported = unchecked(3146175),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_FORMATUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_FORMATUNSUPPORTED")]
 		JpegdecodeFormatunsupported = unchecked(3146176),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSUBRESOURCE")]
 		JpegdecodeInvalidsubresource = unchecked(3146177),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDMIPLEVEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDMIPLEVEL")]
 		JpegdecodeInvalidmiplevel = unchecked(3146178),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_EMPTYDESTBOX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_EMPTYDESTBOX")]
 		JpegdecodeEmptydestbox = unchecked(3146179),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOT2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOT2D")]
 		JpegdecodeDestboxnot2D = unchecked(3146180),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOTSUB")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOTSUB")]
 		JpegdecodeDestboxnotsub = unchecked(3146181),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXESINTERSECT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXESINTERSECT")]
 		JpegdecodeDestboxesintersect = unchecked(3146182),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEMISMATCH")]
 		JpegdecodeXsubsamplemismatch = unchecked(3146183),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEMISMATCH")]
 		JpegdecodeYsubsamplemismatch = unchecked(3146184),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEODD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEODD")]
 		JpegdecodeXsubsampleodd = unchecked(3146185),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEODD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEODD")]
 		JpegdecodeYsubsampleodd = unchecked(3146186),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_OUTPUTDIMENSIONSTOOLARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_OUTPUTDIMENSIONSTOOLARGE")]
 		JpegdecodeOutputdimensionstoolarge = unchecked(3146187),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_NONPOW2SCALEUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_NONPOW2SCALEUNSUPPORTED")]
 		JpegdecodeNonpow2Scaleunsupported = unchecked(3146188),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_FRACTIONALDOWNSCALETOLARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_FRACTIONALDOWNSCALETOLARGE")]
 		JpegdecodeFractionaldownscaletolarge = unchecked(3146189),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_CHROMASIZEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_CHROMASIZEMISMATCH")]
 		JpegdecodeChromasizemismatch = unchecked(3146190),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_LUMACHROMASIZEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_LUMACHROMASIZEMISMATCH")]
 		JpegdecodeLumachromasizemismatch = unchecked(3146191),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDNUMDESTINATIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDNUMDESTINATIONS")]
 		JpegdecodeInvalidnumdestinations = unchecked(3146192),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_SUBBOXUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_SUBBOXUNSUPPORTED")]
 		JpegdecodeSubboxunsupported = unchecked(3146193),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_1DESTUNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_1DESTUNSUPPORTEDFORMAT")]
 		Jpegdecode1Destunsupportedformat = unchecked(3146194),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_3DESTUNSUPPORTEDFORMAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_3DESTUNSUPPORTEDFORMAT")]
 		Jpegdecode3Destunsupportedformat = unchecked(3146195),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_SCALEUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_SCALEUNSUPPORTED")]
 		JpegdecodeScaleunsupported = unchecked(3146196),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSOURCESIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSOURCESIZE")]
 		JpegdecodeInvalidsourcesize = unchecked(3146197),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOPYFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOPYFLAGS")]
 		JpegdecodeInvalidcopyflags = unchecked(3146198),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_HAZARD")]
 		JpegdecodeHazard = unchecked(3146199),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERUSAGE")]
 		JpegdecodeUnsupportedsrcbufferusage = unchecked(3146200),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERMISCFLAGS")]
 		JpegdecodeUnsupportedsrcbuffermiscflags = unchecked(3146201),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDDSTTEXTUREUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDDSTTEXTUREUSAGE")]
 		JpegdecodeUnsupporteddsttextureusage = unchecked(3146202),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_BACKBUFFERNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_BACKBUFFERNOTSUPPORTED")]
 		JpegdecodeBackbuffernotsupported = unchecked(3146203),
-		[NativeName("D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPRTEDCOPYFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPRTEDCOPYFLAGS")]
 		JpegdecodeUnsupprtedcopyflags = unchecked(3146204),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_NOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_NOTSUPPORTED")]
 		JpegencodeNotsupported = unchecked(3146205),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSCANDATAOFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSCANDATAOFFSET")]
 		JpegencodeInvalidscandataoffset = unchecked(3146206),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_INVALIDCOMPONENTS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDCOMPONENTS")]
 		JpegencodeInvalidcomponents = unchecked(3146207),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_SOURCENOT2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_SOURCENOT2D")]
 		JpegencodeSourcenot2D = unchecked(3146208),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_TILEDRESOURCESUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_TILEDRESOURCESUNSUPPORTED")]
 		JpegencodeTiledresourcesunsupported = unchecked(3146209),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_GUARDRECTSUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_GUARDRECTSUNSUPPORTED")]
 		JpegencodeGuardrectsunsupported = unchecked(3146210),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_XSUBSAMPLEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_XSUBSAMPLEMISMATCH")]
 		JpegencodeXsubsamplemismatch = unchecked(3146211),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_YSUBSAMPLEMISMATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_YSUBSAMPLEMISMATCH")]
 		JpegencodeYsubsamplemismatch = unchecked(3146212),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_FORMATUNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_FORMATUNSUPPORTED")]
 		JpegencodeFormatunsupported = unchecked(3146213),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSUBRESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSUBRESOURCE")]
 		JpegencodeInvalidsubresource = unchecked(3146214),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_INVALIDMIPLEVEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDMIPLEVEL")]
 		JpegencodeInvalidmiplevel = unchecked(3146215),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_DIMENSIONSTOOLARGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_DIMENSIONSTOOLARGE")]
 		JpegencodeDimensionstoolarge = unchecked(3146216),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_HAZARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_HAZARD")]
 		JpegencodeHazard = unchecked(3146217),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERUSAGE")]
 		JpegencodeUnsupporteddstbufferusage = unchecked(3146218),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERMISCFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERMISCFLAGS")]
 		JpegencodeUnsupporteddstbuffermiscflags = unchecked(3146219),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDSRCTEXTUREUSAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDSRCTEXTUREUSAGE")]
 		JpegencodeUnsupportedsrctextureusage = unchecked(3146220),
-		[NativeName("D3D11_MESSAGE_ID_JPEGENCODE_BACKBUFFERNOTSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_BACKBUFFERNOTSUPPORTED")]
 		JpegencodeBackbuffernotsupported = unchecked(3146221),
-		[NativeName("D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNSUPPORTEDCONTEXTTTYPEFORQUERY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNSUPPORTEDCONTEXTTTYPEFORQUERY")]
 		CreatequeryorpredicateUnsupportedcontextttypeforquery = unchecked(3146222),
-		[NativeName("D3D11_MESSAGE_ID_FLUSH1_INVALIDCONTEXTTYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FLUSH1_INVALIDCONTEXTTYPE")]
 		Flush1Invalidcontexttype = unchecked(3146223),
-		[NativeName("D3D11_MESSAGE_ID_DEVICE_SETHARDWAREPROTECTION_INVALIDCONTEXT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETHARDWAREPROTECTION_INVALIDCONTEXT")]
 		DeviceSethardwareprotectionInvalidcontext = unchecked(3146224),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_NULLPARAM")]
 		VideoprocessorsetoutputhdrmetadataNullparam = unchecked(3146225),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_INVALIDSIZE")]
 		VideoprocessorsetoutputhdrmetadataInvalidsize = unchecked(3146226),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_NULLPARAM")]
 		VideoprocessorgetoutputhdrmetadataNullparam = unchecked(3146227),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_INVALIDSIZE")]
 		VideoprocessorgetoutputhdrmetadataInvalidsize = unchecked(3146228),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_NULLPARAM")]
 		VideoprocessorsetstreamhdrmetadataNullparam = unchecked(3146229),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSTREAM")]
 		VideoprocessorsetstreamhdrmetadataInvalidstream = unchecked(3146230),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSIZE")]
 		VideoprocessorsetstreamhdrmetadataInvalidsize = unchecked(3146231),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_NULLPARAM")]
 		VideoprocessorgetstreamhdrmetadataNullparam = unchecked(3146232),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSTREAM")]
 		VideoprocessorgetstreamhdrmetadataInvalidstream = unchecked(3146233),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSIZE")]
 		VideoprocessorgetstreamhdrmetadataInvalidsize = unchecked(3146234),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
 		VideoprocessorgetstreamframeformatInvalidstream = unchecked(3146235),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_INVALIDSTREAM")]
 		VideoprocessorgetstreamcolorspaceInvalidstream = unchecked(3146236),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_INVALIDSTREAM")]
 		VideoprocessorgetstreamoutputrateInvalidstream = unchecked(3146237),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_INVALIDSTREAM")]
 		VideoprocessorgetstreamsourcerectInvalidstream = unchecked(3146238),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_INVALIDSTREAM")]
 		VideoprocessorgetstreamdestrectInvalidstream = unchecked(3146239),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_INVALIDSTREAM")]
 		VideoprocessorgetstreamalphaInvalidstream = unchecked(3146240),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_INVALIDSTREAM")]
 		VideoprocessorgetstreampaletteInvalidstream = unchecked(3146241),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
 		VideoprocessorgetstreampixelaspectratioInvalidstream = unchecked(3146242),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_INVALIDSTREAM")]
 		VideoprocessorgetstreamlumakeyInvalidstream = unchecked(3146243),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
 		VideoprocessorgetstreamstereoformatInvalidstream = unchecked(3146244),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
 		VideoprocessorgetstreamautoprocessingmodeInvalidstream = unchecked(3146245),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_INVALIDSTREAM")]
 		VideoprocessorgetstreamfilterInvalidstream = unchecked(3146246),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_INVALIDSTREAM")]
 		VideoprocessorgetstreamrotationInvalidstream = unchecked(3146247),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_INVALIDSTREAM")]
 		Videoprocessorgetstreamcolorspace1Invalidstream = unchecked(3146248),
-		[NativeName("D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_INVALIDSTREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_INVALIDSTREAM")]
 		VideoprocessorgetstreammirrorInvalidstream = unchecked(3146249),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_FENCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_FENCE")]
 		CreateFence = unchecked(3146250),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_FENCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_FENCE")]
 		LiveFence = unchecked(3146251),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_FENCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_FENCE")]
 		DestroyFence = unchecked(3146252),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_SYNCHRONIZEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SYNCHRONIZEDCHANNEL")]
 		CreateSynchronizedchannel = unchecked(3146253),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_SYNCHRONIZEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SYNCHRONIZEDCHANNEL")]
 		LiveSynchronizedchannel = unchecked(3146254),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_SYNCHRONIZEDCHANNEL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SYNCHRONIZEDCHANNEL")]
 		DestroySynchronizedchannel = unchecked(3146255),
-		[NativeName("D3D11_MESSAGE_ID_CREATEFENCE_INVALIDFLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEFENCE_INVALIDFLAGS")]
 		CreatefenceInvalidflags = unchecked(3146256),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_3_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_3_MESSAGES_END")]
 		Idd3D113MessagesEnd = unchecked(3146257),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_5_MESSAGES_START")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_5_MESSAGES_START")]
 		Idd3D115MessagesStart = unchecked(3146258),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_INVALIDKEYEXCHANGETYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_INVALIDKEYEXCHANGETYPE")]
 		NegotiatecryptosessionkeyexchangemtInvalidkeyexchangetype = unchecked(3146259),
-		[NativeName("D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_NOT_SUPPORTED")]
 		NegotiatecryptosessionkeyexchangemtNotSupported = unchecked(3146260),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT_COUNT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT_COUNT")]
 		DecoderbeginframeInvalidHistogramComponentCount = unchecked(3146261),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT")]
 		DecoderbeginframeInvalidHistogramComponent = unchecked(3146262),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_SIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_SIZE")]
 		DecoderbeginframeInvalidHistogramBufferSize = unchecked(3146263),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_USAGE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_USAGE")]
 		DecoderbeginframeInvalidHistogramBufferUsage = unchecked(3146264),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_MISC_FLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_MISC_FLAGS")]
 		DecoderbeginframeInvalidHistogramBufferMiscFlags = unchecked(3146265),
-		[NativeName("D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_OFFSET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_OFFSET")]
 		DecoderbeginframeInvalidHistogramBufferOffset = unchecked(3146266),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TRACKEDWORKLOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKEDWORKLOAD")]
 		CreateTrackedworkload = unchecked(3146267),
-		[NativeName("D3D11_MESSAGE_ID_LIVE_TRACKEDWORKLOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TRACKEDWORKLOAD")]
 		LiveTrackedworkload = unchecked(3146268),
-		[NativeName("D3D11_MESSAGE_ID_DESTROY_TRACKEDWORKLOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TRACKEDWORKLOAD")]
 		DestroyTrackedworkload = unchecked(3146269),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_NULLPARAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_NULLPARAM")]
 		CreateTrackedWorkloadNullparam = unchecked(3146270),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_MAX_INSTANCES")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_MAX_INSTANCES")]
 		CreateTrackedWorkloadInvalidMaxInstances = unchecked(3146271),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_DEADLINE_TYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_DEADLINE_TYPE")]
 		CreateTrackedWorkloadInvalidDeadlineType = unchecked(3146272),
-		[NativeName("D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_ENGINE_TYPE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_ENGINE_TYPE")]
 		CreateTrackedWorkloadInvalidEngineType = unchecked(3146273),
-		[NativeName("D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOADS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOADS")]
 		MultipleTrackedWorkloads = unchecked(3146274),
-		[NativeName("D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOAD_PAIRS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOAD_PAIRS")]
 		MultipleTrackedWorkloadPairs = unchecked(3146275),
-		[NativeName("D3D11_MESSAGE_ID_INCOMPLETE_TRACKED_WORKLOAD_PAIR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_INCOMPLETE_TRACKED_WORKLOAD_PAIR")]
 		IncompleteTrackedWorkloadPair = unchecked(3146276),
-		[NativeName("D3D11_MESSAGE_ID_OUT_OF_ORDER_TRACKED_WORKLOAD_PAIR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OUT_OF_ORDER_TRACKED_WORKLOAD_PAIR")]
 		OutOfOrderTrackedWorkloadPair = unchecked(3146277),
-		[NativeName("D3D11_MESSAGE_ID_CANNOT_ADD_TRACKED_WORKLOAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CANNOT_ADD_TRACKED_WORKLOAD")]
 		CannotAddTrackedWorkload = unchecked(3146278),
-		[NativeName("D3D11_MESSAGE_ID_TRACKED_WORKLOAD_NOT_SUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_NOT_SUPPORTED")]
 		TrackedWorkloadNotSupported = unchecked(3146279),
-		[NativeName("D3D11_MESSAGE_ID_TRACKED_WORKLOAD_ENGINE_TYPE_NOT_FOUND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_ENGINE_TYPE_NOT_FOUND")]
 		TrackedWorkloadEngineTypeNotFound = unchecked(3146280),
-		[NativeName("D3D11_MESSAGE_ID_NO_TRACKED_WORKLOAD_SLOT_AVAILABLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NO_TRACKED_WORKLOAD_SLOT_AVAILABLE")]
 		NoTrackedWorkloadSlotAvailable = unchecked(3146281),
-		[NativeName("D3D11_MESSAGE_ID_END_TRACKED_WORKLOAD_INVALID_ARG")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_END_TRACKED_WORKLOAD_INVALID_ARG")]
 		EndTrackedWorkloadInvalidArg = unchecked(3146282),
-		[NativeName("D3D11_MESSAGE_ID_TRACKED_WORKLOAD_DISJOINT_FAILURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_DISJOINT_FAILURE")]
 		TrackedWorkloadDisjointFailure = unchecked(3146283),
-		[NativeName("D3D11_MESSAGE_ID_D3D11_5_MESSAGES_END")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_5_MESSAGES_END")]
 		Idd3D115MessagesEnd = unchecked(3146284),
 	}
 
-	[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_RESOURCE_TYPE")]
 	public enum D3D11ShaderTrackingResourceType
 	{
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_NONE")]
 		None = unchecked(0),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_UAV_DEVICEMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_UAV_DEVICEMEMORY")]
 		UavDevicememory = unchecked(1),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_NON_UAV_DEVICEMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_NON_UAV_DEVICEMEMORY")]
 		NonUavDevicememory = unchecked(2),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_DEVICEMEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_DEVICEMEMORY")]
 		AllDevicememory = unchecked(3),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_MEMORY")]
 		GroupsharedMemory = unchecked(4),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_SHARED_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_SHARED_MEMORY")]
 		AllSharedMemory = unchecked(5),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_NON_UAV")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_NON_UAV")]
 		GroupsharedNonUav = unchecked(6),
-		[NativeName("D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL")]
 		All = unchecked(7),
 	}
 
-	[NativeName("D3D11_SHADER_TRACKING_OPTION")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
 	public enum D3D11ShaderTrackingOption
 	{
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_IGNORE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
 		Ignore = unchecked(0),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
 		TrackUninitialized = unchecked(1),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
 		TrackRaw = unchecked(2),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
 		TrackWar = unchecked(4),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
 		TrackWaw = unchecked(8),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
 		AllowSame = unchecked(16),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
 		TrackAtomicConsistency = unchecked(32),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
 		TrackRawAcrossThreadgroups = unchecked(64),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
 		TrackWarAcrossThreadgroups = unchecked(128),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
 		TrackWawAcrossThreadgroups = unchecked(256),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
 		TrackAtomicConsistencyAcrossThreadgroups = unchecked(512),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
 		UavSpecificFlags = unchecked(960),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
 		AllHazards = unchecked(1006),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
 		AllHazardsAllowingSame = unchecked(1022),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
 		AllOptions = unchecked(1023),
 	}
 
-	[NativeName("D3D11_SHADER_VERSION_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_VERSION_TYPE")]
 	public enum D3D11ShaderVersionType
 	{
-		[NativeName("D3D11_SHVER_PIXEL_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_PIXEL_SHADER")]
 		ShverPixelShader = unchecked(0),
-		[NativeName("D3D11_SHVER_VERTEX_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_VERTEX_SHADER")]
 		ShverVertexShader = unchecked(1),
-		[NativeName("D3D11_SHVER_GEOMETRY_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_GEOMETRY_SHADER")]
 		ShverGeometryShader = unchecked(2),
 		/// <summary>
 		/// D3D11 Shaders<br/>
 		/// </summary>
-		[NativeName("D3D11_SHVER_HULL_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_HULL_SHADER")]
 		ShverHullShader = unchecked(3),
 
 		/// <summary>
 		/// D3D11 Shaders<br/>
 		/// </summary>
-		[NativeName("D3D11_SHVER_DOMAIN_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_DOMAIN_SHADER")]
 		ShverDomainShader = unchecked(4),
 
 		/// <summary>
 		/// D3D11 Shaders<br/>
 		/// </summary>
-		[NativeName("D3D11_SHVER_COMPUTE_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_COMPUTE_SHADER")]
 		ShverComputeShader = unchecked(5),
 
 		/// <summary>
 		/// D3D11 Shaders<br/>
 		/// </summary>
-		[NativeName("D3D11_SHVER_RESERVED0")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_RESERVED0")]
 		ShverReserved0 = unchecked(65520),
 
 	}
@@ -4342,171 +4342,171 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11ShaderTracing_0000_0000 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_SHADER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TYPE")]
 	public enum D3D11ShaderType
 	{
-		[NativeName("D3D11_VERTEX_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VERTEX_SHADER")]
 		VertexShader = unchecked(1),
-		[NativeName("D3D11_HULL_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_HULL_SHADER")]
 		HullShader = unchecked(2),
-		[NativeName("D3D11_DOMAIN_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_DOMAIN_SHADER")]
 		DomainShader = unchecked(3),
-		[NativeName("D3D11_GEOMETRY_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_GEOMETRY_SHADER")]
 		GeometryShader = unchecked(4),
-		[NativeName("D3D11_PIXEL_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PIXEL_SHADER")]
 		PixelShader = unchecked(5),
-		[NativeName("D3D11_COMPUTE_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COMPUTE_SHADER")]
 		ComputeShader = unchecked(6),
 	}
 
-	[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE")]
+	[NativeName(NativeNameType.Enum, "D3D11_TRACE_GS_INPUT_PRIMITIVE")]
 	public enum D3D11TraceGsInputPrimitive
 	{
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_UNDEFINED")]
 		Undefined = unchecked(0),
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_POINT")]
 		Point = unchecked(1),
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE")]
 		Line = unchecked(2),
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE")]
 		Triangle = unchecked(3),
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE_ADJ")]
 		LineAdj = unchecked(6),
-		[NativeName("D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE_ADJ")]
 		TriangleAdj = unchecked(7),
 	}
 
-	[NativeName("D3D11_TRACE_REGISTER_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_TRACE_REGISTER_TYPE")]
 	public enum D3D11TraceRegisterType
 	{
-		[NativeName("D3D11_TRACE_OUTPUT_NULL_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_NULL_REGISTER")]
 		OutputNullRegister = unchecked(0),
-		[NativeName("D3D11_TRACE_INPUT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_REGISTER")]
 		InputRegister = unchecked(1),
-		[NativeName("D3D11_TRACE_INPUT_PRIMITIVE_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_PRIMITIVE_ID_REGISTER")]
 		InputPrimitiveIdRegister = unchecked(2),
-		[NativeName("D3D11_TRACE_IMMEDIATE_CONSTANT_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE_CONSTANT_BUFFER")]
 		ImmediateConstantBuffer = unchecked(3),
-		[NativeName("D3D11_TRACE_TEMP_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_TEMP_REGISTER")]
 		TempRegister = unchecked(4),
-		[NativeName("D3D11_TRACE_INDEXABLE_TEMP_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INDEXABLE_TEMP_REGISTER")]
 		IndexableTempRegister = unchecked(5),
-		[NativeName("D3D11_TRACE_OUTPUT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_REGISTER")]
 		OutputRegister = unchecked(6),
-		[NativeName("D3D11_TRACE_OUTPUT_DEPTH_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_REGISTER")]
 		OutputDepthRegister = unchecked(7),
-		[NativeName("D3D11_TRACE_CONSTANT_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_CONSTANT_BUFFER")]
 		ConstantBuffer = unchecked(8),
-		[NativeName("D3D11_TRACE_IMMEDIATE32")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE32")]
 		Immediate32 = unchecked(9),
-		[NativeName("D3D11_TRACE_SAMPLER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_SAMPLER")]
 		Sampler = unchecked(10),
-		[NativeName("D3D11_TRACE_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_RESOURCE")]
 		Resource = unchecked(11),
-		[NativeName("D3D11_TRACE_RASTERIZER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_RASTERIZER")]
 		Rasterizer = unchecked(12),
-		[NativeName("D3D11_TRACE_OUTPUT_COVERAGE_MASK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_COVERAGE_MASK")]
 		OutputCoverageMask = unchecked(13),
-		[NativeName("D3D11_TRACE_STREAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_STREAM")]
 		Stream = unchecked(14),
-		[NativeName("D3D11_TRACE_THIS_POINTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_THIS_POINTER")]
 		ThisPointer = unchecked(15),
-		[NativeName("D3D11_TRACE_OUTPUT_CONTROL_POINT_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_CONTROL_POINT_ID_REGISTER")]
 		OutputControlPointIdRegister = unchecked(16),
-		[NativeName("D3D11_TRACE_INPUT_FORK_INSTANCE_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_FORK_INSTANCE_ID_REGISTER")]
 		InputForkInstanceIdRegister = unchecked(17),
-		[NativeName("D3D11_TRACE_INPUT_JOIN_INSTANCE_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_JOIN_INSTANCE_ID_REGISTER")]
 		InputJoinInstanceIdRegister = unchecked(18),
-		[NativeName("D3D11_TRACE_INPUT_CONTROL_POINT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_CONTROL_POINT_REGISTER")]
 		InputControlPointRegister = unchecked(19),
-		[NativeName("D3D11_TRACE_OUTPUT_CONTROL_POINT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_CONTROL_POINT_REGISTER")]
 		OutputControlPointRegister = unchecked(20),
-		[NativeName("D3D11_TRACE_INPUT_PATCH_CONSTANT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_PATCH_CONSTANT_REGISTER")]
 		InputPatchConstantRegister = unchecked(21),
-		[NativeName("D3D11_TRACE_INPUT_DOMAIN_POINT_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_DOMAIN_POINT_REGISTER")]
 		InputDomainPointRegister = unchecked(22),
-		[NativeName("D3D11_TRACE_UNORDERED_ACCESS_VIEW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_UNORDERED_ACCESS_VIEW")]
 		UnorderedAccessView = unchecked(23),
-		[NativeName("D3D11_TRACE_THREAD_GROUP_SHARED_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_THREAD_GROUP_SHARED_MEMORY")]
 		ThreadGroupSharedMemory = unchecked(24),
-		[NativeName("D3D11_TRACE_INPUT_THREAD_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_REGISTER")]
 		InputThreadIdRegister = unchecked(25),
-		[NativeName("D3D11_TRACE_INPUT_THREAD_GROUP_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_GROUP_ID_REGISTER")]
 		InputThreadGroupIdRegister = unchecked(26),
-		[NativeName("D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_REGISTER")]
 		InputThreadIdInGroupRegister = unchecked(27),
-		[NativeName("D3D11_TRACE_INPUT_COVERAGE_MASK_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_COVERAGE_MASK_REGISTER")]
 		InputCoverageMaskRegister = unchecked(28),
-		[NativeName("D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_FLATTENED_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_FLATTENED_REGISTER")]
 		InputThreadIdInGroupFlattenedRegister = unchecked(29),
-		[NativeName("D3D11_TRACE_INPUT_GS_INSTANCE_ID_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_GS_INSTANCE_ID_REGISTER")]
 		InputGsInstanceIdRegister = unchecked(30),
-		[NativeName("D3D11_TRACE_OUTPUT_DEPTH_GREATER_EQUAL_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_GREATER_EQUAL_REGISTER")]
 		OutputDepthGreaterEqualRegister = unchecked(31),
-		[NativeName("D3D11_TRACE_OUTPUT_DEPTH_LESS_EQUAL_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_LESS_EQUAL_REGISTER")]
 		OutputDepthLessEqualRegister = unchecked(32),
-		[NativeName("D3D11_TRACE_IMMEDIATE64")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE64")]
 		Immediate64 = unchecked(33),
-		[NativeName("D3D11_TRACE_INPUT_CYCLE_COUNTER_REGISTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_CYCLE_COUNTER_REGISTER")]
 		InputCycleCounterRegister = unchecked(34),
-		[NativeName("D3D11_TRACE_INTERFACE_POINTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INTERFACE_POINTER")]
 		InterfacePointer = unchecked(35),
 	}
 
-	[NativeName("D3D11_LOGIC_OP")]
+	[NativeName(NativeNameType.Enum, "D3D11_LOGIC_OP")]
 	public enum D3D11LogicOp
 	{
-		[NativeName("D3D11_LOGIC_OP_CLEAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_CLEAR")]
 		Clear = unchecked(0),
-		[NativeName("D3D11_LOGIC_OP_SET")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_SET")]
 		Set = unchecked(1),
-		[NativeName("D3D11_LOGIC_OP_COPY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_COPY")]
 		Copy = unchecked(2),
-		[NativeName("D3D11_LOGIC_OP_COPY_INVERTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_COPY_INVERTED")]
 		CopyInverted = unchecked(3),
-		[NativeName("D3D11_LOGIC_OP_NOOP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NOOP")]
 		Noop = unchecked(4),
-		[NativeName("D3D11_LOGIC_OP_INVERT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_INVERT")]
 		Invert = unchecked(5),
-		[NativeName("D3D11_LOGIC_OP_AND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND")]
 		And = unchecked(6),
-		[NativeName("D3D11_LOGIC_OP_NAND")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NAND")]
 		Nand = unchecked(7),
-		[NativeName("D3D11_LOGIC_OP_OR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR")]
 		Or = unchecked(8),
-		[NativeName("D3D11_LOGIC_OP_NOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NOR")]
 		Nor = unchecked(9),
-		[NativeName("D3D11_LOGIC_OP_XOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_XOR")]
 		Xor = unchecked(10),
-		[NativeName("D3D11_LOGIC_OP_EQUIV")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_EQUIV")]
 		Equiv = unchecked(11),
-		[NativeName("D3D11_LOGIC_OP_AND_REVERSE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND_REVERSE")]
 		AndReverse = unchecked(12),
-		[NativeName("D3D11_LOGIC_OP_AND_INVERTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND_INVERTED")]
 		AndInverted = unchecked(13),
-		[NativeName("D3D11_LOGIC_OP_OR_REVERSE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR_REVERSE")]
 		OrReverse = unchecked(14),
-		[NativeName("D3D11_LOGIC_OP_OR_INVERTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR_INVERTED")]
 		OrInverted = unchecked(15),
 	}
 
-	[NativeName("D3D11_CRYPTO_SESSION_STATUS")]
+	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_STATUS")]
 	public enum D3D11CryptoSessionStatus
 	{
-		[NativeName("D3D11_CRYPTO_SESSION_STATUS_OK")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_OK")]
 		Ok = unchecked(0),
-		[NativeName("D3D11_CRYPTO_SESSION_STATUS_KEY_LOST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_KEY_LOST")]
 		KeyLost = unchecked(1),
-		[NativeName("D3D11_CRYPTO_SESSION_STATUS_KEY_AND_CONTENT_LOST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_KEY_AND_CONTENT_LOST")]
 		KeyAndContentLost = unchecked(2),
 	}
 
-	[NativeName("D3D11_COPY_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3D11_COPY_FLAGS")]
 	public enum D3D11CopyFlags
 	{
-		[NativeName("D3D11_COPY_NO_OVERWRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COPY_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
-		[NativeName("D3D11_COPY_DISCARD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_COPY_DISCARD")]
 		Discard = unchecked(2),
 	}
 
@@ -4514,85 +4514,85 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_1_0000_0002 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG")]
 	public enum D3D111CreateDeviceContextStateFlag
 	{
-		[NativeName("D3D11_1_CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED")]
 		Singlethreaded = unchecked(1),
 	}
 
-	[NativeName("D3D11_VIDEO_DECODER_CAPS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_CAPS")]
 	public enum D3D11VideoDecoderCaps
 	{
-		[NativeName("D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE")]
 		Downsample = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_CAPS_NON_REAL_TIME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_NON_REAL_TIME")]
 		NonRealTime = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC")]
 		DownsampleDynamic = unchecked(4),
-		[NativeName("D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_REQUIRED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_REQUIRED")]
 		DownsampleRequired = unchecked(8),
-		[NativeName("D3D11_VIDEO_DECODER_CAPS_UNSUPPORTED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_UNSUPPORTED")]
 		Unsupported = unchecked(16),
 	}
 
-	[NativeName("D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS")]
 	public enum D3D11VideoProcessorBehaviorHints
 	{
-		[NativeName("D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION")]
 		HintMultiplaneOverlayRotation = unchecked(1),
-		[NativeName("D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE")]
 		HintMultiplaneOverlayResize = unchecked(2),
-		[NativeName("D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_COLOR_SPACE_CONVERSION")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_COLOR_SPACE_CONVERSION")]
 		HintMultiplaneOverlayColorSpaceConversion = unchecked(4),
-		[NativeName("D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_TRIPLE_BUFFER_OUTPUT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_TRIPLE_BUFFER_OUTPUT")]
 		HintTripleBufferOutput = unchecked(8),
 	}
 
-	[NativeName("D3D11_TILE_MAPPING_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_TILE_MAPPING_FLAG")]
 	public enum D3D11TileMappingFlag
 	{
-		[NativeName("D3D11_TILE_MAPPING_NO_OVERWRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_MAPPING_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
 	}
 
-	[NativeName("D3D11_TILE_RANGE_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_TILE_RANGE_FLAG")]
 	public enum D3D11TileRangeFlag
 	{
-		[NativeName("D3D11_TILE_RANGE_NULL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_NULL")]
 		Null = unchecked(1),
-		[NativeName("D3D11_TILE_RANGE_SKIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_SKIP")]
 		Skip = unchecked(2),
-		[NativeName("D3D11_TILE_RANGE_REUSE_SINGLE_TILE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_REUSE_SINGLE_TILE")]
 		ReuseSingleTile = unchecked(4),
 	}
 
-	[NativeName("D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG")]
 	public enum D3D11CheckMultisampleQualityLevelsFlag
 	{
-		[NativeName("D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_TILED_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_TILED_RESOURCE")]
 		TiledResource = unchecked(1),
 	}
 
-	[NativeName("D3D11_TILE_COPY_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_TILE_COPY_FLAG")]
 	public enum D3D11TileCopyFlag
 	{
-		[NativeName("D3D11_TILE_COPY_NO_OVERWRITE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
-		[NativeName("D3D11_TILE_COPY_LINEAR_BUFFER_TO_SWIZZLED_TILED_RESOURCE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_LINEAR_BUFFER_TO_SWIZZLED_TILED_RESOURCE")]
 		LinearBufferToSwizzledTiledResource = unchecked(2),
-		[NativeName("D3D11_TILE_COPY_SWIZZLED_TILED_RESOURCE_TO_LINEAR_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_SWIZZLED_TILED_RESOURCE_TO_LINEAR_BUFFER")]
 		SwizzledTiledResourceToLinearBuffer = unchecked(4),
 	}
 
-	[NativeName("D3D11_TEXTURE_LAYOUT")]
+	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_LAYOUT")]
 	public enum D3D11TextureLayout
 	{
-		[NativeName("D3D11_TEXTURE_LAYOUT_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_UNDEFINED")]
 		Undefined = unchecked(0),
-		[NativeName("D3D11_TEXTURE_LAYOUT_ROW_MAJOR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_ROW_MAJOR")]
 		RowMajor = unchecked(1),
-		[NativeName("D3D11_TEXTURE_LAYOUT_64K_STANDARD_SWIZZLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_64K_STANDARD_SWIZZLE")]
 		Layout64kStandardSwizzle = unchecked(2),
 	}
 
@@ -4600,27 +4600,27 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_3_0000_0002 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_MODE")]
+	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_MODE")]
 	public enum D3D11ConservativeRasterizationMode
 	{
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_MODE_OFF")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_MODE_OFF")]
 		Off = unchecked(0),
-		[NativeName("D3D11_CONSERVATIVE_RASTERIZATION_MODE_ON")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_MODE_ON")]
 		On = unchecked(1),
 	}
 
-	[NativeName("D3D11_CONTEXT_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D11_CONTEXT_TYPE")]
 	public enum D3D11ContextType
 	{
-		[NativeName("D3D11_CONTEXT_TYPE_ALL")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_ALL")]
 		All = unchecked(0),
-		[NativeName("D3D11_CONTEXT_TYPE_3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_3D")]
 		Type3D = unchecked(1),
-		[NativeName("D3D11_CONTEXT_TYPE_COMPUTE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_COMPUTE")]
 		Compute = unchecked(2),
-		[NativeName("D3D11_CONTEXT_TYPE_COPY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_COPY")]
 		Copy = unchecked(3),
-		[NativeName("D3D11_CONTEXT_TYPE_VIDEO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_VIDEO")]
 		Video = unchecked(4),
 	}
 
@@ -4628,27 +4628,27 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_3_0000_0007 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_FENCE_FLAG")]
+	[NativeName(NativeNameType.Enum, "D3D11_FENCE_FLAG")]
 	public enum D3D11FenceFlag
 	{
-		[NativeName("D3D11_FENCE_FLAG_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_NONE")]
 		None = unchecked(0),
-		[NativeName("D3D11_FENCE_FLAG_SHARED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_SHARED")]
 		Shared = unchecked(2),
-		[NativeName("D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER")]
 		SharedCrossAdapter = unchecked(4),
-		[NativeName("D3D11_FENCE_FLAG_NON_MONITORED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_NON_MONITORED")]
 		NonMonitored = unchecked(8),
 	}
 
-	[NativeName("DXGI_HDR_METADATA_TYPE")]
+	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
 	public enum DxgiHdrMetadataType
 	{
-		[NativeName("DXGI_HDR_METADATA_TYPE_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
 		None = unchecked(0),
-		[NativeName("DXGI_HDR_METADATA_TYPE_HDR10")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10")]
 		Hdr10 = unchecked(1),
-		[NativeName("DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
 		Hdr10Plus = unchecked(2),
 	}
 
@@ -4656,694 +4656,694 @@ namespace HexaEngine.D3D11
 	/// interface __MIDL_itf_d3d11_4_0000_0004 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("D3D11_FEATURE_VIDEO")]
+	[NativeName(NativeNameType.Enum, "D3D11_FEATURE_VIDEO")]
 	public enum D3D11FeatureVideo
 	{
-		[NativeName("D3D11_FEATURE_VIDEO_DECODER_HISTOGRAM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_VIDEO_DECODER_HISTOGRAM")]
 		DecoderHistogram = unchecked(0),
 	}
 
-	[NativeName("D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS")]
 	public enum D3D11CryptoSessionKeyExchangeFlags
 	{
-		[NativeName("D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAG_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
-	[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT")]
 	public enum D3D11VideoDecoderHistogramComponent
 	{
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_Y")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_Y")]
 		Componenty = unchecked(0),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_U")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_U")]
 		Componentu = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_V")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_V")]
 		Componentv = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_R")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_R")]
 		Componentr = unchecked(0),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_G")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_G")]
 		Componentg = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_B")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_B")]
 		Componentb = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_A")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_A")]
 		Componenta = unchecked(3),
 	}
 
-	[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAGS")]
 	public enum D3D11VideoDecoderHistogramComponentFlags
 	{
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_NONE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_NONE")]
 		FlagNone = unchecked(0),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_Y")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_Y")]
 		Flagy = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_U")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_U")]
 		Flagu = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_V")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_V")]
 		Flagv = unchecked(4),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_R")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_R")]
 		Flagr = unchecked(1),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_G")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_G")]
 		Flagg = unchecked(2),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_B")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_B")]
 		Flagb = unchecked(4),
-		[NativeName("D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_A")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_A")]
 		Flaga = unchecked(8),
 	}
 
-	[NativeName("D3D11_SRV_DIMENSION")]
+	[NativeName(NativeNameType.Enum, "D3D_SRV_DIMENSION")]
 	public enum D3D11SrvDimension
 	{
-		[NativeName("D3D_SRV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_UNKNOWN")]
 		D3DSrvDimensionUnknown = unchecked(0),
-		[NativeName("D3D_SRV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_BUFFER")]
 		D3DSrvDimensionBuffer = unchecked(1),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE1D")]
 		D3DSrvDimensionTexture1D = unchecked(2),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE1DARRAY")]
 		D3DSrvDimensionTexture1Darray = unchecked(3),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2D")]
 		D3DSrvDimensionTexture2D = unchecked(4),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DARRAY")]
 		D3DSrvDimensionTexture2Darray = unchecked(5),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DMS")]
 		D3DSrvDimensionTexture2Dms = unchecked(6),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DMSARRAY")]
 		D3DSrvDimensionTexture2Dmsarray = unchecked(7),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE3D")]
 		D3DSrvDimensionTexture3D = unchecked(8),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURECUBE")]
 		D3DSrvDimensionTexturecube = unchecked(9),
-		[NativeName("D3D_SRV_DIMENSION_TEXTURECUBEARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURECUBEARRAY")]
 		D3DSrvDimensionTexturecubearray = unchecked(10),
-		[NativeName("D3D_SRV_DIMENSION_BUFFEREX")]
+		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_BUFFEREX")]
 		D3DSrvDimensionBufferex = unchecked(11),
-		[NativeName("D3D10_SRV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_UNKNOWN")]
 		D3D10SrvDimensionUnknown = D3DSrvDimensionUnknown,
-		[NativeName("D3D10_SRV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_BUFFER")]
 		D3D10SrvDimensionBuffer = D3DSrvDimensionBuffer,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE1D")]
 		D3D10SrvDimensionTexture1D = D3DSrvDimensionTexture1D,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE1DARRAY")]
 		D3D10SrvDimensionTexture1Darray = D3DSrvDimensionTexture1Darray,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2D")]
 		D3D10SrvDimensionTexture2D = D3DSrvDimensionTexture2D,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DARRAY")]
 		D3D10SrvDimensionTexture2Darray = D3DSrvDimensionTexture2Darray,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DMS")]
 		D3D10SrvDimensionTexture2Dms = D3DSrvDimensionTexture2Dms,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DMSARRAY")]
 		D3D10SrvDimensionTexture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE3D")]
 		D3D10SrvDimensionTexture3D = D3DSrvDimensionTexture3D,
-		[NativeName("D3D10_SRV_DIMENSION_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURECUBE")]
 		D3D10SrvDimensionTexturecube = D3DSrvDimensionTexturecube,
-		[NativeName("D3D10_1_SRV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_UNKNOWN")]
 		D3D101SrvDimensionUnknown = D3DSrvDimensionUnknown,
-		[NativeName("D3D10_1_SRV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_BUFFER")]
 		D3D101SrvDimensionBuffer = D3DSrvDimensionBuffer,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE1D")]
 		D3D101SrvDimensionTexture1D = D3DSrvDimensionTexture1D,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE1DARRAY")]
 		D3D101SrvDimensionTexture1Darray = D3DSrvDimensionTexture1Darray,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2D")]
 		D3D101SrvDimensionTexture2D = D3DSrvDimensionTexture2D,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DARRAY")]
 		D3D101SrvDimensionTexture2Darray = D3DSrvDimensionTexture2Darray,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DMS")]
 		D3D101SrvDimensionTexture2Dms = D3DSrvDimensionTexture2Dms,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DMSARRAY")]
 		D3D101SrvDimensionTexture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE3D")]
 		D3D101SrvDimensionTexture3D = D3DSrvDimensionTexture3D,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURECUBE")]
 		D3D101SrvDimensionTexturecube = D3DSrvDimensionTexturecube,
-		[NativeName("D3D10_1_SRV_DIMENSION_TEXTURECUBEARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURECUBEARRAY")]
 		D3D101SrvDimensionTexturecubearray = D3DSrvDimensionTexturecubearray,
-		[NativeName("D3D11_SRV_DIMENSION_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_UNKNOWN")]
 		Unknown = D3DSrvDimensionUnknown,
-		[NativeName("D3D11_SRV_DIMENSION_BUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_BUFFER")]
 		Buffer = D3DSrvDimensionBuffer,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE1D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE1D")]
 		Texture1D = D3DSrvDimensionTexture1D,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE1DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE1DARRAY")]
 		Texture1Darray = D3DSrvDimensionTexture1Darray,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE2D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2D")]
 		Texture2D = D3DSrvDimensionTexture2D,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE2DARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DARRAY")]
 		Texture2Darray = D3DSrvDimensionTexture2Darray,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE2DMS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DMS")]
 		Texture2Dms = D3DSrvDimensionTexture2Dms,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE2DMSARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DMSARRAY")]
 		Texture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURE3D")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE3D")]
 		Texture3D = D3DSrvDimensionTexture3D,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURECUBE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURECUBE")]
 		Texturecube = D3DSrvDimensionTexturecube,
-		[NativeName("D3D11_SRV_DIMENSION_TEXTURECUBEARRAY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURECUBEARRAY")]
 		Texturecubearray = D3DSrvDimensionTexturecubearray,
-		[NativeName("D3D11_SRV_DIMENSION_BUFFEREX")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_BUFFEREX")]
 		Bufferex = D3DSrvDimensionBufferex,
 	}
 
-	[NativeName("D3D11_PRIMITIVE_TOPOLOGY")]
+	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
 	public enum D3D11PrimitiveTopology
 	{
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3DPrimitiveTopologyUndefined = unchecked(0),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		D3DPrimitiveTopologyPointlist = unchecked(1),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
 		D3DPrimitiveTopologyLinelist = unchecked(2),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		D3DPrimitiveTopologyLinestrip = unchecked(3),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		D3DPrimitiveTopologyTrianglelist = unchecked(4),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		D3DPrimitiveTopologyTrianglestrip = unchecked(5),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		D3DPrimitiveTopologyLinelistAdj = unchecked(10),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		D3DPrimitiveTopologyLinestripAdj = unchecked(11),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		D3DPrimitiveTopologyTrianglelistAdj = unchecked(12),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		D3DPrimitiveTopologyTrianglestripAdj = unchecked(13),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology1ControlPointPatchlist = unchecked(33),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology2ControlPointPatchlist = unchecked(34),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology3ControlPointPatchlist = unchecked(35),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology4ControlPointPatchlist = unchecked(36),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology5ControlPointPatchlist = unchecked(37),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology6ControlPointPatchlist = unchecked(38),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology7ControlPointPatchlist = unchecked(39),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology8ControlPointPatchlist = unchecked(40),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology9ControlPointPatchlist = unchecked(41),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology10ControlPointPatchlist = unchecked(42),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology11ControlPointPatchlist = unchecked(43),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology12ControlPointPatchlist = unchecked(44),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology13ControlPointPatchlist = unchecked(45),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology14ControlPointPatchlist = unchecked(46),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology15ControlPointPatchlist = unchecked(47),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology16ControlPointPatchlist = unchecked(48),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology17ControlPointPatchlist = unchecked(49),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology18ControlPointPatchlist = unchecked(50),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology19ControlPointPatchlist = unchecked(51),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology20ControlPointPatchlist = unchecked(52),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology21ControlPointPatchlist = unchecked(53),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology22ControlPointPatchlist = unchecked(54),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology23ControlPointPatchlist = unchecked(55),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology24ControlPointPatchlist = unchecked(56),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology25ControlPointPatchlist = unchecked(57),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology26ControlPointPatchlist = unchecked(58),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology27ControlPointPatchlist = unchecked(59),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology28ControlPointPatchlist = unchecked(60),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology29ControlPointPatchlist = unchecked(61),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology30ControlPointPatchlist = unchecked(62),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology31ControlPointPatchlist = unchecked(63),
-		[NativeName("D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
 		D3DPrimitiveTopology32ControlPointPatchlist = unchecked(64),
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3D10PrimitiveTopologyUndefined = D3DPrimitiveTopologyUndefined,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		D3D10PrimitiveTopologyPointlist = D3DPrimitiveTopologyPointlist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
 		D3D10PrimitiveTopologyLinelist = D3DPrimitiveTopologyLinelist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		D3D10PrimitiveTopologyLinestrip = D3DPrimitiveTopologyLinestrip,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		D3D10PrimitiveTopologyTrianglelist = D3DPrimitiveTopologyTrianglelist,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		D3D10PrimitiveTopologyTrianglestrip = D3DPrimitiveTopologyTrianglestrip,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		D3D10PrimitiveTopologyLinelistAdj = D3DPrimitiveTopologyLinelistAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		D3D10PrimitiveTopologyLinestripAdj = D3DPrimitiveTopologyLinestripAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		D3D10PrimitiveTopologyTrianglelistAdj = D3DPrimitiveTopologyTrianglelistAdj,
-		[NativeName("D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		D3D10PrimitiveTopologyTrianglestripAdj = D3DPrimitiveTopologyTrianglestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		Undefined = D3DPrimitiveTopologyUndefined,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
 		Pointlist = D3DPrimitiveTopologyPointlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
 		Linelist = D3DPrimitiveTopologyLinelist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
 		Linestrip = D3DPrimitiveTopologyLinestrip,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
 		Trianglelist = D3DPrimitiveTopologyTrianglelist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
 		Trianglestrip = D3DPrimitiveTopologyTrianglestrip,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
 		LinelistAdj = D3DPrimitiveTopologyLinelistAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
 		LinestripAdj = D3DPrimitiveTopologyLinestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
 		TrianglelistAdj = D3DPrimitiveTopologyTrianglelistAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
 		TrianglestripAdj = D3DPrimitiveTopologyTrianglestripAdj,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
 		Topology1ControlPointPatchlist = D3DPrimitiveTopology1ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
 		Topology2ControlPointPatchlist = D3DPrimitiveTopology2ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
 		Topology3ControlPointPatchlist = D3DPrimitiveTopology3ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
 		Topology4ControlPointPatchlist = D3DPrimitiveTopology4ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
 		Topology5ControlPointPatchlist = D3DPrimitiveTopology5ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
 		Topology6ControlPointPatchlist = D3DPrimitiveTopology6ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
 		Topology7ControlPointPatchlist = D3DPrimitiveTopology7ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
 		Topology8ControlPointPatchlist = D3DPrimitiveTopology8ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
 		Topology9ControlPointPatchlist = D3DPrimitiveTopology9ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
 		Topology10ControlPointPatchlist = D3DPrimitiveTopology10ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
 		Topology11ControlPointPatchlist = D3DPrimitiveTopology11ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
 		Topology12ControlPointPatchlist = D3DPrimitiveTopology12ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
 		Topology13ControlPointPatchlist = D3DPrimitiveTopology13ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
 		Topology14ControlPointPatchlist = D3DPrimitiveTopology14ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
 		Topology15ControlPointPatchlist = D3DPrimitiveTopology15ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
 		Topology16ControlPointPatchlist = D3DPrimitiveTopology16ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
 		Topology17ControlPointPatchlist = D3DPrimitiveTopology17ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
 		Topology18ControlPointPatchlist = D3DPrimitiveTopology18ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
 		Topology19ControlPointPatchlist = D3DPrimitiveTopology19ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
 		Topology20ControlPointPatchlist = D3DPrimitiveTopology20ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
 		Topology21ControlPointPatchlist = D3DPrimitiveTopology21ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
 		Topology22ControlPointPatchlist = D3DPrimitiveTopology22ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
 		Topology23ControlPointPatchlist = D3DPrimitiveTopology23ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
 		Topology24ControlPointPatchlist = D3DPrimitiveTopology24ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
 		Topology25ControlPointPatchlist = D3DPrimitiveTopology25ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
 		Topology26ControlPointPatchlist = D3DPrimitiveTopology26ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
 		Topology27ControlPointPatchlist = D3DPrimitiveTopology27ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
 		Topology28ControlPointPatchlist = D3DPrimitiveTopology28ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
 		Topology29ControlPointPatchlist = D3DPrimitiveTopology29ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
 		Topology30ControlPointPatchlist = D3DPrimitiveTopology30ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
 		Topology31ControlPointPatchlist = D3DPrimitiveTopology31ControlPointPatchlist,
-		[NativeName("D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
 		Topology32ControlPointPatchlist = D3DPrimitiveTopology32ControlPointPatchlist,
 	}
 
-	[NativeName("D3D11_PRIMITIVE")]
+	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE")]
 	public enum D3D11Primitive
 	{
-		[NativeName("D3D_PRIMITIVE_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_UNDEFINED")]
 		D3DPrimitiveUndefined = unchecked(0),
-		[NativeName("D3D_PRIMITIVE_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_POINT")]
 		D3DPrimitivePoint = unchecked(1),
-		[NativeName("D3D_PRIMITIVE_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_LINE")]
 		D3DPrimitiveLine = unchecked(2),
-		[NativeName("D3D_PRIMITIVE_TRIANGLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TRIANGLE")]
 		D3DPrimitiveTriangle = unchecked(3),
-		[NativeName("D3D_PRIMITIVE_LINE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_LINE_ADJ")]
 		D3DPrimitiveLineAdj = unchecked(6),
-		[NativeName("D3D_PRIMITIVE_TRIANGLE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TRIANGLE_ADJ")]
 		D3DPrimitiveTriangleAdj = unchecked(7),
-		[NativeName("D3D_PRIMITIVE_1_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_1_CONTROL_POINT_PATCH")]
 		D3DPrimitive1ControlPointPatch = unchecked(8),
-		[NativeName("D3D_PRIMITIVE_2_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_2_CONTROL_POINT_PATCH")]
 		D3DPrimitive2ControlPointPatch = unchecked(9),
-		[NativeName("D3D_PRIMITIVE_3_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_3_CONTROL_POINT_PATCH")]
 		D3DPrimitive3ControlPointPatch = unchecked(10),
-		[NativeName("D3D_PRIMITIVE_4_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_4_CONTROL_POINT_PATCH")]
 		D3DPrimitive4ControlPointPatch = unchecked(11),
-		[NativeName("D3D_PRIMITIVE_5_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_5_CONTROL_POINT_PATCH")]
 		D3DPrimitive5ControlPointPatch = unchecked(12),
-		[NativeName("D3D_PRIMITIVE_6_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_6_CONTROL_POINT_PATCH")]
 		D3DPrimitive6ControlPointPatch = unchecked(13),
-		[NativeName("D3D_PRIMITIVE_7_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_7_CONTROL_POINT_PATCH")]
 		D3DPrimitive7ControlPointPatch = unchecked(14),
-		[NativeName("D3D_PRIMITIVE_8_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_8_CONTROL_POINT_PATCH")]
 		D3DPrimitive8ControlPointPatch = unchecked(15),
-		[NativeName("D3D_PRIMITIVE_9_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_9_CONTROL_POINT_PATCH")]
 		D3DPrimitive9ControlPointPatch = unchecked(16),
-		[NativeName("D3D_PRIMITIVE_10_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_10_CONTROL_POINT_PATCH")]
 		D3DPrimitive10ControlPointPatch = unchecked(17),
-		[NativeName("D3D_PRIMITIVE_11_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_11_CONTROL_POINT_PATCH")]
 		D3DPrimitive11ControlPointPatch = unchecked(18),
-		[NativeName("D3D_PRIMITIVE_12_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_12_CONTROL_POINT_PATCH")]
 		D3DPrimitive12ControlPointPatch = unchecked(19),
-		[NativeName("D3D_PRIMITIVE_13_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_13_CONTROL_POINT_PATCH")]
 		D3DPrimitive13ControlPointPatch = unchecked(20),
-		[NativeName("D3D_PRIMITIVE_14_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_14_CONTROL_POINT_PATCH")]
 		D3DPrimitive14ControlPointPatch = unchecked(21),
-		[NativeName("D3D_PRIMITIVE_15_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_15_CONTROL_POINT_PATCH")]
 		D3DPrimitive15ControlPointPatch = unchecked(22),
-		[NativeName("D3D_PRIMITIVE_16_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_16_CONTROL_POINT_PATCH")]
 		D3DPrimitive16ControlPointPatch = unchecked(23),
-		[NativeName("D3D_PRIMITIVE_17_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_17_CONTROL_POINT_PATCH")]
 		D3DPrimitive17ControlPointPatch = unchecked(24),
-		[NativeName("D3D_PRIMITIVE_18_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_18_CONTROL_POINT_PATCH")]
 		D3DPrimitive18ControlPointPatch = unchecked(25),
-		[NativeName("D3D_PRIMITIVE_19_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_19_CONTROL_POINT_PATCH")]
 		D3DPrimitive19ControlPointPatch = unchecked(26),
-		[NativeName("D3D_PRIMITIVE_20_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_20_CONTROL_POINT_PATCH")]
 		D3DPrimitive20ControlPointPatch = unchecked(27),
-		[NativeName("D3D_PRIMITIVE_21_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_21_CONTROL_POINT_PATCH")]
 		D3DPrimitive21ControlPointPatch = unchecked(28),
-		[NativeName("D3D_PRIMITIVE_22_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_22_CONTROL_POINT_PATCH")]
 		D3DPrimitive22ControlPointPatch = unchecked(29),
-		[NativeName("D3D_PRIMITIVE_23_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_23_CONTROL_POINT_PATCH")]
 		D3DPrimitive23ControlPointPatch = unchecked(30),
-		[NativeName("D3D_PRIMITIVE_24_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_24_CONTROL_POINT_PATCH")]
 		D3DPrimitive24ControlPointPatch = unchecked(31),
-		[NativeName("D3D_PRIMITIVE_25_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_25_CONTROL_POINT_PATCH")]
 		D3DPrimitive25ControlPointPatch = unchecked(32),
-		[NativeName("D3D_PRIMITIVE_26_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_26_CONTROL_POINT_PATCH")]
 		D3DPrimitive26ControlPointPatch = unchecked(33),
-		[NativeName("D3D_PRIMITIVE_27_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_27_CONTROL_POINT_PATCH")]
 		D3DPrimitive27ControlPointPatch = unchecked(34),
-		[NativeName("D3D_PRIMITIVE_28_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_28_CONTROL_POINT_PATCH")]
 		D3DPrimitive28ControlPointPatch = unchecked(35),
-		[NativeName("D3D_PRIMITIVE_29_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_29_CONTROL_POINT_PATCH")]
 		D3DPrimitive29ControlPointPatch = unchecked(36),
-		[NativeName("D3D_PRIMITIVE_30_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_30_CONTROL_POINT_PATCH")]
 		D3DPrimitive30ControlPointPatch = unchecked(37),
-		[NativeName("D3D_PRIMITIVE_31_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_31_CONTROL_POINT_PATCH")]
 		D3DPrimitive31ControlPointPatch = unchecked(38),
-		[NativeName("D3D_PRIMITIVE_32_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_32_CONTROL_POINT_PATCH")]
 		D3DPrimitive32ControlPointPatch = unchecked(39),
-		[NativeName("D3D10_PRIMITIVE_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_UNDEFINED")]
 		D3D10PrimitiveUndefined = D3DPrimitiveUndefined,
-		[NativeName("D3D10_PRIMITIVE_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_POINT")]
 		D3D10PrimitivePoint = D3DPrimitivePoint,
-		[NativeName("D3D10_PRIMITIVE_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_LINE")]
 		D3D10PrimitiveLine = D3DPrimitiveLine,
-		[NativeName("D3D10_PRIMITIVE_TRIANGLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TRIANGLE")]
 		D3D10PrimitiveTriangle = D3DPrimitiveTriangle,
-		[NativeName("D3D10_PRIMITIVE_LINE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_LINE_ADJ")]
 		D3D10PrimitiveLineAdj = D3DPrimitiveLineAdj,
-		[NativeName("D3D10_PRIMITIVE_TRIANGLE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TRIANGLE_ADJ")]
 		D3D10PrimitiveTriangleAdj = D3DPrimitiveTriangleAdj,
-		[NativeName("D3D11_PRIMITIVE_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_UNDEFINED")]
 		Undefined = D3DPrimitiveUndefined,
-		[NativeName("D3D11_PRIMITIVE_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_POINT")]
 		Point = D3DPrimitivePoint,
-		[NativeName("D3D11_PRIMITIVE_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_LINE")]
 		Line = D3DPrimitiveLine,
-		[NativeName("D3D11_PRIMITIVE_TRIANGLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TRIANGLE")]
 		Triangle = D3DPrimitiveTriangle,
-		[NativeName("D3D11_PRIMITIVE_LINE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_LINE_ADJ")]
 		LineAdj = D3DPrimitiveLineAdj,
-		[NativeName("D3D11_PRIMITIVE_TRIANGLE_ADJ")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TRIANGLE_ADJ")]
 		TriangleAdj = D3DPrimitiveTriangleAdj,
-		[NativeName("D3D11_PRIMITIVE_1_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_1_CONTROL_POINT_PATCH")]
 		Primitive1ControlPointPatch = D3DPrimitive1ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_2_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_2_CONTROL_POINT_PATCH")]
 		Primitive2ControlPointPatch = D3DPrimitive2ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_3_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_3_CONTROL_POINT_PATCH")]
 		Primitive3ControlPointPatch = D3DPrimitive3ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_4_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_4_CONTROL_POINT_PATCH")]
 		Primitive4ControlPointPatch = D3DPrimitive4ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_5_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_5_CONTROL_POINT_PATCH")]
 		Primitive5ControlPointPatch = D3DPrimitive5ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_6_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_6_CONTROL_POINT_PATCH")]
 		Primitive6ControlPointPatch = D3DPrimitive6ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_7_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_7_CONTROL_POINT_PATCH")]
 		Primitive7ControlPointPatch = D3DPrimitive7ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_8_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_8_CONTROL_POINT_PATCH")]
 		Primitive8ControlPointPatch = D3DPrimitive8ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_9_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_9_CONTROL_POINT_PATCH")]
 		Primitive9ControlPointPatch = D3DPrimitive9ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_10_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_10_CONTROL_POINT_PATCH")]
 		Primitive10ControlPointPatch = D3DPrimitive10ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_11_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_11_CONTROL_POINT_PATCH")]
 		Primitive11ControlPointPatch = D3DPrimitive11ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_12_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_12_CONTROL_POINT_PATCH")]
 		Primitive12ControlPointPatch = D3DPrimitive12ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_13_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_13_CONTROL_POINT_PATCH")]
 		Primitive13ControlPointPatch = D3DPrimitive13ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_14_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_14_CONTROL_POINT_PATCH")]
 		Primitive14ControlPointPatch = D3DPrimitive14ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_15_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_15_CONTROL_POINT_PATCH")]
 		Primitive15ControlPointPatch = D3DPrimitive15ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_16_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_16_CONTROL_POINT_PATCH")]
 		Primitive16ControlPointPatch = D3DPrimitive16ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_17_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_17_CONTROL_POINT_PATCH")]
 		Primitive17ControlPointPatch = D3DPrimitive17ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_18_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_18_CONTROL_POINT_PATCH")]
 		Primitive18ControlPointPatch = D3DPrimitive18ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_19_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_19_CONTROL_POINT_PATCH")]
 		Primitive19ControlPointPatch = D3DPrimitive19ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_20_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_20_CONTROL_POINT_PATCH")]
 		Primitive20ControlPointPatch = D3DPrimitive20ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_21_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_21_CONTROL_POINT_PATCH")]
 		Primitive21ControlPointPatch = D3DPrimitive21ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_22_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_22_CONTROL_POINT_PATCH")]
 		Primitive22ControlPointPatch = D3DPrimitive22ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_23_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_23_CONTROL_POINT_PATCH")]
 		Primitive23ControlPointPatch = D3DPrimitive23ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_24_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_24_CONTROL_POINT_PATCH")]
 		Primitive24ControlPointPatch = D3DPrimitive24ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_25_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_25_CONTROL_POINT_PATCH")]
 		Primitive25ControlPointPatch = D3DPrimitive25ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_26_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_26_CONTROL_POINT_PATCH")]
 		Primitive26ControlPointPatch = D3DPrimitive26ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_27_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_27_CONTROL_POINT_PATCH")]
 		Primitive27ControlPointPatch = D3DPrimitive27ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_28_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_28_CONTROL_POINT_PATCH")]
 		Primitive28ControlPointPatch = D3DPrimitive28ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_29_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_29_CONTROL_POINT_PATCH")]
 		Primitive29ControlPointPatch = D3DPrimitive29ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_30_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_30_CONTROL_POINT_PATCH")]
 		Primitive30ControlPointPatch = D3DPrimitive30ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_31_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_31_CONTROL_POINT_PATCH")]
 		Primitive31ControlPointPatch = D3DPrimitive31ControlPointPatch,
-		[NativeName("D3D11_PRIMITIVE_32_CONTROL_POINT_PATCH")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_32_CONTROL_POINT_PATCH")]
 		Primitive32ControlPointPatch = D3DPrimitive32ControlPointPatch,
 	}
 
-	[NativeName("D3D11_SHADER_TRACKING_OPTIONS")]
+	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
 	public enum D3D11ShaderTrackingOptions
 	{
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_IGNORE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
 		OptionIgnore = unchecked(0),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
 		OptionTrackUninitialized = unchecked(1),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
 		OptionTrackRaw = unchecked(2),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
 		OptionTrackWar = unchecked(4),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
 		OptionTrackWaw = unchecked(8),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
 		OptionAllowSame = unchecked(16),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
 		OptionTrackAtomicConsistency = unchecked(32),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
 		OptionTrackRawAcrossThreadgroups = unchecked(64),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
 		OptionTrackWarAcrossThreadgroups = unchecked(128),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
 		OptionTrackWawAcrossThreadgroups = unchecked(256),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
 		OptionTrackAtomicConsistencyAcrossThreadgroups = unchecked(512),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
 		OptionUavSpecificFlags = unchecked(960),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
 		OptionAllHazards = unchecked(1006),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
 		OptionAllHazardsAllowingSame = unchecked(1022),
-		[NativeName("D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
 		OptionAllOptions = unchecked(1023),
 	}
 
-	[NativeName("D3D11_RESOURCE_RETURN_TYPE")]
+	[NativeName(NativeNameType.Enum, "D3D_RESOURCE_RETURN_TYPE")]
 	public enum D3D11ResourceReturnType
 	{
-		[NativeName("D3D_RETURN_TYPE_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UNORM")]
 		D3DReturnTypeUnorm = unchecked(1),
-		[NativeName("D3D_RETURN_TYPE_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_SNORM")]
 		D3DReturnTypeSnorm = unchecked(2),
-		[NativeName("D3D_RETURN_TYPE_SINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_SINT")]
 		D3DReturnTypeSint = unchecked(3),
-		[NativeName("D3D_RETURN_TYPE_UINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UINT")]
 		D3DReturnTypeUint = unchecked(4),
-		[NativeName("D3D_RETURN_TYPE_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_FLOAT")]
 		D3DReturnTypeFloat = unchecked(5),
-		[NativeName("D3D_RETURN_TYPE_MIXED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_MIXED")]
 		D3DReturnTypeMixed = unchecked(6),
-		[NativeName("D3D_RETURN_TYPE_DOUBLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_DOUBLE")]
 		D3DReturnTypeDouble = unchecked(7),
-		[NativeName("D3D_RETURN_TYPE_CONTINUED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_CONTINUED")]
 		D3DReturnTypeContinued = unchecked(8),
-		[NativeName("D3D10_RETURN_TYPE_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_UNORM")]
 		D3D10ReturnTypeUnorm = D3DReturnTypeUnorm,
-		[NativeName("D3D10_RETURN_TYPE_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_SNORM")]
 		D3D10ReturnTypeSnorm = D3DReturnTypeSnorm,
-		[NativeName("D3D10_RETURN_TYPE_SINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_SINT")]
 		D3D10ReturnTypeSint = D3DReturnTypeSint,
-		[NativeName("D3D10_RETURN_TYPE_UINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_UINT")]
 		D3D10ReturnTypeUint = D3DReturnTypeUint,
-		[NativeName("D3D10_RETURN_TYPE_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_FLOAT")]
 		D3D10ReturnTypeFloat = D3DReturnTypeFloat,
-		[NativeName("D3D10_RETURN_TYPE_MIXED")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_MIXED")]
 		D3D10ReturnTypeMixed = D3DReturnTypeMixed,
-		[NativeName("D3D11_RETURN_TYPE_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_UNORM")]
 		Unorm = D3DReturnTypeUnorm,
-		[NativeName("D3D11_RETURN_TYPE_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_SNORM")]
 		Snorm = D3DReturnTypeSnorm,
-		[NativeName("D3D11_RETURN_TYPE_SINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_SINT")]
 		Sint = D3DReturnTypeSint,
-		[NativeName("D3D11_RETURN_TYPE_UINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_UINT")]
 		Uint = D3DReturnTypeUint,
-		[NativeName("D3D11_RETURN_TYPE_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_FLOAT")]
 		Float = D3DReturnTypeFloat,
-		[NativeName("D3D11_RETURN_TYPE_MIXED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_MIXED")]
 		Mixed = D3DReturnTypeMixed,
-		[NativeName("D3D11_RETURN_TYPE_DOUBLE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_DOUBLE")]
 		Double = D3DReturnTypeDouble,
-		[NativeName("D3D11_RETURN_TYPE_CONTINUED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_CONTINUED")]
 		Continued = D3DReturnTypeContinued,
 	}
 
-	[NativeName("D3D11_CBUFFER_TYPE")]
+	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
 	public enum D3D11CbufferType
 	{
-		[NativeName("D3D_CT_CBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
 		D3DCtCbuffer = unchecked(0),
-		[NativeName("D3D_CT_TBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_TBUFFER")]
 		D3DCtTbuffer = unchecked(1),
-		[NativeName("D3D_CT_INTERFACE_POINTERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_INTERFACE_POINTERS")]
 		D3DCtInterfacePointers = unchecked(2),
-		[NativeName("D3D_CT_RESOURCE_BIND_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_RESOURCE_BIND_INFO")]
 		D3DCtResourceBindInfo = unchecked(3),
-		[NativeName("D3D10_CT_CBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_CT_CBUFFER")]
 		D3D10CtCbuffer = D3DCtCbuffer,
-		[NativeName("D3D10_CT_TBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D10_CT_TBUFFER")]
 		D3D10CtTbuffer = D3DCtTbuffer,
-		[NativeName("D3D11_CT_CBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_CBUFFER")]
 		CtCbuffer = D3DCtCbuffer,
-		[NativeName("D3D11_CT_TBUFFER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_TBUFFER")]
 		CtTbuffer = D3DCtTbuffer,
-		[NativeName("D3D11_CT_INTERFACE_POINTERS")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_INTERFACE_POINTERS")]
 		CtInterfacePointers = D3DCtInterfacePointers,
-		[NativeName("D3D11_CT_RESOURCE_BIND_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_RESOURCE_BIND_INFO")]
 		CtResourceBindInfo = D3DCtResourceBindInfo,
 	}
 
-	[NativeName("D3D11_TESSELLATOR_DOMAIN")]
+	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_DOMAIN")]
 	public enum D3D11TessellatorDomain
 	{
-		[NativeName("D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
 		D3DTessellatorDomainUndefined = unchecked(0),
-		[NativeName("D3D_TESSELLATOR_DOMAIN_ISOLINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_ISOLINE")]
 		D3DTessellatorDomainIsoline = unchecked(1),
-		[NativeName("D3D_TESSELLATOR_DOMAIN_TRI")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_TRI")]
 		D3DTessellatorDomainTri = unchecked(2),
-		[NativeName("D3D_TESSELLATOR_DOMAIN_QUAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_QUAD")]
 		D3DTessellatorDomainQuad = unchecked(3),
-		[NativeName("D3D11_TESSELLATOR_DOMAIN_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_UNDEFINED")]
 		Undefined = D3DTessellatorDomainUndefined,
-		[NativeName("D3D11_TESSELLATOR_DOMAIN_ISOLINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_ISOLINE")]
 		Isoline = D3DTessellatorDomainIsoline,
-		[NativeName("D3D11_TESSELLATOR_DOMAIN_TRI")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_TRI")]
 		Tri = D3DTessellatorDomainTri,
-		[NativeName("D3D11_TESSELLATOR_DOMAIN_QUAD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_QUAD")]
 		Quad = D3DTessellatorDomainQuad,
 	}
 
-	[NativeName("D3D11_TESSELLATOR_PARTITIONING")]
+	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_PARTITIONING")]
 	public enum D3D11TessellatorPartitioning
 	{
-		[NativeName("D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
 		D3DTessellatorPartitioningUndefined = unchecked(0),
-		[NativeName("D3D_TESSELLATOR_PARTITIONING_INTEGER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_INTEGER")]
 		D3DTessellatorPartitioningInteger = unchecked(1),
-		[NativeName("D3D_TESSELLATOR_PARTITIONING_POW2")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_POW2")]
 		D3DTessellatorPartitioningPow2 = unchecked(2),
-		[NativeName("D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
 		D3DTessellatorPartitioningFractionalOdd = unchecked(3),
-		[NativeName("D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
 		D3DTessellatorPartitioningFractionalEven = unchecked(4),
-		[NativeName("D3D11_TESSELLATOR_PARTITIONING_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_UNDEFINED")]
 		Undefined = D3DTessellatorPartitioningUndefined,
-		[NativeName("D3D11_TESSELLATOR_PARTITIONING_INTEGER")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_INTEGER")]
 		Integer = D3DTessellatorPartitioningInteger,
-		[NativeName("D3D11_TESSELLATOR_PARTITIONING_POW2")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_POW2")]
 		Pow2 = D3DTessellatorPartitioningPow2,
-		[NativeName("D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
 		FractionalOdd = D3DTessellatorPartitioningFractionalOdd,
-		[NativeName("D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
 		FractionalEven = D3DTessellatorPartitioningFractionalEven,
 	}
 
-	[NativeName("D3D11_TESSELLATOR_OUTPUT_PRIMITIVE")]
+	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_OUTPUT_PRIMITIVE")]
 	public enum D3D11TessellatorOutputPrimitive
 	{
-		[NativeName("D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
 		D3DTessellatorOutputUndefined = unchecked(0),
-		[NativeName("D3D_TESSELLATOR_OUTPUT_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_POINT")]
 		D3DTessellatorOutputPoint = unchecked(1),
-		[NativeName("D3D_TESSELLATOR_OUTPUT_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_LINE")]
 		D3DTessellatorOutputLine = unchecked(2),
-		[NativeName("D3D_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
 		D3DTessellatorOutputTriangleCw = unchecked(3),
-		[NativeName("D3D_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
+		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
 		D3DTessellatorOutputTriangleCcw = unchecked(4),
-		[NativeName("D3D11_TESSELLATOR_OUTPUT_UNDEFINED")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_UNDEFINED")]
 		Undefined = D3DTessellatorOutputUndefined,
-		[NativeName("D3D11_TESSELLATOR_OUTPUT_POINT")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_POINT")]
 		Point = D3DTessellatorOutputPoint,
-		[NativeName("D3D11_TESSELLATOR_OUTPUT_LINE")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_LINE")]
 		Line = D3DTessellatorOutputLine,
-		[NativeName("D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
 		TriangleCw = D3DTessellatorOutputTriangleCw,
-		[NativeName("D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
+		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
 		TriangleCcw = D3DTessellatorOutputTriangleCcw,
 	}
 

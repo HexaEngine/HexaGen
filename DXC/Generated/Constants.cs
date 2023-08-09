@@ -15,94 +15,94 @@ namespace HexaEngine.DXC
 {
 	public unsafe partial class DXC
 	{
-		[NativeName("_MSC_VER")]
+		[NativeName(NativeNameType.Const, "_MSC_VER")]
 		public const uint MscVer = 1930;
 
-		[NativeName("_WIN32")]
+		[NativeName(NativeNameType.Const, "_WIN32")]
 		public const uint Win32 = 1;
 
-		[NativeName("_M_AMD64")]
+		[NativeName(NativeNameType.Const, "_M_AMD64")]
 		public const uint MAmd64 = 100;
 
-		[NativeName("_M_X64")]
+		[NativeName(NativeNameType.Const, "_M_X64")]
 		public const uint MX64 = 100;
 
-		[NativeName("_WIN64")]
+		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const uint Win64 = 1;
 
-		[NativeName("DXC_CP_UTF8")]
+		[NativeName(NativeNameType.Const, "DXC_CP_UTF8")]
 		public const uint DxcCpUtf8 = 65001;
 
-		[NativeName("DXC_CP_UTF16")]
+		[NativeName(NativeNameType.Const, "DXC_CP_UTF16")]
 		public const uint DxcCpUtf16 = 1200;
 
-		[NativeName("DXC_CP_ACP")]
+		[NativeName(NativeNameType.Const, "DXC_CP_ACP")]
 		public const uint DxcCpAcp = 0;
 
-		[NativeName("DXC_HASHFLAG_INCLUDES_SOURCE")]
+		[NativeName(NativeNameType.Const, "DXC_HASHFLAG_INCLUDES_SOURCE")]
 		public const uint DxcHashflagIncludesSource = 1;
 
-		[NativeName("DXC_ARG_DEBUG")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_DEBUG")]
 		public const string DxcArgDebug = "-Zi";
 
-		[NativeName("DXC_ARG_SKIP_VALIDATION")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_SKIP_VALIDATION")]
 		public const string DxcArgSkipValidation = "-Vd";
 
-		[NativeName("DXC_ARG_SKIP_OPTIMIZATIONS")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_SKIP_OPTIMIZATIONS")]
 		public const string DxcArgSkipOptimizations = "-Od";
 
-		[NativeName("DXC_ARG_PACK_MATRIX_ROW_MAJOR")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_PACK_MATRIX_ROW_MAJOR")]
 		public const string DxcArgPackMatrixRowMajor = "-Zpr";
 
-		[NativeName("DXC_ARG_PACK_MATRIX_COLUMN_MAJOR")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_PACK_MATRIX_COLUMN_MAJOR")]
 		public const string DxcArgPackMatrixColumnMajor = "-Zpc";
 
-		[NativeName("DXC_ARG_AVOID_FLOW_CONTROL")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_AVOID_FLOW_CONTROL")]
 		public const string DxcArgAvoidFlowControl = "-Gfa";
 
-		[NativeName("DXC_ARG_PREFER_FLOW_CONTROL")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_PREFER_FLOW_CONTROL")]
 		public const string DxcArgPreferFlowControl = "-Gfp";
 
-		[NativeName("DXC_ARG_ENABLE_STRICTNESS")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_ENABLE_STRICTNESS")]
 		public const string DxcArgEnableStrictness = "-Ges";
 
-		[NativeName("DXC_ARG_ENABLE_BACKWARDS_COMPATIBILITY")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_ENABLE_BACKWARDS_COMPATIBILITY")]
 		public const string DxcArgEnableBackwardsCompatibility = "-Gec";
 
-		[NativeName("DXC_ARG_IEEE_STRICTNESS")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_IEEE_STRICTNESS")]
 		public const string DxcArgIeeeStrictness = "-Gis";
 
-		[NativeName("DXC_ARG_OPTIMIZATION_LEVEL0")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_OPTIMIZATION_LEVEL0")]
 		public const string DxcArgOptimizationLevel0 = "-O0";
 
-		[NativeName("DXC_ARG_OPTIMIZATION_LEVEL1")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_OPTIMIZATION_LEVEL1")]
 		public const string DxcArgOptimizationLevel1 = "-O1";
 
-		[NativeName("DXC_ARG_OPTIMIZATION_LEVEL2")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_OPTIMIZATION_LEVEL2")]
 		public const string DxcArgOptimizationLevel2 = "-O2";
 
-		[NativeName("DXC_ARG_OPTIMIZATION_LEVEL3")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_OPTIMIZATION_LEVEL3")]
 		public const string DxcArgOptimizationLevel3 = "-O3";
 
-		[NativeName("DXC_ARG_WARNINGS_ARE_ERRORS")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_WARNINGS_ARE_ERRORS")]
 		public const string DxcArgWarningsAreErrors = "-WX";
 
-		[NativeName("DXC_ARG_RESOURCES_MAY_ALIAS")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_RESOURCES_MAY_ALIAS")]
 		public const string DxcArgResourcesMayAlias = "-res_may_alias";
 
-		[NativeName("DXC_ARG_ALL_RESOURCES_BOUND")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_ALL_RESOURCES_BOUND")]
 		public const string DxcArgAllResourcesBound = "-all_resources_bound";
 
-		[NativeName("DXC_ARG_DEBUG_NAME_FOR_SOURCE")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_DEBUG_NAME_FOR_SOURCE")]
 		public const string DxcArgDebugNameForSource = "-Zss";
 
-		[NativeName("DXC_ARG_DEBUG_NAME_FOR_BINARY")]
+		[NativeName(NativeNameType.Const, "DXC_ARG_DEBUG_NAME_FOR_BINARY")]
 		public const string DxcArgDebugNameForBinary = "-Zsb";
 
-		[NativeName("DXC_EXTRA_OUTPUT_NAME_STDOUT")]
+		[NativeName(NativeNameType.Const, "DXC_EXTRA_OUTPUT_NAME_STDOUT")]
 		public const string DxcExtraOutputNameStdout = "*stdout*";
 
-		[NativeName("DXC_EXTRA_OUTPUT_NAME_STDERR")]
+		[NativeName(NativeNameType.Const, "DXC_EXTRA_OUTPUT_NAME_STDERR")]
 		public const string DxcExtraOutputNameStderr = "*stderr*";
 
 	}

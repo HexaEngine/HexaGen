@@ -1,7 +1,7 @@
 ﻿namespace HexaGen
 {
+    using ClangSharp;
     using CppAst;
-    using HexaGen;
     using System.IO;
     using System.Linq;
 
@@ -14,7 +14,7 @@
         private void GenerateDelegates(CppCompilation compilation, string outputPath)
         {
             string filePath = Path.Combine(outputPath, "Delegates.cs");
-            string[] usings = { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            string[] usings = { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime", "HexaGen.Runtime.COM" };
 
             // Generate Delegates
             using var writer = new CodeWriter(filePath, settings.Namespace, usings.Concat(settings.Usings).ToArray());
@@ -71,6 +71,8 @@
             string header = $"{returnCsName} {csName}({signature})";
             LogInfo("defined delegate " + header);
             typedef.Comment.WriteCsSummary(writer);
+            writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{typedef.Name}\")]");
+            writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{type.ReturnType.GetDisplayName()}\")]");
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{type.CallingConvention.GetCallingConvention()})]");
             writer.WriteLine($"public unsafe delegate {header};");
             writer.WriteLine();
@@ -132,6 +134,8 @@
                     string header = $"{returnCsName} {csFieldName}({signature})";
                     LogInfo("defined delegate " + header);
                     cppField.Comment.WriteCsSummary(writer);
+                    writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{cppField.Name}\")]");
+                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
                     writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
                     writer.WriteLine($"public unsafe delegate {header};");
                     writer.WriteLine();
@@ -177,6 +181,8 @@
                 string header = $"{returnCsName} {csFieldName}({signature})";
                 LogInfo("defined delegate " + header);
                 field.Comment.WriteCsSummary(writer);
+                writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
+                writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
                 writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
                 writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
                 writer.WriteLine();

@@ -16,34 +16,34 @@ namespace HexaEngine.X3DAudio
 {
 	public unsafe partial class X3DAudio
 	{
-		[NativeName("X3DAUDIO_HANDLE_BYTESIZE")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_HANDLE_BYTESIZE")]
 		public const uint X3DaudioHandleBytesize = 20;
 
-		[NativeName("X3DAUDIO_CALCULATE_MATRIX")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_MATRIX")]
 		public const uint X3DaudioCalculateMatrix = 0x00000001;
 
-		[NativeName("X3DAUDIO_CALCULATE_DELAY")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_DELAY")]
 		public const uint X3DaudioCalculateDelay = 0x00000002;
 
-		[NativeName("X3DAUDIO_CALCULATE_LPF_DIRECT")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_LPF_DIRECT")]
 		public const uint X3DaudioCalculateLpfDirect = 0x00000004;
 
-		[NativeName("X3DAUDIO_CALCULATE_LPF_REVERB")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_LPF_REVERB")]
 		public const uint X3DaudioCalculateLpfReverb = 0x00000008;
 
-		[NativeName("X3DAUDIO_CALCULATE_REVERB")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_REVERB")]
 		public const uint X3DaudioCalculateReverb = 0x00000010;
 
-		[NativeName("X3DAUDIO_CALCULATE_DOPPLER")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_DOPPLER")]
 		public const uint X3DaudioCalculateDoppler = 0x00000020;
 
-		[NativeName("X3DAUDIO_CALCULATE_EMITTER_ANGLE")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_EMITTER_ANGLE")]
 		public const uint X3DaudioCalculateEmitterAngle = 0x00000040;
 
-		[NativeName("X3DAUDIO_CALCULATE_ZEROCENTER")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_ZEROCENTER")]
 		public const uint X3DaudioCalculateZerocenter = 0x00010000;
 
-		[NativeName("X3DAUDIO_CALCULATE_REDIRECT_TO_LFE")]
+		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_REDIRECT_TO_LFE")]
 		public const uint X3DaudioCalculateRedirectToLfe = 0x00020000;
 
 	}

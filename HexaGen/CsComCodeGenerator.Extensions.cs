@@ -131,6 +131,8 @@
                     }
 
                     CsFunctionOverload overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                    overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                    overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                     for (int j = 0; j < cppFunction.Parameters.Count; j++)
                     {
                         var cppParameter = cppFunction.Parameters[j];
@@ -142,7 +144,8 @@
                         CsType csType = new(paramCsTypeName, kind);
 
                         CsParameterInfo csParameter = new(paramCsName, csType, direction);
-
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                         overload.Parameters.Add(csParameter);
                         if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                         {
@@ -187,7 +190,7 @@
             string signature;
 
             var first = variation.Parameters[0];
-            signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{x.Type} {x.Name}").Reverse().Append($"this {first.Type} {first.Name}").Reverse());
+            signature = string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this {first.Type} {first.Name}").Reverse());
 
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
 
@@ -203,6 +206,11 @@
             if (overload.Comment != null)
             {
                 writer.WriteLines(overload.Comment);
+            }
+
+            for (int i = 0; i < overload.Attributes.Count; i++)
+            {
+                writer.WriteLine(overload.Attributes[i]);
             }
 
             using (writer.PushBlock($"{modifierString} {header}"))
@@ -472,6 +480,8 @@
                 }
 
                 CsFunctionOverload overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+                overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                 for (int j = 0; j < cppFunction.Parameters.Count; j++)
                 {
                     var cppParameter = cppFunction.Parameters[j];
@@ -483,7 +493,8 @@
                     CsType csType = new(paramCsTypeName, kind);
 
                     CsParameterInfo csParameter = new(paramCsName, csType, direction);
-
+                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                     overload.Parameters.Add(csParameter);
                     if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                     {
@@ -529,7 +540,7 @@
             string genericConstrain = string.Join(" ", variation.GenericParameters.Select(p => p.Constrain));
             string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}";
 
-            signature = string.Join(", ", variation.Parameters.Select(x => $"{x.Type} {x.Name}").Reverse().Append($"this ComPtr<{className}> comObj").Reverse());
+            signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this ComPtr<{className}> comObj").Reverse());
             signatureNameless += string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"));
 
             string header = $"{csReturnType.Name} {variation.Name}{(variation.IsGeneric ? $"<{genericSignature}>" : string.Empty)}({signature}) {genericConstrain}";
@@ -546,6 +557,11 @@
             if (overload.Comment != null)
             {
                 writer.WriteLines(overload.Comment);
+            }
+
+            for (int i = 0; i < overload.Attributes.Count; i++)
+            {
+                writer.WriteLine(overload.Attributes[i]);
             }
 
             using (writer.PushBlock($"{modifierString} {header}"))
@@ -712,6 +728,10 @@
                     else if (isBool && !isRef && !isPointer)
                     {
                         sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                    }
+                    else if (isCOMPtr)
+                    {
+                        sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
                     }
                     else
                     {

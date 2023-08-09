@@ -22,20 +22,20 @@ namespace HexaEngine.D3DCompiler
 	/// Removes unwanted blobs from a compilation result<br/>
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
-	[NativeName("D3DCOMPILER_STRIP_FLAGS")]
+	[NativeName(NativeNameType.Enum, "D3DCOMPILER_STRIP_FLAGS")]
 	public enum D3DcompilerStripFlags
 	{
-		[NativeName("D3DCOMPILER_STRIP_REFLECTION_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_REFLECTION_DATA")]
 		ReflectionData = unchecked(1),
-		[NativeName("D3DCOMPILER_STRIP_DEBUG_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_DEBUG_INFO")]
 		DebugInfo = unchecked(2),
-		[NativeName("D3DCOMPILER_STRIP_TEST_BLOBS")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_TEST_BLOBS")]
 		TestBlobs = unchecked(4),
-		[NativeName("D3DCOMPILER_STRIP_PRIVATE_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_PRIVATE_DATA")]
 		PrivateData = unchecked(8),
-		[NativeName("D3DCOMPILER_STRIP_ROOT_SIGNATURE")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_ROOT_SIGNATURE")]
 		RootSignature = unchecked(16),
-		[NativeName("D3DCOMPILER_STRIP_FORCE_DWORD")]
+		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_FORCE_DWORD")]
 		ForceDword = unchecked(2147483647),
 	}
 
@@ -46,61 +46,61 @@ namespace HexaEngine.D3DCompiler
 	/// Extracts information from a compilation result.<br/>
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
-	[NativeName("D3D_BLOB_PART")]
+	[NativeName(NativeNameType.Enum, "D3D_BLOB_PART")]
 	public enum D3DBlobPart
 	{
-		[NativeName("D3D_BLOB_INPUT_SIGNATURE_BLOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_INPUT_SIGNATURE_BLOB")]
 		InputSignatureBlob = unchecked(0),
-		[NativeName("D3D_BLOB_OUTPUT_SIGNATURE_BLOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_OUTPUT_SIGNATURE_BLOB")]
 		OutputSignatureBlob = unchecked(1),
-		[NativeName("D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB")]
 		InputAndOutputSignatureBlob = unchecked(2),
-		[NativeName("D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB")]
 		PatchConstantSignatureBlob = unchecked(3),
-		[NativeName("D3D_BLOB_ALL_SIGNATURE_BLOB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_ALL_SIGNATURE_BLOB")]
 		AllSignatureBlob = unchecked(4),
-		[NativeName("D3D_BLOB_DEBUG_INFO")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_DEBUG_INFO")]
 		DebugInfo = unchecked(5),
-		[NativeName("D3D_BLOB_LEGACY_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_LEGACY_SHADER")]
 		LegacyShader = unchecked(6),
-		[NativeName("D3D_BLOB_XNA_PREPASS_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_XNA_PREPASS_SHADER")]
 		XnaPrepassShader = unchecked(7),
-		[NativeName("D3D_BLOB_XNA_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_XNA_SHADER")]
 		XnaShader = unchecked(8),
-		[NativeName("D3D_BLOB_PDB")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PDB")]
 		Pdb = unchecked(9),
-		[NativeName("D3D_BLOB_PRIVATE_DATA")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PRIVATE_DATA")]
 		PrivateData = unchecked(10),
-		[NativeName("D3D_BLOB_ROOT_SIGNATURE")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_ROOT_SIGNATURE")]
 		RootSignature = unchecked(11),
-		[NativeName("D3D_BLOB_DEBUG_NAME")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_DEBUG_NAME")]
 		DebugName = unchecked(12),
 		/// <summary>
 		/// Test parts are only produced by special compiler versions and so<br/>
 		/// are usually not present in shaders.<br/>
 		/// </summary>
-		[NativeName("D3D_BLOB_TEST_ALTERNATE_SHADER")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_TEST_ALTERNATE_SHADER")]
 		TestAlternateShader = unchecked(32768),
 
 		/// <summary>
 		/// Test parts are only produced by special compiler versions and so<br/>
 		/// are usually not present in shaders.<br/>
 		/// </summary>
-		[NativeName("D3D_BLOB_TEST_COMPILE_DETAILS")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_TEST_COMPILE_DETAILS")]
 		TestCompileDetails = unchecked(32769),
 
 		/// <summary>
 		/// Test parts are only produced by special compiler versions and so<br/>
 		/// are usually not present in shaders.<br/>
 		/// </summary>
-		[NativeName("D3D_BLOB_TEST_COMPILE_PERF")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_TEST_COMPILE_PERF")]
 		TestCompilePerf = unchecked(32770),
 
 		/// <summary>
 		/// Test parts are only produced by special compiler versions and so<br/>
 		/// are usually not present in shaders.<br/>
 		/// </summary>
-		[NativeName("D3D_BLOB_TEST_COMPILE_REPORT")]
+		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_TEST_COMPILE_REPORT")]
 		TestCompileReport = unchecked(32771),
 
 	}

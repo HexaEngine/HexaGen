@@ -1,0 +1,82 @@
+{
+  "Namespace": "HexaEngine.DXC",
+  "ApiName": "DXC",
+  "LibName": "dxcompiler",
+  "GenerateSizeOfStructs": false,
+  "BoolType": 1,
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "WCHAR": "char",
+    "size_t": "nuint",
+    "bool": "int",
+    "BOOL": "int",
+    "BYTE": "byte",
+    "UCHAR": "byte",
+    "UINT8": "byte",
+    "USHORT": "ushort",
+    "UINT16": "ushort",
+    "UINT32": "uint",
+    "UINT": "uint",
+    "ULONG": "uint",
+    "DWORD": "uint",
+    "WORD": "short",
+    "INT": "int",
+    "ULONGLONG": "ulong",
+    "UINT64": "ulong",
+    "LONGLONG": "long",
+    "LARGE_INTEGER": "long",
+    "FLOAT": "float",
+    "LPCSTR": "byte*",
+    "LPCWSTR": "char*",
+    "LPWSTR": "char*",
+    "GUID": "Guid",
+    "HANDLE": "nint",
+    "HMODULE": "nint",
+    "HMONITOR": "nint",
+    "HWND": "nint",
+    "LPCVOID": "void*",
+    "LPVOID": "void*",
+    "DXGI_USAGE": "uint",
+    "RECT": "Rect32",
+    "POINT": "Point32",
+    "SIZE_T": "nuint",
+    "LUID": "Luid",
+    "IID": "Guid",
+    "ID3DBlob": "ID3D10Blob",
+    "BSTR": "void*"
+  }
+}

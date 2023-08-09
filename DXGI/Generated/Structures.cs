@@ -19,7 +19,7 @@ using System.Numerics;
 namespace HexaEngine.DXGI
 {
 	[Guid("aec22fb8-76f3-4639-9be0-28eb43a67a2e")]
-	[NativeName("IDXGIObject")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIObject")]
 	public partial struct IDXGIObject : IComObject, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -31,14 +31,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult SetPrivateData(Guid* name, uint dataSize, void* pData)
+		[NativeName(NativeNameType.Func, "SetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "DataSize")] [NativeName(NativeNameType.Type, "UINT")] uint dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "const void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint, void*, HResult>)(*LpVtbl))(ptr, name, dataSize, pData);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetPrivateData(ref Guid name, uint dataSize, void* pData)
+		[NativeName(NativeNameType.Func, "SetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid name, [NativeName(NativeNameType.Param, "DataSize")] [NativeName(NativeNameType.Type, "UINT")] uint dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "const void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pname = &name)
@@ -48,14 +52,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetPrivateDataInterface(Guid* name, IUnknown* pUnknown)
+		[NativeName(NativeNameType.Func, "SetPrivateDataInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateDataInterface([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] IUnknown* pUnknown)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, IUnknown*, HResult>)(LpVtbl[1]))(ptr, name, pUnknown);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetPrivateDataInterface(ref Guid name, IUnknown* pUnknown)
+		[NativeName(NativeNameType.Func, "SetPrivateDataInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateDataInterface([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] IUnknown* pUnknown)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pname = &name)
@@ -65,7 +73,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetPrivateDataInterface(Guid* name, ref IUnknown pUnknown)
+		[NativeName(NativeNameType.Func, "SetPrivateDataInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateDataInterface([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ref IUnknown pUnknown)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppUnknown = &pUnknown)
@@ -75,7 +85,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetPrivateDataInterface(ref Guid name, ref IUnknown pUnknown)
+		[NativeName(NativeNameType.Func, "SetPrivateDataInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPrivateDataInterface([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ref IUnknown pUnknown)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pname = &name)
@@ -88,14 +100,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetPrivateData(Guid* name, uint* pDataSize, void* pData)
+		[NativeName(NativeNameType.Func, "GetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(LpVtbl[2]))(ptr, name, pDataSize, pData);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetPrivateData(ref Guid name, uint* pDataSize, void* pData)
+		[NativeName(NativeNameType.Func, "GetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pname = &name)
@@ -105,7 +121,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetPrivateData(Guid* name, ref uint pDataSize, void* pData)
+		[NativeName(NativeNameType.Func, "GetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppDataSize = &pDataSize)
@@ -115,7 +133,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetPrivateData(ref Guid name, ref uint pDataSize, void* pData)
+		[NativeName(NativeNameType.Func, "GetPrivateData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetPrivateData([NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pname = &name)
@@ -128,14 +148,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetParent(Guid* riid, void** ppParent)
+		[NativeName(NativeNameType.Func, "GetParent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetParent([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppParent")] [NativeName(NativeNameType.Type, "void**")] void** ppParent)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, void**, HResult>)(LpVtbl[3]))(ptr, riid, ppParent);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetParent(ref Guid riid, void** ppParent)
+		[NativeName(NativeNameType.Func, "GetParent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetParent([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppParent")] [NativeName(NativeNameType.Type, "void**")] void** ppParent)
 		{
 			IDXGIObject* ptr = (IDXGIObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -158,7 +182,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("3d3e0379-f9de-4d58-bb6c-18d62992f1a6")]
-	[NativeName("IDXGIDeviceSubObject")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDeviceSubObject")]
 	public partial struct IDXGIDeviceSubObject : IComObject, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -170,14 +194,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDevice(Guid* riid, void** ppDevice)
+		[NativeName(NativeNameType.Func, "GetDevice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDevice([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppDevice")] [NativeName(NativeNameType.Type, "void**")] void** ppDevice)
 		{
 			IDXGIDeviceSubObject* ptr = (IDXGIDeviceSubObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, void**, HResult>)(LpVtbl[4]))(ptr, riid, ppDevice);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDevice(ref Guid riid, void** ppDevice)
+		[NativeName(NativeNameType.Func, "GetDevice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDevice([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppDevice")] [NativeName(NativeNameType.Type, "void**")] void** ppDevice)
 		{
 			IDXGIDeviceSubObject* ptr = (IDXGIDeviceSubObject*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -205,7 +233,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("035f3ab4-482e-4e50-b41f-8a7f8bd8960b")]
-	[NativeName("IDXGIResource")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIResource")]
 	public partial struct IDXGIResource : IComObject, IComObject<IDXGIResource>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -217,14 +245,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetSharedHandle(nint* pSharedHandle)
+		[NativeName(NativeNameType.Func, "GetSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSharedHandle([NativeName(NativeNameType.Param, "pSharedHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] nint* pSharedHandle)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, nint*, HResult>)(LpVtbl[1]))(ptr, pSharedHandle);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSharedHandle(ref nint pSharedHandle)
+		[NativeName(NativeNameType.Func, "GetSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSharedHandle([NativeName(NativeNameType.Param, "pSharedHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] ref nint pSharedHandle)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (nint* ppSharedHandle = &pSharedHandle)
@@ -234,14 +266,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetUsage(uint* pUsage)
+		[NativeName(NativeNameType.Func, "GetUsage")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetUsage([NativeName(NativeNameType.Param, "pUsage")] [NativeName(NativeNameType.Type, "DXGI_USAGE*")] uint* pUsage)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, uint*, HResult>)(LpVtbl[2]))(ptr, pUsage);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetUsage(ref uint pUsage)
+		[NativeName(NativeNameType.Func, "GetUsage")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetUsage([NativeName(NativeNameType.Param, "pUsage")] [NativeName(NativeNameType.Type, "DXGI_USAGE*")] ref uint pUsage)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppUsage = &pUsage)
@@ -251,21 +287,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetEvictionPriority(uint evictionPriority)
+		[NativeName(NativeNameType.Func, "SetEvictionPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetEvictionPriority([NativeName(NativeNameType.Param, "EvictionPriority")] [NativeName(NativeNameType.Type, "UINT")] uint evictionPriority)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, uint, HResult>)(LpVtbl[3]))(ptr, evictionPriority);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetEvictionPriority(uint* pEvictionPriority)
+		[NativeName(NativeNameType.Func, "GetEvictionPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetEvictionPriority([NativeName(NativeNameType.Param, "pEvictionPriority")] [NativeName(NativeNameType.Type, "UINT*")] uint* pEvictionPriority)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, uint*, HResult>)(LpVtbl[4]))(ptr, pEvictionPriority);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetEvictionPriority(ref uint pEvictionPriority)
+		[NativeName(NativeNameType.Func, "GetEvictionPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetEvictionPriority([NativeName(NativeNameType.Param, "pEvictionPriority")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pEvictionPriority)
 		{
 			IDXGIResource* ptr = (IDXGIResource*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppEvictionPriority = &pEvictionPriority)
@@ -298,7 +340,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("9d8e1289-d7b3-465f-8126-250e349af85d")]
-	[NativeName("IDXGIKeyedMutex")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIKeyedMutex")]
 	public partial struct IDXGIKeyedMutex : IComObject, IComObject<IDXGIKeyedMutex>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -310,14 +352,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult AcquireSync(ulong key, uint dwMilliseconds)
+		[NativeName(NativeNameType.Func, "AcquireSync")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult AcquireSync([NativeName(NativeNameType.Param, "Key")] [NativeName(NativeNameType.Type, "UINT64")] ulong key, [NativeName(NativeNameType.Param, "dwMilliseconds")] [NativeName(NativeNameType.Type, "DWORD")] uint dwMilliseconds)
 		{
 			IDXGIKeyedMutex* ptr = (IDXGIKeyedMutex*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, ulong, uint, HResult>)(LpVtbl[1]))(ptr, key, dwMilliseconds);
 			return ret;
 		}
 
-		public readonly unsafe HResult ReleaseSync(ulong key)
+		[NativeName(NativeNameType.Func, "ReleaseSync")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReleaseSync([NativeName(NativeNameType.Param, "Key")] [NativeName(NativeNameType.Type, "UINT64")] ulong key)
 		{
 			IDXGIKeyedMutex* ptr = (IDXGIKeyedMutex*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, ulong, HResult>)(LpVtbl[2]))(ptr, key);
@@ -347,7 +393,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("cafcb56c-6ac3-4889-bf47-9e23bbd260ec")]
-	[NativeName("IDXGISurface")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISurface")]
 	public partial struct IDXGISurface : IComObject, IComObject<IDXGISurface>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -359,14 +405,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc(DxgiSurfaceDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SURFACE_DESC*")] DxgiSurfaceDesc* pDesc)
 		{
 			IDXGISurface* ptr = (IDXGISurface*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, DxgiSurfaceDesc*, HResult>)(LpVtbl[1]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc(ref DxgiSurfaceDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SURFACE_DESC*")] ref DxgiSurfaceDesc pDesc)
 		{
 			IDXGISurface* ptr = (IDXGISurface*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSurfaceDesc* ppDesc = &pDesc)
@@ -376,14 +426,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult Map(DxgiMappedRect* pLockedRect, uint mapFlags)
+		[NativeName(NativeNameType.Func, "Map")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult Map([NativeName(NativeNameType.Param, "pLockedRect")] [NativeName(NativeNameType.Type, "DXGI_MAPPED_RECT*")] DxgiMappedRect* pLockedRect, [NativeName(NativeNameType.Param, "MapFlags")] [NativeName(NativeNameType.Type, "UINT")] uint mapFlags)
 		{
 			IDXGISurface* ptr = (IDXGISurface*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, DxgiMappedRect*, uint, HResult>)(LpVtbl[2]))(ptr, pLockedRect, mapFlags);
 			return ret;
 		}
 
-		public readonly unsafe HResult Map(ref DxgiMappedRect pLockedRect, uint mapFlags)
+		[NativeName(NativeNameType.Func, "Map")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult Map([NativeName(NativeNameType.Param, "pLockedRect")] [NativeName(NativeNameType.Type, "DXGI_MAPPED_RECT*")] ref DxgiMappedRect pLockedRect, [NativeName(NativeNameType.Param, "MapFlags")] [NativeName(NativeNameType.Type, "UINT")] uint mapFlags)
 		{
 			IDXGISurface* ptr = (IDXGISurface*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiMappedRect* ppLockedRect = &pLockedRect)
@@ -393,6 +447,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "Unmap")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult Unmap()
 		{
 			IDXGISurface* ptr = (IDXGISurface*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -422,48 +478,56 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_SURFACE_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SURFACE_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSurfaceDesc
 	{
-		[NativeName("Width")]
+		[NativeName(NativeNameType.Field, "Width")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Width;
-		[NativeName("Height")]
+		[NativeName(NativeNameType.Field, "Height")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Height;
-		[NativeName("Format")]
+		[NativeName(NativeNameType.Field, "Format")]
+		[NativeName(NativeNameType.Type, "DXGI_FORMAT")]
 		public DxgiFormat Format;
-		[NativeName("SampleDesc")]
+		[NativeName(NativeNameType.Field, "SampleDesc")]
+		[NativeName(NativeNameType.Type, "DXGI_SAMPLE_DESC")]
 		public DxgiSampleDesc SampleDesc;
 
 
 	}
 
-	[NativeName("DXGI_SAMPLE_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SAMPLE_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSampleDesc
 	{
-		[NativeName("Count")]
+		[NativeName(NativeNameType.Field, "Count")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Count;
-		[NativeName("Quality")]
+		[NativeName(NativeNameType.Field, "Quality")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Quality;
 
 
 	}
 
-	[NativeName("DXGI_MAPPED_RECT")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_MAPPED_RECT")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiMappedRect
 	{
-		[NativeName("Pitch")]
+		[NativeName(NativeNameType.Field, "Pitch")]
+		[NativeName(NativeNameType.Type, "INT")]
 		public int Pitch;
-		[NativeName("pBits")]
+		[NativeName(NativeNameType.Field, "pBits")]
+		[NativeName(NativeNameType.Type, "BYTE*")]
 		public unsafe byte* PBits;
 
 
 	}
 
 	[Guid("4ae63092-6327-4c1b-80ae-bfe12ea32b86")]
-	[NativeName("IDXGISurface1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISurface1")]
 	public partial struct IDXGISurface1 : IComObject, IComObject<IDXGISurface1>, IComObject<IDXGISurface>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -475,14 +539,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDC(Bool32 discard, nint* phdc)
+		[NativeName(NativeNameType.Func, "GetDC")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDC([NativeName(NativeNameType.Param, "Discard")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 discard, [NativeName(NativeNameType.Param, "phdc")] [NativeName(NativeNameType.Type, "HDC*")] nint* phdc)
 		{
 			IDXGISurface1* ptr = (IDXGISurface1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Bool32, nint*, HResult>)(LpVtbl[3]))(ptr, discard, phdc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDC(Bool32 discard, ref nint phdc)
+		[NativeName(NativeNameType.Func, "GetDC")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDC([NativeName(NativeNameType.Param, "Discard")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 discard, [NativeName(NativeNameType.Param, "phdc")] [NativeName(NativeNameType.Type, "HDC*")] ref nint phdc)
 		{
 			IDXGISurface1* ptr = (IDXGISurface1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (nint* pphdc = &phdc)
@@ -492,14 +560,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult ReleaseDC(Rect32* pDirtyRect)
+		[NativeName(NativeNameType.Func, "ReleaseDC")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReleaseDC([NativeName(NativeNameType.Param, "pDirtyRect")] [NativeName(NativeNameType.Type, "RECT*")] Rect32* pDirtyRect)
 		{
 			IDXGISurface1* ptr = (IDXGISurface1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Rect32*, HResult>)(LpVtbl[4]))(ptr, pDirtyRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult ReleaseDC(ref Rect32 pDirtyRect)
+		[NativeName(NativeNameType.Func, "ReleaseDC")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReleaseDC([NativeName(NativeNameType.Param, "pDirtyRect")] [NativeName(NativeNameType.Type, "RECT*")] ref Rect32 pDirtyRect)
 		{
 			IDXGISurface1* ptr = (IDXGISurface1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppDirtyRect = &pDirtyRect)
@@ -537,7 +609,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("2411e7e1-12ac-4ccf-bd14-9798e8534dc0")]
-	[NativeName("IDXGIAdapter")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIAdapter")]
 	public partial struct IDXGIAdapter : IComObject, IComObject<IDXGIAdapter>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -549,14 +621,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult EnumOutputs(uint output, IDXGIOutput** ppOutput)
+		[NativeName(NativeNameType.Func, "EnumOutputs")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumOutputs([NativeName(NativeNameType.Param, "Output")] [NativeName(NativeNameType.Type, "UINT")] uint output, [NativeName(NativeNameType.Param, "ppOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] IDXGIOutput** ppOutput)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, uint, IDXGIOutput**, HResult>)(LpVtbl[4]))(ptr, output, ppOutput);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumOutputs(uint output, ref IDXGIOutput* ppOutput)
+		[NativeName(NativeNameType.Func, "EnumOutputs")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumOutputs([NativeName(NativeNameType.Param, "Output")] [NativeName(NativeNameType.Type, "UINT")] uint output, [NativeName(NativeNameType.Param, "ppOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] ref IDXGIOutput* ppOutput)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput** pppOutput = &ppOutput)
@@ -566,14 +642,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDesc(DxgiAdapterDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC*")] DxgiAdapterDesc* pDesc)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, DxgiAdapterDesc*, HResult>)(LpVtbl[5]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc(ref DxgiAdapterDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC*")] ref DxgiAdapterDesc pDesc)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiAdapterDesc* ppDesc = &pDesc)
@@ -583,14 +663,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckInterfaceSupport(Guid* interfaceName, long* pUMDVersion)
+		[NativeName(NativeNameType.Func, "CheckInterfaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckInterfaceSupport([NativeName(NativeNameType.Param, "InterfaceName")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* interfaceName, [NativeName(NativeNameType.Param, "pUMDVersion")] [NativeName(NativeNameType.Type, "LARGE_INTEGER*")] long* pUMDVersion)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, long*, HResult>)(LpVtbl[6]))(ptr, interfaceName, pUMDVersion);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckInterfaceSupport(ref Guid interfaceName, long* pUMDVersion)
+		[NativeName(NativeNameType.Func, "CheckInterfaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckInterfaceSupport([NativeName(NativeNameType.Param, "InterfaceName")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid interfaceName, [NativeName(NativeNameType.Param, "pUMDVersion")] [NativeName(NativeNameType.Type, "LARGE_INTEGER*")] long* pUMDVersion)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pinterfaceName = &interfaceName)
@@ -600,7 +684,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckInterfaceSupport(Guid* interfaceName, ref long pUMDVersion)
+		[NativeName(NativeNameType.Func, "CheckInterfaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckInterfaceSupport([NativeName(NativeNameType.Param, "InterfaceName")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* interfaceName, [NativeName(NativeNameType.Param, "pUMDVersion")] [NativeName(NativeNameType.Type, "LARGE_INTEGER*")] ref long pUMDVersion)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (long* ppUMDVersion = &pUMDVersion)
@@ -610,7 +696,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckInterfaceSupport(ref Guid interfaceName, ref long pUMDVersion)
+		[NativeName(NativeNameType.Func, "CheckInterfaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckInterfaceSupport([NativeName(NativeNameType.Param, "InterfaceName")] [NativeName(NativeNameType.Type, "const GUID&")] ref Guid interfaceName, [NativeName(NativeNameType.Param, "pUMDVersion")] [NativeName(NativeNameType.Type, "LARGE_INTEGER*")] ref long pUMDVersion)
 		{
 			IDXGIAdapter* ptr = (IDXGIAdapter*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* pinterfaceName = &interfaceName)
@@ -641,7 +729,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("ae02eedb-c735-4690-8d52-5a8dc20213aa")]
-	[NativeName("IDXGIOutput")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput")]
 	public partial struct IDXGIOutput : IComObject, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -653,14 +741,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc(DxgiOutputDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTPUT_DESC*")] DxgiOutputDesc* pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiOutputDesc*, HResult>)(LpVtbl[4]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc(ref DxgiOutputDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTPUT_DESC*")] ref DxgiOutputDesc pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutputDesc* ppDesc = &pDesc)
@@ -670,14 +762,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplayModeList(DxgiFormat enumFormat, uint flags, uint* pNumModes, DxgiModeDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiFormat, uint, uint*, DxgiModeDesc*, HResult>)(LpVtbl[5]))(ptr, enumFormat, flags, pNumModes, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDisplayModeList(DxgiFormat enumFormat, uint flags, ref uint pNumModes, DxgiModeDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppNumModes = &pNumModes)
@@ -687,7 +783,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplayModeList(DxgiFormat enumFormat, uint flags, uint* pNumModes, ref DxgiModeDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppDesc = &pDesc)
@@ -697,7 +795,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplayModeList(DxgiFormat enumFormat, uint flags, ref uint pNumModes, ref DxgiModeDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pDesc)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppNumModes = &pNumModes)
@@ -710,14 +810,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(DxgiModeDesc* pModeToMatch, DxgiModeDesc* pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(LpVtbl[6]))(ptr, pModeToMatch, pClosestMatch, pConcernedDevice);
 			return ret;
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(ref DxgiModeDesc pModeToMatch, DxgiModeDesc* pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] ref DxgiModeDesc pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
@@ -727,7 +831,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(DxgiModeDesc* pModeToMatch, ref DxgiModeDesc pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
@@ -737,7 +843,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(ref DxgiModeDesc pModeToMatch, ref DxgiModeDesc pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] ref DxgiModeDesc pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
@@ -750,7 +858,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(DxgiModeDesc* pModeToMatch, DxgiModeDesc* pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -760,7 +870,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(ref DxgiModeDesc pModeToMatch, DxgiModeDesc* pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] ref DxgiModeDesc pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
@@ -773,7 +885,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(DxgiModeDesc* pModeToMatch, ref DxgiModeDesc pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
@@ -786,7 +900,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode(ref DxgiModeDesc pModeToMatch, ref DxgiModeDesc pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] ref DxgiModeDesc pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] ref DxgiModeDesc pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
@@ -802,6 +918,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "WaitForVBlank")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult WaitForVBlank()
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -809,14 +927,18 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe HResult TakeOwnership(IUnknown* pDevice, Bool32 exclusive)
+		[NativeName(NativeNameType.Func, "TakeOwnership")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult TakeOwnership([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IUnknown*, Bool32, HResult>)(LpVtbl[8]))(ptr, pDevice, exclusive);
 			return ret;
 		}
 
-		public readonly unsafe HResult TakeOwnership(ref IUnknown pDevice, Bool32 exclusive)
+		[NativeName(NativeNameType.Func, "TakeOwnership")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult TakeOwnership([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -826,20 +948,26 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "ReleaseOwnership")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void ReleaseOwnership()
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIOutput*, void>)(LpVtbl[9]))(ptr);
 		}
 
-		public readonly unsafe HResult GetGammaControlCapabilities(DxgiGammaControlCapabilities* pGammaCaps)
+		[NativeName(NativeNameType.Func, "GetGammaControlCapabilities")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGammaControlCapabilities([NativeName(NativeNameType.Param, "pGammaCaps")] [NativeName(NativeNameType.Type, "DXGI_GAMMA_CONTROL_CAPABILITIES*")] DxgiGammaControlCapabilities* pGammaCaps)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiGammaControlCapabilities*, HResult>)(LpVtbl[10]))(ptr, pGammaCaps);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetGammaControlCapabilities(ref DxgiGammaControlCapabilities pGammaCaps)
+		[NativeName(NativeNameType.Func, "GetGammaControlCapabilities")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGammaControlCapabilities([NativeName(NativeNameType.Param, "pGammaCaps")] [NativeName(NativeNameType.Type, "DXGI_GAMMA_CONTROL_CAPABILITIES*")] ref DxgiGammaControlCapabilities pGammaCaps)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiGammaControlCapabilities* ppGammaCaps = &pGammaCaps)
@@ -849,14 +977,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetGammaControl(DxgiGammaControl* pArray)
+		[NativeName(NativeNameType.Func, "SetGammaControl")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetGammaControl([NativeName(NativeNameType.Param, "pArray")] [NativeName(NativeNameType.Type, "const DXGI_GAMMA_CONTROL*")] DxgiGammaControl* pArray)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiGammaControl*, HResult>)(LpVtbl[11]))(ptr, pArray);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetGammaControl(ref DxgiGammaControl pArray)
+		[NativeName(NativeNameType.Func, "SetGammaControl")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetGammaControl([NativeName(NativeNameType.Param, "pArray")] [NativeName(NativeNameType.Type, "const DXGI_GAMMA_CONTROL*")] ref DxgiGammaControl pArray)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiGammaControl* ppArray = &pArray)
@@ -866,14 +998,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetGammaControl(DxgiGammaControl* pArray)
+		[NativeName(NativeNameType.Func, "GetGammaControl")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGammaControl([NativeName(NativeNameType.Param, "pArray")] [NativeName(NativeNameType.Type, "DXGI_GAMMA_CONTROL*")] DxgiGammaControl* pArray)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiGammaControl*, HResult>)(LpVtbl[12]))(ptr, pArray);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetGammaControl(ref DxgiGammaControl pArray)
+		[NativeName(NativeNameType.Func, "GetGammaControl")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGammaControl([NativeName(NativeNameType.Param, "pArray")] [NativeName(NativeNameType.Type, "DXGI_GAMMA_CONTROL*")] ref DxgiGammaControl pArray)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiGammaControl* ppArray = &pArray)
@@ -883,14 +1019,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetDisplaySurface(IDXGISurface* pScanoutSurface)
+		[NativeName(NativeNameType.Func, "SetDisplaySurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetDisplaySurface([NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] IDXGISurface* pScanoutSurface)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(LpVtbl[13]))(ptr, pScanoutSurface);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetDisplaySurface(ref IDXGISurface pScanoutSurface)
+		[NativeName(NativeNameType.Func, "SetDisplaySurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetDisplaySurface([NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ref IDXGISurface pScanoutSurface)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISurface* ppScanoutSurface = &pScanoutSurface)
@@ -900,14 +1040,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplaySurfaceData(IDXGISurface* pDestination)
+		[NativeName(NativeNameType.Func, "GetDisplaySurfaceData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplaySurfaceData([NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] IDXGISurface* pDestination)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(LpVtbl[14]))(ptr, pDestination);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDisplaySurfaceData(ref IDXGISurface pDestination)
+		[NativeName(NativeNameType.Func, "GetDisplaySurfaceData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplaySurfaceData([NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ref IDXGISurface pDestination)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISurface* ppDestination = &pDestination)
@@ -917,14 +1061,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameStatistics(DxgiFrameStatistics* pStats)
+		[NativeName(NativeNameType.Func, "GetFrameStatistics")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameStatistics([NativeName(NativeNameType.Param, "pStats")] [NativeName(NativeNameType.Type, "DXGI_FRAME_STATISTICS*")] DxgiFrameStatistics* pStats)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiFrameStatistics*, HResult>)(LpVtbl[15]))(ptr, pStats);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFrameStatistics(ref DxgiFrameStatistics pStats)
+		[NativeName(NativeNameType.Func, "GetFrameStatistics")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameStatistics([NativeName(NativeNameType.Param, "pStats")] [NativeName(NativeNameType.Type, "DXGI_FRAME_STATISTICS*")] ref DxgiFrameStatistics pStats)
 		{
 			IDXGIOutput* ptr = (IDXGIOutput*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiFrameStatistics* ppStats = &pStats)
@@ -951,11 +1099,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_OUTPUT_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTPUT_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutputDesc
 	{
-		[NativeName("DeviceName")]
+		[NativeName(NativeNameType.Field, "DeviceName")]
+		[NativeName(NativeNameType.Type, "WCHAR[32]")]
 		public char DeviceName_0;
 		public char DeviceName_1;
 		public char DeviceName_2;
@@ -988,63 +1137,80 @@ namespace HexaEngine.DXGI
 		public char DeviceName_29;
 		public char DeviceName_30;
 		public char DeviceName_31;
-		[NativeName("DesktopCoordinates")]
+		[NativeName(NativeNameType.Field, "DesktopCoordinates")]
+		[NativeName(NativeNameType.Type, "RECT")]
 		public Rect32 DesktopCoordinates;
-		[NativeName("AttachedToDesktop")]
+		[NativeName(NativeNameType.Field, "AttachedToDesktop")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 AttachedToDesktop;
-		[NativeName("Rotation")]
+		[NativeName(NativeNameType.Field, "Rotation")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION")]
 		public DxgiModeRotation Rotation;
-		[NativeName("Monitor")]
+		[NativeName(NativeNameType.Field, "Monitor")]
+		[NativeName(NativeNameType.Type, "HMONITOR")]
 		public nint Monitor;
 
 
 	}
 
-	[NativeName("DXGI_MODE_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_MODE_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiModeDesc
 	{
-		[NativeName("Width")]
+		[NativeName(NativeNameType.Field, "Width")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Width;
-		[NativeName("Height")]
+		[NativeName(NativeNameType.Field, "Height")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Height;
-		[NativeName("RefreshRate")]
+		[NativeName(NativeNameType.Field, "RefreshRate")]
+		[NativeName(NativeNameType.Type, "DXGI_RATIONAL")]
 		public DxgiRational RefreshRate;
-		[NativeName("Format")]
+		[NativeName(NativeNameType.Field, "Format")]
+		[NativeName(NativeNameType.Type, "DXGI_FORMAT")]
 		public DxgiFormat Format;
-		[NativeName("ScanlineOrdering")]
+		[NativeName(NativeNameType.Field, "ScanlineOrdering")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCANLINE_ORDER")]
 		public DxgiModeScanlineOrder ScanlineOrdering;
-		[NativeName("Scaling")]
+		[NativeName(NativeNameType.Field, "Scaling")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCALING")]
 		public DxgiModeScaling Scaling;
 
 
 	}
 
-	[NativeName("DXGI_RATIONAL")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_RATIONAL")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiRational
 	{
-		[NativeName("Numerator")]
+		[NativeName(NativeNameType.Field, "Numerator")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Numerator;
-		[NativeName("Denominator")]
+		[NativeName(NativeNameType.Field, "Denominator")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Denominator;
 
 
 	}
 
-	[NativeName("DXGI_GAMMA_CONTROL_CAPABILITIES")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_GAMMA_CONTROL_CAPABILITIES")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiGammaControlCapabilities
 	{
-		[NativeName("ScaleAndOffsetSupported")]
+		[NativeName(NativeNameType.Field, "ScaleAndOffsetSupported")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 ScaleAndOffsetSupported;
-		[NativeName("MaxConvertedValue")]
+		[NativeName(NativeNameType.Field, "MaxConvertedValue")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float MaxConvertedValue;
-		[NativeName("MinConvertedValue")]
+		[NativeName(NativeNameType.Field, "MinConvertedValue")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float MinConvertedValue;
-		[NativeName("NumGammaControlPoints")]
+		[NativeName(NativeNameType.Field, "NumGammaControlPoints")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint NumGammaControlPoints;
-		[NativeName("ControlPointPositions")]
+		[NativeName(NativeNameType.Field, "ControlPointPositions")]
+		[NativeName(NativeNameType.Type, "float[1025]")]
 		public float ControlPointPositions_0;
 		public float ControlPointPositions_1;
 		public float ControlPointPositions_2;
@@ -2074,15 +2240,18 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_GAMMA_CONTROL")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_GAMMA_CONTROL")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiGammaControl
 	{
-		[NativeName("Scale")]
+		[NativeName(NativeNameType.Field, "Scale")]
+		[NativeName(NativeNameType.Type, "DXGI_RGB")]
 		public DxgiRgb Scale;
-		[NativeName("Offset")]
+		[NativeName(NativeNameType.Field, "Offset")]
+		[NativeName(NativeNameType.Type, "DXGI_RGB")]
 		public DxgiRgb Offset;
-		[NativeName("GammaCurve")]
+		[NativeName(NativeNameType.Field, "GammaCurve")]
+		[NativeName(NativeNameType.Type, "DXGI_RGB[1025]")]
 		public DxgiRgb GammaCurve_0;
 		public DxgiRgb GammaCurve_1;
 		public DxgiRgb GammaCurve_2;
@@ -3123,43 +3292,52 @@ namespace HexaEngine.DXGI
 		}
 	}
 
-	[NativeName("DXGI_RGB")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_RGB")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiRgb
 	{
-		[NativeName("Red")]
+		[NativeName(NativeNameType.Field, "Red")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float Red;
-		[NativeName("Green")]
+		[NativeName(NativeNameType.Field, "Green")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float Green;
-		[NativeName("Blue")]
+		[NativeName(NativeNameType.Field, "Blue")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float Blue;
 
 
 	}
 
-	[NativeName("DXGI_FRAME_STATISTICS")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_FRAME_STATISTICS")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiFrameStatistics
 	{
-		[NativeName("PresentCount")]
+		[NativeName(NativeNameType.Field, "PresentCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint PresentCount;
-		[NativeName("PresentRefreshCount")]
+		[NativeName(NativeNameType.Field, "PresentRefreshCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint PresentRefreshCount;
-		[NativeName("SyncRefreshCount")]
+		[NativeName(NativeNameType.Field, "SyncRefreshCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SyncRefreshCount;
-		[NativeName("SyncQPCTime")]
+		[NativeName(NativeNameType.Field, "SyncQPCTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long SyncQPCTime;
-		[NativeName("SyncGPUTime")]
+		[NativeName(NativeNameType.Field, "SyncGPUTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long SyncGPUTime;
 
 
 	}
 
-	[NativeName("DXGI_ADAPTER_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_ADAPTER_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiAdapterDesc
 	{
-		[NativeName("Description")]
+		[NativeName(NativeNameType.Field, "Description")]
+		[NativeName(NativeNameType.Type, "WCHAR[128]")]
 		public char Description_0;
 		public char Description_1;
 		public char Description_2;
@@ -3288,28 +3466,36 @@ namespace HexaEngine.DXGI
 		public char Description_125;
 		public char Description_126;
 		public char Description_127;
-		[NativeName("VendorId")]
+		[NativeName(NativeNameType.Field, "VendorId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint VendorId;
-		[NativeName("DeviceId")]
+		[NativeName(NativeNameType.Field, "DeviceId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint DeviceId;
-		[NativeName("SubSysId")]
+		[NativeName(NativeNameType.Field, "SubSysId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SubSysId;
-		[NativeName("Revision")]
+		[NativeName(NativeNameType.Field, "Revision")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Revision;
-		[NativeName("DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedVideoMemory;
-		[NativeName("DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedSystemMemory;
-		[NativeName("SharedSystemMemory")]
+		[NativeName(NativeNameType.Field, "SharedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint SharedSystemMemory;
-		[NativeName("AdapterLuid")]
+		[NativeName(NativeNameType.Field, "AdapterLuid")]
+		[NativeName(NativeNameType.Type, "LUID")]
 		public Luid AdapterLuid;
 
 
 	}
 
 	[Guid("310d36a0-d2e7-4c0a-aa04-6a9d23b8886a")]
-	[NativeName("IDXGISwapChain")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChain")]
 	public partial struct IDXGISwapChain : IComObject, IComObject<IDXGISwapChain>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -3321,21 +3507,27 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult Present(uint syncInterval, uint flags)
+		[NativeName(NativeNameType.Func, "Present")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult Present([NativeName(NativeNameType.Param, "SyncInterval")] [NativeName(NativeNameType.Type, "UINT")] uint syncInterval, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, uint, uint, HResult>)(LpVtbl[1]))(ptr, syncInterval, flags);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetBuffer(uint buffer, Guid* riid, void** ppSurface)
+		[NativeName(NativeNameType.Func, "GetBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetBuffer([NativeName(NativeNameType.Param, "Buffer")] [NativeName(NativeNameType.Type, "UINT")] uint buffer, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "void**")] void** ppSurface)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, uint, Guid*, void**, HResult>)(LpVtbl[2]))(ptr, buffer, riid, ppSurface);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetBuffer(uint buffer, ref Guid riid, void** ppSurface)
+		[NativeName(NativeNameType.Func, "GetBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetBuffer([NativeName(NativeNameType.Param, "Buffer")] [NativeName(NativeNameType.Type, "UINT")] uint buffer, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "void**")] void** ppSurface)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -3345,14 +3537,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetFullscreenState(Bool32 fullscreen, IDXGIOutput* pTarget)
+		[NativeName(NativeNameType.Func, "SetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetFullscreenState([NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Bool32, IDXGIOutput*, HResult>)(LpVtbl[3]))(ptr, fullscreen, pTarget);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetFullscreenState(Bool32 fullscreen, ref IDXGIOutput pTarget)
+		[NativeName(NativeNameType.Func, "SetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetFullscreenState([NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppTarget = &pTarget)
@@ -3362,14 +3558,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFullscreenState(Bool32* pFullscreen, IDXGIOutput** ppTarget)
+		[NativeName(NativeNameType.Func, "GetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenState([NativeName(NativeNameType.Param, "pFullscreen")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pFullscreen, [NativeName(NativeNameType.Param, "ppTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] IDXGIOutput** ppTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Bool32*, IDXGIOutput**, HResult>)(LpVtbl[4]))(ptr, pFullscreen, ppTarget);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFullscreenState(ref Bool32 pFullscreen, IDXGIOutput** ppTarget)
+		[NativeName(NativeNameType.Func, "GetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenState([NativeName(NativeNameType.Param, "pFullscreen")] [NativeName(NativeNameType.Type, "BOOL*")] ref Bool32 pFullscreen, [NativeName(NativeNameType.Param, "ppTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] IDXGIOutput** ppTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Bool32* ppFullscreen = &pFullscreen)
@@ -3379,7 +3579,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFullscreenState(Bool32* pFullscreen, ref IDXGIOutput* ppTarget)
+		[NativeName(NativeNameType.Func, "GetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenState([NativeName(NativeNameType.Param, "pFullscreen")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pFullscreen, [NativeName(NativeNameType.Param, "ppTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] ref IDXGIOutput* ppTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput** pppTarget = &ppTarget)
@@ -3389,7 +3591,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFullscreenState(ref Bool32 pFullscreen, ref IDXGIOutput* ppTarget)
+		[NativeName(NativeNameType.Func, "GetFullscreenState")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenState([NativeName(NativeNameType.Param, "pFullscreen")] [NativeName(NativeNameType.Type, "BOOL*")] ref Bool32 pFullscreen, [NativeName(NativeNameType.Param, "ppTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] ref IDXGIOutput* ppTarget)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Bool32* ppFullscreen = &pFullscreen)
@@ -3402,14 +3606,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDesc(DxgiSwapChainDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, DxgiSwapChainDesc*, HResult>)(LpVtbl[5]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc(ref DxgiSwapChainDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] ref DxgiSwapChainDesc pDesc)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
@@ -3419,21 +3627,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult ResizeBuffers(uint bufferCount, uint width, uint height, DxgiFormat newFormat, uint swapChainFlags)
+		[NativeName(NativeNameType.Func, "ResizeBuffers")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeBuffers([NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "NewFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat newFormat, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, uint, uint, uint, DxgiFormat, uint, HResult>)(LpVtbl[6]))(ptr, bufferCount, width, height, newFormat, swapChainFlags);
 			return ret;
 		}
 
-		public readonly unsafe HResult ResizeTarget(DxgiModeDesc* pNewTargetParameters)
+		[NativeName(NativeNameType.Func, "ResizeTarget")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeTarget([NativeName(NativeNameType.Param, "pNewTargetParameters")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pNewTargetParameters)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, DxgiModeDesc*, HResult>)(LpVtbl[7]))(ptr, pNewTargetParameters);
 			return ret;
 		}
 
-		public readonly unsafe HResult ResizeTarget(ref DxgiModeDesc pNewTargetParameters)
+		[NativeName(NativeNameType.Func, "ResizeTarget")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeTarget([NativeName(NativeNameType.Param, "pNewTargetParameters")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] ref DxgiModeDesc pNewTargetParameters)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc* ppNewTargetParameters = &pNewTargetParameters)
@@ -3443,14 +3657,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetContainingOutput(IDXGIOutput** ppOutput)
+		[NativeName(NativeNameType.Func, "GetContainingOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetContainingOutput([NativeName(NativeNameType.Param, "ppOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] IDXGIOutput** ppOutput)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, IDXGIOutput**, HResult>)(LpVtbl[8]))(ptr, ppOutput);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetContainingOutput(ref IDXGIOutput* ppOutput)
+		[NativeName(NativeNameType.Func, "GetContainingOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetContainingOutput([NativeName(NativeNameType.Param, "ppOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] ref IDXGIOutput* ppOutput)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput** pppOutput = &ppOutput)
@@ -3460,14 +3678,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetLastPresentCount(uint* pLastPresentCount)
+		[NativeName(NativeNameType.Func, "GetLastPresentCount")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetLastPresentCount([NativeName(NativeNameType.Param, "pLastPresentCount")] [NativeName(NativeNameType.Type, "UINT*")] uint* pLastPresentCount)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, uint*, HResult>)(LpVtbl[10]))(ptr, pLastPresentCount);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetLastPresentCount(ref uint pLastPresentCount)
+		[NativeName(NativeNameType.Func, "GetLastPresentCount")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetLastPresentCount([NativeName(NativeNameType.Param, "pLastPresentCount")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pLastPresentCount)
 		{
 			IDXGISwapChain* ptr = (IDXGISwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppLastPresentCount = &pLastPresentCount)
@@ -3499,32 +3721,40 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_SWAP_CHAIN_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SWAP_CHAIN_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSwapChainDesc
 	{
-		[NativeName("BufferDesc")]
+		[NativeName(NativeNameType.Field, "BufferDesc")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_DESC")]
 		public DxgiModeDesc BufferDesc;
-		[NativeName("SampleDesc")]
+		[NativeName(NativeNameType.Field, "SampleDesc")]
+		[NativeName(NativeNameType.Type, "DXGI_SAMPLE_DESC")]
 		public DxgiSampleDesc SampleDesc;
-		[NativeName("BufferUsage")]
+		[NativeName(NativeNameType.Field, "BufferUsage")]
+		[NativeName(NativeNameType.Type, "DXGI_USAGE")]
 		public uint BufferUsage;
-		[NativeName("BufferCount")]
+		[NativeName(NativeNameType.Field, "BufferCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint BufferCount;
-		[NativeName("OutputWindow")]
+		[NativeName(NativeNameType.Field, "OutputWindow")]
+		[NativeName(NativeNameType.Type, "HWND")]
 		public nint OutputWindow;
-		[NativeName("Windowed")]
+		[NativeName(NativeNameType.Field, "Windowed")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 Windowed;
-		[NativeName("SwapEffect")]
+		[NativeName(NativeNameType.Field, "SwapEffect")]
+		[NativeName(NativeNameType.Type, "DXGI_SWAP_EFFECT")]
 		public DxgiSwapEffect SwapEffect;
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Flags;
 
 
 	}
 
 	[Guid("7b7166ec-21c7-44ae-b21a-c9ae321ae369")]
-	[NativeName("IDXGIFactory")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory")]
 	public partial struct IDXGIFactory : IComObject, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -3536,14 +3766,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult EnumAdapters(uint adapter, IDXGIAdapter** ppAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapters([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] IDXGIAdapter** ppAdapter)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, uint, IDXGIAdapter**, HResult>)(LpVtbl[4]))(ptr, adapter, ppAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumAdapters(uint adapter, ref IDXGIAdapter* ppAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapters([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] ref IDXGIAdapter* ppAdapter)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIAdapter** pppAdapter = &ppAdapter)
@@ -3553,21 +3787,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult MakeWindowAssociation(nint windowHandle, uint flags)
+		[NativeName(NativeNameType.Func, "MakeWindowAssociation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult MakeWindowAssociation([NativeName(NativeNameType.Param, "WindowHandle")] [NativeName(NativeNameType.Type, "HWND")] nint windowHandle, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, nint, uint, HResult>)(LpVtbl[5]))(ptr, windowHandle, flags);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetWindowAssociation(nint* pWindowHandle)
+		[NativeName(NativeNameType.Func, "GetWindowAssociation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetWindowAssociation([NativeName(NativeNameType.Param, "pWindowHandle")] [NativeName(NativeNameType.Type, "HWND*")] nint* pWindowHandle)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, nint*, HResult>)(LpVtbl[6]))(ptr, pWindowHandle);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetWindowAssociation(ref nint pWindowHandle)
+		[NativeName(NativeNameType.Func, "GetWindowAssociation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetWindowAssociation([NativeName(NativeNameType.Param, "pWindowHandle")] [NativeName(NativeNameType.Type, "HWND*")] ref nint pWindowHandle)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (nint* ppWindowHandle = &pWindowHandle)
@@ -3577,14 +3817,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(IUnknown* pDevice, DxgiSwapChainDesc* pDesc, IDXGISwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(LpVtbl[7]))(ptr, pDevice, pDesc, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChain(ref IUnknown pDevice, DxgiSwapChainDesc* pDesc, IDXGISwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -3594,7 +3838,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(IUnknown* pDevice, ref DxgiSwapChainDesc pDesc, IDXGISwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] ref DxgiSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
@@ -3604,7 +3850,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(ref IUnknown pDevice, ref DxgiSwapChainDesc pDesc, IDXGISwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] ref DxgiSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -3617,7 +3865,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(IUnknown* pDevice, DxgiSwapChainDesc* pDesc, ref IDXGISwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] ref IDXGISwapChain* ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISwapChain** pppSwapChain = &ppSwapChain)
@@ -3627,7 +3877,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(ref IUnknown pDevice, DxgiSwapChainDesc* pDesc, ref IDXGISwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] ref IDXGISwapChain* ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -3640,7 +3892,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(IUnknown* pDevice, ref DxgiSwapChainDesc pDesc, ref IDXGISwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] ref DxgiSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] ref IDXGISwapChain* ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
@@ -3653,7 +3907,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChain(ref IUnknown pDevice, ref DxgiSwapChainDesc pDesc, ref IDXGISwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChain([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] ref DxgiSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] ref IDXGISwapChain* ppSwapChain)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -3669,14 +3925,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSoftwareAdapter(nint module, IDXGIAdapter** ppAdapter)
+		[NativeName(NativeNameType.Func, "CreateSoftwareAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSoftwareAdapter([NativeName(NativeNameType.Param, "Module")] [NativeName(NativeNameType.Type, "HMODULE")] nint module, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] IDXGIAdapter** ppAdapter)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, nint, IDXGIAdapter**, HResult>)(LpVtbl[8]))(ptr, module, ppAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSoftwareAdapter(nint module, ref IDXGIAdapter* ppAdapter)
+		[NativeName(NativeNameType.Func, "CreateSoftwareAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSoftwareAdapter([NativeName(NativeNameType.Param, "Module")] [NativeName(NativeNameType.Type, "HMODULE")] nint module, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] ref IDXGIAdapter* ppAdapter)
 		{
 			IDXGIFactory* ptr = (IDXGIFactory*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIAdapter** pppAdapter = &ppAdapter)
@@ -3704,7 +3964,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("54ec77fa-1377-44e6-8c32-88fd5f44c84c")]
-	[NativeName("IDXGIDevice")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDevice")]
 	public partial struct IDXGIDevice : IComObject, IComObject<IDXGIDevice>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -3716,14 +3976,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetAdapter(IDXGIAdapter** pAdapter)
+		[NativeName(NativeNameType.Func, "GetAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetAdapter([NativeName(NativeNameType.Param, "pAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] IDXGIAdapter** pAdapter)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IDXGIAdapter**, HResult>)(LpVtbl[4]))(ptr, pAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetAdapter(ref IDXGIAdapter* pAdapter)
+		[NativeName(NativeNameType.Func, "GetAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetAdapter([NativeName(NativeNameType.Param, "pAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter**")] ref IDXGIAdapter* pAdapter)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIAdapter** ppAdapter = &pAdapter)
@@ -3733,14 +3997,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(DxgiSurfaceDesc* pDesc, uint numSurfaces, uint usage, DxgiSharedResource* pSharedResource, IDXGISurface** ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] DxgiSurfaceDesc* pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] DxgiSharedResource* pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] IDXGISurface** ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, DxgiSurfaceDesc*, uint, uint, DxgiSharedResource*, IDXGISurface**, HResult>)(LpVtbl[5]))(ptr, pDesc, numSurfaces, usage, pSharedResource, ppSurface);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSurface(ref DxgiSurfaceDesc pDesc, uint numSurfaces, uint usage, DxgiSharedResource* pSharedResource, IDXGISurface** ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] ref DxgiSurfaceDesc pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] DxgiSharedResource* pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] IDXGISurface** ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSurfaceDesc* ppDesc = &pDesc)
@@ -3750,7 +4018,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(DxgiSurfaceDesc* pDesc, uint numSurfaces, uint usage, ref DxgiSharedResource pSharedResource, IDXGISurface** ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] DxgiSurfaceDesc* pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] ref DxgiSharedResource pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] IDXGISurface** ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSharedResource* ppSharedResource = &pSharedResource)
@@ -3760,7 +4030,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(ref DxgiSurfaceDesc pDesc, uint numSurfaces, uint usage, ref DxgiSharedResource pSharedResource, IDXGISurface** ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] ref DxgiSurfaceDesc pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] ref DxgiSharedResource pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] IDXGISurface** ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSurfaceDesc* ppDesc = &pDesc)
@@ -3773,7 +4045,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(DxgiSurfaceDesc* pDesc, uint numSurfaces, uint usage, DxgiSharedResource* pSharedResource, ref IDXGISurface* ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] DxgiSurfaceDesc* pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] DxgiSharedResource* pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] ref IDXGISurface* ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISurface** pppSurface = &ppSurface)
@@ -3783,7 +4057,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(ref DxgiSurfaceDesc pDesc, uint numSurfaces, uint usage, DxgiSharedResource* pSharedResource, ref IDXGISurface* ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] ref DxgiSurfaceDesc pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] DxgiSharedResource* pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] ref IDXGISurface* ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSurfaceDesc* ppDesc = &pDesc)
@@ -3796,7 +4072,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(DxgiSurfaceDesc* pDesc, uint numSurfaces, uint usage, ref DxgiSharedResource pSharedResource, ref IDXGISurface* ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] DxgiSurfaceDesc* pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] ref DxgiSharedResource pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] ref IDXGISurface* ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSharedResource* ppSharedResource = &pSharedResource)
@@ -3809,7 +4087,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSurface(ref DxgiSurfaceDesc pDesc, uint numSurfaces, uint usage, ref DxgiSharedResource pSharedResource, ref IDXGISurface* ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSurface([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SURFACE_DESC*")] ref DxgiSurfaceDesc pDesc, [NativeName(NativeNameType.Param, "NumSurfaces")] [NativeName(NativeNameType.Type, "UINT")] uint numSurfaces, [NativeName(NativeNameType.Param, "Usage")] [NativeName(NativeNameType.Type, "DXGI_USAGE")] uint usage, [NativeName(NativeNameType.Param, "pSharedResource")] [NativeName(NativeNameType.Type, "const DXGI_SHARED_RESOURCE*")] ref DxgiSharedResource pSharedResource, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface**")] ref IDXGISurface* ppSurface)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSurfaceDesc* ppDesc = &pDesc)
@@ -3825,61 +4105,75 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult QueryResourceResidency(IUnknown*** ppResources, DxgiResidency* pResidencyStatus, uint numResources)
+		[NativeName(NativeNameType.Func, "QueryResourceResidency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryResourceResidency([NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] IUnknown** ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown***, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, ppResources, pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, ppResources, pResidencyStatus, numResources);
 			return ret;
 		}
 
-		public readonly unsafe HResult QueryResourceResidency(ref IUnknown* ppResources, DxgiResidency* pResidencyStatus, uint numResources)
+		[NativeName(NativeNameType.Func, "QueryResourceResidency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryResourceResidency([NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ref IUnknown* ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown** pppResources = &ppResources)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown***, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, (IUnknown***)pppResources, pResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, (IUnknown**)pppResources, pResidencyStatus, numResources);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult QueryResourceResidency(IUnknown*** ppResources, ref DxgiResidency pResidencyStatus, uint numResources)
+		[NativeName(NativeNameType.Func, "QueryResourceResidency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryResourceResidency([NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] IUnknown** ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] ref DxgiResidency pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown***, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, ppResources, (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, ppResources, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult QueryResourceResidency(ref IUnknown* ppResources, ref DxgiResidency pResidencyStatus, uint numResources)
+		[NativeName(NativeNameType.Func, "QueryResourceResidency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryResourceResidency([NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ref IUnknown* ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] ref DxgiResidency pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown** pppResources = &ppResources)
 			{
 				fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown***, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, (IUnknown***)pppResources, (DxgiResidency*)ppResidencyStatus, numResources);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(LpVtbl[6]))(ptr, (IUnknown**)pppResources, (DxgiResidency*)ppResidencyStatus, numResources);
 					return ret;
 				}
 			}
 		}
 
-		public readonly unsafe HResult SetGPUThreadPriority(int priority)
+		[NativeName(NativeNameType.Func, "SetGPUThreadPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetGPUThreadPriority([NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "INT")] int priority)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, int, HResult>)(LpVtbl[7]))(ptr, priority);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetGPUThreadPriority(int* pPriority)
+		[NativeName(NativeNameType.Func, "GetGPUThreadPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGPUThreadPriority([NativeName(NativeNameType.Param, "pPriority")] [NativeName(NativeNameType.Type, "INT*")] int* pPriority)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, int*, HResult>)(LpVtbl[8]))(ptr, pPriority);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetGPUThreadPriority(ref int pPriority)
+		[NativeName(NativeNameType.Func, "GetGPUThreadPriority")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetGPUThreadPriority([NativeName(NativeNameType.Param, "pPriority")] [NativeName(NativeNameType.Type, "INT*")] ref int pPriority)
 		{
 			IDXGIDevice* ptr = (IDXGIDevice*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (int* ppPriority = &pPriority)
@@ -3906,18 +4200,19 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_SHARED_RESOURCE")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SHARED_RESOURCE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSharedResource
 	{
-		[NativeName("Handle")]
+		[NativeName(NativeNameType.Field, "Handle")]
+		[NativeName(NativeNameType.Type, "HANDLE")]
 		public nint Handle;
 
 
 	}
 
 	[Guid("770aae78-f26f-4dba-a829-253c83d1b387")]
-	[NativeName("IDXGIFactory1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory1")]
 	public partial struct IDXGIFactory1 : IComObject, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -3929,14 +4224,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult EnumAdapters1(uint adapter, IDXGIAdapter1** ppAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapters1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapters1([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter1**")] IDXGIAdapter1** ppAdapter)
 		{
 			IDXGIFactory1* ptr = (IDXGIFactory1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, uint, IDXGIAdapter1**, HResult>)(LpVtbl[5]))(ptr, adapter, ppAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumAdapters1(uint adapter, ref IDXGIAdapter1* ppAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapters1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapters1([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "ppAdapter")] [NativeName(NativeNameType.Type, "IDXGIAdapter1**")] ref IDXGIAdapter1* ppAdapter)
 		{
 			IDXGIFactory1* ptr = (IDXGIFactory1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIAdapter1** pppAdapter = &ppAdapter)
@@ -3946,6 +4245,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "IsCurrent")]
+		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public readonly unsafe Bool32 IsCurrent()
 		{
 			IDXGIFactory1* ptr = (IDXGIFactory1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -3976,7 +4277,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("29038f61-3839-4626-91fd-086879011a05")]
-	[NativeName("IDXGIAdapter1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIAdapter1")]
 	public partial struct IDXGIAdapter1 : IComObject, IComObject<IDXGIAdapter1>, IComObject<IDXGIAdapter>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -3988,14 +4289,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc1(DxgiAdapterDesc1* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC1*")] DxgiAdapterDesc1* pDesc)
 		{
 			IDXGIAdapter1* ptr = (IDXGIAdapter1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, DxgiAdapterDesc1*, HResult>)(LpVtbl[3]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc1(ref DxgiAdapterDesc1 pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC1*")] ref DxgiAdapterDesc1 pDesc)
 		{
 			IDXGIAdapter1* ptr = (IDXGIAdapter1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiAdapterDesc1* ppDesc = &pDesc)
@@ -4027,11 +4332,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_ADAPTER_DESC1")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_ADAPTER_DESC1")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiAdapterDesc1
 	{
-		[NativeName("Description")]
+		[NativeName(NativeNameType.Field, "Description")]
+		[NativeName(NativeNameType.Type, "WCHAR[128]")]
 		public char Description_0;
 		public char Description_1;
 		public char Description_2;
@@ -4160,30 +4466,39 @@ namespace HexaEngine.DXGI
 		public char Description_125;
 		public char Description_126;
 		public char Description_127;
-		[NativeName("VendorId")]
+		[NativeName(NativeNameType.Field, "VendorId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint VendorId;
-		[NativeName("DeviceId")]
+		[NativeName(NativeNameType.Field, "DeviceId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint DeviceId;
-		[NativeName("SubSysId")]
+		[NativeName(NativeNameType.Field, "SubSysId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SubSysId;
-		[NativeName("Revision")]
+		[NativeName(NativeNameType.Field, "Revision")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Revision;
-		[NativeName("DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedVideoMemory;
-		[NativeName("DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedSystemMemory;
-		[NativeName("SharedSystemMemory")]
+		[NativeName(NativeNameType.Field, "SharedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint SharedSystemMemory;
-		[NativeName("AdapterLuid")]
+		[NativeName(NativeNameType.Field, "AdapterLuid")]
+		[NativeName(NativeNameType.Type, "LUID")]
 		public Luid AdapterLuid;
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Flags;
 
 
 	}
 
 	[Guid("77db970f-6276-48ba-ba28-070143b4392c")]
-	[NativeName("IDXGIDevice1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDevice1")]
 	public partial struct IDXGIDevice1 : IComObject, IComObject<IDXGIDevice1>, IComObject<IDXGIDevice>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -4195,21 +4510,27 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult SetMaximumFrameLatency(uint maxLatency)
+		[NativeName(NativeNameType.Func, "SetMaximumFrameLatency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetMaximumFrameLatency([NativeName(NativeNameType.Param, "MaxLatency")] [NativeName(NativeNameType.Type, "UINT")] uint maxLatency)
 		{
 			IDXGIDevice1* ptr = (IDXGIDevice1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, uint, HResult>)(LpVtbl[5]))(ptr, maxLatency);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetMaximumFrameLatency(uint* pMaxLatency)
+		[NativeName(NativeNameType.Func, "GetMaximumFrameLatency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetMaximumFrameLatency([NativeName(NativeNameType.Param, "pMaxLatency")] [NativeName(NativeNameType.Type, "UINT*")] uint* pMaxLatency)
 		{
 			IDXGIDevice1* ptr = (IDXGIDevice1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, uint*, HResult>)(LpVtbl[6]))(ptr, pMaxLatency);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetMaximumFrameLatency(ref uint pMaxLatency)
+		[NativeName(NativeNameType.Func, "GetMaximumFrameLatency")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetMaximumFrameLatency([NativeName(NativeNameType.Param, "pMaxLatency")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pMaxLatency)
 		{
 			IDXGIDevice1* ptr = (IDXGIDevice1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppMaxLatency = &pMaxLatency)
@@ -4241,27 +4562,32 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("_D3DCOLORVALUE")]
+	[NativeName(NativeNameType.StructOrClass, "_D3DCOLORVALUE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct D3Dcolorvalue
 	{
-		[NativeName("r")]
+		[NativeName(NativeNameType.Field, "r")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float R;
-		[NativeName("g")]
+		[NativeName(NativeNameType.Field, "g")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float G;
-		[NativeName("b")]
+		[NativeName(NativeNameType.Field, "b")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float B;
-		[NativeName("a")]
+		[NativeName(NativeNameType.Field, "a")]
+		[NativeName(NativeNameType.Type, "float")]
 		public float A;
 
 
 	}
 
-	[NativeName("DXGI_JPEG_DC_HUFFMAN_TABLE")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_JPEG_DC_HUFFMAN_TABLE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiJpegDcHuffmanTable
 	{
-		[NativeName("CodeCounts")]
+		[NativeName(NativeNameType.Field, "CodeCounts")]
+		[NativeName(NativeNameType.Type, "BYTE[12]")]
 		public byte CodeCounts_0;
 		public byte CodeCounts_1;
 		public byte CodeCounts_2;
@@ -4274,7 +4600,8 @@ namespace HexaEngine.DXGI
 		public byte CodeCounts_9;
 		public byte CodeCounts_10;
 		public byte CodeCounts_11;
-		[NativeName("CodeValues")]
+		[NativeName(NativeNameType.Field, "CodeValues")]
+		[NativeName(NativeNameType.Type, "BYTE[12]")]
 		public byte CodeValues_0;
 		public byte CodeValues_1;
 		public byte CodeValues_2;
@@ -4291,11 +4618,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_JPEG_AC_HUFFMAN_TABLE")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_JPEG_AC_HUFFMAN_TABLE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiJpegAcHuffmanTable
 	{
-		[NativeName("CodeCounts")]
+		[NativeName(NativeNameType.Field, "CodeCounts")]
+		[NativeName(NativeNameType.Type, "BYTE[16]")]
 		public byte CodeCounts_0;
 		public byte CodeCounts_1;
 		public byte CodeCounts_2;
@@ -4312,7 +4640,8 @@ namespace HexaEngine.DXGI
 		public byte CodeCounts_13;
 		public byte CodeCounts_14;
 		public byte CodeCounts_15;
-		[NativeName("CodeValues")]
+		[NativeName(NativeNameType.Field, "CodeValues")]
+		[NativeName(NativeNameType.Type, "BYTE[162]")]
 		public byte CodeValues_0;
 		public byte CodeValues_1;
 		public byte CodeValues_2;
@@ -4479,11 +4808,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_JPEG_QUANTIZATION_TABLE")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_JPEG_QUANTIZATION_TABLE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiJpegQuantizationTable
 	{
-		[NativeName("Elements")]
+		[NativeName(NativeNameType.Field, "Elements")]
+		[NativeName(NativeNameType.Type, "BYTE[64]")]
 		public byte Elements_0;
 		public byte Elements_1;
 		public byte Elements_2;
@@ -4552,11 +4882,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_DISPLAY_COLOR_SPACE")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_DISPLAY_COLOR_SPACE")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiDisplayColorSpace
 	{
-		[NativeName("PrimaryCoordinates")]
+		[NativeName(NativeNameType.Field, "PrimaryCoordinates")]
+		[NativeName(NativeNameType.Type, "FLOAT[2][8]")]
 		public unsafe float* PrimaryCoordinates_0;
 		public unsafe float* PrimaryCoordinates_1;
 		public unsafe float* PrimaryCoordinates_2;
@@ -4565,7 +4896,8 @@ namespace HexaEngine.DXGI
 		public unsafe float* PrimaryCoordinates_5;
 		public unsafe float* PrimaryCoordinates_6;
 		public unsafe float* PrimaryCoordinates_7;
-		[NativeName("WhitePoints")]
+		[NativeName(NativeNameType.Field, "WhitePoints")]
+		[NativeName(NativeNameType.Type, "FLOAT[2][16]")]
 		public unsafe float* WhitePoints_0;
 		public unsafe float* WhitePoints_1;
 		public unsafe float* WhitePoints_2;
@@ -4587,7 +4919,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("ea9dbf1a-c88e-4486-854a-98aa0138f30c")]
-	[NativeName("IDXGIDisplayControl")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDisplayControl")]
 	public partial struct IDXGIDisplayControl : IComObject, IComObject<IDXGIDisplayControl>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -4599,6 +4931,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "IsStereoEnabled")]
+		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public readonly unsafe Bool32 IsStereoEnabled()
 		{
 			IDXGIDisplayControl* ptr = (IDXGIDisplayControl*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -4606,7 +4940,9 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe void SetStereoEnabled(Bool32 enabled)
+		[NativeName(NativeNameType.Func, "SetStereoEnabled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void SetStereoEnabled([NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 enabled)
 		{
 			IDXGIDisplayControl* ptr = (IDXGIDisplayControl*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIDisplayControl*, Bool32, void>)(LpVtbl[1]))(ptr, enabled);
@@ -4625,7 +4961,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("191cfac3-a341-470d-b26e-a864f428319c")]
-	[NativeName("IDXGIOutputDuplication")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutputDuplication")]
 	public partial struct IDXGIOutputDuplication : IComObject, IComObject<IDXGIOutputDuplication>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -4637,13 +4973,17 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe void GetDesc(DxgiOutduplDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_DESC*")] DxgiOutduplDesc* pDesc)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, DxgiOutduplDesc*, void>)(LpVtbl[4]))(ptr, pDesc);
 		}
 
-		public readonly unsafe void GetDesc(ref DxgiOutduplDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void GetDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_DESC*")] ref DxgiOutduplDesc pDesc)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplDesc* ppDesc = &pDesc)
@@ -4652,14 +4992,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult AcquireNextFrame(uint timeoutInMilliseconds, DxgiOutduplFrameInfo* pFrameInfo, IDXGIResource** ppDesktopResource)
+		[NativeName(NativeNameType.Func, "AcquireNextFrame")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult AcquireNextFrame([NativeName(NativeNameType.Param, "TimeoutInMilliseconds")] [NativeName(NativeNameType.Type, "UINT")] uint timeoutInMilliseconds, [NativeName(NativeNameType.Param, "pFrameInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_FRAME_INFO*")] DxgiOutduplFrameInfo* pFrameInfo, [NativeName(NativeNameType.Param, "ppDesktopResource")] [NativeName(NativeNameType.Type, "IDXGIResource**")] IDXGIResource** ppDesktopResource)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, DxgiOutduplFrameInfo*, IDXGIResource**, HResult>)(LpVtbl[5]))(ptr, timeoutInMilliseconds, pFrameInfo, ppDesktopResource);
 			return ret;
 		}
 
-		public readonly unsafe HResult AcquireNextFrame(uint timeoutInMilliseconds, ref DxgiOutduplFrameInfo pFrameInfo, IDXGIResource** ppDesktopResource)
+		[NativeName(NativeNameType.Func, "AcquireNextFrame")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult AcquireNextFrame([NativeName(NativeNameType.Param, "TimeoutInMilliseconds")] [NativeName(NativeNameType.Type, "UINT")] uint timeoutInMilliseconds, [NativeName(NativeNameType.Param, "pFrameInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_FRAME_INFO*")] ref DxgiOutduplFrameInfo pFrameInfo, [NativeName(NativeNameType.Param, "ppDesktopResource")] [NativeName(NativeNameType.Type, "IDXGIResource**")] IDXGIResource** ppDesktopResource)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplFrameInfo* ppFrameInfo = &pFrameInfo)
@@ -4669,7 +5013,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult AcquireNextFrame(uint timeoutInMilliseconds, DxgiOutduplFrameInfo* pFrameInfo, ref IDXGIResource* ppDesktopResource)
+		[NativeName(NativeNameType.Func, "AcquireNextFrame")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult AcquireNextFrame([NativeName(NativeNameType.Param, "TimeoutInMilliseconds")] [NativeName(NativeNameType.Type, "UINT")] uint timeoutInMilliseconds, [NativeName(NativeNameType.Param, "pFrameInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_FRAME_INFO*")] DxgiOutduplFrameInfo* pFrameInfo, [NativeName(NativeNameType.Param, "ppDesktopResource")] [NativeName(NativeNameType.Type, "IDXGIResource**")] ref IDXGIResource* ppDesktopResource)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppDesktopResource = &ppDesktopResource)
@@ -4679,7 +5025,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult AcquireNextFrame(uint timeoutInMilliseconds, ref DxgiOutduplFrameInfo pFrameInfo, ref IDXGIResource* ppDesktopResource)
+		[NativeName(NativeNameType.Func, "AcquireNextFrame")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult AcquireNextFrame([NativeName(NativeNameType.Param, "TimeoutInMilliseconds")] [NativeName(NativeNameType.Type, "UINT")] uint timeoutInMilliseconds, [NativeName(NativeNameType.Param, "pFrameInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_FRAME_INFO*")] ref DxgiOutduplFrameInfo pFrameInfo, [NativeName(NativeNameType.Param, "ppDesktopResource")] [NativeName(NativeNameType.Type, "IDXGIResource**")] ref IDXGIResource* ppDesktopResource)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplFrameInfo* ppFrameInfo = &pFrameInfo)
@@ -4692,14 +5040,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameDirtyRects(uint dirtyRectsBufferSize, Rect32* pDirtyRectsBuffer, uint* pDirtyRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameDirtyRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameDirtyRects([NativeName(NativeNameType.Param, "DirtyRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint dirtyRectsBufferSize, [NativeName(NativeNameType.Param, "pDirtyRectsBuffer")] [NativeName(NativeNameType.Type, "RECT*")] Rect32* pDirtyRectsBuffer, [NativeName(NativeNameType.Param, "pDirtyRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDirtyRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, Rect32*, uint*, HResult>)(LpVtbl[6]))(ptr, dirtyRectsBufferSize, pDirtyRectsBuffer, pDirtyRectsBufferSizeRequired);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFrameDirtyRects(uint dirtyRectsBufferSize, ref Rect32 pDirtyRectsBuffer, uint* pDirtyRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameDirtyRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameDirtyRects([NativeName(NativeNameType.Param, "DirtyRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint dirtyRectsBufferSize, [NativeName(NativeNameType.Param, "pDirtyRectsBuffer")] [NativeName(NativeNameType.Type, "RECT*")] ref Rect32 pDirtyRectsBuffer, [NativeName(NativeNameType.Param, "pDirtyRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDirtyRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppDirtyRectsBuffer = &pDirtyRectsBuffer)
@@ -4709,7 +5061,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameDirtyRects(uint dirtyRectsBufferSize, Rect32* pDirtyRectsBuffer, ref uint pDirtyRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameDirtyRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameDirtyRects([NativeName(NativeNameType.Param, "DirtyRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint dirtyRectsBufferSize, [NativeName(NativeNameType.Param, "pDirtyRectsBuffer")] [NativeName(NativeNameType.Type, "RECT*")] Rect32* pDirtyRectsBuffer, [NativeName(NativeNameType.Param, "pDirtyRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pDirtyRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppDirtyRectsBufferSizeRequired = &pDirtyRectsBufferSizeRequired)
@@ -4719,7 +5073,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameDirtyRects(uint dirtyRectsBufferSize, ref Rect32 pDirtyRectsBuffer, ref uint pDirtyRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameDirtyRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameDirtyRects([NativeName(NativeNameType.Param, "DirtyRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint dirtyRectsBufferSize, [NativeName(NativeNameType.Param, "pDirtyRectsBuffer")] [NativeName(NativeNameType.Type, "RECT*")] ref Rect32 pDirtyRectsBuffer, [NativeName(NativeNameType.Param, "pDirtyRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pDirtyRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppDirtyRectsBuffer = &pDirtyRectsBuffer)
@@ -4732,14 +5088,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameMoveRects(uint moveRectsBufferSize, DxgiOutduplMoveRect* pMoveRectBuffer, uint* pMoveRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameMoveRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameMoveRects([NativeName(NativeNameType.Param, "MoveRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint moveRectsBufferSize, [NativeName(NativeNameType.Param, "pMoveRectBuffer")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_MOVE_RECT*")] DxgiOutduplMoveRect* pMoveRectBuffer, [NativeName(NativeNameType.Param, "pMoveRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pMoveRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, DxgiOutduplMoveRect*, uint*, HResult>)(LpVtbl[7]))(ptr, moveRectsBufferSize, pMoveRectBuffer, pMoveRectsBufferSizeRequired);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFrameMoveRects(uint moveRectsBufferSize, ref DxgiOutduplMoveRect pMoveRectBuffer, uint* pMoveRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameMoveRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameMoveRects([NativeName(NativeNameType.Param, "MoveRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint moveRectsBufferSize, [NativeName(NativeNameType.Param, "pMoveRectBuffer")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_MOVE_RECT*")] ref DxgiOutduplMoveRect pMoveRectBuffer, [NativeName(NativeNameType.Param, "pMoveRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pMoveRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplMoveRect* ppMoveRectBuffer = &pMoveRectBuffer)
@@ -4749,7 +5109,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameMoveRects(uint moveRectsBufferSize, DxgiOutduplMoveRect* pMoveRectBuffer, ref uint pMoveRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameMoveRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameMoveRects([NativeName(NativeNameType.Param, "MoveRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint moveRectsBufferSize, [NativeName(NativeNameType.Param, "pMoveRectBuffer")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_MOVE_RECT*")] DxgiOutduplMoveRect* pMoveRectBuffer, [NativeName(NativeNameType.Param, "pMoveRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pMoveRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppMoveRectsBufferSizeRequired = &pMoveRectsBufferSizeRequired)
@@ -4759,7 +5121,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFrameMoveRects(uint moveRectsBufferSize, ref DxgiOutduplMoveRect pMoveRectBuffer, ref uint pMoveRectsBufferSizeRequired)
+		[NativeName(NativeNameType.Func, "GetFrameMoveRects")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameMoveRects([NativeName(NativeNameType.Param, "MoveRectsBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint moveRectsBufferSize, [NativeName(NativeNameType.Param, "pMoveRectBuffer")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_MOVE_RECT*")] ref DxgiOutduplMoveRect pMoveRectBuffer, [NativeName(NativeNameType.Param, "pMoveRectsBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pMoveRectsBufferSizeRequired)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplMoveRect* ppMoveRectBuffer = &pMoveRectBuffer)
@@ -4772,14 +5136,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFramePointerShape(uint pointerShapeBufferSize, void* pPointerShapeBuffer, uint* pPointerShapeBufferSizeRequired, DxgiOutduplPointerShapeInfo* pPointerShapeInfo)
+		[NativeName(NativeNameType.Func, "GetFramePointerShape")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFramePointerShape([NativeName(NativeNameType.Param, "PointerShapeBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint pointerShapeBufferSize, [NativeName(NativeNameType.Param, "pPointerShapeBuffer")] [NativeName(NativeNameType.Type, "void*")] void* pPointerShapeBuffer, [NativeName(NativeNameType.Param, "pPointerShapeBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pPointerShapeBufferSizeRequired, [NativeName(NativeNameType.Param, "pPointerShapeInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_SHAPE_INFO*")] DxgiOutduplPointerShapeInfo* pPointerShapeInfo)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(LpVtbl[8]))(ptr, pointerShapeBufferSize, pPointerShapeBuffer, pPointerShapeBufferSizeRequired, pPointerShapeInfo);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFramePointerShape(uint pointerShapeBufferSize, void* pPointerShapeBuffer, ref uint pPointerShapeBufferSizeRequired, DxgiOutduplPointerShapeInfo* pPointerShapeInfo)
+		[NativeName(NativeNameType.Func, "GetFramePointerShape")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFramePointerShape([NativeName(NativeNameType.Param, "PointerShapeBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint pointerShapeBufferSize, [NativeName(NativeNameType.Param, "pPointerShapeBuffer")] [NativeName(NativeNameType.Type, "void*")] void* pPointerShapeBuffer, [NativeName(NativeNameType.Param, "pPointerShapeBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pPointerShapeBufferSizeRequired, [NativeName(NativeNameType.Param, "pPointerShapeInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_SHAPE_INFO*")] DxgiOutduplPointerShapeInfo* pPointerShapeInfo)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppPointerShapeBufferSizeRequired = &pPointerShapeBufferSizeRequired)
@@ -4789,7 +5157,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFramePointerShape(uint pointerShapeBufferSize, void* pPointerShapeBuffer, uint* pPointerShapeBufferSizeRequired, ref DxgiOutduplPointerShapeInfo pPointerShapeInfo)
+		[NativeName(NativeNameType.Func, "GetFramePointerShape")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFramePointerShape([NativeName(NativeNameType.Param, "PointerShapeBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint pointerShapeBufferSize, [NativeName(NativeNameType.Param, "pPointerShapeBuffer")] [NativeName(NativeNameType.Type, "void*")] void* pPointerShapeBuffer, [NativeName(NativeNameType.Param, "pPointerShapeBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pPointerShapeBufferSizeRequired, [NativeName(NativeNameType.Param, "pPointerShapeInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_SHAPE_INFO*")] ref DxgiOutduplPointerShapeInfo pPointerShapeInfo)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutduplPointerShapeInfo* ppPointerShapeInfo = &pPointerShapeInfo)
@@ -4799,7 +5169,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFramePointerShape(uint pointerShapeBufferSize, void* pPointerShapeBuffer, ref uint pPointerShapeBufferSizeRequired, ref DxgiOutduplPointerShapeInfo pPointerShapeInfo)
+		[NativeName(NativeNameType.Func, "GetFramePointerShape")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFramePointerShape([NativeName(NativeNameType.Param, "PointerShapeBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint pointerShapeBufferSize, [NativeName(NativeNameType.Param, "pPointerShapeBuffer")] [NativeName(NativeNameType.Type, "void*")] void* pPointerShapeBuffer, [NativeName(NativeNameType.Param, "pPointerShapeBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pPointerShapeBufferSizeRequired, [NativeName(NativeNameType.Param, "pPointerShapeInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_SHAPE_INFO*")] ref DxgiOutduplPointerShapeInfo pPointerShapeInfo)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppPointerShapeBufferSizeRequired = &pPointerShapeBufferSizeRequired)
@@ -4812,14 +5184,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult MapDesktopSurface(DxgiMappedRect* pLockedRect)
+		[NativeName(NativeNameType.Func, "MapDesktopSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult MapDesktopSurface([NativeName(NativeNameType.Param, "pLockedRect")] [NativeName(NativeNameType.Type, "DXGI_MAPPED_RECT*")] DxgiMappedRect* pLockedRect)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, DxgiMappedRect*, HResult>)(LpVtbl[9]))(ptr, pLockedRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult MapDesktopSurface(ref DxgiMappedRect pLockedRect)
+		[NativeName(NativeNameType.Func, "MapDesktopSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult MapDesktopSurface([NativeName(NativeNameType.Param, "pLockedRect")] [NativeName(NativeNameType.Type, "DXGI_MAPPED_RECT*")] ref DxgiMappedRect pLockedRect)
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiMappedRect* ppLockedRect = &pLockedRect)
@@ -4829,6 +5205,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "UnMapDesktopSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult UnMapDesktopSurface()
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -4836,6 +5214,8 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "ReleaseFrame")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult ReleaseFrame()
 		{
 			IDXGIOutputDuplication* ptr = (IDXGIOutputDuplication*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -4860,51 +5240,64 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_OUTDUPL_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTDUPL_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutduplDesc
 	{
-		[NativeName("ModeDesc")]
+		[NativeName(NativeNameType.Field, "ModeDesc")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_DESC")]
 		public DxgiModeDesc ModeDesc;
-		[NativeName("Rotation")]
+		[NativeName(NativeNameType.Field, "Rotation")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION")]
 		public DxgiModeRotation Rotation;
-		[NativeName("DesktopImageInSystemMemory")]
+		[NativeName(NativeNameType.Field, "DesktopImageInSystemMemory")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 DesktopImageInSystemMemory;
 
 
 	}
 
-	[NativeName("DXGI_OUTDUPL_FRAME_INFO")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTDUPL_FRAME_INFO")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutduplFrameInfo
 	{
-		[NativeName("LastPresentTime")]
+		[NativeName(NativeNameType.Field, "LastPresentTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long LastPresentTime;
-		[NativeName("LastMouseUpdateTime")]
+		[NativeName(NativeNameType.Field, "LastMouseUpdateTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long LastMouseUpdateTime;
-		[NativeName("AccumulatedFrames")]
+		[NativeName(NativeNameType.Field, "AccumulatedFrames")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint AccumulatedFrames;
-		[NativeName("RectsCoalesced")]
+		[NativeName(NativeNameType.Field, "RectsCoalesced")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 RectsCoalesced;
-		[NativeName("ProtectedContentMaskedOut")]
+		[NativeName(NativeNameType.Field, "ProtectedContentMaskedOut")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 ProtectedContentMaskedOut;
-		[NativeName("PointerPosition")]
+		[NativeName(NativeNameType.Field, "PointerPosition")]
+		[NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_POSITION")]
 		public DxgiOutduplPointerPosition PointerPosition;
-		[NativeName("TotalMetadataBufferSize")]
+		[NativeName(NativeNameType.Field, "TotalMetadataBufferSize")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint TotalMetadataBufferSize;
-		[NativeName("PointerShapeBufferSize")]
+		[NativeName(NativeNameType.Field, "PointerShapeBufferSize")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint PointerShapeBufferSize;
 
 
 	}
 
-	[NativeName("DXGI_OUTDUPL_POINTER_POSITION")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTDUPL_POINTER_POSITION")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutduplPointerPosition
 	{
-		[NativeName("Position")]
+		[NativeName(NativeNameType.Field, "Position")]
+		[NativeName(NativeNameType.Type, "POINT")]
 		public Point32 Position;
-		[NativeName("Visible")]
+		[NativeName(NativeNameType.Field, "Visible")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 Visible;
 
 
@@ -4914,38 +5307,45 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_2_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_OUTDUPL_MOVE_RECT")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTDUPL_MOVE_RECT")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutduplMoveRect
 	{
-		[NativeName("SourcePoint")]
+		[NativeName(NativeNameType.Field, "SourcePoint")]
+		[NativeName(NativeNameType.Type, "POINT")]
 		public Point32 SourcePoint;
-		[NativeName("DestinationRect")]
+		[NativeName(NativeNameType.Field, "DestinationRect")]
+		[NativeName(NativeNameType.Type, "RECT")]
 		public Rect32 DestinationRect;
 
 
 	}
 
-	[NativeName("DXGI_OUTDUPL_POINTER_SHAPE_INFO")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTDUPL_POINTER_SHAPE_INFO")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutduplPointerShapeInfo
 	{
-		[NativeName("Type")]
+		[NativeName(NativeNameType.Field, "Type")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Type;
-		[NativeName("Width")]
+		[NativeName(NativeNameType.Field, "Width")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Width;
-		[NativeName("Height")]
+		[NativeName(NativeNameType.Field, "Height")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Height;
-		[NativeName("Pitch")]
+		[NativeName(NativeNameType.Field, "Pitch")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Pitch;
-		[NativeName("HotSpot")]
+		[NativeName(NativeNameType.Field, "HotSpot")]
+		[NativeName(NativeNameType.Type, "POINT")]
 		public Point32 HotSpot;
 
 
 	}
 
 	[Guid("aba496dd-b617-4cb8-a866-bc44d7eb1fa2")]
-	[NativeName("IDXGISurface2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISurface2")]
 	public partial struct IDXGISurface2 : IComObject, IComObject<IDXGISurface2>, IComObject<IDXGISurface1>, IComObject<IDXGISurface>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -4957,14 +5357,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetResource(Guid* riid, void** ppParentResource, uint* pSubresourceIndex)
+		[NativeName(NativeNameType.Func, "GetResource")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetResource([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppParentResource")] [NativeName(NativeNameType.Type, "void**")] void** ppParentResource, [NativeName(NativeNameType.Param, "pSubresourceIndex")] [NativeName(NativeNameType.Type, "UINT*")] uint* pSubresourceIndex)
 		{
 			IDXGISurface2* ptr = (IDXGISurface2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, void**, uint*, HResult>)(LpVtbl[2]))(ptr, riid, ppParentResource, pSubresourceIndex);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetResource(ref Guid riid, void** ppParentResource, uint* pSubresourceIndex)
+		[NativeName(NativeNameType.Func, "GetResource")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetResource([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppParentResource")] [NativeName(NativeNameType.Type, "void**")] void** ppParentResource, [NativeName(NativeNameType.Param, "pSubresourceIndex")] [NativeName(NativeNameType.Type, "UINT*")] uint* pSubresourceIndex)
 		{
 			IDXGISurface2* ptr = (IDXGISurface2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -4974,7 +5378,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetResource(Guid* riid, void** ppParentResource, ref uint pSubresourceIndex)
+		[NativeName(NativeNameType.Func, "GetResource")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetResource([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppParentResource")] [NativeName(NativeNameType.Type, "void**")] void** ppParentResource, [NativeName(NativeNameType.Param, "pSubresourceIndex")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pSubresourceIndex)
 		{
 			IDXGISurface2* ptr = (IDXGISurface2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppSubresourceIndex = &pSubresourceIndex)
@@ -4984,7 +5390,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetResource(ref Guid riid, void** ppParentResource, ref uint pSubresourceIndex)
+		[NativeName(NativeNameType.Func, "GetResource")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetResource([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppParentResource")] [NativeName(NativeNameType.Type, "void**")] void** ppParentResource, [NativeName(NativeNameType.Param, "pSubresourceIndex")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pSubresourceIndex)
 		{
 			IDXGISurface2* ptr = (IDXGISurface2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -5030,7 +5438,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("30961379-4609-4a41-998e-54fe567ee0c1")]
-	[NativeName("IDXGIResource1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIResource1")]
 	public partial struct IDXGIResource1 : IComObject, IComObject<IDXGIResource1>, IComObject<IDXGIResource>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -5042,14 +5450,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult CreateSubresourceSurface(uint index, IDXGISurface2** ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSubresourceSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSubresourceSurface([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "UINT")] uint index, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface2**")] IDXGISurface2** ppSurface)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, uint, IDXGISurface2**, HResult>)(LpVtbl[4]))(ptr, index, ppSurface);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSubresourceSurface(uint index, ref IDXGISurface2* ppSurface)
+		[NativeName(NativeNameType.Func, "CreateSubresourceSurface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSubresourceSurface([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "UINT")] uint index, [NativeName(NativeNameType.Param, "ppSurface")] [NativeName(NativeNameType.Type, "IDXGISurface2**")] ref IDXGISurface2* ppSurface)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISurface2** pppSurface = &ppSurface)
@@ -5059,14 +5471,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSharedHandle(SecurityAttributes* pAttributes, uint dwAccess, char* lpName, nint* pHandle)
+		[NativeName(NativeNameType.Func, "CreateSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSharedHandle([NativeName(NativeNameType.Param, "pAttributes")] [NativeName(NativeNameType.Type, "const SECURITY_ATTRIBUTES*")] SecurityAttributes* pAttributes, [NativeName(NativeNameType.Param, "dwAccess")] [NativeName(NativeNameType.Type, "DWORD")] uint dwAccess, [NativeName(NativeNameType.Param, "lpName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* lpName, [NativeName(NativeNameType.Param, "pHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] nint* pHandle)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, SecurityAttributes*, uint, char*, nint*, HResult>)(LpVtbl[5]))(ptr, pAttributes, dwAccess, lpName, pHandle);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSharedHandle(ref SecurityAttributes pAttributes, uint dwAccess, char* lpName, nint* pHandle)
+		[NativeName(NativeNameType.Func, "CreateSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSharedHandle([NativeName(NativeNameType.Param, "pAttributes")] [NativeName(NativeNameType.Type, "const SECURITY_ATTRIBUTES*")] ref SecurityAttributes pAttributes, [NativeName(NativeNameType.Param, "dwAccess")] [NativeName(NativeNameType.Type, "DWORD")] uint dwAccess, [NativeName(NativeNameType.Param, "lpName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* lpName, [NativeName(NativeNameType.Param, "pHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] nint* pHandle)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (SecurityAttributes* ppAttributes = &pAttributes)
@@ -5076,7 +5492,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSharedHandle(SecurityAttributes* pAttributes, uint dwAccess, char* lpName, ref nint pHandle)
+		[NativeName(NativeNameType.Func, "CreateSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSharedHandle([NativeName(NativeNameType.Param, "pAttributes")] [NativeName(NativeNameType.Type, "const SECURITY_ATTRIBUTES*")] SecurityAttributes* pAttributes, [NativeName(NativeNameType.Param, "dwAccess")] [NativeName(NativeNameType.Type, "DWORD")] uint dwAccess, [NativeName(NativeNameType.Param, "lpName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* lpName, [NativeName(NativeNameType.Param, "pHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] ref nint pHandle)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (nint* ppHandle = &pHandle)
@@ -5086,7 +5504,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSharedHandle(ref SecurityAttributes pAttributes, uint dwAccess, char* lpName, ref nint pHandle)
+		[NativeName(NativeNameType.Func, "CreateSharedHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSharedHandle([NativeName(NativeNameType.Param, "pAttributes")] [NativeName(NativeNameType.Type, "const SECURITY_ATTRIBUTES*")] ref SecurityAttributes pAttributes, [NativeName(NativeNameType.Param, "dwAccess")] [NativeName(NativeNameType.Type, "DWORD")] uint dwAccess, [NativeName(NativeNameType.Param, "lpName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* lpName, [NativeName(NativeNameType.Param, "pHandle")] [NativeName(NativeNameType.Type, "HANDLE*")] ref nint pHandle)
 		{
 			IDXGIResource1* ptr = (IDXGIResource1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (SecurityAttributes* ppAttributes = &pAttributes)
@@ -5127,7 +5547,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("05008617-fbfd-4051-a790-144884b4f6a9")]
-	[NativeName("IDXGIDevice2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDevice2")]
 	public partial struct IDXGIDevice2 : IComObject, IComObject<IDXGIDevice2>, IComObject<IDXGIDevice1>, IComObject<IDXGIDevice>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -5139,64 +5559,78 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult OfferResources(uint numResources, IDXGIResource*** ppResources, DxgiOfferResourcePriority priority)
+		[NativeName(NativeNameType.Func, "OfferResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult OfferResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, DxgiOfferResourcePriority, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, priority);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, priority);
 			return ret;
 		}
 
-		public readonly unsafe HResult OfferResources(uint numResources, ref IDXGIResource* ppResources, DxgiOfferResourcePriority priority)
+		[NativeName(NativeNameType.Func, "OfferResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult OfferResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, DxgiOfferResourcePriority, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource***)pppResources, priority);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource**)pppResources, priority);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources(uint numResources, IDXGIResource*** ppResources, Bool32* pDiscarded)
+		[NativeName(NativeNameType.Func, "ReclaimResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pDiscarded)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, ppResources, pDiscarded);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, ppResources, pDiscarded);
 			return ret;
 		}
 
-		public readonly unsafe HResult ReclaimResources(uint numResources, ref IDXGIResource* ppResources, Bool32* pDiscarded)
+		[NativeName(NativeNameType.Func, "ReclaimResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pDiscarded)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, (IDXGIResource***)pppResources, pDiscarded);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, (IDXGIResource**)pppResources, pDiscarded);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources(uint numResources, IDXGIResource*** ppResources, ref Bool32 pDiscarded)
+		[NativeName(NativeNameType.Func, "ReclaimResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] ref Bool32 pDiscarded)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Bool32* ppDiscarded = &pDiscarded)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, ppResources, (Bool32*)ppDiscarded);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, ppResources, (Bool32*)ppDiscarded);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources(uint numResources, ref IDXGIResource* ppResources, ref Bool32 pDiscarded)
+		[NativeName(NativeNameType.Func, "ReclaimResources")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] ref Bool32 pDiscarded)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
 				fixed (Bool32* ppDiscarded = &pDiscarded)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource***, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, (IDXGIResource***)pppResources, (Bool32*)ppDiscarded);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(LpVtbl[3]))(ptr, numResources, (IDXGIResource**)pppResources, (Bool32*)ppDiscarded);
 					return ret;
 				}
 			}
 		}
 
-		public readonly unsafe HResult EnqueueSetEvent(nint hEvent)
+		[NativeName(NativeNameType.Func, "EnqueueSetEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnqueueSetEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent)
 		{
 			IDXGIDevice2* ptr = (IDXGIDevice2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, nint, HResult>)(LpVtbl[4]))(ptr, hEvent);
@@ -5231,7 +5665,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("790a45f7-0d42-4876-983a-0a55cfe6f4aa")]
-	[NativeName("IDXGISwapChain1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChain1")]
 	public partial struct IDXGISwapChain1 : IComObject, IComObject<IDXGISwapChain1>, IComObject<IDXGISwapChain>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -5243,14 +5677,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc1(DxgiSwapChainDesc1* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, DxgiSwapChainDesc1*, HResult>)(LpVtbl[10]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc1(ref DxgiSwapChainDesc1 pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5260,14 +5698,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetFullscreenDesc(DxgiSwapChainFullscreenDesc* pDesc)
+		[NativeName(NativeNameType.Func, "GetFullscreenDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pDesc)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, DxgiSwapChainFullscreenDesc*, HResult>)(LpVtbl[11]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFullscreenDesc(ref DxgiSwapChainFullscreenDesc pDesc)
+		[NativeName(NativeNameType.Func, "GetFullscreenDesc")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFullscreenDesc([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pDesc)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainFullscreenDesc* ppDesc = &pDesc)
@@ -5277,14 +5719,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetHwnd(nint* pHwnd)
+		[NativeName(NativeNameType.Func, "GetHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetHwnd([NativeName(NativeNameType.Param, "pHwnd")] [NativeName(NativeNameType.Type, "HWND*")] nint* pHwnd)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, nint*, HResult>)(LpVtbl[12]))(ptr, pHwnd);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetHwnd(ref nint pHwnd)
+		[NativeName(NativeNameType.Func, "GetHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetHwnd([NativeName(NativeNameType.Param, "pHwnd")] [NativeName(NativeNameType.Type, "HWND*")] ref nint pHwnd)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (nint* ppHwnd = &pHwnd)
@@ -5294,14 +5740,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetCoreWindow(Guid* refiid, void** ppUnk)
+		[NativeName(NativeNameType.Func, "GetCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetCoreWindow([NativeName(NativeNameType.Param, "refiid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* refiid, [NativeName(NativeNameType.Param, "ppUnk")] [NativeName(NativeNameType.Type, "void**")] void** ppUnk)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, void**, HResult>)(LpVtbl[13]))(ptr, refiid, ppUnk);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetCoreWindow(ref Guid refiid, void** ppUnk)
+		[NativeName(NativeNameType.Func, "GetCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetCoreWindow([NativeName(NativeNameType.Param, "refiid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid refiid, [NativeName(NativeNameType.Param, "ppUnk")] [NativeName(NativeNameType.Type, "void**")] void** ppUnk)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* prefiid = &refiid)
@@ -5311,14 +5761,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult Present1(uint syncInterval, uint presentFlags, DxgiPresentParameters* pPresentParameters)
+		[NativeName(NativeNameType.Func, "Present1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult Present1([NativeName(NativeNameType.Param, "SyncInterval")] [NativeName(NativeNameType.Type, "UINT")] uint syncInterval, [NativeName(NativeNameType.Param, "PresentFlags")] [NativeName(NativeNameType.Type, "UINT")] uint presentFlags, [NativeName(NativeNameType.Param, "pPresentParameters")] [NativeName(NativeNameType.Type, "const DXGI_PRESENT_PARAMETERS*")] DxgiPresentParameters* pPresentParameters)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, uint, uint, DxgiPresentParameters*, HResult>)(LpVtbl[14]))(ptr, syncInterval, presentFlags, pPresentParameters);
 			return ret;
 		}
 
-		public readonly unsafe HResult Present1(uint syncInterval, uint presentFlags, ref DxgiPresentParameters pPresentParameters)
+		[NativeName(NativeNameType.Func, "Present1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult Present1([NativeName(NativeNameType.Param, "SyncInterval")] [NativeName(NativeNameType.Type, "UINT")] uint syncInterval, [NativeName(NativeNameType.Param, "PresentFlags")] [NativeName(NativeNameType.Type, "UINT")] uint presentFlags, [NativeName(NativeNameType.Param, "pPresentParameters")] [NativeName(NativeNameType.Type, "const DXGI_PRESENT_PARAMETERS*")] ref DxgiPresentParameters pPresentParameters)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiPresentParameters* ppPresentParameters = &pPresentParameters)
@@ -5328,6 +5782,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "IsTemporaryMonoSupported")]
+		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public readonly unsafe Bool32 IsTemporaryMonoSupported()
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -5335,14 +5791,18 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe HResult GetRestrictToOutput(IDXGIOutput** ppRestrictToOutput)
+		[NativeName(NativeNameType.Func, "GetRestrictToOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetRestrictToOutput([NativeName(NativeNameType.Param, "ppRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] IDXGIOutput** ppRestrictToOutput)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, IDXGIOutput**, HResult>)(LpVtbl[16]))(ptr, ppRestrictToOutput);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetRestrictToOutput(ref IDXGIOutput* ppRestrictToOutput)
+		[NativeName(NativeNameType.Func, "GetRestrictToOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetRestrictToOutput([NativeName(NativeNameType.Param, "ppRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput**")] ref IDXGIOutput* ppRestrictToOutput)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput** pppRestrictToOutput = &ppRestrictToOutput)
@@ -5352,14 +5812,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetBackgroundColor(Vector4* pColor)
+		[NativeName(NativeNameType.Func, "SetBackgroundColor")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetBackgroundColor([NativeName(NativeNameType.Param, "pColor")] [NativeName(NativeNameType.Type, "const DXGI_RGBA*")] Vector4* pColor)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Vector4*, HResult>)(LpVtbl[17]))(ptr, pColor);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetBackgroundColor(ref Vector4 pColor)
+		[NativeName(NativeNameType.Func, "SetBackgroundColor")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetBackgroundColor([NativeName(NativeNameType.Param, "pColor")] [NativeName(NativeNameType.Type, "const DXGI_RGBA*")] ref Vector4 pColor)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Vector4* ppColor = &pColor)
@@ -5369,14 +5833,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetBackgroundColor(Vector4* pColor)
+		[NativeName(NativeNameType.Func, "GetBackgroundColor")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetBackgroundColor([NativeName(NativeNameType.Param, "pColor")] [NativeName(NativeNameType.Type, "DXGI_RGBA*")] Vector4* pColor)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Vector4*, HResult>)(LpVtbl[18]))(ptr, pColor);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetBackgroundColor(ref Vector4 pColor)
+		[NativeName(NativeNameType.Func, "GetBackgroundColor")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetBackgroundColor([NativeName(NativeNameType.Param, "pColor")] [NativeName(NativeNameType.Type, "DXGI_RGBA*")] ref Vector4 pColor)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Vector4* ppColor = &pColor)
@@ -5386,21 +5854,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetRotation(DxgiModeRotation rotation)
+		[NativeName(NativeNameType.Func, "SetRotation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetRotation([NativeName(NativeNameType.Param, "Rotation")] [NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION")] DxgiModeRotation rotation)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, DxgiModeRotation, HResult>)(LpVtbl[19]))(ptr, rotation);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetRotation(DxgiModeRotation* pRotation)
+		[NativeName(NativeNameType.Func, "GetRotation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetRotation([NativeName(NativeNameType.Param, "pRotation")] [NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION*")] DxgiModeRotation* pRotation)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, DxgiModeRotation*, HResult>)(LpVtbl[20]))(ptr, pRotation);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetRotation(ref DxgiModeRotation pRotation)
+		[NativeName(NativeNameType.Func, "GetRotation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetRotation([NativeName(NativeNameType.Param, "pRotation")] [NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION*")] ref DxgiModeRotation pRotation)
 		{
 			IDXGISwapChain1* ptr = (IDXGISwapChain1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeRotation* ppRotation = &pRotation)
@@ -5437,74 +5911,93 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_SWAP_CHAIN_DESC1")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SWAP_CHAIN_DESC1")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSwapChainDesc1
 	{
-		[NativeName("Width")]
+		[NativeName(NativeNameType.Field, "Width")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Width;
-		[NativeName("Height")]
+		[NativeName(NativeNameType.Field, "Height")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Height;
-		[NativeName("Format")]
+		[NativeName(NativeNameType.Field, "Format")]
+		[NativeName(NativeNameType.Type, "DXGI_FORMAT")]
 		public DxgiFormat Format;
-		[NativeName("Stereo")]
+		[NativeName(NativeNameType.Field, "Stereo")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 Stereo;
-		[NativeName("SampleDesc")]
+		[NativeName(NativeNameType.Field, "SampleDesc")]
+		[NativeName(NativeNameType.Type, "DXGI_SAMPLE_DESC")]
 		public DxgiSampleDesc SampleDesc;
-		[NativeName("BufferUsage")]
+		[NativeName(NativeNameType.Field, "BufferUsage")]
+		[NativeName(NativeNameType.Type, "DXGI_USAGE")]
 		public uint BufferUsage;
-		[NativeName("BufferCount")]
+		[NativeName(NativeNameType.Field, "BufferCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint BufferCount;
-		[NativeName("Scaling")]
+		[NativeName(NativeNameType.Field, "Scaling")]
+		[NativeName(NativeNameType.Type, "DXGI_SCALING")]
 		public DxgiScaling Scaling;
-		[NativeName("SwapEffect")]
+		[NativeName(NativeNameType.Field, "SwapEffect")]
+		[NativeName(NativeNameType.Type, "DXGI_SWAP_EFFECT")]
 		public DxgiSwapEffect SwapEffect;
-		[NativeName("AlphaMode")]
+		[NativeName(NativeNameType.Field, "AlphaMode")]
+		[NativeName(NativeNameType.Type, "DXGI_ALPHA_MODE")]
 		public DxgiAlphaMode AlphaMode;
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Flags;
 
 
 	}
 
-	[NativeName("DXGI_SWAP_CHAIN_FULLSCREEN_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_SWAP_CHAIN_FULLSCREEN_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiSwapChainFullscreenDesc
 	{
-		[NativeName("RefreshRate")]
+		[NativeName(NativeNameType.Field, "RefreshRate")]
+		[NativeName(NativeNameType.Type, "DXGI_RATIONAL")]
 		public DxgiRational RefreshRate;
-		[NativeName("ScanlineOrdering")]
+		[NativeName(NativeNameType.Field, "ScanlineOrdering")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCANLINE_ORDER")]
 		public DxgiModeScanlineOrder ScanlineOrdering;
-		[NativeName("Scaling")]
+		[NativeName(NativeNameType.Field, "Scaling")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCALING")]
 		public DxgiModeScaling Scaling;
-		[NativeName("Windowed")]
+		[NativeName(NativeNameType.Field, "Windowed")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 Windowed;
 
 
 	}
 
-	[NativeName("DXGI_PRESENT_PARAMETERS")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_PRESENT_PARAMETERS")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiPresentParameters
 	{
-		[NativeName("DirtyRectsCount")]
+		[NativeName(NativeNameType.Field, "DirtyRectsCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint DirtyRectsCount;
-		[NativeName("pDirtyRects")]
 		/// <summary>
 		/// [annotation] <br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "pDirtyRects")]
+		[NativeName(NativeNameType.Type, "RECT*")]
 		public unsafe Rect32* PDirtyRects;
 
-		[NativeName("pScrollRect")]
+		[NativeName(NativeNameType.Field, "pScrollRect")]
+		[NativeName(NativeNameType.Type, "RECT*")]
 		public unsafe Rect32* PScrollRect;
-		[NativeName("pScrollOffset")]
+		[NativeName(NativeNameType.Field, "pScrollOffset")]
+		[NativeName(NativeNameType.Type, "POINT*")]
 		public unsafe Point32* PScrollOffset;
 
 
 	}
 
 	[Guid("50c83a1c-e072-4c48-87b0-3630fa36a6d0")]
-	[NativeName("IDXGIFactory2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory2")]
 	public partial struct IDXGIFactory2 : IComObject, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -5516,6 +6009,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "IsWindowedStereoEnabled")]
+		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public readonly unsafe Bool32 IsWindowedStereoEnabled()
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -5523,14 +6018,18 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(LpVtbl[3]))(ptr, pDevice, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5540,7 +6039,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5550,7 +6051,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5563,7 +6066,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
@@ -5573,7 +6078,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5586,7 +6093,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5599,7 +6108,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5615,7 +6126,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -5625,7 +6138,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5638,7 +6153,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5651,7 +6168,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5667,7 +6186,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
@@ -5680,7 +6201,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5696,7 +6219,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5712,7 +6237,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5731,7 +6258,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISwapChain1** pppSwapChain = &ppSwapChain)
@@ -5741,7 +6270,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5754,7 +6285,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5767,7 +6300,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5783,7 +6318,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
@@ -5796,7 +6333,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5812,7 +6351,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5828,7 +6369,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5847,7 +6390,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -5860,7 +6405,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5876,7 +6423,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5892,7 +6441,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, DxgiSwapChainFullscreenDesc* pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5911,7 +6462,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
@@ -5927,7 +6480,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, DxgiSwapChainDesc1* pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5946,7 +6501,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(IUnknown* pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -5965,7 +6522,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForHwnd(ref IUnknown pDevice, nint hWnd, ref DxgiSwapChainDesc1 pDesc, ref DxgiSwapChainFullscreenDesc pFullscreenDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForHwnd")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForHwnd([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] ref DxgiSwapChainFullscreenDesc pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -5987,14 +6546,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(LpVtbl[4]))(ptr, pDevice, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6004,7 +6567,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6014,7 +6579,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6027,7 +6594,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6037,7 +6606,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6050,7 +6621,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6063,7 +6636,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6079,7 +6654,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -6089,7 +6666,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6102,7 +6681,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6115,7 +6696,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6131,7 +6714,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6144,7 +6729,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6160,7 +6747,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6176,7 +6765,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6195,7 +6786,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISwapChain1** pppSwapChain = &ppSwapChain)
@@ -6205,7 +6798,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6218,7 +6813,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6231,7 +6828,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6247,7 +6846,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6260,7 +6861,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6276,7 +6879,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6292,7 +6897,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6311,7 +6918,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -6324,7 +6933,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6340,7 +6951,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6356,7 +6969,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6375,7 +6990,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6391,7 +7008,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, IUnknown* pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6410,7 +7029,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(IUnknown* pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppWindow = &pWindow)
@@ -6429,7 +7050,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCoreWindow(ref IUnknown pDevice, ref IUnknown pWindow, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCoreWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCoreWindow([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6451,14 +7074,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetSharedResourceAdapterLuid(nint hResource, Luid* pLuid)
+		[NativeName(NativeNameType.Func, "GetSharedResourceAdapterLuid")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSharedResourceAdapterLuid([NativeName(NativeNameType.Param, "hResource")] [NativeName(NativeNameType.Type, "HANDLE")] nint hResource, [NativeName(NativeNameType.Param, "pLuid")] [NativeName(NativeNameType.Type, "LUID*")] Luid* pLuid)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, nint, Luid*, HResult>)(LpVtbl[5]))(ptr, hResource, pLuid);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSharedResourceAdapterLuid(nint hResource, ref Luid pLuid)
+		[NativeName(NativeNameType.Func, "GetSharedResourceAdapterLuid")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSharedResourceAdapterLuid([NativeName(NativeNameType.Param, "hResource")] [NativeName(NativeNameType.Type, "HANDLE")] nint hResource, [NativeName(NativeNameType.Param, "pLuid")] [NativeName(NativeNameType.Type, "LUID*")] ref Luid pLuid)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Luid* ppLuid = &pLuid)
@@ -6468,14 +7095,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult RegisterStereoStatusWindow(nint windowHandle, uint wMsg, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterStereoStatusWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterStereoStatusWindow([NativeName(NativeNameType.Param, "WindowHandle")] [NativeName(NativeNameType.Type, "HWND")] nint windowHandle, [NativeName(NativeNameType.Param, "wMsg")] [NativeName(NativeNameType.Type, "UINT")] uint wMsg, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, nint, uint, uint*, HResult>)(LpVtbl[6]))(ptr, windowHandle, wMsg, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterStereoStatusWindow(nint windowHandle, uint wMsg, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterStereoStatusWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterStereoStatusWindow([NativeName(NativeNameType.Param, "WindowHandle")] [NativeName(NativeNameType.Type, "HWND")] nint windowHandle, [NativeName(NativeNameType.Param, "wMsg")] [NativeName(NativeNameType.Type, "UINT")] uint wMsg, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -6485,14 +7116,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult RegisterStereoStatusEvent(nint hEvent, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterStereoStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterStereoStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, nint, uint*, HResult>)(LpVtbl[7]))(ptr, hEvent, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterStereoStatusEvent(nint hEvent, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterStereoStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterStereoStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -6502,20 +7137,26 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe void UnregisterStereoStatus(uint dwCookie)
+		[NativeName(NativeNameType.Func, "UnregisterStereoStatus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void UnregisterStereoStatus([NativeName(NativeNameType.Param, "dwCookie")] [NativeName(NativeNameType.Type, "DWORD")] uint dwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIFactory2*, uint, void>)(LpVtbl[8]))(ptr, dwCookie);
 		}
 
-		public readonly unsafe HResult RegisterOcclusionStatusWindow(nint windowHandle, uint wMsg, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterOcclusionStatusWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterOcclusionStatusWindow([NativeName(NativeNameType.Param, "WindowHandle")] [NativeName(NativeNameType.Type, "HWND")] nint windowHandle, [NativeName(NativeNameType.Param, "wMsg")] [NativeName(NativeNameType.Type, "UINT")] uint wMsg, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, nint, uint, uint*, HResult>)(LpVtbl[9]))(ptr, windowHandle, wMsg, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterOcclusionStatusWindow(nint windowHandle, uint wMsg, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterOcclusionStatusWindow")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterOcclusionStatusWindow([NativeName(NativeNameType.Param, "WindowHandle")] [NativeName(NativeNameType.Type, "HWND")] nint windowHandle, [NativeName(NativeNameType.Param, "wMsg")] [NativeName(NativeNameType.Type, "UINT")] uint wMsg, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -6525,14 +7166,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult RegisterOcclusionStatusEvent(nint hEvent, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterOcclusionStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterOcclusionStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, nint, uint*, HResult>)(LpVtbl[10]))(ptr, hEvent, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterOcclusionStatusEvent(nint hEvent, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterOcclusionStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterOcclusionStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -6542,20 +7187,26 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe void UnregisterOcclusionStatus(uint dwCookie)
+		[NativeName(NativeNameType.Func, "UnregisterOcclusionStatus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void UnregisterOcclusionStatus([NativeName(NativeNameType.Param, "dwCookie")] [NativeName(NativeNameType.Type, "DWORD")] uint dwCookie)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIFactory2*, uint, void>)(LpVtbl[11]))(ptr, dwCookie);
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(LpVtbl[12]))(ptr, pDevice, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6565,7 +7216,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6575,7 +7228,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6588,7 +7243,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -6598,7 +7255,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6611,7 +7270,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6624,7 +7285,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6640,7 +7303,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISwapChain1** pppSwapChain = &ppSwapChain)
@@ -6650,7 +7315,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6663,7 +7330,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6676,7 +7345,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6692,7 +7363,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -6705,7 +7378,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6721,7 +7396,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(IUnknown* pDevice, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -6737,7 +7414,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForComposition(ref IUnknown pDevice, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForComposition")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForComposition([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactory2* ptr = (IDXGIFactory2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -6784,7 +7463,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("0aa1ae0a-fa0e-4b84-8644-e05ff8e5acb5")]
-	[NativeName("IDXGIAdapter2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIAdapter2")]
 	public partial struct IDXGIAdapter2 : IComObject, IComObject<IDXGIAdapter2>, IComObject<IDXGIAdapter1>, IComObject<IDXGIAdapter>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -6796,14 +7475,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc2(DxgiAdapterDesc2* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc2")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc2([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC2*")] DxgiAdapterDesc2* pDesc)
 		{
 			IDXGIAdapter2* ptr = (IDXGIAdapter2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, DxgiAdapterDesc2*, HResult>)(LpVtbl[1]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc2(ref DxgiAdapterDesc2 pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc2")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc2([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC2*")] ref DxgiAdapterDesc2 pDesc)
 		{
 			IDXGIAdapter2* ptr = (IDXGIAdapter2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiAdapterDesc2* ppDesc = &pDesc)
@@ -6840,11 +7523,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_ADAPTER_DESC2")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_ADAPTER_DESC2")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiAdapterDesc2
 	{
-		[NativeName("Description")]
+		[NativeName(NativeNameType.Field, "Description")]
+		[NativeName(NativeNameType.Type, "WCHAR[128]")]
 		public char Description_0;
 		public char Description_1;
 		public char Description_2;
@@ -6973,34 +7657,45 @@ namespace HexaEngine.DXGI
 		public char Description_125;
 		public char Description_126;
 		public char Description_127;
-		[NativeName("VendorId")]
+		[NativeName(NativeNameType.Field, "VendorId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint VendorId;
-		[NativeName("DeviceId")]
+		[NativeName(NativeNameType.Field, "DeviceId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint DeviceId;
-		[NativeName("SubSysId")]
+		[NativeName(NativeNameType.Field, "SubSysId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SubSysId;
-		[NativeName("Revision")]
+		[NativeName(NativeNameType.Field, "Revision")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Revision;
-		[NativeName("DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedVideoMemory;
-		[NativeName("DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedSystemMemory;
-		[NativeName("SharedSystemMemory")]
+		[NativeName(NativeNameType.Field, "SharedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint SharedSystemMemory;
-		[NativeName("AdapterLuid")]
+		[NativeName(NativeNameType.Field, "AdapterLuid")]
+		[NativeName(NativeNameType.Type, "LUID")]
 		public Luid AdapterLuid;
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Flags;
-		[NativeName("GraphicsPreemptionGranularity")]
+		[NativeName(NativeNameType.Field, "GraphicsPreemptionGranularity")]
+		[NativeName(NativeNameType.Type, "DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
 		public DxgiGraphicsPreemptionGranularity GraphicsPreemptionGranularity;
-		[NativeName("ComputePreemptionGranularity")]
+		[NativeName(NativeNameType.Field, "ComputePreemptionGranularity")]
+		[NativeName(NativeNameType.Type, "DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
 		public DxgiComputePreemptionGranularity ComputePreemptionGranularity;
 
 
 	}
 
 	[Guid("00cddea8-939b-4b83-a340-a685226666cc")]
-	[NativeName("IDXGIOutput1")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput1")]
 	public partial struct IDXGIOutput1 : IComObject, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7012,14 +7707,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDisplayModeList1(DxgiFormat enumFormat, uint flags, uint* pNumModes, DxgiModeDesc1* pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList1([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pDesc)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiFormat, uint, uint*, DxgiModeDesc1*, HResult>)(LpVtbl[12]))(ptr, enumFormat, flags, pNumModes, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDisplayModeList1(DxgiFormat enumFormat, uint flags, ref uint pNumModes, DxgiModeDesc1* pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList1([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pDesc)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppNumModes = &pNumModes)
@@ -7029,7 +7728,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplayModeList1(DxgiFormat enumFormat, uint flags, uint* pNumModes, ref DxgiModeDesc1 pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList1([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pDesc)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppDesc = &pDesc)
@@ -7039,7 +7740,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplayModeList1(DxgiFormat enumFormat, uint flags, ref uint pNumModes, ref DxgiModeDesc1 pDesc)
+		[NativeName(NativeNameType.Func, "GetDisplayModeList1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplayModeList1([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pNumModes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pNumModes, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pDesc)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppNumModes = &pNumModes)
@@ -7052,14 +7755,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(DxgiModeDesc1* pModeToMatch, DxgiModeDesc1* pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(LpVtbl[13]))(ptr, pModeToMatch, pClosestMatch, pConcernedDevice);
 			return ret;
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(ref DxgiModeDesc1 pModeToMatch, DxgiModeDesc1* pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
@@ -7069,7 +7776,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(DxgiModeDesc1* pModeToMatch, ref DxgiModeDesc1 pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
@@ -7079,7 +7788,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(ref DxgiModeDesc1 pModeToMatch, ref DxgiModeDesc1 pClosestMatch, IUnknown* pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
@@ -7092,7 +7803,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(DxgiModeDesc1* pModeToMatch, DxgiModeDesc1* pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -7102,7 +7815,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(ref DxgiModeDesc1 pModeToMatch, DxgiModeDesc1* pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
@@ -7115,7 +7830,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(DxgiModeDesc1* pModeToMatch, ref DxgiModeDesc1 pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
@@ -7128,7 +7845,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult FindClosestMatchingMode1(ref DxgiModeDesc1 pModeToMatch, ref DxgiModeDesc1 pClosestMatch, ref IUnknown pConcernedDevice)
+		[NativeName(NativeNameType.Func, "FindClosestMatchingMode1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult FindClosestMatchingMode1([NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] ref DxgiModeDesc1 pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
@@ -7144,14 +7863,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDisplaySurfaceData1(IDXGIResource* pDestination)
+		[NativeName(NativeNameType.Func, "GetDisplaySurfaceData1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplaySurfaceData1([NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pDestination)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGIResource*, HResult>)(LpVtbl[14]))(ptr, pDestination);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDisplaySurfaceData1(ref IDXGIResource pDestination)
+		[NativeName(NativeNameType.Func, "GetDisplaySurfaceData1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDisplaySurfaceData1([NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pDestination)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource* ppDestination = &pDestination)
@@ -7161,14 +7884,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput(IUnknown* pDevice, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, IDXGIOutputDuplication**, HResult>)(LpVtbl[15]))(ptr, pDevice, ppOutputDuplication);
 			return ret;
 		}
 
-		public readonly unsafe HResult DuplicateOutput(ref IUnknown pDevice, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7178,7 +7905,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput(IUnknown* pDevice, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutputDuplication** pppOutputDuplication = &ppOutputDuplication)
@@ -7188,7 +7917,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput(ref IUnknown pDevice, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput1* ptr = (IDXGIOutput1*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7223,30 +7954,37 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_MODE_DESC1")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_MODE_DESC1")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiModeDesc1
 	{
-		[NativeName("Width")]
+		[NativeName(NativeNameType.Field, "Width")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Width;
-		[NativeName("Height")]
+		[NativeName(NativeNameType.Field, "Height")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Height;
-		[NativeName("RefreshRate")]
+		[NativeName(NativeNameType.Field, "RefreshRate")]
+		[NativeName(NativeNameType.Type, "DXGI_RATIONAL")]
 		public DxgiRational RefreshRate;
-		[NativeName("Format")]
+		[NativeName(NativeNameType.Field, "Format")]
+		[NativeName(NativeNameType.Type, "DXGI_FORMAT")]
 		public DxgiFormat Format;
-		[NativeName("ScanlineOrdering")]
+		[NativeName(NativeNameType.Field, "ScanlineOrdering")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCANLINE_ORDER")]
 		public DxgiModeScanlineOrder ScanlineOrdering;
-		[NativeName("Scaling")]
+		[NativeName(NativeNameType.Field, "Scaling")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_SCALING")]
 		public DxgiModeScaling Scaling;
-		[NativeName("Stereo")]
+		[NativeName(NativeNameType.Field, "Stereo")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 Stereo;
 
 
 	}
 
 	[Guid("6007896c-3244-4afd-bf18-a6d3beda5023")]
-	[NativeName("IDXGIDevice3")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDevice3")]
 	public partial struct IDXGIDevice3 : IComObject, IComObject<IDXGIDevice3>, IComObject<IDXGIDevice2>, IComObject<IDXGIDevice1>, IComObject<IDXGIDevice>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7258,6 +7996,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "Trim")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void Trim()
 		{
 			IDXGIDevice3* ptr = (IDXGIDevice3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -7297,7 +8037,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("a8be2ac4-199f-4946-b331-79599fb98de7")]
-	[NativeName("IDXGISwapChain2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChain2")]
 	public partial struct IDXGISwapChain2 : IComObject, IComObject<IDXGISwapChain2>, IComObject<IDXGISwapChain1>, IComObject<IDXGISwapChain>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7309,21 +8049,27 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult SetSourceSize(uint width, uint height)
+		[NativeName(NativeNameType.Func, "SetSourceSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetSourceSize([NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, uint, uint, HResult>)(LpVtbl[11]))(ptr, width, height);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSourceSize(uint* pWidth, uint* pHeight)
+		[NativeName(NativeNameType.Func, "GetSourceSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] uint* pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] uint* pHeight)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, uint*, uint*, HResult>)(LpVtbl[12]))(ptr, pWidth, pHeight);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSourceSize(ref uint pWidth, uint* pHeight)
+		[NativeName(NativeNameType.Func, "GetSourceSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] uint* pHeight)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppWidth = &pWidth)
@@ -7333,7 +8079,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetSourceSize(uint* pWidth, ref uint pHeight)
+		[NativeName(NativeNameType.Func, "GetSourceSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] uint* pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pHeight)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppHeight = &pHeight)
@@ -7343,7 +8091,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetSourceSize(ref uint pWidth, ref uint pHeight)
+		[NativeName(NativeNameType.Func, "GetSourceSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pHeight)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppWidth = &pWidth)
@@ -7356,6 +8106,8 @@ namespace HexaEngine.DXGI
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "GetFrameLatencyWaitableObject")]
+		[return: NativeName(NativeNameType.Type, "HANDLE")]
 		public readonly unsafe nint GetFrameLatencyWaitableObject()
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -7363,14 +8115,18 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe HResult SetMatrixTransform(DxgiMatrix3X2F* pMatrix)
+		[NativeName(NativeNameType.Func, "SetMatrixTransform")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetMatrixTransform([NativeName(NativeNameType.Param, "pMatrix")] [NativeName(NativeNameType.Type, "const DXGI_MATRIX_3X2_F*")] DxgiMatrix3X2F* pMatrix)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, DxgiMatrix3X2F*, HResult>)(LpVtbl[16]))(ptr, pMatrix);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetMatrixTransform(ref DxgiMatrix3X2F pMatrix)
+		[NativeName(NativeNameType.Func, "SetMatrixTransform")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetMatrixTransform([NativeName(NativeNameType.Param, "pMatrix")] [NativeName(NativeNameType.Type, "const DXGI_MATRIX_3X2_F*")] ref DxgiMatrix3X2F pMatrix)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiMatrix3X2F* ppMatrix = &pMatrix)
@@ -7380,14 +8136,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetMatrixTransform(DxgiMatrix3X2F* pMatrix)
+		[NativeName(NativeNameType.Func, "GetMatrixTransform")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetMatrixTransform([NativeName(NativeNameType.Param, "pMatrix")] [NativeName(NativeNameType.Type, "DXGI_MATRIX_3X2_F*")] DxgiMatrix3X2F* pMatrix)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, DxgiMatrix3X2F*, HResult>)(LpVtbl[17]))(ptr, pMatrix);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetMatrixTransform(ref DxgiMatrix3X2F pMatrix)
+		[NativeName(NativeNameType.Func, "GetMatrixTransform")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetMatrixTransform([NativeName(NativeNameType.Param, "pMatrix")] [NativeName(NativeNameType.Type, "DXGI_MATRIX_3X2_F*")] ref DxgiMatrix3X2F pMatrix)
 		{
 			IDXGISwapChain2* ptr = (IDXGISwapChain2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiMatrix3X2F* ppMatrix = &pMatrix)
@@ -7433,28 +8193,34 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_3_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_MATRIX_3X2_F")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_MATRIX_3X2_F")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiMatrix3X2F
 	{
-		[NativeName("_11")]
+		[NativeName(NativeNameType.Field, "_11")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _11;
-		[NativeName("_12")]
+		[NativeName(NativeNameType.Field, "_12")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _12;
-		[NativeName("_21")]
+		[NativeName(NativeNameType.Field, "_21")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _21;
-		[NativeName("_22")]
+		[NativeName(NativeNameType.Field, "_22")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _22;
-		[NativeName("_31")]
+		[NativeName(NativeNameType.Field, "_31")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _31;
-		[NativeName("_32")]
+		[NativeName(NativeNameType.Field, "_32")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float _32;
 
 
 	}
 
 	[Guid("595e39d1-2724-4663-99b1-da969de28364")]
-	[NativeName("IDXGIOutput2")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput2")]
 	public partial struct IDXGIOutput2 : IComObject, IComObject<IDXGIOutput2>, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7466,6 +8232,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "SupportsOverlays")]
+		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public readonly unsafe Bool32 SupportsOverlays()
 		{
 			IDXGIOutput2* ptr = (IDXGIOutput2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -7501,7 +8269,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("25483823-cd46-4c7d-86ca-47aa95b837bd")]
-	[NativeName("IDXGIFactory3")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory3")]
 	public partial struct IDXGIFactory3 : IComObject, IComObject<IDXGIFactory3>, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7513,6 +8281,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "GetCreationFlags")]
+		[return: NativeName(NativeNameType.Type, "UINT")]
 		public readonly unsafe uint GetCreationFlags()
 		{
 			IDXGIFactory3* ptr = (IDXGIFactory3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -7553,7 +8323,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("2633066b-4514-4c7a-8fd8-12ea98059d18")]
-	[NativeName("IDXGIDecodeSwapChain")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDecodeSwapChain")]
 	public partial struct IDXGIDecodeSwapChain : IComObject, IComObject<IDXGIDecodeSwapChain>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7565,21 +8335,27 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult PresentBuffer(uint bufferToPresent, uint syncInterval, uint flags)
+		[NativeName(NativeNameType.Func, "PresentBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult PresentBuffer([NativeName(NativeNameType.Param, "BufferToPresent")] [NativeName(NativeNameType.Type, "UINT")] uint bufferToPresent, [NativeName(NativeNameType.Param, "SyncInterval")] [NativeName(NativeNameType.Type, "UINT")] uint syncInterval, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, uint, uint, uint, HResult>)(*LpVtbl))(ptr, bufferToPresent, syncInterval, flags);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetSourceRect(Rect32* pRect)
+		[NativeName(NativeNameType.Func, "SetSourceRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetSourceRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "const RECT*")] Rect32* pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, Rect32*, HResult>)(LpVtbl[1]))(ptr, pRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetSourceRect(ref Rect32 pRect)
+		[NativeName(NativeNameType.Func, "SetSourceRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetSourceRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "const RECT*")] ref Rect32 pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppRect = &pRect)
@@ -7589,14 +8365,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetTargetRect(Rect32* pRect)
+		[NativeName(NativeNameType.Func, "SetTargetRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetTargetRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "const RECT*")] Rect32* pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, Rect32*, HResult>)(LpVtbl[2]))(ptr, pRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult SetTargetRect(ref Rect32 pRect)
+		[NativeName(NativeNameType.Func, "SetTargetRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetTargetRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "const RECT*")] ref Rect32 pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppRect = &pRect)
@@ -7606,21 +8386,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetDestSize(uint width, uint height)
+		[NativeName(NativeNameType.Func, "SetDestSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetDestSize([NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, uint, uint, HResult>)(LpVtbl[3]))(ptr, width, height);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSourceRect(Rect32* pRect)
+		[NativeName(NativeNameType.Func, "GetSourceRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "RECT*")] Rect32* pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, Rect32*, HResult>)(LpVtbl[4]))(ptr, pRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetSourceRect(ref Rect32 pRect)
+		[NativeName(NativeNameType.Func, "GetSourceRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetSourceRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "RECT*")] ref Rect32 pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppRect = &pRect)
@@ -7630,14 +8416,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetTargetRect(Rect32* pRect)
+		[NativeName(NativeNameType.Func, "GetTargetRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetTargetRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "RECT*")] Rect32* pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, Rect32*, HResult>)(LpVtbl[5]))(ptr, pRect);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetTargetRect(ref Rect32 pRect)
+		[NativeName(NativeNameType.Func, "GetTargetRect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetTargetRect([NativeName(NativeNameType.Param, "pRect")] [NativeName(NativeNameType.Type, "RECT*")] ref Rect32 pRect)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Rect32* ppRect = &pRect)
@@ -7647,14 +8437,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDestSize(uint* pWidth, uint* pHeight)
+		[NativeName(NativeNameType.Func, "GetDestSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDestSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] uint* pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] uint* pHeight)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, uint*, uint*, HResult>)(LpVtbl[6]))(ptr, pWidth, pHeight);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDestSize(ref uint pWidth, uint* pHeight)
+		[NativeName(NativeNameType.Func, "GetDestSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDestSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] uint* pHeight)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppWidth = &pWidth)
@@ -7664,7 +8458,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDestSize(uint* pWidth, ref uint pHeight)
+		[NativeName(NativeNameType.Func, "GetDestSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDestSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] uint* pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pHeight)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppHeight = &pHeight)
@@ -7674,7 +8470,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult GetDestSize(ref uint pWidth, ref uint pHeight)
+		[NativeName(NativeNameType.Func, "GetDestSize")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDestSize([NativeName(NativeNameType.Param, "pWidth")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pWidth, [NativeName(NativeNameType.Param, "pHeight")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pHeight)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppWidth = &pWidth)
@@ -7687,13 +8485,17 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetColorSpace(DXGIMULTIPLANEOVERLAYYCbCrFLAGS colorSpace)
+		[NativeName(NativeNameType.Func, "SetColorSpace")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetColorSpace([NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS")] DXGIMULTIPLANEOVERLAYYCbCrFLAGS colorSpace)
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDecodeSwapChain*, DXGIMULTIPLANEOVERLAYYCbCrFLAGS, HResult>)(LpVtbl[7]))(ptr, colorSpace);
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "GetColorSpace")]
+		[return: NativeName(NativeNameType.Type, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS")]
 		public readonly unsafe DXGIMULTIPLANEOVERLAYYCbCrFLAGS GetColorSpace()
 		{
 			IDXGIDecodeSwapChain* ptr = (IDXGIDecodeSwapChain*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -7714,7 +8516,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("41e7d1f2-a591-4f7b-a2e5-fa9c843e1c12")]
-	[NativeName("IDXGIFactoryMedia")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactoryMedia")]
 	public partial struct IDXGIFactoryMedia : IComObject, IComObject<IDXGIFactoryMedia>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -7726,14 +8528,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(*LpVtbl))(ptr, pDevice, hSurface, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7743,7 +8549,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -7753,7 +8561,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7766,7 +8576,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -7776,7 +8588,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7789,7 +8603,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -7802,7 +8618,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, IDXGISwapChain1** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7818,7 +8636,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGISwapChain1** pppSwapChain = &ppSwapChain)
@@ -7828,7 +8648,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7841,7 +8663,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -7854,7 +8678,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, IDXGIOutput* pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7870,7 +8696,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -7883,7 +8711,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiSwapChainDesc1* pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7899,7 +8729,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
@@ -7915,7 +8747,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiSwapChainDesc1 pDesc, ref IDXGIOutput pRestrictToOutput, ref IDXGISwapChain1* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] ref DxgiSwapChainDesc1 pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] ref IDXGISwapChain1* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7934,14 +8768,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(LpVtbl[1]))(ptr, pDevice, hSurface, pDesc, pYuvDecodeBuffers, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7951,7 +8789,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -7961,7 +8801,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7974,7 +8816,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource* ppYuvDecodeBuffers = &pYuvDecodeBuffers)
@@ -7984,7 +8828,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -7997,7 +8843,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8010,7 +8858,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8026,7 +8876,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -8036,7 +8888,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8049,7 +8903,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8062,7 +8918,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8078,7 +8936,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource* ppYuvDecodeBuffers = &pYuvDecodeBuffers)
@@ -8091,7 +8951,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8107,7 +8969,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8123,7 +8987,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, IDXGIDecodeSwapChain** ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8142,7 +9008,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIDecodeSwapChain** pppSwapChain = &ppSwapChain)
@@ -8152,7 +9020,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8165,7 +9035,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8178,7 +9050,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8194,7 +9068,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource* ppYuvDecodeBuffers = &pYuvDecodeBuffers)
@@ -8207,7 +9083,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8223,7 +9101,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8239,7 +9119,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, IDXGIOutput* pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8258,7 +9140,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutput* ppRestrictToOutput = &pRestrictToOutput)
@@ -8271,7 +9155,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8287,7 +9173,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8303,7 +9191,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, IDXGIResource* pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8322,7 +9212,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource* ppYuvDecodeBuffers = &pYuvDecodeBuffers)
@@ -8338,7 +9230,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, DxgiDecodeSwapChainDesc* pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8357,7 +9251,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(IUnknown* pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
@@ -8376,7 +9272,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle(ref IUnknown pDevice, nint hSurface, ref DxgiDecodeSwapChainDesc pDesc, ref IDXGIResource pYuvDecodeBuffers, ref IDXGIOutput pRestrictToOutput, ref IDXGIDecodeSwapChain* ppSwapChain)
+		[NativeName(NativeNameType.Func, "CreateDecodeSwapChainForCompositionSurfaceHandle")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CreateDecodeSwapChainForCompositionSurfaceHandle([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] ref DxgiDecodeSwapChainDesc pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ref IDXGIResource pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ref IDXGIOutput pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] ref IDXGIDecodeSwapChain* ppSwapChain)
 		{
 			IDXGIFactoryMedia* ptr = (IDXGIFactoryMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -8410,18 +9308,19 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_DECODE_SWAP_CHAIN_DESC")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_DECODE_SWAP_CHAIN_DESC")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiDecodeSwapChainDesc
 	{
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Flags;
 
 
 	}
 
 	[Guid("dd95b90b-f05f-4f6a-bd65-25bfb264bd84")]
-	[NativeName("IDXGISwapChainMedia")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChainMedia")]
 	public partial struct IDXGISwapChainMedia : IComObject, IComObject<IDXGISwapChainMedia>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8433,14 +9332,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetFrameStatisticsMedia(DxgiFrameStatisticsMedia* pStats)
+		[NativeName(NativeNameType.Func, "GetFrameStatisticsMedia")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameStatisticsMedia([NativeName(NativeNameType.Param, "pStats")] [NativeName(NativeNameType.Type, "DXGI_FRAME_STATISTICS_MEDIA*")] DxgiFrameStatisticsMedia* pStats)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChainMedia*, DxgiFrameStatisticsMedia*, HResult>)(*LpVtbl))(ptr, pStats);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetFrameStatisticsMedia(ref DxgiFrameStatisticsMedia pStats)
+		[NativeName(NativeNameType.Func, "GetFrameStatisticsMedia")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetFrameStatisticsMedia([NativeName(NativeNameType.Param, "pStats")] [NativeName(NativeNameType.Type, "DXGI_FRAME_STATISTICS_MEDIA*")] ref DxgiFrameStatisticsMedia pStats)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiFrameStatisticsMedia* ppStats = &pStats)
@@ -8450,21 +9353,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetPresentDuration(uint duration)
+		[NativeName(NativeNameType.Func, "SetPresentDuration")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetPresentDuration([NativeName(NativeNameType.Param, "Duration")] [NativeName(NativeNameType.Type, "UINT")] uint duration)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChainMedia*, uint, HResult>)(LpVtbl[1]))(ptr, duration);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckPresentDurationSupport(uint desiredPresentDuration, uint* pClosestSmallerPresentDuration, uint* pClosestLargerPresentDuration)
+		[NativeName(NativeNameType.Func, "CheckPresentDurationSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckPresentDurationSupport([NativeName(NativeNameType.Param, "DesiredPresentDuration")] [NativeName(NativeNameType.Type, "UINT")] uint desiredPresentDuration, [NativeName(NativeNameType.Param, "pClosestSmallerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] uint* pClosestSmallerPresentDuration, [NativeName(NativeNameType.Param, "pClosestLargerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] uint* pClosestLargerPresentDuration)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChainMedia*, uint, uint*, uint*, HResult>)(LpVtbl[2]))(ptr, desiredPresentDuration, pClosestSmallerPresentDuration, pClosestLargerPresentDuration);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckPresentDurationSupport(uint desiredPresentDuration, ref uint pClosestSmallerPresentDuration, uint* pClosestLargerPresentDuration)
+		[NativeName(NativeNameType.Func, "CheckPresentDurationSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckPresentDurationSupport([NativeName(NativeNameType.Param, "DesiredPresentDuration")] [NativeName(NativeNameType.Type, "UINT")] uint desiredPresentDuration, [NativeName(NativeNameType.Param, "pClosestSmallerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pClosestSmallerPresentDuration, [NativeName(NativeNameType.Param, "pClosestLargerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] uint* pClosestLargerPresentDuration)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppClosestSmallerPresentDuration = &pClosestSmallerPresentDuration)
@@ -8474,7 +9383,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckPresentDurationSupport(uint desiredPresentDuration, uint* pClosestSmallerPresentDuration, ref uint pClosestLargerPresentDuration)
+		[NativeName(NativeNameType.Func, "CheckPresentDurationSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckPresentDurationSupport([NativeName(NativeNameType.Param, "DesiredPresentDuration")] [NativeName(NativeNameType.Type, "UINT")] uint desiredPresentDuration, [NativeName(NativeNameType.Param, "pClosestSmallerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] uint* pClosestSmallerPresentDuration, [NativeName(NativeNameType.Param, "pClosestLargerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pClosestLargerPresentDuration)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppClosestLargerPresentDuration = &pClosestLargerPresentDuration)
@@ -8484,7 +9395,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckPresentDurationSupport(uint desiredPresentDuration, ref uint pClosestSmallerPresentDuration, ref uint pClosestLargerPresentDuration)
+		[NativeName(NativeNameType.Func, "CheckPresentDurationSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckPresentDurationSupport([NativeName(NativeNameType.Param, "DesiredPresentDuration")] [NativeName(NativeNameType.Type, "UINT")] uint desiredPresentDuration, [NativeName(NativeNameType.Param, "pClosestSmallerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pClosestSmallerPresentDuration, [NativeName(NativeNameType.Param, "pClosestLargerPresentDuration")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pClosestLargerPresentDuration)
 		{
 			IDXGISwapChainMedia* ptr = (IDXGISwapChainMedia*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppClosestSmallerPresentDuration = &pClosestSmallerPresentDuration)
@@ -8509,30 +9422,37 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_FRAME_STATISTICS_MEDIA")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_FRAME_STATISTICS_MEDIA")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiFrameStatisticsMedia
 	{
-		[NativeName("PresentCount")]
+		[NativeName(NativeNameType.Field, "PresentCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint PresentCount;
-		[NativeName("PresentRefreshCount")]
+		[NativeName(NativeNameType.Field, "PresentRefreshCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint PresentRefreshCount;
-		[NativeName("SyncRefreshCount")]
+		[NativeName(NativeNameType.Field, "SyncRefreshCount")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SyncRefreshCount;
-		[NativeName("SyncQPCTime")]
+		[NativeName(NativeNameType.Field, "SyncQPCTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long SyncQPCTime;
-		[NativeName("SyncGPUTime")]
+		[NativeName(NativeNameType.Field, "SyncGPUTime")]
+		[NativeName(NativeNameType.Type, "LARGE_INTEGER")]
 		public long SyncGPUTime;
-		[NativeName("CompositionMode")]
+		[NativeName(NativeNameType.Field, "CompositionMode")]
+		[NativeName(NativeNameType.Type, "DXGI_FRAME_PRESENTATION_MODE")]
 		public DxgiFramePresentationMode CompositionMode;
-		[NativeName("ApprovedPresentDuration")]
+		[NativeName(NativeNameType.Field, "ApprovedPresentDuration")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint ApprovedPresentDuration;
 
 
 	}
 
 	[Guid("8a6bb301-7e7e-41f4-a8e0-5b32f7f99b18")]
-	[NativeName("IDXGIOutput3")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput3")]
 	public partial struct IDXGIOutput3 : IComObject, IComObject<IDXGIOutput3>, IComObject<IDXGIOutput2>, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8544,14 +9464,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult CheckOverlaySupport(DxgiFormat enumFormat, IUnknown* pConcernedDevice, uint* pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlaySupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlaySupport([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags)
 		{
 			IDXGIOutput3* ptr = (IDXGIOutput3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiFormat, IUnknown*, uint*, HResult>)(LpVtbl[1]))(ptr, enumFormat, pConcernedDevice, pFlags);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckOverlaySupport(DxgiFormat enumFormat, ref IUnknown pConcernedDevice, uint* pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlaySupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlaySupport([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags)
 		{
 			IDXGIOutput3* ptr = (IDXGIOutput3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -8561,7 +9485,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckOverlaySupport(DxgiFormat enumFormat, IUnknown* pConcernedDevice, ref uint pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlaySupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlaySupport([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pFlags)
 		{
 			IDXGIOutput3* ptr = (IDXGIOutput3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppFlags = &pFlags)
@@ -8571,7 +9497,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckOverlaySupport(DxgiFormat enumFormat, ref IUnknown pConcernedDevice, ref uint pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlaySupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlaySupport([NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pFlags)
 		{
 			IDXGIOutput3* ptr = (IDXGIOutput3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -8617,7 +9545,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("94d99bdb-f1f8-4ab0-b236-7da0170edab1")]
-	[NativeName("IDXGISwapChain3")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChain3")]
 	public partial struct IDXGISwapChain3 : IComObject, IComObject<IDXGISwapChain3>, IComObject<IDXGISwapChain2>, IComObject<IDXGISwapChain1>, IComObject<IDXGISwapChain>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8629,6 +9557,8 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
+		[NativeName(NativeNameType.Func, "GetCurrentBackBufferIndex")]
+		[return: NativeName(NativeNameType.Type, "UINT")]
 		public readonly unsafe uint GetCurrentBackBufferIndex()
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
@@ -8636,14 +9566,18 @@ namespace HexaEngine.DXGI
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckColorSpaceSupport(DxgiColorSpaceType colorSpace, uint* pColorSpaceSupport)
+		[NativeName(NativeNameType.Func, "CheckColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckColorSpaceSupport([NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pColorSpaceSupport")] [NativeName(NativeNameType.Type, "UINT*")] uint* pColorSpaceSupport)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, DxgiColorSpaceType, uint*, HResult>)(LpVtbl[8]))(ptr, colorSpace, pColorSpaceSupport);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckColorSpaceSupport(DxgiColorSpaceType colorSpace, ref uint pColorSpaceSupport)
+		[NativeName(NativeNameType.Func, "CheckColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckColorSpaceSupport([NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pColorSpaceSupport")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pColorSpaceSupport)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppColorSpaceSupport = &pColorSpaceSupport)
@@ -8653,48 +9587,58 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetColorSpace1(DxgiColorSpaceType colorSpace)
+		[NativeName(NativeNameType.Func, "SetColorSpace1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetColorSpace1([NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, DxgiColorSpaceType, HResult>)(LpVtbl[9]))(ptr, colorSpace);
 			return ret;
 		}
 
-		public readonly unsafe HResult ResizeBuffers1(uint bufferCount, uint width, uint height, DxgiFormat format, uint swapChainFlags, uint* pCreationNodeMask, IUnknown*** ppPresentQueue)
+		[NativeName(NativeNameType.Func, "ResizeBuffers1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeBuffers1([NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] uint* pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] IUnknown** ppPresentQueue)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown***, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, ppPresentQueue);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, ppPresentQueue);
 			return ret;
 		}
 
-		public readonly unsafe HResult ResizeBuffers1(uint bufferCount, uint width, uint height, DxgiFormat format, uint swapChainFlags, ref uint pCreationNodeMask, IUnknown*** ppPresentQueue)
+		[NativeName(NativeNameType.Func, "ResizeBuffers1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeBuffers1([NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] ref uint pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] IUnknown** ppPresentQueue)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppCreationNodeMask = &pCreationNodeMask)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown***, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, ppPresentQueue);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, ppPresentQueue);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ResizeBuffers1(uint bufferCount, uint width, uint height, DxgiFormat format, uint swapChainFlags, uint* pCreationNodeMask, ref IUnknown* ppPresentQueue)
+		[NativeName(NativeNameType.Func, "ResizeBuffers1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeBuffers1([NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] uint* pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] ref IUnknown* ppPresentQueue)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown** pppPresentQueue = &ppPresentQueue)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown***, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown***)pppPresentQueue);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown**)pppPresentQueue);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ResizeBuffers1(uint bufferCount, uint width, uint height, DxgiFormat format, uint swapChainFlags, ref uint pCreationNodeMask, ref IUnknown* ppPresentQueue)
+		[NativeName(NativeNameType.Func, "ResizeBuffers1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ResizeBuffers1([NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] ref uint pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] ref IUnknown* ppPresentQueue)
 		{
 			IDXGISwapChain3* ptr = (IDXGISwapChain3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppCreationNodeMask = &pCreationNodeMask)
 			{
 				fixed (IUnknown** pppPresentQueue = &ppPresentQueue)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown***, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown***)pppPresentQueue);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(LpVtbl[10]))(ptr, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown**)pppPresentQueue);
 					return ret;
 				}
 			}
@@ -8738,7 +9682,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("dc7dca35-2196-414d-9f53-617884032a60")]
-	[NativeName("IDXGIOutput4")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput4")]
 	public partial struct IDXGIOutput4 : IComObject, IComObject<IDXGIOutput4>, IComObject<IDXGIOutput3>, IComObject<IDXGIOutput2>, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8750,14 +9694,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult CheckOverlayColorSpaceSupport(DxgiFormat format, DxgiColorSpaceType colorSpace, IUnknown* pConcernedDevice, uint* pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlayColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlayColorSpaceSupport([NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags)
 		{
 			IDXGIOutput4* ptr = (IDXGIOutput4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(LpVtbl[1]))(ptr, format, colorSpace, pConcernedDevice, pFlags);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckOverlayColorSpaceSupport(DxgiFormat format, DxgiColorSpaceType colorSpace, ref IUnknown pConcernedDevice, uint* pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlayColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlayColorSpaceSupport([NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags)
 		{
 			IDXGIOutput4* ptr = (IDXGIOutput4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -8767,7 +9715,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckOverlayColorSpaceSupport(DxgiFormat format, DxgiColorSpaceType colorSpace, IUnknown* pConcernedDevice, ref uint pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlayColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlayColorSpaceSupport([NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pFlags)
 		{
 			IDXGIOutput4* ptr = (IDXGIOutput4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppFlags = &pFlags)
@@ -8777,7 +9727,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckOverlayColorSpaceSupport(DxgiFormat format, DxgiColorSpaceType colorSpace, ref IUnknown pConcernedDevice, ref uint pFlags)
+		[NativeName(NativeNameType.Func, "CheckOverlayColorSpaceSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckOverlayColorSpaceSupport([NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pFlags)
 		{
 			IDXGIOutput4* ptr = (IDXGIOutput4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppConcernedDevice = &pConcernedDevice)
@@ -8828,7 +9780,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("1bc6ea02-ef36-464f-bf0c-21ca39e5168a")]
-	[NativeName("IDXGIFactory4")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory4")]
 	public partial struct IDXGIFactory4 : IComObject, IComObject<IDXGIFactory4>, IComObject<IDXGIFactory3>, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8840,14 +9792,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult EnumAdapterByLuid(Luid adapterLuid, Guid* riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapterByLuid")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapterByLuid([NativeName(NativeNameType.Param, "AdapterLuid")] [NativeName(NativeNameType.Type, "LUID")] Luid adapterLuid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory4* ptr = (IDXGIFactory4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Luid, Guid*, void**, HResult>)(LpVtbl[1]))(ptr, adapterLuid, riid, ppvAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumAdapterByLuid(Luid adapterLuid, ref Guid riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapterByLuid")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapterByLuid([NativeName(NativeNameType.Param, "AdapterLuid")] [NativeName(NativeNameType.Type, "LUID")] Luid adapterLuid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory4* ptr = (IDXGIFactory4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -8857,14 +9813,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult EnumWarpAdapter(Guid* riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumWarpAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumWarpAdapter([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory4* ptr = (IDXGIFactory4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, void**, HResult>)(LpVtbl[2]))(ptr, riid, ppvAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumWarpAdapter(ref Guid riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumWarpAdapter")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumWarpAdapter([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory4* ptr = (IDXGIFactory4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -8912,7 +9872,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("645967a4-1392-4310-a798-8053ce3e93fd")]
-	[NativeName("IDXGIAdapter3")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIAdapter3")]
 	public partial struct IDXGIAdapter3 : IComObject, IComObject<IDXGIAdapter3>, IComObject<IDXGIAdapter2>, IComObject<IDXGIAdapter1>, IComObject<IDXGIAdapter>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -8924,14 +9884,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult RegisterHardwareContentProtectionTeardownStatusEvent(nint hEvent, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterHardwareContentProtectionTeardownStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterHardwareContentProtectionTeardownStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, nint, uint*, HResult>)(LpVtbl[1]))(ptr, hEvent, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterHardwareContentProtectionTeardownStatusEvent(nint hEvent, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterHardwareContentProtectionTeardownStatusEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterHardwareContentProtectionTeardownStatusEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -8941,20 +9905,26 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe void UnregisterHardwareContentProtectionTeardownStatus(uint dwCookie)
+		[NativeName(NativeNameType.Func, "UnregisterHardwareContentProtectionTeardownStatus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void UnregisterHardwareContentProtectionTeardownStatus([NativeName(NativeNameType.Param, "dwCookie")] [NativeName(NativeNameType.Type, "DWORD")] uint dwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, uint, void>)(LpVtbl[2]))(ptr, dwCookie);
 		}
 
-		public readonly unsafe HResult QueryVideoMemoryInfo(uint nodeIndex, DxgiMemorySegmentGroup memorySegmentGroup, DxgiQueryVideoMemoryInfo* pVideoMemoryInfo)
+		[NativeName(NativeNameType.Func, "QueryVideoMemoryInfo")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryVideoMemoryInfo([NativeName(NativeNameType.Param, "NodeIndex")] [NativeName(NativeNameType.Type, "UINT")] uint nodeIndex, [NativeName(NativeNameType.Param, "MemorySegmentGroup")] [NativeName(NativeNameType.Type, "DXGI_MEMORY_SEGMENT_GROUP")] DxgiMemorySegmentGroup memorySegmentGroup, [NativeName(NativeNameType.Param, "pVideoMemoryInfo")] [NativeName(NativeNameType.Type, "DXGI_QUERY_VIDEO_MEMORY_INFO*")] DxgiQueryVideoMemoryInfo* pVideoMemoryInfo)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, uint, DxgiMemorySegmentGroup, DxgiQueryVideoMemoryInfo*, HResult>)(LpVtbl[3]))(ptr, nodeIndex, memorySegmentGroup, pVideoMemoryInfo);
 			return ret;
 		}
 
-		public readonly unsafe HResult QueryVideoMemoryInfo(uint nodeIndex, DxgiMemorySegmentGroup memorySegmentGroup, ref DxgiQueryVideoMemoryInfo pVideoMemoryInfo)
+		[NativeName(NativeNameType.Func, "QueryVideoMemoryInfo")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryVideoMemoryInfo([NativeName(NativeNameType.Param, "NodeIndex")] [NativeName(NativeNameType.Type, "UINT")] uint nodeIndex, [NativeName(NativeNameType.Param, "MemorySegmentGroup")] [NativeName(NativeNameType.Type, "DXGI_MEMORY_SEGMENT_GROUP")] DxgiMemorySegmentGroup memorySegmentGroup, [NativeName(NativeNameType.Param, "pVideoMemoryInfo")] [NativeName(NativeNameType.Type, "DXGI_QUERY_VIDEO_MEMORY_INFO*")] ref DxgiQueryVideoMemoryInfo pVideoMemoryInfo)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiQueryVideoMemoryInfo* ppVideoMemoryInfo = &pVideoMemoryInfo)
@@ -8964,21 +9934,27 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult SetVideoMemoryReservation(uint nodeIndex, DxgiMemorySegmentGroup memorySegmentGroup, ulong reservation)
+		[NativeName(NativeNameType.Func, "SetVideoMemoryReservation")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetVideoMemoryReservation([NativeName(NativeNameType.Param, "NodeIndex")] [NativeName(NativeNameType.Type, "UINT")] uint nodeIndex, [NativeName(NativeNameType.Param, "MemorySegmentGroup")] [NativeName(NativeNameType.Type, "DXGI_MEMORY_SEGMENT_GROUP")] DxgiMemorySegmentGroup memorySegmentGroup, [NativeName(NativeNameType.Param, "Reservation")] [NativeName(NativeNameType.Type, "UINT64")] ulong reservation)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, uint, DxgiMemorySegmentGroup, ulong, HResult>)(LpVtbl[4]))(ptr, nodeIndex, memorySegmentGroup, reservation);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterVideoMemoryBudgetChangeNotificationEvent(nint hEvent, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterVideoMemoryBudgetChangeNotificationEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterVideoMemoryBudgetChangeNotificationEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, nint, uint*, HResult>)(LpVtbl[5]))(ptr, hEvent, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterVideoMemoryBudgetChangeNotificationEvent(nint hEvent, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterVideoMemoryBudgetChangeNotificationEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterVideoMemoryBudgetChangeNotificationEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -8988,7 +9964,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe void UnregisterVideoMemoryBudgetChangeNotification(uint dwCookie)
+		[NativeName(NativeNameType.Func, "UnregisterVideoMemoryBudgetChangeNotification")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public readonly unsafe void UnregisterVideoMemoryBudgetChangeNotification([NativeName(NativeNameType.Param, "dwCookie")] [NativeName(NativeNameType.Type, "DWORD")] uint dwCookie)
 		{
 			IDXGIAdapter3* ptr = (IDXGIAdapter3*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, uint, void>)(LpVtbl[6]))(ptr, dwCookie);
@@ -9026,24 +10004,28 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_QUERY_VIDEO_MEMORY_INFO")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_QUERY_VIDEO_MEMORY_INFO")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiQueryVideoMemoryInfo
 	{
-		[NativeName("Budget")]
+		[NativeName(NativeNameType.Field, "Budget")]
+		[NativeName(NativeNameType.Type, "UINT64")]
 		public ulong Budget;
-		[NativeName("CurrentUsage")]
+		[NativeName(NativeNameType.Field, "CurrentUsage")]
+		[NativeName(NativeNameType.Type, "UINT64")]
 		public ulong CurrentUsage;
-		[NativeName("AvailableForReservation")]
+		[NativeName(NativeNameType.Field, "AvailableForReservation")]
+		[NativeName(NativeNameType.Type, "UINT64")]
 		public ulong AvailableForReservation;
-		[NativeName("CurrentReservation")]
+		[NativeName(NativeNameType.Field, "CurrentReservation")]
+		[NativeName(NativeNameType.Type, "UINT64")]
 		public ulong CurrentReservation;
 
 
 	}
 
 	[Guid("80a07424-ab52-42eb-833c-0c42fd282d98")]
-	[NativeName("IDXGIOutput5")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput5")]
 	public partial struct IDXGIOutput5 : IComObject, IComObject<IDXGIOutput5>, IComObject<IDXGIOutput4>, IComObject<IDXGIOutput3>, IComObject<IDXGIOutput2>, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9055,14 +10037,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(IUnknown* pDevice, uint flags, uint supportedFormatsCount, DxgiFormat* pSupportedFormats, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(LpVtbl[1]))(ptr, pDevice, flags, supportedFormatsCount, pSupportedFormats, ppOutputDuplication);
 			return ret;
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(ref IUnknown pDevice, uint flags, uint supportedFormatsCount, DxgiFormat* pSupportedFormats, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -9072,7 +10058,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(IUnknown* pDevice, uint flags, uint supportedFormatsCount, ref DxgiFormat pSupportedFormats, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] ref DxgiFormat pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
@@ -9082,7 +10070,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(ref IUnknown pDevice, uint flags, uint supportedFormatsCount, ref DxgiFormat pSupportedFormats, IDXGIOutputDuplication** ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] ref DxgiFormat pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -9095,7 +10085,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(IUnknown* pDevice, uint flags, uint supportedFormatsCount, DxgiFormat* pSupportedFormats, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIOutputDuplication** pppOutputDuplication = &ppOutputDuplication)
@@ -9105,7 +10097,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(ref IUnknown pDevice, uint flags, uint supportedFormatsCount, DxgiFormat* pSupportedFormats, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -9118,7 +10112,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(IUnknown* pDevice, uint flags, uint supportedFormatsCount, ref DxgiFormat pSupportedFormats, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] ref DxgiFormat pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
@@ -9131,7 +10127,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult DuplicateOutput1(ref IUnknown pDevice, uint flags, uint supportedFormatsCount, ref DxgiFormat pSupportedFormats, ref IDXGIOutputDuplication* ppOutputDuplication)
+		[NativeName(NativeNameType.Func, "DuplicateOutput1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult DuplicateOutput1([NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ref IUnknown pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] ref DxgiFormat pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] ref IDXGIOutputDuplication* ppOutputDuplication)
 		{
 			IDXGIOutput5* ptr = (IDXGIOutput5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IUnknown* ppDevice = &pDevice)
@@ -9190,7 +10188,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("3d585d5a-bd4a-489e-b1f4-3dbcb6452ffb")]
-	[NativeName("IDXGISwapChain4")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGISwapChain4")]
 	public partial struct IDXGISwapChain4 : IComObject, IComObject<IDXGISwapChain4>, IComObject<IDXGISwapChain3>, IComObject<IDXGISwapChain2>, IComObject<IDXGISwapChain1>, IComObject<IDXGISwapChain>, IComObject<IDXGIDeviceSubObject>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9202,7 +10200,9 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult SetHDRMetaData(DxgiHdrMetadataType type, uint size, void* pMetaData)
+		[NativeName(NativeNameType.Func, "SetHDRMetaData")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult SetHDRMetaData([NativeName(NativeNameType.Param, "Type")] [NativeName(NativeNameType.Type, "DXGI_HDR_METADATA_TYPE")] DxgiHdrMetadataType type, [NativeName(NativeNameType.Param, "Size")] [NativeName(NativeNameType.Type, "UINT")] uint size, [NativeName(NativeNameType.Param, "pMetaData")] [NativeName(NativeNameType.Type, "void*")] void* pMetaData)
 		{
 			IDXGISwapChain4* ptr = (IDXGISwapChain4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, DxgiHdrMetadataType, uint, void*, HResult>)(LpVtbl[4]))(ptr, type, size, pMetaData);
@@ -9252,7 +10252,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("95b4f95f-d8da-4ca4-9ee6-3b76d5968a10")]
-	[NativeName("IDXGIDevice4")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIDevice4")]
 	public partial struct IDXGIDevice4 : IComObject, IComObject<IDXGIDevice4>, IComObject<IDXGIDevice3>, IComObject<IDXGIDevice2>, IComObject<IDXGIDevice1>, IComObject<IDXGIDevice>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9264,58 +10264,70 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult OfferResources1(uint numResources, IDXGIResource*** ppResources, DxgiOfferResourcePriority priority, uint flags)
+		[NativeName(NativeNameType.Func, "OfferResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult OfferResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiOfferResourcePriority, uint, HResult>)(LpVtbl[1]))(ptr, numResources, ppResources, priority, flags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, uint, HResult>)(LpVtbl[1]))(ptr, numResources, ppResources, priority, flags);
 			return ret;
 		}
 
-		public readonly unsafe HResult OfferResources1(uint numResources, ref IDXGIResource* ppResources, DxgiOfferResourcePriority priority, uint flags)
+		[NativeName(NativeNameType.Func, "OfferResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult OfferResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiOfferResourcePriority, uint, HResult>)(LpVtbl[1]))(ptr, numResources, (IDXGIResource***)pppResources, priority, flags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, uint, HResult>)(LpVtbl[1]))(ptr, numResources, (IDXGIResource**)pppResources, priority, flags);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources1(uint numResources, IDXGIResource*** ppResources, DxgiReclaimResourceResults* pResults)
+		[NativeName(NativeNameType.Func, "ReclaimResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "pResults")] [NativeName(NativeNameType.Type, "DXGI_RECLAIM_RESOURCE_RESULTS*")] DxgiReclaimResourceResults* pResults)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, pResults);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, pResults);
 			return ret;
 		}
 
-		public readonly unsafe HResult ReclaimResources1(uint numResources, ref IDXGIResource* ppResources, DxgiReclaimResourceResults* pResults)
+		[NativeName(NativeNameType.Func, "ReclaimResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "pResults")] [NativeName(NativeNameType.Type, "DXGI_RECLAIM_RESOURCE_RESULTS*")] DxgiReclaimResourceResults* pResults)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource***)pppResources, pResults);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource**)pppResources, pResults);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources1(uint numResources, IDXGIResource*** ppResources, ref DxgiReclaimResourceResults pResults)
+		[NativeName(NativeNameType.Func, "ReclaimResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] IDXGIResource** ppResources, [NativeName(NativeNameType.Param, "pResults")] [NativeName(NativeNameType.Type, "DXGI_RECLAIM_RESOURCE_RESULTS*")] ref DxgiReclaimResourceResults pResults)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiReclaimResourceResults* ppResults = &pResults)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, (DxgiReclaimResourceResults*)ppResults);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, ppResources, (DxgiReclaimResourceResults*)ppResults);
 				return ret;
 			}
 		}
 
-		public readonly unsafe HResult ReclaimResources1(uint numResources, ref IDXGIResource* ppResources, ref DxgiReclaimResourceResults pResults)
+		[NativeName(NativeNameType.Func, "ReclaimResources1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult ReclaimResources1([NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ref IDXGIResource* ppResources, [NativeName(NativeNameType.Param, "pResults")] [NativeName(NativeNameType.Type, "DXGI_RECLAIM_RESOURCE_RESULTS*")] ref DxgiReclaimResourceResults pResults)
 		{
 			IDXGIDevice4* ptr = (IDXGIDevice4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (IDXGIResource** pppResources = &ppResources)
 			{
 				fixed (DxgiReclaimResourceResults* ppResults = &pResults)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource***, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource***)pppResources, (DxgiReclaimResourceResults*)ppResults);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(LpVtbl[2]))(ptr, numResources, (IDXGIResource**)pppResources, (DxgiReclaimResourceResults*)ppResults);
 					return ret;
 				}
 			}
@@ -9359,7 +10371,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("7632e1f5-ee65-4dca-87fd-84cd75f8838d")]
-	[NativeName("IDXGIFactory5")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory5")]
 	public partial struct IDXGIFactory5 : IComObject, IComObject<IDXGIFactory5>, IComObject<IDXGIFactory4>, IComObject<IDXGIFactory3>, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9371,7 +10383,9 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult CheckFeatureSupport(DxgiFeature feature, void* pFeatureSupportData, uint featureSupportDataSize)
+		[NativeName(NativeNameType.Func, "CheckFeatureSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckFeatureSupport([NativeName(NativeNameType.Param, "Feature")] [NativeName(NativeNameType.Type, "DXGI_FEATURE")] DxgiFeature feature, [NativeName(NativeNameType.Param, "pFeatureSupportData")] [NativeName(NativeNameType.Type, "void*")] void* pFeatureSupportData, [NativeName(NativeNameType.Param, "FeatureSupportDataSize")] [NativeName(NativeNameType.Type, "UINT")] uint featureSupportDataSize)
 		{
 			IDXGIFactory5* ptr = (IDXGIFactory5*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, DxgiFeature, void*, uint, HResult>)(LpVtbl[2]))(ptr, feature, pFeatureSupportData, featureSupportDataSize);
@@ -9420,39 +10434,48 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_HDR_METADATA_HDR10")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_HDR_METADATA_HDR10")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiHdrMetadataHdr10
 	{
-		[NativeName("RedPrimary")]
+		[NativeName(NativeNameType.Field, "RedPrimary")]
+		[NativeName(NativeNameType.Type, "UINT16[2]")]
 		public ushort RedPrimary_0;
 		public ushort RedPrimary_1;
-		[NativeName("GreenPrimary")]
+		[NativeName(NativeNameType.Field, "GreenPrimary")]
+		[NativeName(NativeNameType.Type, "UINT16[2]")]
 		public ushort GreenPrimary_0;
 		public ushort GreenPrimary_1;
-		[NativeName("BluePrimary")]
+		[NativeName(NativeNameType.Field, "BluePrimary")]
+		[NativeName(NativeNameType.Type, "UINT16[2]")]
 		public ushort BluePrimary_0;
 		public ushort BluePrimary_1;
-		[NativeName("WhitePoint")]
+		[NativeName(NativeNameType.Field, "WhitePoint")]
+		[NativeName(NativeNameType.Type, "UINT16[2]")]
 		public ushort WhitePoint_0;
 		public ushort WhitePoint_1;
-		[NativeName("MaxMasteringLuminance")]
+		[NativeName(NativeNameType.Field, "MaxMasteringLuminance")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint MaxMasteringLuminance;
-		[NativeName("MinMasteringLuminance")]
+		[NativeName(NativeNameType.Field, "MinMasteringLuminance")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint MinMasteringLuminance;
-		[NativeName("MaxContentLightLevel")]
+		[NativeName(NativeNameType.Field, "MaxContentLightLevel")]
+		[NativeName(NativeNameType.Type, "UINT16")]
 		public ushort MaxContentLightLevel;
-		[NativeName("MaxFrameAverageLightLevel")]
+		[NativeName(NativeNameType.Field, "MaxFrameAverageLightLevel")]
+		[NativeName(NativeNameType.Type, "UINT16")]
 		public ushort MaxFrameAverageLightLevel;
 
 
 	}
 
-	[NativeName("DXGI_HDR_METADATA_HDR10PLUS")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_HDR_METADATA_HDR10PLUS")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiHdrMetadataHdr10Plus
 	{
-		[NativeName("Data")]
+		[NativeName(NativeNameType.Field, "Data")]
+		[NativeName(NativeNameType.Type, "BYTE[72]")]
 		public byte Data_0;
 		public byte Data_1;
 		public byte Data_2;
@@ -9530,7 +10553,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("3c8d99d1-4fbf-4181-a82c-af66bf7bd24e")]
-	[NativeName("IDXGIAdapter4")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIAdapter4")]
 	public partial struct IDXGIAdapter4 : IComObject, IComObject<IDXGIAdapter4>, IComObject<IDXGIAdapter3>, IComObject<IDXGIAdapter2>, IComObject<IDXGIAdapter1>, IComObject<IDXGIAdapter>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9542,14 +10565,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc3(DxgiAdapterDesc3* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc3")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc3([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC3*")] DxgiAdapterDesc3* pDesc)
 		{
 			IDXGIAdapter4* ptr = (IDXGIAdapter4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, DxgiAdapterDesc3*, HResult>)(LpVtbl[6]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc3(ref DxgiAdapterDesc3 pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc3")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc3([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_ADAPTER_DESC3*")] ref DxgiAdapterDesc3 pDesc)
 		{
 			IDXGIAdapter4* ptr = (IDXGIAdapter4*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiAdapterDesc3* ppDesc = &pDesc)
@@ -9596,11 +10623,12 @@ namespace HexaEngine.DXGI
 
 	}
 
-	[NativeName("DXGI_ADAPTER_DESC3")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_ADAPTER_DESC3")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiAdapterDesc3
 	{
-		[NativeName("Description")]
+		[NativeName(NativeNameType.Field, "Description")]
+		[NativeName(NativeNameType.Type, "WCHAR[128]")]
 		public char Description_0;
 		public char Description_1;
 		public char Description_2;
@@ -9729,34 +10757,45 @@ namespace HexaEngine.DXGI
 		public char Description_125;
 		public char Description_126;
 		public char Description_127;
-		[NativeName("VendorId")]
+		[NativeName(NativeNameType.Field, "VendorId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint VendorId;
-		[NativeName("DeviceId")]
+		[NativeName(NativeNameType.Field, "DeviceId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint DeviceId;
-		[NativeName("SubSysId")]
+		[NativeName(NativeNameType.Field, "SubSysId")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint SubSysId;
-		[NativeName("Revision")]
+		[NativeName(NativeNameType.Field, "Revision")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint Revision;
-		[NativeName("DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedVideoMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedVideoMemory;
-		[NativeName("DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Field, "DedicatedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint DedicatedSystemMemory;
-		[NativeName("SharedSystemMemory")]
+		[NativeName(NativeNameType.Field, "SharedSystemMemory")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint SharedSystemMemory;
-		[NativeName("AdapterLuid")]
+		[NativeName(NativeNameType.Field, "AdapterLuid")]
+		[NativeName(NativeNameType.Type, "LUID")]
 		public Luid AdapterLuid;
-		[NativeName("Flags")]
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "DXGI_ADAPTER_FLAG3")]
 		public DxgiAdapterFlag3 Flags;
-		[NativeName("GraphicsPreemptionGranularity")]
+		[NativeName(NativeNameType.Field, "GraphicsPreemptionGranularity")]
+		[NativeName(NativeNameType.Type, "DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
 		public DxgiGraphicsPreemptionGranularity GraphicsPreemptionGranularity;
-		[NativeName("ComputePreemptionGranularity")]
+		[NativeName(NativeNameType.Field, "ComputePreemptionGranularity")]
+		[NativeName(NativeNameType.Type, "DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
 		public DxgiComputePreemptionGranularity ComputePreemptionGranularity;
 
 
 	}
 
 	[Guid("068346e8-aaec-4b84-add7-137f513f77a1")]
-	[NativeName("IDXGIOutput6")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIOutput6")]
 	public partial struct IDXGIOutput6 : IComObject, IComObject<IDXGIOutput6>, IComObject<IDXGIOutput5>, IComObject<IDXGIOutput4>, IComObject<IDXGIOutput3>, IComObject<IDXGIOutput2>, IComObject<IDXGIOutput1>, IComObject<IDXGIOutput>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9768,14 +10807,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult GetDesc1(DxgiOutputDesc1* pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTPUT_DESC1*")] DxgiOutputDesc1* pDesc)
 		{
 			IDXGIOutput6* ptr = (IDXGIOutput6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiOutputDesc1*, HResult>)(LpVtbl[1]))(ptr, pDesc);
 			return ret;
 		}
 
-		public readonly unsafe HResult GetDesc1(ref DxgiOutputDesc1 pDesc)
+		[NativeName(NativeNameType.Func, "GetDesc1")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult GetDesc1([NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_OUTPUT_DESC1*")] ref DxgiOutputDesc1 pDesc)
 		{
 			IDXGIOutput6* ptr = (IDXGIOutput6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (DxgiOutputDesc1* ppDesc = &pDesc)
@@ -9785,14 +10828,18 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult CheckHardwareCompositionSupport(uint* pFlags)
+		[NativeName(NativeNameType.Func, "CheckHardwareCompositionSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckHardwareCompositionSupport([NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags)
 		{
 			IDXGIOutput6* ptr = (IDXGIOutput6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, uint*, HResult>)(LpVtbl[2]))(ptr, pFlags);
 			return ret;
 		}
 
-		public readonly unsafe HResult CheckHardwareCompositionSupport(ref uint pFlags)
+		[NativeName(NativeNameType.Func, "CheckHardwareCompositionSupport")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult CheckHardwareCompositionSupport([NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pFlags)
 		{
 			IDXGIOutput6* ptr = (IDXGIOutput6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppFlags = &pFlags)
@@ -9853,11 +10900,12 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_6_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_OUTPUT_DESC1")]
+	[NativeName(NativeNameType.StructOrClass, "DXGI_OUTPUT_DESC1")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct DxgiOutputDesc1
 	{
-		[NativeName("DeviceName")]
+		[NativeName(NativeNameType.Field, "DeviceName")]
+		[NativeName(NativeNameType.Type, "WCHAR[32]")]
 		public char DeviceName_0;
 		public char DeviceName_1;
 		public char DeviceName_2;
@@ -9890,42 +10938,55 @@ namespace HexaEngine.DXGI
 		public char DeviceName_29;
 		public char DeviceName_30;
 		public char DeviceName_31;
-		[NativeName("DesktopCoordinates")]
+		[NativeName(NativeNameType.Field, "DesktopCoordinates")]
+		[NativeName(NativeNameType.Type, "RECT")]
 		public Rect32 DesktopCoordinates;
-		[NativeName("AttachedToDesktop")]
+		[NativeName(NativeNameType.Field, "AttachedToDesktop")]
+		[NativeName(NativeNameType.Type, "BOOL")]
 		public Bool32 AttachedToDesktop;
-		[NativeName("Rotation")]
+		[NativeName(NativeNameType.Field, "Rotation")]
+		[NativeName(NativeNameType.Type, "DXGI_MODE_ROTATION")]
 		public DxgiModeRotation Rotation;
-		[NativeName("Monitor")]
+		[NativeName(NativeNameType.Field, "Monitor")]
+		[NativeName(NativeNameType.Type, "HMONITOR")]
 		public nint Monitor;
-		[NativeName("BitsPerColor")]
+		[NativeName(NativeNameType.Field, "BitsPerColor")]
+		[NativeName(NativeNameType.Type, "UINT")]
 		public uint BitsPerColor;
-		[NativeName("ColorSpace")]
+		[NativeName(NativeNameType.Field, "ColorSpace")]
+		[NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")]
 		public DxgiColorSpaceType ColorSpace;
-		[NativeName("RedPrimary")]
+		[NativeName(NativeNameType.Field, "RedPrimary")]
+		[NativeName(NativeNameType.Type, "FLOAT[2]")]
 		public float RedPrimary_0;
 		public float RedPrimary_1;
-		[NativeName("GreenPrimary")]
+		[NativeName(NativeNameType.Field, "GreenPrimary")]
+		[NativeName(NativeNameType.Type, "FLOAT[2]")]
 		public float GreenPrimary_0;
 		public float GreenPrimary_1;
-		[NativeName("BluePrimary")]
+		[NativeName(NativeNameType.Field, "BluePrimary")]
+		[NativeName(NativeNameType.Type, "FLOAT[2]")]
 		public float BluePrimary_0;
 		public float BluePrimary_1;
-		[NativeName("WhitePoint")]
+		[NativeName(NativeNameType.Field, "WhitePoint")]
+		[NativeName(NativeNameType.Type, "FLOAT[2]")]
 		public float WhitePoint_0;
 		public float WhitePoint_1;
-		[NativeName("MinLuminance")]
+		[NativeName(NativeNameType.Field, "MinLuminance")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float MinLuminance;
-		[NativeName("MaxLuminance")]
+		[NativeName(NativeNameType.Field, "MaxLuminance")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float MaxLuminance;
-		[NativeName("MaxFullFrameLuminance")]
+		[NativeName(NativeNameType.Field, "MaxFullFrameLuminance")]
+		[NativeName(NativeNameType.Type, "FLOAT")]
 		public float MaxFullFrameLuminance;
 
 
 	}
 
 	[Guid("c1b6694f-ff09-44a9-b03c-77900a0a1d17")]
-	[NativeName("IDXGIFactory6")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory6")]
 	public partial struct IDXGIFactory6 : IComObject, IComObject<IDXGIFactory6>, IComObject<IDXGIFactory5>, IComObject<IDXGIFactory4>, IComObject<IDXGIFactory3>, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -9937,14 +10998,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult EnumAdapterByGpuPreference(uint adapter, DxgiGpuPreference gpuPreference, Guid* riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapterByGpuPreference")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapterByGpuPreference([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "GpuPreference")] [NativeName(NativeNameType.Type, "DXGI_GPU_PREFERENCE")] DxgiGpuPreference gpuPreference, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory6* ptr = (IDXGIFactory6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, uint, DxgiGpuPreference, Guid*, void**, HResult>)(LpVtbl[1]))(ptr, adapter, gpuPreference, riid, ppvAdapter);
 			return ret;
 		}
 
-		public readonly unsafe HResult EnumAdapterByGpuPreference(uint adapter, DxgiGpuPreference gpuPreference, ref Guid riid, void** ppvAdapter)
+		[NativeName(NativeNameType.Func, "EnumAdapterByGpuPreference")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult EnumAdapterByGpuPreference([NativeName(NativeNameType.Param, "Adapter")] [NativeName(NativeNameType.Type, "UINT")] uint adapter, [NativeName(NativeNameType.Param, "GpuPreference")] [NativeName(NativeNameType.Type, "DXGI_GPU_PREFERENCE")] DxgiGpuPreference gpuPreference, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvAdapter")] [NativeName(NativeNameType.Type, "void**")] void** ppvAdapter)
 		{
 			IDXGIFactory6* ptr = (IDXGIFactory6*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
@@ -10002,7 +11067,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[Guid("a4966eed-76db-44da-84c1-ee9a7afb20a8")]
-	[NativeName("IDXGIFactory7")]
+	[NativeName(NativeNameType.StructOrClass, "IDXGIFactory7")]
 	public partial struct IDXGIFactory7 : IComObject, IComObject<IDXGIFactory7>, IComObject<IDXGIFactory6>, IComObject<IDXGIFactory5>, IComObject<IDXGIFactory4>, IComObject<IDXGIFactory3>, IComObject<IDXGIFactory2>, IComObject<IDXGIFactory1>, IComObject<IDXGIFactory>, IComObject<IDXGIObject>, IComObject<IUnknown>
 	{
 		public unsafe void** LpVtbl;
@@ -10014,14 +11079,18 @@ namespace HexaEngine.DXGI
 			LpVtbl = lpVtbl;
 		}
 
-		public readonly unsafe HResult RegisterAdaptersChangedEvent(nint hEvent, uint* pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterAdaptersChangedEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterAdaptersChangedEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pdwCookie)
 		{
 			IDXGIFactory7* ptr = (IDXGIFactory7*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, nint, uint*, HResult>)(LpVtbl[1]))(ptr, hEvent, pdwCookie);
 			return ret;
 		}
 
-		public readonly unsafe HResult RegisterAdaptersChangedEvent(nint hEvent, ref uint pdwCookie)
+		[NativeName(NativeNameType.Func, "RegisterAdaptersChangedEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterAdaptersChangedEvent([NativeName(NativeNameType.Param, "hEvent")] [NativeName(NativeNameType.Type, "HANDLE")] nint hEvent, [NativeName(NativeNameType.Param, "pdwCookie")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pdwCookie)
 		{
 			IDXGIFactory7* ptr = (IDXGIFactory7*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppdwCookie = &pdwCookie)
@@ -10031,7 +11100,9 @@ namespace HexaEngine.DXGI
 			}
 		}
 
-		public readonly unsafe HResult UnregisterAdaptersChangedEvent(uint dwCookie)
+		[NativeName(NativeNameType.Func, "UnregisterAdaptersChangedEvent")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult UnregisterAdaptersChangedEvent([NativeName(NativeNameType.Param, "dwCookie")] [NativeName(NativeNameType.Type, "DWORD")] uint dwCookie)
 		{
 			IDXGIFactory7* ptr = (IDXGIFactory7*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, uint, HResult>)(LpVtbl[2]))(ptr, dwCookie);

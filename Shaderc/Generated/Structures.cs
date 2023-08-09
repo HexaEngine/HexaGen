@@ -15,6 +15,7 @@ using HexaGen.Runtime;
 
 namespace HexaEngine.Shaderc
 {
+	[NativeName(NativeNameType.StructOrClass, "shaderc_compiler")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompiler
 	{
@@ -22,6 +23,7 @@ namespace HexaEngine.Shaderc
 
 	}
 
+	[NativeName(NativeNameType.StructOrClass, "shaderc_compile_options")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompileOptions
 	{
@@ -32,6 +34,7 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// An include result.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "shaderc_include_result")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercIncludeResult
 	{
@@ -42,25 +45,36 @@ namespace HexaEngine.Shaderc
 		/// a filesystem, then this name should be the absolute path of the file.<br/>
 		/// For a failed inclusion, this string is empty.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "source_name")]
+		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* SourceName;
 
+		[NativeName(NativeNameType.Field, "source_name_length")]
+		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint SourceNameLength;
 		/// <summary>
 		/// The text contents of the source file in the normal case.<br/>
 		/// For a failed inclusion, this contains the error message.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "content")]
+		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* Content;
 
+		[NativeName(NativeNameType.Field, "content_length")]
+		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint ContentLength;
 		/// <summary>
 		/// User data to be passed along with this request.<br/>
 		/// </summary>
+		[NativeName(NativeNameType.Field, "user_data")]
+		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* UserData;
 
 
 
 	}
 
+	[NativeName(NativeNameType.StructOrClass, "shaderc_compilation_result")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompilationResult
 	{

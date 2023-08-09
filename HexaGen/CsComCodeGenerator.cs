@@ -146,6 +146,7 @@
 
         private void Generate(CppCompilation compilation, string outputPath)
         {
+            Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {

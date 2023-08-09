@@ -10,7 +10,7 @@
     public class BaseGenerator
     {
         protected readonly CsCodeGeneratorSettings settings;
-        private readonly List<LogMessage> Messages = new();
+        private readonly List<LogMessage> messages = new();
 
         public BaseGenerator(CsCodeGeneratorSettings settings)
         {
@@ -18,10 +18,12 @@
             settings.TypeMappings.Add("HRESULT", "HResult");
         }
 
+        public IReadOnlyList<LogMessage> Messages => messages;
+
         public void Log(LogSevertiy severtiy, string message)
         {
             if (severtiy >= settings.LogLevel)
-                Messages.Add(new LogMessage(severtiy, message));
+                messages.Add(new LogMessage(severtiy, message));
         }
 
         public void LogTrace(string message)
@@ -58,9 +60,9 @@
         {
             int warns = 0;
             int errors = 0;
-            for (int i = 0; i < Messages.Count; i++)
+            for (int i = 0; i < messages.Count; i++)
             {
-                var msg = Messages[i];
+                var msg = messages[i];
                 switch (msg.Severtiy)
                 {
                     case LogSevertiy.Trace:
@@ -90,7 +92,7 @@
                         errors++;
                         break;
                 }
-                Console.WriteLine(Messages[i]);
+                Console.WriteLine(messages[i]);
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -108,7 +110,7 @@
             Console.Write($"errors: {errors}\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
-            Messages.Clear();
+            messages.Clear();
         }
     }
 }

@@ -25,19 +25,21 @@ namespace HexaEngine.D3DCompiler
 	/// Compresses a set of shaders into a more compact form.<br/>
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
-	[NativeName("_D3D_SHADER_DATA")]
+	[NativeName(NativeNameType.StructOrClass, "_D3D_SHADER_DATA")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct D3DShaderData
 	{
-		[NativeName("pBytecode")]
+		[NativeName(NativeNameType.Field, "pBytecode")]
+		[NativeName(NativeNameType.Type, "LPCVOID")]
 		public unsafe void* PBytecode;
-		[NativeName("BytecodeLength")]
+		[NativeName(NativeNameType.Field, "BytecodeLength")]
+		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint BytecodeLength;
 
 
 	}
 
-	[NativeName("ID3D10Effect")]
+	[NativeName(NativeNameType.StructOrClass, "ID3D10Effect")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ID3D10Effect
 	{

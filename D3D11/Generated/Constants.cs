@@ -17,97 +17,97 @@ namespace HexaEngine.D3D11
 {
 	public unsafe partial class D3D11
 	{
-		[NativeName("_MSC_VER")]
+		[NativeName(NativeNameType.Const, "_MSC_VER")]
 		public const uint MscVer = 1930;
 
-		[NativeName("_WIN32")]
+		[NativeName(NativeNameType.Const, "_WIN32")]
 		public const uint Win32 = 1;
 
-		[NativeName("_M_AMD64")]
+		[NativeName(NativeNameType.Const, "_M_AMD64")]
 		public const uint MAmd64 = 100;
 
-		[NativeName("_M_X64")]
+		[NativeName(NativeNameType.Const, "_M_X64")]
 		public const uint MX64 = 100;
 
-		[NativeName("_WIN64")]
+		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const uint Win64 = 1;
 
-		[NativeName("__REQUIRED_RPCNDR_H_VERSION__")]
+		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
 		public const uint RequiredRpcndrHVersion = 501;
 
-		[NativeName("__REQUIRED_RPCSAL_H_VERSION__")]
+		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
 		public const uint RequiredRpcsalHVersion = 100;
 
-		[NativeName("D3D11_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT")]
+		[NativeName(NativeNameType.Const, "D3D11_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT")]
 		public const uint D3D11InfoQueueDefaultMessageCountLimit = 1024;
 
-		[NativeName("D3D_SHADER_REQUIRES_DOUBLES")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_DOUBLES")]
 		public const uint D3DShaderRequiresDoubles = 0x00000001;
 
-		[NativeName("D3D_SHADER_REQUIRES_EARLY_DEPTH_STENCIL")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_EARLY_DEPTH_STENCIL")]
 		public const uint D3DShaderRequiresEarlyDepthStencil = 0x00000002;
 
-		[NativeName("D3D_SHADER_REQUIRES_UAVS_AT_EVERY_STAGE")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_UAVS_AT_EVERY_STAGE")]
 		public const uint D3DShaderRequiresUavsAtEveryStage = 0x00000004;
 
-		[NativeName("D3D_SHADER_REQUIRES_64_UAVS")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_64_UAVS")]
 		public const uint D3DShaderRequires64Uavs = 0x00000008;
 
-		[NativeName("D3D_SHADER_REQUIRES_MINIMUM_PRECISION")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_MINIMUM_PRECISION")]
 		public const uint D3DShaderRequiresMinimumPrecision = 0x00000010;
 
-		[NativeName("D3D_SHADER_REQUIRES_11_1_DOUBLE_EXTENSIONS")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_11_1_DOUBLE_EXTENSIONS")]
 		public const uint D3DShaderRequires111DoubleExtensions = 0x00000020;
 
-		[NativeName("D3D_SHADER_REQUIRES_11_1_SHADER_EXTENSIONS")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_11_1_SHADER_EXTENSIONS")]
 		public const uint D3DShaderRequires111ShaderExtensions = 0x00000040;
 
-		[NativeName("D3D_SHADER_REQUIRES_LEVEL_9_COMPARISON_FILTERING")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_LEVEL_9_COMPARISON_FILTERING")]
 		public const uint D3DShaderRequiresLevel9ComparisonFiltering = 0x00000080;
 
-		[NativeName("D3D_SHADER_REQUIRES_TILED_RESOURCES")]
+		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_TILED_RESOURCES")]
 		public const uint D3DShaderRequiresTiledResources = 0x00000100;
 
-		[NativeName("D3D11_TRACE_COMPONENT_X")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_COMPONENT_X")]
 		public const uint D3D11TraceComponentX = 0x1;
 
-		[NativeName("D3D11_TRACE_COMPONENT_Y")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_COMPONENT_Y")]
 		public const uint D3D11TraceComponentY = 0x2;
 
-		[NativeName("D3D11_TRACE_COMPONENT_Z")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_COMPONENT_Z")]
 		public const uint D3D11TraceComponentZ = 0x4;
 
-		[NativeName("D3D11_TRACE_COMPONENT_W")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_COMPONENT_W")]
 		public const uint D3D11TraceComponentW = 0x8;
 
-		[NativeName("D3D11_SHADER_TRACE_FLAG_RECORD_REGISTER_WRITES")]
+		[NativeName(NativeNameType.Const, "D3D11_SHADER_TRACE_FLAG_RECORD_REGISTER_WRITES")]
 		public const uint D3D11ShaderTraceFlagRecordRegisterWrites = 0x1;
 
-		[NativeName("D3D11_SHADER_TRACE_FLAG_RECORD_REGISTER_READS")]
+		[NativeName(NativeNameType.Const, "D3D11_SHADER_TRACE_FLAG_RECORD_REGISTER_READS")]
 		public const uint D3D11ShaderTraceFlagRecordRegisterReads = 0x2;
 
-		[NativeName("D3D11_TRACE_REGISTER_FLAGS_RELATIVE_INDEXING")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_REGISTER_FLAGS_RELATIVE_INDEXING")]
 		public const uint D3D11TraceRegisterFlagsRelativeIndexing = 0x1;
 
-		[NativeName("D3D11_TRACE_MISC_GS_EMIT")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_GS_EMIT")]
 		public const uint D3D11TraceMiscGsEmit = 0x1;
 
-		[NativeName("D3D11_TRACE_MISC_GS_CUT")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_GS_CUT")]
 		public const uint D3D11TraceMiscGsCut = 0x2;
 
-		[NativeName("D3D11_TRACE_MISC_PS_DISCARD")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_PS_DISCARD")]
 		public const uint D3D11TraceMiscPsDiscard = 0x4;
 
-		[NativeName("D3D11_TRACE_MISC_GS_EMIT_STREAM")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_GS_EMIT_STREAM")]
 		public const uint D3D11TraceMiscGsEmitStream = 0x8;
 
-		[NativeName("D3D11_TRACE_MISC_GS_CUT_STREAM")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_GS_CUT_STREAM")]
 		public const uint D3D11TraceMiscGsCutStream = 0x10;
 
-		[NativeName("D3D11_TRACE_MISC_HALT")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_HALT")]
 		public const uint D3D11TraceMiscHalt = 0x20;
 
-		[NativeName("D3D11_TRACE_MISC_MESSAGE")]
+		[NativeName(NativeNameType.Const, "D3D11_TRACE_MISC_MESSAGE")]
 		public const uint D3D11TraceMiscMessage = 0x40;
 
 	}

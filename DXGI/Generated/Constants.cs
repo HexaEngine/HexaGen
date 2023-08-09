@@ -17,34 +17,34 @@ namespace HexaEngine.DXGI
 {
 	public unsafe partial class DXGI
 	{
-		[NativeName("_MSC_VER")]
+		[NativeName(NativeNameType.Const, "_MSC_VER")]
 		public const uint MscVer = 1930;
 
-		[NativeName("_WIN32")]
+		[NativeName(NativeNameType.Const, "_WIN32")]
 		public const uint Win32 = 1;
 
-		[NativeName("_M_AMD64")]
+		[NativeName(NativeNameType.Const, "_M_AMD64")]
 		public const uint MAmd64 = 100;
 
-		[NativeName("_M_X64")]
+		[NativeName(NativeNameType.Const, "_M_X64")]
 		public const uint MX64 = 100;
 
-		[NativeName("_WIN64")]
+		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const uint Win64 = 1;
 
-		[NativeName("__REQUIRED_RPCNDR_H_VERSION__")]
+		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
 		public const uint RequiredRpcndrHVersion = 501;
 
-		[NativeName("__REQUIRED_RPCSAL_H_VERSION__")]
+		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
 		public const uint RequiredRpcsalHVersion = 100;
 
-		[NativeName("DXGI_FORMAT_DEFINED")]
+		[NativeName(NativeNameType.Const, "DXGI_FORMAT_DEFINED")]
 		public const uint DxgiFormatDefined = 1;
 
-		[NativeName("DXGI_CPU_ACCESS_FIELD")]
+		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_FIELD")]
 		public const uint DxgiCpuAccessField = 15;
 
-		[NativeName("DXGI_CREATE_FACTORY_DEBUG")]
+		[NativeName(NativeNameType.Const, "DXGI_CREATE_FACTORY_DEBUG")]
 		public const uint DxgiCreateFactoryDebug = 0x1;
 
 	}

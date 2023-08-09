@@ -16,22 +16,30 @@ namespace HexaEngine.Shaderc
 {
 	public static unsafe class Extensions
 	{
-		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		public static void Release(this ShadercCompiler shadercCompiler)
+		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Release(this ShadercCompiler shadercCompiler)
 		{
 			Shaderc.ShadercCompilerReleaseNative(shadercCompiler);
 		}
 
-		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		public static void Release(this ShadercCompileOptions options)
+		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Release(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsReleaseNative(options);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			Shaderc.ShadercCompileOptionsAddMacroDefinitionNative(options, name, nameLength, value, valueLength);
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -39,7 +47,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, byte* value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -65,7 +75,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pvalue = &value)
 			{
@@ -73,7 +85,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, byte* name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -99,7 +113,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, ref byte name, nuint nameLength, ref byte value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -110,7 +126,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		public static void AddMacroDefinition(this ShadercCompileOptions options, string name, nuint nameLength, string value, nuint valueLength)
+		/// <summary>		/// Adds a predefined macro to the compilation options. This has the same<br/>		/// effect as passing -Dname=value to the command-line compiler.  If value<br/>		/// is NULL, it has the same effect as passing -Dname to the command-line<br/>		/// compiler. If a macro definition with the same name has previously been<br/>		/// added, the value is replaced with the new value. The macro name and<br/>		/// value are passed in with char pointers, which point to their data, and<br/>		/// the lengths of their data. The strings that the name and value pointers<br/>		/// point to must remain valid for the duration of the call, but can be<br/>		/// modified or deleted after this function has returned. In case of adding<br/>		/// a valueless macro, the value argument should be a null pointer or the<br/>		/// value_length should be 0u.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_add_macro_definition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddMacroDefinition(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "name_length")] [NativeName(NativeNameType.Type, "size_t")] nuint nameLength, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value, [NativeName(NativeNameType.Param, "value_length")] [NativeName(NativeNameType.Type, "size_t")] nuint valueLength)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -157,102 +175,142 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		public static void SetSourceLanguage(this ShadercCompileOptions options, ShadercSourceLanguage lang)
+		/// <summary>		/// Sets the source language.  The default is GLSL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_source_language")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetSourceLanguage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "lang")] [NativeName(NativeNameType.Type, "shaderc_source_language")] ShadercSourceLanguage lang)
 		{
 			Shaderc.ShadercCompileOptionsSetSourceLanguageNative(options, lang);
 		}
 
-		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		public static void SetGenerateDebugInfo(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to generate debug information in the output.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_generate_debug_info")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetGenerateDebugInfo(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetGenerateDebugInfoNative(options);
 		}
 
-		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		public static void SetOptimizationLevel(this ShadercCompileOptions options, ShadercOptimizationLevel level)
+		/// <summary>		/// Sets the compiler optimization level to the given level. Only the last one<br/>		/// takes effect if multiple calls of this function exist.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_optimization_level")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetOptimizationLevel(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "shaderc_optimization_level")] ShadercOptimizationLevel level)
 		{
 			Shaderc.ShadercCompileOptionsSetOptimizationLevelNative(options, level);
 		}
 
-		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		public static void SetForcedVersionProfile(this ShadercCompileOptions options, int version, ShadercProfile profile)
+		/// <summary>		/// Forces the GLSL language version and profile to a given pair. The version<br/>		/// number is the same as would appear in the #version annotation in the source.<br/>		/// Version and profile specified here overrides the #version annotation in the<br/>		/// source. Use profile: 'shaderc_profile_none' for GLSL versions that do not<br/>		/// define profiles, e.g. versions below 150.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_forced_version_profile")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetForcedVersionProfile(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "int")] int version, [NativeName(NativeNameType.Param, "profile")] [NativeName(NativeNameType.Type, "shaderc_profile")] ShadercProfile profile)
 		{
 			Shaderc.ShadercCompileOptionsSetForcedVersionProfileNative(options, version, profile);
 		}
 
-		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		public static void SetIncludeCallbacks(this ShadercCompileOptions options, ShadercIncludeResolveFn resolver, ShadercIncludeResultReleaseFn resultReleaser, void* userData)
+		/// <summary>		/// Sets includer callback functions.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_include_callbacks")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetIncludeCallbacks(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "resolver")] [NativeName(NativeNameType.Type, "shaderc_include_resolve_fn")] ShadercIncludeResolveFn resolver, [NativeName(NativeNameType.Param, "result_releaser")] [NativeName(NativeNameType.Type, "shaderc_include_result_release_fn")] ShadercIncludeResultReleaseFn resultReleaser, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData)
 		{
 			Shaderc.ShadercCompileOptionsSetIncludeCallbacksNative(options, resolver, resultReleaser, userData);
 		}
 
-		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		public static void SetSuppressWarnings(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to suppress warnings, overriding warnings-as-errors<br/>		/// mode. When both suppress-warnings and warnings-as-errors modes are<br/>		/// turned on, warning messages will be inhibited, and will not be emitted<br/>		/// as error messages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_suppress_warnings")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetSuppressWarnings(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetSuppressWarningsNative(options);
 		}
 
-		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		public static void SetTargetEnv(this ShadercCompileOptions options, ShadercTargetEnv target, uint version)
+		/// <summary>		/// Sets the target shader environment, affecting which warnings or errors will<br/>		/// be issued.  The version will be for distinguishing between different versions<br/>		/// of the target environment.  The version value should be either 0 or<br/>		/// a value listed in shaderc_env_version.  The 0 value maps to Vulkan 1.0 if<br/>		/// |target| is Vulkan, and it maps to OpenGL 4.5 if |target| is OpenGL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_env")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetTargetEnv(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "shaderc_target_env")] ShadercTargetEnv target, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "uint32_t")] uint version)
 		{
 			Shaderc.ShadercCompileOptionsSetTargetEnvNative(options, target, version);
 		}
 
-		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		public static void SetTargetSpirv(this ShadercCompileOptions options, ShadercSpirvVersion version)
+		/// <summary>		/// Sets the target SPIR-V version. The generated module will use this version<br/>		/// of SPIR-V.  Each target environment determines what versions of SPIR-V<br/>		/// it can consume.  Defaults to the highest version of SPIR-V 1.0 which is<br/>		/// required to be supported by the target environment.  E.g. Default to SPIR-V<br/>		/// 1.0 for Vulkan 1.0 and SPIR-V 1.3 for Vulkan 1.1.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_target_spirv")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetTargetSpirv(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "shaderc_spirv_version")] ShadercSpirvVersion version)
 		{
 			Shaderc.ShadercCompileOptionsSetTargetSpirvNative(options, version);
 		}
 
-		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		public static void SetWarningsAsErrors(this ShadercCompileOptions options)
+		/// <summary>		/// Sets the compiler mode to treat all warnings as errors. Note the<br/>		/// suppress-warnings mode overrides this option, i.e. if both<br/>		/// warning-as-errors and suppress-warnings modes are set, warnings will not<br/>		/// be emitted as error messages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_warnings_as_errors")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetWarningsAsErrors(this ShadercCompileOptions options)
 		{
 			Shaderc.ShadercCompileOptionsSetWarningsAsErrorsNative(options);
 		}
 
-		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		public static void SetLimit(this ShadercCompileOptions options, ShadercLimit limit, int value)
+		/// <summary>		/// Sets a resource limit.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_limit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetLimit(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "limit")] [NativeName(NativeNameType.Type, "shaderc_limit")] ShadercLimit limit, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
 		{
 			Shaderc.ShadercCompileOptionsSetLimitNative(options, limit, value);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		public static void SetAutoBindUniforms(this ShadercCompileOptions options, bool autoBind)
+		/// <summary>		/// Sets whether the compiler should automatically assign bindings to uniforms<br/>		/// that aren't already explicitly bound in the shader source.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_bind_uniforms")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetAutoBindUniforms(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_bind")] [NativeName(NativeNameType.Type, "bool")] bool autoBind)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoBindUniformsNative(options, autoBind ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		public static void SetAutoCombinedImageSampler(this ShadercCompileOptions options, bool upgrade)
+		/// <summary>		/// Sets whether the compiler should automatically remove sampler variables<br/>		/// and convert image variables to combined image-sampler variables.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_combined_image_sampler")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetAutoCombinedImageSampler(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "upgrade")] [NativeName(NativeNameType.Type, "bool")] bool upgrade)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoCombinedImageSamplerNative(options, upgrade ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		public static void SetHlslIoMapping(this ShadercCompileOptions options, bool hlslIomap)
+		/// <summary>		/// Sets whether the compiler should use HLSL IO mapping rules for bindings.<br/>		/// Defaults to false.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_io_mapping")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslIoMapping(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_iomap")] [NativeName(NativeNameType.Type, "bool")] bool hlslIomap)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslIoMappingNative(options, hlslIomap ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		public static void SetHlslOffsets(this ShadercCompileOptions options, bool hlslOffsets)
+		/// <summary>		/// Sets whether the compiler should determine block member offsets using HLSL<br/>		/// packing rules instead of standard GLSL rules.  Defaults to false.  Only<br/>		/// affects GLSL compilation.  HLSL rules are always used when compiling HLSL.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_offsets")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslOffsets(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "hlsl_offsets")] [NativeName(NativeNameType.Type, "bool")] bool hlslOffsets)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslOffsetsNative(options, hlslOffsets ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		public static void SetBindingBase(this ShadercCompileOptions options, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Sets the base binding number used for for a uniform resource type when<br/>		/// automatically assigning bindings.  For GLSL compilation, sets the lowest<br/>		/// automatically assigned number.  For HLSL compilation, the regsiter number<br/>		/// assigned to the resource is added to this specified base.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetBindingBase(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue)
 		{
 			Shaderc.ShadercCompileOptionsSetBindingBaseNative(options, kind, baseValue);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		public static void SetBindingBaseForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ShadercUniformKind kind, uint baseValue)
+		/// <summary>		/// Like shaderc_compile_options_set_binding_base, but only takes effect when<br/>		/// compiling a given shader stage.  The stage is assumed to be one of vertex,<br/>		/// fragment, tessellation evaluation, tesselation control, geometry, or compute.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_binding_base_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetBindingBaseForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "shaderc_uniform_kind")] ShadercUniformKind kind, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "uint32_t")] uint baseValue)
 		{
 			Shaderc.ShadercCompileOptionsSetBindingBaseForStageNative(options, shaderKind, kind, baseValue);
 		}
 
-		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		public static void SetPreserveBindings(this ShadercCompileOptions options, bool preserveBindings)
+		/// <summary>		/// Sets whether the compiler should preserve all bindings, even when those<br/>		/// bindings are not used.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_preserve_bindings")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetPreserveBindings(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "preserve_bindings")] [NativeName(NativeNameType.Type, "bool")] bool preserveBindings)
 		{
 			Shaderc.ShadercCompileOptionsSetPreserveBindingsNative(options, preserveBindings ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		public static void SetAutoMapLocations(this ShadercCompileOptions options, bool autoMap)
+		/// <summary>		/// Sets whether the compiler should automatically assign locations to<br/>		/// uniform variables that don't have explicit locations in the shader source.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_auto_map_locations")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetAutoMapLocations(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "auto_map")] [NativeName(NativeNameType.Type, "bool")] bool autoMap)
 		{
 			Shaderc.ShadercCompileOptionsSetAutoMapLocationsNative(options, autoMap ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslRegisterSetAndBindingForStageNative(options, shaderKind, reg, set, binding);
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -260,7 +318,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -286,7 +346,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -294,7 +356,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -320,7 +384,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -331,7 +397,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, byte* binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -378,7 +446,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -386,7 +456,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -412,7 +484,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -423,7 +497,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, byte* set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -470,7 +546,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -481,7 +559,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, byte* reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -528,7 +608,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -542,7 +624,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, ShadercShaderKind shaderKind, string reg, string set, string binding)
+		/// <summary>		/// Sets a descriptor set and binding for an HLSL register in the given stage.<br/>		/// This method keeps a copy of the string data.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBindingForStage(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "shader_kind")] [NativeName(NativeNameType.Type, "shaderc_shader_kind")] ShadercShaderKind shaderKind, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -610,12 +694,16 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslRegisterSetAndBindingNative(options, reg, set, binding);
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -623,7 +711,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -649,7 +739,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -657,7 +749,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -683,7 +777,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -694,7 +790,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, byte* binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] byte* binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -741,7 +839,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pbinding = &binding)
 			{
@@ -749,7 +849,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -775,7 +877,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, byte* set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -786,7 +890,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, byte* set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] byte* set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -833,7 +939,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* pset = &set)
 			{
@@ -844,7 +952,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, byte* reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] byte* reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -891,7 +1001,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, ref byte reg, ref byte set, ref byte binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] ref byte reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] ref byte set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] ref byte binding)
 		{
 			fixed (byte* preg = &reg)
 			{
@@ -905,7 +1017,9 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, string reg, string set, string binding)
+		/// <summary>		/// Like shaderc_compile_options_set_hlsl_register_set_and_binding_for_stage,<br/>		/// but affects all shader stages.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_register_set_and_binding")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslRegisterSetAndBinding(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "reg")] [NativeName(NativeNameType.Type, "const char*")] string reg, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "const char*")] string set, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "const char*")] string binding)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -973,27 +1087,37 @@ namespace HexaEngine.Shaderc
 			}
 		}
 
-		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		public static void SetHlslFunctionality1(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should enable extension<br/>		/// SPV_GOOGLE_hlsl_functionality1.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_functionality1")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlslFunctionality1(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetHlslFunctionality1Native(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		public static void SetHlsl16BitTypes(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether 16-bit types are supported in HLSL or not.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_hlsl_16bit_types")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetHlsl16BitTypes(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetHlsl16BitTypesNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		public static void SetInvertY(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler should invert position.Y output in vertex shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_invert_y")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetInvertY(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetInvertYNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		public static void SetNanClamp(this ShadercCompileOptions options, bool enable)
+		/// <summary>		/// Sets whether the compiler generates code for max and min builtins which,<br/>		/// if given a NaN operand, will return the other operand. Similarly, the clamp<br/>		/// builtin will favour the non-NaN operands, as if clamp were implemented<br/>		/// as a composition of max and min.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_set_nan_clamp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetNanClamp(this ShadercCompileOptions options, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "bool")] bool enable)
 		{
 			Shaderc.ShadercCompileOptionsSetNanClampNative(options, enable ? (byte)1 : (byte)0);
 		}
 
-		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		public static void Release(this ShadercCompilationResult result)
+		/// <summary>		/// Releases the resources held by the result object. It is invalid to use the<br/>		/// result object for any further operations.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_release")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Release(this ShadercCompilationResult result)
 		{
 			Shaderc.ShadercResultReleaseNative(result);
 		}

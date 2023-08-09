@@ -15,403 +15,403 @@ using System.Numerics;
 
 namespace HexaEngine.DXGI
 {
-	[NativeName("DXGI_FORMAT")]
+	[NativeName(NativeNameType.Enum, "DXGI_FORMAT")]
 	public enum DxgiFormat
 	{
-		[NativeName("DXGI_FORMAT_UNKNOWN")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_UNKNOWN")]
 		Unknown = unchecked(0),
-		[NativeName("DXGI_FORMAT_R32G32B32A32_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_TYPELESS")]
 		Formatr32g32b32a32Typeless = unchecked(1),
-		[NativeName("DXGI_FORMAT_R32G32B32A32_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_FLOAT")]
 		Formatr32g32b32a32Float = unchecked(2),
-		[NativeName("DXGI_FORMAT_R32G32B32A32_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_UINT")]
 		Formatr32g32b32a32Uint = unchecked(3),
-		[NativeName("DXGI_FORMAT_R32G32B32A32_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_SINT")]
 		Formatr32g32b32a32Sint = unchecked(4),
-		[NativeName("DXGI_FORMAT_R32G32B32_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_TYPELESS")]
 		Formatr32g32b32Typeless = unchecked(5),
-		[NativeName("DXGI_FORMAT_R32G32B32_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_FLOAT")]
 		Formatr32g32b32Float = unchecked(6),
-		[NativeName("DXGI_FORMAT_R32G32B32_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_UINT")]
 		Formatr32g32b32Uint = unchecked(7),
-		[NativeName("DXGI_FORMAT_R32G32B32_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_SINT")]
 		Formatr32g32b32Sint = unchecked(8),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_TYPELESS")]
 		Formatr16g16b16a16Typeless = unchecked(9),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_FLOAT")]
 		Formatr16g16b16a16Float = unchecked(10),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_UNORM")]
 		Formatr16g16b16a16Unorm = unchecked(11),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_UINT")]
 		Formatr16g16b16a16Uint = unchecked(12),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_SNORM")]
 		Formatr16g16b16a16Snorm = unchecked(13),
-		[NativeName("DXGI_FORMAT_R16G16B16A16_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_SINT")]
 		Formatr16g16b16a16Sint = unchecked(14),
-		[NativeName("DXGI_FORMAT_R32G32_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_TYPELESS")]
 		Formatr32g32Typeless = unchecked(15),
-		[NativeName("DXGI_FORMAT_R32G32_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_FLOAT")]
 		Formatr32g32Float = unchecked(16),
-		[NativeName("DXGI_FORMAT_R32G32_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_UINT")]
 		Formatr32g32Uint = unchecked(17),
-		[NativeName("DXGI_FORMAT_R32G32_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_SINT")]
 		Formatr32g32Sint = unchecked(18),
-		[NativeName("DXGI_FORMAT_R32G8X24_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G8X24_TYPELESS")]
 		Formatr32g8X24Typeless = unchecked(19),
-		[NativeName("DXGI_FORMAT_D32_FLOAT_S8X24_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D32_FLOAT_S8X24_UINT")]
 		Formatd32Floats8X24Uint = unchecked(20),
-		[NativeName("DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS")]
 		Formatr32Floatx8X24Typeless = unchecked(21),
-		[NativeName("DXGI_FORMAT_X32_TYPELESS_G8X24_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_X32_TYPELESS_G8X24_UINT")]
 		Formatx32Typelessg8X24Uint = unchecked(22),
-		[NativeName("DXGI_FORMAT_R10G10B10A2_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_TYPELESS")]
 		Formatr10g10b10a2Typeless = unchecked(23),
-		[NativeName("DXGI_FORMAT_R10G10B10A2_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_UNORM")]
 		Formatr10g10b10a2Unorm = unchecked(24),
-		[NativeName("DXGI_FORMAT_R10G10B10A2_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_UINT")]
 		Formatr10g10b10a2Uint = unchecked(25),
-		[NativeName("DXGI_FORMAT_R11G11B10_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R11G11B10_FLOAT")]
 		Formatr11g11b10Float = unchecked(26),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_TYPELESS")]
 		Formatr8G8B8A8Typeless = unchecked(27),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UNORM")]
 		Formatr8G8B8A8Unorm = unchecked(28),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UNORM_SRGB")]
 		Formatr8G8B8A8UnormSrgb = unchecked(29),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UINT")]
 		Formatr8G8B8A8Uint = unchecked(30),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_SNORM")]
 		Formatr8G8B8A8Snorm = unchecked(31),
-		[NativeName("DXGI_FORMAT_R8G8B8A8_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_SINT")]
 		Formatr8G8B8A8Sint = unchecked(32),
-		[NativeName("DXGI_FORMAT_R16G16_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_TYPELESS")]
 		Formatr16g16Typeless = unchecked(33),
-		[NativeName("DXGI_FORMAT_R16G16_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_FLOAT")]
 		Formatr16g16Float = unchecked(34),
-		[NativeName("DXGI_FORMAT_R16G16_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_UNORM")]
 		Formatr16g16Unorm = unchecked(35),
-		[NativeName("DXGI_FORMAT_R16G16_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_UINT")]
 		Formatr16g16Uint = unchecked(36),
-		[NativeName("DXGI_FORMAT_R16G16_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_SNORM")]
 		Formatr16g16Snorm = unchecked(37),
-		[NativeName("DXGI_FORMAT_R16G16_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_SINT")]
 		Formatr16g16Sint = unchecked(38),
-		[NativeName("DXGI_FORMAT_R32_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_TYPELESS")]
 		Formatr32Typeless = unchecked(39),
-		[NativeName("DXGI_FORMAT_D32_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D32_FLOAT")]
 		Formatd32Float = unchecked(40),
-		[NativeName("DXGI_FORMAT_R32_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_FLOAT")]
 		Formatr32Float = unchecked(41),
-		[NativeName("DXGI_FORMAT_R32_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_UINT")]
 		Formatr32Uint = unchecked(42),
-		[NativeName("DXGI_FORMAT_R32_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_SINT")]
 		Formatr32Sint = unchecked(43),
-		[NativeName("DXGI_FORMAT_R24G8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R24G8_TYPELESS")]
 		Formatr24g8Typeless = unchecked(44),
-		[NativeName("DXGI_FORMAT_D24_UNORM_S8_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D24_UNORM_S8_UINT")]
 		Formatd24Unorms8Uint = unchecked(45),
-		[NativeName("DXGI_FORMAT_R24_UNORM_X8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R24_UNORM_X8_TYPELESS")]
 		Formatr24Unormx8Typeless = unchecked(46),
-		[NativeName("DXGI_FORMAT_X24_TYPELESS_G8_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_X24_TYPELESS_G8_UINT")]
 		Formatx24Typelessg8Uint = unchecked(47),
-		[NativeName("DXGI_FORMAT_R8G8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_TYPELESS")]
 		Formatr8G8Typeless = unchecked(48),
-		[NativeName("DXGI_FORMAT_R8G8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_UNORM")]
 		Formatr8G8Unorm = unchecked(49),
-		[NativeName("DXGI_FORMAT_R8G8_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_UINT")]
 		Formatr8G8Uint = unchecked(50),
-		[NativeName("DXGI_FORMAT_R8G8_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_SNORM")]
 		Formatr8G8Snorm = unchecked(51),
-		[NativeName("DXGI_FORMAT_R8G8_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_SINT")]
 		Formatr8G8Sint = unchecked(52),
-		[NativeName("DXGI_FORMAT_R16_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_TYPELESS")]
 		Formatr16Typeless = unchecked(53),
-		[NativeName("DXGI_FORMAT_R16_FLOAT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_FLOAT")]
 		Formatr16Float = unchecked(54),
-		[NativeName("DXGI_FORMAT_D16_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D16_UNORM")]
 		Formatd16Unorm = unchecked(55),
-		[NativeName("DXGI_FORMAT_R16_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_UNORM")]
 		Formatr16Unorm = unchecked(56),
-		[NativeName("DXGI_FORMAT_R16_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_UINT")]
 		Formatr16Uint = unchecked(57),
-		[NativeName("DXGI_FORMAT_R16_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_SNORM")]
 		Formatr16Snorm = unchecked(58),
-		[NativeName("DXGI_FORMAT_R16_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_SINT")]
 		Formatr16Sint = unchecked(59),
-		[NativeName("DXGI_FORMAT_R8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_TYPELESS")]
 		Formatr8Typeless = unchecked(60),
-		[NativeName("DXGI_FORMAT_R8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_UNORM")]
 		Formatr8Unorm = unchecked(61),
-		[NativeName("DXGI_FORMAT_R8_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_UINT")]
 		Formatr8Uint = unchecked(62),
-		[NativeName("DXGI_FORMAT_R8_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_SNORM")]
 		Formatr8Snorm = unchecked(63),
-		[NativeName("DXGI_FORMAT_R8_SINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_SINT")]
 		Formatr8Sint = unchecked(64),
-		[NativeName("DXGI_FORMAT_A8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_A8_UNORM")]
 		Formata8Unorm = unchecked(65),
-		[NativeName("DXGI_FORMAT_R1_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R1_UNORM")]
 		Formatr1Unorm = unchecked(66),
-		[NativeName("DXGI_FORMAT_R9G9B9E5_SHAREDEXP")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R9G9B9E5_SHAREDEXP")]
 		Formatr9G9B9E5Sharedexp = unchecked(67),
-		[NativeName("DXGI_FORMAT_R8G8_B8G8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_B8G8_UNORM")]
 		Formatr8G8B8G8Unorm = unchecked(68),
-		[NativeName("DXGI_FORMAT_G8R8_G8B8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_G8R8_G8B8_UNORM")]
 		Formatg8R8G8B8Unorm = unchecked(69),
-		[NativeName("DXGI_FORMAT_BC1_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_TYPELESS")]
 		Bc1Typeless = unchecked(70),
-		[NativeName("DXGI_FORMAT_BC1_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_UNORM")]
 		Bc1Unorm = unchecked(71),
-		[NativeName("DXGI_FORMAT_BC1_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_UNORM_SRGB")]
 		Bc1UnormSrgb = unchecked(72),
-		[NativeName("DXGI_FORMAT_BC2_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_TYPELESS")]
 		Bc2Typeless = unchecked(73),
-		[NativeName("DXGI_FORMAT_BC2_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_UNORM")]
 		Bc2Unorm = unchecked(74),
-		[NativeName("DXGI_FORMAT_BC2_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_UNORM_SRGB")]
 		Bc2UnormSrgb = unchecked(75),
-		[NativeName("DXGI_FORMAT_BC3_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_TYPELESS")]
 		Bc3Typeless = unchecked(76),
-		[NativeName("DXGI_FORMAT_BC3_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_UNORM")]
 		Bc3Unorm = unchecked(77),
-		[NativeName("DXGI_FORMAT_BC3_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_UNORM_SRGB")]
 		Bc3UnormSrgb = unchecked(78),
-		[NativeName("DXGI_FORMAT_BC4_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_TYPELESS")]
 		Bc4Typeless = unchecked(79),
-		[NativeName("DXGI_FORMAT_BC4_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_UNORM")]
 		Bc4Unorm = unchecked(80),
-		[NativeName("DXGI_FORMAT_BC4_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_SNORM")]
 		Bc4Snorm = unchecked(81),
-		[NativeName("DXGI_FORMAT_BC5_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_TYPELESS")]
 		Bc5Typeless = unchecked(82),
-		[NativeName("DXGI_FORMAT_BC5_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_UNORM")]
 		Bc5Unorm = unchecked(83),
-		[NativeName("DXGI_FORMAT_BC5_SNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_SNORM")]
 		Bc5Snorm = unchecked(84),
-		[NativeName("DXGI_FORMAT_B5G6R5_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B5G6R5_UNORM")]
 		Formatb5G6R5Unorm = unchecked(85),
-		[NativeName("DXGI_FORMAT_B5G5R5A1_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B5G5R5A1_UNORM")]
 		Formatb5G5R5A1Unorm = unchecked(86),
-		[NativeName("DXGI_FORMAT_B8G8R8A8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_UNORM")]
 		Formatb8G8R8A8Unorm = unchecked(87),
-		[NativeName("DXGI_FORMAT_B8G8R8X8_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_UNORM")]
 		Formatb8G8R8X8Unorm = unchecked(88),
-		[NativeName("DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM")]
 		Formatr10g10b10XrBiasa2Unorm = unchecked(89),
-		[NativeName("DXGI_FORMAT_B8G8R8A8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_TYPELESS")]
 		Formatb8G8R8A8Typeless = unchecked(90),
-		[NativeName("DXGI_FORMAT_B8G8R8A8_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_UNORM_SRGB")]
 		Formatb8G8R8A8UnormSrgb = unchecked(91),
-		[NativeName("DXGI_FORMAT_B8G8R8X8_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_TYPELESS")]
 		Formatb8G8R8X8Typeless = unchecked(92),
-		[NativeName("DXGI_FORMAT_B8G8R8X8_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_UNORM_SRGB")]
 		Formatb8G8R8X8UnormSrgb = unchecked(93),
-		[NativeName("DXGI_FORMAT_BC6H_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_TYPELESS")]
 		Bc6HTypeless = unchecked(94),
-		[NativeName("DXGI_FORMAT_BC6H_UF16")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_UF16")]
 		Bc6HUf16 = unchecked(95),
-		[NativeName("DXGI_FORMAT_BC6H_SF16")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_SF16")]
 		Bc6HSf16 = unchecked(96),
-		[NativeName("DXGI_FORMAT_BC7_TYPELESS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_TYPELESS")]
 		Bc7Typeless = unchecked(97),
-		[NativeName("DXGI_FORMAT_BC7_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_UNORM")]
 		Bc7Unorm = unchecked(98),
-		[NativeName("DXGI_FORMAT_BC7_UNORM_SRGB")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_UNORM_SRGB")]
 		Bc7UnormSrgb = unchecked(99),
-		[NativeName("DXGI_FORMAT_AYUV")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_AYUV")]
 		Ayuv = unchecked(100),
-		[NativeName("DXGI_FORMAT_Y410")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y410")]
 		Formaty410 = unchecked(101),
-		[NativeName("DXGI_FORMAT_Y416")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y416")]
 		Formaty416 = unchecked(102),
-		[NativeName("DXGI_FORMAT_NV12")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_NV12")]
 		Nv12 = unchecked(103),
-		[NativeName("DXGI_FORMAT_P010")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P010")]
 		Formatp010 = unchecked(104),
-		[NativeName("DXGI_FORMAT_P016")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P016")]
 		Formatp016 = unchecked(105),
-		[NativeName("DXGI_FORMAT_420_OPAQUE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_420_OPAQUE")]
 		Format420Opaque = unchecked(106),
-		[NativeName("DXGI_FORMAT_YUY2")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_YUY2")]
 		Yuy2 = unchecked(107),
-		[NativeName("DXGI_FORMAT_Y210")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y210")]
 		Formaty210 = unchecked(108),
-		[NativeName("DXGI_FORMAT_Y216")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y216")]
 		Formaty216 = unchecked(109),
-		[NativeName("DXGI_FORMAT_NV11")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_NV11")]
 		Nv11 = unchecked(110),
-		[NativeName("DXGI_FORMAT_AI44")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_AI44")]
 		Ai44 = unchecked(111),
-		[NativeName("DXGI_FORMAT_IA44")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_IA44")]
 		Ia44 = unchecked(112),
-		[NativeName("DXGI_FORMAT_P8")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P8")]
 		Formatp8 = unchecked(113),
-		[NativeName("DXGI_FORMAT_A8P8")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_A8P8")]
 		Formata8P8 = unchecked(114),
-		[NativeName("DXGI_FORMAT_B4G4R4A4_UNORM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B4G4R4A4_UNORM")]
 		Formatb4G4R4A4Unorm = unchecked(115),
-		[NativeName("DXGI_FORMAT_P208")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P208")]
 		Formatp208 = unchecked(130),
-		[NativeName("DXGI_FORMAT_V208")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_V208")]
 		Formatv208 = unchecked(131),
-		[NativeName("DXGI_FORMAT_V408")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_V408")]
 		Formatv408 = unchecked(132),
-		[NativeName("DXGI_FORMAT_SAMPLER_FEEDBACK_MIN_MIP_OPAQUE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_SAMPLER_FEEDBACK_MIN_MIP_OPAQUE")]
 		SamplerFeedbackMinMipOpaque = unchecked(189),
-		[NativeName("DXGI_FORMAT_SAMPLER_FEEDBACK_MIP_REGION_USED_OPAQUE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_SAMPLER_FEEDBACK_MIP_REGION_USED_OPAQUE")]
 		SamplerFeedbackMipRegionUsedOpaque = unchecked(190),
-		[NativeName("DXGI_FORMAT_FORCE_UINT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_FORCE_UINT")]
 		ForceUint = unchecked((int)0xffffffff),
 	}
 
-	[NativeName("DXGI_MODE_ROTATION")]
+	[NativeName(NativeNameType.Enum, "DXGI_MODE_ROTATION")]
 	public enum DxgiModeRotation
 	{
-		[NativeName("DXGI_MODE_ROTATION_UNSPECIFIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_UNSPECIFIED")]
 		Unspecified = unchecked(0),
-		[NativeName("DXGI_MODE_ROTATION_IDENTITY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_IDENTITY")]
 		Identity = unchecked(1),
-		[NativeName("DXGI_MODE_ROTATION_ROTATE90")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE90")]
 		Rotate90 = unchecked(2),
-		[NativeName("DXGI_MODE_ROTATION_ROTATE180")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE180")]
 		Rotate180 = unchecked(3),
-		[NativeName("DXGI_MODE_ROTATION_ROTATE270")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE270")]
 		Rotate270 = unchecked(4),
 	}
 
-	[NativeName("DXGI_MODE_SCANLINE_ORDER")]
+	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCANLINE_ORDER")]
 	public enum DxgiModeScanlineOrder
 	{
-		[NativeName("DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED")]
 		Unspecified = unchecked(0),
-		[NativeName("DXGI_MODE_SCANLINE_ORDER_PROGRESSIVE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_PROGRESSIVE")]
 		Progressive = unchecked(1),
-		[NativeName("DXGI_MODE_SCANLINE_ORDER_UPPER_FIELD_FIRST")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_UPPER_FIELD_FIRST")]
 		UpperFieldFirst = unchecked(2),
-		[NativeName("DXGI_MODE_SCANLINE_ORDER_LOWER_FIELD_FIRST")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_LOWER_FIELD_FIRST")]
 		LowerFieldFirst = unchecked(3),
 	}
 
-	[NativeName("DXGI_MODE_SCALING")]
+	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCALING")]
 	public enum DxgiModeScaling
 	{
-		[NativeName("DXGI_MODE_SCALING_UNSPECIFIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_UNSPECIFIED")]
 		Unspecified = unchecked(0),
-		[NativeName("DXGI_MODE_SCALING_CENTERED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_CENTERED")]
 		Centered = unchecked(1),
-		[NativeName("DXGI_MODE_SCALING_STRETCHED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_STRETCHED")]
 		Stretched = unchecked(2),
 	}
 
-	[NativeName("DXGI_SWAP_EFFECT")]
+	[NativeName(NativeNameType.Enum, "DXGI_SWAP_EFFECT")]
 	public enum DxgiSwapEffect
 	{
-		[NativeName("DXGI_SWAP_EFFECT_DISCARD")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_DISCARD")]
 		Discard = unchecked(0),
-		[NativeName("DXGI_SWAP_EFFECT_SEQUENTIAL")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_SEQUENTIAL")]
 		Sequential = unchecked(1),
-		[NativeName("DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL")]
 		FlipSequential = unchecked(3),
-		[NativeName("DXGI_SWAP_EFFECT_FLIP_DISCARD")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_FLIP_DISCARD")]
 		FlipDiscard = unchecked(4),
 	}
 
-	[NativeName("DXGI_RESIDENCY")]
+	[NativeName(NativeNameType.Enum, "DXGI_RESIDENCY")]
 	public enum DxgiResidency
 	{
-		[NativeName("DXGI_RESIDENCY_FULLY_RESIDENT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_FULLY_RESIDENT")]
 		FullyResident = unchecked(1),
-		[NativeName("DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY")]
 		ResidentInSharedMemory = unchecked(2),
-		[NativeName("DXGI_RESIDENCY_EVICTED_TO_DISK")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_EVICTED_TO_DISK")]
 		EvictedToDisk = unchecked(3),
 	}
 
-	[NativeName("DXGI_COLOR_SPACE_TYPE")]
+	[NativeName(NativeNameType.Enum, "DXGI_COLOR_SPACE_TYPE")]
 	public enum DxgiColorSpaceType
 	{
-		[NativeName("DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709")]
 		RgbFullg22Nonep709 = unchecked(0),
-		[NativeName("DXGI_COLOR_SPACE_RGB_FULL_G10_NONE_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G10_NONE_P709")]
 		RgbFullg10Nonep709 = unchecked(1),
-		[NativeName("DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P709")]
 		RgbStudiog22Nonep709 = unchecked(2),
-		[NativeName("DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P2020")]
 		RgbStudiog22Nonep2020 = unchecked(3),
-		[NativeName("DXGI_COLOR_SPACE_RESERVED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RESERVED")]
 		Reserved = unchecked(4),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601")]
 		YcbcrFullg22Nonep709X601 = unchecked(5),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601")]
 		YcbcrStudiog22Leftp601 = unchecked(6),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P601")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P601")]
 		YcbcrFullg22Leftp601 = unchecked(7),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P709")]
 		YcbcrStudiog22Leftp709 = unchecked(8),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P709")]
 		YcbcrFullg22Leftp709 = unchecked(9),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P2020")]
 		YcbcrStudiog22Leftp2020 = unchecked(10),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020")]
 		YcbcrFullg22Leftp2020 = unchecked(11),
-		[NativeName("DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020")]
 		RgbFullg2084Nonep2020 = unchecked(12),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_LEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_LEFT_P2020")]
 		YcbcrStudiog2084Leftp2020 = unchecked(13),
-		[NativeName("DXGI_COLOR_SPACE_RGB_STUDIO_G2084_NONE_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G2084_NONE_P2020")]
 		RgbStudiog2084Nonep2020 = unchecked(14),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_TOPLEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_TOPLEFT_P2020")]
 		YcbcrStudiog22Topleftp2020 = unchecked(15),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_TOPLEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_TOPLEFT_P2020")]
 		YcbcrStudiog2084Topleftp2020 = unchecked(16),
-		[NativeName("DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P2020")]
 		RgbFullg22Nonep2020 = unchecked(17),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_GHLG_TOPLEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_GHLG_TOPLEFT_P2020")]
 		YcbcrStudioGhlgTopleftp2020 = unchecked(18),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_FULL_GHLG_TOPLEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_GHLG_TOPLEFT_P2020")]
 		YcbcrFullGhlgTopleftp2020 = unchecked(19),
-		[NativeName("DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P709")]
 		RgbStudiog24Nonep709 = unchecked(20),
-		[NativeName("DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020")]
 		RgbStudiog24Nonep2020 = unchecked(21),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709")]
 		YcbcrStudiog24Leftp709 = unchecked(22),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020")]
 		YcbcrStudiog24Leftp2020 = unchecked(23),
-		[NativeName("DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020")]
 		YcbcrStudiog24Topleftp2020 = unchecked(24),
-		[NativeName("DXGI_COLOR_SPACE_CUSTOM")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_CUSTOM")]
 		Custom = unchecked((int)0xFFFFFFFF),
 	}
 
-	[NativeName("DXGI_SWAP_CHAIN_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_FLAG")]
 	public enum DxgiSwapChainFlag
 	{
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_NONPREROTATED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_NONPREROTATED")]
 		Nonprerotated = unchecked(1),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH")]
 		AllowModeSwitch = unchecked(2),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE")]
 		GdiCompatible = unchecked(4),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT")]
 		RestrictedContent = unchecked(8),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER")]
 		RestrictSharedResourceDriver = unchecked(16),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY")]
 		DisplayOnly = unchecked(32),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT")]
 		FrameLatencyWaitableObject = unchecked(64),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER")]
 		ForegroundLayer = unchecked(128),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO")]
 		FullscreenVideo = unchecked(256),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO")]
 		YuvVideo = unchecked(512),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED")]
 		HwProtected = unchecked(1024),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING")]
 		AllowTearing = unchecked(2048),
-		[NativeName("DXGI_SWAP_CHAIN_FLAG_RESTRICTED_TO_ALL_HOLOGRAPHIC_DISPLAYS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICTED_TO_ALL_HOLOGRAPHIC_DISPLAYS")]
 		RestrictedToAllHolographicDisplays = unchecked(4096),
 	}
 
@@ -419,16 +419,16 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi_0000_0011 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_ADAPTER_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG")]
 	public enum DxgiAdapterFlag
 	{
-		[NativeName("DXGI_ADAPTER_FLAG_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_NONE")]
 		None = unchecked(0),
-		[NativeName("DXGI_ADAPTER_FLAG_REMOTE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_REMOTE")]
 		Remote = unchecked(1),
-		[NativeName("DXGI_ADAPTER_FLAG_SOFTWARE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_SOFTWARE")]
 		Software = unchecked(2),
-		[NativeName("DXGI_ADAPTER_FLAG_FORCE_DWORD")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
 	}
 
@@ -436,40 +436,40 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_2_0000_0004 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("_DXGI_OFFER_RESOURCE_PRIORITY")]
+	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_PRIORITY")]
 	public enum DxgiOfferResourcePriority
 	{
-		[NativeName("DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
 		Low = unchecked(1),
-		[NativeName("DXGI_OFFER_RESOURCE_PRIORITY_NORMAL")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_NORMAL")]
 		Normal = unchecked(2),
-		[NativeName("DXGI_OFFER_RESOURCE_PRIORITY_HIGH")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_HIGH")]
 		High = unchecked(3),
 	}
 
-	[NativeName("DXGI_SCALING")]
+	[NativeName(NativeNameType.Enum, "DXGI_SCALING")]
 	public enum DxgiScaling
 	{
-		[NativeName("DXGI_SCALING_STRETCH")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_STRETCH")]
 		Stretch = unchecked(0),
-		[NativeName("DXGI_SCALING_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_NONE")]
 		None = unchecked(1),
-		[NativeName("DXGI_SCALING_ASPECT_RATIO_STRETCH")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_ASPECT_RATIO_STRETCH")]
 		AspectRatioStretch = unchecked(2),
 	}
 
-	[NativeName("DXGI_ALPHA_MODE")]
+	[NativeName(NativeNameType.Enum, "DXGI_ALPHA_MODE")]
 	public enum DxgiAlphaMode
 	{
-		[NativeName("DXGI_ALPHA_MODE_UNSPECIFIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
-		[NativeName("DXGI_ALPHA_MODE_PREMULTIPLIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_PREMULTIPLIED")]
 		Premultiplied = unchecked(1),
-		[NativeName("DXGI_ALPHA_MODE_STRAIGHT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_STRAIGHT")]
 		Straight = unchecked(2),
-		[NativeName("DXGI_ALPHA_MODE_IGNORE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_IGNORE")]
 		Ignore = unchecked(3),
-		[NativeName("DXGI_ALPHA_MODE_FORCE_DWORD")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
 	}
 
@@ -477,55 +477,55 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_2_0000_0007 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
+	[NativeName(NativeNameType.Enum, "DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
 	public enum DxgiGraphicsPreemptionGranularity
 	{
-		[NativeName("DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
-		[NativeName("DXGI_GRAPHICS_PREEMPTION_PRIMITIVE_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_PRIMITIVE_BOUNDARY")]
 		PrimitiveBoundary = unchecked(1),
-		[NativeName("DXGI_GRAPHICS_PREEMPTION_TRIANGLE_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_TRIANGLE_BOUNDARY")]
 		TriangleBoundary = unchecked(2),
-		[NativeName("DXGI_GRAPHICS_PREEMPTION_PIXEL_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_PIXEL_BOUNDARY")]
 		PixelBoundary = unchecked(3),
-		[NativeName("DXGI_GRAPHICS_PREEMPTION_INSTRUCTION_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_INSTRUCTION_BOUNDARY")]
 		InstructionBoundary = unchecked(4),
 	}
 
-	[NativeName("DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
+	[NativeName(NativeNameType.Enum, "DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
 	public enum DxgiComputePreemptionGranularity
 	{
-		[NativeName("DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
-		[NativeName("DXGI_COMPUTE_PREEMPTION_DISPATCH_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_DISPATCH_BOUNDARY")]
 		DispatchBoundary = unchecked(1),
-		[NativeName("DXGI_COMPUTE_PREEMPTION_THREAD_GROUP_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_THREAD_GROUP_BOUNDARY")]
 		ThreadGroupBoundary = unchecked(2),
-		[NativeName("DXGI_COMPUTE_PREEMPTION_THREAD_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_THREAD_BOUNDARY")]
 		ThreadBoundary = unchecked(3),
-		[NativeName("DXGI_COMPUTE_PREEMPTION_INSTRUCTION_BOUNDARY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_INSTRUCTION_BOUNDARY")]
 		InstructionBoundary = unchecked(4),
 	}
 
-	[NativeName("DXGI_OUTDUPL_POINTER_SHAPE_TYPE")]
+	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE")]
 	public enum DxgiOutduplPointerShapeType
 	{
-		[NativeName("DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME")]
 		Monochrome = unchecked(1),
-		[NativeName("DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR")]
 		Color = unchecked(2),
-		[NativeName("DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR")]
 		MaskedColor = unchecked(4),
 	}
 
-	[NativeName("DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS")]
+	[NativeName(NativeNameType.Enum, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS")]
 	public enum DXGIMULTIPLANEOVERLAYYCbCrFLAGS
 	{
-		[NativeName("DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_NOMINAL_RANGE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_NOMINAL_RANGE")]
 		FlagNominalRange = unchecked(1),
-		[NativeName("DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_BT709")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_BT709")]
 		FlagBt709 = unchecked(2),
-		[NativeName("DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_xvYCC")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_xvYCC")]
 		FlagXvYcc = unchecked(4),
 	}
 
@@ -533,16 +533,16 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_3_0000_0006 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_FRAME_PRESENTATION_MODE")]
+	[NativeName(NativeNameType.Enum, "DXGI_FRAME_PRESENTATION_MODE")]
 	public enum DxgiFramePresentationMode
 	{
-		[NativeName("DXGI_FRAME_PRESENTATION_MODE_COMPOSED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_COMPOSED")]
 		Composed = unchecked(0),
-		[NativeName("DXGI_FRAME_PRESENTATION_MODE_OVERLAY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_OVERLAY")]
 		Overlay = unchecked(1),
-		[NativeName("DXGI_FRAME_PRESENTATION_MODE_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_NONE")]
 		None = unchecked(2),
-		[NativeName("DXGI_FRAME_PRESENTATION_MODE_COMPOSITION_FAILURE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_COMPOSITION_FAILURE")]
 		CompositionFailure = unchecked(3),
 	}
 
@@ -550,12 +550,12 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_3_0000_0007 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_OVERLAY_SUPPORT_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_SUPPORT_FLAG")]
 	public enum DxgiOverlaySupportFlag
 	{
-		[NativeName("DXGI_OVERLAY_SUPPORT_FLAG_DIRECT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_SUPPORT_FLAG_DIRECT")]
 		Direct = unchecked(1),
-		[NativeName("DXGI_OVERLAY_SUPPORT_FLAG_SCALING")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_SUPPORT_FLAG_SCALING")]
 		Scaling = unchecked(2),
 	}
 
@@ -563,21 +563,21 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_4_0000_0003 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_MEMORY_SEGMENT_GROUP")]
+	[NativeName(NativeNameType.Enum, "DXGI_MEMORY_SEGMENT_GROUP")]
 	public enum DxgiMemorySegmentGroup
 	{
-		[NativeName("DXGI_MEMORY_SEGMENT_GROUP_LOCAL")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MEMORY_SEGMENT_GROUP_LOCAL")]
 		Local = unchecked(0),
-		[NativeName("DXGI_MEMORY_SEGMENT_GROUP_NON_LOCAL")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_MEMORY_SEGMENT_GROUP_NON_LOCAL")]
 		NonLocal = unchecked(1),
 	}
 
-	[NativeName("DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG")]
 	public enum DxgiSwapChainColorSpaceSupportFlag
 	{
-		[NativeName("DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
-		[NativeName("DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT")]
 		OverlayPresent = unchecked(2),
 	}
 
@@ -585,10 +585,10 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_4_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG")]
 	public enum DxgiOverlayColorSpaceSupportFlag
 	{
-		[NativeName("DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
 	}
 
@@ -596,25 +596,25 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_5_0000_0001 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_HDR_METADATA_TYPE")]
+	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
 	public enum DxgiHdrMetadataType
 	{
-		[NativeName("DXGI_HDR_METADATA_TYPE_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
 		None = unchecked(0),
-		[NativeName("DXGI_HDR_METADATA_TYPE_HDR10")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10")]
 		Hdr10 = unchecked(1),
-		[NativeName("DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
 		Hdr10Plus = unchecked(2),
 	}
 
-	[NativeName("_DXGI_RECLAIM_RESOURCE_RESULTS")]
+	[NativeName(NativeNameType.Enum, "_DXGI_RECLAIM_RESOURCE_RESULTS")]
 	public enum DxgiReclaimResourceResults
 	{
-		[NativeName("DXGI_RECLAIM_RESOURCE_RESULT_OK")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_OK")]
 		ResultOk = unchecked(0),
-		[NativeName("DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED")]
 		ResultDiscarded = unchecked(1),
-		[NativeName("DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED")]
 		ResultNotCommitted = unchecked(2),
 	}
 
@@ -622,17 +622,17 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_5_0000_0003 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_FEATURE")]
+	[NativeName(NativeNameType.Enum, "DXGI_FEATURE")]
 	public enum DxgiFeature
 	{
-		[NativeName("DXGI_FEATURE_PRESENT_ALLOW_TEARING")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_FEATURE_PRESENT_ALLOW_TEARING")]
 		PresentAllowTearing = unchecked(0),
 	}
 
-	[NativeName("DXGI_OUTDUPL_FLAG")]
+	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_FLAG")]
 	public enum DxgiOutduplFlag
 	{
-		[NativeName("DXGI_OUTDUPL_COMPOSITED_UI_CAPTURE_ONLY")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_COMPOSITED_UI_CAPTURE_ONLY")]
 		CompositedUiCaptureOnly = unchecked(1),
 	}
 
@@ -640,31 +640,31 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_5_0000_0002 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("_DXGI_OFFER_RESOURCE_FLAGS")]
+	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_FLAGS")]
 	public enum DxgiOfferResourceFlags
 	{
-		[NativeName("DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
 		FlagAllowDecommit = unchecked(1),
 	}
 
-	[NativeName("DXGI_ADAPTER_FLAG3")]
+	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG3")]
 	public enum DxgiAdapterFlag3
 	{
-		[NativeName("DXGI_ADAPTER_FLAG3_NONE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_NONE")]
 		None = unchecked(0),
-		[NativeName("DXGI_ADAPTER_FLAG3_REMOTE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_REMOTE")]
 		Remote = unchecked(1),
-		[NativeName("DXGI_ADAPTER_FLAG3_SOFTWARE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SOFTWARE")]
 		Software = unchecked(2),
-		[NativeName("DXGI_ADAPTER_FLAG3_ACG_COMPATIBLE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_ACG_COMPATIBLE")]
 		AcgCompatible = unchecked(4),
-		[NativeName("DXGI_ADAPTER_FLAG3_SUPPORT_MONITORED_FENCES")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SUPPORT_MONITORED_FENCES")]
 		SupportMonitoredFences = unchecked(8),
-		[NativeName("DXGI_ADAPTER_FLAG3_SUPPORT_NON_MONITORED_FENCES")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SUPPORT_NON_MONITORED_FENCES")]
 		SupportNonMonitoredFences = unchecked(16),
-		[NativeName("DXGI_ADAPTER_FLAG3_KEYED_MUTEX_CONFORMANCE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_KEYED_MUTEX_CONFORMANCE")]
 		KeyedMutexConformance = unchecked(32),
-		[NativeName("DXGI_ADAPTER_FLAG3_FORCE_DWORD")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
 	}
 
@@ -672,25 +672,25 @@ namespace HexaEngine.DXGI
 	/// interface __MIDL_itf_dxgi1_6_0000_0002 <br/>
 	/// [local] <br/>
 	/// </summary>
-	[NativeName("DXGI_GPU_PREFERENCE")]
+	[NativeName(NativeNameType.Enum, "DXGI_GPU_PREFERENCE")]
 	public enum DxgiGpuPreference
 	{
-		[NativeName("DXGI_GPU_PREFERENCE_UNSPECIFIED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
-		[NativeName("DXGI_GPU_PREFERENCE_MINIMUM_POWER")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_MINIMUM_POWER")]
 		MinimumPower = unchecked(1),
-		[NativeName("DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE")]
 		HighPerformance = unchecked(2),
 	}
 
-	[NativeName("DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS")]
+	[NativeName(NativeNameType.Enum, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS")]
 	public enum DxgiHardwareCompositionSupportFlags
 	{
-		[NativeName("DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_FULLSCREEN")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_FULLSCREEN")]
 		FlagFullscreen = unchecked(1),
-		[NativeName("DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_WINDOWED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_WINDOWED")]
 		FlagWindowed = unchecked(2),
-		[NativeName("DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_CURSOR_STRETCHED")]
+		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_CURSOR_STRETCHED")]
 		FlagCursorStretched = unchecked(4),
 	}
 

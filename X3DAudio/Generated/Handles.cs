@@ -19,6 +19,7 @@ namespace HexaEngine.X3DAudio
 	/// Distance curve point:<br/>
 	/// Defines a DSP setting at a given normalized distance.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DISTANCE_CURVE_POINT")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioDistanceCurvePoint : IEquatable<Lpx3DaudioDistanceCurvePoint>
 	{
@@ -56,6 +57,7 @@ namespace HexaEngine.X3DAudio
 	/// <<br/>
 	/// PointCount.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DISTANCE_CURVE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioDistanceCurve : IEquatable<Lpx3DaudioDistanceCurve>
 	{
@@ -88,6 +90,7 @@ namespace HexaEngine.X3DAudio
 	/// inner and outer values.  Set both cone angles to 0 or X3DAUDIO_2PI for<br/>
 	/// omnidirectionality using only the outer or inner values respectively.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_CONE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioCone : IEquatable<Lpx3DaudioCone>
 	{
@@ -113,6 +116,7 @@ namespace HexaEngine.X3DAudio
 	/// Defines a point of 3D audio reception.<br/>
 	/// The cone is directed by the listener's front orientation.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_LISTENER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioListener : IEquatable<Lpx3DaudioListener>
 	{
@@ -160,6 +164,7 @@ namespace HexaEngine.X3DAudio
 	/// position, with the curves being calculated independently of each other.<br/>
 	/// For instance, volume and LFE calculations do not affect one another.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_EMITTER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioEmitter : IEquatable<Lpx3DaudioEmitter>
 	{
@@ -187,6 +192,7 @@ namespace HexaEngine.X3DAudio
 	/// The user is responsible for allocating the matrix coefficient table,<br/>
 	/// delay time array, and initializing the channel counts when used.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DSP_SETTINGS")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct Lpx3DaudioDspSettings : IEquatable<Lpx3DaudioDspSettings>
 	{

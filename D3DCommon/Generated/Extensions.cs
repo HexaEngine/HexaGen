@@ -17,6 +17,8 @@ namespace HexaEngine.D3DCommon
 {
 	public static unsafe class Extensions
 	{
+		[NativeName(NativeNameType.Func, "GetBufferPointer")]
+		[return: NativeName(NativeNameType.Type, "LPVOID")]
 		public static void* GetBufferPointer(this ComPtr<ID3D10Blob> comObj) 
 		{
 			ID3D10Blob* handle = comObj.Handle;
@@ -24,6 +26,8 @@ namespace HexaEngine.D3DCommon
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "GetBufferSize")]
+		[return: NativeName(NativeNameType.Type, "SIZE_T")]
 		public static nuint GetBufferSize(this ComPtr<ID3D10Blob> comObj) 
 		{
 			ID3D10Blob* handle = comObj.Handle;
@@ -31,14 +35,18 @@ namespace HexaEngine.D3DCommon
 			return ret;
 		}
 
-		public static HResult RegisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, PfnDestructionCallback callbackFn, void* pData, uint* pCallbackID) 
+		[NativeName(NativeNameType.Func, "RegisterDestructionCallback")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult RegisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] uint* pCallbackID) 
 		{
 			ID3DDestructionNotifier* handle = comObj.Handle;
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(*handle->LpVtbl))(handle, callbackFn, pData, pCallbackID);
 			return ret;
 		}
 
-		public static HResult RegisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, PfnDestructionCallback callbackFn, void* pData, ref uint pCallbackID) 
+		[NativeName(NativeNameType.Func, "RegisterDestructionCallback")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult RegisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pCallbackID) 
 		{
 			ID3DDestructionNotifier* handle = comObj.Handle;
 			fixed (uint* ppCallbackID = &pCallbackID)
@@ -48,21 +56,27 @@ namespace HexaEngine.D3DCommon
 			}
 		}
 
-		public static HResult UnregisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, uint callbackID) 
+		[NativeName(NativeNameType.Func, "UnregisterDestructionCallback")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult UnregisterDestructionCallback(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "callbackID")] [NativeName(NativeNameType.Type, "UINT")] uint callbackID) 
 		{
 			ID3DDestructionNotifier* handle = comObj.Handle;
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint, HResult>)(handle->LpVtbl[1]))(handle, callbackID);
 			return ret;
 		}
 
-		public static HResult Open(this ComPtr<ID3DInclude> comObj, D3DIncludeType includeType, byte* pFileName, void* pParentData, void** ppData, uint* pBytes) 
+		[NativeName(NativeNameType.Func, "Open")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Open(this ComPtr<ID3DInclude> comObj, [NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes) 
 		{
 			ID3DInclude* handle = comObj.Handle;
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DInclude*, D3DIncludeType, byte*, void*, void**, uint*, HResult>)(*handle->LpVtbl))(handle, includeType, pFileName, pParentData, ppData, pBytes);
 			return ret;
 		}
 
-		public static HResult Open(this ComPtr<ID3DInclude> comObj, D3DIncludeType includeType, byte* pFileName, void* pParentData, ref void* ppData, uint* pBytes) 
+		[NativeName(NativeNameType.Func, "Open")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Open(this ComPtr<ID3DInclude> comObj, [NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes) 
 		{
 			ID3DInclude* handle = comObj.Handle;
 			fixed (void** pppData = &ppData)
@@ -72,7 +86,9 @@ namespace HexaEngine.D3DCommon
 			}
 		}
 
-		public static HResult Open(this ComPtr<ID3DInclude> comObj, D3DIncludeType includeType, byte* pFileName, void* pParentData, void** ppData, ref uint pBytes) 
+		[NativeName(NativeNameType.Func, "Open")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Open(this ComPtr<ID3DInclude> comObj, [NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes) 
 		{
 			ID3DInclude* handle = comObj.Handle;
 			fixed (uint* ppBytes = &pBytes)
@@ -82,7 +98,9 @@ namespace HexaEngine.D3DCommon
 			}
 		}
 
-		public static HResult Open(this ComPtr<ID3DInclude> comObj, D3DIncludeType includeType, byte* pFileName, void* pParentData, ref void* ppData, ref uint pBytes) 
+		[NativeName(NativeNameType.Func, "Open")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Open(this ComPtr<ID3DInclude> comObj, [NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes) 
 		{
 			ID3DInclude* handle = comObj.Handle;
 			fixed (void** pppData = &ppData)
@@ -95,7 +113,9 @@ namespace HexaEngine.D3DCommon
 			}
 		}
 
-		public static HResult Close(this ComPtr<ID3DInclude> comObj, void* pData) 
+		[NativeName(NativeNameType.Func, "Close")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Close(this ComPtr<ID3DInclude> comObj, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pData) 
 		{
 			ID3DInclude* handle = comObj.Handle;
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DInclude*, void*, HResult>)(handle->LpVtbl[1]))(handle, pData);

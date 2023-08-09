@@ -17,6 +17,7 @@ namespace HexaEngine.Shaderc
 	/// <summary>
 	/// An opaque handle to an object that manages all compiler state.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "shaderc_compiler_t")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompiler : IEquatable<ShadercCompiler>
 	{
@@ -41,6 +42,7 @@ namespace HexaEngine.Shaderc
 	/// An opaque handle to an object that manages options to a single compilation<br/>
 	/// result.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "shaderc_compile_options_t")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompileOptions : IEquatable<ShadercCompileOptions>
 	{
@@ -65,6 +67,7 @@ namespace HexaEngine.Shaderc
 	/// An opaque handle to the results of a call to any shaderc_compile_into_*()<br/>
 	/// function.<br/>
 	/// </summary>
+	[NativeName(NativeNameType.Typedef, "shaderc_compilation_result_t")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ShadercCompilationResult : IEquatable<ShadercCompilationResult>
 	{
