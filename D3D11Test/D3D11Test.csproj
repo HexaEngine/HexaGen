@@ -12,6 +12,7 @@
     <ProjectReference Include="..\D3DCommon\D3DCommon.csproj" />
     <ProjectReference Include="..\D3DCompiler\D3DCompiler.csproj" />
     <ProjectReference Include="..\DXGI\DXGI.csproj" />
+    <ProjectReference Include="..\SDL2\SDL2.csproj" />
   </ItemGroup>
 
 </Project>

@@ -74,10 +74,10 @@
             if (value == string.Empty)
                 return;
 
-            if (value.IsNumeric(true))
+            if (value.IsNumeric(out var type))
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
-                writer.WriteLine($"public const uint {name} = {value};");
+                writer.WriteLine($"public const {type.GetNumberType()} {name} = {value};");
                 writer.WriteLine();
             }
             else if (value.IsString())

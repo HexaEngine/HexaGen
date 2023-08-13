@@ -2,8 +2,6 @@
 {
     using CppAst;
     using System;
-    using System.Reflection;
-    using System.Security.AccessControl;
     using System.Text;
     using System.Xml.Linq;
 
@@ -36,8 +34,6 @@
 
             return false;
         }
-
-       
 
         public static bool IsPointer(this CppType type, ref int depth)
         {
@@ -268,17 +264,125 @@
             return true;
         }
 
-        public static bool IsNumeric(this string name, bool allowHex)
+        public static bool IsNumeric(this string name, out CsNumberType numberType, bool allowHex = true, bool allowTail = true)
+        {
+            numberType = CsNumberType.None;
+            if (string.IsNullOrEmpty(name))
+                return false;
+            int index = 0;
+            int length = name.Length;
+
+            if (allowHex && name.StartsWith("0x"))
+            {
+                index = 2;
+            }
+
+            numberType = CsNumberType.Int;
+
+            if (allowTail && name.EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.Long;
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("U", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.UInt;
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.ULong;
+                length = name.Length - 2;
+            }
+
+            if (allowTail && name.EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.Float;
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("D", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.Double;
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("M", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = CsNumberType.Decimal;
+                length = name.Length - 1;
+            }
+
+            for (int i = index; i < length; i++)
+            {
+                var c = name[i];
+                if (!char.IsNumber(c))
+                {
+                    if (c == '.')
+                    {
+                        if (numberType == CsNumberType.Int)
+                            numberType = CsNumberType.Double;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static bool IsNumeric(this string name, bool allowHex = true, bool allowTail = true)
         {
             if (string.IsNullOrEmpty(name))
                 return false;
             int index = 0;
+            int length = name.Length;
+
             if (allowHex && name.StartsWith("0x"))
-                index = 2;
-            for (int i = index; i < name.Length; i++)
             {
-                if (!char.IsNumber(name[i]))
+                index = 2;
+            }
+
+            if (allowTail && name.EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("U", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 2;
+            }
+
+            if (allowTail && name.EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("D", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowTail && name.EndsWith("M", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            for (int i = index; i < length; i++)
+            {
+                var c = name[i];
+                if (!char.IsNumber(c) && c != '.')
+                {
                     return false;
+                }
             }
             return true;
         }
@@ -566,6 +670,22 @@
             }
 
             throw new NotSupportedException($"The comment type {cppComment.GetType()} is not supported");
+        }
+
+        public static string GetNumberType(this CsNumberType number)
+        {
+            return number switch
+            {
+                CsNumberType.None => throw new InvalidOperationException(),
+                CsNumberType.Int => "int",
+                CsNumberType.Double => "double",
+                CsNumberType.Float => "float",
+                CsNumberType.Decimal => "decimal",
+                CsNumberType.UInt => "uint",
+                CsNumberType.Long => "long",
+                CsNumberType.ULong => "ulong",
+                _ => throw new InvalidOperationException(),
+            };
         }
     }
 }
