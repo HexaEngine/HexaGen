@@ -314,7 +314,7 @@ namespace HexaEngine.SDL2
 	{
 		[NativeName(NativeNameType.StructOrClass, "")]
 		[StructLayout(LayoutKind.Explicit)]
-		public partial struct SDLRWopsUnion
+		public partial struct HiddenUnion
 		{
 			[NativeName(NativeNameType.StructOrClass, "")]
 			[StructLayout(LayoutKind.Sequential)]
@@ -322,7 +322,7 @@ namespace HexaEngine.SDL2
 			{
 				[NativeName(NativeNameType.StructOrClass, "")]
 				[StructLayout(LayoutKind.Sequential)]
-				public partial struct WindowsioUnionUnion
+				public partial struct BufferUnion
 				{
 					[NativeName(NativeNameType.Field, "data")]
 					[NativeName(NativeNameType.Type, "void*")]
@@ -345,7 +345,7 @@ namespace HexaEngine.SDL2
 				public unsafe void* H;
 				[NativeName(NativeNameType.Field, "buffer")]
 				[NativeName(NativeNameType.Type, "")]
-				public  Buffer;
+				public BufferUnion Buffer;
 
 
 			}
@@ -451,7 +451,7 @@ namespace HexaEngine.SDL2
 		public uint Type;
 		[NativeName(NativeNameType.Field, "hidden")]
 		[NativeName(NativeNameType.Type, "")]
-		public SDLRWopsUnion Union;
+		public HiddenUnion Union;
 
 
 	}
@@ -527,7 +527,7 @@ namespace HexaEngine.SDL2
 		/// </summary>
 		public void* Close { get => Handle->Close; set => Handle->Close = value; }
 		public ref uint Type => ref Unsafe.AsRef<uint>(&Handle->Type);
-		public ref SDLRWops.SDLRWopsUnion Union => ref Unsafe.AsRef<SDLRWops.SDLRWopsUnion>(&Handle->Union);
+		public ref SDLRWops.HiddenUnion Union => ref Unsafe.AsRef<SDLRWops.HiddenUnion>(&Handle->Union);
 	}
 
 	/// <summary>
@@ -2321,11 +2321,11 @@ namespace HexaEngine.SDL2
 	{
 		[NativeName(NativeNameType.StructOrClass, "")]
 		[StructLayout(LayoutKind.Explicit)]
-		public partial struct SDLGameControllerButtonBindUnion
+		public partial struct ValueUnion
 		{
 			[NativeName(NativeNameType.StructOrClass, "")]
 			[StructLayout(LayoutKind.Sequential)]
-			public partial struct SDLGameControllerButtonBindUnionUnion
+			public partial struct HatUnion
 			{
 				[NativeName(NativeNameType.Field, "hat")]
 				[NativeName(NativeNameType.Type, "int")]
@@ -2358,7 +2358,7 @@ namespace HexaEngine.SDL2
 		public SDLGameControllerBindType BindType;
 		[NativeName(NativeNameType.Field, "value")]
 		[NativeName(NativeNameType.Type, "")]
-		public SDLGameControllerButtonBindUnion Union;
+		public ValueUnion Union;
 
 
 	}

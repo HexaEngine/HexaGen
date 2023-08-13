@@ -197,7 +197,7 @@
                     }
                     else
                     {
-                        WriteField(writer, cppField, fieldMapping, isUnion, isReadOnly);
+                        WriteField(writer, cppField, fieldMapping, subClasses, isUnion, isReadOnly);
                     }
                 }
 
@@ -294,7 +294,7 @@
         {
         }
 
-        private void WriteField(CodeWriter writer, CppField field, TypeFieldMapping? mapping, bool isUnion = false, bool isReadOnly = false)
+        private void WriteField(CodeWriter writer, CppField field, TypeFieldMapping? mapping, List<(CppType, string, string)> subClasses, bool isUnion = false, bool isReadOnly = false)
         {
             string csFieldName = settings.NormalizeFieldName(field.Name);
 
@@ -340,9 +340,10 @@
             else
             {
                 string csFieldType = settings.GetCsTypeName(field.Type, false);
-                if (string.IsNullOrEmpty(csFieldType) && isUnion)
+                if (string.IsNullOrEmpty(csFieldType))
                 {
-                    csFieldType = csFieldName + "Union";
+                    var subClass = subClasses.Find(x => x.Item1 == field.Type);
+                    csFieldType = subClass.Item2;
                 }
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
