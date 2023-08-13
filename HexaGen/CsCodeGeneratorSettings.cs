@@ -631,7 +631,7 @@
             {
                 CppParameter cppParameter = parameters[i];
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-                var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
+                var paramCsName = GetParameterName(i, cppParameter.Name);
 
                 if (attributes)
                 {
@@ -691,7 +691,7 @@
             return argumentBuilder.ToString();
         }
 
-        public string GetParameterName(CppType type, string name)
+        public string GetParameterName(int paramIdx, string name)
         {
             if (name == "out")
             {
@@ -740,44 +740,7 @@
 
             if (name == string.Empty)
             {
-                switch (type.TypeKind)
-                {
-                    case CppTypeKind.Primitive:
-                        return GetParameterName(type, (type as CppPrimitiveType).GetDisplayName());
-
-                    case CppTypeKind.Pointer:
-                        return GetParameterName((type as CppPointerType).ElementType, (type as CppPointerType).ElementType.GetDisplayName());
-
-                    case CppTypeKind.Reference:
-                        return GetParameterName((type as CppReferenceType).ElementType, (type as CppReferenceType).ElementType.GetDisplayName());
-
-                    case CppTypeKind.Array:
-                        break;
-
-                    case CppTypeKind.Qualified:
-                        return (type as CppQualifiedType).ElementType.GetDisplayName();
-
-                    case CppTypeKind.Function:
-                        break;
-
-                    case CppTypeKind.Typedef:
-                        return GetParameterName((type as CppTypedef).ElementType, name);
-
-                    case CppTypeKind.StructOrClass:
-                        break;
-
-                    case CppTypeKind.Enum:
-                        return (type as CppEnum).GetDisplayName();
-
-                    case CppTypeKind.TemplateParameterType:
-                        break;
-
-                    case CppTypeKind.TemplateParameterNonType:
-                        break;
-
-                    case CppTypeKind.Unexposed:
-                        break;
-                }
+                return $"unknown{paramIdx}";
             }
 
             return NormalizeParameterName(name);

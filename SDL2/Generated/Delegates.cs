@@ -174,7 +174,7 @@ namespace HexaEngine.SDL2
 	[NativeName(NativeNameType.Delegate, "pfnSDL_CurrentBeginThread")]
 	[return: NativeName(NativeNameType.Type, "uintptr_t")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nuint PfnSDLCurrentBeginThread([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* voidValue, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unsigned int, [NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "unsigned int (*)(void*)*")] delegate*<void*> func, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* voidValue, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unsigned int, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* unsigned int);
+	public unsafe delegate nuint PfnSDLCurrentBeginThread([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown0, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown1, [NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "unsigned int (*)(void*)*")] delegate*<void*> func, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown3, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown4, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* unknown5);
 
 	[NativeName(NativeNameType.Delegate, "pfnSDL_CurrentEndThread")]
 	[return: NativeName(NativeNameType.Type, "void")]

@@ -220,7 +220,7 @@
             {
                 var cppParameter = cppFunction.Parameters[j];
                 var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
+                var paramCsName = settings.GetParameterName(j, cppParameter.Name);
                 var direction = cppParameter.Type.GetDirection();
                 var kind = cppParameter.Type.GetPrimitiveKind();
 

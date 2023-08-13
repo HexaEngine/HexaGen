@@ -40,7 +40,7 @@
                         CppParameter cppParameter = parameters[j];
                         CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
 
-                        var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
+                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
                         var direction = cppParameter.Type.GetDirection();
 
                         if (bit)
@@ -186,7 +186,7 @@
                         CppParameter cppParameter = parameters[j];
                         CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
 
-                        var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
+                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
                         var direction = cppParameter.Type.GetDirection();
 
                         if (bit)

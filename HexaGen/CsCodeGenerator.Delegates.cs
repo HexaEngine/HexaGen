@@ -1,10 +1,7 @@
 ﻿namespace HexaGen
 {
-    using ClangSharp;
     using CppAst;
-    using HexaGen;
     using System.IO;
-    using System.Linq;
 
     public partial class CsCodeGenerator
     {

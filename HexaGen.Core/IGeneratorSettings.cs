@@ -104,7 +104,7 @@
 
         string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut);
 
-        string GetParameterName(CppType type, string name);
+        string GetParameterName(int paramIdx, string name);
 
         string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true);
 
