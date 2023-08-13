@@ -142,12 +142,12 @@
                     {
                         if (HasGUID(baseClass.Name))
                         {
-                            WriteFunctionsForCOMObject(writer, baseClass, csName, ref vTableIndex);
+                            WriteCOMObjectMemberFunctions(writer, baseClass, csName, ref vTableIndex);
                         }
                     }
                 }
 
-                WriteFunctionsForCOMObject(writer, cppClass, csName, ref vTableIndex);
+                WriteCOMObjectMemberFunctions(writer, cppClass, csName, ref vTableIndex);
 
                 using (writer.PushBlock($"unsafe void*** IComObject.AsVtblPtr()"))
                 {
@@ -168,61 +168,34 @@
             writer.WriteLine();
         }
 
-        private void WriteFunctionsForCOMObject(CodeWriter writer, CppClass cppClass, string csName, ref int vTableIndex)
+        private void WriteCOMObjectMemberFunctions(CodeWriter writer, CppClass cppClass, string csName, ref int vTableIndex)
         {
+            HashSet<string> definedFunctions = new();
             List<CsFunction> commands = new();
             for (int i = 0; i < cppClass.Functions.Count; i++, vTableIndex++)
             {
                 var cppFunction = cppClass.Functions[i];
 
                 string? csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
-                CsFunction? function = null;
-                for (int j = 0; j < commands.Count; j++)
+                CsFunction? function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
+
+                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
+                WriteCOMFunctions(writer, definedFunctions, function, overload, csName, vTableIndex, "public readonly unsafe");
+            }
+
+            if (MemberFunctions.TryGetValue(cppClass, out var funcs))
+            {
+                foreach (string f in definedFunctions)
                 {
-                    if (commands[j].Name == csName)
-                    {
-                        function = commands[j];
-                        break;
-                    }
+                    if (funcs.Contains(f))
+                        continue;
+                    funcs.Add(f);
                 }
-
-                if (function == null)
-                {
-                    cppFunction.Comment.WriteCsSummary(out string? comment);
-                    function = new(csName, comment);
-                    commands.Add(function);
-                }
-
-                CsFunctionOverload overload = new(cppFunction.Name, csFunctionName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
-                overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                for (int j = 0; j < cppFunction.Parameters.Count; j++)
-                {
-                    var cppParameter = cppFunction.Parameters[j];
-                    var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                    var paramCsName = settings.GetParameterName(cppParameter.Type, cppParameter.Name);
-                    var direction = cppParameter.Type.GetDirection();
-                    var kind = cppParameter.Type.GetPrimitiveKind();
-
-                    CsType csType = new(paramCsTypeName, kind);
-
-                    CsParameterInfo csParameter = new(paramCsName, csType, direction);
-
-                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                    csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
-                    overload.Parameters.Add(csParameter);
-                    if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
-                    {
-                        overload.DefaultValues.Add(paramCsName, defaultValue);
-                    }
-                }
-
-                function.Overloads.Add(overload);
-                funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
-                WriteCOMFunctions(writer, DefinedVariationsFunctions, function, overload, csName, vTableIndex, "public readonly unsafe");
+            }
+            else
+            {
+                MemberFunctions.Add(cppClass, definedFunctions);
             }
         }
 
@@ -281,13 +254,12 @@
             }
 
             string modifierString = string.Join(" ", modifiers);
-            string signature;
-            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}";
+            string signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
+            string genericSignature = string.Join(", ", variation.GenericParameters.Select(p => p.Name));
+            string genericConstrain = string.Join(" ", variation.GenericParameters.Select(p => p.Constrain));
+            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
 
-            signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
-            signatureNameless += string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"));
-
-            string header = $"{csReturnType.Name} {variation.Name}({signature})";
+            string header = $"{csReturnType.Name} {variation.Name}{(variation.IsGeneric ? $"<{genericSignature}>" : string.Empty)}({signature}) {genericConstrain}";
 
             if (definedFunctions.Contains(header))
             {
@@ -360,12 +332,15 @@
                 for (int i = 0; i < overload.Parameters.Count - offset; i++)
                 {
                     var cppParameter = overload.Parameters[i + offset];
+                    var isOut = false;
                     var isRef = false;
                     var isPointer = false;
                     var isStr = false;
                     var isArray = false;
                     var isBool = false;
                     var isConst = true;
+                    var isIID = false;
+                    var isCOMPtr = false;
 
                     for (int j = 0; j < variation.Parameters.Count; j++)
                     {
@@ -373,11 +348,14 @@
                         if (param.Name == cppParameter.Name)
                         {
                             cppParameter = param;
+                            isOut = param.Type.IsOut;
                             isRef = param.Type.IsRef;
                             isPointer = param.Type.IsPointer;
                             isStr = param.Type.IsString;
                             isArray = param.Type.IsArray;
                             isBool = param.Type.IsBool;
+                            isIID = param.Type.Name.Contains("Guid*");
+                            isCOMPtr = param.Type.Name.Contains("ComPtr<");
                             isConst = false;
                         }
                     }
@@ -385,7 +363,14 @@
                     if (isConst)
                     {
                         var rootParam = overload.Parameters[i + offset];
-                        var paramCsDefault = overload.DefaultValues[cppParameter.Name];
+                        if (!overload.DefaultValues.TryGetValue(cppParameter.Name, out string? paramCsDefault))
+                        {
+                            if (isIID)
+                            {
+                                sb.Append($"ComUtils.GuidPtrOf<T>()");
+                            }
+                            continue;
+                        }
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                         {
                             sb.Append($"(string){paramCsDefault}");
@@ -433,6 +418,18 @@
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }
+                    else if (isOut)
+                    {
+                        writer.WriteLine($"{cppParameter.Name} = default;");
+                        if (isCOMPtr)
+                        {
+                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                        }
+                        else
+                        {
+                            sb.Append($"out {cppParameter.Name}");
+                        }
+                    }
                     else if (isArray)
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
@@ -442,6 +439,10 @@
                     else if (isBool && !isRef && !isPointer)
                     {
                         sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                    }
+                    else if (isCOMPtr)
+                    {
+                        sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
                     }
                     else
                     {

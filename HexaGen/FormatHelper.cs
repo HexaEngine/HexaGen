@@ -2,6 +2,8 @@
 {
     using CppAst;
     using System;
+    using System.Reflection;
+    using System.Security.AccessControl;
     using System.Text;
     using System.Xml.Linq;
 
@@ -34,6 +36,8 @@
 
             return false;
         }
+
+       
 
         public static bool IsPointer(this CppType type, ref int depth)
         {
@@ -311,6 +315,72 @@
             }
 
             return false;
+        }
+
+        public static bool IsTemplateParameter(this CppType type, CppFunction function)
+        {
+            if (type is CppPointerType pointer)
+            {
+                return IsTemplateParameter(pointer.ElementType, function);
+            }
+
+            if (type is CppReferenceType reference)
+            {
+                return IsTemplateParameter(reference.ElementType, function);
+            }
+
+            if (type is CppArrayType array)
+            {
+                return IsTemplateParameter(array.ElementType, function);
+            }
+
+            if (type is CppQualifiedType qualified)
+            {
+                return IsTemplateParameter(qualified.ElementType, function);
+            }
+
+            if (type is CppUnexposedType unexposed)
+            {
+                for (int i = 0; i < function.TemplateParameters.Count; i++)
+                {
+                    if (function.TemplateParameters[i] == unexposed)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static string GetTemplateParameterCsName(this CppType type, string genericName)
+        {
+            if (type is CppPointerType pointer)
+            {
+                return GetTemplateParameterCsName(pointer.ElementType, genericName) + "*";
+            }
+
+            if (type is CppReferenceType reference)
+            {
+                return GetTemplateParameterCsName(reference.ElementType, genericName) + "*";
+            }
+
+            if (type is CppArrayType array)
+            {
+                return GetTemplateParameterCsName(array.ElementType, genericName) + "*";
+            }
+
+            if (type is CppQualifiedType qualified)
+            {
+                return GetTemplateParameterCsName(qualified.ElementType, genericName);
+            }
+
+            if (type is CppUnexposedType)
+            {
+                return genericName;
+            }
+
+            return string.Empty;
         }
 
         public static CppPrimitiveKind GetPrimitiveKind(this CppType cppType, bool isPointer = false)

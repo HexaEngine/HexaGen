@@ -226,7 +226,7 @@
 
                                 int pointerDepth = 0;
                                 var name = settings.GetCsTypeName(cppParameter.Type, false).Replace("*", string.Empty);
-                                if (cppParameter.Type.IsPointer(ref pointerDepth) && (cppParameter.Type.IsClass(out var cppClass) && cppClass.IsCOMObject() || cppParameter.Name == "ppvInterface"))
+                                if (cppParameter.Type.IsPointer(ref pointerDepth) && (cppParameter.Type.IsClass(out var cppClass) && cppClass.IsCOMObject() || cppParameter.Name == "ppvInterface" || cppParameter.Name == "ppvObject"))
                                 {
                                     if (pointerDepth != 0 && name == "void")
                                     {
@@ -262,6 +262,15 @@
                                 else
                                 {
                                     comPtrParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                }
+
+                                if (name == "Guid"
+                                    && cppParameter.Name == "riid"
+                                    && cppParameter.Type is CppReferenceType refer
+                                    && refer.ElementType is CppQualifiedType qual
+                                    && qual.ElementType is CppTypedef def
+                                    && def.Name == "IID")
+                                {
                                 }
 
                                 if (cppParameter.Type.IsString())

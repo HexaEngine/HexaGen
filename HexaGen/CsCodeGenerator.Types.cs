@@ -14,6 +14,7 @@
         protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
         protected readonly Dictionary<string, string> WrappedPointers = new();
+        protected readonly Dictionary<CppClass, HashSet<string>> MemberFunctions = new();
 
         protected virtual List<string> SetupTypeUsings()
         {
@@ -56,6 +57,7 @@
 
         protected virtual void GenerateTypes(CppCompilation compilation, string outputPath)
         {
+            MemberFunctions.Clear();
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
@@ -644,9 +646,7 @@
 
         private void WriteMemberFunctions(GenContext context, CppClass cppClass, List<string> functions, bool useThisWrite, bool useHandleWrite)
         {
-            var writer = context.Writer;
             HashSet<string> definedFunctions = new();
-            writer.WriteLine();
             List<CsFunction> commands = new();
             for (int i = 0; i < functions.Count; i++)
             {
@@ -671,6 +671,23 @@
                 if (useThis || useThisRef)
                 {
                     WriteFunctions(context, definedFunctions, function, overload, useThisWrite, useHandleWrite, "public unsafe");
+                }
+            }
+
+            if (useThisWrite)
+            {
+                if (MemberFunctions.TryGetValue(cppClass, out var funcs))
+                {
+                    foreach (string f in definedFunctions)
+                    {
+                        if (funcs.Contains(f))
+                            continue;
+                        funcs.Add(f);
+                    }
+                }
+                else
+                {
+                    MemberFunctions.Add(cppClass, definedFunctions);
                 }
             }
         }

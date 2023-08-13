@@ -19,6 +19,68 @@ namespace HexaEngine.XAudio2
 	{
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IXAudio2* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IXAudio2> comObj) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IXAudio2> comObj) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult QueryInterface(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -1345,6 +1407,68 @@ namespace HexaEngine.XAudio2
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IXAudio2Extension> comObj) 
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IXAudio2Extension> comObj) 
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult QueryInterface(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
 		{
 			IXAudio2Extension* handle = comObj.Handle;
@@ -1962,6 +2086,502 @@ namespace HexaEngine.XAudio2
 		{
 			IXAudio2Voice* handle = comObj.Handle;
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, void>)(handle->LpVtbl[18]))(handle);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, pVoiceDetails);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceDetails* ppVoiceDetails = &pVoiceDetails)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, (XAudio2VoiceDetails*)ppVoiceDetails);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, pSendList);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, (XAudio2VoiceSends*)ppSendList);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, pEffectChain);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, (XAudio2EffectChain*)ppEffectChain);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "EnableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult EnableEffect(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, uint, HResult>)(handle->LpVtbl[3]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "DisableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult DisableEffect(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, uint, HResult>)(handle->LpVtbl[4]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, pEnabled);
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (int* ppEnabled = &pEnabled)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, (int*)ppEnabled);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, void*, uint, uint, HResult>)(handle->LpVtbl[6]))(handle, effectIndex, pParameters, parametersByteSize, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEffectParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, void*, uint, HResult>)(handle->LpVtbl[7]))(handle, effectIndex, pParameters, parametersByteSize);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetVolume")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetVolume(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, float, uint, HResult>)(handle->LpVtbl[12]))(handle, volume, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, float*, void>)(handle->LpVtbl[13]))(handle, pVolume);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppVolume = &pVolume)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, float*, void>)(handle->LpVtbl[13]))(handle, (float*)ppVolume);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, pVolumes, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, (float*)ppVolumes, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, pVolumes);
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, (float*)ppVolumes);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void DestroyVoice(this ComPtr<IXAudio2SourceVoice> comObj) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, void>)(handle->LpVtbl[18]))(handle);
 		}
 
 		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
@@ -2614,6 +3234,502 @@ namespace HexaEngine.XAudio2
 		public static void GetVoiceDetails(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
 		{
 			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, pVoiceDetails);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceDetails* ppVoiceDetails = &pVoiceDetails)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, (XAudio2VoiceDetails*)ppVoiceDetails);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, pSendList);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, (XAudio2VoiceSends*)ppSendList);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, pEffectChain);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, (XAudio2EffectChain*)ppEffectChain);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "EnableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult EnableEffect(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, uint, HResult>)(handle->LpVtbl[3]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "DisableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult DisableEffect(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, uint, HResult>)(handle->LpVtbl[4]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, pEnabled);
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (int* ppEnabled = &pEnabled)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, (int*)ppEnabled);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, void*, uint, uint, HResult>)(handle->LpVtbl[6]))(handle, effectIndex, pParameters, parametersByteSize, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEffectParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, void*, uint, HResult>)(handle->LpVtbl[7]))(handle, effectIndex, pParameters, parametersByteSize);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetVolume")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetVolume(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, float, uint, HResult>)(handle->LpVtbl[12]))(handle, volume, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, float*, void>)(handle->LpVtbl[13]))(handle, pVolume);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppVolume = &pVolume)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, float*, void>)(handle->LpVtbl[13]))(handle, (float*)ppVolume);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, pVolumes, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, (float*)ppVolumes, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, pVolumes);
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, (float*)ppVolumes);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void DestroyVoice(this ComPtr<IXAudio2SubmixVoice> comObj) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, void>)(handle->LpVtbl[18]))(handle);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceDetails*, void>)(handle->LpVtbl[19]))(handle, pVoiceDetails);
 		}
 
@@ -3103,6 +4219,502 @@ namespace HexaEngine.XAudio2
 		{
 			IXAudio2SubmixVoice* handle = comObj.Handle;
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, void>)(handle->LpVtbl[37]))(handle);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, pVoiceDetails);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVoiceDetails(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceDetails* ppVoiceDetails = &pVoiceDetails)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2VoiceDetails*, void>)(*handle->LpVtbl))(handle, (XAudio2VoiceDetails*)ppVoiceDetails);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, pSendList);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputVoices(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2VoiceSends*, HResult>)(handle->LpVtbl[1]))(handle, (XAudio2VoiceSends*)ppSendList);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, pEffectChain);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectChain(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[2]))(handle, (XAudio2EffectChain*)ppEffectChain);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "EnableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult EnableEffect(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, uint, HResult>)(handle->LpVtbl[3]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "DisableEffect")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult DisableEffect(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, uint, HResult>)(handle->LpVtbl[4]))(handle, effectIndex, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, pEnabled);
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectState")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetEffectState(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (int* ppEnabled = &pEnabled)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, int*, void>)(handle->LpVtbl[5]))(handle, effectIndex, (int*)ppEnabled);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetEffectParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, void*, uint, uint, HResult>)(handle->LpVtbl[6]))(handle, effectIndex, pParameters, parametersByteSize, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEffectParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, void*, uint, HResult>)(handle->LpVtbl[7]))(handle, effectIndex, pParameters, parametersByteSize);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[8]))(handle, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[9]))(handle, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, pParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)ppDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetVolume")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetVolume(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, float, uint, HResult>)(handle->LpVtbl[12]))(handle, volume, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, float*, void>)(handle->LpVtbl[13]))(handle, pVolume);
+		}
+
+		[NativeName(NativeNameType.Func, "GetVolume")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetVolume(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppVolume = &pVolume)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, float*, void>)(handle->LpVtbl[13]))(handle, (float*)ppVolume);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, pVolumes, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetChannelVolumes(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, float*, uint, HResult>)(handle->LpVtbl[14]))(handle, channels, (float*)ppVolumes, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, pVolumes);
+		}
+
+		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetChannelVolumes(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppVolumes = &pVolumes)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, float*, void>)(handle->LpVtbl[15]))(handle, channels, (float*)ppVolumes);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix, operationSet);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (IXAudio2Voice* ppDestinationVoice = &pDestinationVoice)
+			{
+				fixed (float* ppLevelMatrix = &pLevelMatrix)
+				{
+					((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)ppDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2MasteringVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void DestroyVoice(this ComPtr<IXAudio2MasteringVoice> comObj) 
+		{
+			IXAudio2MasteringVoice* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, void>)(handle->LpVtbl[18]))(handle);
 		}
 
 		[NativeName(NativeNameType.Func, "GetVoiceDetails")]

@@ -99,20 +99,12 @@
                 var baseType = cppClass.BaseTypes[i];
                 if (baseType.Type is CppClass baseClass)
                 {
-                    // TODO: change to FilterCOMClassType, but first a bug needs to be fixed.
-                    if (HasGUID(baseClass.Name))
+                    if (FilterCOMClassType(context, baseClass))
                     {
-                        WriteExtensionsForCOMObject(context, baseClass, className, ref vTableIndex);
+                        continue;
                     }
-                    // TODO: remove this dirty fix.
-                    if (!FilterCOMClassType(context, baseClass))
-                    {
-                        for (int j = 0; j < baseClass.Functions.Count; j++)
-                        {
-                            if (!baseClass.Functions[j].IsFunctionTemplate)
-                                vTableIndex++;
-                        }
-                    }
+
+                    WriteExtensionsForCOMObject(context, baseClass, className, ref vTableIndex);
                 }
             }
 
@@ -120,6 +112,12 @@
             for (int i = 0; i < cppClass.Functions.Count; i++, vTableIndex++)
             {
                 var cppFunction = cppClass.Functions[i];
+
+                if (cppFunction.IsFunctionTemplate)
+                {
+                    vTableIndex--;
+                    continue;
+                }
 
                 if (FilterCOMExtensionFunction(context, cppFunction))
                     continue;
@@ -131,15 +129,22 @@
 
                 CreateCsFunction(cppFunction, csName, commands, out var overload);
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
-                WriteCOMExtensions(context, DefinedVariationsFunctions, overload, className, vTableIndex, "public static");
+
+                if (!MemberFunctions.TryGetValue(cppClass, out var definedExtensions))
+                {
+                    definedExtensions = new();
+                    MemberFunctions.Add(cppClass, definedExtensions);
+                }
+
+                WriteCOMExtensions(context, definedExtensions, overload, className, vTableIndex, "public static");
             }
         }
 
         protected virtual void WriteCOMExtensions(GenContext context, HashSet<string> definedExtensions, CsFunctionOverload overload, string className, int index, params string[] modifiers)
         {
-            for (int j = 0; j < overload.Variations.Count; j++)
+            for (int i = 0; i < overload.Variations.Count; i++)
             {
-                WriteCOMExtension(context, definedExtensions, overload, overload.Variations[j], className, index, modifiers);
+                WriteCOMExtension(context, definedExtensions, overload, overload.Variations[i], className, index, modifiers);
             }
         }
 
@@ -152,24 +157,13 @@
                 csReturnType.Name = value;
             }
 
-            for (int i = 0; i < variation.Parameters.Count; i++)
-            {
-                var cppParameter = variation.Parameters[i];
-                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
-                {
-                    cppParameter.Type.Name = v;
-                    cppParameter.Type.Classify();
-                }
-            }
+            PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
-            string signature;
+            string signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this ComPtr<{className}> comObj").Reverse());
             string genericSignature = string.Join(", ", variation.GenericParameters.Select(p => p.Name));
             string genericConstrain = string.Join(" ", variation.GenericParameters.Select(p => p.Constrain));
-            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}";
-
-            signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this ComPtr<{className}> comObj").Reverse());
-            signatureNameless += string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"));
+            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
 
             string header = $"{csReturnType.Name} {variation.Name}{(variation.IsGeneric ? $"<{genericSignature}>" : string.Empty)}({signature}) {genericConstrain}";
 
@@ -213,7 +207,7 @@
                     }
                 }
 
-                if ((!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer))
+                if (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
