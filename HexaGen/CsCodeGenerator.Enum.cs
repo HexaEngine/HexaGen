@@ -162,7 +162,7 @@
             }
             writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]");
 
-            if (enumItem.ValueExpression is CppRawExpression rawExpression)
+            if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
             {
                 string enumValueName = settings.GetPrettyEnumName(rawExpression.Text, enumNamePrefix);
 
@@ -178,6 +178,12 @@
 
                     if (enumItemName == enumValueName)
                         return;
+                }
+
+                if (rawExpression.Text == "'_'")
+                {
+                    writer.WriteLine($"{enumItemName} = unchecked((int){rawExpression.Text}),");
+                    return;
                 }
 
                 if (rawExpression.Kind == CppExpressionKind.Unexposed)

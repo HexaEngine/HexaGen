@@ -338,49 +338,49 @@ namespace HexaEngine.SDL2
 		/// Planar mode: Y + V + U  (3 planes) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YV12")]
-		PixelformatYv12 = unchecked((int)),
+		PixelformatYv12 = unchecked(842094169),
 
 		/// <summary>
 		/// Planar mode: Y + U + V  (3 planes) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_IYUV")]
-		PixelformatIyuv = unchecked((int)),
+		PixelformatIyuv = unchecked(1448433993),
 
 		/// <summary>
 		/// Packed mode: Y0+U0+Y1+V0 (1 plane) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YUY2")]
-		PixelformatYuy2 = unchecked((int)),
+		PixelformatYuy2 = unchecked(844715353),
 
 		/// <summary>
 		/// Packed mode: U0+Y0+V0+Y1 (1 plane) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UYVY")]
-		PixelformatUyvy = unchecked((int)),
+		PixelformatUyvy = unchecked(1498831189),
 
 		/// <summary>
 		/// Packed mode: Y0+V0+Y1+U0 (1 plane) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YVYU")]
-		PixelformatYvyu = unchecked((int)),
+		PixelformatYvyu = unchecked(1431918169),
 
 		/// <summary>
 		/// Planar mode: Y + U/V interleaved  (2 planes) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV12")]
-		PixelformatNv12 = unchecked((int)),
+		PixelformatNv12 = unchecked(842094158),
 
 		/// <summary>
 		/// Planar mode: Y + V/U interleaved  (2 planes) <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV21")]
-		PixelformatNv21 = unchecked((int)),
+		PixelformatNv21 = unchecked(825382478),
 
 		/// <summary>
 		/// Android video texture format <br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_EXTERNAL_OES")]
-		PixelformatExternalOes = unchecked((int)),
+		PixelformatExternalOes = unchecked(542328143),
 
 	}
 
@@ -2452,8 +2452,7 @@ namespace HexaEngine.SDL2
 		/// Skip uppercase letters<br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "SDLK_UNDERSCORE")]
-		SdlkUnderscore = unchecked((int)''),
-
+		SdlkUnderscore = unchecked((int)'_'),
 		/// <summary>
 		/// Skip uppercase letters<br/>
 		/// </summary>
