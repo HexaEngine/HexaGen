@@ -440,7 +440,23 @@
             }
             if (primitiveKind == CppPrimitiveKind.WChar)
             {
-                writer.WriteLine($"char* pStr{i} = (char*)Marshal.StringToHGlobalUni({name});");
+                writer.WriteLine($"char* pStr{i} = null;");
+                writer.WriteLine($"int pStrSize{i} = 0;");
+                using (writer.PushBlock($"if ({name} != null)"))
+                {
+                    writer.WriteLine($"pStrSize{i} = Utils.GetByteCountUTF16({name});");
+                    using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))
+                    {
+                        writer.WriteLine($"pStr{i} = Utils.Alloc<char>(pStrSize{i} + 1);");
+                    }
+                    using (writer.PushBlock("else"))
+                    {
+                        writer.WriteLine($"byte* pStrStack{i} = stackalloc byte[pStrSize{i} + 1];");
+                        writer.WriteLine($"pStr{i} = (char*)pStrStack{i};");
+                    }
+                    writer.WriteLine($"int pStrOffset{i} = Utils.EncodeStringUTF16({name}, pStr{i}, pStrSize{i});");
+                    writer.WriteLine($"pStr{i}[pStrOffset{i}] = '\\0';");
+                }
             }
         }
 
@@ -468,7 +484,23 @@
             }
             if (type.StringType == CsStringType.StringUTF16)
             {
-                writer.WriteLine($"char* pStr{i} = (char*)Marshal.StringToHGlobalUni({name});");
+                writer.WriteLine($"char* pStr{i} = null;");
+                writer.WriteLine($"int pStrSize{i} = 0;");
+                using (writer.PushBlock($"if ({name} != null)"))
+                {
+                    writer.WriteLine($"pStrSize{i} = Utils.GetByteCountUTF16({name});");
+                    using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))
+                    {
+                        writer.WriteLine($"pStr{i} = Utils.Alloc<char>(pStrSize{i} + 1);");
+                    }
+                    using (writer.PushBlock("else"))
+                    {
+                        writer.WriteLine($"byte* pStrStack{i} = stackalloc byte[pStrSize{i} + 1];");
+                        writer.WriteLine($"pStr{i} = (char*)pStrStack{i};");
+                    }
+                    writer.WriteLine($"int pStrOffset{i} = Utils.EncodeStringUTF16({name}, pStr{i}, pStrSize{i});");
+                    writer.WriteLine($"pStr{i}[pStrOffset{i}] = '\\0';");
+                }
             }
         }
 
@@ -501,15 +533,28 @@
                 }
                 using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
                 {
-                    writer.WriteLine($"pStrArray{i}[i] = (byte*)Marshal.StringToHGlobalAnsi({name}[i]);");
+                    writer.WriteLine($"pStrArray{i}[i] = (byte*)Utils.StringToUTF8Ptr({name}[i]);");
                 }
             }
             if (primitiveKind == CppPrimitiveKind.WChar)
             {
-                writer.WriteLine($"char** pAStr{i} = (char**)Marshal.AllocHGlobal(sizeof(nuint) * {name}.Length);");
+                writer.WriteLine($"char** pStrArray{i} = null;");
+                writer.WriteLine($"int pStrArraySize{i} = Utils.GetByteCountArray({name});");
+                using (writer.PushBlock($"if ({name} != null)"))
+                {
+                    using (writer.PushBlock($"if (pStrArraySize{i} > Utils.MaxStackallocSize)"))
+                    {
+                        writer.WriteLine($"pStrArray{i} = (char**)Utils.Alloc<byte>(pStrArraySize{i});");
+                    }
+                    using (writer.PushBlock("else"))
+                    {
+                        writer.WriteLine($"byte* pStrArrayStack{i} = stackalloc byte[pStrArraySize{i}];");
+                        writer.WriteLine($"pStrArray{i} = (char**)pStrArrayStack{i};");
+                    }
+                }
                 using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
                 {
-                    writer.WriteLine($"pAStr{i}[i] = (char*)Marshal.StringToHGlobalUni({name}[i]);");
+                    writer.WriteLine($"pStrArray{i}[i] = (char*)Utils.StringToUTF16Ptr({name}[i]);");
                 }
             }
         }
@@ -534,15 +579,28 @@
                 }
                 using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
                 {
-                    writer.WriteLine($"pStrArray{i}[i] = (byte*)Marshal.StringToHGlobalAnsi({name}[i]);");
+                    writer.WriteLine($"pStrArray{i}[i] = (byte*)Utils.StringToUTF8Ptr({name}[i]);");
                 }
             }
             if (type.StringType == CsStringType.StringUTF16)
             {
-                writer.WriteLine($"char** pAStr{i} = (char**)Marshal.AllocHGlobal(sizeof(nuint) * {name}.Length);");
+                writer.WriteLine($"char** pStrArray{i} = null;");
+                writer.WriteLine($"int pStrArraySize{i} = Utils.GetByteCountArray({name});");
+                using (writer.PushBlock($"if ({name} != null)"))
+                {
+                    using (writer.PushBlock($"if (pStrArraySize{i} > Utils.MaxStackallocSize)"))
+                    {
+                        writer.WriteLine($"pStrArray{i} = (char**)Utils.Alloc<byte>(pStrArraySize{i});");
+                    }
+                    using (writer.PushBlock("else"))
+                    {
+                        writer.WriteLine($"byte* pStrArrayStack{i} = stackalloc byte[pStrArraySize{i}];");
+                        writer.WriteLine($"pStrArray{i} = (char**)pStrArrayStack{i};");
+                    }
+                }
                 using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
                 {
-                    writer.WriteLine($"pAStr{i}[i] = (char*)Marshal.StringToHGlobalUni({name}[i]);");
+                    writer.WriteLine($"pStrArray{i}[i] = (char*)Utils.StringToUTF16Ptr({name}[i]);");
                 }
             }
         }

@@ -22,9 +22,21 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static int GetByteCountUTF16(string str)
+        {
+            return Encoding.Unicode.GetByteCount(str);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public static int EncodeStringUTF8(string str, byte* data, int size)
         {
             return Encoding.UTF8.GetBytes(str, new Span<byte>(data, size));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static int EncodeStringUTF16(string str, char* data, int size)
+        {
+            return Encoding.Unicode.GetBytes(str, new Span<byte>(data, size));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -34,12 +46,30 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static string DecodeStringUTF16(char* data)
+        {
+            return new(MemoryMarshal.CreateReadOnlySpanFromNullTerminated(data));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public static byte* StringToUTF8Ptr(string str)
         {
             var size = GetByteCountUTF8(str);
-            var ptr = Alloc<byte>(size);
+            var ptr = Alloc<byte>(size + 1);
             Encoding.UTF8.GetBytes(str, new Span<byte>(ptr, size));
+            ptr[size] = 0;
             return ptr;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static char* StringToUTF16Ptr(string str)
+        {
+            var size = GetByteCountUTF16(str);
+            var ptr = Alloc<byte>(size);
+            Encoding.Unicode.GetBytes(str, new Span<byte>(ptr, size));
+            var result = (char*)ptr;
+            result[str.Length] = '\0';
+            return result;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

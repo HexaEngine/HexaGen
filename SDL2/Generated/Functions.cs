@@ -751,7 +751,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslen([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] string wstr)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(wstr);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (wstr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(wstr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(wstr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			nuint ret = SDLWcslenNative(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -788,7 +804,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] ref string dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(dst);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			nuint ret = SDLWcslcpyNative(pStr0, src, maxlen);
 			dst = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -813,7 +845,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] string src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(src);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (src != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(src);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(src, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			nuint ret = SDLWcslcpyNative(dst, pStr0, maxlen);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -840,8 +888,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] ref string dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] string src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(dst);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(src);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (src != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(src);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(src, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			nuint ret = SDLWcslcpyNative(pStr0, pStr1, maxlen);
 			dst = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
@@ -883,7 +963,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] ref string dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(dst);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			nuint ret = SDLWcslcatNative(pStr0, src, maxlen);
 			dst = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -908,7 +1004,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] string src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(src);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (src != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(src);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(src, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			nuint ret = SDLWcslcatNative(dst, pStr0, maxlen);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -935,8 +1047,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLWcslcat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] ref string dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] string src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(dst);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(src);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (src != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(src);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(src, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			nuint ret = SDLWcslcatNative(pStr0, pStr1, maxlen);
 			dst = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
@@ -997,7 +1141,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsdup([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] string wstr)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(wstr);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (wstr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(wstr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(wstr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			char* ret = SDLWcsdupNative(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1010,7 +1170,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static string SDLWcsdupS([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] string wstr)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(wstr);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (wstr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(wstr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(wstr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			string ret = Utils.DecodeStringUTF16(SDLWcsdupNative(pStr0));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1066,7 +1242,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsstr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] string haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] char* needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(haystack);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			char* ret = SDLWcsstrNative(pStr0, needle);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1079,7 +1271,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static string SDLWcsstrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] string haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] char* needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(haystack);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			string ret = Utils.DecodeStringUTF16(SDLWcsstrNative(pStr0, needle));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1114,7 +1322,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsstr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] char* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] string needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(needle);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			char* ret = SDLWcsstrNative(haystack, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1127,7 +1351,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static string SDLWcsstrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] char* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] string needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(needle);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			string ret = Utils.DecodeStringUTF16(SDLWcsstrNative(haystack, pStr0));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1168,8 +1408,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsstr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] string haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] string needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(haystack);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(needle);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			char* ret = SDLWcsstrNative(pStr0, pStr1);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -1186,8 +1458,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static string SDLWcsstrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] string haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] string needle)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(haystack);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(needle);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			string ret = Utils.DecodeStringUTF16(SDLWcsstrNative(pStr0, pStr1));
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -1228,7 +1532,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcscmpNative(pStr0, str2);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1252,7 +1572,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str2 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str2, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcscmpNative(str1, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1279,8 +1615,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str2 != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(str2, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			int ret = SDLWcscmpNative(pStr0, pStr1);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -1321,7 +1689,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcsncmpNative(pStr0, str2, maxlen);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1345,7 +1729,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str2 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str2, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcsncmpNative(str1, pStr0, maxlen);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1372,8 +1772,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str2 != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(str2, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			int ret = SDLWcsncmpNative(pStr0, pStr1, maxlen);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -1414,7 +1846,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcscasecmpNative(pStr0, str2);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1438,7 +1886,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str2 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str2, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcscasecmpNative(str1, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1465,8 +1929,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str2 != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(str2, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			int ret = SDLWcscasecmpNative(pStr0, pStr1);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -1507,7 +2003,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] nuint len)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcsncasecmpNative(pStr0, str2, len);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1531,7 +2043,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] nuint len)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str2 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str2, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLWcsncasecmpNative(str1, pStr0, len);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -1558,8 +2086,40 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] string str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] string str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] nuint len)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str1);
-			char* pStr1 = (char*)Marshal.StringToHGlobalUni(str2);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str1 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str1);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str1, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			char* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str2 != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF16(str2);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<char>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = (char*)pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF16(str2, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = '\0';
+			}
 			int ret = SDLWcsncasecmpNative(pStr0, pStr1, len);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
@@ -8675,7 +9235,7 @@ namespace HexaEngine.SDL2
 			}
 			for (int i = 0; i < argv.Length; i++)
 			{
-				pStrArray0[i] = (byte*)Marshal.StringToHGlobalAnsi(argv[i]);
+				pStrArray0[i] = (byte*)Utils.StringToUTF8Ptr(argv[i]);
 			}
 			int ret = SDLMainNative(argc, pStrArray0);
 			for (int i = 0; i < argv.Length; i++)
@@ -34153,7 +34713,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
 		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] string serialNumber)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(serialNumber);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (serialNumber != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(serialNumber);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(serialNumber, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
@@ -34626,7 +35202,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLHidGetManufacturerStringNative(dev, pStr0, maxlen);
 			str = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34656,7 +35248,23 @@ namespace HexaEngine.SDL2
 		{
 			fixed (SDLHidDevice* pdev = &dev)
 			{
-				char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+				char* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF16(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = (char*)pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = '\0';
+				}
 				int ret = SDLHidGetManufacturerStringNative((SDLHidDevice*)pdev, pStr0, maxlen);
 				str = Utils.DecodeStringUTF16(pStr0);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34711,7 +35319,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLHidGetProductStringNative(dev, pStr0, maxlen);
 			str = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34741,7 +35365,23 @@ namespace HexaEngine.SDL2
 		{
 			fixed (SDLHidDevice* pdev = &dev)
 			{
-				char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+				char* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF16(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = (char*)pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = '\0';
+				}
 				int ret = SDLHidGetProductStringNative((SDLHidDevice*)pdev, pStr0, maxlen);
 				str = Utils.DecodeStringUTF16(pStr0);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34796,7 +35436,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLHidGetSerialNumberStringNative(dev, pStr0, maxlen);
 			str = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34826,7 +35482,23 @@ namespace HexaEngine.SDL2
 		{
 			fixed (SDLHidDevice* pdev = &dev)
 			{
-				char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+				char* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF16(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = (char*)pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = '\0';
+				}
 				int ret = SDLHidGetSerialNumberStringNative((SDLHidDevice*)pdev, pStr0, maxlen);
 				str = Utils.DecodeStringUTF16(pStr0);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34881,7 +35553,23 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
 		{
-			char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
 			int ret = SDLHidGetIndexedStringNative(dev, stringIndex, pStr0, maxlen);
 			str = Utils.DecodeStringUTF16(pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
@@ -34911,7 +35599,23 @@ namespace HexaEngine.SDL2
 		{
 			fixed (SDLHidDevice* pdev = &dev)
 			{
-				char* pStr0 = (char*)Marshal.StringToHGlobalUni(str);
+				char* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF16(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = (char*)pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = '\0';
+				}
 				int ret = SDLHidGetIndexedStringNative((SDLHidDevice*)pdev, stringIndex, pStr0, maxlen);
 				str = Utils.DecodeStringUTF16(pStr0);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
