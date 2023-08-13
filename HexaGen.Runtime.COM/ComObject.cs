@@ -4,7 +4,6 @@
     using System.Runtime.InteropServices;
     using System.Runtime.Versioning;
 
-    [SupportedOSPlatform("windows")]
     public class ComObject : IDisposable
     {
         private readonly bool disposedValue;
@@ -13,13 +12,16 @@
         {
         }
 
+        [SupportedOSPlatform("windows")]
         public unsafe ComObject(object o)
         {
             Handle = (IUnknown*)(void*)Marshal.GetIUnknownForObject(o);
         }
 
+        [SupportedOSPlatform("windows")]
         public unsafe object Value => Marshal.GetObjectForIUnknown((nint)Handle);
 
+        [SupportedOSPlatform("windows")]
         public unsafe object UniqueValue => Marshal.GetUniqueObjectForIUnknown((nint)Handle);
 
         public unsafe IUnknown* Handle { get; set; }

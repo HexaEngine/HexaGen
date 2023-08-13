@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using HexaEngine.XAudio2;
-using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 using XAudioTest;
 
@@ -12,7 +11,7 @@ unsafe
 
     audio.StartEngine().ThrowIf();
     ComPtr<IXAudio2MasteringVoice> master = default;
-    audio.CreateMasteringVoice(master.GetAddressOf(), 2, 192000, 0, null, null, AudioStreamCategory.GameMedia).ThrowIf();
+    audio.CreateMasteringVoice(ref master, 2, 192000, 0, null, null, AudioStreamCategory.GameMedia).ThrowIf();
 
     var fs = File.OpenRead("CantinaBand60.wav");
 
@@ -23,7 +22,7 @@ unsafe
     var waveFormat = stream.GetWaveFormat();
     ComPtr<IXAudio2SourceVoice> source = default;
 
-    audio.CreateSourceVoice(ref source, &waveFormat, 0, 1, (IXAudio2VoiceCallback*)null, null, null).ThrowIf();
+    audio.CreateSourceVoice(ref source, ref waveFormat, 0, 1, (IXAudio2VoiceCallback*)null, null, null).ThrowIf();
 
     stream.Initialize(source);
     source.Start(0, 0).ThrowIf();

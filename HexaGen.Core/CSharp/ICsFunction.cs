@@ -13,8 +13,6 @@
         CsType ReturnType { get; set; }
         string StructName { get; set; }
 
-        string BuildSignature();
-
         bool HasParameter(CsParameterInfo cppParameter);
 
         string ToString();

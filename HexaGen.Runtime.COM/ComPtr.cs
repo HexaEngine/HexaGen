@@ -3,7 +3,6 @@
     using System.Runtime.CompilerServices;
     using System.Runtime.Versioning;
 
-    [SupportedOSPlatform("windows")]
     public unsafe struct ComPtr<T> : IComObject, IComObject<T>, IDisposable where T : unmanaged, IComObject<T>
     {
         public T* Handle;
@@ -18,6 +17,7 @@
         {
         }
 
+        [SupportedOSPlatform("windows")]
         public unsafe ComPtr(ComObject obj)
             : this((T*)obj.Handle)
         {
@@ -33,6 +33,7 @@
             return @this.Handle;
         }
 
+        [SupportedOSPlatform("windows")]
         public unsafe ComObject? AsComObject()
         {
             return ComObject.FromPtr((IUnknown*)Handle);

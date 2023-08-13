@@ -16,6 +16,34 @@
             return usings;
         }
 
+        protected virtual bool FilterCOMFunction(GenContext context, CppFunction cppFunction)
+        {
+            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+            {
+                return true;
+            }
+
+            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        protected virtual bool FilterCOMMemberFunction(GenContext context, HashSet<string> definedFunctions, string header)
+        {
+            if (definedFunctions.Contains(header))
+            {
+                LogWarn($"{context.FilePath}: {header} member function is already defined!");
+                return true;
+            }
+
+            definedFunctions.Add(header);
+
+            return false;
+        }
+
         protected override void GenerateTypes(CppCompilation compilation, string outputPath)
         {
             // Print All classes, structs
@@ -61,13 +89,13 @@
 
                 if (TryGetGUID(cppClass.Name, out var guid))
                 {
-                    WriteCOMObject(writer, compilation, cppClass, mapping, csName, guid);
+                    WriteCOMObject(context, cppClass, mapping, csName, guid);
                 }
                 else
                 {
                     if (cppClass.Fields.Count == 0 && cppClass.Functions.Count > 0 && cppClass.IsAbstract)
                     {
-                        WriteCOMObject(writer, compilation, cppClass, mapping, csName, null);
+                        WriteCOMObject(context, cppClass, mapping, csName, null);
                         continue;
                     }
 
@@ -76,8 +104,9 @@
             }
         }
 
-        private void WriteCOMObject(CodeWriter writer, CppCompilation compilation, CppClass cppClass, TypeMapping? mapping, string csName, Guid? guid)
+        private void WriteCOMObject(GenContext context, CppClass cppClass, TypeMapping? mapping, string csName, Guid? guid)
         {
+            var writer = context.Writer;
             if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
             {
                 return;
@@ -135,19 +164,7 @@
 
                 WriteCOMConstructor(writer, csName);
 
-                for (int i = 0; i < cppClass.BaseTypes.Count; i++)
-                {
-                    var baseType = cppClass.BaseTypes[i];
-                    if (baseType.Type is CppClass baseClass)
-                    {
-                        if (HasGUID(baseClass.Name))
-                        {
-                            WriteCOMObjectMemberFunctions(writer, baseClass, csName, ref vTableIndex);
-                        }
-                    }
-                }
-
-                WriteCOMObjectMemberFunctions(writer, cppClass, csName, ref vTableIndex);
+                WriteCOMObjectMemberFunctions(context, cppClass, cppClass, csName, ref vTableIndex);
 
                 using (writer.PushBlock($"unsafe void*** IComObject.AsVtblPtr()"))
                 {
@@ -168,34 +185,53 @@
             writer.WriteLine();
         }
 
-        private void WriteCOMObjectMemberFunctions(CodeWriter writer, CppClass cppClass, string csName, ref int vTableIndex)
+        private void WriteCOMObjectMemberFunctions(GenContext context, CppClass targetClass, CppClass cppClass, string csName, ref int vTableIndex)
         {
-            HashSet<string> definedFunctions = new();
+            for (int i = 0; i < cppClass.BaseTypes.Count; i++)
+            {
+                var baseType = cppClass.BaseTypes[i];
+                if (baseType.Type is CppClass baseClass)
+                {
+                    if (FilterCOMClassType(context, baseClass))
+                    {
+                        continue;
+                    }
+
+                    WriteCOMObjectMemberFunctions(context, cppClass, baseClass, csName, ref vTableIndex);
+                }
+            }
+
             List<CsFunction> commands = new();
             for (int i = 0; i < cppClass.Functions.Count; i++, vTableIndex++)
             {
                 var cppFunction = cppClass.Functions[i];
 
+                if (cppFunction.IsFunctionTemplate)
+                {
+                    vTableIndex--;
+                    continue;
+                }
+
+                if (FilterCOMFunction(context, cppFunction))
+                {
+                    continue;
+                }
+
                 string? csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
 
                 CsFunction? function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
-
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
-                WriteCOMFunctions(writer, definedFunctions, function, overload, csName, vTableIndex, "public readonly unsafe");
-            }
 
-            if (MemberFunctions.TryGetValue(cppClass, out var funcs))
-            {
-                foreach (string f in definedFunctions)
+                if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedFunctions))
                 {
-                    if (funcs.Contains(f))
-                        continue;
-                    funcs.Add(f);
+                    definedFunctions = new();
+                    MemberFunctions.Add(targetClass.Name, definedFunctions);
                 }
-            }
-            else
-            {
-                MemberFunctions.Add(cppClass, definedFunctions);
+
+                if (!WriteCOMFunctions(context, definedFunctions, function, overload, csName, vTableIndex, "public readonly unsafe"))
+                {
+                    vTableIndex--;
+                }
             }
         }
 
@@ -227,16 +263,19 @@
             }
         }
 
-        private void WriteCOMFunctions(CodeWriter writer, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
         {
+            bool hasWritten = false;
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteCOMFunction(writer, definedFunctions, csFunction, overload, overload.Variations[j], className, index, modifiers);
+                hasWritten |= WriteCOMFunction(context, definedFunctions, csFunction, overload, overload.Variations[j], className, index, modifiers);
             }
+            return hasWritten;
         }
 
-        private void WriteCOMFunction(CodeWriter writer, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunction(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
         {
+            var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
             if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
             {
@@ -254,18 +293,14 @@
             }
 
             string modifierString = string.Join(" ", modifiers);
-            string signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
-            string genericSignature = string.Join(", ", variation.GenericParameters.Select(p => p.Name));
-            string genericConstrain = string.Join(" ", variation.GenericParameters.Select(p => p.Constrain));
-            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
+            string header = variation.BuildFullSignatureForCOM();
+            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
 
-            string header = $"{csReturnType.Name} {variation.Name}{(variation.IsGeneric ? $"<{genericSignature}>" : string.Empty)}({signature}) {genericConstrain}";
-
-            if (definedFunctions.Contains(header))
+            string identifier = variation.BuildSignatureIdentifierForCOM();
+            if (FilterCOMMemberFunction(context, definedFunctions, identifier))
             {
-                return;
+                return false;
             }
-            definedFunctions.Add(header);
 
             LogInfo("defined function " + header);
 
@@ -502,6 +537,12 @@
             }
 
             writer.WriteLine();
+            return true;
+        }
+
+        private static string BuildCOMSignature(CsFunctionVariation variation)
+        {
+            return string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
         }
     }
 }

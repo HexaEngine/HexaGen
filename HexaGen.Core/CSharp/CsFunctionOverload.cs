@@ -95,7 +95,17 @@
 
         public string BuildSignature()
         {
-            return string.Join(", ", Parameters.Select(p => $"{p.Type.Name} {p.Name}"));
+            return string.Join(", ", Parameters.Select(p => $"{string.Join(" ", p.Attributes)} {p.Type.Name} {p.Name}"));
+        }
+
+        public string BuildSignatureNameless()
+        {
+            return string.Join(", ", Parameters.Select(p => $"{p.Name}"));
+        }
+
+        public string BuildSignatureNamelessForCOM(string comObject, IGeneratorSettings settings)
+        {
+            return $"{comObject}*{(Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
         }
 
         public override string ToString()

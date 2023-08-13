@@ -14,7 +14,7 @@
         protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
         protected readonly Dictionary<string, string> WrappedPointers = new();
-        protected readonly Dictionary<CppClass, HashSet<string>> MemberFunctions = new();
+        protected readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
 
         protected virtual List<string> SetupTypeUsings()
         {
@@ -676,7 +676,7 @@
 
             if (useThisWrite)
             {
-                if (MemberFunctions.TryGetValue(cppClass, out var funcs))
+                if (MemberFunctions.TryGetValue(cppClass.Name, out var funcs))
                 {
                     foreach (string f in definedFunctions)
                     {
@@ -687,7 +687,7 @@
                 }
                 else
                 {
-                    MemberFunctions.Add(cppClass, definedFunctions);
+                    MemberFunctions.Add(cppClass.Name, definedFunctions);
                 }
             }
         }

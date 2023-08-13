@@ -17,6 +17,68 @@ namespace HexaEngine.D3DCommon
 {
 	public static unsafe class Extensions
 	{
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<ID3D10Blob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<ID3D10Blob> comObj) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<ID3D10Blob> comObj) 
+		{
+			ID3D10Blob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "GetBufferPointer")]
 		[return: NativeName(NativeNameType.Type, "LPVOID")]
 		public static void* GetBufferPointer(this ComPtr<ID3D10Blob> comObj) 
@@ -32,6 +94,68 @@ namespace HexaEngine.D3DCommon
 		{
 			ID3D10Blob* handle = comObj.Handle;
 			nuint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, nuint>)(handle->LpVtbl[4]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<ID3DDestructionNotifier> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<ID3DDestructionNotifier> comObj) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<ID3DDestructionNotifier> comObj) 
+		{
+			ID3DDestructionNotifier* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(handle->LpVtbl[2]))(handle);
 			return ret;
 		}
 

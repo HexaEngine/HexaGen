@@ -29,21 +29,83 @@ namespace HexaEngine.D3DCommon
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "GetBufferPointer")]
-		[return: NativeName(NativeNameType.Type, "LPVOID")]
-		public readonly unsafe void* GetBufferPointer()
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			void* ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, void*>)(*LpVtbl))(ptr);
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public readonly unsafe uint AddRef() 
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(LpVtbl[1]))(ptr);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public readonly unsafe uint Release() 
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, uint>)(LpVtbl[2]))(ptr);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferPointer")]
+		[return: NativeName(NativeNameType.Type, "LPVOID")]
+		public readonly unsafe void* GetBufferPointer() 
+		{
+			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			void* ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, void*>)(LpVtbl[3]))(ptr);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "GetBufferSize")]
 		[return: NativeName(NativeNameType.Type, "SIZE_T")]
-		public readonly unsafe nuint GetBufferSize()
+		public readonly unsafe nuint GetBufferSize() 
 		{
 			ID3D10Blob* ptr = (ID3D10Blob*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			nuint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, nuint>)(LpVtbl[1]))(ptr);
+			nuint ret = ((delegate* unmanaged[Stdcall]<ID3D10Blob*, nuint>)(LpVtbl[4]))(ptr);
 			return ret;
 		}
 
@@ -69,33 +131,95 @@ namespace HexaEngine.D3DCommon
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "RegisterDestructionCallback")]
+		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult RegisterDestructionCallback([NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] uint* pCallbackID)
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(*LpVtbl))(ptr, callbackFn, pData, pCallbackID);
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public readonly unsafe uint AddRef() 
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(LpVtbl[1]))(ptr);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public readonly unsafe uint Release() 
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			uint ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint>)(LpVtbl[2]))(ptr);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "RegisterDestructionCallback")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult RegisterDestructionCallback([NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pCallbackID)
+		public readonly unsafe HResult RegisterDestructionCallback([NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] uint* pCallbackID) 
+		{
+			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(LpVtbl[3]))(ptr, callbackFn, pData, pCallbackID);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "RegisterDestructionCallback")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public readonly unsafe HResult RegisterDestructionCallback([NativeName(NativeNameType.Param, "callbackFn")] [NativeName(NativeNameType.Type, "PFN_DESTRUCTION_CALLBACK")] PfnDestructionCallback callbackFn, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "pCallbackID")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pCallbackID) 
 		{
 			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppCallbackID = &pCallbackID)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(*LpVtbl))(ptr, callbackFn, pData, (uint*)ppCallbackID);
+				HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, PfnDestructionCallback, void*, uint*, HResult>)(LpVtbl[3]))(ptr, callbackFn, pData, (uint*)ppCallbackID);
 				return ret;
 			}
 		}
 
 		[NativeName(NativeNameType.Func, "UnregisterDestructionCallback")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult UnregisterDestructionCallback([NativeName(NativeNameType.Param, "callbackID")] [NativeName(NativeNameType.Type, "UINT")] uint callbackID)
+		public readonly unsafe HResult UnregisterDestructionCallback([NativeName(NativeNameType.Param, "callbackID")] [NativeName(NativeNameType.Type, "UINT")] uint callbackID) 
 		{
 			ID3DDestructionNotifier* ptr = (ID3DDestructionNotifier*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint, HResult>)(LpVtbl[1]))(ptr, callbackID);
+			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DDestructionNotifier*, uint, HResult>)(LpVtbl[4]))(ptr, callbackID);
 			return ret;
 		}
 
@@ -137,7 +261,7 @@ namespace HexaEngine.D3DCommon
 
 		[NativeName(NativeNameType.Func, "Open")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes)
+		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes) 
 		{
 			ID3DInclude* ptr = (ID3DInclude*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DInclude*, D3DIncludeType, byte*, void*, void**, uint*, HResult>)(*LpVtbl))(ptr, includeType, pFileName, pParentData, ppData, pBytes);
@@ -146,7 +270,7 @@ namespace HexaEngine.D3DCommon
 
 		[NativeName(NativeNameType.Func, "Open")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes)
+		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] uint* pBytes) 
 		{
 			ID3DInclude* ptr = (ID3DInclude*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (void** pppData = &ppData)
@@ -158,7 +282,7 @@ namespace HexaEngine.D3DCommon
 
 		[NativeName(NativeNameType.Func, "Open")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes)
+		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] void** ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes) 
 		{
 			ID3DInclude* ptr = (ID3DInclude*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (uint* ppBytes = &pBytes)
@@ -170,7 +294,7 @@ namespace HexaEngine.D3DCommon
 
 		[NativeName(NativeNameType.Func, "Open")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes)
+		public readonly unsafe HResult Open([NativeName(NativeNameType.Param, "IncludeType")] [NativeName(NativeNameType.Type, "D3D_INCLUDE_TYPE")] D3DIncludeType includeType, [NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pFileName, [NativeName(NativeNameType.Param, "pParentData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pParentData, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "LPCVOID*")] ref void* ppData, [NativeName(NativeNameType.Param, "pBytes")] [NativeName(NativeNameType.Type, "UINT*")] ref uint pBytes) 
 		{
 			ID3DInclude* ptr = (ID3DInclude*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (void** pppData = &ppData)
@@ -185,7 +309,7 @@ namespace HexaEngine.D3DCommon
 
 		[NativeName(NativeNameType.Func, "Close")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult Close([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pData)
+		public readonly unsafe HResult Close([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pData) 
 		{
 			ID3DInclude* ptr = (ID3DInclude*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			HResult ret = ((delegate* unmanaged[Stdcall]<ID3DInclude*, void*, HResult>)(LpVtbl[1]))(ptr, pData);

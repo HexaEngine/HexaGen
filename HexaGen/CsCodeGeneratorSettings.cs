@@ -11,23 +11,7 @@
     using System.Text.Json;
     using System.Text.Json.Serialization;
 
-    public struct EnumPrefix
-    {
-        public string[] Parts;
-
-        public EnumPrefix(string[] prefixes)
-        {
-            Parts = prefixes;
-        }
-    }
-
-    public enum BoolType
-    {
-        Bool8,
-        Bool32,
-    }
-
-    public partial class CsCodeGeneratorSettings
+    public partial class CsCodeGeneratorSettings : IGeneratorSettings
     {
         public static CsCodeGeneratorSettings Load(string file)
         {

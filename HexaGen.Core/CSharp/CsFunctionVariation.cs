@@ -60,9 +60,49 @@
 
         public List<string> Attributes { get; set; }
 
-        public string BuildSignature()
+        public string BuildSignatureIdentifier()
         {
-            return string.Join(", ", Parameters.Select(p => $"{p.Type.Name} {p.Name}"));
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildSignatureIdentifierForCOM()
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildExtensionSignatureIdentifierForCOM(string comObject)
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, false, false)}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildFullExtensionSignatureForCOM(string comObject)
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject)}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildFullSignatureForCOM()
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature()}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildSignature(bool useAttributes = true, bool useNames = true)
+        {
+            return string.Join(", ", Parameters.Select(x => $"{(useAttributes ? string.Join(" ", x.Attributes) : string.Empty)} {x.Type} {(useNames ? x.Name : string.Empty)}"));
+        }
+
+        public string BuildExtensionSignatureForCOM(string comObject, bool useAttributes = true, bool useNames = true)
+        {
+            return string.Join(", ", Parameters.Select(x => $"{(useAttributes ? string.Join(" ", x.Attributes) : string.Empty)} {x.Type} {(useNames ? x.Name : string.Empty)}").Reverse().Append(useNames ? $"this ComPtr<{comObject}> comObj" : $"this ComPtr<{comObject}>").Reverse());
+        }
+
+        public string BuildGenericSignature()
+        {
+            return string.Join(", ", GenericParameters.Select(p => p.Name));
+        }
+
+        public string BuildGenericConstraint()
+        {
+            return string.Join(" ", GenericParameters.Select(p => p.Constrain));
         }
 
         public override string ToString()

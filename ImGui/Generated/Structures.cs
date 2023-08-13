@@ -149,7 +149,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImDrawCmd_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -234,7 +233,6 @@ namespace HexaEngine.ImGuiNET
 		/// 4-8   The draw callback code can access this.<br/>
 		/// </summary>
 		public void* UserCallbackData { get => Handle->UserCallbackData; set => Handle->UserCallbackData = value; }
-
 		[NativeName(NativeNameType.Func, "ImDrawCmd_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -371,7 +369,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "_FringeScale")]
 		[NativeName(NativeNameType.Type, "float")]
 		public float FringeScale;
-
 
 
 
@@ -4689,7 +4686,6 @@ namespace HexaEngine.ImGuiNET
 		/// [Internal] anti-alias fringe is scaled by this value, this helps to keep things sharp while zooming at vertex buffer content<br/>
 		/// </summary>
 		public ref float FringeScale => ref Unsafe.AsRef<float>(&Handle->FringeScale);
-
 		[NativeName(NativeNameType.Func, "ImDrawList__CalcCircleAutoSegmentCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public unsafe int _CalcCircleAutoSegmentCount([NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius)
@@ -8545,7 +8541,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImDrawListSharedData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -8660,7 +8655,6 @@ namespace HexaEngine.ImGuiNET
 		/// UV of anti-aliased lines in the atlas<br/>
 		/// </summary>
 		public Vector4* TexUvLines { get => Handle->TexUvLines; set => Handle->TexUvLines = value; }
-
 		[NativeName(NativeNameType.Func, "ImDrawListSharedData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -8825,7 +8819,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Type, "ImU8[2]")]
 		public byte Used4kPagesMap_0;
 		public byte Used4kPagesMap_1;
-
 
 
 
@@ -10903,7 +10896,6 @@ namespace HexaEngine.ImGuiNET
 				return new Span<byte>(&Handle->Used4kPagesMap_0, 2);
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImFont_AddGlyph")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void AddGlyph([NativeName(NativeNameType.Param, "src_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* srcCfg, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c, [NativeName(NativeNameType.Param, "x0")] [NativeName(NativeNameType.Type, "float")] float x0, [NativeName(NativeNameType.Param, "y0")] [NativeName(NativeNameType.Type, "float")] float y0, [NativeName(NativeNameType.Param, "x1")] [NativeName(NativeNameType.Type, "float")] float x1, [NativeName(NativeNameType.Param, "y1")] [NativeName(NativeNameType.Type, "float")] float y1, [NativeName(NativeNameType.Param, "u0")] [NativeName(NativeNameType.Type, "float")] float u0, [NativeName(NativeNameType.Param, "v0")] [NativeName(NativeNameType.Type, "float")] float v0, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "float")] float u1, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "float")] float v1, [NativeName(NativeNameType.Param, "advance_x")] [NativeName(NativeNameType.Type, "float")] float advanceX)
@@ -13155,7 +13147,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImFontAtlas_AddCustomRectFontGlyph")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public unsafe int AddCustomRectFontGlyph([NativeName(NativeNameType.Param, "font")] [NativeName(NativeNameType.Type, "ImFont*")] ImFontPtr font, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImWchar")] char id, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "advance_x")] [NativeName(NativeNameType.Type, "float")] float advanceX, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 offset)
@@ -16101,7 +16092,6 @@ namespace HexaEngine.ImGuiNET
 		/// Custom texture rectangle ID for baked anti-aliased lines<br/>
 		/// </summary>
 		public ref int PackIdLines => ref Unsafe.AsRef<int>(&Handle->PackIdLines);
-
 		[NativeName(NativeNameType.Func, "ImFontAtlas_AddCustomRectFontGlyph")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public unsafe int AddCustomRectFontGlyph([NativeName(NativeNameType.Param, "font")] [NativeName(NativeNameType.Type, "ImFont*")] ImFontPtr font, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImWchar")] char id, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "advance_x")] [NativeName(NativeNameType.Type, "float")] float advanceX, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 offset)
@@ -18502,7 +18492,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImFontAtlasCustomRect_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -18591,7 +18580,6 @@ namespace HexaEngine.ImGuiNET
 		/// Input     For custom font glyphs only: target font<br/>
 		/// </summary>
 		public ref ImFontPtr Font => ref Unsafe.AsRef<ImFontPtr>(&Handle->Font);
-
 		[NativeName(NativeNameType.Func, "ImFontAtlasCustomRect_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -18801,7 +18789,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImFontConfig_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -18927,7 +18914,6 @@ namespace HexaEngine.ImGuiNET
 			}
 		}
 		public ref ImFontPtr DstFont => ref Unsafe.AsRef<ImFontPtr>(&Handle->DstFont);
-
 		[NativeName(NativeNameType.Func, "ImFontConfig_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -19090,7 +19076,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		/// <summary>		/// Do not clear Channels[] so our allocations are reused next frame		/// </summary>		[NativeName(NativeNameType.Func, "ImDrawListSplitter_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -19237,7 +19222,6 @@ namespace HexaEngine.ImGuiNET
 		/// Draw channels (not resized down so _Count might be &lt; Channels.Size)<br/>
 		/// </summary>
 		public ref ImVectorImDrawChannel Channels => ref Unsafe.AsRef<ImVectorImDrawChannel>(&Handle->Channels);
-
 		/// <summary>		/// Do not clear Channels[] so our allocations are reused next frame		/// </summary>		[NativeName(NativeNameType.Func, "ImDrawListSplitter_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -19404,7 +19388,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		/// <summary>		/// The ImDrawList are owned by ImGuiContext!		/// </summary>		[NativeName(NativeNameType.Func, "ImDrawData_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -19516,7 +19499,6 @@ namespace HexaEngine.ImGuiNET
 		/// Viewport carrying the ImDrawData instance, might be of use to the renderer (generally not).<br/>
 		/// </summary>
 		public ref ImGuiViewportPtr OwnerViewport => ref Unsafe.AsRef<ImGuiViewportPtr>(&Handle->OwnerViewport);
-
 		/// <summary>		/// The ImDrawList are owned by ImGuiContext!		/// </summary>		[NativeName(NativeNameType.Func, "ImDrawData_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -19686,7 +19668,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiViewport_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -19804,7 +19785,6 @@ namespace HexaEngine.ImGuiNET
 		/// Platform window requested closure (e.g. window was moved by the OS  host window manager, e.g. pressing ALT-F4)<br/>
 		/// </summary>
 		public ref bool PlatformRequestClose => ref Unsafe.AsRef<bool>(&Handle->PlatformRequestClose);
-
 		[NativeName(NativeNameType.Func, "ImGuiViewport_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -19867,7 +19847,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "UsedChars")]
 		[NativeName(NativeNameType.Type, "ImVector_ImU32")]
 		public ImVectorImU32 UsedChars;
-
 
 
 
@@ -20228,7 +20207,6 @@ namespace HexaEngine.ImGuiNET
 		/// Store 1-bit per Unicode code point (0=unused, 1=used)<br/>
 		/// </summary>
 		public ref ImVectorImU32 UsedChars => ref Unsafe.AsRef<ImVectorImU32>(&Handle->UsedChars);
-
 		/// <summary>		/// Add character		/// </summary>		[NativeName(NativeNameType.Func, "ImFontGlyphRangesBuilder_AddChar")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void AddChar([NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
@@ -20530,7 +20508,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImColor_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -20617,7 +20594,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImColorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref Vector4 Value => ref Unsafe.AsRef<Vector4>(&Handle->Value);
-
 		[NativeName(NativeNameType.Func, "ImColor_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -22316,7 +22292,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImGuiContext_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -23126,7 +23101,6 @@ namespace HexaEngine.ImGuiNET
 		/// Temporary text buffer<br/>
 		/// </summary>
 		public ref ImVectorChar TempBuffer => ref Unsafe.AsRef<ImVectorChar>(&Handle->TempBuffer);
-
 		[NativeName(NativeNameType.Func, "ImGuiContext_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -25906,7 +25880,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		/// <summary>		/// Queue a gainloss of focus for the application (generally based on OSplatform focus of your window)		/// </summary>		[NativeName(NativeNameType.Func, "ImGuiIO_AddFocusEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void AddFocusEvent([NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "bool")] bool focused)
@@ -26686,7 +26659,6 @@ namespace HexaEngine.ImGuiNET
 		/// Queue of _characters_ input (obtained by platform backend). Fill using AddInputCharacter() helper.<br/>
 		/// </summary>
 		public ref ImVectorImWchar InputQueueCharacters => ref Unsafe.AsRef<ImVectorImWchar>(&Handle->InputQueueCharacters);
-
 		/// <summary>		/// Queue a gainloss of focus for the application (generally based on OSplatform focus of your window)		/// </summary>		[NativeName(NativeNameType.Func, "ImGuiIO_AddFocusEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void AddFocusEvent([NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "bool")] bool focused)
@@ -26877,7 +26849,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformImeData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -26935,7 +26906,6 @@ namespace HexaEngine.ImGuiNET
 		/// Line height<br/>
 		/// </summary>
 		public ref float InputLineHeight => ref Unsafe.AsRef<float>(&Handle->InputLineHeight);
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformImeData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -27218,7 +27188,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformIO_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -27362,7 +27331,6 @@ namespace HexaEngine.ImGuiNET
 		/// (in the future we will attempt to organize this feature to remove the need for a "main viewport") Main viewports, followed by all secondary viewports.<br/>
 		/// </summary>
 		public ref ImVectorImGuiViewportPtr Viewports => ref Unsafe.AsRef<ImVectorImGuiViewportPtr>(&Handle->Viewports);
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformIO_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -27442,7 +27410,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformMonitor_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -27512,7 +27479,6 @@ namespace HexaEngine.ImGuiNET
 		/// Backend dependant data (e.g. HMONITOR, GLFWmonitor*, SDL Display Index, NSScreen*)<br/>
 		/// </summary>
 		public void* PlatformHandle { get => Handle->PlatformHandle; set => Handle->PlatformHandle = value; }
-
 		[NativeName(NativeNameType.Func, "ImGuiPlatformMonitor_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -27951,7 +27917,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImGuiStyle_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -28208,7 +28173,6 @@ namespace HexaEngine.ImGuiNET
 		/// Default flags when using IsItemHovered(ImGuiHoveredFlags_ForTooltip) or BeginItemTooltip()SetItemTooltip() while using keyboardgamepad.<br/>
 		/// </summary>
 		public ref ImGuiHoveredFlags HoverFlagsForTooltipNav => ref Unsafe.AsRef<ImGuiHoveredFlags>(&Handle->HoverFlagsForTooltipNav);
-
 		[NativeName(NativeNameType.Func, "ImGuiStyle_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -28308,7 +28272,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiInputEvent_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -28365,7 +28328,6 @@ namespace HexaEngine.ImGuiNET
 		/// </summary>
 		public ref ImGuiInputEvent.ImGuiInputEventUnion Union => ref Unsafe.AsRef<ImGuiInputEvent.ImGuiInputEventUnion>(&Handle->Union);
 		public ref bool AddedByTestEngine => ref Unsafe.AsRef<bool>(&Handle->AddedByTestEngine);
-
 		[NativeName(NativeNameType.Func, "ImGuiInputEvent_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -29308,7 +29270,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImGuiWindow_CalcFontSize")]
 		[return: NativeName(NativeNameType.Type, "float")]
 		public unsafe float CalcFontSize()
@@ -30076,7 +30037,6 @@ namespace HexaEngine.ImGuiNET
 		public ref int DockId => ref Unsafe.AsRef<int>(&Handle->DockId);
 		public ref ImGuiItemStatusFlags DockTabItemStatusFlags => ref Unsafe.AsRef<ImGuiItemStatusFlags>(&Handle->DockTabItemStatusFlags);
 		public ref ImRect DockTabItemRect => ref Unsafe.AsRef<ImRect>(&Handle->DockTabItemRect);
-
 		[NativeName(NativeNameType.Func, "ImGuiWindow_CalcFontSize")]
 		[return: NativeName(NativeNameType.Type, "float")]
 		public unsafe float CalcFontSize()
@@ -30445,7 +30405,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiWindowClass_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -30523,7 +30482,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set to true to allow windows of this class to be dockedmerged with an unclassed window.  FIXME-DOCK: Move to DockNodeFlags override?<br/>
 		/// </summary>
 		public ref bool DockingAllowUnclassed => ref Unsafe.AsRef<bool>(&Handle->DockingAllowUnclassed);
-
 		[NativeName(NativeNameType.Func, "ImGuiWindowClass_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -30656,7 +30614,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiViewportP_ClearRequestFlags")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearRequestFlags()
@@ -30783,7 +30740,6 @@ namespace HexaEngine.ImGuiNET
 		/// Work Area: Offset being built during current frame. Generally &lt;= 0.0f.<br/>
 		/// </summary>
 		public ref Vector2 BuildWorkOffsetMax => ref Unsafe.AsRef<Vector2>(&Handle->BuildWorkOffsetMax);
-
 		[NativeName(NativeNameType.Func, "ImGuiViewportP_ClearRequestFlags")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearRequestFlags()
@@ -30871,7 +30827,6 @@ namespace HexaEngine.ImGuiNET
 				}
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImDrawDataBuilder_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -30959,7 +30914,6 @@ namespace HexaEngine.ImGuiNET
 				return new Span<ImVectorImDrawListPtr>(&Handle->Layers_0, 2);
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImDrawDataBuilder_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -31299,7 +31253,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImVec1_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -31346,7 +31299,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImVec1Ptr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
-
 		[NativeName(NativeNameType.Func, "ImVec1_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -31401,7 +31353,6 @@ namespace HexaEngine.ImGuiNET
 		public ushort Widths_1;
 		public ushort Widths_2;
 		public ushort Widths_3;
-
 
 
 
@@ -31506,7 +31457,6 @@ namespace HexaEngine.ImGuiNET
 				return new Span<ushort>(&Handle->Widths_0, 4);
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImGuiMenuColumns_CalcNextTotalWidth")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void CalcNextTotalWidth([NativeName(NativeNameType.Param, "update_offsets")] [NativeName(NativeNameType.Type, "bool")] bool updateOffsets)
@@ -31555,7 +31505,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Data")]
 		[NativeName(NativeNameType.Type, "ImVector_ImGuiStoragePair")]
 		public ImVectorImGuiStoragePair Data;
-
 
 
 		[NativeName(NativeNameType.Func, "ImGuiStorage_BuildSortByKey")]
@@ -31829,7 +31778,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImGuiStoragePtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref ImVectorImGuiStoragePair Data => ref Unsafe.AsRef<ImVectorImGuiStoragePair>(&Handle->Data);
-
 		[NativeName(NativeNameType.Func, "ImGuiStorage_BuildSortByKey")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void BuildSortByKey()
@@ -32054,7 +32002,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiStoragePair_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32102,7 +32049,6 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImGuiStoragePairPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref int Key => ref Unsafe.AsRef<int>(&Handle->Key);
 		public ref ImGuiStoragePair.ImGuiStoragePairUnion Union => ref Unsafe.AsRef<ImGuiStoragePair.ImGuiStoragePairUnion>(&Handle->Union);
-
 		[NativeName(NativeNameType.Func, "ImGuiStoragePair_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32198,7 +32144,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiOldColumns_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32282,7 +32227,6 @@ namespace HexaEngine.ImGuiNET
 		public ref ImRect HostBackupParentWorkRect => ref Unsafe.AsRef<ImRect>(&Handle->HostBackupParentWorkRect);
 		public ref ImVectorImGuiOldColumnData Columns => ref Unsafe.AsRef<ImVectorImGuiOldColumnData>(&Handle->Columns);
 		public ref ImDrawListSplitter Splitter => ref Unsafe.AsRef<ImDrawListSplitter>(&Handle->Splitter);
-
 		[NativeName(NativeNameType.Func, "ImGuiOldColumns_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32313,7 +32257,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Max")]
 		[NativeName(NativeNameType.Type, "ImVec2")]
 		public Vector2 Max;
-
 
 
 
@@ -32548,7 +32491,6 @@ namespace HexaEngine.ImGuiNET
 		/// Lower-right<br/>
 		/// </summary>
 		public ref Vector2 Max => ref Unsafe.AsRef<Vector2>(&Handle->Max);
-
 		[NativeName(NativeNameType.Func, "ImRect_Add_Vec2")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Add([NativeName(NativeNameType.Param, "p")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p)
@@ -32728,7 +32670,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiOldColumnData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32784,7 +32725,6 @@ namespace HexaEngine.ImGuiNET
 		/// </summary>
 		public ref ImGuiOldColumnFlags Flags => ref Unsafe.AsRef<ImGuiOldColumnFlags>(&Handle->Flags);
 		public ref ImRect ClipRect => ref Unsafe.AsRef<ImRect>(&Handle->ClipRect);
-
 		[NativeName(NativeNameType.Func, "ImGuiOldColumnData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -32807,7 +32747,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "y")]
 		[NativeName(NativeNameType.Type, "short")]
 		public short Y;
-
 
 
 
@@ -32858,7 +32797,6 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImVec2IhPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref short X => ref Unsafe.AsRef<short>(&Handle->X);
 		public ref short Y => ref Unsafe.AsRef<short>(&Handle->Y);
-
 		[NativeName(NativeNameType.Func, "ImVec2ih_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -33139,7 +33077,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "WantHiddenTabBarToggle")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte WantHiddenTabBarToggle;
-
 
 
 
@@ -33426,7 +33363,6 @@ namespace HexaEngine.ImGuiNET
 		public ref bool WantMouseMove => ref Unsafe.AsRef<bool>(&Handle->WantMouseMove);
 		public ref bool WantHiddenTabBarUpdate => ref Unsafe.AsRef<bool>(&Handle->WantHiddenTabBarUpdate);
 		public ref bool WantHiddenTabBarToggle => ref Unsafe.AsRef<bool>(&Handle->WantHiddenTabBarToggle);
-
 		[NativeName(NativeNameType.Func, "ImGuiDockNode_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -33673,7 +33609,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTabBar_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -33786,7 +33721,6 @@ namespace HexaEngine.ImGuiNET
 		/// For non-docking tab bar we re-append names in a contiguous buffer.<br/>
 		/// </summary>
 		public ref ImGuiTextBuffer TabsNames => ref Unsafe.AsRef<ImGuiTextBuffer>(&Handle->TabsNames);
-
 		[NativeName(NativeNameType.Func, "ImGuiTabBar_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -33902,7 +33836,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTabItem_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -33991,7 +33924,6 @@ namespace HexaEngine.ImGuiNET
 		/// Marked as closed by SetTabItemClosed()<br/>
 		/// </summary>
 		public ref bool WantClose => ref Unsafe.AsRef<bool>(&Handle->WantClose);
-
 		[NativeName(NativeNameType.Func, "ImGuiTabItem_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -34012,7 +33944,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Buf")]
 		[NativeName(NativeNameType.Type, "ImVector_char")]
 		public ImVectorChar Buf;
-
 
 
 
@@ -34498,7 +34429,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImGuiTextBufferPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref ImVectorChar Buf => ref Unsafe.AsRef<ImVectorChar>(&Handle->Buf);
-
 		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_append")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void append([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
@@ -35013,7 +34943,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiLastItemData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35080,7 +35009,6 @@ namespace HexaEngine.ImGuiNET
 		/// Display rectangle (only if ImGuiItemStatusFlags_HasDisplayRect is set)<br/>
 		/// </summary>
 		public ref ImRect DisplayRect => ref Unsafe.AsRef<ImRect>(&Handle->DisplayRect);
-
 		[NativeName(NativeNameType.Func, "ImGuiLastItemData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35121,7 +35049,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "SizeOfDisabledStack")]
 		[NativeName(NativeNameType.Type, "short")]
 		public short SizeOfDisabledStack;
-
 
 
 
@@ -35225,7 +35152,6 @@ namespace HexaEngine.ImGuiNET
 		public ref short SizeOfItemFlagsStack => ref Unsafe.AsRef<short>(&Handle->SizeOfItemFlagsStack);
 		public ref short SizeOfBeginPopupStack => ref Unsafe.AsRef<short>(&Handle->SizeOfBeginPopupStack);
 		public ref short SizeOfDisabledStack => ref Unsafe.AsRef<short>(&Handle->SizeOfDisabledStack);
-
 		[NativeName(NativeNameType.Func, "ImGuiStackSizes_CompareWithContextState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void CompareWithContextState([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContextPtr ctx)
@@ -35300,7 +35226,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyOwnerData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35356,7 +35281,6 @@ namespace HexaEngine.ImGuiNET
 		/// Reading this key requires explicit owner id (until key is released). Set by ImGuiInputFlags_LockUntilRelease. When this is true LockThisFrame is always true as well.<br/>
 		/// </summary>
 		public ref bool LockUntilRelease => ref Unsafe.AsRef<bool>(&Handle->LockUntilRelease);
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyOwnerData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35533,7 +35457,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyRoutingTable_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -35605,7 +35528,6 @@ namespace HexaEngine.ImGuiNET
 		/// Double-buffer to avoid reallocation (could use a shared buffer)<br/>
 		/// </summary>
 		public ref ImVectorImGuiKeyRoutingData EntriesNext => ref Unsafe.AsRef<ImVectorImGuiKeyRoutingData>(&Handle->EntriesNext);
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyRoutingTable_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -35672,7 +35594,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyRoutingData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35729,7 +35650,6 @@ namespace HexaEngine.ImGuiNET
 		public ref byte RoutingNextScore => ref Unsafe.AsRef<byte>(&Handle->RoutingNextScore);
 		public ref int RoutingCurr => ref Unsafe.AsRef<int>(&Handle->RoutingCurr);
 		public ref int RoutingNext => ref Unsafe.AsRef<int>(&Handle->RoutingNext);
-
 		[NativeName(NativeNameType.Func, "ImGuiKeyRoutingData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -35776,7 +35696,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "OpenVal")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte OpenVal;
-
 
 
 
@@ -35854,7 +35773,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set by SetNextItemOpen()<br/>
 		/// </summary>
 		public ref bool OpenVal => ref Unsafe.AsRef<bool>(&Handle->OpenVal);
-
 		/// <summary>		/// Also cleared manually by ItemAdd()!		/// </summary>		[NativeName(NativeNameType.Func, "ImGuiNextItemData_ClearFlags")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFlags()
@@ -35949,7 +35867,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiNextWindowData_ClearFlags")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFlags()
@@ -36031,7 +35948,6 @@ namespace HexaEngine.ImGuiNET
 		/// (Always on) This is not exposed publicly, so we don't clear it and it doesn't have a corresponding flag (could we? for consistency?)<br/>
 		/// </summary>
 		public ref Vector2 MenuBarOffsetMinVal => ref Unsafe.AsRef<Vector2>(&Handle->MenuBarOffsetMinVal);
-
 		[NativeName(NativeNameType.Func, "ImGuiNextWindowData_ClearFlags")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFlags()
@@ -36212,7 +36128,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiStyleMod_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -36260,7 +36175,6 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImGuiStyleModPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref ImGuiStyleVar VarIdx => ref Unsafe.AsRef<ImGuiStyleVar>(&Handle->VarIdx);
 		public ref ImGuiStyleMod.ImGuiStyleModUnion Union => ref Unsafe.AsRef<ImGuiStyleMod.ImGuiStyleModUnion>(&Handle->Union);
-
 		[NativeName(NativeNameType.Func, "ImGuiStyleMod_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -36477,7 +36391,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiPopupData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -36555,7 +36468,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set on OpenPopup(), copy of mouse position at the time of opening popup<br/>
 		/// </summary>
 		public ref Vector2 OpenMousePos => ref Unsafe.AsRef<Vector2>(&Handle->OpenMousePos);
-
 		[NativeName(NativeNameType.Func, "ImGuiPopupData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -36641,7 +36553,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "DistAxial")]
 		[NativeName(NativeNameType.Type, "float")]
 		public float DistAxial;
-
 
 
 
@@ -36733,7 +36644,6 @@ namespace HexaEngine.ImGuiNET
 		/// Move     Best candidate axial distance to current NavId<br/>
 		/// </summary>
 		public ref float DistAxial => ref Unsafe.AsRef<float>(&Handle->DistAxial);
-
 		[NativeName(NativeNameType.Func, "ImGuiNavItemData_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -36844,7 +36754,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Delivery")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte Delivery;
-
 
 
 
@@ -37022,7 +36931,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set when AcceptDragDropPayload() was called and mouse button is released over the target item.<br/>
 		/// </summary>
 		public ref bool Delivery => ref Unsafe.AsRef<bool>(&Handle->Delivery);
-
 		[NativeName(NativeNameType.Func, "ImGuiPayload_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -37162,7 +37070,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiListClipperData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -37236,7 +37143,6 @@ namespace HexaEngine.ImGuiNET
 		public ref int StepNo => ref Unsafe.AsRef<int>(&Handle->StepNo);
 		public ref int ItemsFrozen => ref Unsafe.AsRef<int>(&Handle->ItemsFrozen);
 		public ref ImVectorImGuiListClipperRange Ranges => ref Unsafe.AsRef<ImVectorImGuiListClipperRange>(&Handle->Ranges);
-
 		[NativeName(NativeNameType.Func, "ImGuiListClipperData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -37337,7 +37243,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "TempData")]
 		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* TempData;
-
 
 
 
@@ -37466,7 +37371,6 @@ namespace HexaEngine.ImGuiNET
 		/// [Internal] Internal data<br/>
 		/// </summary>
 		public void* TempData { get => Handle->TempData; set => Handle->TempData = value; }
-
 		[NativeName(NativeNameType.Func, "ImGuiListClipper_Begin")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Begin([NativeName(NativeNameType.Param, "items_count")] [NativeName(NativeNameType.Type, "int")] int itemsCount, [NativeName(NativeNameType.Param, "items_height")] [NativeName(NativeNameType.Type, "float")] float itemsHeight)
@@ -37565,7 +37469,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 	}
 
 	[NativeName(NativeNameType.Typedef, "ImGuiListClipperRange")]
@@ -37615,7 +37518,6 @@ namespace HexaEngine.ImGuiNET
 		/// Add to Min after converting to indices<br/>
 		/// </summary>
 		public ref sbyte PosToIndexOffsetMax => ref Unsafe.AsRef<sbyte>(&Handle->PosToIndexOffsetMax);
-
 	}
 
 	/// <summary>
@@ -38237,7 +38139,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTable_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -38614,7 +38515,6 @@ namespace HexaEngine.ImGuiNET
 		/// Backup of InnerWindow-&gt;SkipItem at the end of BeginTable(), because we will overwrite InnerWindow-&gt;SkipItem on a per-column basis<br/>
 		/// </summary>
 		public ref bool HostSkipItems => ref Unsafe.AsRef<bool>(&Handle->HostSkipItems);
-
 		[NativeName(NativeNameType.Func, "ImGuiTable_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -38717,7 +38617,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTableTempData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -38808,7 +38707,6 @@ namespace HexaEngine.ImGuiNET
 		/// Backup of OuterWindow-&gt;DC.ItemWidthStack.Size at the end of BeginTable()<br/>
 		/// </summary>
 		public ref int HostBackupItemWidthStackSize => ref Unsafe.AsRef<int>(&Handle->HostBackupItemWidthStackSize);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableTempData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39108,7 +39006,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTableColumn_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39300,7 +39197,6 @@ namespace HexaEngine.ImGuiNET
 		/// Ordered list of available sort directions (2-bits each, total 8-bits)<br/>
 		/// </summary>
 		public ref byte SortDirectionsAvailList => ref Unsafe.AsRef<byte>(&Handle->SortDirectionsAvailList);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableColumn_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39441,7 +39337,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTableInstanceData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39500,7 +39395,6 @@ namespace HexaEngine.ImGuiNET
 		/// Height of frozen section from last frame<br/>
 		/// </summary>
 		public ref float LastFrozenHeight => ref Unsafe.AsRef<float>(&Handle->LastFrozenHeight);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableInstanceData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39561,7 +39455,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "SortDirection")]
 		[NativeName(NativeNameType.Type, "ImGuiSortDirection")]
 		public ImGuiSortDirection SortDirection;
-
 
 
 
@@ -39627,7 +39520,6 @@ namespace HexaEngine.ImGuiNET
 		/// ImGuiSortDirection_Ascending or ImGuiSortDirection_Descending (you can use this or SortSign, whichever is more convenient for your sort function)<br/>
 		/// </summary>
 		public ref ImGuiSortDirection SortDirection => ref Unsafe.AsRef<ImGuiSortDirection>(&Handle->SortDirection);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableColumnSortSpecs_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39684,7 +39576,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "SpecsDirty")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte SpecsDirty;
-
 
 
 
@@ -39746,7 +39637,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set to true when specs have changed since last time! Use this to sort again, then clear the flag.<br/>
 		/// </summary>
 		public ref bool SpecsDirty => ref Unsafe.AsRef<bool>(&Handle->SpecsDirty);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableSortSpecs_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39885,7 +39775,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiPtrOrIndex_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -39939,7 +39828,6 @@ namespace HexaEngine.ImGuiNET
 		/// Usually index in a main pool.<br/>
 		/// </summary>
 		public ref int Index => ref Unsafe.AsRef<int>(&Handle->Index);
-
 		[NativeName(NativeNameType.Func, "ImGuiPtrOrIndex_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -40140,7 +40028,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Flags")]
 		[NativeName(NativeNameType.Type, "ImGuiInputTextFlags")]
 		public ImGuiInputTextFlags Flags;
-
 
 
 
@@ -40390,7 +40277,6 @@ namespace HexaEngine.ImGuiNET
 		/// copy of InputText() flags. may be used to check if e.g. ImGuiInputTextFlags_Password is set.<br/>
 		/// </summary>
 		public ref ImGuiInputTextFlags Flags => ref Unsafe.AsRef<ImGuiInputTextFlags>(&Handle->Flags);
-
 		[NativeName(NativeNameType.Func, "ImGuiInputTextState_ClearFreeMemory")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFreeMemory()
@@ -41743,7 +41629,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiInputTextDeactivatedState_ClearFreeMemory")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFreeMemory()
@@ -41807,7 +41692,6 @@ namespace HexaEngine.ImGuiNET
 		/// text buffer<br/>
 		/// </summary>
 		public ref ImVectorChar TextA => ref Unsafe.AsRef<ImVectorChar>(&Handle->TextA);
-
 		[NativeName(NativeNameType.Func, "ImGuiInputTextDeactivatedState_ClearFreeMemory")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearFreeMemory()
@@ -41849,7 +41733,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "BackupLayout")]
 		[NativeName(NativeNameType.Type, "ImGuiLayoutType")]
 		public ImGuiLayoutType BackupLayout;
-
 
 
 
@@ -41904,7 +41787,6 @@ namespace HexaEngine.ImGuiNET
 		public ref Vector2 BackupCursorPosPrevLine => ref Unsafe.AsRef<Vector2>(&Handle->BackupCursorPosPrevLine);
 		public ref float BackupPrevLineTextBaseOffset => ref Unsafe.AsRef<float>(&Handle->BackupPrevLineTextBaseOffset);
 		public ref ImGuiLayoutType BackupLayout => ref Unsafe.AsRef<ImGuiLayoutType>(&Handle->BackupLayout);
-
 		[NativeName(NativeNameType.Func, "ImGuiComboPreviewData_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -41934,7 +41816,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "WantFullRebuild")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte WantFullRebuild;
-
 
 
 
@@ -41990,7 +41871,6 @@ namespace HexaEngine.ImGuiNET
 		public ref ImVectorImGuiDockRequest Requests => ref Unsafe.AsRef<ImVectorImGuiDockRequest>(&Handle->Requests);
 		public ref ImVectorImGuiDockNodeSettings NodesSettings => ref Unsafe.AsRef<ImVectorImGuiDockNodeSettings>(&Handle->NodesSettings);
 		public ref bool WantFullRebuild => ref Unsafe.AsRef<bool>(&Handle->WantFullRebuild);
-
 		[NativeName(NativeNameType.Func, "ImGuiDockContext_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -42203,7 +42083,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiSettingsHandler_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -42282,7 +42161,6 @@ namespace HexaEngine.ImGuiNET
 		/// </summary>
 		public void* WriteAllFn { get => Handle->WriteAllFn; set => Handle->WriteAllFn = value; }
 		public void* UserData { get => Handle->UserData; set => Handle->UserData = value; }
-
 		[NativeName(NativeNameType.Func, "ImGuiSettingsHandler_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -42357,7 +42235,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiContextHook_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -42411,7 +42288,6 @@ namespace HexaEngine.ImGuiNET
 		public ref int Owner => ref Unsafe.AsRef<int>(&Handle->Owner);
 		public void* Callback { get => Handle->Callback; set => Handle->Callback = value; }
 		public void* UserData { get => Handle->UserData; set => Handle->UserData = value; }
-
 		[NativeName(NativeNameType.Func, "ImGuiContextHook_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -42438,7 +42314,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "EndOffset")]
 		[NativeName(NativeNameType.Type, "int")]
 		public int EndOffset;
-
 
 
 
@@ -42785,7 +42660,6 @@ namespace HexaEngine.ImGuiNET
 		/// Because we don't own text buffer we need to maintain EndOffset (may bake in LineOffsets?)<br/>
 		/// </summary>
 		public ref int EndOffset => ref Unsafe.AsRef<int>(&Handle->EndOffset);
-
 		[NativeName(NativeNameType.Func, "ImGuiTextIndex_append")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void append([NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "const char*")] byte* baseValue, [NativeName(NativeNameType.Param, "old_size")] [NativeName(NativeNameType.Type, "int")] int oldSize, [NativeName(NativeNameType.Param, "new_size")] [NativeName(NativeNameType.Type, "int")] int newSize)
@@ -43134,7 +43008,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiStackTool_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -43192,7 +43065,6 @@ namespace HexaEngine.ImGuiNET
 		public ref ImVectorImGuiStackLevelInfo Results => ref Unsafe.AsRef<ImVectorImGuiStackLevelInfo>(&Handle->Results);
 		public ref bool CopyToClipboardOnCtrlC => ref Unsafe.AsRef<bool>(&Handle->CopyToClipboardOnCtrlC);
 		public ref float CopyToClipboardLastTime => ref Unsafe.AsRef<float>(&Handle->CopyToClipboardLastTime);
-
 		[NativeName(NativeNameType.Func, "ImGuiStackTool_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -43309,7 +43181,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiStackLevelInfo_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -43376,7 +43247,6 @@ namespace HexaEngine.ImGuiNET
 				return new Span<byte>(&Handle->Desc_0, 57);
 			}
 		}
-
 		[NativeName(NativeNameType.Func, "ImGuiStackLevelInfo_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -43493,7 +43363,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "SelectionEnd")]
 		[NativeName(NativeNameType.Type, "int")]
 		public int SelectionEnd;
-
 
 
 
@@ -43858,7 +43727,6 @@ namespace HexaEngine.ImGuiNET
 		/// Read-write    [Completion,History,Always]<br/>
 		/// </summary>
 		public ref int SelectionEnd => ref Unsafe.AsRef<int>(&Handle->SelectionEnd);
-
 		[NativeName(NativeNameType.Func, "ImGuiInputTextCallbackData_ClearSelection")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void ClearSelection()
@@ -44101,7 +43969,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiOnceUponAFrame_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -44148,7 +44015,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImGuiOnceUponAFramePtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref int RefFrame => ref Unsafe.AsRef<int>(&Handle->RefFrame);
-
 		[NativeName(NativeNameType.Func, "ImGuiOnceUponAFrame_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -44429,7 +44295,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "CountGrep")]
 		[NativeName(NativeNameType.Type, "int")]
 		public int CountGrep;
-
 
 
 
@@ -44885,7 +44750,6 @@ namespace HexaEngine.ImGuiNET
 		}
 		public ref ImVectorImGuiTextRange Filters => ref Unsafe.AsRef<ImVectorImGuiTextRange>(&Handle->Filters);
 		public ref int CountGrep => ref Unsafe.AsRef<int>(&Handle->CountGrep);
-
 		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Build")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Build()
@@ -45300,7 +45164,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTextRange_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -45382,7 +45245,6 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImGuiTextRangePtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public byte* B { get => Handle->B; set => Handle->B = value; }
 		public byte* E { get => Handle->E; set => Handle->E = value; }
-
 		[NativeName(NativeNameType.Func, "ImGuiTextRange_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -45428,7 +45290,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "Storage")]
 		[NativeName(NativeNameType.Type, "ImVector_ImU32")]
 		public ImVectorImU32 Storage;
-
 
 
 		[NativeName(NativeNameType.Func, "ImBitVector_Clear")]
@@ -45518,7 +45379,6 @@ namespace HexaEngine.ImGuiNET
 
 		private string DebuggerDisplay => string.Format("ImBitVectorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 		public ref ImVectorImU32 Storage => ref Unsafe.AsRef<ImVectorImU32>(&Handle->Storage);
-
 		[NativeName(NativeNameType.Func, "ImBitVector_Clear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Clear()
@@ -45580,7 +45440,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiDataVarInfo_GetVarPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* GetVarPtr([NativeName(NativeNameType.Param, "parent")] [NativeName(NativeNameType.Type, "void*")] void* parent)
@@ -45636,7 +45495,6 @@ namespace HexaEngine.ImGuiNET
 		/// Offset in parent structure<br/>
 		/// </summary>
 		public ref uint Offset => ref Unsafe.AsRef<uint>(&Handle->Offset);
-
 		[NativeName(NativeNameType.Func, "ImGuiDataVarInfo_GetVarPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* GetVarPtr([NativeName(NativeNameType.Param, "parent")] [NativeName(NativeNameType.Type, "void*")] void* parent)
@@ -45844,7 +45702,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTableSettings_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -45922,7 +45779,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set when loaded from .ini data (to enable mergingloading .ini data into an already running context)<br/>
 		/// </summary>
 		public ref bool WantApply => ref Unsafe.AsRef<bool>(&Handle->WantApply);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableSettings_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -46013,7 +45869,6 @@ namespace HexaEngine.ImGuiNET
 		[NativeName(NativeNameType.Field, "WantDelete")]
 		[NativeName(NativeNameType.Type, "bool")]
 		public byte WantDelete;
-
 
 
 
@@ -46114,7 +45969,6 @@ namespace HexaEngine.ImGuiNET
 		/// Set to invalidatedelete the settings entry<br/>
 		/// </summary>
 		public ref bool WantDelete => ref Unsafe.AsRef<bool>(&Handle->WantDelete);
-
 		[NativeName(NativeNameType.Func, "ImGuiWindowSettings_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -46319,7 +46173,6 @@ namespace HexaEngine.ImGuiNET
 
 
 
-
 		[NativeName(NativeNameType.Func, "ImGuiTableColumnSettings_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()
@@ -46376,7 +46229,6 @@ namespace HexaEngine.ImGuiNET
 		/// </summary>
 		public ref byte IsEnabled => ref Unsafe.AsRef<byte>(&Handle->IsEnabled);
 		public ref byte IsStretch => ref Unsafe.AsRef<byte>(&Handle->IsStretch);
-
 		[NativeName(NativeNameType.Func, "ImGuiTableColumnSettings_destroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public unsafe void Destroy()

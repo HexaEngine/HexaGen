@@ -8,6 +8,7 @@
     public unsafe class XAudio2WaveAudioStream : IDisposable
     {
         private readonly Stream stream;
+        private readonly bool leaveOpen;
         private readonly byte** buffers;
         private byte* fullCommitBuffer;
         private readonly int bufferCount;
@@ -21,7 +22,7 @@
         private bool reachedEnd;
         private bool disposedValue;
 
-        public XAudio2WaveAudioStream(Stream stream, int bufferCount = 3, uint bufferSize = 65536)
+        public XAudio2WaveAudioStream(Stream stream, bool leaveOpen = false, int bufferCount = 3, uint bufferSize = 65536)
         {
             Header = new(stream);
             if (Header.WaveFormat != WaveFormatEncoding.Pcm)
@@ -30,6 +31,7 @@
             }
 
             this.stream = stream;
+            this.leaveOpen = leaveOpen;
             this.bufferCount = bufferCount;
             this.bufferSize = bufferSize;
             buffers = (byte**)Utils.Alloc<nint>(bufferCount);
@@ -194,7 +196,8 @@
                     Utils.Free(buffers[i]);
                 }
                 Utils.Free(buffers);
-                stream.Dispose();
+                if (!leaveOpen)
+                    stream.Dispose();
                 disposedValue = true;
             }
         }

@@ -34,44 +34,44 @@ namespace HexaEngine.XAudio2
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			IXAudio2* ptr = (IXAudio2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvInterface);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvObject);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			IXAudio2* ptr = (IXAudio2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvInterface);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvObject);
 				return ret;
 			}
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvInterface) where T : unmanaged, IComObject, IComObject<T>
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IXAudio2* ptr = (IXAudio2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			ppvInterface = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvInterface.GetAddressOf());
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvInterface) where T : unmanaged, IComObject, IComObject<T>
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IXAudio2* ptr = (IXAudio2*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
 			{
-				ppvInterface = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvInterface.GetAddressOf());
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvObject.GetAddressOf());
 				return ret;
 			}
 		}
@@ -1385,44 +1385,44 @@ namespace HexaEngine.XAudio2
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			IXAudio2Extension* ptr = (IXAudio2Extension*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvInterface);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, riid, ppvObject);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] void** ppvInterface) 
+		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
 			IXAudio2Extension* ptr = (IXAudio2Extension*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvInterface);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, ppvObject);
 				return ret;
 			}
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvInterface) where T : unmanaged, IComObject, IComObject<T>
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IXAudio2Extension* ptr = (IXAudio2Extension*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
-			ppvInterface = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvInterface.GetAddressOf());
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvInterface")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvInterface) where T : unmanaged, IComObject, IComObject<T>
+		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IXAudio2Extension* ptr = (IXAudio2Extension*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));
 			fixed (Guid* priid = &riid)
 			{
-				ppvInterface = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvInterface.GetAddressOf());
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Extension*, Guid*, void**, HResult>)(*LpVtbl))(ptr, (Guid*)priid, (void**)ppvObject.GetAddressOf());
 				return ret;
 			}
 		}

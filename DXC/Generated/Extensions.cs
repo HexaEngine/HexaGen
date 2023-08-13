@@ -17,6 +17,68 @@ namespace HexaEngine.DXC
 {
 	public static unsafe class Extensions
 	{
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcIncludeHandler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcIncludeHandler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcIncludeHandler> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcIncludeHandler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcIncludeHandler> comObj) 
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcIncludeHandler> comObj) 
+		{
+			IDxcIncludeHandler* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcIncludeHandler*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "LoadSource")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult LoadSource(this ComPtr<IDxcIncludeHandler> comObj, [NativeName(NativeNameType.Param, "pFilename")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFilename, [NativeName(NativeNameType.Param, "ppIncludeSource")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppIncludeSource) 
@@ -48,6 +110,68 @@ namespace HexaEngine.DXC
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlob* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlob* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlob> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlob* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlob> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlob* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcBlob> comObj) 
+		{
+			IDxcBlob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcBlob> comObj) 
+		{
+			IDxcBlob* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlob*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "GetBufferPointer")]
 		[return: NativeName(NativeNameType.Type, "LPVOID")]
 		public static void* GetBufferPointer(this ComPtr<IDxcBlob> comObj) 
@@ -66,12 +190,92 @@ namespace HexaEngine.DXC
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobEncoding> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobEncoding> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobEncoding> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobEncoding> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcBlobEncoding> comObj) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcBlobEncoding> comObj) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferPointer")]
+		[return: NativeName(NativeNameType.Type, "LPVOID")]
+		public static void* GetBufferPointer(this ComPtr<IDxcBlobEncoding> comObj) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			void* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, void*>)(handle->LpVtbl[3]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferSize")]
+		[return: NativeName(NativeNameType.Type, "SIZE_T")]
+		public static nuint GetBufferSize(this ComPtr<IDxcBlobEncoding> comObj) 
+		{
+			IDxcBlobEncoding* handle = comObj.Handle;
+			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, nuint>)(handle->LpVtbl[4]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "GetEncoding")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult GetEncoding(this ComPtr<IDxcBlobEncoding> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] int* pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCodePage) 
 		{
 			IDxcBlobEncoding* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[2]))(handle, pKnown, pCodePage);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, pCodePage);
 			return ret;
 		}
 
@@ -82,7 +286,7 @@ namespace HexaEngine.DXC
 			IDxcBlobEncoding* handle = comObj.Handle;
 			fixed (int* ppKnown = &pKnown)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[2]))(handle, (int*)ppKnown, pCodePage);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, pCodePage);
 				return ret;
 			}
 		}
@@ -94,7 +298,7 @@ namespace HexaEngine.DXC
 			IDxcBlobEncoding* handle = comObj.Handle;
 			fixed (uint* ppCodePage = &pCodePage)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[2]))(handle, pKnown, (uint*)ppCodePage);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, (uint*)ppCodePage);
 				return ret;
 			}
 		}
@@ -108,7 +312,135 @@ namespace HexaEngine.DXC
 			{
 				fixed (uint* ppCodePage = &pCodePage)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[2]))(handle, (int*)ppKnown, (uint*)ppCodePage);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobEncoding*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, (uint*)ppCodePage);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcBlobUtf16> comObj) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcBlobUtf16> comObj) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferPointer")]
+		[return: NativeName(NativeNameType.Type, "LPVOID")]
+		public static void* GetBufferPointer(this ComPtr<IDxcBlobUtf16> comObj) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			void* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, void*>)(handle->LpVtbl[3]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferSize")]
+		[return: NativeName(NativeNameType.Type, "SIZE_T")]
+		public static nuint GetBufferSize(this ComPtr<IDxcBlobUtf16> comObj) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, nuint>)(handle->LpVtbl[4]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] int* pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCodePage) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, pCodePage);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCodePage) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			fixed (int* ppKnown = &pKnown)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, pCodePage);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] int* pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCodePage) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			fixed (uint* ppCodePage = &pCodePage)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, (uint*)ppCodePage);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf16> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCodePage) 
+		{
+			IDxcBlobUtf16* handle = comObj.Handle;
+			fixed (int* ppKnown = &pKnown)
+			{
+				fixed (uint* ppCodePage = &pCodePage)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, (uint*)ppCodePage);
 					return ret;
 				}
 			}
@@ -119,7 +451,7 @@ namespace HexaEngine.DXC
 		public static char* GetStringPointer(this ComPtr<IDxcBlobUtf16> comObj) 
 		{
 			IDxcBlobUtf16* handle = comObj.Handle;
-			char* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, char*>)(handle->LpVtbl[1]))(handle);
+			char* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, char*>)(handle->LpVtbl[6]))(handle);
 			return ret;
 		}
 
@@ -128,8 +460,136 @@ namespace HexaEngine.DXC
 		public static nuint GetStringLength(this ComPtr<IDxcBlobUtf16> comObj) 
 		{
 			IDxcBlobUtf16* handle = comObj.Handle;
-			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, nuint>)(handle->LpVtbl[2]))(handle);
+			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf16*, nuint>)(handle->LpVtbl[7]))(handle);
 			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcBlobUtf8> comObj) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcBlobUtf8> comObj) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferPointer")]
+		[return: NativeName(NativeNameType.Type, "LPVOID")]
+		public static void* GetBufferPointer(this ComPtr<IDxcBlobUtf8> comObj) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			void* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, void*>)(handle->LpVtbl[3]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetBufferSize")]
+		[return: NativeName(NativeNameType.Type, "SIZE_T")]
+		public static nuint GetBufferSize(this ComPtr<IDxcBlobUtf8> comObj) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, nuint>)(handle->LpVtbl[4]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] int* pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCodePage) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, pCodePage);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCodePage) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			fixed (int* ppKnown = &pKnown)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, pCodePage);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] int* pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCodePage) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			fixed (uint* ppCodePage = &pCodePage)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pKnown, (uint*)ppCodePage);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "GetEncoding")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetEncoding(this ComPtr<IDxcBlobUtf8> comObj, [NativeName(NativeNameType.Param, "pKnown")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pKnown, [NativeName(NativeNameType.Param, "pCodePage")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCodePage) 
+		{
+			IDxcBlobUtf8* handle = comObj.Handle;
+			fixed (int* ppKnown = &pKnown)
+			{
+				fixed (uint* ppCodePage = &pCodePage)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, int*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (int*)ppKnown, (uint*)ppCodePage);
+					return ret;
+				}
+			}
 		}
 
 		[NativeName(NativeNameType.Func, "GetStringPointer")]
@@ -137,7 +597,7 @@ namespace HexaEngine.DXC
 		public static byte* GetStringPointer(this ComPtr<IDxcBlobUtf8> comObj) 
 		{
 			IDxcBlobUtf8* handle = comObj.Handle;
-			byte* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, byte*>)(handle->LpVtbl[1]))(handle);
+			byte* ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, byte*>)(handle->LpVtbl[6]))(handle);
 			return ret;
 		}
 
@@ -146,7 +606,69 @@ namespace HexaEngine.DXC
 		public static nuint GetStringLength(this ComPtr<IDxcBlobUtf8> comObj) 
 		{
 			IDxcBlobUtf8* handle = comObj.Handle;
-			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, nuint>)(handle->LpVtbl[2]))(handle);
+			nuint ret = ((delegate* unmanaged[Stdcall]<IDxcBlobUtf8*, nuint>)(handle->LpVtbl[7]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompilerArgs> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompilerArgs> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompilerArgs> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompilerArgs> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcCompilerArgs> comObj) 
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcCompilerArgs> comObj) 
+		{
+			IDxcCompilerArgs* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, uint>)(handle->LpVtbl[2]))(handle);
 			return ret;
 		}
 
@@ -229,6 +751,68 @@ namespace HexaEngine.DXC
 				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompilerArgs*, DxcDefine*, uint, HResult>)(handle->LpVtbl[7]))(handle, (DxcDefine*)ppDefines, defineCount);
 				return ret;
 			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcLibrary> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcLibrary> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcLibrary> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcLibrary> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcLibrary> comObj) 
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcLibrary> comObj) 
+		{
+			IDxcLibrary* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcLibrary*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "SetMalloc")]
@@ -810,6 +1394,68 @@ namespace HexaEngine.DXC
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcOperationResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcOperationResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcOperationResult> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcOperationResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcOperationResult> comObj) 
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcOperationResult> comObj) 
+		{
+			IDxcOperationResult* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "GetStatus")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult GetStatus(this ComPtr<IDxcOperationResult> comObj, [NativeName(NativeNameType.Param, "pStatus")] [NativeName(NativeNameType.Type, "HRESULT*")] HResult* pStatus) 
@@ -890,6 +1536,68 @@ namespace HexaEngine.DXC
 			IDxcOperationResult* handle = comObj.Handle;
 			ppErrors = default;
 			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOperationResult*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlobEncoding**)ppErrors.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompiler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompiler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompiler> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompiler> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcCompiler> comObj) 
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcCompiler> comObj) 
+		{
+			IDxcCompiler* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler*, uint>)(handle->LpVtbl[2]))(handle);
 			return ret;
 		}
 
@@ -2730,12 +3438,1911 @@ namespace HexaEngine.DXC
 			return ret;
 		}
 
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcCompiler2> comObj) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcCompiler2> comObj) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcOperationResult** pppResult = &ppResult)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+						{
+							fixed (IDxcOperationResult** pppResult = &ppResult)
+							{
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Compile a single entry point to the target shader model<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Compile(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcOperationResult** pppResult = &ppResult)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+			{
+				fixed (IDxcOperationResult** pppResult = &ppResult)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+				{
+					fixed (IDxcOperationResult** pppResult = &ppResult)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (DxcDefine* ppDefines = &pDefines)
+			{
+				ppResult = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+					{
+						fixed (IDxcOperationResult** pppResult = &ppResult)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, pSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (char** ppArguments = &pArguments)
+				{
+					fixed (DxcDefine* ppDefines = &pDefines)
+					{
+						fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
+						{
+							fixed (IDxcOperationResult** pppResult = &ppResult)
+							{
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)ppSource, pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// Preprocess source text<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Preprocess")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Preprocess(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] ref DxcDefine pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (char** ppArguments = &pArguments)
+			{
+				fixed (DxcDefine* ppDefines = &pDefines)
+				{
+					ppResult = default;
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pSource, ppDisassembly);
+			return ret;
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppSource, ppDisassembly);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pSource.GetAddressOf(), ppDisassembly);
+			return ret;
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlobEncoding** pppDisassembly = &ppDisassembly)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pSource, (IDxcBlobEncoding**)pppDisassembly);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppDisassembly = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pSource, (IDxcBlobEncoding**)ppDisassembly.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			fixed (IDxcBlob* ppSource = &pSource)
+			{
+				fixed (IDxcBlobEncoding** pppDisassembly = &ppDisassembly)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppSource, (IDxcBlobEncoding**)pppDisassembly);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult Disassemble(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppDisassembly) 
+		{
+			IDxcCompiler2* handle = comObj.Handle;
+			ppDisassembly = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pSource.GetAddressOf(), (IDxcBlobEncoding**)ppDisassembly.GetAddressOf());
+			return ret;
+		}
+
 		/// <summary>		/// Compile a single entry point to the target shader model with debug information.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "CompileWithDebug")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CompileWithDebug(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult, [NativeName(NativeNameType.Param, "ppDebugBlobName")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppDebugBlobName, [NativeName(NativeNameType.Param, "ppDebugBlob")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppDebugBlob) 
 		{
 			IDxcCompiler2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 			return ret;
 		}
 
@@ -2746,7 +5353,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (IDxcBlob* ppSource = &pSource)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2756,7 +5363,7 @@ namespace HexaEngine.DXC
 		public static HResult CompileWithDebug(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult, [NativeName(NativeNameType.Param, "ppDebugBlobName")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppDebugBlobName, [NativeName(NativeNameType.Param, "ppDebugBlob")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppDebugBlob) 
 		{
 			IDxcCompiler2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 			return ret;
 		}
 
@@ -2767,7 +5374,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** ppArguments = &pArguments)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2781,7 +5388,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** ppArguments = &pArguments)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2794,7 +5401,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** ppArguments = &pArguments)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2806,7 +5413,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2820,7 +5427,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2833,7 +5440,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2847,7 +5454,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2864,7 +5471,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (DxcDefine* ppDefines = &pDefines)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -2880,7 +5487,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2893,7 +5500,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2903,7 +5510,7 @@ namespace HexaEngine.DXC
 		public static HResult CompileWithDebug(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult, [NativeName(NativeNameType.Param, "ppDebugBlobName")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppDebugBlobName, [NativeName(NativeNameType.Param, "ppDebugBlob")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppDebugBlob) 
 		{
 			IDxcCompiler2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 			return ret;
 		}
 
@@ -2916,7 +5523,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2927,7 +5534,7 @@ namespace HexaEngine.DXC
 		public static HResult CompileWithDebug(this ComPtr<IDxcCompiler2> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pSourceName, [NativeName(NativeNameType.Param, "pEntryPoint")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pEntryPoint, [NativeName(NativeNameType.Param, "pTargetProfile")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pTargetProfile, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const DxcDefine*")] DxcDefine* pDefines, [NativeName(NativeNameType.Param, "defineCount")] [NativeName(NativeNameType.Type, "UINT32")] uint defineCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult, [NativeName(NativeNameType.Param, "ppDebugBlobName")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppDebugBlobName, [NativeName(NativeNameType.Param, "ppDebugBlob")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppDebugBlob) 
 		{
 			IDxcCompiler2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 			return ret;
 		}
 
@@ -2940,7 +5547,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -2953,7 +5560,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** ppArguments = &pArguments)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2969,7 +5576,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -2983,7 +5590,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** ppArguments = &pArguments)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -2997,7 +5604,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3010,7 +5617,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3026,7 +5633,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3040,7 +5647,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3056,7 +5663,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3072,7 +5679,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3091,7 +5698,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3108,7 +5715,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3121,7 +5728,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (IDxcOperationResult** pppResult = &ppResult)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3133,7 +5740,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3147,7 +5754,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcOperationResult** pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3160,7 +5767,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3174,7 +5781,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcOperationResult** pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3189,7 +5796,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3206,7 +5813,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3222,7 +5829,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3237,7 +5844,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcOperationResult** pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3252,7 +5859,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3269,7 +5876,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3285,7 +5892,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3302,7 +5909,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3320,7 +5927,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3340,7 +5947,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcOperationResult** pppResult = &ppResult)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3359,7 +5966,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3375,7 +5982,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcOperationResult** pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3388,7 +5995,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3404,7 +6011,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3418,7 +6025,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3434,7 +6041,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3450,7 +6057,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3469,7 +6076,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcOperationResult** pppResult = &ppResult)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3486,7 +6093,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3503,7 +6110,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcOperationResult** pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3519,7 +6126,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3538,7 +6145,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcOperationResult** pppResult = &ppResult)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3555,7 +6162,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3574,7 +6181,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcOperationResult** pppResult = &ppResult)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3593,7 +6200,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3615,7 +6222,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcOperationResult** pppResult = &ppResult)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -3635,7 +6242,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3649,7 +6256,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3663,7 +6270,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3676,7 +6283,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3690,7 +6297,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3707,7 +6314,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3723,7 +6330,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3738,7 +6345,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3755,7 +6362,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3771,7 +6378,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3788,7 +6395,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3808,7 +6415,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3827,7 +6434,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3843,7 +6450,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3856,7 +6463,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3872,7 +6479,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3886,7 +6493,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 				return ret;
 			}
 		}
@@ -3902,7 +6509,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3918,7 +6525,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3937,7 +6544,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -3954,7 +6561,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -3971,7 +6578,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -3987,7 +6594,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4006,7 +6613,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4023,7 +6630,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4042,7 +6649,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4061,7 +6668,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4083,7 +6690,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (char** pppDebugBlobName = &ppDebugBlobName)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -4103,7 +6710,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4119,7 +6726,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4134,7 +6741,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4151,7 +6758,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4167,7 +6774,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4184,7 +6791,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4202,7 +6809,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4222,7 +6829,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4241,7 +6848,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4259,7 +6866,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4277,7 +6884,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4297,7 +6904,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4316,7 +6923,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4336,7 +6943,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4357,7 +6964,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4380,7 +6987,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (char** pppDebugBlobName = &ppDebugBlobName)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -4402,7 +7009,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4421,7 +7028,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4437,7 +7044,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4456,7 +7063,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4473,7 +7080,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 					return ret;
 				}
 			}
@@ -4492,7 +7099,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4511,7 +7118,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4533,7 +7140,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (char** pppDebugBlobName = &ppDebugBlobName)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -4553,7 +7160,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4573,7 +7180,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4592,7 +7199,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4614,7 +7221,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (char** pppDebugBlobName = &ppDebugBlobName)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -4634,7 +7241,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 						return ret;
 					}
 				}
@@ -4656,7 +7263,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (char** pppDebugBlobName = &ppDebugBlobName)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 								return ret;
 							}
 						}
@@ -4678,7 +7285,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4703,7 +7310,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (char** pppDebugBlobName = &ppDebugBlobName)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 									return ret;
 								}
 							}
@@ -4726,7 +7333,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, ppDebugBlob);
 							return ret;
 						}
 					}
@@ -4741,7 +7348,7 @@ namespace HexaEngine.DXC
 			IDxcCompiler2* handle = comObj.Handle;
 			fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 				return ret;
 			}
 		}
@@ -4752,7 +7359,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcCompiler2* handle = comObj.Handle;
 			ppDebugBlob = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 			return ret;
 		}
 
@@ -4765,7 +7372,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -4777,7 +7384,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcCompiler2* handle = comObj.Handle;
 			ppDebugBlob = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 			return ret;
 		}
 
@@ -4790,7 +7397,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -4804,7 +7411,7 @@ namespace HexaEngine.DXC
 			fixed (char** ppArguments = &pArguments)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -4820,7 +7427,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -4835,7 +7442,7 @@ namespace HexaEngine.DXC
 			fixed (char** ppArguments = &pArguments)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -4849,7 +7456,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -4863,7 +7470,7 @@ namespace HexaEngine.DXC
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -4879,7 +7486,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -4894,7 +7501,7 @@ namespace HexaEngine.DXC
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -4910,7 +7517,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -4927,7 +7534,7 @@ namespace HexaEngine.DXC
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -4946,7 +7553,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -4964,7 +7571,7 @@ namespace HexaEngine.DXC
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -4979,7 +7586,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -4991,7 +7598,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcCompiler2* handle = comObj.Handle;
 			ppDebugBlob = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 			return ret;
 		}
 
@@ -5006,7 +7613,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5019,7 +7626,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcCompiler2* handle = comObj.Handle;
 			ppDebugBlob = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 			return ret;
 		}
 
@@ -5034,7 +7641,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5049,7 +7656,7 @@ namespace HexaEngine.DXC
 			fixed (char** ppArguments = &pArguments)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5067,7 +7674,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5083,7 +7690,7 @@ namespace HexaEngine.DXC
 			fixed (char** ppArguments = &pArguments)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5099,7 +7706,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5114,7 +7721,7 @@ namespace HexaEngine.DXC
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5132,7 +7739,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5148,7 +7755,7 @@ namespace HexaEngine.DXC
 			fixed (DxcDefine* ppDefines = &pDefines)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5166,7 +7773,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5184,7 +7791,7 @@ namespace HexaEngine.DXC
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5205,7 +7812,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -5224,7 +7831,7 @@ namespace HexaEngine.DXC
 				fixed (DxcDefine* ppDefines = &pDefines)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5239,7 +7846,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -5253,7 +7860,7 @@ namespace HexaEngine.DXC
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5269,7 +7876,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5284,7 +7891,7 @@ namespace HexaEngine.DXC
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5300,7 +7907,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5317,7 +7924,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5336,7 +7943,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5354,7 +7961,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5371,7 +7978,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5388,7 +7995,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5407,7 +8014,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5425,7 +8032,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5444,7 +8051,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5464,7 +8071,7 @@ namespace HexaEngine.DXC
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -5486,7 +8093,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -5507,7 +8114,7 @@ namespace HexaEngine.DXC
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -5525,7 +8132,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5540,7 +8147,7 @@ namespace HexaEngine.DXC
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5558,7 +8165,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5574,7 +8181,7 @@ namespace HexaEngine.DXC
 			fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5592,7 +8199,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5610,7 +8217,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5631,7 +8238,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -5650,7 +8257,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5669,7 +8276,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5687,7 +8294,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5708,7 +8315,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -5727,7 +8334,7 @@ namespace HexaEngine.DXC
 				fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5748,7 +8355,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -5769,7 +8376,7 @@ namespace HexaEngine.DXC
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -5793,7 +8400,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -5815,7 +8422,7 @@ namespace HexaEngine.DXC
 					fixed (ComPtr<IDxcOperationResult>* pppResult = &ppResult)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, ppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -5831,7 +8438,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 					return ret;
 				}
 			}
@@ -5845,7 +8452,7 @@ namespace HexaEngine.DXC
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5861,7 +8468,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5876,7 +8483,7 @@ namespace HexaEngine.DXC
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5892,7 +8499,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5909,7 +8516,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5928,7 +8535,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -5946,7 +8553,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5963,7 +8570,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -5980,7 +8587,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -5999,7 +8606,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6017,7 +8624,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6036,7 +8643,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6056,7 +8663,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6078,7 +8685,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6099,7 +8706,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6117,7 +8724,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -6132,7 +8739,7 @@ namespace HexaEngine.DXC
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -6150,7 +8757,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6166,7 +8773,7 @@ namespace HexaEngine.DXC
 			fixed (char** pppDebugBlobName = &ppDebugBlobName)
 			{
 				ppDebugBlob = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 				return ret;
 			}
 		}
@@ -6184,7 +8791,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6202,7 +8809,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6223,7 +8830,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6242,7 +8849,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6261,7 +8868,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6279,7 +8886,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6300,7 +8907,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6319,7 +8926,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6340,7 +8947,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6361,7 +8968,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6385,7 +8992,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, ppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -6407,7 +9014,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), ppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6425,7 +9032,7 @@ namespace HexaEngine.DXC
 				{
 					fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 						return ret;
 					}
 				}
@@ -6442,7 +9049,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6461,7 +9068,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6479,7 +9086,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6498,7 +9105,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6518,7 +9125,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6540,7 +9147,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6561,7 +9168,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6581,7 +9188,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6601,7 +9208,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6623,7 +9230,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6644,7 +9251,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6666,7 +9273,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6689,7 +9296,7 @@ namespace HexaEngine.DXC
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
 							ppDebugBlob = default;
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 							return ret;
 						}
 					}
@@ -6714,7 +9321,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -6738,7 +9345,7 @@ namespace HexaEngine.DXC
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
 							ppDebugBlob = default;
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, pIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 							return ret;
 						}
 					}
@@ -6759,7 +9366,7 @@ namespace HexaEngine.DXC
 					{
 						fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 							return ret;
 						}
 					}
@@ -6777,7 +9384,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6798,7 +9405,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6817,7 +9424,7 @@ namespace HexaEngine.DXC
 				fixed (char** pppDebugBlobName = &ppDebugBlobName)
 				{
 					ppDebugBlob = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 					return ret;
 				}
 			}
@@ -6838,7 +9445,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6859,7 +9466,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6883,7 +9490,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -6905,7 +9512,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, pDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6927,7 +9534,7 @@ namespace HexaEngine.DXC
 						{
 							fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 								return ret;
 							}
 						}
@@ -6948,7 +9555,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -6972,7 +9579,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -6994,7 +9601,7 @@ namespace HexaEngine.DXC
 					fixed (char** pppDebugBlobName = &ppDebugBlobName)
 					{
 						ppDebugBlob = default;
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, pArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 						return ret;
 					}
 				}
@@ -7018,7 +9625,7 @@ namespace HexaEngine.DXC
 							{
 								fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 								{
-									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+									HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 									return ret;
 								}
 							}
@@ -7042,7 +9649,7 @@ namespace HexaEngine.DXC
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
 							ppDebugBlob = default;
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, pSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 							return ret;
 						}
 					}
@@ -7069,7 +9676,7 @@ namespace HexaEngine.DXC
 								{
 									fixed (IDxcBlob** pppDebugBlob = &ppDebugBlob)
 									{
-										HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
+										HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)ppSource, pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)ppIncludeHandler, (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)pppDebugBlob);
 										return ret;
 									}
 								}
@@ -7094,12 +9701,74 @@ namespace HexaEngine.DXC
 						fixed (char** pppDebugBlobName = &ppDebugBlobName)
 						{
 							ppDebugBlob = default;
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
+							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler2*, IDxcBlob*, char*, char*, char*, char**, uint, DxcDefine*, uint, IDxcIncludeHandler*, IDxcOperationResult**, char**, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcBlob*)pSource.GetAddressOf(), pSourceName, pEntryPoint, pTargetProfile, (char**)ppArguments, argCount, (DxcDefine*)ppDefines, defineCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (IDxcOperationResult**)pppResult, (char**)pppDebugBlobName, (IDxcBlob**)ppDebugBlob.GetAddressOf());
 							return ret;
 						}
 					}
 				}
 			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcLinker> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcLinker* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcLinker> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcLinker* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcLinker> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcLinker* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcLinker> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcLinker* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcLinker> comObj) 
+		{
+			IDxcLinker* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcLinker> comObj) 
+		{
+			IDxcLinker* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcLinker*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
 		}
 
 		/// <summary>		/// Register a library with name to ref it later.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "RegisterLibrary")]
@@ -7290,6 +9959,68 @@ namespace HexaEngine.DXC
 					return ret;
 				}
 			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcUtils> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcUtils* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcUtils> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcUtils* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcUtils> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcUtils* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcUtils> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcUtils* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcUtils> comObj) 
+		{
+			IDxcUtils* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcUtils> comObj) 
+		{
+			IDxcUtils* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcUtils*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
 		}
 
 		/// <summary>		/// Create a sub-blob that holds a reference to the outer blob and points to its memory.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "CreateBlobFromBlob")]
@@ -8284,3058 +11015,158 @@ namespace HexaEngine.DXC
 			}
 		}
 
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, riid, ppvObject);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, ppvObject);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcResult* handle = comObj.Handle;
+			ppvObject = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)(ComUtils.GuidPtrOf<T>()), (void**)ppvObject.GetAddressOf());
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "QueryInterface")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult QueryInterface<T>(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IDxcResult* handle = comObj.Handle;
+			fixed (Guid* priid = &riid)
+			{
+				ppvObject = default;
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, Guid*, void**, HResult>)(*handle->LpVtbl))(handle, (Guid*)priid, (void**)ppvObject.GetAddressOf());
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "AddRef")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint AddRef(this ComPtr<IDxcResult> comObj) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, uint>)(handle->LpVtbl[1]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "Release")]
+		[return: NativeName(NativeNameType.Type, "ULONG")]
+		public static uint Release(this ComPtr<IDxcResult> comObj) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			uint ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, uint>)(handle->LpVtbl[2]))(handle);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetStatus")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetStatus(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "pStatus")] [NativeName(NativeNameType.Type, "HRESULT*")] HResult* pStatus) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, HResult*, HResult>)(handle->LpVtbl[3]))(handle, pStatus);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "GetStatus")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetStatus(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "pStatus")] [NativeName(NativeNameType.Type, "HRESULT*")] ref HResult pStatus) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			fixed (HResult* ppStatus = &pStatus)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, HResult*, HResult>)(handle->LpVtbl[3]))(handle, (HResult*)ppStatus);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// GetResult returns the main result of the operation.<br/>		/// This corresponds to:<br/>		/// DXC_OUT_OBJECT - Compile() with shader or library target<br/>		/// DXC_OUT_DISASSEMBLY - Disassemble()<br/>		/// DXC_OUT_HLSL - Compile() with -P<br/>		/// DXC_OUT_ROOT_SIGNATURE - Compile() with rootsig_* target<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetResult")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetResult(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppResult) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlob**, HResult>)(handle->LpVtbl[4]))(handle, ppResult);
+			return ret;
+		}
+
+		/// <summary>		/// GetResult returns the main result of the operation.<br/>		/// This corresponds to:<br/>		/// DXC_OUT_OBJECT - Compile() with shader or library target<br/>		/// DXC_OUT_DISASSEMBLY - Disassemble()<br/>		/// DXC_OUT_HLSL - Compile() with -P<br/>		/// DXC_OUT_ROOT_SIGNATURE - Compile() with rootsig_* target<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetResult")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetResult(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* ppResult) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			fixed (IDxcBlob** pppResult = &ppResult)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlob**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob**)pppResult);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// GetResult returns the main result of the operation.<br/>		/// This corresponds to:<br/>		/// DXC_OUT_OBJECT - Compile() with shader or library target<br/>		/// DXC_OUT_DISASSEMBLY - Disassemble()<br/>		/// DXC_OUT_HLSL - Compile() with -P<br/>		/// DXC_OUT_ROOT_SIGNATURE - Compile() with rootsig_* target<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetResult")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetResult(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] out ComPtr<IDxcBlob> ppResult) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			ppResult = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlob**, HResult>)(handle->LpVtbl[4]))(handle, (IDxcBlob**)ppResult.GetAddressOf());
+			return ret;
+		}
+
+		/// <summary>		/// GetErrorBuffer Corresponds to DXC_OUT_ERRORS.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetErrorBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetErrorBuffer(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppErrors")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppErrors) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, ppErrors);
+			return ret;
+		}
+
+		/// <summary>		/// GetErrorBuffer Corresponds to DXC_OUT_ERRORS.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetErrorBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetErrorBuffer(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppErrors")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppErrors) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			fixed (IDxcBlobEncoding** pppErrors = &ppErrors)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlobEncoding**)pppErrors);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// GetErrorBuffer Corresponds to DXC_OUT_ERRORS.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "GetErrorBuffer")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult GetErrorBuffer(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "ppErrors")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppErrors) 
+		{
+			IDxcResult* handle = comObj.Handle;
+			ppErrors = default;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlobEncoding**)ppErrors.GetAddressOf());
+			return ret;
+		}
+
 		[NativeName(NativeNameType.Func, "HasOutput")]
 		[return: NativeName(NativeNameType.Type, "BOOL")]
 		public static int HasOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind) 
 		{
 			IDxcResult* handle = comObj.Handle;
-			int ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, int>)(handle->LpVtbl[3]))(handle, dxcOutKind);
+			int ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, int>)(handle->LpVtbl[6]))(handle, dxcOutKind);
 			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, iid, ppvObject, ppOutputName);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, (Guid*)piid, ppvObject, ppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, iid, ppvObject, (IDxcBlobUtf16**)pppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			ppOutputName = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, iid, ppvObject, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)pppOutputName);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "dxcOutKind")] [NativeName(NativeNameType.Type, "DXC_OUT_KIND")] DxcOutKind dxcOutKind, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				ppOutputName = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, dxcOutKind, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetNumOutputs")]
-		[return: NativeName(NativeNameType.Type, "UINT32")]
-		public static uint GetNumOutputs(this ComPtr<IDxcResult> comObj) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			uint ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, uint>)(handle->LpVtbl[5]))(handle);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutputByIndex")]
-		[return: NativeName(NativeNameType.Type, "DXC_OUT_KIND")]
-		public static DxcOutKind GetOutputByIndex(this ComPtr<IDxcResult> comObj, [NativeName(NativeNameType.Param, "Index")] [NativeName(NativeNameType.Type, "UINT32")] uint index) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			DxcOutKind ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, uint, DxcOutKind>)(handle->LpVtbl[6]))(handle, index);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "PrimaryOutput")]
-		[return: NativeName(NativeNameType.Type, "DXC_OUT_KIND")]
-		public static DxcOutKind PrimaryOutput(this ComPtr<IDxcResult> comObj) 
-		{
-			IDxcResult* handle = comObj.Handle;
-			DxcOutKind ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind>)(handle->LpVtbl[7]))(handle);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutputCount")]
-		[return: NativeName(NativeNameType.Type, "UINT32")]
-		public static uint GetOutputCount(this ComPtr<IDxcExtraOutputs> comObj) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			uint ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint>)(handle->LpVtbl[3]))(handle);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, ppOutputType, ppOutputName);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, ppOutputType, ppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (IDxcBlobUtf16** pppOutputType = &ppOutputType)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref ComPtr<IDxcBlobUtf16> ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (IDxcBlobUtf16** pppOutputType = &ppOutputType)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref ComPtr<IDxcBlobUtf16> ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, ppOutputType, (IDxcBlobUtf16**)pppOutputName);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			ppOutputName = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, ppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, ppOutputType, (IDxcBlobUtf16**)pppOutputName);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] IDxcBlobUtf16** ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				ppOutputName = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, ppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (IDxcBlobUtf16** pppOutputType = &ppOutputType)
-			{
-				fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)pppOutputName);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref ComPtr<IDxcBlobUtf16> ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
-			{
-				ppOutputName = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref IDxcBlobUtf16* ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (IDxcBlobUtf16** pppOutputType = &ppOutputType)
-				{
-					fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)pppOutputName);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOutput")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOutput(this ComPtr<IDxcExtraOutputs> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject, [NativeName(NativeNameType.Param, "ppOutputType")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] ref ComPtr<IDxcBlobUtf16> ppOutputType, [NativeName(NativeNameType.Param, "ppOutputName")] [NativeName(NativeNameType.Type, "IDxcBlobUtf16**")] out ComPtr<IDxcBlobUtf16> ppOutputName) 
-		{
-			IDxcExtraOutputs* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
-				{
-					ppOutputName = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)piid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, pIncludeHandler, riid, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, pIncludeHandler, riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, pIncludeHandler, riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, pIncludeHandler, riid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, ppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, pIncludeHandler, (Guid*)priid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, pIncludeHandler, (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, pIncludeHandler, (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, pIncludeHandler, (Guid*)priid, ppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, ppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, ppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-					{
-						fixed (Guid* priid = &riid)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, ppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, ppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (void** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, pIncludeHandler, riid, (void**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, pIncludeHandler, riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, pIncludeHandler, riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, pIncludeHandler, riid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (void** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, (void**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-					{
-						fixed (void** pppResult = &ppResult)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, riid, (void**)pppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), riid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, pIncludeHandler, (Guid*)priid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, pIncludeHandler, (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, pIncludeHandler, (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] IDxcIncludeHandler* pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						fixed (void** pppResult = &ppResult)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, pIncludeHandler, (Guid*)priid, (void**)pppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						fixed (void** pppResult = &ppResult)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, (void**)pppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, pArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						fixed (void** pppResult = &ppResult)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, (void**)pppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (char** ppArguments = &pArguments)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, pSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ref IDxcIncludeHandler pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (IDxcIncludeHandler* ppIncludeHandler = &pIncludeHandler)
-					{
-						fixed (Guid* priid = &riid)
-						{
-							fixed (void** pppResult = &ppResult)
-							{
-								HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)ppIncludeHandler, (Guid*)priid, (void**)pppResult);
-								return ret;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Compile a single entry point to the target shader model,<br/>		/// Compile a library to a library target (-T lib_*),<br/>		/// Compile a root signature (-T rootsig_*), or<br/>		/// Preprocess HLSL source (-P)<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Compile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Compile(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pSource, [NativeName(NativeNameType.Param, "pArguments")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* pArguments, [NativeName(NativeNameType.Param, "argCount")] [NativeName(NativeNameType.Type, "UINT32")] uint argCount, [NativeName(NativeNameType.Param, "pIncludeHandler")] [NativeName(NativeNameType.Type, "IDxcIncludeHandler*")] ComPtr<IDxcIncludeHandler> pIncludeHandler, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppSource = &pSource)
-			{
-				fixed (char** ppArguments = &pArguments)
-				{
-					fixed (Guid* priid = &riid)
-					{
-						fixed (void** pppResult = &ppResult)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, char**, uint, IDxcIncludeHandler*, Guid*, void**, HResult>)(handle->LpVtbl[3]))(handle, (DxcBuffer*)ppSource, (char**)ppArguments, argCount, (IDxcIncludeHandler*)pIncludeHandler.GetAddressOf(), (Guid*)priid, (void**)pppResult);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, pObject, riid, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppObject = &pObject)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, (DxcBuffer*)ppObject, riid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, pObject, (Guid*)priid, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppObject = &pObject)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, (DxcBuffer*)ppObject, (Guid*)priid, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (void** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, pObject, riid, (void**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppObject = &pObject)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, (DxcBuffer*)ppObject, riid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] DxcBuffer* pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (Guid* priid = &riid)
-			{
-				fixed (void** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, pObject, (Guid*)priid, (void**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Disassemble a program.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Disassemble")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Disassemble(this ComPtr<IDxcCompiler3> comObj, [NativeName(NativeNameType.Param, "pObject")] [NativeName(NativeNameType.Type, "const DxcBuffer*")] ref DxcBuffer pObject, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppResult) 
-		{
-			IDxcCompiler3* handle = comObj.Handle;
-			fixed (DxcBuffer* ppObject = &pObject)
-			{
-				fixed (Guid* priid = &riid)
-				{
-					fixed (void** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcCompiler3*, DxcBuffer*, Guid*, void**, HResult>)(handle->LpVtbl[4]))(handle, (DxcBuffer*)ppObject, (Guid*)priid, (void**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, flags, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppShader, flags, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			fixed (IDxcOperationResult** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, flags, (IDxcOperationResult**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, flags, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				fixed (IDxcOperationResult** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppShader, flags, (IDxcOperationResult**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "Validate")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Validate(this ComPtr<IDxcValidator> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator*, IDxcBlob*, uint, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, pOptDebugBitcode, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)ppShader, flags, pOptDebugBitcode, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, pOptDebugBitcode, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, (DxcBuffer*)ppOptDebugBitcode, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)ppShader, flags, (DxcBuffer*)ppOptDebugBitcode, ppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, (DxcBuffer*)ppOptDebugBitcode, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (IDxcOperationResult** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, pOptDebugBitcode, (IDxcOperationResult**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, pOptDebugBitcode, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				fixed (IDxcOperationResult** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)ppShader, flags, pOptDebugBitcode, (IDxcOperationResult**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] DxcBuffer* pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, pOptDebugBitcode, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-			{
-				fixed (IDxcOperationResult** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, (DxcBuffer*)ppOptDebugBitcode, (IDxcOperationResult**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-			{
-				ppResult = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, pShader, flags, (DxcBuffer*)ppOptDebugBitcode, (IDxcOperationResult**)ppResult.GetAddressOf());
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-				{
-					fixed (IDxcOperationResult** pppResult = &ppResult)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)ppShader, flags, (DxcBuffer*)ppOptDebugBitcode, (IDxcOperationResult**)pppResult);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// Validate a shader.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "ValidateWithDebug")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult ValidateWithDebug(this ComPtr<IDxcValidator2> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pOptDebugBitcode")] [NativeName(NativeNameType.Type, "DxcBuffer*")] ref DxcBuffer pOptDebugBitcode, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcValidator2* handle = comObj.Handle;
-			fixed (DxcBuffer* ppOptDebugBitcode = &pOptDebugBitcode)
-			{
-				ppResult = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcValidator2*, IDxcBlob*, uint, DxcBuffer*, IDxcOperationResult**, HResult>)(handle->LpVtbl[1]))(handle, (IDxcBlob*)pShader.GetAddressOf(), flags, (DxcBuffer*)ppOptDebugBitcode, (IDxcOperationResult**)ppResult.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "pDxilContainerHeader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pDxilContainerHeader) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, pDxilContainerHeader);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "pDxilContainerHeader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pDxilContainerHeader) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			fixed (IDxcBlob* ppDxilContainerHeader = &pDxilContainerHeader)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppDxilContainerHeader);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "pDxilContainerHeader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pDxilContainerHeader) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pDxilContainerHeader.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "AddPart")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AddPart(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "fourCC")] [NativeName(NativeNameType.Type, "UINT32")] uint fourCC, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pSource) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, uint, IDxcBlob*, HResult>)(handle->LpVtbl[4]))(handle, fourCC, pSource);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "AddPart")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AddPart(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "fourCC")] [NativeName(NativeNameType.Type, "UINT32")] uint fourCC, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pSource) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			fixed (IDxcBlob* ppSource = &pSource)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, uint, IDxcBlob*, HResult>)(handle->LpVtbl[4]))(handle, fourCC, (IDxcBlob*)ppSource);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "AddPart")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AddPart(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "fourCC")] [NativeName(NativeNameType.Type, "UINT32")] uint fourCC, [NativeName(NativeNameType.Param, "pSource")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pSource) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, uint, IDxcBlob*, HResult>)(handle->LpVtbl[4]))(handle, fourCC, (IDxcBlob*)pSource.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RemovePart")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RemovePart(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "fourCC")] [NativeName(NativeNameType.Type, "UINT32")] uint fourCC) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, uint, HResult>)(handle->LpVtbl[5]))(handle, fourCC);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "SerializeContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SerializeContainer(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcOperationResult**, HResult>)(handle->LpVtbl[6]))(handle, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "SerializeContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SerializeContainer(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			fixed (IDxcOperationResult** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcOperationResult**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcOperationResult**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "SerializeContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SerializeContainer(this ComPtr<IDxcContainerBuilder> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcContainerBuilder* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerBuilder*, IDxcOperationResult**, HResult>)(handle->LpVtbl[6]))(handle, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppShader, ppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] IDxcOperationResult** ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pShader.GetAddressOf(), ppResult);
-			return ret;
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			fixed (IDxcOperationResult** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, (IDxcOperationResult**)pppResult);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, pShader, (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] ref IDxcOperationResult* ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			fixed (IDxcBlob* ppShader = &pShader)
-			{
-				fixed (IDxcOperationResult** pppResult = &ppResult)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppShader, (IDxcOperationResult**)pppResult);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// Assemble dxil in ll or llvm bitcode to DXIL container.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "AssembleToContainer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult AssembleToContainer(this ComPtr<IDxcAssembler> comObj, [NativeName(NativeNameType.Param, "pShader")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pShader, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOperationResult**")] out ComPtr<IDxcOperationResult> ppResult) 
-		{
-			IDxcAssembler* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcAssembler*, IDxcBlob*, IDxcOperationResult**, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pShader.GetAddressOf(), (IDxcOperationResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "pContainer")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pContainer) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, pContainer);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "pContainer")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pContainer) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (IDxcBlob* ppContainer = &pContainer)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppContainer);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "pContainer")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pContainer) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pContainer.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartCount(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint*, HResult>)(handle->LpVtbl[4]))(handle, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartCount(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (uint* ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint*, HResult>)(handle->LpVtbl[4]))(handle, (uint*)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartKind")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartKind(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, uint*, HResult>)(handle->LpVtbl[5]))(handle, idx, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartKind")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartKind(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (uint* ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, uint*, HResult>)(handle->LpVtbl[5]))(handle, idx, (uint*)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartContent")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartContent(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, idx, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartContent")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartContent(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* ppResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (IDxcBlob** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, idx, (IDxcBlob**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartContent")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartContent(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] out ComPtr<IDxcBlob> ppResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, IDxcBlob**, HResult>)(handle->LpVtbl[6]))(handle, idx, (IDxcBlob**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "FindFirstPartKind")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult FindFirstPartKind(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "UINT32")] uint kind, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, uint*, HResult>)(handle->LpVtbl[7]))(handle, kind, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "FindFirstPartKind")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult FindFirstPartKind(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "kind")] [NativeName(NativeNameType.Type, "UINT32")] uint kind, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pResult) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (uint* ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, uint*, HResult>)(handle->LpVtbl[7]))(handle, kind, (uint*)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartReflection")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartReflection(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, Guid*, void**, HResult>)(handle->LpVtbl[8]))(handle, idx, iid, ppvObject);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetPartReflection")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetPartReflection(this ComPtr<IDxcContainerReflection> comObj, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "UINT32")] uint idx, [NativeName(NativeNameType.Param, "iid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid iid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
-		{
-			IDxcContainerReflection* handle = comObj.Handle;
-			fixed (Guid* piid = &iid)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcContainerReflection*, uint, Guid*, void**, HResult>)(handle->LpVtbl[8]))(handle, idx, (Guid*)piid, ppvObject);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionName(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, char**, HResult>)(handle->LpVtbl[3]))(handle, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionName(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] ref char* ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			fixed (char** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, char**, HResult>)(handle->LpVtbl[3]))(handle, (char**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetDescription")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDescription(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, char**, HResult>)(handle->LpVtbl[4]))(handle, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetDescription")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDescription(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] ref char* ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			fixed (char** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, char**, HResult>)(handle->LpVtbl[4]))(handle, (char**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgCount(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint*, HResult>)(handle->LpVtbl[5]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgCount(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint*, HResult>)(handle->LpVtbl[5]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgName(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "argIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint argIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint, char**, HResult>)(handle->LpVtbl[6]))(handle, argIndex, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgName(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "argIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint argIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] ref char* ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			fixed (char** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint, char**, HResult>)(handle->LpVtbl[6]))(handle, argIndex, (char**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgDescription")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgDescription(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "argIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint argIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] char** ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint, char**, HResult>)(handle->LpVtbl[7]))(handle, argIndex, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetOptionArgDescription")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetOptionArgDescription(this ComPtr<IDxcOptimizerPass> comObj, [NativeName(NativeNameType.Param, "argIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint argIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "LPWSTR*")] ref char* ppResult) 
-		{
-			IDxcOptimizerPass* handle = comObj.Handle;
-			fixed (char** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizerPass*, uint, char**, HResult>)(handle->LpVtbl[7]))(handle, argIndex, (char**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetAvailablePassCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetAvailablePassCount(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, uint*, HResult>)(handle->LpVtbl[3]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetAvailablePassCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetAvailablePassCount(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, uint*, HResult>)(handle->LpVtbl[3]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetAvailablePass")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetAvailablePass(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "UINT32")] uint index, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOptimizerPass**")] IDxcOptimizerPass** ppResult) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, uint, IDxcOptimizerPass**, HResult>)(handle->LpVtbl[4]))(handle, index, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetAvailablePass")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetAvailablePass(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "UINT32")] uint index, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOptimizerPass**")] ref IDxcOptimizerPass* ppResult) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcOptimizerPass** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, uint, IDxcOptimizerPass**, HResult>)(handle->LpVtbl[4]))(handle, index, (IDxcOptimizerPass**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetAvailablePass")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetAvailablePass(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "UINT32")] uint index, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcOptimizerPass**")] out ComPtr<IDxcOptimizerPass> ppResult) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, uint, IDxcOptimizerPass**, HResult>)(handle->LpVtbl[4]))(handle, index, (IDxcOptimizerPass**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, pOutputModule, ppOutputText);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, ppOptions, optionCount, pOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), ppOptions, optionCount, pOutputModule, ppOutputText);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, pOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (char** pppOptions = &ppOptions)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, (char**)pppOptions, optionCount, pOutputModule, ppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), (char**)pppOptions, optionCount, pOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), ppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (char** pppOptions = &ppOptions)
-				{
-					fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, ppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)pppOutputText);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			ppOutputText = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, ppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)pppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			ppOutputText = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), ppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)pppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				ppOutputText = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (char** pppOptions = &ppOptions)
-				{
-					fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, (char**)pppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)pppOutputText);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				ppOutputText = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), (char**)pppOptions, optionCount, pOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-			{
-				fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)pppOutputText);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-			{
-				ppOutputText = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-				{
-					fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, ppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)pppOutputText);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] char** ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-			{
-				ppOutputText = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), ppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-				{
-					fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)pppOutputText);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-				{
-					ppOutputText = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, pBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (IDxcBlob* ppBlob = &pBlob)
-			{
-				fixed (char** pppOptions = &ppOptions)
-				{
-					fixed (IDxcBlob** ppOutputModule = &pOutputModule)
-					{
-						fixed (IDxcBlobEncoding** pppOutputText = &ppOutputText)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)ppBlob, (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)pppOutputText);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "RunOptimizer")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RunOptimizer(this ComPtr<IDxcOptimizer> comObj, [NativeName(NativeNameType.Param, "pBlob")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pBlob, [NativeName(NativeNameType.Param, "ppOptions")] [NativeName(NativeNameType.Type, "LPCWSTR*")] ref char* ppOptions, [NativeName(NativeNameType.Param, "optionCount")] [NativeName(NativeNameType.Type, "UINT32")] uint optionCount, [NativeName(NativeNameType.Param, "pOutputModule")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref ComPtr<IDxcBlob> pOutputModule, [NativeName(NativeNameType.Param, "ppOutputText")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppOutputText) 
-		{
-			IDxcOptimizer* handle = comObj.Handle;
-			fixed (char** pppOptions = &ppOptions)
-			{
-				fixed (ComPtr<IDxcBlob>* ppOutputModule = &pOutputModule)
-				{
-					ppOutputText = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcOptimizer*, IDxcBlob*, char**, uint, IDxcBlob**, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, (IDxcBlob*)pBlob.GetAddressOf(), (char**)pppOptions, optionCount, (IDxcBlob**)ppOutputModule, (IDxcBlobEncoding**)ppOutputText.GetAddressOf());
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersion")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersion(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pMajor")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pMajor, [NativeName(NativeNameType.Param, "pMinor")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pMinor) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, uint*, HResult>)(handle->LpVtbl[3]))(handle, pMajor, pMinor);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersion")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersion(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pMajor")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pMajor, [NativeName(NativeNameType.Param, "pMinor")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pMinor) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			fixed (uint* ppMajor = &pMajor)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, uint*, HResult>)(handle->LpVtbl[3]))(handle, (uint*)ppMajor, pMinor);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersion")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersion(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pMajor")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pMajor, [NativeName(NativeNameType.Param, "pMinor")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pMinor) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			fixed (uint* ppMinor = &pMinor)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, uint*, HResult>)(handle->LpVtbl[3]))(handle, pMajor, (uint*)ppMinor);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersion")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersion(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pMajor")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pMajor, [NativeName(NativeNameType.Param, "pMinor")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pMinor) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			fixed (uint* ppMajor = &pMajor)
-			{
-				fixed (uint* ppMinor = &pMinor)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, uint*, HResult>)(handle->LpVtbl[3]))(handle, (uint*)ppMajor, (uint*)ppMinor);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlags")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlags(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pFlags) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, HResult>)(handle->LpVtbl[4]))(handle, pFlags);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlags")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlags(this ComPtr<IDxcVersionInfo> comObj, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pFlags) 
-		{
-			IDxcVersionInfo* handle = comObj.Handle;
-			fixed (uint* ppFlags = &pFlags)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo*, uint*, HResult>)(handle->LpVtbl[4]))(handle, (uint*)ppFlags);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetCommitInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCommitInfo(this ComPtr<IDxcVersionInfo2> comObj, [NativeName(NativeNameType.Param, "pCommitCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCommitCount, [NativeName(NativeNameType.Param, "pCommitHash")] [NativeName(NativeNameType.Type, "char**")] byte** pCommitHash) 
-		{
-			IDxcVersionInfo2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo2*, uint*, byte**, HResult>)(handle->LpVtbl[2]))(handle, pCommitCount, pCommitHash);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetCommitInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCommitInfo(this ComPtr<IDxcVersionInfo2> comObj, [NativeName(NativeNameType.Param, "pCommitCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCommitCount, [NativeName(NativeNameType.Param, "pCommitHash")] [NativeName(NativeNameType.Type, "char**")] byte** pCommitHash) 
-		{
-			IDxcVersionInfo2* handle = comObj.Handle;
-			fixed (uint* ppCommitCount = &pCommitCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo2*, uint*, byte**, HResult>)(handle->LpVtbl[2]))(handle, (uint*)ppCommitCount, pCommitHash);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetCommitInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCommitInfo(this ComPtr<IDxcVersionInfo2> comObj, [NativeName(NativeNameType.Param, "pCommitCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCommitCount, [NativeName(NativeNameType.Param, "pCommitHash")] [NativeName(NativeNameType.Type, "char**")] ref byte* pCommitHash) 
-		{
-			IDxcVersionInfo2* handle = comObj.Handle;
-			fixed (byte** ppCommitHash = &pCommitHash)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo2*, uint*, byte**, HResult>)(handle->LpVtbl[2]))(handle, pCommitCount, (byte**)ppCommitHash);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetCommitInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCommitInfo(this ComPtr<IDxcVersionInfo2> comObj, [NativeName(NativeNameType.Param, "pCommitCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCommitCount, [NativeName(NativeNameType.Param, "pCommitHash")] [NativeName(NativeNameType.Type, "char**")] ref byte* pCommitHash) 
-		{
-			IDxcVersionInfo2* handle = comObj.Handle;
-			fixed (uint* ppCommitCount = &pCommitCount)
-			{
-				fixed (byte** ppCommitHash = &pCommitHash)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo2*, uint*, byte**, HResult>)(handle->LpVtbl[2]))(handle, (uint*)ppCommitCount, (byte**)ppCommitHash);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetCustomVersionString")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCustomVersionString(this ComPtr<IDxcVersionInfo3> comObj, [NativeName(NativeNameType.Param, "pVersionString")] [NativeName(NativeNameType.Type, "char**")] byte** pVersionString) 
-		{
-			IDxcVersionInfo3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo3*, byte**, HResult>)(handle->LpVtbl[3]))(handle, pVersionString);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetCustomVersionString")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetCustomVersionString(this ComPtr<IDxcVersionInfo3> comObj, [NativeName(NativeNameType.Param, "pVersionString")] [NativeName(NativeNameType.Type, "char**")] ref byte* pVersionString) 
-		{
-			IDxcVersionInfo3* handle = comObj.Handle;
-			fixed (byte** ppVersionString = &pVersionString)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcVersionInfo3*, byte**, HResult>)(handle->LpVtbl[3]))(handle, (byte**)ppVersionString);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pPdbOrDxil")] [NativeName(NativeNameType.Type, "IDxcBlob*")] IDxcBlob* pPdbOrDxil) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, pPdbOrDxil);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pPdbOrDxil")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ref IDxcBlob pPdbOrDxil) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcBlob* ppPdbOrDxil = &pPdbOrDxil)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)ppPdbOrDxil);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "Load")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult Load(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pPdbOrDxil")] [NativeName(NativeNameType.Type, "IDxcBlob*")] ComPtr<IDxcBlob> pPdbOrDxil) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob*, HResult>)(handle->LpVtbl[3]))(handle, (IDxcBlob*)pPdbOrDxil.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetSourceCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSourceCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[4]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetSourceCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSourceCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[4]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetSource")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSource(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] IDxcBlobEncoding** ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, uIndex, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetSource")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSource(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] ref IDxcBlobEncoding* ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcBlobEncoding** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, uIndex, (IDxcBlobEncoding**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetSource")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSource(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlobEncoding**")] out ComPtr<IDxcBlobEncoding> ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, IDxcBlobEncoding**, HResult>)(handle->LpVtbl[5]))(handle, uIndex, (IDxcBlobEncoding**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetSourceName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSourceName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[6]))(handle, uIndex, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetSourceName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetSourceName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[6]))(handle, uIndex, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlagCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlagCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[7]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlagCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlagCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[7]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlag")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlag(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[8]))(handle, uIndex, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetFlag")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFlag(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[8]))(handle, uIndex, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[9]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[9]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArg")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArg(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[10]))(handle, uIndex, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetArg")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArg(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[10]))(handle, uIndex, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPairCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPairCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[11]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPairCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPairCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[11]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPair")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPair(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "BSTR*")] void** pName, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "BSTR*")] void** pValue) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, void**, HResult>)(handle->LpVtbl[12]))(handle, uIndex, pName, pValue);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPair")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPair(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pName, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "BSTR*")] void** pValue) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppName = &pName)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, void**, HResult>)(handle->LpVtbl[12]))(handle, uIndex, (void**)ppName, pValue);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPair")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPair(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "BSTR*")] void** pName, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pValue) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppValue = &pValue)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, void**, HResult>)(handle->LpVtbl[12]))(handle, uIndex, pName, (void**)ppValue);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetArgPair")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetArgPair(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pName, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pValue) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppName = &pName)
-			{
-				fixed (void** ppValue = &pValue)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, void**, HResult>)(handle->LpVtbl[12]))(handle, uIndex, (void**)ppName, (void**)ppValue);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetDefineCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDefineCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] uint* pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[13]))(handle, pCount);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetDefineCount")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDefineCount(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint pCount) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (uint* ppCount = &pCount)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint*, HResult>)(handle->LpVtbl[13]))(handle, (uint*)ppCount);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetDefine")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDefine(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[14]))(handle, uIndex, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetDefine")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetDefine(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "uIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint uIndex, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, uint, void**, HResult>)(handle->LpVtbl[14]))(handle, uIndex, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetTargetProfile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetTargetProfile(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[15]))(handle, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetTargetProfile")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetTargetProfile(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[15]))(handle, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetEntryPoint")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetEntryPoint(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[16]))(handle, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetEntryPoint")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetEntryPoint(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[16]))(handle, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetMainFileName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetMainFileName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[17]))(handle, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetMainFileName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetMainFileName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[17]))(handle, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetHash")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetHash(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[18]))(handle, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetHash")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetHash(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcBlob** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[18]))(handle, (IDxcBlob**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetHash")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetHash(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcBlob**")] out ComPtr<IDxcBlob> ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[18]))(handle, (IDxcBlob**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] void** pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[19]))(handle, pResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetName")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetName(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pResult")] [NativeName(NativeNameType.Type, "BSTR*")] ref void* pResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (void** ppResult = &pResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, void**, HResult>)(handle->LpVtbl[19]))(handle, (void**)ppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "IsFullPDB")]
-		[return: NativeName(NativeNameType.Type, "BOOL")]
-		public static int IsFullPdb(this ComPtr<IDxcPdbUtils> comObj) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			int ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, int>)(handle->LpVtbl[20]))(handle);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppFullPDB")] [NativeName(NativeNameType.Type, "IDxcBlob**")] IDxcBlob** ppFullPDB) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[21]))(handle, ppFullPDB);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppFullPDB")] [NativeName(NativeNameType.Type, "IDxcBlob**")] ref IDxcBlob* ppFullPDB) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcBlob** pppFullPDB = &ppFullPDB)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[21]))(handle, (IDxcBlob**)pppFullPDB);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppFullPDB")] [NativeName(NativeNameType.Type, "IDxcBlob**")] out ComPtr<IDxcBlob> ppFullPDB) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			ppFullPDB = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcBlob**, HResult>)(handle->LpVtbl[21]))(handle, (IDxcBlob**)ppFullPDB.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersionInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersionInfo(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppVersionInfo")] [NativeName(NativeNameType.Type, "IDxcVersionInfo**")] IDxcVersionInfo** ppVersionInfo) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcVersionInfo**, HResult>)(handle->LpVtbl[22]))(handle, ppVersionInfo);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersionInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersionInfo(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppVersionInfo")] [NativeName(NativeNameType.Type, "IDxcVersionInfo**")] ref IDxcVersionInfo* ppVersionInfo) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcVersionInfo** pppVersionInfo = &ppVersionInfo)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcVersionInfo**, HResult>)(handle->LpVtbl[22]))(handle, (IDxcVersionInfo**)pppVersionInfo);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "GetVersionInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult GetVersionInfo(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppVersionInfo")] [NativeName(NativeNameType.Type, "IDxcVersionInfo**")] out ComPtr<IDxcVersionInfo> ppVersionInfo) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			ppVersionInfo = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcVersionInfo**, HResult>)(handle->LpVtbl[22]))(handle, (IDxcVersionInfo**)ppVersionInfo.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "SetCompiler")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetCompiler(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCompiler")] [NativeName(NativeNameType.Type, "IDxcCompiler3*")] IDxcCompiler3* pCompiler) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcCompiler3*, HResult>)(handle->LpVtbl[23]))(handle, pCompiler);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "SetCompiler")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetCompiler(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCompiler")] [NativeName(NativeNameType.Type, "IDxcCompiler3*")] ref IDxcCompiler3 pCompiler) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcCompiler3* ppCompiler = &pCompiler)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcCompiler3*, HResult>)(handle->LpVtbl[23]))(handle, (IDxcCompiler3*)ppCompiler);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "SetCompiler")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetCompiler(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pCompiler")] [NativeName(NativeNameType.Type, "IDxcCompiler3*")] ComPtr<IDxcCompiler3> pCompiler) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcCompiler3*, HResult>)(handle->LpVtbl[23]))(handle, (IDxcCompiler3*)pCompiler.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "CompileForFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CompileForFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcResult**")] IDxcResult** ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcResult**, HResult>)(handle->LpVtbl[24]))(handle, ppResult);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "CompileForFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CompileForFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcResult**")] ref IDxcResult* ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (IDxcResult** pppResult = &ppResult)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcResult**, HResult>)(handle->LpVtbl[24]))(handle, (IDxcResult**)pppResult);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "CompileForFullPDB")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CompileForFullPdb(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "ppResult")] [NativeName(NativeNameType.Type, "IDxcResult**")] out ComPtr<IDxcResult> ppResult) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			ppResult = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, IDxcResult**, HResult>)(handle->LpVtbl[24]))(handle, (IDxcResult**)ppResult.GetAddressOf());
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "OverrideArgs")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult OverrideArgs(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pArgPairs")] [NativeName(NativeNameType.Type, "DxcArgPair*")] DxcArgPair* pArgPairs, [NativeName(NativeNameType.Param, "uNumArgPairs")] [NativeName(NativeNameType.Type, "UINT32")] uint uNumArgPairs) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, DxcArgPair*, uint, HResult>)(handle->LpVtbl[25]))(handle, pArgPairs, uNumArgPairs);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "OverrideArgs")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult OverrideArgs(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pArgPairs")] [NativeName(NativeNameType.Type, "DxcArgPair*")] ref DxcArgPair pArgPairs, [NativeName(NativeNameType.Param, "uNumArgPairs")] [NativeName(NativeNameType.Type, "UINT32")] uint uNumArgPairs) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (DxcArgPair* ppArgPairs = &pArgPairs)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, DxcArgPair*, uint, HResult>)(handle->LpVtbl[25]))(handle, (DxcArgPair*)ppArgPairs, uNumArgPairs);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "OverrideRootSignature")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult OverrideRootSignature(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const WCHAR*")] char* pRootSignature) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, char*, HResult>)(handle->LpVtbl[26]))(handle, pRootSignature);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "OverrideRootSignature")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult OverrideRootSignature(this ComPtr<IDxcPdbUtils> comObj, [NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const WCHAR*")] ref char pRootSignature) 
-		{
-			IDxcPdbUtils* handle = comObj.Handle;
-			fixed (char* ppRootSignature = &pRootSignature)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcPdbUtils*, char*, HResult>)(handle->LpVtbl[26]))(handle, (char*)ppRootSignature);
-				return ret;
-			}
 		}
 
 	}

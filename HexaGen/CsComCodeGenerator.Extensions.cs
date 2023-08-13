@@ -89,10 +89,10 @@
             csName = mapping?.FriendlyName ?? csName;
 
             int vTableIndex = 0;
-            WriteExtensionsForCOMObject(context, cppClass, csName, ref vTableIndex);
+            WriteExtensionsForCOMObject(context, cppClass, cppClass, csName, ref vTableIndex);
         }
 
-        protected virtual void WriteExtensionsForCOMObject(GenContext context, CppClass cppClass, string className, ref int vTableIndex)
+        protected virtual void WriteExtensionsForCOMObject(GenContext context, CppClass targetClass, CppClass cppClass, string className, ref int vTableIndex)
         {
             for (int i = 0; i < cppClass.BaseTypes.Count; i++)
             {
@@ -104,7 +104,7 @@
                         continue;
                     }
 
-                    WriteExtensionsForCOMObject(context, baseClass, className, ref vTableIndex);
+                    WriteExtensionsForCOMObject(context, targetClass, baseClass, className, ref vTableIndex);
                 }
             }
 
@@ -120,7 +120,9 @@
                 }
 
                 if (FilterCOMExtensionFunction(context, cppFunction))
+                {
                     continue;
+                }
 
                 var extensionPrefix = settings.GetExtensionNamePrefix(cppClass.Name);
 
@@ -130,45 +132,45 @@
                 CreateCsFunction(cppFunction, csName, commands, out var overload);
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
 
-                if (!MemberFunctions.TryGetValue(cppClass, out var definedExtensions))
+                if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedExtensions))
                 {
                     definedExtensions = new();
-                    MemberFunctions.Add(cppClass, definedExtensions);
+                    MemberFunctions.Add(targetClass.Name, definedExtensions);
                 }
 
-                WriteCOMExtensions(context, definedExtensions, overload, className, vTableIndex, "public static");
+                if (!WriteCOMExtensions(context, definedExtensions, overload, className, vTableIndex, "public static"))
+                {
+                    vTableIndex--;
+                }
             }
         }
 
-        protected virtual void WriteCOMExtensions(GenContext context, HashSet<string> definedExtensions, CsFunctionOverload overload, string className, int index, params string[] modifiers)
+        protected virtual bool WriteCOMExtensions(GenContext context, HashSet<string> definedExtensions, CsFunctionOverload overload, string className, int index, params string[] modifiers)
         {
+            bool hasWritten = false;
             for (int i = 0; i < overload.Variations.Count; i++)
             {
-                WriteCOMExtension(context, definedExtensions, overload, overload.Variations[i], className, index, modifiers);
+                hasWritten |= WriteCOMExtension(context, definedExtensions, overload, overload.Variations[i], className, index, modifiers);
             }
+            return hasWritten;
         }
 
-        protected virtual void WriteCOMExtension(GenContext context, HashSet<string> definedExtensions, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, string[] modifiers)
+        protected virtual bool WriteCOMExtension(GenContext context, HashSet<string> definedExtensions, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
-            {
-                csReturnType.Name = value;
-            }
 
             PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
-            string signature = string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this ComPtr<{className}> comObj").Reverse());
-            string genericSignature = string.Join(", ", variation.GenericParameters.Select(p => p.Name));
-            string genericConstrain = string.Join(" ", variation.GenericParameters.Select(p => p.Constrain));
-            string signatureNameless = $"{className}*{(overload.Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", overload.Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
+            string header = variation.BuildFullExtensionSignatureForCOM(className);
+            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
 
-            string header = $"{csReturnType.Name} {variation.Name}{(variation.IsGeneric ? $"<{genericSignature}>" : string.Empty)}({signature}) {genericConstrain}";
-
-            if (FilterExtension(context, definedExtensions, header))
-                return;
+            string identifier = variation.BuildExtensionSignatureIdentifierForCOM(className);
+            if (FilterExtension(context, definedExtensions, identifier))
+            {
+                return false;
+            }
 
             LogInfo("defined extension " + header);
 
@@ -409,6 +411,7 @@
             }
 
             writer.WriteLine();
+            return true;
         }
     }
 }

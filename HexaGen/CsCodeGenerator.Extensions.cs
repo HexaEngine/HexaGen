@@ -136,7 +136,8 @@
             string signature = BuildExtensionSignature(variation);
             string header = $"{csReturnType.Name} {variation.Name}({signature})";
 
-            if (FilterExtension(context, definedExtensions, header))
+            string identifier = variation.BuildSignatureIdentifier();
+            if (FilterExtension(context, definedExtensions, identifier))
                 return;
 
             LogInfo("defined extension " + header);
