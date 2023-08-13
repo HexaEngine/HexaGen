@@ -9,12 +9,12 @@ assignees: JunaMeinhold
 
 ### Generation Tasks
 - [ ] Functions
-- [x] Handles
+- [ ] Handles
 - [ ] Structs
-- [x] Enums
+- [ ] Enums
 - [ ] Delegates
-- [x] Extensions
-- [x] Constants
+- [ ] Extensions
+- [ ] Constants
 
 ### Final Tasks
 - [ ] Compatibility checks
