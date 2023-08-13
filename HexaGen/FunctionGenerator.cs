@@ -235,7 +235,11 @@
 
                                         if (j > 0 && comPtrParameterList[j - 1].Type.Name == "Guid*")
                                         {
-                                            function.DefaultValues.Add(comPtrParameterList[j - 1].Name, "ComUtils.GuidPtrOf<T>()");
+                                            if (!function.DefaultValues.ContainsKey(comPtrParameterList[j - 1].Name))
+                                            {
+                                                function.DefaultValues.Add(comPtrParameterList[j - 1].Name, "ComUtils.GuidPtrOf<T>()");
+                                            }
+
                                             comPtrParameterList[j - 1] = null;
                                         }
                                     }
