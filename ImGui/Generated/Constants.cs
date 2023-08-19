@@ -15,8 +15,20 @@ namespace HexaEngine.ImGuiNET
 {
 	public unsafe partial class ImGui
 	{
+		[NativeName(NativeNameType.Const, "API")]
+		public const string Api = __declspec(dllexport);
+
+		[NativeName(NativeNameType.Const, "EXTERN")]
+		public const string Extern = extern"C";
+
+		[NativeName(NativeNameType.Const, "CIMGUI_API")]
+		public const string CimguiApi = EXTERN API;
+
+		[NativeName(NativeNameType.Const, "CONST")]
+		public const string Const = const;
+
 		[NativeName(NativeNameType.Const, "IMGUI_HAS_DOCK")]
-		public const uint ImguiHasDock = 1;
+		public const int ImguiHasDock = 1;
 
 	}
 }

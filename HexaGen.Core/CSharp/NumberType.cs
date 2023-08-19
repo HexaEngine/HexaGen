@@ -1,6 +1,6 @@
 ﻿namespace HexaGen
 {
-    public enum CsNumberType
+    public enum NumberType : byte
     {
         None = 0,
 

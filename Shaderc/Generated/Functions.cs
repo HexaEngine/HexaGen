@@ -50,13 +50,13 @@ namespace HexaEngine.Shaderc
 		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_compiler_release")]
-		internal static extern void ShadercCompilerReleaseNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler shadercCompiler);
+		internal static extern void ShadercCompilerReleaseNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler unknown0);
 
 		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShadercCompilerRelease([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler shadercCompiler)
+		public static void ShadercCompilerRelease([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "shaderc_compiler_t")] ShadercCompiler unknown0)
 		{
-			ShadercCompilerReleaseNative(shadercCompiler);
+			ShadercCompilerReleaseNative(unknown0);
 		}
 
 		/// <summary>
@@ -2852,13 +2852,13 @@ namespace HexaEngine.Shaderc
 		[NativeName(NativeNameType.Func, "shaderc_result_get_compilation_status")]
 		[return: NativeName(NativeNameType.Type, "shaderc_compilation_status")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shaderc_result_get_compilation_status")]
-		internal static extern ShadercCompilationStatus ShadercResultGetCompilationStatusNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult shaderc_compilation_result_t);
+		internal static extern ShadercCompilationStatus ShadercResultGetCompilationStatusNative([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult unknown0);
 
 		/// <summary>		/// Returns the compilation status, indicating whether the compilation succeeded,<br/>		/// or failed due to some reasons, like invalid shader stage or compilation<br/>		/// errors.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_result_get_compilation_status")]
 		[return: NativeName(NativeNameType.Type, "shaderc_compilation_status")]
-		public static ShadercCompilationStatus ShadercResultGetCompilationStatus([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult shaderc_compilation_result_t)
+		public static ShadercCompilationStatus ShadercResultGetCompilationStatus([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "const shaderc_compilation_result_t")] ShadercCompilationResult unknown0)
 		{
-			ShadercCompilationStatus ret = ShadercResultGetCompilationStatusNative(shaderc_compilation_result_t);
+			ShadercCompilationStatus ret = ShadercResultGetCompilationStatusNative(unknown0);
 			return ret;
 		}
 

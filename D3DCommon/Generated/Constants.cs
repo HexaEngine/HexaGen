@@ -16,169 +16,175 @@ namespace HexaEngine.D3DCommon
 	public unsafe partial class D3DCommon
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const uint MscVer = 1930;
+		public const int MscVer = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const uint Win32 = 1;
+		public const int Win32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const uint MAmd64 = 100;
+		public const int MAmd64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const uint MX64 = 100;
+		public const int MX64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const uint Win64 = 1;
+		public const int Win64 = 1;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
-		public const uint RequiredRpcndrHVersion = 501;
+		public const int RequiredRpcndrHVersion = 501;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
-		public const uint RequiredRpcsalHVersion = 100;
+		public const int RequiredRpcsalHVersion = 100;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_REQ_TEXTURE1D_U_DIMENSION")]
-		public const uint D3DFl91ReqTexture1DUDimension = 2048;
+		public const int D3DFl91ReqTexture1DUDimension = 2048;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_3_REQ_TEXTURE1D_U_DIMENSION")]
-		public const uint D3DFl93ReqTexture1DUDimension = 4096;
+		public const int D3DFl93ReqTexture1DUDimension = 4096;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_REQ_TEXTURE2D_U_OR_V_DIMENSION")]
-		public const uint D3DFl91ReqTexture2DUOrVDimension = 2048;
+		public const int D3DFl91ReqTexture2DUOrVDimension = 2048;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_3_REQ_TEXTURE2D_U_OR_V_DIMENSION")]
-		public const uint D3DFl93ReqTexture2DUOrVDimension = 4096;
+		public const int D3DFl93ReqTexture2DUOrVDimension = 4096;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_REQ_TEXTURECUBE_DIMENSION")]
-		public const uint D3DFl91ReqTexturecubeDimension = 512;
+		public const int D3DFl91ReqTexturecubeDimension = 512;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_3_REQ_TEXTURECUBE_DIMENSION")]
-		public const uint D3DFl93ReqTexturecubeDimension = 4096;
+		public const int D3DFl93ReqTexturecubeDimension = 4096;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_REQ_TEXTURE3D_U_V_OR_W_DIMENSION")]
-		public const uint D3DFl91ReqTexture3DUVOrWDimension = 256;
+		public const int D3DFl91ReqTexture3DUVOrWDimension = 256;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_DEFAULT_MAX_ANISOTROPY")]
-		public const uint D3DFl91DefaultMaxAnisotropy = 2;
+		public const int D3DFl91DefaultMaxAnisotropy = 2;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_IA_PRIMITIVE_MAX_COUNT")]
-		public const uint D3DFl91IaPrimitiveMaxCount = 65535;
+		public const int D3DFl91IaPrimitiveMaxCount = 65535;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_2_IA_PRIMITIVE_MAX_COUNT")]
-		public const uint D3DFl92IaPrimitiveMaxCount = 1048575;
+		public const int D3DFl92IaPrimitiveMaxCount = 1048575;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_SIMULTANEOUS_RENDER_TARGET_COUNT")]
-		public const uint D3DFl91SimultaneousRenderTargetCount = 1;
+		public const int D3DFl91SimultaneousRenderTargetCount = 1;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_3_SIMULTANEOUS_RENDER_TARGET_COUNT")]
-		public const uint D3DFl93SimultaneousRenderTargetCount = 4;
+		public const int D3DFl93SimultaneousRenderTargetCount = 4;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_1_MAX_TEXTURE_REPEAT")]
-		public const uint D3DFl91MaxTextureRepeat = 128;
+		public const int D3DFl91MaxTextureRepeat = 128;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_2_MAX_TEXTURE_REPEAT")]
-		public const uint D3DFl92MaxTextureRepeat = 2048;
+		public const int D3DFl92MaxTextureRepeat = 2048;
 
 		[NativeName(NativeNameType.Const, "D3D_FL9_3_MAX_TEXTURE_REPEAT")]
-		public const uint D3DFl93MaxTextureRepeat = 8192;
+		public const int D3DFl93MaxTextureRepeat = 8192;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_DOUBLES")]
-		public const uint D3DShaderFeatureDoubles = 0x00001;
+		public const int D3DShaderFeatureDoubles = 0x00001;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_COMPUTE_SHADERS_PLUS_RAW_AND_STRUCTURED_BUFFERS_VIA_SHADER_4_X")]
-		public const uint D3DShaderFeatureComputeShadersPlusRawAndStructuredBuffersViaShader4X = 0x00002;
+		public const int D3DShaderFeatureComputeShadersPlusRawAndStructuredBuffersViaShader4X = 0x00002;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_UAVS_AT_EVERY_STAGE")]
-		public const uint D3DShaderFeatureUavsAtEveryStage = 0x00004;
+		public const int D3DShaderFeatureUavsAtEveryStage = 0x00004;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_64_UAVS")]
-		public const uint D3DShaderFeature64Uavs = 0x00008;
+		public const int D3DShaderFeature64Uavs = 0x00008;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_MINIMUM_PRECISION")]
-		public const uint D3DShaderFeatureMinimumPrecision = 0x00010;
+		public const int D3DShaderFeatureMinimumPrecision = 0x00010;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_11_1_DOUBLE_EXTENSIONS")]
-		public const uint D3DShaderFeature111DoubleExtensions = 0x00020;
+		public const int D3DShaderFeature111DoubleExtensions = 0x00020;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_11_1_SHADER_EXTENSIONS")]
-		public const uint D3DShaderFeature111ShaderExtensions = 0x00040;
+		public const int D3DShaderFeature111ShaderExtensions = 0x00040;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_LEVEL_9_COMPARISON_FILTERING")]
-		public const uint D3DShaderFeatureLevel9ComparisonFiltering = 0x00080;
+		public const int D3DShaderFeatureLevel9ComparisonFiltering = 0x00080;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_TILED_RESOURCES")]
-		public const uint D3DShaderFeatureTiledResources = 0x00100;
+		public const int D3DShaderFeatureTiledResources = 0x00100;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_STENCIL_REF")]
-		public const uint D3DShaderFeatureStencilRef = 0x00200;
+		public const int D3DShaderFeatureStencilRef = 0x00200;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_INNER_COVERAGE")]
-		public const uint D3DShaderFeatureInnerCoverage = 0x00400;
+		public const int D3DShaderFeatureInnerCoverage = 0x00400;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_TYPED_UAV_LOAD_ADDITIONAL_FORMATS")]
-		public const uint D3DShaderFeatureTypedUavLoadAdditionalFormats = 0x00800;
+		public const int D3DShaderFeatureTypedUavLoadAdditionalFormats = 0x00800;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_ROVS")]
-		public const uint D3DShaderFeatureRovs = 0x01000;
+		public const int D3DShaderFeatureRovs = 0x01000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_VIEWPORT_AND_RT_ARRAY_INDEX_FROM_ANY_SHADER_FEEDING_RASTERIZER")]
-		public const uint D3DShaderFeatureViewportAndRtArrayIndexFromAnyShaderFeedingRasterizer = 0x02000;
+		public const int D3DShaderFeatureViewportAndRtArrayIndexFromAnyShaderFeedingRasterizer = 0x02000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_WAVE_OPS")]
-		public const uint D3DShaderFeatureWaveOps = 0x04000;
+		public const int D3DShaderFeatureWaveOps = 0x04000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_INT64_OPS")]
-		public const uint D3DShaderFeatureInt64Ops = 0x08000;
+		public const int D3DShaderFeatureInt64Ops = 0x08000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_VIEW_ID")]
-		public const uint D3DShaderFeatureViewId = 0x10000;
+		public const int D3DShaderFeatureViewId = 0x10000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_BARYCENTRICS")]
-		public const uint D3DShaderFeatureBarycentrics = 0x20000;
+		public const int D3DShaderFeatureBarycentrics = 0x20000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_NATIVE_16BIT_OPS")]
-		public const uint D3DShaderFeatureNative16BitOps = 0x40000;
+		public const int D3DShaderFeatureNative16BitOps = 0x40000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_SHADING_RATE")]
-		public const uint D3DShaderFeatureShadingRate = 0x80000;
+		public const int D3DShaderFeatureShadingRate = 0x80000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_RAYTRACING_TIER_1_1")]
-		public const uint D3DShaderFeatureRaytracingTier11 = 0x100000;
+		public const int D3DShaderFeatureRaytracingTier11 = 0x100000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_SAMPLER_FEEDBACK")]
-		public const uint D3DShaderFeatureSamplerFeedback = 0x200000;
+		public const int D3DShaderFeatureSamplerFeedback = 0x200000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_ATOMIC_INT64_ON_TYPED_RESOURCE")]
-		public const uint D3DShaderFeatureAtomicInt64OnTypedResource = 0x400000;
+		public const int D3DShaderFeatureAtomicInt64OnTypedResource = 0x400000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_ATOMIC_INT64_ON_GROUP_SHARED")]
-		public const uint D3DShaderFeatureAtomicInt64OnGroupShared = 0x800000;
+		public const int D3DShaderFeatureAtomicInt64OnGroupShared = 0x800000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_DERIVATIVES_IN_MESH_AND_AMPLIFICATION_SHADERS")]
-		public const uint D3DShaderFeatureDerivativesInMeshAndAmplificationShaders = 0x1000000;
+		public const int D3DShaderFeatureDerivativesInMeshAndAmplificationShaders = 0x1000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_RESOURCE_DESCRIPTOR_HEAP_INDEXING")]
-		public const uint D3DShaderFeatureResourceDescriptorHeapIndexing = 0x2000000;
+		public const int D3DShaderFeatureResourceDescriptorHeapIndexing = 0x2000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_SAMPLER_DESCRIPTOR_HEAP_INDEXING")]
-		public const uint D3DShaderFeatureSamplerDescriptorHeapIndexing = 0x4000000;
+		public const int D3DShaderFeatureSamplerDescriptorHeapIndexing = 0x4000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_WAVE_MMA")]
-		public const uint D3DShaderFeatureWaveMma = 0x8000000;
+		public const int D3DShaderFeatureWaveMma = 0x8000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_ATOMIC_INT64_ON_DESCRIPTOR_HEAP_RESOURCE")]
-		public const uint D3DShaderFeatureAtomicInt64OnDescriptorHeapResource = 0x10000000;
+		public const int D3DShaderFeatureAtomicInt64OnDescriptorHeapResource = 0x10000000;
+
+		[NativeName(NativeNameType.Const, "IID_ID3DBlob")]
+		public const string IIDID3DBlob = IID_ID3D10Blob;
+
+		[NativeName(NativeNameType.Const, "INTERFACE")]
+		public const string Interface = ID3DInclude;
 
 		[NativeName(NativeNameType.Const, "D3D_COMPONENT_MASK_X")]
-		public const uint D3DComponentMaskX = 1;
+		public const int D3DComponentMaskX = 1;
 
 		[NativeName(NativeNameType.Const, "D3D_COMPONENT_MASK_Y")]
-		public const uint D3DComponentMaskY = 2;
+		public const int D3DComponentMaskY = 2;
 
 		[NativeName(NativeNameType.Const, "D3D_COMPONENT_MASK_Z")]
-		public const uint D3DComponentMaskZ = 4;
+		public const int D3DComponentMaskZ = 4;
 
 		[NativeName(NativeNameType.Const, "D3D_COMPONENT_MASK_W")]
-		public const uint D3DComponentMaskW = 8;
+		public const int D3DComponentMaskW = 8;
 
 	}
 }

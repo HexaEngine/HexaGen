@@ -1,10 +1,13 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Language.Cpp;
     using System.Collections.Generic;
 
-    public partial class CsCodeGenerator
+    public unsafe partial class CsCodeGenerator
     {
+        private CppMacroParser parser = new();
+
         protected readonly HashSet<string> LibDefinedConstants = new();
 
         public readonly HashSet<string> DefinedConstants = new();
@@ -76,13 +79,21 @@
 
             if (value.IsNumeric(out var type))
             {
-                writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.NoneOrConst, \"{macro.Name}\")]");
                 writer.WriteLine($"public const {type.GetNumberType()} {name} = {value};");
                 writer.WriteLine();
             }
             else if (value.IsString())
             {
-                writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.NoneOrConst, \"{macro.Name}\")]");
+                writer.WriteLine($"public const string {name} = {value};");
+                writer.WriteLine();
+            }
+            else if (macro.Parameters == null)
+            {
+                var result = parser.Parse(value, "");
+
+                writer.WriteLine($"[NativeName(NativeNameType.NoneOrConst, \"{macro.Name}\")]");
                 writer.WriteLine($"public const string {name} = {value};");
                 writer.WriteLine();
             }

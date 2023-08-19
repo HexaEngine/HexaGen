@@ -18,9 +18,9 @@ namespace HexaEngine.Shaderc
 	{
 		/// <summary>		/// Releases the resources held by the shaderc_compiler_t.<br/>		/// After this call it is invalid to make any future calls to functions<br/>		/// involving this shaderc_compiler_t.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compiler_release")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Release(this ShadercCompiler shadercCompiler)
+		public static void Release(this ShadercCompiler unknown0)
 		{
-			Shaderc.ShadercCompilerReleaseNative(shadercCompiler);
+			Shaderc.ShadercCompilerReleaseNative(unknown0);
 		}
 
 		/// <summary>		/// Releases the compilation options. It is invalid to use the given<br/>		/// shaderc_compile_options_t object in any future calls. It is safe to pass<br/>		/// NULL to this function, and doing such will have no effect.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "shaderc_compile_options_release")]

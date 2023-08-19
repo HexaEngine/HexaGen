@@ -250,23 +250,18 @@
                     var isIID = false;
                     var isCOMPtr = false;
 
-                    for (int j = 0; j < variation.Parameters.Count; j++)
+                    if (variation.TryGetParameter(cppParameter.Name, out var param))
                     {
-                        var param = variation.Parameters[j];
-                        if (param.Name == cppParameter.Name)
-                        {
-                            cppParameter = param;
-                            isOut = param.Type.IsOut;
-                            isRef = param.Type.IsRef;
-                            isPointer = param.Type.IsPointer;
-                            isStr = param.Type.IsString;
-                            isArray = param.Type.IsArray;
-                            isBool = param.Type.IsBool;
-                            isIID = param.Type.Name.Contains("Guid*");
-                            isCOMPtr = param.Type.Name.Contains("ComPtr<");
-                            isConst = false;
-                            break;
-                        }
+                        cppParameter = param;
+                        isOut = param.Type.IsOut;
+                        isRef = param.Type.IsRef;
+                        isPointer = param.Type.IsPointer;
+                        isStr = param.Type.IsString;
+                        isArray = param.Type.IsArray;
+                        isBool = param.Type.IsBool;
+                        isIID = param.Type.Name.Contains("Guid*");
+                        isCOMPtr = param.Type.Name.Contains("ComPtr<");
+                        isConst = false;
                     }
 
                     if (isConst)

@@ -4,6 +4,7 @@
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Numerics;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -314,6 +315,23 @@
             }
             if (ᴛ.Length != 0) ʀ.Add(ᴛ.ToString());
             return ʀ.ToArray();
+        }
+
+        public static CppMacro? FindMacro(this CppCompilation compilation, string name)
+        {
+            for (int i = 0; i < compilation.Macros.Count; i++)
+            {
+                var macro = compilation.Macros[i];
+                if (macro.Name == name)
+                    return macro;
+            }
+            return null;
+        }
+
+        public static bool TryFindMacro(this CppCompilation compilation, string name, [NotNullWhen(true)] out CppMacro? macro)
+        {
+            macro = FindMacro(compilation, name);
+            return macro != null;
         }
     }
 }

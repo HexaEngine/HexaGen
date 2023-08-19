@@ -73,8 +73,11 @@
             _shouldIndent = true;
         }
 
-        public void WriteLines(string @string, bool newLineAtEnd = false)
+        public void WriteLines(string? @string, bool newLineAtEnd = false)
         {
+            if (@string == null)
+                return;
+
             if (@string.Contains('\n'))
             {
                 var lines = @string.Split('\n', StringSplitOptions.RemoveEmptyEntries);

@@ -18,34 +18,160 @@ namespace HexaEngine.DXGI
 	public unsafe partial class DXGI
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const uint MscVer = 1930;
+		public const int MscVer = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const uint Win32 = 1;
+		public const int Win32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const uint MAmd64 = 100;
+		public const int MAmd64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const uint MX64 = 100;
+		public const int MX64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const uint Win64 = 1;
+		public const int Win64 = 1;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
-		public const uint RequiredRpcndrHVersion = 501;
+		public const int RequiredRpcndrHVersion = 501;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
-		public const uint RequiredRpcsalHVersion = 100;
+		public const int RequiredRpcsalHVersion = 100;
+
+		[NativeName(NativeNameType.Const, "DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN")]
+		public const int DxgiStandardMultisampleQualityPattern = 0xffffffff;
+
+		[NativeName(NativeNameType.Const, "DXGI_CENTER_MULTISAMPLE_QUALITY_PATTERN")]
+		public const int DxgiCenterMultisampleQualityPattern = 0xfffffffe;
 
 		[NativeName(NativeNameType.Const, "DXGI_FORMAT_DEFINED")]
-		public const uint DxgiFormatDefined = 1;
+		public const int DxgiFormatDefined = 1;
+
+		[NativeName(NativeNameType.Const, "_FACDXGI")]
+		public const int Facdxgi = 0x87a;
+
+		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_NONE")]
+		public const int DxgiCpuAccessNone = (0);
+
+		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_DYNAMIC")]
+		public const int DxgiCpuAccessDynamic = (1);
+
+		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_READ_WRITE")]
+		public const int DxgiCpuAccessReadWrite = (2);
+
+		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_SCRATCH")]
+		public const int DxgiCpuAccessScratch = (3);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_FIELD")]
-		public const uint DxgiCpuAccessField = 15;
+		public const int DxgiCpuAccessField = 15;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_SHADER_INPUT")]
+		public const uint DxgiUsageShaderInput = 0x00000010UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_RENDER_TARGET_OUTPUT")]
+		public const uint DxgiUsageRenderTargetOutput = 0x00000020UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_BACK_BUFFER")]
+		public const uint DxgiUsageBackBuffer = 0x00000040UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_SHARED")]
+		public const uint DxgiUsageShared = 0x00000080UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_READ_ONLY")]
+		public const uint DxgiUsageReadOnly = 0x00000100UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_DISCARD_ON_PRESENT")]
+		public const uint DxgiUsageDiscardOnPresent = 0x00000200UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_USAGE_UNORDERED_ACCESS")]
+		public const uint DxgiUsageUnorderedAccess = 0x00000400UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_MINIMUM")]
+		public const int DxgiResourcePriorityMinimum = (0x28000000);
+
+		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_LOW")]
+		public const int DxgiResourcePriorityLow = (0x50000000);
+
+		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_NORMAL")]
+		public const int DxgiResourcePriorityNormal = (0x78000000);
+
+		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_HIGH")]
+		public const int DxgiResourcePriorityHigh = (0xa0000000);
+
+		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_MAXIMUM")]
+		public const int DxgiResourcePriorityMaximum = (0xc8000000);
+
+		[NativeName(NativeNameType.Const, "DXGI_MAP_READ")]
+		public const uint DxgiMapRead = (1UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_MAP_WRITE")]
+		public const uint DxgiMapWrite = (2UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_MAP_DISCARD")]
+		public const uint DxgiMapDiscard = (4UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_INTERLACED")]
+		public const uint DxgiEnumModesInterlaced = (1UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_SCALING")]
+		public const uint DxgiEnumModesScaling = (2UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_MAX_SWAP_CHAIN_BUFFERS")]
+		public const int DxgiMaxSwapChainBuffers = (16);
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_TEST")]
+		public const uint DxgiPresentTest = 0x00000001UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_DO_NOT_SEQUENCE")]
+		public const uint DxgiPresentDoNotSequence = 0x00000002UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_RESTART")]
+		public const uint DxgiPresentRestart = 0x00000004UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_DO_NOT_WAIT")]
+		public const uint DxgiPresentDoNotWait = 0x00000008UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_STEREO_PREFER_RIGHT")]
+		public const uint DxgiPresentStereoPreferRight = 0x00000010UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_STEREO_TEMPORARY_MONO")]
+		public const uint DxgiPresentStereoTemporaryMono = 0x00000020UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_RESTRICT_TO_OUTPUT")]
+		public const uint DxgiPresentRestrictToOutput = 0x00000040UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_USE_DURATION")]
+		public const uint DxgiPresentUseDuration = 0x00000100UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_PRESENT_ALLOW_TEARING")]
+		public const uint DxgiPresentAllowTearing = 0x00000200UL;
+
+		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_WINDOW_CHANGES")]
+		public const string DxgiMwaNoWindowChanges = (1<<0);
+
+		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_ALT_ENTER")]
+		public const string DxgiMwaNoAltEnter = (1<<1);
+
+		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_PRINT_SCREEN")]
+		public const string DxgiMwaNoPrintScreen = (1<<2);
+
+		[NativeName(NativeNameType.Const, "DXGI_MWA_VALID")]
+		public const int DxgiMwaValid = (0x7);
+
+		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_STEREO")]
+		public const uint DxgiEnumModesStereo = (4UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_DISABLED_STEREO")]
+		public const uint DxgiEnumModesDisabledStereo = (8UL);
+
+		[NativeName(NativeNameType.Const, "DXGI_SHARED_RESOURCE_READ")]
+		public const long DxgiSharedResourceRead = (0x80000000L);
+
+		[NativeName(NativeNameType.Const, "DXGI_SHARED_RESOURCE_WRITE")]
+		public const int DxgiSharedResourceWrite = (1);
 
 		[NativeName(NativeNameType.Const, "DXGI_CREATE_FACTORY_DEBUG")]
-		public const uint DxgiCreateFactoryDebug = 0x1;
+		public const int DxgiCreateFactoryDebug = 0x1;
 
 	}
 }

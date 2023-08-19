@@ -16,6 +16,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\HexaGen.Core\HexaGen.Core.csproj" />
+		<ProjectReference Include="..\HexaGen.Language\HexaGen.Language.csproj" />
 	</ItemGroup>
 
 </Project>

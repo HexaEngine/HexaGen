@@ -18,127 +18,1423 @@ namespace HexaEngine.D3D12
 	public unsafe partial class D3D12
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const uint MscVer = 1930;
+		public const int MscVer = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const uint Win32 = 1;
+		public const int Win32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const uint MAmd64 = 100;
+		public const int MAmd64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const uint MX64 = 100;
+		public const int MX64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const uint Win64 = 1;
+		public const int Win64 = 1;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
-		public const uint RequiredRpcndrHVersion = 501;
+		public const int RequiredRpcndrHVersion = 501;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
-		public const uint RequiredRpcsalHVersion = 100;
+		public const int RequiredRpcsalHVersion = 100;
+
+		[NativeName(NativeNameType.Const, "D3D12_16BIT_INDEX_STRIP_CUT_VALUE")]
+		public const int D3D1216BitIndexStripCutValue = (0xffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_32BIT_INDEX_STRIP_CUT_VALUE")]
+		public const int D3D1232BitIndexStripCutValue = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_8BIT_INDEX_STRIP_CUT_VALUE")]
+		public const int D3D128BitIndexStripCutValue = (0xff);
+
+		[NativeName(NativeNameType.Const, "D3D12_APPEND_ALIGNED_ELEMENT")]
+		public const int D3D12AppendAlignedElement = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_ARRAY_AXIS_ADDRESS_RANGE_BIT_COUNT")]
+		public const int D3D12ArrayAxisAddressRangeBitCount = (9);
+
+		[NativeName(NativeNameType.Const, "D3D12_CLIP_OR_CULL_DISTANCE_COUNT")]
+		public const int D3D12ClipOrCullDistanceCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_CLIP_OR_CULL_DISTANCE_ELEMENT_COUNT")]
+		public const int D3D12ClipOrCullDistanceElementCount = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_API_SLOT_COUNT")]
+		public const int D3D12CommonshaderConstantBufferApiSlotCount = (14);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_COMPONENTS")]
+		public const int D3D12CommonshaderConstantBufferComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_COMPONENT_BIT_COUNT")]
+		public const int D3D12CommonshaderConstantBufferComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_HW_SLOT_COUNT")]
+		public const int D3D12CommonshaderConstantBufferHwSlotCount = (15);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_PARTIAL_UPDATE_EXTENTS_BYTE_ALIGNMENT")]
+		public const int D3D12CommonshaderConstantBufferPartialUpdateExtentsByteAlignment = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_REGISTER_COMPONENTS")]
+		public const int D3D12CommonshaderConstantBufferRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_REGISTER_COUNT")]
+		public const int D3D12CommonshaderConstantBufferRegisterCount = (15);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_REGISTER_READS_PER_INST")]
+		public const int D3D12CommonshaderConstantBufferRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_CONSTANT_BUFFER_REGISTER_READ_PORTS")]
+		public const int D3D12CommonshaderConstantBufferRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_FLOWCONTROL_NESTING_LIMIT")]
+		public const int D3D12CommonshaderFlowcontrolNestingLimit = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_IMMEDIATE_CONSTANT_BUFFER_REGISTER_COMPONENTS")]
+		public const int D3D12CommonshaderImmediateConstantBufferRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_IMMEDIATE_CONSTANT_BUFFER_REGISTER_COUNT")]
+		public const int D3D12CommonshaderImmediateConstantBufferRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_IMMEDIATE_CONSTANT_BUFFER_REGISTER_READS_PER_INST")]
+		public const int D3D12CommonshaderImmediateConstantBufferRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_IMMEDIATE_CONSTANT_BUFFER_REGISTER_READ_PORTS")]
+		public const int D3D12CommonshaderImmediateConstantBufferRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_IMMEDIATE_VALUE_COMPONENT_BIT_COUNT")]
+		public const int D3D12CommonshaderImmediateValueComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_INPUT_RESOURCE_REGISTER_COMPONENTS")]
+		public const int D3D12CommonshaderInputResourceRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_INPUT_RESOURCE_REGISTER_COUNT")]
+		public const int D3D12CommonshaderInputResourceRegisterCount = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_INPUT_RESOURCE_REGISTER_READS_PER_INST")]
+		public const int D3D12CommonshaderInputResourceRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_INPUT_RESOURCE_REGISTER_READ_PORTS")]
+		public const int D3D12CommonshaderInputResourceRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_INPUT_RESOURCE_SLOT_COUNT")]
+		public const int D3D12CommonshaderInputResourceSlotCount = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SAMPLER_REGISTER_COMPONENTS")]
+		public const int D3D12CommonshaderSamplerRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SAMPLER_REGISTER_COUNT")]
+		public const int D3D12CommonshaderSamplerRegisterCount = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SAMPLER_REGISTER_READS_PER_INST")]
+		public const int D3D12CommonshaderSamplerRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SAMPLER_REGISTER_READ_PORTS")]
+		public const int D3D12CommonshaderSamplerRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SAMPLER_SLOT_COUNT")]
+		public const int D3D12CommonshaderSamplerSlotCount = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_SUBROUTINE_NESTING_LIMIT")]
+		public const int D3D12CommonshaderSubroutineNestingLimit = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEMP_REGISTER_COMPONENTS")]
+		public const int D3D12CommonshaderTempRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEMP_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12CommonshaderTempRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEMP_REGISTER_COUNT")]
+		public const int D3D12CommonshaderTempRegisterCount = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEMP_REGISTER_READS_PER_INST")]
+		public const int D3D12CommonshaderTempRegisterReadsPerInst = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEMP_REGISTER_READ_PORTS")]
+		public const int D3D12CommonshaderTempRegisterReadPorts = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MAX")]
+		public const int D3D12CommonshaderTexcoordRangeReductionMax = (10);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEXCOORD_RANGE_REDUCTION_MIN")]
+		public const int D3D12CommonshaderTexcoordRangeReductionMin = (-10);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEXEL_OFFSET_MAX_NEGATIVE")]
+		public const int D3D12CommonshaderTexelOffsetMaxNegative = (-8);
+
+		[NativeName(NativeNameType.Const, "D3D12_COMMONSHADER_TEXEL_OFFSET_MAX_POSITIVE")]
+		public const int D3D12CommonshaderTexelOffsetMaxPositive = (7);
+
+		[NativeName(NativeNameType.Const, "D3D12_CONSTANT_BUFFER_DATA_PLACEMENT_ALIGNMENT")]
+		public const int D3D12ConstantBufferDataPlacementAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET00_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket00MaxBytesTgsmWritablePerThread = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET00_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket00MaxNumThreadsPerGroup = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET01_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket01MaxBytesTgsmWritablePerThread = (240);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET01_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket01MaxNumThreadsPerGroup = (68);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET02_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket02MaxBytesTgsmWritablePerThread = (224);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET02_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket02MaxNumThreadsPerGroup = (72);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET03_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket03MaxBytesTgsmWritablePerThread = (208);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET03_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket03MaxNumThreadsPerGroup = (76);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET04_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket04MaxBytesTgsmWritablePerThread = (192);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET04_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket04MaxNumThreadsPerGroup = (84);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET05_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket05MaxBytesTgsmWritablePerThread = (176);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET05_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket05MaxNumThreadsPerGroup = (92);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET06_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket06MaxBytesTgsmWritablePerThread = (160);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET06_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket06MaxNumThreadsPerGroup = (100);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET07_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket07MaxBytesTgsmWritablePerThread = (144);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET07_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket07MaxNumThreadsPerGroup = (112);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET08_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket08MaxBytesTgsmWritablePerThread = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET08_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket08MaxNumThreadsPerGroup = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET09_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket09MaxBytesTgsmWritablePerThread = (112);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET09_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket09MaxNumThreadsPerGroup = (144);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET10_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket10MaxBytesTgsmWritablePerThread = (96);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET10_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket10MaxNumThreadsPerGroup = (168);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET11_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket11MaxBytesTgsmWritablePerThread = (80);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET11_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket11MaxNumThreadsPerGroup = (204);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET12_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket12MaxBytesTgsmWritablePerThread = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET12_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket12MaxNumThreadsPerGroup = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET13_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket13MaxBytesTgsmWritablePerThread = (48);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET13_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket13MaxNumThreadsPerGroup = (340);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET14_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket14MaxBytesTgsmWritablePerThread = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET14_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket14MaxNumThreadsPerGroup = (512);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET15_MAX_BYTES_TGSM_WRITABLE_PER_THREAD")]
+		public const int D3D12Cs4XBucket15MaxBytesTgsmWritablePerThread = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_BUCKET15_MAX_NUM_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XBucket15MaxNumThreadsPerGroup = (768);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_DISPATCH_MAX_THREAD_GROUPS_IN_Z_DIMENSION")]
+		public const int D3D12Cs4XDispatchMaxThreadGroupsInZDimension = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_RAW_UAV_BYTE_ALIGNMENT")]
+		public const int D3D12Cs4XRawUavByteAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_THREAD_GROUP_MAX_THREADS_PER_GROUP")]
+		public const int D3D12Cs4XThreadGroupMaxThreadsPerGroup = (768);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_THREAD_GROUP_MAX_X")]
+		public const int D3D12Cs4XThreadGroupMaxX = (768);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_THREAD_GROUP_MAX_Y")]
+		public const int D3D12Cs4XThreadGroupMaxY = (768);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_4_X_UAV_REGISTER_COUNT")]
+		public const int D3D12Cs4XUavRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_DISPATCH_MAX_THREAD_GROUPS_PER_DIMENSION")]
+		public const int D3D12CsDispatchMaxThreadGroupsPerDimension = (65535);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_TGSM_REGISTER_COUNT")]
+		public const int D3D12CsTgsmRegisterCount = (8192);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_TGSM_REGISTER_READS_PER_INST")]
+		public const int D3D12CsTgsmRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_TGSM_RESOURCE_REGISTER_COMPONENTS")]
+		public const int D3D12CsTgsmResourceRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_TGSM_RESOURCE_REGISTER_READ_PORTS")]
+		public const int D3D12CsTgsmResourceRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADGROUPID_REGISTER_COMPONENTS")]
+		public const int D3D12CsThreadgroupidRegisterComponents = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADGROUPID_REGISTER_COUNT")]
+		public const int D3D12CsThreadgroupidRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADIDINGROUPFLATTENED_REGISTER_COMPONENTS")]
+		public const int D3D12CsThreadidingroupflattenedRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADIDINGROUPFLATTENED_REGISTER_COUNT")]
+		public const int D3D12CsThreadidingroupflattenedRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADIDINGROUP_REGISTER_COMPONENTS")]
+		public const int D3D12CsThreadidingroupRegisterComponents = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADIDINGROUP_REGISTER_COUNT")]
+		public const int D3D12CsThreadidingroupRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADID_REGISTER_COMPONENTS")]
+		public const int D3D12CsThreadidRegisterComponents = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREADID_REGISTER_COUNT")]
+		public const int D3D12CsThreadidRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MAX_THREADS_PER_GROUP")]
+		public const int D3D12CsThreadGroupMaxThreadsPerGroup = (1024);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MAX_X")]
+		public const int D3D12CsThreadGroupMaxX = (1024);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MAX_Y")]
+		public const int D3D12CsThreadGroupMaxY = (1024);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MAX_Z")]
+		public const int D3D12CsThreadGroupMaxZ = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MIN_X")]
+		public const int D3D12CsThreadGroupMinX = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MIN_Y")]
+		public const int D3D12CsThreadGroupMinY = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_GROUP_MIN_Z")]
+		public const int D3D12CsThreadGroupMinZ = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_CS_THREAD_LOCAL_TEMP_REGISTER_POOL")]
+		public const int D3D12CsThreadLocalTempRegisterPool = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_BLEND_FACTOR_ALPHA")]
+		public const float D3D12DefaultBlendFactorAlpha = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_BLEND_FACTOR_BLUE")]
+		public const float D3D12DefaultBlendFactorBlue = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_BLEND_FACTOR_GREEN")]
+		public const float D3D12DefaultBlendFactorGreen = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_BLEND_FACTOR_RED")]
+		public const float D3D12DefaultBlendFactorRed = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_BORDER_COLOR_COMPONENT")]
+		public const float D3D12DefaultBorderColorComponent = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_DEPTH_BIAS")]
+		public const int D3D12DefaultDepthBias = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_DEPTH_BIAS_CLAMP")]
+		public const float D3D12DefaultDepthBiasClamp = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_MAX_ANISOTROPY")]
+		public const int D3D12DefaultMaxAnisotropy = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_MIP_LOD_BIAS")]
+		public const float D3D12DefaultMipLodBias = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_MSAA_RESOURCE_PLACEMENT_ALIGNMENT")]
+		public const int D3D12DefaultMsaaResourcePlacementAlignment = (4194304);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_RENDER_TARGET_ARRAY_INDEX")]
+		public const int D3D12DefaultRenderTargetArrayIndex = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_RESOURCE_PLACEMENT_ALIGNMENT")]
+		public const int D3D12DefaultResourcePlacementAlignment = (65536);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SAMPLE_MASK")]
+		public const int D3D12DefaultSampleMask = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SCISSOR_ENDX")]
+		public const int D3D12DefaultScissorEndx = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SCISSOR_ENDY")]
+		public const int D3D12DefaultScissorEndy = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SCISSOR_STARTX")]
+		public const int D3D12DefaultScissorStartx = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SCISSOR_STARTY")]
+		public const int D3D12DefaultScissorStarty = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SLOPE_SCALED_DEPTH_BIAS")]
+		public const float D3D12DefaultSlopeScaledDepthBias = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_STENCIL_READ_MASK")]
+		public const int D3D12DefaultStencilReadMask = (0xff);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_STENCIL_REFERENCE")]
+		public const int D3D12DefaultStencilReference = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_STENCIL_WRITE_MASK")]
+		public const int D3D12DefaultStencilWriteMask = (0xff);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_AND_SCISSORRECT_INDEX")]
+		public const int D3D12DefaultViewportAndScissorrectIndex = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_HEIGHT")]
+		public const int D3D12DefaultViewportHeight = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_MAX_DEPTH")]
+		public const float D3D12DefaultViewportMaxDepth = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_MIN_DEPTH")]
+		public const float D3D12DefaultViewportMinDepth = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_TOPLEFTX")]
+		public const int D3D12DefaultViewportTopleftx = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_TOPLEFTY")]
+		public const int D3D12DefaultViewportToplefty = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_VIEWPORT_WIDTH")]
+		public const int D3D12DefaultViewportWidth = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND")]
+		public const int D3D12DescriptorRangeOffsetAppend = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_DRIVER_RESERVED_REGISTER_SPACE_VALUES_END")]
+		public const int D3D12DriverReservedRegisterSpaceValuesEnd = (0xfffffff7);
+
+		[NativeName(NativeNameType.Const, "D3D12_DRIVER_RESERVED_REGISTER_SPACE_VALUES_START")]
+		public const int D3D12DriverReservedRegisterSpaceValuesStart = (0xfffffff0);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINTS_MAX_TOTAL_SCALARS")]
+		public const int D3D12DsInputControlPointsMaxTotalScalars = (3968);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINT_REGISTER_COMPONENTS")]
+		public const int D3D12DsInputControlPointRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12DsInputControlPointRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINT_REGISTER_COUNT")]
+		public const int D3D12DsInputControlPointRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINT_REGISTER_READS_PER_INST")]
+		public const int D3D12DsInputControlPointRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_CONTROL_POINT_REGISTER_READ_PORTS")]
+		public const int D3D12DsInputControlPointRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_DOMAIN_POINT_REGISTER_COMPONENTS")]
+		public const int D3D12DsInputDomainPointRegisterComponents = (3);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_DOMAIN_POINT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12DsInputDomainPointRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_DOMAIN_POINT_REGISTER_COUNT")]
+		public const int D3D12DsInputDomainPointRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_DOMAIN_POINT_REGISTER_READS_PER_INST")]
+		public const int D3D12DsInputDomainPointRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_DOMAIN_POINT_REGISTER_READ_PORTS")]
+		public const int D3D12DsInputDomainPointRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PATCH_CONSTANT_REGISTER_COMPONENTS")]
+		public const int D3D12DsInputPatchConstantRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PATCH_CONSTANT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12DsInputPatchConstantRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PATCH_CONSTANT_REGISTER_COUNT")]
+		public const int D3D12DsInputPatchConstantRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PATCH_CONSTANT_REGISTER_READS_PER_INST")]
+		public const int D3D12DsInputPatchConstantRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PATCH_CONSTANT_REGISTER_READ_PORTS")]
+		public const int D3D12DsInputPatchConstantRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_COMPONENTS")]
+		public const int D3D12DsInputPrimitiveIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12DsInputPrimitiveIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_COUNT")]
+		public const int D3D12DsInputPrimitiveIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_READS_PER_INST")]
+		public const int D3D12DsInputPrimitiveIdRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_INPUT_PRIMITIVE_ID_REGISTER_READ_PORTS")]
+		public const int D3D12DsInputPrimitiveIdRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_OUTPUT_REGISTER_COMPONENTS")]
+		public const int D3D12DsOutputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12DsOutputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_DS_OUTPUT_REGISTER_COUNT")]
+		public const int D3D12DsOutputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT16_FUSED_TOLERANCE_IN_ULP")]
+		public const double D3D12Float16FusedToleranceInUlp = (0.6);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT32_MAX")]
+		public const float D3D12Float32Max = (3.402823466e+38f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT32_TO_INTEGER_TOLERANCE_IN_ULP")]
+		public const float D3D12Float32ToIntegerToleranceInUlp = (0.6f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_EXPONENT_DENOMINATOR")]
+		public const float D3D12FloatToSrgbExponentDenominator = (2.4f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_EXPONENT_NUMERATOR")]
+		public const float D3D12FloatToSrgbExponentNumerator = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_OFFSET")]
+		public const float D3D12FloatToSrgbOffset = (0.055f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_SCALE_1")]
+		public const float D3D12FloatToSrgbScale1 = (12.92f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_SCALE_2")]
+		public const float D3D12FloatToSrgbScale2 = (1.055f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FLOAT_TO_SRGB_THRESHOLD")]
+		public const float D3D12FloatToSrgbThreshold = (0.0031308f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FTOI_INSTRUCTION_MAX_INPUT")]
+		public const float D3D12FtoiInstructionMaxInput = (2147483647.999f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FTOI_INSTRUCTION_MIN_INPUT")]
+		public const float D3D12FtoiInstructionMinInput = (-2147483648.999f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FTOU_INSTRUCTION_MAX_INPUT")]
+		public const float D3D12FtouInstructionMaxInput = (4294967295.999f);
+
+		[NativeName(NativeNameType.Const, "D3D12_FTOU_INSTRUCTION_MIN_INPUT")]
+		public const float D3D12FtouInstructionMinInput = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_INSTANCE_ID_READS_PER_INST")]
+		public const int D3D12GsInputInstanceIdReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_INSTANCE_ID_READ_PORTS")]
+		public const int D3D12GsInputInstanceIdReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_INSTANCE_ID_REGISTER_COMPONENTS")]
+		public const int D3D12GsInputInstanceIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_INSTANCE_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12GsInputInstanceIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_INSTANCE_ID_REGISTER_COUNT")]
+		public const int D3D12GsInputInstanceIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_PRIM_CONST_REGISTER_COMPONENTS")]
+		public const int D3D12GsInputPrimConstRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_PRIM_CONST_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12GsInputPrimConstRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_PRIM_CONST_REGISTER_COUNT")]
+		public const int D3D12GsInputPrimConstRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_PRIM_CONST_REGISTER_READS_PER_INST")]
+		public const int D3D12GsInputPrimConstRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_PRIM_CONST_REGISTER_READ_PORTS")]
+		public const int D3D12GsInputPrimConstRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_COMPONENTS")]
+		public const int D3D12GsInputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12GsInputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_COUNT")]
+		public const int D3D12GsInputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_READS_PER_INST")]
+		public const int D3D12GsInputRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_READ_PORTS")]
+		public const int D3D12GsInputRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_INPUT_REGISTER_VERTICES")]
+		public const int D3D12GsInputRegisterVertices = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_MAX_INSTANCE_COUNT")]
+		public const int D3D12GsMaxInstanceCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_MAX_OUTPUT_VERTEX_COUNT_ACROSS_INSTANCES")]
+		public const int D3D12GsMaxOutputVertexCountAcrossInstances = (1024);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_OUTPUT_ELEMENTS")]
+		public const int D3D12GsOutputElements = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_OUTPUT_REGISTER_COMPONENTS")]
+		public const int D3D12GsOutputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12GsOutputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_GS_OUTPUT_REGISTER_COUNT")]
+		public const int D3D12GsOutputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_PHASE_INPUT_REGISTER_COUNT")]
+		public const int D3D12HsControlPointPhaseInputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_PHASE_OUTPUT_REGISTER_COUNT")]
+		public const int D3D12HsControlPointPhaseOutputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_REGISTER_COMPONENTS")]
+		public const int D3D12HsControlPointRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsControlPointRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_REGISTER_READS_PER_INST")]
+		public const int D3D12HsControlPointRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_CONTROL_POINT_REGISTER_READ_PORTS")]
+		public const int D3D12HsControlPointRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_FORK_PHASE_INSTANCE_COUNT_UPPER_BOUND")]
+		public const int D3D12HsForkPhaseInstanceCountUpperBound = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_COMPONENTS")]
+		public const int D3D12HsInputForkInstanceIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsInputForkInstanceIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_COUNT")]
+		public const int D3D12HsInputForkInstanceIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_READS_PER_INST")]
+		public const int D3D12HsInputForkInstanceIdRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_FORK_INSTANCE_ID_REGISTER_READ_PORTS")]
+		public const int D3D12HsInputForkInstanceIdRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_JOIN_INSTANCE_ID_REGISTER_COMPONENTS")]
+		public const int D3D12HsInputJoinInstanceIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_JOIN_INSTANCE_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsInputJoinInstanceIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_JOIN_INSTANCE_ID_REGISTER_COUNT")]
+		public const int D3D12HsInputJoinInstanceIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_JOIN_INSTANCE_ID_REGISTER_READS_PER_INST")]
+		public const int D3D12HsInputJoinInstanceIdRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_JOIN_INSTANCE_ID_REGISTER_READ_PORTS")]
+		public const int D3D12HsInputJoinInstanceIdRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_COMPONENTS")]
+		public const int D3D12HsInputPrimitiveIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsInputPrimitiveIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_COUNT")]
+		public const int D3D12HsInputPrimitiveIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_READS_PER_INST")]
+		public const int D3D12HsInputPrimitiveIdRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_INPUT_PRIMITIVE_ID_REGISTER_READ_PORTS")]
+		public const int D3D12HsInputPrimitiveIdRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_JOIN_PHASE_INSTANCE_COUNT_UPPER_BOUND")]
+		public const int D3D12HsJoinPhaseInstanceCountUpperBound = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_MAXTESSFACTOR_LOWER_BOUND")]
+		public const float D3D12HsMaxtessfactorLowerBound = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_MAXTESSFACTOR_UPPER_BOUND")]
+		public const float D3D12HsMaxtessfactorUpperBound = (64.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINTS_MAX_TOTAL_SCALARS")]
+		public const int D3D12HsOutputControlPointsMaxTotalScalars = (3968);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINT_ID_REGISTER_COMPONENTS")]
+		public const int D3D12HsOutputControlPointIdRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINT_ID_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsOutputControlPointIdRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINT_ID_REGISTER_COUNT")]
+		public const int D3D12HsOutputControlPointIdRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINT_ID_REGISTER_READS_PER_INST")]
+		public const int D3D12HsOutputControlPointIdRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_CONTROL_POINT_ID_REGISTER_READ_PORTS")]
+		public const int D3D12HsOutputControlPointIdRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_COMPONENTS")]
+		public const int D3D12HsOutputPatchConstantRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12HsOutputPatchConstantRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_COUNT")]
+		public const int D3D12HsOutputPatchConstantRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_READS_PER_INST")]
+		public const int D3D12HsOutputPatchConstantRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_READ_PORTS")]
+		public const int D3D12HsOutputPatchConstantRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_HS_OUTPUT_PATCH_CONSTANT_REGISTER_SCALAR_COMPONENTS")]
+		public const int D3D12HsOutputPatchConstantRegisterScalarComponents = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_DEFAULT_INDEX_BUFFER_OFFSET_IN_BYTES")]
+		public const int D3D12IaDefaultIndexBufferOffsetInBytes = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_DEFAULT_PRIMITIVE_TOPOLOGY")]
+		public const int D3D12IaDefaultPrimitiveTopology = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_DEFAULT_VERTEX_BUFFER_OFFSET_IN_BYTES")]
+		public const int D3D12IaDefaultVertexBufferOffsetInBytes = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_INDEX_INPUT_RESOURCE_SLOT_COUNT")]
+		public const int D3D12IaIndexInputResourceSlotCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_INSTANCE_ID_BIT_COUNT")]
+		public const int D3D12IaInstanceIdBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_INTEGER_ARITHMETIC_BIT_COUNT")]
+		public const int D3D12IaIntegerArithmeticBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_PATCH_MAX_CONTROL_POINT_COUNT")]
+		public const int D3D12IaPatchMaxControlPointCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_PRIMITIVE_ID_BIT_COUNT")]
+		public const int D3D12IaPrimitiveIdBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_VERTEX_ID_BIT_COUNT")]
+		public const int D3D12IaVertexIdBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT")]
+		public const int D3D12IaVertexInputResourceSlotCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_VERTEX_INPUT_STRUCTURE_ELEMENTS_COMPONENTS")]
+		public const int D3D12IaVertexInputStructureElementsComponents = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_IA_VERTEX_INPUT_STRUCTURE_ELEMENT_COUNT")]
+		public const int D3D12IaVertexInputStructureElementCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_INTEGER_DIVIDE_BY_ZERO_QUOTIENT")]
+		public const int D3D12IntegerDivideByZeroQuotient = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_INTEGER_DIVIDE_BY_ZERO_REMAINDER")]
+		public const int D3D12IntegerDivideByZeroRemainder = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_KEEP_RENDER_TARGETS_AND_DEPTH_STENCIL")]
+		public const int D3D12KeepRenderTargetsAndDepthStencil = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_KEEP_UNORDERED_ACCESS_VIEWS")]
+		public const int D3D12KeepUnorderedAccessViews = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_LINEAR_GAMMA")]
+		public const float D3D12LinearGamma = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAJOR_VERSION")]
+		public const int D3D12MajorVersion = (12);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_BORDER_COLOR_COMPONENT")]
+		public const float D3D12MaxBorderColorComponent = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_DEPTH")]
+		public const float D3D12MaxDepth = (1.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_LIVE_STATIC_SAMPLERS")]
+		public const int D3D12MaxLiveStaticSamplers = (2032);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_MAXANISOTROPY")]
+		public const int D3D12MaxMaxanisotropy = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_MULTISAMPLE_SAMPLE_COUNT")]
+		public const int D3D12MaxMultisampleSampleCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_POSITION_VALUE")]
+		public const float D3D12MaxPositionValue = (3.402823466e+34f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_ROOT_COST")]
+		public const int D3D12MaxRootCost = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_SHADER_VISIBLE_DESCRIPTOR_HEAP_SIZE_TIER_1")]
+		public const int D3D12MaxShaderVisibleDescriptorHeapSizeTier1 = (1000000);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_SHADER_VISIBLE_DESCRIPTOR_HEAP_SIZE_TIER_2")]
+		public const int D3D12MaxShaderVisibleDescriptorHeapSizeTier2 = (1000000);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_SHADER_VISIBLE_SAMPLER_HEAP_SIZE")]
+		public const int D3D12MaxShaderVisibleSamplerHeapSize = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_TEXTURE_DIMENSION_2_TO_EXP")]
+		public const int D3D12MaxTextureDimension2ToExp = (17);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAX_VIEW_INSTANCE_COUNT")]
+		public const int D3D12MaxViewInstanceCount = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_MINOR_VERSION")]
+		public const int D3D12MinorVersion = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIN_BORDER_COLOR_COMPONENT")]
+		public const float D3D12MinBorderColorComponent = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIN_DEPTH")]
+		public const float D3D12MinDepth = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIN_MAXANISOTROPY")]
+		public const int D3D12MinMaxanisotropy = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIP_LOD_BIAS_MAX")]
+		public const float D3D12MipLodBiasMax = (15.99f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIP_LOD_BIAS_MIN")]
+		public const float D3D12MipLodBiasMin = (-16.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIP_LOD_FRACTIONAL_BIT_COUNT")]
+		public const int D3D12MipLodFractionalBitCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIP_LOD_RANGE_BIT_COUNT")]
+		public const int D3D12MipLodRangeBitCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_MULTISAMPLE_ANTIALIAS_LINE_WIDTH")]
+		public const float D3D12MultisampleAntialiasLineWidth = (1.4f);
+
+		[NativeName(NativeNameType.Const, "D3D12_NONSAMPLE_FETCH_OUT_OF_RANGE_ACCESS_RESULT")]
+		public const int D3D12NonsampleFetchOutOfRangeAccessResult = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_END")]
+		public const int D3D12OsReservedRegisterSpaceValuesEnd = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_OS_RESERVED_REGISTER_SPACE_VALUES_START")]
+		public const int D3D12OsReservedRegisterSpaceValuesStart = (0xfffffff8);
+
+		[NativeName(NativeNameType.Const, "D3D12_PACKED_TILE")]
+		public const int D3D12PackedTile = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_PIXEL_ADDRESS_RANGE_BIT_COUNT")]
+		public const int D3D12PixelAddressRangeBitCount = (15);
+
+		[NativeName(NativeNameType.Const, "D3D12_PREVIEW_SDK_VERSION")]
+		public const int D3D12PreviewSdkVersion = (702);
+
+		[NativeName(NativeNameType.Const, "D3D12_PRE_SCISSOR_PIXEL_ADDRESS_RANGE_BIT_COUNT")]
+		public const int D3D12PreScissorPixelAddressRangeBitCount = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_CS_UAV_REGISTER_COMPONENTS")]
+		public const int D3D12PsCsUavRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_CS_UAV_REGISTER_COUNT")]
+		public const int D3D12PsCsUavRegisterCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_CS_UAV_REGISTER_READS_PER_INST")]
+		public const int D3D12PsCsUavRegisterReadsPerInst = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_CS_UAV_REGISTER_READ_PORTS")]
+		public const int D3D12PsCsUavRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_FRONTFACING_DEFAULT_VALUE")]
+		public const int D3D12PsFrontfacingDefaultValue = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_FRONTFACING_FALSE_VALUE")]
+		public const int D3D12PsFrontfacingFalseValue = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_FRONTFACING_TRUE_VALUE")]
+		public const int D3D12PsFrontfacingTrueValue = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_INPUT_REGISTER_COMPONENTS")]
+		public const int D3D12PsInputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_INPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12PsInputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_INPUT_REGISTER_COUNT")]
+		public const int D3D12PsInputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_INPUT_REGISTER_READS_PER_INST")]
+		public const int D3D12PsInputRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_INPUT_REGISTER_READ_PORTS")]
+		public const int D3D12PsInputRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_LEGACY_PIXEL_CENTER_FRACTIONAL_COMPONENT")]
+		public const float D3D12PsLegacyPixelCenterFractionalComponent = (0.0f);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_DEPTH_REGISTER_COMPONENTS")]
+		public const int D3D12PsOutputDepthRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_DEPTH_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12PsOutputDepthRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_DEPTH_REGISTER_COUNT")]
+		public const int D3D12PsOutputDepthRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_MASK_REGISTER_COMPONENTS")]
+		public const int D3D12PsOutputMaskRegisterComponents = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_MASK_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12PsOutputMaskRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_MASK_REGISTER_COUNT")]
+		public const int D3D12PsOutputMaskRegisterCount = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_REGISTER_COMPONENTS")]
+		public const int D3D12PsOutputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12PsOutputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_OUTPUT_REGISTER_COUNT")]
+		public const int D3D12PsOutputRegisterCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_PS_PIXEL_CENTER_FRACTIONAL_COMPONENT")]
+		public const float D3D12PsPixelCenterFractionalComponent = (0.5f);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAW_UAV_SRV_BYTE_ALIGNMENT")]
+		public const int D3D12RawUavSrvByteAlignment = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_AABB_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingAabbByteAlignment = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingAccelerationStructureByteAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_INSTANCE_DESCS_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingInstanceDescsByteAlignment = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_ATTRIBUTE_SIZE_IN_BYTES")]
+		public const int D3D12RaytracingMaxAttributeSizeInBytes = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_DECLARABLE_TRACE_RECURSION_DEPTH")]
+		public const int D3D12RaytracingMaxDeclarableTraceRecursionDepth = (31);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_GEOMETRIES_PER_BOTTOM_LEVEL_ACCELERATION_STRUCTURE")]
+		public const int D3D12RaytracingMaxGeometriesPerBottomLevelAccelerationStructure = (16777216);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_INSTANCES_PER_TOP_LEVEL_ACCELERATION_STRUCTURE")]
+		public const int D3D12RaytracingMaxInstancesPerTopLevelAccelerationStructure = (16777216);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_PRIMITIVES_PER_BOTTOM_LEVEL_ACCELERATION_STRUCTURE")]
+		public const int D3D12RaytracingMaxPrimitivesPerBottomLevelAccelerationStructure = (536870912);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_RAY_GENERATION_SHADER_THREADS")]
+		public const int D3D12RaytracingMaxRayGenerationShaderThreads = (1073741824);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_MAX_SHADER_RECORD_STRIDE")]
+		public const int D3D12RaytracingMaxShaderRecordStride = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_SHADER_RECORD_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingShaderRecordByteAlignment = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_SHADER_TABLE_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingShaderTableByteAlignment = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_RAYTRACING_TRANSFORM3X4_BYTE_ALIGNMENT")]
+		public const int D3D12RaytracingTransform3X4ByteAlignment = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_BLEND_OBJECT_COUNT_PER_DEVICE")]
+		public const int D3D12ReqBlendObjectCountPerDevice = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_BUFFER_RESOURCE_TEXEL_COUNT_2_TO_EXP")]
+		public const int D3D12ReqBufferResourceTexelCount2ToExp = (27);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_CONSTANT_BUFFER_ELEMENT_COUNT")]
+		public const int D3D12ReqConstantBufferElementCount = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_DEPTH_STENCIL_OBJECT_COUNT_PER_DEVICE")]
+		public const int D3D12ReqDepthStencilObjectCountPerDevice = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_DRAWINDEXED_INDEX_COUNT_2_TO_EXP")]
+		public const int D3D12ReqDrawindexedIndexCount2ToExp = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_DRAW_VERTEX_COUNT_2_TO_EXP")]
+		public const int D3D12ReqDrawVertexCount2ToExp = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_FILTERING_HW_ADDRESSABLE_RESOURCE_DIMENSION")]
+		public const int D3D12ReqFilteringHwAddressableResourceDimension = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_GS_INVOCATION_32BIT_OUTPUT_COMPONENT_LIMIT")]
+		public const int D3D12ReqGsInvocation32BitOutputComponentLimit = (1024);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_IMMEDIATE_CONSTANT_BUFFER_ELEMENT_COUNT")]
+		public const int D3D12ReqImmediateConstantBufferElementCount = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_MAXANISOTROPY")]
+		public const int D3D12ReqMaxanisotropy = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_MIP_LEVELS")]
+		public const int D3D12ReqMipLevels = (15);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_MULTI_ELEMENT_STRUCTURE_SIZE_IN_BYTES")]
+		public const int D3D12ReqMultiElementStructureSizeInBytes = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RASTERIZER_OBJECT_COUNT_PER_DEVICE")]
+		public const int D3D12ReqRasterizerObjectCountPerDevice = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RENDER_TO_BUFFER_WINDOW_WIDTH")]
+		public const int D3D12ReqRenderToBufferWindowWidth = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_A_TERM")]
+		public const int D3D12ReqResourceSizeInMegabytesExpressionATerm = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_B_TERM")]
+		public const float D3D12ReqResourceSizeInMegabytesExpressionBTerm = (0.25f);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RESOURCE_SIZE_IN_MEGABYTES_EXPRESSION_C_TERM")]
+		public const int D3D12ReqResourceSizeInMegabytesExpressionCTerm = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_RESOURCE_VIEW_COUNT_PER_DEVICE_2_TO_EXP")]
+		public const int D3D12ReqResourceViewCountPerDevice2ToExp = (20);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_SAMPLER_OBJECT_COUNT_PER_DEVICE")]
+		public const int D3D12ReqSamplerObjectCountPerDevice = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_SUBRESOURCES")]
+		public const int D3D12ReqSubresources = (30720);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURE1D_ARRAY_AXIS_DIMENSION")]
+		public const int D3D12ReqTexture1DArrayAxisDimension = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURE1D_U_DIMENSION")]
+		public const int D3D12ReqTexture1DUDimension = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURE2D_ARRAY_AXIS_DIMENSION")]
+		public const int D3D12ReqTexture2DArrayAxisDimension = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURE2D_U_OR_V_DIMENSION")]
+		public const int D3D12ReqTexture2DUOrVDimension = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURE3D_U_V_OR_W_DIMENSION")]
+		public const int D3D12ReqTexture3DUVOrWDimension = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_REQ_TEXTURECUBE_DIMENSION")]
+		public const int D3D12ReqTexturecubeDimension = (16384);
+
+		[NativeName(NativeNameType.Const, "D3D12_RESINFO_INSTRUCTION_MISSING_COMPONENT_RETVAL")]
+		public const int D3D12ResinfoInstructionMissingComponentRetval = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES")]
+		public const int D3D12ResourceBarrierAllSubresources = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_RS_SET_SHADING_RATE_COMBINER_COUNT")]
+		public const int D3D12RsSetShadingRateCombinerCount = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_SDK_VERSION")]
+		public const int D3D12SdkVersion = (602);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_IDENTIFIER_SIZE_IN_BYTES")]
+		public const int D3D12ShaderIdentifierSizeInBytes = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MAJOR_VERSION")]
+		public const int D3D12ShaderMajorVersion = (5);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MAX_INSTANCES")]
+		public const int D3D12ShaderMaxInstances = (65535);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MAX_INTERFACES")]
+		public const int D3D12ShaderMaxInterfaces = (253);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MAX_INTERFACE_CALL_SITES")]
+		public const int D3D12ShaderMaxInterfaceCallSites = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MAX_TYPES")]
+		public const int D3D12ShaderMaxTypes = (65535);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_MINOR_VERSION")]
+		public const int D3D12ShaderMinorVersion = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHIFT_INSTRUCTION_PAD_VALUE")]
+		public const int D3D12ShiftInstructionPadValue = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_SHIFT_INSTRUCTION_SHIFT_VALUE_BIT_COUNT")]
+		public const int D3D12ShiftInstructionShiftValueBitCount = (5);
+
+		[NativeName(NativeNameType.Const, "D3D12_SIMULTANEOUS_RENDER_TARGET_COUNT")]
+		public const int D3D12SimultaneousRenderTargetCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_SMALL_MSAA_RESOURCE_PLACEMENT_ALIGNMENT")]
+		public const int D3D12SmallMsaaResourcePlacementAlignment = (65536);
+
+		[NativeName(NativeNameType.Const, "D3D12_SMALL_RESOURCE_PLACEMENT_ALIGNMENT")]
+		public const int D3D12SmallResourcePlacementAlignment = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_BUFFER_MAX_STRIDE_IN_BYTES")]
+		public const int D3D12SoBufferMaxStrideInBytes = (2048);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_BUFFER_MAX_WRITE_WINDOW_IN_BYTES")]
+		public const int D3D12SoBufferMaxWriteWindowInBytes = (512);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_BUFFER_SLOT_COUNT")]
+		public const int D3D12SoBufferSlotCount = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_DDI_REGISTER_INDEX_DENOTING_GAP")]
+		public const int D3D12SoDdiRegisterIndexDenotingGap = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_NO_RASTERIZED_STREAM")]
+		public const int D3D12SoNoRasterizedStream = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_OUTPUT_COMPONENT_COUNT")]
+		public const int D3D12SoOutputComponentCount = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_SO_STREAM_COUNT")]
+		public const int D3D12SoStreamCount = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_SPEC_DATE_DAY")]
+		public const int D3D12SpecDateDay = (14);
+
+		[NativeName(NativeNameType.Const, "D3D12_SPEC_DATE_MONTH")]
+		public const int D3D12SpecDateMonth = (11);
+
+		[NativeName(NativeNameType.Const, "D3D12_SPEC_DATE_YEAR")]
+		public const int D3D12SpecDateYear = (2014);
+
+		[NativeName(NativeNameType.Const, "D3D12_SPEC_VERSION")]
+		public const double D3D12SpecVersion = (1.16);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_GAMMA")]
+		public const float D3D12SrgbGamma = (2.2f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_DENOMINATOR_1")]
+		public const float D3D12SrgbToFloatDenominator1 = (12.92f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_DENOMINATOR_2")]
+		public const float D3D12SrgbToFloatDenominator2 = (1.055f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_EXPONENT")]
+		public const float D3D12SrgbToFloatExponent = (2.4f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_OFFSET")]
+		public const float D3D12SrgbToFloatOffset = (0.055f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_THRESHOLD")]
+		public const float D3D12SrgbToFloatThreshold = (0.04045f);
+
+		[NativeName(NativeNameType.Const, "D3D12_SRGB_TO_FLOAT_TOLERANCE_IN_ULP")]
+		public const float D3D12SrgbToFloatToleranceInUlp = (0.5f);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_COMPONENT_BIT_COUNT")]
+		public const int D3D12StandardComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_COMPONENT_BIT_COUNT_DOUBLED")]
+		public const int D3D12StandardComponentBitCountDoubled = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_MAXIMUM_ELEMENT_ALIGNMENT_BYTE_MULTIPLE")]
+		public const int D3D12StandardMaximumElementAlignmentByteMultiple = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_PIXEL_COMPONENT_COUNT")]
+		public const int D3D12StandardPixelComponentCount = (128);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_PIXEL_ELEMENT_COUNT")]
+		public const int D3D12StandardPixelElementCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_VECTOR_SIZE")]
+		public const int D3D12StandardVectorSize = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_VERTEX_ELEMENT_COUNT")]
+		public const int D3D12StandardVertexElementCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_STANDARD_VERTEX_TOTAL_COMPONENT_COUNT")]
+		public const int D3D12StandardVertexTotalComponentCount = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_SUBPIXEL_FRACTIONAL_BIT_COUNT")]
+		public const int D3D12SubpixelFractionalBitCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_SUBTEXEL_FRACTIONAL_BIT_COUNT")]
+		public const int D3D12SubtexelFractionalBitCount = (8);
+
+		[NativeName(NativeNameType.Const, "D3D12_SYSTEM_RESERVED_REGISTER_SPACE_VALUES_END")]
+		public const int D3D12SystemReservedRegisterSpaceValuesEnd = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_SYSTEM_RESERVED_REGISTER_SPACE_VALUES_START")]
+		public const int D3D12SystemReservedRegisterSpaceValuesStart = (0xfffffff0);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MAX_EVEN_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMaxEvenTessellationFactor = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MAX_ISOLINE_DENSITY_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMaxIsolineDensityTessellationFactor = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MAX_ODD_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMaxOddTessellationFactor = (63);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MAX_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMaxTessellationFactor = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MIN_EVEN_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMinEvenTessellationFactor = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MIN_ISOLINE_DENSITY_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMinIsolineDensityTessellationFactor = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_TESSELLATOR_MIN_ODD_TESSELLATION_FACTOR")]
+		public const int D3D12TessellatorMinOddTessellationFactor = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_TEXEL_ADDRESS_RANGE_BIT_COUNT")]
+		public const int D3D12TexelAddressRangeBitCount = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_TEXTURE_DATA_PITCH_ALIGNMENT")]
+		public const int D3D12TextureDataPitchAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_TEXTURE_DATA_PLACEMENT_ALIGNMENT")]
+		public const int D3D12TextureDataPlacementAlignment = (512);
+
+		[NativeName(NativeNameType.Const, "D3D12_TILED_RESOURCE_TILE_SIZE_IN_BYTES")]
+		public const int D3D12TiledResourceTileSizeInBytes = (65536);
+
+		[NativeName(NativeNameType.Const, "D3D12_TRACKED_WORKLOAD_MAX_INSTANCES")]
+		public const int D3D12TrackedWorkloadMaxInstances = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_UAV_COUNTER_PLACEMENT_ALIGNMENT")]
+		public const int D3D12UavCounterPlacementAlignment = (4096);
+
+		[NativeName(NativeNameType.Const, "D3D12_UAV_SLOT_COUNT")]
+		public const int D3D12UavSlotCount = (64);
+
+		[NativeName(NativeNameType.Const, "D3D12_UNBOUND_MEMORY_ACCESS_RESULT")]
+		public const int D3D12UnboundMemoryAccessResult = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_DECODE_MAX_ARGUMENTS")]
+		public const int D3D12VideoDecodeMaxArguments = (10);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_DECODE_MAX_HISTOGRAM_COMPONENTS")]
+		public const int D3D12VideoDecodeMaxHistogramComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_DECODE_MIN_BITSTREAM_OFFSET_ALIGNMENT")]
+		public const int D3D12VideoDecodeMinBitstreamOffsetAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_DECODE_MIN_HISTOGRAM_OFFSET_ALIGNMENT")]
+		public const int D3D12VideoDecodeMinHistogramOffsetAlignment = (256);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_DECODE_STATUS_MACROBLOCKS_AFFECTED_UNKNOWN")]
+		public const int D3D12VideoDecodeStatusMacroblocksAffectedUnknown = (0xffffffff);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_PROCESS_MAX_FILTERS")]
+		public const int D3D12VideoProcessMaxFilters = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIDEO_PROCESS_STEREO_VIEWS")]
+		public const int D3D12VideoProcessStereoViews = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIEWPORT_AND_SCISSORRECT_MAX_INDEX")]
+		public const int D3D12ViewportAndScissorrectMaxIndex = (15);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE")]
+		public const int D3D12ViewportAndScissorrectObjectCountPerPipeline = (16);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIEWPORT_BOUNDS_MAX")]
+		public const int D3D12ViewportBoundsMax = (32767);
+
+		[NativeName(NativeNameType.Const, "D3D12_VIEWPORT_BOUNDS_MIN")]
+		public const int D3D12ViewportBoundsMin = (-32768);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_INPUT_REGISTER_COMPONENTS")]
+		public const int D3D12VsInputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_INPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12VsInputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_INPUT_REGISTER_COUNT")]
+		public const int D3D12VsInputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_INPUT_REGISTER_READS_PER_INST")]
+		public const int D3D12VsInputRegisterReadsPerInst = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_INPUT_REGISTER_READ_PORTS")]
+		public const int D3D12VsInputRegisterReadPorts = (1);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_OUTPUT_REGISTER_COMPONENTS")]
+		public const int D3D12VsOutputRegisterComponents = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_OUTPUT_REGISTER_COMPONENT_BIT_COUNT")]
+		public const int D3D12VsOutputRegisterComponentBitCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_VS_OUTPUT_REGISTER_COUNT")]
+		public const int D3D12VsOutputRegisterCount = (32);
+
+		[NativeName(NativeNameType.Const, "D3D12_WHQL_CONTEXT_COUNT_FOR_RESOURCE_LIMIT")]
+		public const int D3D12WhqlContextCountForResourceLimit = (10);
+
+		[NativeName(NativeNameType.Const, "D3D12_WHQL_DRAWINDEXED_INDEX_COUNT_2_TO_EXP")]
+		public const int D3D12WhqlDrawindexedIndexCount2ToExp = (25);
+
+		[NativeName(NativeNameType.Const, "D3D12_WHQL_DRAW_VERTEX_COUNT_2_TO_EXP")]
+		public const int D3D12WhqlDrawVertexCount2ToExp = (25);
 
 		[NativeName(NativeNameType.Const, "D3D12_SHADER_COMPONENT_MAPPING_MASK")]
-		public const uint D3D12ShaderComponentMappingMask = 0x7;
+		public const int D3D12ShaderComponentMappingMask = 0x7;
 
 		[NativeName(NativeNameType.Const, "D3D12_SHADER_COMPONENT_MAPPING_SHIFT")]
-		public const uint D3D12ShaderComponentMappingShift = 3;
+		public const int D3D12ShaderComponentMappingShift = 3;
+
+		[NativeName(NativeNameType.Const, "D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES")]
+		public const string D3D12ShaderComponentMappingAlwaysSetBitAvoidingZeromemMistakes = (1<<(D3D12_SHADER_COMPONENT_MAPPING_SHIFT*4));
+
+		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING")]
+		public const string D3D12DefaultShader4ComponentMapping = D3D12_ENCODE_SHADER_4_COMPONENT_MAPPING(0,1,2,3);
+
+		[NativeName(NativeNameType.Const, "D3D12_FILTER_REDUCTION_TYPE_MASK")]
+		public const int D3D12FilterReductionTypeMask = (0x3);
+
+		[NativeName(NativeNameType.Const, "D3D12_FILTER_REDUCTION_TYPE_SHIFT")]
+		public const int D3D12FilterReductionTypeShift = (7);
+
+		[NativeName(NativeNameType.Const, "D3D12_FILTER_TYPE_MASK")]
+		public const int D3D12FilterTypeMask = (0x3);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIN_FILTER_SHIFT")]
+		public const int D3D12MinFilterShift = (4);
+
+		[NativeName(NativeNameType.Const, "D3D12_MAG_FILTER_SHIFT")]
+		public const int D3D12MagFilterShift = (2);
+
+		[NativeName(NativeNameType.Const, "D3D12_MIP_FILTER_SHIFT")]
+		public const int D3D12MipFilterShift = (0);
+
+		[NativeName(NativeNameType.Const, "D3D12_ANISOTROPIC_FILTERING_BIT")]
+		public const int D3D12AnisotropicFilteringBit = (0x40);
 
 		[NativeName(NativeNameType.Const, "D3D12_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT")]
-		public const uint D3D12InfoQueueDefaultMessageCountLimit = 1024;
+		public const int D3D12InfoQueueDefaultMessageCountLimit = 1024;
 
 		[NativeName(NativeNameType.Const, "D3D12_SHADING_RATE_X_AXIS_SHIFT")]
-		public const uint D3D12ShadingRateXAxisShift = 2;
+		public const int D3D12ShadingRateXAxisShift = 2;
 
 		[NativeName(NativeNameType.Const, "D3D12_SHADING_RATE_VALID_MASK")]
-		public const uint D3D12ShadingRateValidMask = 3;
+		public const int D3D12ShadingRateValidMask = 3;
+
+		[NativeName(NativeNameType.Const, "D3D_RETURN_PARAMETER_INDEX")]
+		public const int D3DReturnParameterIndex = (-1);
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_DOUBLES")]
-		public const uint D3DShaderRequiresDoubles = 0x00000001;
+		public const int D3DShaderRequiresDoubles = 0x00000001;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_EARLY_DEPTH_STENCIL")]
-		public const uint D3DShaderRequiresEarlyDepthStencil = 0x00000002;
+		public const int D3DShaderRequiresEarlyDepthStencil = 0x00000002;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_UAVS_AT_EVERY_STAGE")]
-		public const uint D3DShaderRequiresUavsAtEveryStage = 0x00000004;
+		public const int D3DShaderRequiresUavsAtEveryStage = 0x00000004;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_64_UAVS")]
-		public const uint D3DShaderRequires64Uavs = 0x00000008;
+		public const int D3DShaderRequires64Uavs = 0x00000008;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_MINIMUM_PRECISION")]
-		public const uint D3DShaderRequiresMinimumPrecision = 0x00000010;
+		public const int D3DShaderRequiresMinimumPrecision = 0x00000010;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_11_1_DOUBLE_EXTENSIONS")]
-		public const uint D3DShaderRequires111DoubleExtensions = 0x00000020;
+		public const int D3DShaderRequires111DoubleExtensions = 0x00000020;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_11_1_SHADER_EXTENSIONS")]
-		public const uint D3DShaderRequires111ShaderExtensions = 0x00000040;
+		public const int D3DShaderRequires111ShaderExtensions = 0x00000040;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_LEVEL_9_COMPARISON_FILTERING")]
-		public const uint D3DShaderRequiresLevel9ComparisonFiltering = 0x00000080;
+		public const int D3DShaderRequiresLevel9ComparisonFiltering = 0x00000080;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_TILED_RESOURCES")]
-		public const uint D3DShaderRequiresTiledResources = 0x00000100;
+		public const int D3DShaderRequiresTiledResources = 0x00000100;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_STENCIL_REF")]
-		public const uint D3DShaderRequiresStencilRef = 0x00000200;
+		public const int D3DShaderRequiresStencilRef = 0x00000200;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_INNER_COVERAGE")]
-		public const uint D3DShaderRequiresInnerCoverage = 0x00000400;
+		public const int D3DShaderRequiresInnerCoverage = 0x00000400;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_TYPED_UAV_LOAD_ADDITIONAL_FORMATS")]
-		public const uint D3DShaderRequiresTypedUavLoadAdditionalFormats = 0x00000800;
+		public const int D3DShaderRequiresTypedUavLoadAdditionalFormats = 0x00000800;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_ROVS")]
-		public const uint D3DShaderRequiresRovs = 0x00001000;
+		public const int D3DShaderRequiresRovs = 0x00001000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_VIEWPORT_AND_RT_ARRAY_INDEX_FROM_ANY_SHADER_FEEDING_RASTERIZER")]
-		public const uint D3DShaderRequiresViewportAndRtArrayIndexFromAnyShaderFeedingRasterizer = 0x00002000;
+		public const int D3DShaderRequiresViewportAndRtArrayIndexFromAnyShaderFeedingRasterizer = 0x00002000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_WAVE_OPS")]
-		public const uint D3DShaderRequiresWaveOps = 0x00004000;
+		public const int D3DShaderRequiresWaveOps = 0x00004000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_INT64_OPS")]
-		public const uint D3DShaderRequiresInt64Ops = 0x00008000;
+		public const int D3DShaderRequiresInt64Ops = 0x00008000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_VIEW_ID")]
-		public const uint D3DShaderRequiresViewId = 0x00010000;
+		public const int D3DShaderRequiresViewId = 0x00010000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_BARYCENTRICS")]
-		public const uint D3DShaderRequiresBarycentrics = 0x00020000;
+		public const int D3DShaderRequiresBarycentrics = 0x00020000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_NATIVE_16BIT_OPS")]
-		public const uint D3DShaderRequiresNative16BitOps = 0x00040000;
+		public const int D3DShaderRequiresNative16BitOps = 0x00040000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_SHADING_RATE")]
-		public const uint D3DShaderRequiresShadingRate = 0x00080000;
+		public const int D3DShaderRequiresShadingRate = 0x00080000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_RAYTRACING_TIER_1_1")]
-		public const uint D3DShaderRequiresRaytracingTier11 = 0x00100000;
+		public const int D3DShaderRequiresRaytracingTier11 = 0x00100000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_SAMPLER_FEEDBACK")]
-		public const uint D3DShaderRequiresSamplerFeedback = 0x00200000;
+		public const int D3DShaderRequiresSamplerFeedback = 0x00200000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_ATOMIC_INT64_ON_TYPED_RESOURCE")]
-		public const uint D3DShaderRequiresAtomicInt64OnTypedResource = 0x00400000;
+		public const int D3DShaderRequiresAtomicInt64OnTypedResource = 0x00400000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_ATOMIC_INT64_ON_GROUP_SHARED")]
-		public const uint D3DShaderRequiresAtomicInt64OnGroupShared = 0x00800000;
+		public const int D3DShaderRequiresAtomicInt64OnGroupShared = 0x00800000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_DERIVATIVES_IN_MESH_AND_AMPLIFICATION_SHADERS")]
-		public const uint D3DShaderRequiresDerivativesInMeshAndAmplificationShaders = 0x01000000;
+		public const int D3DShaderRequiresDerivativesInMeshAndAmplificationShaders = 0x01000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_RESOURCE_DESCRIPTOR_HEAP_INDEXING")]
-		public const uint D3DShaderRequiresResourceDescriptorHeapIndexing = 0x02000000;
+		public const int D3DShaderRequiresResourceDescriptorHeapIndexing = 0x02000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_SAMPLER_DESCRIPTOR_HEAP_INDEXING")]
-		public const uint D3DShaderRequiresSamplerDescriptorHeapIndexing = 0x04000000;
+		public const int D3DShaderRequiresSamplerDescriptorHeapIndexing = 0x04000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_WAVE_MMA")]
-		public const uint D3DShaderRequiresWaveMma = 0x08000000;
+		public const int D3DShaderRequiresWaveMma = 0x08000000;
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_ATOMIC_INT64_ON_DESCRIPTOR_HEAP_RESOURCE")]
-		public const uint D3DShaderRequiresAtomicInt64OnDescriptorHeapResource = 0x10000000;
+		public const int D3DShaderRequiresAtomicInt64OnDescriptorHeapResource = 0x10000000;
+
+		[NativeName(NativeNameType.Const, "INTERFACE")]
+		public const string Interface = ID3D12ShaderReflectionType;
 
 	}
 }

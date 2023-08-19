@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     public class CsFunctionVariation : ICsFunction
     {
@@ -118,6 +119,23 @@
                     return true;
             }
             return false;
+        }
+
+        public CsParameterInfo? GetParameter(string name)
+        {
+            for (int i = 0; i < Parameters.Count; i++)
+            {
+                var p = Parameters[i];
+                if (p.Name == name)
+                    return p;
+            }
+            return null;
+        }
+
+        public bool TryGetParameter(string name, [NotNullWhen(true)] out CsParameterInfo? parameter)
+        {
+            parameter = GetParameter(name);
+            return parameter != null;
         }
     }
 }

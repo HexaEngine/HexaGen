@@ -4,7 +4,7 @@ namespace HexaGen.Tests
     using HexaGen.Core.Mapping;
     using Test;
 
-    public class Tests
+    public class GeneratorTests
     {
         [SetUp]
         public void Setup()

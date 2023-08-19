@@ -18,7 +18,7 @@
 
         protected virtual List<string> SetupTypeUsings()
         {
-            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            List<string> usings = new() { "System", "System.diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
             usings.AddRange(settings.Usings);
             return usings;
         }
@@ -248,7 +248,7 @@
 
                 if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
                 {
-                    WriteMemberFunctions(context, cppClass, functions, true, false);
+                    WriteMemberFunctions(context, cppClass, functions, WriteFunctionFlags.UseThis);
                 }
             }
 
@@ -631,7 +631,7 @@
 
                     if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
                     {
-                        WriteMemberFunctions(context, cppClass, functions, false, true);
+                        WriteMemberFunctions(context, cppClass, functions, WriteFunctionFlags.UseHandle);
                     }
                 }
                 else
@@ -645,7 +645,7 @@
             writer.WriteLine();
         }
 
-        private void WriteMemberFunctions(GenContext context, CppClass cppClass, List<string> functions, bool useThisWrite, bool useHandleWrite)
+        private void WriteMemberFunctions(GenContext context, CppClass cppClass, List<string> functions, WriteFunctionFlags flags)
         {
             HashSet<string> definedFunctions = new();
             List<CsFunction> commands = new();
@@ -671,11 +671,11 @@
 
                 if (useThis || useThisRef)
                 {
-                    WriteFunctions(context, definedFunctions, function, overload, useThisWrite, useHandleWrite, "public unsafe");
+                    WriteFunctions(context, definedFunctions, function, overload, flags, "public unsafe");
                 }
             }
 
-            if (useThisWrite)
+            if (flags == WriteFunctionFlags.UseThis)
             {
                 if (MemberFunctions.TryGetValue(cppClass.Name, out var funcs))
                 {
