@@ -3,8 +3,6 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Text;
 
     public partial class CsCodeGenerator : BaseGenerator
     {

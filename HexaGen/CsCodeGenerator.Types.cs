@@ -7,7 +7,6 @@
     using System.IO;
     using System.Linq;
     using System.Text;
-    using System.Xml.Linq;
 
     public partial class CsCodeGenerator
     {
@@ -18,7 +17,7 @@
 
         protected virtual List<string> SetupTypeUsings()
         {
-            List<string> usings = new() { "System", "System.diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
             usings.AddRange(settings.Usings);
             return usings;
         }

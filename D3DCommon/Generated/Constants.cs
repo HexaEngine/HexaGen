@@ -168,12 +168,6 @@ namespace HexaEngine.D3DCommon
 		[NativeName(NativeNameType.Const, "D3D_SHADER_FEATURE_ATOMIC_INT64_ON_DESCRIPTOR_HEAP_RESOURCE")]
 		public const int D3DShaderFeatureAtomicInt64OnDescriptorHeapResource = 0x10000000;
 
-		[NativeName(NativeNameType.Const, "IID_ID3DBlob")]
-		public const string IIDID3DBlob = IID_ID3D10Blob;
-
-		[NativeName(NativeNameType.Const, "INTERFACE")]
-		public const string Interface = ID3DInclude;
-
 		[NativeName(NativeNameType.Const, "D3D_COMPONENT_MASK_X")]
 		public const int D3DComponentMaskX = 1;
 

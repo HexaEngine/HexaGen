@@ -2,8 +2,25 @@
 {
     using CppAst;
 
-    public class CsType
+    public class CsType : ICloneable<CsType>
     {
+        public CsType(string name, string cleanName, bool isPointer, bool isOut, bool isRef, bool isString, bool isPrimitive, bool isVoid, bool isBool, bool isArray, bool isEnum, CsStringType stringType, CsPrimitiveType primitiveType)
+        {
+            Name = name;
+            CleanName = cleanName;
+            IsPointer = isPointer;
+            IsOut = isOut;
+            IsRef = isRef;
+            IsString = isString;
+            IsPrimitive = isPrimitive;
+            IsVoid = isVoid;
+            IsBool = isBool;
+            IsArray = isArray;
+            IsEnum = isEnum;
+            StringType = stringType;
+            PrimitiveType = primitiveType;
+        }
+
         public CsType(string name, bool isPointer, bool isRef, bool isString, bool isPrimitive, bool isVoid, bool isArray, CsPrimitiveType primitiveType)
         {
             Name = name;
@@ -169,6 +186,11 @@
         public override string ToString()
         {
             return Name;
+        }
+
+        public CsType Clone()
+        {
+            return new CsType(Name, CleanName, IsPointer, IsOut, IsRef, IsString, IsPrimitive, IsVoid, IsBool, IsArray, IsEnum, StringType, PrimitiveType);
         }
     }
 }

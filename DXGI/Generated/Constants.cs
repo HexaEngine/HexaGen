@@ -146,15 +146,6 @@ namespace HexaEngine.DXGI
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_ALLOW_TEARING")]
 		public const uint DxgiPresentAllowTearing = 0x00000200UL;
 
-		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_WINDOW_CHANGES")]
-		public const string DxgiMwaNoWindowChanges = (1<<0);
-
-		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_ALT_ENTER")]
-		public const string DxgiMwaNoAltEnter = (1<<1);
-
-		[NativeName(NativeNameType.Const, "DXGI_MWA_NO_PRINT_SCREEN")]
-		public const string DxgiMwaNoPrintScreen = (1<<2);
-
 		[NativeName(NativeNameType.Const, "DXGI_MWA_VALID")]
 		public const int DxgiMwaValid = (0x7);
 

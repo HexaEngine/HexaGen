@@ -1,10 +1,10 @@
 ﻿namespace HexaGen.Core.CSharp
 {
-    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Text;
 
-    public class CsFunctionVariation : ICsFunction
+    public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>
     {
         public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters, List<string> modifiers, List<string> attributes)
         {
@@ -63,7 +63,7 @@
 
         public string BuildSignatureIdentifier()
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)}) {BuildGenericConstraint()}";
+            return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
         }
 
         public string BuildSignatureIdentifierForCOM()
@@ -88,12 +88,45 @@
 
         public string BuildSignature(bool useAttributes = true, bool useNames = true)
         {
-            return string.Join(", ", Parameters.Select(x => $"{(useAttributes ? string.Join(" ", x.Attributes) : string.Empty)} {x.Type} {(useNames ? x.Name : string.Empty)}"));
+            StringBuilder sb = new();
+            bool isFirst = true;
+            for (int i = 0; i < Parameters.Count; i++)
+            {
+                var param = Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                sb.Append($"{(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                isFirst = false;
+            }
+
+            return sb.ToString();
         }
 
         public string BuildExtensionSignatureForCOM(string comObject, bool useAttributes = true, bool useNames = true)
         {
-            return string.Join(", ", Parameters.Select(x => $"{(useAttributes ? string.Join(" ", x.Attributes) : string.Empty)} {x.Type} {(useNames ? x.Name : string.Empty)}").Reverse().Append(useNames ? $"this ComPtr<{comObject}> comObj" : $"this ComPtr<{comObject}>").Reverse());
+            StringBuilder sb = new();
+            sb.Append(useNames ? $"this ComPtr<{comObject}> comObj" : $"this ComPtr<{comObject}>");
+            bool isFirst = false;
+            for (int i = 0; i < Parameters.Count; i++)
+            {
+                var param = Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                sb.Append($"{(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                isFirst = false;
+            }
+
+            return sb.ToString();
         }
 
         public string BuildGenericSignature()
@@ -115,7 +148,7 @@
         {
             for (int i = 0; i < Parameters.Count; i++)
             {
-                if (Parameters[i].Name == cppParameter.Name)
+                if (Parameters[i].Name == cppParameter.Name && Parameters[i].DefaultValue == cppParameter.DefaultValue)
                     return true;
             }
             return false;
@@ -136,6 +169,11 @@
         {
             parameter = GetParameter(name);
             return parameter != null;
+        }
+
+        public CsFunctionVariation Clone()
+        {
+            return new CsFunctionVariation(ExportedName, Name, StructName, IsMember, IsConstructor, IsDestructor, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
     }
 }

@@ -30,9 +30,6 @@ namespace HexaEngine.DXC
 		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const int Win64 = 1;
 
-		[NativeName(NativeNameType.Const, "DXC_API_IMPORT")]
-		public const string DxcApiImport = __declspec(dllimport);
-
 		[NativeName(NativeNameType.Const, "DXC_CP_UTF8")]
 		public const int DxcCpUtf8 = 65001;
 
@@ -44,36 +41,6 @@ namespace HexaEngine.DXC
 
 		[NativeName(NativeNameType.Const, "DXC_HASHFLAG_INCLUDES_SOURCE")]
 		public const int DxcHashflagIncludesSource = 1;
-
-		[NativeName(NativeNameType.Const, "DXC_PART_PDB")]
-		public const string DxcPartPdb = DXC_FOURCC('I','L','D','B');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_PDB_NAME")]
-		public const string DxcPartPdbName = DXC_FOURCC('I','L','D','N');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_PRIVATE_DATA")]
-		public const string DxcPartPrivateData = DXC_FOURCC('P','R','I','V');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_ROOT_SIGNATURE")]
-		public const string DxcPartRootSignature = DXC_FOURCC('R','T','S','0');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_DXIL")]
-		public const string DxcPartDxil = DXC_FOURCC('D','X','I','L');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_REFLECTION_DATA")]
-		public const string DxcPartReflectionData = DXC_FOURCC('S','T','A','T');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_SHADER_HASH")]
-		public const string DxcPartShaderHash = DXC_FOURCC('H','A','S','H');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_INPUT_SIGNATURE")]
-		public const string DxcPartInputSignature = DXC_FOURCC('I','S','G','1');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_OUTPUT_SIGNATURE")]
-		public const string DxcPartOutputSignature = DXC_FOURCC('O','S','G','1');
-
-		[NativeName(NativeNameType.Const, "DXC_PART_PATCH_CONSTANT_SIGNATURE")]
-		public const string DxcPartPatchConstantSignature = DXC_FOURCC('P','S','G','1');
 
 		[NativeName(NativeNameType.Const, "DXC_ARG_DEBUG")]
 		public const string DxcArgDebug = "-Zi";
@@ -137,9 +104,6 @@ namespace HexaEngine.DXC
 
 		[NativeName(NativeNameType.Const, "DXC_EXTRA_OUTPUT_NAME_STDERR")]
 		public const string DxcExtraOutputNameStderr = "*stderr*";
-
-		[NativeName(NativeNameType.Const, "CLSID_SCOPE")]
-		public const string ClsidScope = __declspec(selectany)extern;
 
 	}
 }

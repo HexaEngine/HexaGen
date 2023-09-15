@@ -11236,7 +11236,7 @@ namespace HexaEngine.DXC
 			IDxcResult* handle = comObj.Handle;
 			fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[7]))(handle, dxcOutKind, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)pppOutputName);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[7]))(handle, dxcOutKind, iid, ppvObject, (IDxcBlobUtf16**)pppOutputName);
 				return ret;
 			}
 		}
@@ -11257,7 +11257,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcResult* handle = comObj.Handle;
 			ppOutputName = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[7]))(handle, dxcOutKind, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcResult*, DxcOutKind, Guid*, void**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[7]))(handle, dxcOutKind, iid, ppvObject, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
 			return ret;
 		}
 
@@ -11483,7 +11483,7 @@ namespace HexaEngine.DXC
 			IDxcExtraOutputs* handle = comObj.Handle;
 			fixed (IDxcBlobUtf16** pppOutputType = &ppOutputType)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
 				return ret;
 			}
 		}
@@ -11507,7 +11507,7 @@ namespace HexaEngine.DXC
 			IDxcExtraOutputs* handle = comObj.Handle;
 			fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, ppOutputName);
 				return ret;
 			}
 		}
@@ -11594,7 +11594,7 @@ namespace HexaEngine.DXC
 			IDxcExtraOutputs* handle = comObj.Handle;
 			fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, ppOutputType, (IDxcBlobUtf16**)pppOutputName);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, ppOutputType, (IDxcBlobUtf16**)pppOutputName);
 				return ret;
 			}
 		}
@@ -11615,7 +11615,7 @@ namespace HexaEngine.DXC
 		{
 			IDxcExtraOutputs* handle = comObj.Handle;
 			ppOutputName = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, ppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, ppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
 			return ret;
 		}
 
@@ -11700,7 +11700,7 @@ namespace HexaEngine.DXC
 			{
 				fixed (IDxcBlobUtf16** pppOutputName = &ppOutputName)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)pppOutputName);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)pppOutputName);
 					return ret;
 				}
 			}
@@ -11727,7 +11727,7 @@ namespace HexaEngine.DXC
 			fixed (ComPtr<IDxcBlobUtf16>* pppOutputType = &ppOutputType)
 			{
 				ppOutputName = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, (Guid*)(ComUtils.GuidPtrOf<T>()), ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDxcExtraOutputs*, uint, Guid*, void**, IDxcBlobUtf16**, IDxcBlobUtf16**, HResult>)(handle->LpVtbl[4]))(handle, uIndex, iid, ppvObject, (IDxcBlobUtf16**)pppOutputType, (IDxcBlobUtf16**)ppOutputName.GetAddressOf());
 				return ret;
 			}
 		}

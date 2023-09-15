@@ -1307,12 +1307,6 @@ namespace HexaEngine.D3D12
 		[NativeName(NativeNameType.Const, "D3D12_SHADER_COMPONENT_MAPPING_SHIFT")]
 		public const int D3D12ShaderComponentMappingShift = 3;
 
-		[NativeName(NativeNameType.Const, "D3D12_SHADER_COMPONENT_MAPPING_ALWAYS_SET_BIT_AVOIDING_ZEROMEM_MISTAKES")]
-		public const string D3D12ShaderComponentMappingAlwaysSetBitAvoidingZeromemMistakes = (1<<(D3D12_SHADER_COMPONENT_MAPPING_SHIFT*4));
-
-		[NativeName(NativeNameType.Const, "D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING")]
-		public const string D3D12DefaultShader4ComponentMapping = D3D12_ENCODE_SHADER_4_COMPONENT_MAPPING(0,1,2,3);
-
 		[NativeName(NativeNameType.Const, "D3D12_FILTER_REDUCTION_TYPE_MASK")]
 		public const int D3D12FilterReductionTypeMask = (0x3);
 
@@ -1432,9 +1426,6 @@ namespace HexaEngine.D3D12
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_ATOMIC_INT64_ON_DESCRIPTOR_HEAP_RESOURCE")]
 		public const int D3DShaderRequiresAtomicInt64OnDescriptorHeapResource = 0x10000000;
-
-		[NativeName(NativeNameType.Const, "INTERFACE")]
-		public const string Interface = ID3D12ShaderReflectionType;
 
 	}
 }

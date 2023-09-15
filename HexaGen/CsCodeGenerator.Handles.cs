@@ -11,7 +11,7 @@
 
         protected virtual List<string> SetupHandleUsings()
         {
-            List<string> usings = new() { "System", "System.diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
+            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
             usings.AddRange(settings.Usings);
             return usings;
         }

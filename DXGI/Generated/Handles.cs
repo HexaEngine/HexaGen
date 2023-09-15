@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using System.diagnostics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaEngine.D3DCommon;

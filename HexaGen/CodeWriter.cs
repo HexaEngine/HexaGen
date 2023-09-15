@@ -2,18 +2,30 @@
 {
     public sealed class CodeWriter : IDisposable
     {
-        private bool _shouldIndent = true;
         private readonly string[] _indentStrings;
-        private string _indentString = "";
-        private readonly StreamWriter _writer;
+        private readonly string @namespace;
+        private readonly IEnumerable<string> usings;
 
-        public int IndentLevel { get; private set; }
+        private StreamWriter _writer;
+
+        private int lines;
+        private int blocks = 0;
+        private int indentLevel;
+
+
+        private string _indentString = "";
+        private bool _shouldIndent = true;
+
+        public int IndentLevel { get => indentLevel; }
 
         public string FileName { get; }
 
-        public CodeWriter(string fileName, string @namespace, IEnumerable<string> namespaces)
+
+        public CodeWriter(string fileName, string @namespace, IEnumerable<string> usings)
         {
             FileName = fileName;
+            this.@namespace = @namespace;
+            this.usings = usings;
             _indentStrings = new string[10];
             for (int i = 0; i < _indentStrings.Length; i++)
             {
@@ -31,18 +43,23 @@
             _writer.WriteLine("// ------------------------------------------------------------------------------");
             _writer.WriteLine();
 
-            foreach (string ns in namespaces)
+            foreach (string ns in usings)
             {
                 _writer.WriteLine($"using {ns};");
             }
 
-            if (namespaces.Any())
+            if (usings.Any())
             {
                 _writer.WriteLine();
             }
 
             BeginBlock($"namespace {@namespace}");
         }
+
+
+        public long Length => _writer.BaseStream.Length;
+
+        public int Lines => lines;
 
         public void Dispose()
         {
@@ -71,6 +88,7 @@
             WriteIndented(@string);
             _writer.WriteLine();
             _shouldIndent = true;
+            lines++;
         }
 
         public void WriteLines(string? @string, bool newLineAtEnd = false)
@@ -85,6 +103,7 @@
                 {
                     WriteIndented(lines[i]);
                     _shouldIndent = true;
+                    this.lines++;
                 }
             }
             _shouldIndent = true;
@@ -103,10 +122,14 @@
             WriteLine(content);
             WriteLine("{");
             Indent(1);
+            blocks++;
         }
 
         public void EndBlock()
         {
+            if (blocks <= 0)
+                return;
+            blocks--;
             Dedent(1);
             WriteLine("}");
         }
@@ -115,7 +138,7 @@
 
         public void Indent(int count = 1)
         {
-            IndentLevel += count;
+            indentLevel += count;
 
             if (IndentLevel < _indentStrings.Length)
             {
@@ -129,17 +152,17 @@
 
         public void Dedent(int count = 1)
         {
-            if (count > IndentLevel)
+            if (count > indentLevel)
                 throw new ArgumentException("count out of range.", nameof(count));
 
-            IndentLevel -= count;
-            if (IndentLevel < _indentStrings.Length)
+            indentLevel -= count;
+            if (indentLevel < _indentStrings.Length)
             {
-                _indentString = _indentStrings[IndentLevel];
+                _indentString = _indentStrings[indentLevel];
             }
             else
             {
-                _indentString = new string('\t', IndentLevel);
+                _indentString = new string('\t', indentLevel);
             }
         }
 
@@ -165,7 +188,7 @@
             _writer.Write(@string);
         }
 
-        private class CodeBlock : IDisposable
+        public readonly struct CodeBlock : IDisposable
         {
             private readonly CodeWriter _writer;
 

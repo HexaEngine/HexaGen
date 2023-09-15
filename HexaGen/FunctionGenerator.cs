@@ -383,7 +383,7 @@
             {
                 var param = variation.Parameters[i];
 
-                if (!function.DefaultValues.TryGetValue(param.Name, out _))
+                if (!function.DefaultValues.TryGetValue(param.Name, out var defaultValue))
                 {
                     continue;
                 }
@@ -392,9 +392,17 @@
                 defaultVariation.GenericParameters.AddRange(variation.GenericParameters);
                 for (int j = 0; j < variation.Parameters.Count; j++)
                 {
-                    var iationParameter = variation.Parameters[j];
-                    if (param != iationParameter)
-                        defaultVariation.Parameters.Add(iationParameter);
+                    var variationParameter = variation.Parameters[j];
+                    if (param != variationParameter)
+                    {
+                        defaultVariation.Parameters.Add(variationParameter);
+                    }
+                    else
+                    {
+                        var cloned = variationParameter.Clone();
+                        cloned.DefaultValue = defaultValue;
+                        defaultVariation.Parameters.Add(cloned);
+                    }
                 }
 
                 if (function.HasVariation(defaultVariation))

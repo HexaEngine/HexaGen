@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using System.diagnostics;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
@@ -231,4 +231,6617 @@ namespace HexaEngine.SDL2
 
 		public bool IsNull => Handle == null;
 
-		public static SDLCondPtr Nul
+		public static SDLCondPtr Null => new SDLCondPtr(null);
+
+		public static implicit operator SDLCondPtr(SDLCond* handle) => new SDLCondPtr(handle);
+
+		public static implicit operator SDLCond*(SDLCondPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLCondPtr left, SDLCondPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLCondPtr left, SDLCondPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLCondPtr left, SDLCond* right) => left.Handle == right;
+
+		public static bool operator !=(SDLCondPtr left, SDLCond* right) => left.Handle != right;
+
+		public bool Equals(SDLCondPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLCondPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLCondPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// The SDL thread structure, defined in SDL_thread.c <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Thread")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLThread
+	{
+
+
+	}
+
+	/// <summary>
+	/// The SDL thread structure, defined in SDL_thread.c <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Thread")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLThreadPtr : IEquatable<SDLThreadPtr>
+	{
+		public SDLThreadPtr(SDLThread* handle) { Handle = handle; }
+
+		public SDLThread* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLThreadPtr Null => new SDLThreadPtr(null);
+
+		public static implicit operator SDLThreadPtr(SDLThread* handle) => new SDLThreadPtr(handle);
+
+		public static implicit operator SDLThread*(SDLThreadPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLThreadPtr left, SDLThreadPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLThreadPtr left, SDLThreadPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLThreadPtr left, SDLThread* right) => left.Handle == right;
+
+		public static bool operator !=(SDLThreadPtr left, SDLThread* right) => left.Handle != right;
+
+		public bool Equals(SDLThreadPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLThreadPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLThreadPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// This is the read/write operation structure -- very basic.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_RWops")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLRWops
+	{
+		[NativeName(NativeNameType.StructOrClass, "")]
+		[StructLayout(LayoutKind.Explicit)]
+		public partial struct HiddenUnion
+		{
+			[NativeName(NativeNameType.StructOrClass, "")]
+			[StructLayout(LayoutKind.Sequential)]
+			public partial struct WindowsioUnion
+			{
+				[NativeName(NativeNameType.StructOrClass, "")]
+				[StructLayout(LayoutKind.Sequential)]
+				public partial struct BufferUnion
+				{
+					[NativeName(NativeNameType.Field, "data")]
+					[NativeName(NativeNameType.Type, "void*")]
+					public unsafe void* Data;
+					[NativeName(NativeNameType.Field, "size")]
+					[NativeName(NativeNameType.Type, "size_t")]
+					public nuint Size;
+					[NativeName(NativeNameType.Field, "left")]
+					[NativeName(NativeNameType.Type, "size_t")]
+					public nuint Left;
+
+
+				}
+
+				[NativeName(NativeNameType.Field, "append")]
+				[NativeName(NativeNameType.Type, "SDL_bool")]
+				public SDLBool Append;
+				[NativeName(NativeNameType.Field, "h")]
+				[NativeName(NativeNameType.Type, "void*")]
+				public unsafe void* H;
+				[NativeName(NativeNameType.Field, "buffer")]
+				[NativeName(NativeNameType.Type, "")]
+				public BufferUnion Buffer;
+
+
+			}
+
+			[NativeName(NativeNameType.StructOrClass, "")]
+			[StructLayout(LayoutKind.Sequential)]
+			public partial struct MemUnion
+			{
+				[NativeName(NativeNameType.Field, "base")]
+				[NativeName(NativeNameType.Type, "Uint8*")]
+				public unsafe byte* Base;
+				[NativeName(NativeNameType.Field, "here")]
+				[NativeName(NativeNameType.Type, "Uint8*")]
+				public unsafe byte* Here;
+				[NativeName(NativeNameType.Field, "stop")]
+				[NativeName(NativeNameType.Type, "Uint8*")]
+				public unsafe byte* Stop;
+
+
+			}
+
+			[NativeName(NativeNameType.StructOrClass, "")]
+			[StructLayout(LayoutKind.Sequential)]
+			public partial struct UnknownUnion
+			{
+				[NativeName(NativeNameType.Field, "data1")]
+				[NativeName(NativeNameType.Type, "void*")]
+				public unsafe void* Data1;
+				[NativeName(NativeNameType.Field, "data2")]
+				[NativeName(NativeNameType.Type, "void*")]
+				public unsafe void* Data2;
+
+
+			}
+
+			[NativeName(NativeNameType.Field, "windowsio")]
+			[NativeName(NativeNameType.Type, "")]
+			[FieldOffset(0)]
+			public WindowsioUnion Windowsio;
+			[NativeName(NativeNameType.Field, "mem")]
+			[NativeName(NativeNameType.Type, "")]
+			[FieldOffset(0)]
+			public MemUnion Mem;
+			[NativeName(NativeNameType.Field, "unknown")]
+			[NativeName(NativeNameType.Type, "")]
+			[FieldOffset(0)]
+			public UnknownUnion Unknown;
+
+
+		}
+
+		/// <summary>
+		/// Return the size of the file in this rwops, or -1 if unknown<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "size")]
+		[NativeName(NativeNameType.Type, "Sint64 (*)(SDL_RWops* context)*")]
+		public unsafe void* Size;
+
+		/// <summary>
+		/// Seek to <br/>
+		/// relative to <br/>
+		/// one of stdio's whence values:<br/>
+		/// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "seek")]
+		[NativeName(NativeNameType.Type, "Sint64 (*)(SDL_RWops* context, Sint64 offset, int whence)*")]
+		public unsafe void* Seek;
+
+		/// <summary>
+		/// Read up to <br/>
+		/// objects each of size <br/>
+		/// from the data<br/>
+		/// stream to the area pointed at by <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "read")]
+		[NativeName(NativeNameType.Type, "size_t (*)(SDL_RWops* context, void* ptr, size_t size, size_t maxnum)*")]
+		public unsafe void* Read;
+
+		/// <summary>
+		/// Write exactly <br/>
+		/// objects each of size <br/>
+		/// from the area<br/>
+		/// pointed at by <br/>
+		/// to data stream.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "write")]
+		[NativeName(NativeNameType.Type, "size_t (*)(SDL_RWops* context, const void* ptr, size_t size, size_t num)*")]
+		public unsafe void* Write;
+
+		/// <summary>
+		/// Close and free an allocated SDL_RWops structure.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "close")]
+		[NativeName(NativeNameType.Type, "int (*)(SDL_RWops* context)*")]
+		public unsafe void* Close;
+
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+		[NativeName(NativeNameType.Field, "hidden")]
+		[NativeName(NativeNameType.Type, "")]
+		public HiddenUnion Union;
+
+
+	}
+
+	/// <summary>
+	/// This is the read/write operation structure -- very basic.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_RWops")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLRWopsPtr : IEquatable<SDLRWopsPtr>
+	{
+		public SDLRWopsPtr(SDLRWops* handle) { Handle = handle; }
+
+		public SDLRWops* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLRWopsPtr Null => new SDLRWopsPtr(null);
+
+		public static implicit operator SDLRWopsPtr(SDLRWops* handle) => new SDLRWopsPtr(handle);
+
+		public static implicit operator SDLRWops*(SDLRWopsPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLRWopsPtr left, SDLRWopsPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLRWopsPtr left, SDLRWopsPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLRWopsPtr left, SDLRWops* right) => left.Handle == right;
+
+		public static bool operator !=(SDLRWopsPtr left, SDLRWops* right) => left.Handle != right;
+
+		public bool Equals(SDLRWopsPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLRWopsPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLRWopsPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Return the size of the file in this rwops, or -1 if unknown<br/>
+		/// </summary>
+		public void* Size { get => Handle->Size; set => Handle->Size = value; }
+		/// <summary>
+		/// Seek to <br/>
+		/// relative to <br/>
+		/// one of stdio's whence values:<br/>
+		/// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END<br/>
+		/// <br/>
+		/// </summary>
+		public void* Seek { get => Handle->Seek; set => Handle->Seek = value; }
+		/// <summary>
+		/// Read up to <br/>
+		/// objects each of size <br/>
+		/// from the data<br/>
+		/// stream to the area pointed at by <br/>
+		/// <br/>
+		/// </summary>
+		public void* Read { get => Handle->Read; set => Handle->Read = value; }
+		/// <summary>
+		/// Write exactly <br/>
+		/// objects each of size <br/>
+		/// from the area<br/>
+		/// pointed at by <br/>
+		/// to data stream.<br/>
+		/// <br/>
+		/// </summary>
+		public void* Write { get => Handle->Write; set => Handle->Write = value; }
+		/// <summary>
+		/// Close and free an allocated SDL_RWops structure.<br/>
+		/// <br/>
+		/// </summary>
+		public void* Close { get => Handle->Close; set => Handle->Close = value; }
+		public ref uint Type => ref Unsafe.AsRef<uint>(&Handle->Type);
+		public ref SDLRWops.HiddenUnion Union => ref Unsafe.AsRef<SDLRWops.HiddenUnion>(&Handle->Union);
+	}
+
+	/// <summary>
+	/// The calculated values in this structure are calculated by SDL_OpenAudio().<br/>
+	/// For multi-channel audio, the default SDL channel mapping is:<br/>
+	/// 2:  FL  FR                          (stereo)<br/>
+	/// 3:  FL  FR LFE                      (2.1 surround)<br/>
+	/// 4:  FL  FR  BL  BR                  (quad)<br/>
+	/// 5:  FL  FR LFE  BL  BR              (4.1 surround)<br/>
+	/// 6:  FL  FR  FC LFE  SL  SR          (5.1 surround - last two can also be BL BR)<br/>
+	/// 7:  FL  FR  FC LFE  BC  SL  SR      (6.1 surround)<br/>
+	/// 8:  FL  FR  FC LFE  BL  BR  SL  SR  (7.1 surround)<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_AudioSpec")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLAudioSpec
+	{
+		/// <summary>
+		/// DSP frequency -- samples per second <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "freq")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Freq;
+
+		/// <summary>
+		/// Audio data format <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "SDL_AudioFormat")]
+		public ushort Format;
+
+		/// <summary>
+		/// Number of channels: 1 mono, 2 stereo <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "channels")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Channels;
+
+		/// <summary>
+		/// Audio buffer silence value (calculated) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "silence")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Silence;
+
+		/// <summary>
+		/// Audio buffer size in sample FRAMES (total samples divided by channel count) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "samples")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Samples;
+
+		/// <summary>
+		/// Necessary for some compile environments <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "padding")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Padding;
+
+		/// <summary>
+		/// Audio buffer size in bytes (calculated) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "size")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Size;
+
+		/// <summary>
+		/// Callback that feeds the audio device (NULL to use SDL_QueueAudio()). <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "callback")]
+		[NativeName(NativeNameType.Type, "SDL_AudioCallback")]
+		public unsafe void* Callback;
+		/// <summary>
+		/// Userdata passed to callback (ignored for NULL callbacks). <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "userdata")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Userdata;
+
+
+
+	}
+
+	/// <summary>
+	/// The calculated values in this structure are calculated by SDL_OpenAudio().<br/>
+	/// For multi-channel audio, the default SDL channel mapping is:<br/>
+	/// 2:  FL  FR                          (stereo)<br/>
+	/// 3:  FL  FR LFE                      (2.1 surround)<br/>
+	/// 4:  FL  FR  BL  BR                  (quad)<br/>
+	/// 5:  FL  FR LFE  BL  BR              (4.1 surround)<br/>
+	/// 6:  FL  FR  FC LFE  SL  SR          (5.1 surround - last two can also be BL BR)<br/>
+	/// 7:  FL  FR  FC LFE  BC  SL  SR      (6.1 surround)<br/>
+	/// 8:  FL  FR  FC LFE  BL  BR  SL  SR  (7.1 surround)<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_AudioSpec")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLAudioSpecPtr : IEquatable<SDLAudioSpecPtr>
+	{
+		public SDLAudioSpecPtr(SDLAudioSpec* handle) { Handle = handle; }
+
+		public SDLAudioSpec* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLAudioSpecPtr Null => new SDLAudioSpecPtr(null);
+
+		public static implicit operator SDLAudioSpecPtr(SDLAudioSpec* handle) => new SDLAudioSpecPtr(handle);
+
+		public static implicit operator SDLAudioSpec*(SDLAudioSpecPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLAudioSpecPtr left, SDLAudioSpecPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLAudioSpecPtr left, SDLAudioSpecPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLAudioSpecPtr left, SDLAudioSpec* right) => left.Handle == right;
+
+		public static bool operator !=(SDLAudioSpecPtr left, SDLAudioSpec* right) => left.Handle != right;
+
+		public bool Equals(SDLAudioSpecPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLAudioSpecPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLAudioSpecPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// DSP frequency -- samples per second <br/>
+		/// </summary>
+		public ref int Freq => ref Unsafe.AsRef<int>(&Handle->Freq);
+		/// <summary>
+		/// Audio data format <br/>
+		/// </summary>
+		public ref ushort Format => ref Unsafe.AsRef<ushort>(&Handle->Format);
+		/// <summary>
+		/// Number of channels: 1 mono, 2 stereo <br/>
+		/// </summary>
+		public ref byte Channels => ref Unsafe.AsRef<byte>(&Handle->Channels);
+		/// <summary>
+		/// Audio buffer silence value (calculated) <br/>
+		/// </summary>
+		public ref byte Silence => ref Unsafe.AsRef<byte>(&Handle->Silence);
+		/// <summary>
+		/// Audio buffer size in sample FRAMES (total samples divided by channel count) <br/>
+		/// </summary>
+		public ref ushort Samples => ref Unsafe.AsRef<ushort>(&Handle->Samples);
+		/// <summary>
+		/// Necessary for some compile environments <br/>
+		/// </summary>
+		public ref ushort Padding => ref Unsafe.AsRef<ushort>(&Handle->Padding);
+		/// <summary>
+		/// Audio buffer size in bytes (calculated) <br/>
+		/// </summary>
+		public ref uint Size => ref Unsafe.AsRef<uint>(&Handle->Size);
+		/// <summary>
+		/// Callback that feeds the audio device (NULL to use SDL_QueueAudio()). <br/>
+		/// </summary>
+		public void* Callback { get => Handle->Callback; set => Handle->Callback = value; }
+		/// <summary>
+		/// Userdata passed to callback (ignored for NULL callbacks). <br/>
+		/// </summary>
+		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_AudioCVT")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLAudioCV
+	{
+		/// <summary>
+		/// Set to 1 if conversion possible <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "needed")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Needed;
+
+		/// <summary>
+		/// Source audio format <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "src_format")]
+		[NativeName(NativeNameType.Type, "SDL_AudioFormat")]
+		public ushort SrcFormat;
+
+		/// <summary>
+		/// Target audio format <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "dst_format")]
+		[NativeName(NativeNameType.Type, "SDL_AudioFormat")]
+		public ushort DstFormat;
+
+		/// <summary>
+		/// Rate conversion increment <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "rate_incr")]
+		[NativeName(NativeNameType.Type, "double")]
+		public double RateIncr;
+
+		/// <summary>
+		/// Buffer to hold entire audio data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "buf")]
+		[NativeName(NativeNameType.Type, "Uint8*")]
+		public unsafe byte* Buf;
+
+		/// <summary>
+		/// Length of original audio buffer <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "len")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Len;
+
+		/// <summary>
+		/// Length of converted audio buffer <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "len_cvt")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int LenCvt;
+
+		/// <summary>
+		/// buffer must be len*len_mult big <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "len_mult")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int LenMult;
+
+		/// <summary>
+		/// Given len, final size is len*len_ratio <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "len_ratio")]
+		[NativeName(NativeNameType.Type, "double")]
+		public double LenRatio;
+
+		/// <summary>
+		/// NULL-terminated list of filter functions <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "filters")]
+		[NativeName(NativeNameType.Type, "SDL_AudioFilter[10]")]
+		public SDLAudioFilter Filters_0;
+		public SDLAudioFilter Filters_1;
+		public SDLAudioFilter Filters_2;
+		public SDLAudioFilter Filters_3;
+		public SDLAudioFilter Filters_4;
+		public SDLAudioFilter Filters_5;
+		public SDLAudioFilter Filters_6;
+		public SDLAudioFilter Filters_7;
+		public SDLAudioFilter Filters_8;
+		public SDLAudioFilter Filters_9;
+
+		/// <summary>
+		/// Current audio conversion function <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "filter_index")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int FilterIndex;
+
+
+
+		/// <summary>
+		/// NULL-terminated list of filter functions <br/>
+		/// </summary>
+		public unsafe Span<SDLAudioFilter> Filters
+		
+		{
+			get
+			{
+				fixed (SDLAudioFilter* p = &this.Filters_0)
+				{
+					return new Span<SDLAudioFilter>(p, 10);
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_AudioCVT")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLAudioCVPtr : IEquatable<SDLAudioCVPtr>
+	{
+		public SDLAudioCVPtr(SDLAudioCV* handle) { Handle = handle; }
+
+		public SDLAudioCV* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLAudioCVPtr Null => new SDLAudioCVPtr(null);
+
+		public static implicit operator SDLAudioCVPtr(SDLAudioCV* handle) => new SDLAudioCVPtr(handle);
+
+		public static implicit operator SDLAudioCV*(SDLAudioCVPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLAudioCVPtr left, SDLAudioCVPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLAudioCVPtr left, SDLAudioCVPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLAudioCVPtr left, SDLAudioCV* right) => left.Handle == right;
+
+		public static bool operator !=(SDLAudioCVPtr left, SDLAudioCV* right) => left.Handle != right;
+
+		public bool Equals(SDLAudioCVPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLAudioCVPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLAudioCVPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Set to 1 if conversion possible <br/>
+		/// </summary>
+		public ref int Needed => ref Unsafe.AsRef<int>(&Handle->Needed);
+		/// <summary>
+		/// Source audio format <br/>
+		/// </summary>
+		public ref ushort SrcFormat => ref Unsafe.AsRef<ushort>(&Handle->SrcFormat);
+		/// <summary>
+		/// Target audio format <br/>
+		/// </summary>
+		public ref ushort DstFormat => ref Unsafe.AsRef<ushort>(&Handle->DstFormat);
+		/// <summary>
+		/// Rate conversion increment <br/>
+		/// </summary>
+		public ref double RateIncr => ref Unsafe.AsRef<double>(&Handle->RateIncr);
+		/// <summary>
+		/// Buffer to hold entire audio data <br/>
+		/// </summary>
+		public byte* Buf { get => Handle->Buf; set => Handle->Buf = value; }
+		/// <summary>
+		/// Length of original audio buffer <br/>
+		/// </summary>
+		public ref int Len => ref Unsafe.AsRef<int>(&Handle->Len);
+		/// <summary>
+		/// Length of converted audio buffer <br/>
+		/// </summary>
+		public ref int LenCvt => ref Unsafe.AsRef<int>(&Handle->LenCvt);
+		/// <summary>
+		/// buffer must be len*len_mult big <br/>
+		/// </summary>
+		public ref int LenMult => ref Unsafe.AsRef<int>(&Handle->LenMult);
+		/// <summary>
+		/// Given len, final size is len*len_ratio <br/>
+		/// </summary>
+		public ref double LenRatio => ref Unsafe.AsRef<double>(&Handle->LenRatio);
+		/// <summary>
+		/// NULL-terminated list of filter functions <br/>
+		/// </summary>
+		public unsafe Span<SDLAudioFilter> Filters
+		
+		{
+			get
+			{
+				return new Span<SDLAudioFilter>(&Handle->Filters_0, 10);
+			}
+		}
+		/// <summary>
+		/// Current audio conversion function <br/>
+		/// </summary>
+		public ref int FilterIndex => ref Unsafe.AsRef<int>(&Handle->FilterIndex);
+	}
+
+	/// <summary>
+	/// SDL_AudioStream is a new audio conversion interface.<br/>
+	/// The benefits vs SDL_AudioCVT:<br/>
+	/// - it can handle resampling data in chunks without generating<br/>
+	/// artifacts, when it doesn't have the complete buffer available.<br/>
+	/// - it can handle incoming data in any variable size.<br/>
+	/// - You push data as you have it, and pull it when you need it<br/>
+	/// this is opaque to the outside world. <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "_SDL_AudioStream")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLAudioStream
+	{
+
+
+	}
+
+	/// <summary>
+	/// The bits of this structure can be directly reinterpreted as an integer-packed<br/>
+	/// color which uses the SDL_PIXELFORMAT_RGBA32 format (SDL_PIXELFORMAT_ABGR8888<br/>
+	/// on little-endian systems and SDL_PIXELFORMAT_RGBA8888 on big-endian systems).<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Color")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLColor
+	{
+		[NativeName(NativeNameType.Field, "r")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte R;
+		[NativeName(NativeNameType.Field, "g")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte G;
+		[NativeName(NativeNameType.Field, "b")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte B;
+		[NativeName(NativeNameType.Field, "a")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte A;
+
+
+	}
+
+	/// <summary>
+	/// The bits of this structure can be directly reinterpreted as an integer-packed<br/>
+	/// color which uses the SDL_PIXELFORMAT_RGBA32 format (SDL_PIXELFORMAT_ABGR8888<br/>
+	/// on little-endian systems and SDL_PIXELFORMAT_RGBA8888 on big-endian systems).<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Color")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLColorPtr : IEquatable<SDLColorPtr>
+	{
+		public SDLColorPtr(SDLColor* handle) { Handle = handle; }
+
+		public SDLColor* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLColorPtr Null => new SDLColorPtr(null);
+
+		public static implicit operator SDLColorPtr(SDLColor* handle) => new SDLColorPtr(handle);
+
+		public static implicit operator SDLColor*(SDLColorPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLColorPtr left, SDLColorPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLColorPtr left, SDLColorPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLColorPtr left, SDLColor* right) => left.Handle == right;
+
+		public static bool operator !=(SDLColorPtr left, SDLColor* right) => left.Handle != right;
+
+		public bool Equals(SDLColorPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLColorPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLColorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref byte R => ref Unsafe.AsRef<byte>(&Handle->R);
+		public ref byte G => ref Unsafe.AsRef<byte>(&Handle->G);
+		public ref byte B => ref Unsafe.AsRef<byte>(&Handle->B);
+		public ref byte A => ref Unsafe.AsRef<byte>(&Handle->A);
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_Palette")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLPalette
+	{
+		[NativeName(NativeNameType.Field, "ncolors")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Ncolors;
+		[NativeName(NativeNameType.Field, "colors")]
+		[NativeName(NativeNameType.Type, "SDL_Color*")]
+		public unsafe SDLColor* Colors;
+		[NativeName(NativeNameType.Field, "version")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Version;
+		[NativeName(NativeNameType.Field, "refcount")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Refcount;
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_Palette")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLPalettePtr : IEquatable<SDLPalettePtr>
+	{
+		public SDLPalettePtr(SDLPalette* handle) { Handle = handle; }
+
+		public SDLPalette* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLPalettePtr Null => new SDLPalettePtr(null);
+
+		public static implicit operator SDLPalettePtr(SDLPalette* handle) => new SDLPalettePtr(handle);
+
+		public static implicit operator SDLPalette*(SDLPalettePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLPalettePtr left, SDLPalettePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLPalettePtr left, SDLPalettePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLPalettePtr left, SDLPalette* right) => left.Handle == right;
+
+		public static bool operator !=(SDLPalettePtr left, SDLPalette* right) => left.Handle != right;
+
+		public bool Equals(SDLPalettePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLPalettePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLPalettePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref int Ncolors => ref Unsafe.AsRef<int>(&Handle->Ncolors);
+		public ref SDLColorPtr Colors => ref Unsafe.AsRef<SDLColorPtr>(&Handle->Colors);
+		public ref uint Version => ref Unsafe.AsRef<uint>(&Handle->Version);
+		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_PixelFormat")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLPixelFormat
+	{
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Format;
+		[NativeName(NativeNameType.Field, "palette")]
+		[NativeName(NativeNameType.Type, "SDL_Palette*")]
+		public unsafe SDLPalette* Palette;
+		[NativeName(NativeNameType.Field, "BitsPerPixel")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte BitsPerPixel;
+		[NativeName(NativeNameType.Field, "BytesPerPixel")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte BytesPerPixel;
+		[NativeName(NativeNameType.Field, "padding")]
+		[NativeName(NativeNameType.Type, "Uint8[2]")]
+		public byte Padding_0;
+		public byte Padding_1;
+		[NativeName(NativeNameType.Field, "Rmask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Rmask;
+		[NativeName(NativeNameType.Field, "Gmask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Gmask;
+		[NativeName(NativeNameType.Field, "Bmask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Bmask;
+		[NativeName(NativeNameType.Field, "Amask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Amask;
+		[NativeName(NativeNameType.Field, "Rloss")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Rloss;
+		[NativeName(NativeNameType.Field, "Gloss")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Gloss;
+		[NativeName(NativeNameType.Field, "Bloss")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Bloss;
+		[NativeName(NativeNameType.Field, "Aloss")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Aloss;
+		[NativeName(NativeNameType.Field, "Rshift")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Rshift;
+		[NativeName(NativeNameType.Field, "Gshift")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Gshift;
+		[NativeName(NativeNameType.Field, "Bshift")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Bshift;
+		[NativeName(NativeNameType.Field, "Ashift")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Ashift;
+		[NativeName(NativeNameType.Field, "refcount")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Refcount;
+		[NativeName(NativeNameType.Field, "next")]
+		[NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
+		public unsafe SDLPixelFormat* Next;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_PixelFormat")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLPixelFormatPtr : IEquatable<SDLPixelFormatPtr>
+	{
+		public SDLPixelFormatPtr(SDLPixelFormat* handle) { Handle = handle; }
+
+		public SDLPixelFormat* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLPixelFormatPtr Null => new SDLPixelFormatPtr(null);
+
+		public static implicit operator SDLPixelFormatPtr(SDLPixelFormat* handle) => new SDLPixelFormatPtr(handle);
+
+		public static implicit operator SDLPixelFormat*(SDLPixelFormatPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLPixelFormatPtr left, SDLPixelFormatPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLPixelFormatPtr left, SDLPixelFormatPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLPixelFormatPtr left, SDLPixelFormat* right) => left.Handle == right;
+
+		public static bool operator !=(SDLPixelFormatPtr left, SDLPixelFormat* right) => left.Handle != right;
+
+		public bool Equals(SDLPixelFormatPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLPixelFormatPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLPixelFormatPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref uint Format => ref Unsafe.AsRef<uint>(&Handle->Format);
+		public ref SDLPalettePtr Palette => ref Unsafe.AsRef<SDLPalettePtr>(&Handle->Palette);
+		public ref byte BitsPerPixel => ref Unsafe.AsRef<byte>(&Handle->BitsPerPixel);
+		public ref byte BytesPerPixel => ref Unsafe.AsRef<byte>(&Handle->BytesPerPixel);
+		public unsafe Span<byte> Padding
+		
+		{
+			get
+			{
+				return new Span<byte>(&Handle->Padding_0, 2);
+			}
+		}
+		public ref uint Rmask => ref Unsafe.AsRef<uint>(&Handle->Rmask);
+		public ref uint Gmask => ref Unsafe.AsRef<uint>(&Handle->Gmask);
+		public ref uint Bmask => ref Unsafe.AsRef<uint>(&Handle->Bmask);
+		public ref uint Amask => ref Unsafe.AsRef<uint>(&Handle->Amask);
+		public ref byte Rloss => ref Unsafe.AsRef<byte>(&Handle->Rloss);
+		public ref byte Gloss => ref Unsafe.AsRef<byte>(&Handle->Gloss);
+		public ref byte Bloss => ref Unsafe.AsRef<byte>(&Handle->Bloss);
+		public ref byte Aloss => ref Unsafe.AsRef<byte>(&Handle->Aloss);
+		public ref byte Rshift => ref Unsafe.AsRef<byte>(&Handle->Rshift);
+		public ref byte Gshift => ref Unsafe.AsRef<byte>(&Handle->Gshift);
+		public ref byte Bshift => ref Unsafe.AsRef<byte>(&Handle->Bshift);
+		public ref byte Ashift => ref Unsafe.AsRef<byte>(&Handle->Ashift);
+		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
+		public ref SDLPixelFormatPtr Next => ref Unsafe.AsRef<SDLPixelFormatPtr>(&Handle->Next);
+	}
+
+	/// <summary>
+	/// The structure that defines a point (integer)<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Point")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLPoint
+	{
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Y;
+
+
+	}
+
+	/// <summary>
+	/// The structure that defines a point (integer)<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Point")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLPointPtr : IEquatable<SDLPointPtr>
+	{
+		public SDLPointPtr(SDLPoint* handle) { Handle = handle; }
+
+		public SDLPoint* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLPointPtr Null => new SDLPointPtr(null);
+
+		public static implicit operator SDLPointPtr(SDLPoint* handle) => new SDLPointPtr(handle);
+
+		public static implicit operator SDLPoint*(SDLPointPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLPointPtr left, SDLPointPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLPointPtr left, SDLPointPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLPointPtr left, SDLPoint* right) => left.Handle == right;
+
+		public static bool operator !=(SDLPointPtr left, SDLPoint* right) => left.Handle != right;
+
+		public bool Equals(SDLPointPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLPointPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLPointPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref int X => ref Unsafe.AsRef<int>(&Handle->X);
+		public ref int Y => ref Unsafe.AsRef<int>(&Handle->Y);
+	}
+
+	/// <summary>
+	/// The structure that defines a point (floating point)<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_FPoint")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLFPoint
+	{
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+
+
+	}
+
+	/// <summary>
+	/// The structure that defines a point (floating point)<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_FPoint")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLFPointPtr : IEquatable<SDLFPointPtr>
+	{
+		public SDLFPointPtr(SDLFPoint* handle) { Handle = handle; }
+
+		public SDLFPoint* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLFPointPtr Null => new SDLFPointPtr(null);
+
+		public static implicit operator SDLFPointPtr(SDLFPoint* handle) => new SDLFPointPtr(handle);
+
+		public static implicit operator SDLFPoint*(SDLFPointPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLFPointPtr left, SDLFPointPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLFPointPtr left, SDLFPointPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLFPointPtr left, SDLFPoint* right) => left.Handle == right;
+
+		public static bool operator !=(SDLFPointPtr left, SDLFPoint* right) => left.Handle != right;
+
+		public bool Equals(SDLFPointPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLFPointPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLFPointPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
+		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
+	}
+
+	/// <summary>
+	/// A rectangle, with the origin at the upper left (integer).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Rect")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLRect
+	{
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Y;
+		[NativeName(NativeNameType.Field, "w")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int W;
+		[NativeName(NativeNameType.Field, "h")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int H;
+
+
+	}
+
+	/// <summary>
+	/// A rectangle, with the origin at the upper left (integer).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Rect")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLRectPtr : IEquatable<SDLRectPtr>
+	{
+		public SDLRectPtr(SDLRect* handle) { Handle = handle; }
+
+		public SDLRect* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLRectPtr Null => new SDLRectPtr(null);
+
+		public static implicit operator SDLRectPtr(SDLRect* handle) => new SDLRectPtr(handle);
+
+		public static implicit operator SDLRect*(SDLRectPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLRectPtr left, SDLRectPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLRectPtr left, SDLRectPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLRectPtr left, SDLRect* right) => left.Handle == right;
+
+		public static bool operator !=(SDLRectPtr left, SDLRect* right) => left.Handle != right;
+
+		public bool Equals(SDLRectPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLRectPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLRectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref int X => ref Unsafe.AsRef<int>(&Handle->X);
+		public ref int Y => ref Unsafe.AsRef<int>(&Handle->Y);
+		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
+		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
+	}
+
+	/// <summary>
+	/// A rectangle, with the origin at the upper left (floating point).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_FRect")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLFRect
+	{
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+		[NativeName(NativeNameType.Field, "w")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float W;
+		[NativeName(NativeNameType.Field, "h")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float H;
+
+
+	}
+
+	/// <summary>
+	/// A rectangle, with the origin at the upper left (floating point).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_FRect")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLFRectPtr : IEquatable<SDLFRectPtr>
+	{
+		public SDLFRectPtr(SDLFRect* handle) { Handle = handle; }
+
+		public SDLFRect* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLFRectPtr Null => new SDLFRectPtr(null);
+
+		public static implicit operator SDLFRectPtr(SDLFRect* handle) => new SDLFRectPtr(handle);
+
+		public static implicit operator SDLFRect*(SDLFRectPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLFRectPtr left, SDLFRectPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLFRectPtr left, SDLFRectPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLFRectPtr left, SDLFRect* right) => left.Handle == right;
+
+		public static bool operator !=(SDLFRectPtr left, SDLFRect* right) => left.Handle != right;
+
+		public bool Equals(SDLFRectPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLFRectPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLFRectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
+		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
+		public ref float W => ref Unsafe.AsRef<float>(&Handle->W);
+		public ref float H => ref Unsafe.AsRef<float>(&Handle->H);
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_BlitMap")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLBlitMap
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_BlitMap")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLBlitMapPtr : IEquatable<SDLBlitMapPtr>
+	{
+		public SDLBlitMapPtr(SDLBlitMap* handle) { Handle = handle; }
+
+		public SDLBlitMap* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLBlitMapPtr Null => new SDLBlitMapPtr(null);
+
+		public static implicit operator SDLBlitMapPtr(SDLBlitMap* handle) => new SDLBlitMapPtr(handle);
+
+		public static implicit operator SDLBlitMap*(SDLBlitMapPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLBlitMapPtr left, SDLBlitMapPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLBlitMapPtr left, SDLBlitMapPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLBlitMapPtr left, SDLBlitMap* right) => left.Handle == right;
+
+		public static bool operator !=(SDLBlitMapPtr left, SDLBlitMap* right) => left.Handle != right;
+
+		public bool Equals(SDLBlitMapPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLBlitMapPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLBlitMapPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Surface")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLSurface
+	{
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "flags")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Flags;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
+		public unsafe SDLPixelFormat* Format;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "w")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int W;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "h")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int H;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "pitch")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Pitch;
+
+		/// <summary>
+		/// Read-write <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "pixels")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Pixels;
+
+		/// <summary>
+		/// Read-write <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "userdata")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Userdata;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "locked")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Locked;
+
+		/// <summary>
+		/// Private <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "list_blitmap")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* ListBlitmap;
+
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "clip_rect")]
+		[NativeName(NativeNameType.Type, "SDL_Rect")]
+		public SDLRect ClipRect;
+
+		/// <summary>
+		/// Private <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "map")]
+		[NativeName(NativeNameType.Type, "SDL_BlitMap*")]
+		public unsafe SDLBlitMap* Map;
+
+		/// <summary>
+		/// Read-mostly <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "refcount")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Refcount;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Surface")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLSurfacePtr : IEquatable<SDLSurfacePtr>
+	{
+		public SDLSurfacePtr(SDLSurface* handle) { Handle = handle; }
+
+		public SDLSurface* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLSurfacePtr Null => new SDLSurfacePtr(null);
+
+		public static implicit operator SDLSurfacePtr(SDLSurface* handle) => new SDLSurfacePtr(handle);
+
+		public static implicit operator SDLSurface*(SDLSurfacePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLSurfacePtr left, SDLSurfacePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLSurfacePtr left, SDLSurfacePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLSurfacePtr left, SDLSurface* right) => left.Handle == right;
+
+		public static bool operator !=(SDLSurfacePtr left, SDLSurface* right) => left.Handle != right;
+
+		public bool Equals(SDLSurfacePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLSurfacePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLSurfacePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref SDLPixelFormatPtr Format => ref Unsafe.AsRef<SDLPixelFormatPtr>(&Handle->Format);
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref int Pitch => ref Unsafe.AsRef<int>(&Handle->Pitch);
+		/// <summary>
+		/// Read-write <br/>
+		/// </summary>
+		public void* Pixels { get => Handle->Pixels; set => Handle->Pixels = value; }
+		/// <summary>
+		/// Read-write <br/>
+		/// </summary>
+		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref int Locked => ref Unsafe.AsRef<int>(&Handle->Locked);
+		/// <summary>
+		/// Private <br/>
+		/// </summary>
+		public void* ListBlitmap { get => Handle->ListBlitmap; set => Handle->ListBlitmap = value; }
+		/// <summary>
+		/// Read-only <br/>
+		/// </summary>
+		public ref SDLRect ClipRect => ref Unsafe.AsRef<SDLRect>(&Handle->ClipRect);
+		/// <summary>
+		/// Private <br/>
+		/// </summary>
+		public ref SDLBlitMapPtr Map => ref Unsafe.AsRef<SDLBlitMapPtr>(&Handle->Map);
+		/// <summary>
+		/// Read-mostly <br/>
+		/// </summary>
+		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Surface")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLSurfacePtrPtr : IEquatable<SDLSurfacePtrPtr>
+	{
+		public SDLSurfacePtrPtr(SDLSurface** handle) { Handle = handle; }
+
+		public SDLSurface** Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLSurfacePtrPtr Null => new SDLSurfacePtrPtr(null);
+
+		public static implicit operator SDLSurfacePtrPtr(SDLSurface** handle) => new SDLSurfacePtrPtr(handle);
+
+		public static implicit operator SDLSurface**(SDLSurfacePtrPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLSurfacePtrPtr left, SDLSurfacePtrPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLSurfacePtrPtr left, SDLSurfacePtrPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLSurfacePtrPtr left, SDLSurface** right) => left.Handle == right;
+
+		public static bool operator !=(SDLSurfacePtrPtr left, SDLSurface** right) => left.Handle != right;
+
+		public bool Equals(SDLSurfacePtrPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLSurfacePtrPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLSurfacePtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public SDLSurfacePtr this[int index]
+		{
+			get => Handle[index]; set => Handle[index] = value;
+		}
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_DisplayMode")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLDisplayMode
+	{
+		/// <summary>
+		/// pixel format <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Format;
+
+		/// <summary>
+		/// width, in screen coordinates <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "w")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int W;
+
+		/// <summary>
+		/// height, in screen coordinates <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "h")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int H;
+
+		/// <summary>
+		/// refresh rate (or zero for unspecified) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "refresh_rate")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int RefreshRate;
+
+		/// <summary>
+		/// driver-specific data, initialize to 0 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "driverdata")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Driverdata;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_DisplayMode")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLDisplayModePtr : IEquatable<SDLDisplayModePtr>
+	{
+		public SDLDisplayModePtr(SDLDisplayMode* handle) { Handle = handle; }
+
+		public SDLDisplayMode* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLDisplayModePtr Null => new SDLDisplayModePtr(null);
+
+		public static implicit operator SDLDisplayModePtr(SDLDisplayMode* handle) => new SDLDisplayModePtr(handle);
+
+		public static implicit operator SDLDisplayMode*(SDLDisplayModePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLDisplayModePtr left, SDLDisplayModePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLDisplayModePtr left, SDLDisplayModePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLDisplayModePtr left, SDLDisplayMode* right) => left.Handle == right;
+
+		public static bool operator !=(SDLDisplayModePtr left, SDLDisplayMode* right) => left.Handle != right;
+
+		public bool Equals(SDLDisplayModePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLDisplayModePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLDisplayModePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// pixel format <br/>
+		/// </summary>
+		public ref uint Format => ref Unsafe.AsRef<uint>(&Handle->Format);
+		/// <summary>
+		/// width, in screen coordinates <br/>
+		/// </summary>
+		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
+		/// <summary>
+		/// height, in screen coordinates <br/>
+		/// </summary>
+		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
+		/// <summary>
+		/// refresh rate (or zero for unspecified) <br/>
+		/// </summary>
+		public ref int RefreshRate => ref Unsafe.AsRef<int>(&Handle->RefreshRate);
+		/// <summary>
+		/// driver-specific data, initialize to 0 <br/>
+		/// </summary>
+		public void* Driverdata { get => Handle->Driverdata; set => Handle->Driverdata = value; }
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Window")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLWindow
+	{
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Window")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLWindowPtr : IEquatable<SDLWindowPtr>
+	{
+		public SDLWindowPtr(SDLWindow* handle) { Handle = handle; }
+
+		public SDLWindow* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLWindowPtr Null => new SDLWindowPtr(null);
+
+		public static implicit operator SDLWindowPtr(SDLWindow* handle) => new SDLWindowPtr(handle);
+
+		public static implicit operator SDLWindow*(SDLWindowPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLWindowPtr left, SDLWindowPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLWindowPtr left, SDLWindowPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLWindowPtr left, SDLWindow* right) => left.Handle == right;
+
+		public static bool operator !=(SDLWindowPtr left, SDLWindow* right) => left.Handle != right;
+
+		public bool Equals(SDLWindowPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLWindowPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLWindowPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Window")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLWindowPtrPtr : IEquatable<SDLWindowPtrPtr>
+	{
+		public SDLWindowPtrPtr(SDLWindow** handle) { Handle = handle; }
+
+		public SDLWindow** Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLWindowPtrPtr Null => new SDLWindowPtrPtr(null);
+
+		public static implicit operator SDLWindowPtrPtr(SDLWindow** handle) => new SDLWindowPtrPtr(handle);
+
+		public static implicit operator SDLWindow**(SDLWindowPtrPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLWindowPtrPtr left, SDLWindowPtrPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLWindowPtrPtr left, SDLWindowPtrPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLWindowPtrPtr left, SDLWindow** right) => left.Handle == right;
+
+		public static bool operator !=(SDLWindowPtrPtr left, SDLWindow** right) => left.Handle != right;
+
+		public bool Equals(SDLWindowPtrPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLWindowPtrPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLWindowPtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public SDLWindowPtr this[int index]
+		{
+			get => Handle[index]; set => Handle[index] = value;
+		}
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Keysym")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLKeysym
+	{
+		/// <summary>
+		/// SDL physical key code - see ::SDL_Scancode for details <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "scancode")]
+		[NativeName(NativeNameType.Type, "SDL_Scancode")]
+		public SDLScancode Scancode;
+
+		/// <summary>
+		/// SDL virtual key code - see ::SDL_Keycode for details <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "sym")]
+		[NativeName(NativeNameType.Type, "SDL_Keycode")]
+		public int Sym;
+
+		/// <summary>
+		/// current key modifiers <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "mod")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Mod;
+
+		[NativeName(NativeNameType.Field, "unused")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Unused;
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_Cursor")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLCursor
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_Cursor")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLCursorPtr : IEquatable<SDLCursorPtr>
+	{
+		public SDLCursorPtr(SDLCursor* handle) { Handle = handle; }
+
+		public SDLCursor* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLCursorPtr Null => new SDLCursorPtr(null);
+
+		public static implicit operator SDLCursorPtr(SDLCursor* handle) => new SDLCursorPtr(handle);
+
+		public static implicit operator SDLCursor*(SDLCursorPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLCursorPtr left, SDLCursorPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLCursorPtr left, SDLCursorPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLCursorPtr left, SDLCursor* right) => left.Handle == right;
+
+		public static bool operator !=(SDLCursorPtr left, SDLCursor* right) => left.Handle != right;
+
+		public bool Equals(SDLCursorPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLCursorPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLCursorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// An SDL_GUID is a 128-bit identifier for an input device that<br/>
+	/// identifies that device across runs of SDL programs on the same<br/>
+	/// platform.  If the device is detached and then re-attached to a<br/>
+	/// different port, or if the base system is rebooted, the device<br/>
+	/// should still report the same GUID.<br/>
+	/// GUIDs are as precise as possible but are not guaranteed to<br/>
+	/// distinguish physically distinct but equivalent devices.  For<br/>
+	/// example, two game controllers from the same vendor with the same<br/>
+	/// product ID and revision may have the same GUID.<br/>
+	/// GUIDs may be platform-dependent (i.e., the same device may report<br/>
+	/// different GUIDs on different operating systems).<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_GUID")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SdlGuid
+	{
+		[NativeName(NativeNameType.Field, "data")]
+		[NativeName(NativeNameType.Type, "Uint8[16]")]
+		public byte Data_0;
+		public byte Data_1;
+		public byte Data_2;
+		public byte Data_3;
+		public byte Data_4;
+		public byte Data_5;
+		public byte Data_6;
+		public byte Data_7;
+		public byte Data_8;
+		public byte Data_9;
+		public byte Data_10;
+		public byte Data_11;
+		public byte Data_12;
+		public byte Data_13;
+		public byte Data_14;
+		public byte Data_15;
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "_SDL_Joystick")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoystick
+	{
+
+
+	}
+
+	/// <summary>
+	/// The structure that defines an extended virtual joystick description<br/>
+	/// The caller must zero the structure and then initialize the version with `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` before passing it to SDL_JoystickAttachVirtualEx()<br/>
+	/// All other elements of this structure are optional and can be left 0.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_VirtualJoystickDesc")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLVirtualJoystickDesc
+	{
+		/// <summary>
+		/// `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "version")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Version;
+
+		/// <summary>
+		/// `SDL_JoystickType` <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// the number of axes on this joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "naxes")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Naxes;
+
+		/// <summary>
+		/// the number of buttons on this joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "nbuttons")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Nbuttons;
+
+		/// <summary>
+		/// the number of hats on this joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "nhats")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Nhats;
+
+		/// <summary>
+		/// the USB vendor ID of this joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "vendor_id")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort VendorId;
+
+		/// <summary>
+		/// the USB product ID of this joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "product_id")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort ProductId;
+
+		/// <summary>
+		/// unused <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "padding")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Padding;
+
+		/// <summary>
+		/// A mask of which buttons are valid for this controller<br/>
+		/// e.g. (1 <br/>
+		/// <<br/>
+		/// <<br/>
+		/// SDL_CONTROLLER_BUTTON_A) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button_mask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint ButtonMask;
+
+		/// <summary>
+		/// A mask of which axes are valid for this controller<br/>
+		/// e.g. (1 <br/>
+		/// <<br/>
+		/// <<br/>
+		/// SDL_CONTROLLER_AXIS_LEFTX) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "axis_mask")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint AxisMask;
+
+		/// <summary>
+		/// the name of the joystick <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "name")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Name;
+
+		/// <summary>
+		/// User data pointer passed to callbacks <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "userdata")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Userdata;
+
+		/// <summary>
+		/// Called when the joystick state should be updated <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "Update")]
+		[NativeName(NativeNameType.Type, "void (*)(void* userdata)*")]
+		public unsafe void* Update;
+
+		/// <summary>
+		/// Called when the player index is set <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "SetPlayerIndex")]
+		[NativeName(NativeNameType.Type, "void (*)(void* userdata, int player_index)*")]
+		public unsafe void* SetPlayerIndex;
+
+		/// <summary>
+		/// Implements SDL_JoystickRumble() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "Rumble")]
+		[NativeName(NativeNameType.Type, "int (*)(void* userdata, Uint16 low_frequency_rumble, Uint16 high_frequency_rumble)*")]
+		public unsafe void* Rumble;
+
+		/// <summary>
+		/// Implements SDL_JoystickRumbleTriggers() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "RumbleTriggers")]
+		[NativeName(NativeNameType.Type, "int (*)(void* userdata, Uint16 left_rumble, Uint16 right_rumble)*")]
+		public unsafe void* RumbleTriggers;
+
+		/// <summary>
+		/// Implements SDL_JoystickSetLED() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "SetLED")]
+		[NativeName(NativeNameType.Type, "int (*)(void* userdata, Uint8 red, Uint8 green, Uint8 blue)*")]
+		public unsafe void* SetLED;
+
+		/// <summary>
+		/// Implements SDL_JoystickSendEffect() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "SendEffect")]
+		[NativeName(NativeNameType.Type, "int (*)(void* userdata, const void* data, int size)*")]
+		public unsafe void* SendEffect;
+
+
+
+	}
+
+	/// <summary>
+	/// The structure that defines an extended virtual joystick description<br/>
+	/// The caller must zero the structure and then initialize the version with `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` before passing it to SDL_JoystickAttachVirtualEx()<br/>
+	/// All other elements of this structure are optional and can be left 0.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_VirtualJoystickDesc")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLVirtualJoystickDescPtr : IEquatable<SDLVirtualJoystickDescPtr>
+	{
+		public SDLVirtualJoystickDescPtr(SDLVirtualJoystickDesc* handle) { Handle = handle; }
+
+		public SDLVirtualJoystickDesc* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLVirtualJoystickDescPtr Null => new SDLVirtualJoystickDescPtr(null);
+
+		public static implicit operator SDLVirtualJoystickDescPtr(SDLVirtualJoystickDesc* handle) => new SDLVirtualJoystickDescPtr(handle);
+
+		public static implicit operator SDLVirtualJoystickDesc*(SDLVirtualJoystickDescPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDescPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDescPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDesc* right) => left.Handle == right;
+
+		public static bool operator !=(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDesc* right) => left.Handle != right;
+
+		public bool Equals(SDLVirtualJoystickDescPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLVirtualJoystickDescPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLVirtualJoystickDescPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` <br/>
+		/// </summary>
+		public ref ushort Version => ref Unsafe.AsRef<ushort>(&Handle->Version);
+		/// <summary>
+		/// `SDL_JoystickType` <br/>
+		/// </summary>
+		public ref ushort Type => ref Unsafe.AsRef<ushort>(&Handle->Type);
+		/// <summary>
+		/// the number of axes on this joystick <br/>
+		/// </summary>
+		public ref ushort Naxes => ref Unsafe.AsRef<ushort>(&Handle->Naxes);
+		/// <summary>
+		/// the number of buttons on this joystick <br/>
+		/// </summary>
+		public ref ushort Nbuttons => ref Unsafe.AsRef<ushort>(&Handle->Nbuttons);
+		/// <summary>
+		/// the number of hats on this joystick <br/>
+		/// </summary>
+		public ref ushort Nhats => ref Unsafe.AsRef<ushort>(&Handle->Nhats);
+		/// <summary>
+		/// the USB vendor ID of this joystick <br/>
+		/// </summary>
+		public ref ushort VendorId => ref Unsafe.AsRef<ushort>(&Handle->VendorId);
+		/// <summary>
+		/// the USB product ID of this joystick <br/>
+		/// </summary>
+		public ref ushort ProductId => ref Unsafe.AsRef<ushort>(&Handle->ProductId);
+		/// <summary>
+		/// unused <br/>
+		/// </summary>
+		public ref ushort Padding => ref Unsafe.AsRef<ushort>(&Handle->Padding);
+		/// <summary>
+		/// A mask of which buttons are valid for this controller<br/>
+		/// e.g. (1 <br/>
+		/// <<br/>
+		/// <<br/>
+		/// SDL_CONTROLLER_BUTTON_A) <br/>
+		/// </summary>
+		public ref uint ButtonMask => ref Unsafe.AsRef<uint>(&Handle->ButtonMask);
+		/// <summary>
+		/// A mask of which axes are valid for this controller<br/>
+		/// e.g. (1 <br/>
+		/// <<br/>
+		/// <<br/>
+		/// SDL_CONTROLLER_AXIS_LEFTX) <br/>
+		/// </summary>
+		public ref uint AxisMask => ref Unsafe.AsRef<uint>(&Handle->AxisMask);
+		/// <summary>
+		/// the name of the joystick <br/>
+		/// </summary>
+		public byte* Name { get => Handle->Name; set => Handle->Name = value; }
+		/// <summary>
+		/// User data pointer passed to callbacks <br/>
+		/// </summary>
+		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
+		/// <summary>
+		/// Called when the joystick state should be updated <br/>
+		/// </summary>
+		public void* Update { get => Handle->Update; set => Handle->Update = value; }
+		/// <summary>
+		/// Called when the player index is set <br/>
+		/// </summary>
+		public void* SetPlayerIndex { get => Handle->SetPlayerIndex; set => Handle->SetPlayerIndex = value; }
+		/// <summary>
+		/// Implements SDL_JoystickRumble() <br/>
+		/// </summary>
+		public void* Rumble { get => Handle->Rumble; set => Handle->Rumble = value; }
+		/// <summary>
+		/// Implements SDL_JoystickRumbleTriggers() <br/>
+		/// </summary>
+		public void* RumbleTriggers { get => Handle->RumbleTriggers; set => Handle->RumbleTriggers = value; }
+		/// <summary>
+		/// Implements SDL_JoystickSetLED() <br/>
+		/// </summary>
+		public void* SetLED { get => Handle->SetLED; set => Handle->SetLED = value; }
+		/// <summary>
+		/// Implements SDL_JoystickSendEffect() <br/>
+		/// </summary>
+		public void* SendEffect { get => Handle->SendEffect; set => Handle->SendEffect = value; }
+	}
+
+	/// <summary>
+	/// <br/>
+	/// In order to use these functions, SDL_Init() must have been called<br/>
+	/// with the ::SDL_INIT_SENSOR flag.  This causes SDL to scan the system<br/>
+	/// for sensors, and load appropriate drivers.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "_SDL_Sensor")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLSensor
+	{
+
+
+	}
+
+	/// <summary>
+	/// The gamecontroller structure used to identify an SDL game controller<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "_SDL_GameController")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLGameController
+	{
+
+
+	}
+
+	/// <summary>
+	/// Get the SDL joystick layer binding for this controller button/axis mapping<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_GameControllerButtonBind")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLGameControllerButtonBind
+	{
+		[NativeName(NativeNameType.StructOrClass, "")]
+		[StructLayout(LayoutKind.Explicit)]
+		public partial struct ValueUnion
+		{
+			[NativeName(NativeNameType.StructOrClass, "")]
+			[StructLayout(LayoutKind.Sequential)]
+			public partial struct HatUnion
+			{
+				[NativeName(NativeNameType.Field, "hat")]
+				[NativeName(NativeNameType.Type, "int")]
+				public int Hat;
+				[NativeName(NativeNameType.Field, "hat_mask")]
+				[NativeName(NativeNameType.Type, "int")]
+				public int HatMask;
+
+
+			}
+
+			[NativeName(NativeNameType.Field, "button")]
+			[NativeName(NativeNameType.Type, "int")]
+			[FieldOffset(0)]
+			public int Button;
+			[NativeName(NativeNameType.Field, "axis")]
+			[NativeName(NativeNameType.Type, "int")]
+			[FieldOffset(0)]
+			public int Axis;
+			[NativeName(NativeNameType.Field, "hat")]
+			[NativeName(NativeNameType.Type, "")]
+			[FieldOffset(0)]
+			public HatUnion Hat;
+
+
+		}
+
+		[NativeName(NativeNameType.Field, "bindType")]
+		[NativeName(NativeNameType.Type, "SDL_GameControllerBindType")]
+		public SDLGameControllerBindType BindType;
+		[NativeName(NativeNameType.Field, "value")]
+		[NativeName(NativeNameType.Type, "")]
+		public ValueUnion Union;
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_Finger")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLFinger
+	{
+		[NativeName(NativeNameType.Field, "id")]
+		[NativeName(NativeNameType.Type, "SDL_FingerID")]
+		public long Id;
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+		[NativeName(NativeNameType.Field, "pressure")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Pressure;
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_Finger")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLFingerPtr : IEquatable<SDLFingerPtr>
+	{
+		public SDLFingerPtr(SDLFinger* handle) { Handle = handle; }
+
+		public SDLFinger* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLFingerPtr Null => new SDLFingerPtr(null);
+
+		public static implicit operator SDLFingerPtr(SDLFinger* handle) => new SDLFingerPtr(handle);
+
+		public static implicit operator SDLFinger*(SDLFingerPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLFingerPtr left, SDLFingerPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLFingerPtr left, SDLFingerPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLFingerPtr left, SDLFinger* right) => left.Handle == right;
+
+		public static bool operator !=(SDLFingerPtr left, SDLFinger* right) => left.Handle != right;
+
+		public bool Equals(SDLFingerPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLFingerPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLFingerPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public ref long Id => ref Unsafe.AsRef<long>(&Handle->Id);
+		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
+		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
+		public ref float Pressure => ref Unsafe.AsRef<float>(&Handle->Pressure);
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_CommonEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLCommonEvent
+	{
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_DisplayEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLDisplayEvent
+	{
+		/// <summary>
+		/// ::SDL_DISPLAYEVENT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The associated display index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "display")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Display;
+
+		/// <summary>
+		/// ::SDL_DisplayEventID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "event")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Event;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// event dependent data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data1")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Data1;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_WindowEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLWindowEvent
+	{
+		/// <summary>
+		/// ::SDL_WINDOWEVENT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The associated window <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// ::SDL_WindowEventID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "event")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Event;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// event dependent data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data1")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Data1;
+
+		/// <summary>
+		/// event dependent data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data2")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Data2;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_KeyboardEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLKeyboardEvent
+	{
+		/// <summary>
+		/// ::SDL_KEYDOWN or ::SDL_KEYUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// ::SDL_PRESSED or ::SDL_RELEASED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "state")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte State;
+
+		/// <summary>
+		/// Non-zero if this is a key repeat <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "repeat")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Repeat;
+
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// The key that was pressed or released <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "keysym")]
+		[NativeName(NativeNameType.Type, "SDL_Keysym")]
+		public SDLKeysym Keysym;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_TextEditingEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLTextEditingEvent
+	{
+		/// <summary>
+		/// ::SDL_TEXTEDITING <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The editing text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "text")]
+		[NativeName(NativeNameType.Type, "char[32]")]
+		public byte Text_0;
+		public byte Text_1;
+		public byte Text_2;
+		public byte Text_3;
+		public byte Text_4;
+		public byte Text_5;
+		public byte Text_6;
+		public byte Text_7;
+		public byte Text_8;
+		public byte Text_9;
+		public byte Text_10;
+		public byte Text_11;
+		public byte Text_12;
+		public byte Text_13;
+		public byte Text_14;
+		public byte Text_15;
+		public byte Text_16;
+		public byte Text_17;
+		public byte Text_18;
+		public byte Text_19;
+		public byte Text_20;
+		public byte Text_21;
+		public byte Text_22;
+		public byte Text_23;
+		public byte Text_24;
+		public byte Text_25;
+		public byte Text_26;
+		public byte Text_27;
+		public byte Text_28;
+		public byte Text_29;
+		public byte Text_30;
+		public byte Text_31;
+
+		/// <summary>
+		/// The start cursor of selected editing text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "start")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Start;
+
+		/// <summary>
+		/// The length of selected editing text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Length;
+
+
+
+		/// <summary>
+		/// The editing text <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_TextEditingExtEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLTextEditingExtEvent
+	{
+		/// <summary>
+		/// ::SDL_TEXTEDITING_EXT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The editing text, which should be freed with SDL_free(), and will not be NULL <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "text")]
+		[NativeName(NativeNameType.Type, "char*")]
+		public unsafe byte* Text;
+
+		/// <summary>
+		/// The start cursor of selected editing text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "start")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Start;
+
+		/// <summary>
+		/// The length of selected editing text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Length;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_TextInputEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLTextInputEvent
+	{
+		/// <summary>
+		/// ::SDL_TEXTINPUT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The input text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "text")]
+		[NativeName(NativeNameType.Type, "char[32]")]
+		public byte Text_0;
+		public byte Text_1;
+		public byte Text_2;
+		public byte Text_3;
+		public byte Text_4;
+		public byte Text_5;
+		public byte Text_6;
+		public byte Text_7;
+		public byte Text_8;
+		public byte Text_9;
+		public byte Text_10;
+		public byte Text_11;
+		public byte Text_12;
+		public byte Text_13;
+		public byte Text_14;
+		public byte Text_15;
+		public byte Text_16;
+		public byte Text_17;
+		public byte Text_18;
+		public byte Text_19;
+		public byte Text_20;
+		public byte Text_21;
+		public byte Text_22;
+		public byte Text_23;
+		public byte Text_24;
+		public byte Text_25;
+		public byte Text_26;
+		public byte Text_27;
+		public byte Text_28;
+		public byte Text_29;
+		public byte Text_30;
+		public byte Text_31;
+
+
+
+		/// <summary>
+		/// The input text <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MouseMotionEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMouseMotionEvent
+	{
+		/// <summary>
+		/// ::SDL_MOUSEMOTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The mouse instance id, or SDL_TOUCH_MOUSEID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Which;
+
+		/// <summary>
+		/// The current button state <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "state")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint State;
+
+		/// <summary>
+		/// X coordinate, relative to window <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int X;
+
+		/// <summary>
+		/// Y coordinate, relative to window <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Y;
+
+		/// <summary>
+		/// The relative motion in the X direction <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "xrel")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Xrel;
+
+		/// <summary>
+		/// The relative motion in the Y direction <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "yrel")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Yrel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MouseButtonEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMouseButtonEvent
+	{
+		/// <summary>
+		/// ::SDL_MOUSEBUTTONDOWN or ::SDL_MOUSEBUTTONUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The mouse instance id, or SDL_TOUCH_MOUSEID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Which;
+
+		/// <summary>
+		/// The mouse button index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Button;
+
+		/// <summary>
+		/// ::SDL_PRESSED or ::SDL_RELEASED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "state")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte State;
+
+		/// <summary>
+		/// 1 for single-click, 2 for double-click, etc. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "clicks")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Clicks;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		/// <summary>
+		/// X coordinate, relative to window <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int X;
+
+		/// <summary>
+		/// Y coordinate, relative to window <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Y;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MouseWheelEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMouseWheelEvent
+	{
+		/// <summary>
+		/// ::SDL_MOUSEWHEEL <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// The mouse instance id, or SDL_TOUCH_MOUSEID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Which;
+
+		/// <summary>
+		/// The amount scrolled horizontally, positive to the right and negative to the left <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int X;
+
+		/// <summary>
+		/// The amount scrolled vertically, positive away from the user and negative toward the user <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Y;
+
+		/// <summary>
+		/// Set to one of the SDL_MOUSEWHEEL_* defines. When FLIPPED the values in X and Y will be opposite. Multiply by -1 to change them back <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Direction;
+
+		/// <summary>
+		/// The amount scrolled horizontally, positive to the right and negative to the left, with float precision (added in 2.0.18) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "preciseX")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float PreciseX;
+
+		/// <summary>
+		/// The amount scrolled vertically, positive away from the user and negative toward the user, with float precision (added in 2.0.18) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "preciseY")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float PreciseY;
+
+		/// <summary>
+		/// X coordinate, relative to window (added in 2.26.0) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "mouseX")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int MouseX;
+
+		/// <summary>
+		/// Y coordinate, relative to window (added in 2.26.0) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "mouseY")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int MouseY;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyAxisEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyAxisEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYAXISMOTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The joystick axis index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "axis")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Axis;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// The axis value (range: -32768 to 32767) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "value")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Value;
+
+		[NativeName(NativeNameType.Field, "padding4")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Padding4;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyBallEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyBallEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYBALLMOTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The joystick trackball index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ball")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Ball;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// The relative motion in the X direction <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "xrel")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Xrel;
+
+		/// <summary>
+		/// The relative motion in the Y direction <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "yrel")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Yrel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyHatEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyHatEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYHATMOTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The joystick hat index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "hat")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Hat;
+
+		/// <summary>
+		/// The hat position value.<br/>
+		/// <br/>
+		/// Note that zero means the POV is centered.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "value")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Value;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyButtonEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyButtonEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYBUTTONDOWN or ::SDL_JOYBUTTONUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The joystick button index <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Button;
+
+		/// <summary>
+		/// ::SDL_PRESSED or ::SDL_RELEASED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "state")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte State;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyDeviceEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyDeviceEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYDEVICEADDED or ::SDL_JOYDEVICEREMOVED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick device index for the ADDED event, instance id for the REMOVED event <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Which;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_JoyBatteryEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLJoyBatteryEvent
+	{
+		/// <summary>
+		/// ::SDL_JOYBATTERYUPDATED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The joystick battery level <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "level")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickPowerLevel")]
+		public SDLJoystickPowerLevel Level;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_ControllerAxisEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLControllerAxisEvent
+	{
+		/// <summary>
+		/// ::SDL_CONTROLLERAXISMOTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The controller axis (SDL_GameControllerAxis) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "axis")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Axis;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+		/// <summary>
+		/// The axis value (range: -32768 to 32767) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "value")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Value;
+
+		[NativeName(NativeNameType.Field, "padding4")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Padding4;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_ControllerButtonEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLControllerButtonEvent
+	{
+		/// <summary>
+		/// ::SDL_CONTROLLERBUTTONDOWN or ::SDL_CONTROLLERBUTTONUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The controller button (SDL_GameControllerButton) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Button;
+
+		/// <summary>
+		/// ::SDL_PRESSED or ::SDL_RELEASED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "state")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte State;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_ControllerDeviceEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLControllerDeviceEvent
+	{
+		/// <summary>
+		/// ::SDL_CONTROLLERDEVICEADDED, ::SDL_CONTROLLERDEVICEREMOVED, or ::SDL_CONTROLLERDEVICEREMAPPED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick device index for the ADDED event, instance id for the REMOVED or REMAPPED event <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Which;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_ControllerTouchpadEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLControllerTouchpadEvent
+	{
+		/// <summary>
+		/// ::SDL_CONTROLLERTOUCHPADDOWN or ::SDL_CONTROLLERTOUCHPADMOTION or ::SDL_CONTROLLERTOUCHPADUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The index of the touchpad <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "touchpad")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Touchpad;
+
+		/// <summary>
+		/// The index of the finger on the touchpad <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "finger")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Finger;
+
+		/// <summary>
+		/// Normalized in the range 0...1 with 0 being on the left <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+
+		/// <summary>
+		/// Normalized in the range 0...1 with 0 being at the top <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+
+		/// <summary>
+		/// Normalized in the range 0...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "pressure")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Pressure;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_ControllerSensorEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLControllerSensorEvent
+	{
+		/// <summary>
+		/// ::SDL_CONTROLLERSENSORUPDATE <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The joystick instance id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "SDL_JoystickID")]
+		public int Which;
+
+		/// <summary>
+		/// The type of the sensor, one of the values of ::SDL_SensorType <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "sensor")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Sensor;
+
+		/// <summary>
+		/// Up to 3 values from the sensor, as defined in SDL_sensor.h <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data")]
+		[NativeName(NativeNameType.Type, "float[3]")]
+		public float Data_0;
+		public float Data_1;
+		public float Data_2;
+
+		/// <summary>
+		/// The timestamp of the sensor reading in microseconds, if the hardware provides this information. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp_us")]
+		[NativeName(NativeNameType.Type, "Uint64")]
+		public ulong TimestampUs;
+
+
+
+		/// <summary>
+		/// Up to 3 values from the sensor, as defined in SDL_sensor.h <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_AudioDeviceEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLAudioDeviceEvent
+	{
+		/// <summary>
+		/// ::SDL_AUDIODEVICEADDED, or ::SDL_AUDIODEVICEREMOVED <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The audio device index for the ADDED event (valid until next SDL_GetNumAudioDevices() call), SDL_AudioDeviceID for the REMOVED event <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Which;
+
+		/// <summary>
+		/// zero if an output device, non-zero if a capture device. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "iscapture")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Iscapture;
+
+		[NativeName(NativeNameType.Field, "padding1")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding1;
+		[NativeName(NativeNameType.Field, "padding2")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding2;
+		[NativeName(NativeNameType.Field, "padding3")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Padding3;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_TouchFingerEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLTouchFingerEvent
+	{
+		/// <summary>
+		/// ::SDL_FINGERMOTION or ::SDL_FINGERDOWN or ::SDL_FINGERUP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The touch device id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "touchId")]
+		[NativeName(NativeNameType.Type, "SDL_TouchID")]
+		public long TouchId;
+
+		[NativeName(NativeNameType.Field, "fingerId")]
+		[NativeName(NativeNameType.Type, "SDL_FingerID")]
+		public long FingerId;
+		/// <summary>
+		/// Normalized in the range 0...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+
+		/// <summary>
+		/// Normalized in the range 0...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+
+		/// <summary>
+		/// Normalized in the range -1...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "dx")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Dx;
+
+		/// <summary>
+		/// Normalized in the range -1...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "dy")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Dy;
+
+		/// <summary>
+		/// Normalized in the range 0...1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "pressure")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Pressure;
+
+		/// <summary>
+		/// The window underneath the finger, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MultiGestureEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMultiGestureEvent
+	{
+		/// <summary>
+		/// ::SDL_MULTIGESTURE <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The touch device id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "touchId")]
+		[NativeName(NativeNameType.Type, "SDL_TouchID")]
+		public long TouchId;
+
+		[NativeName(NativeNameType.Field, "dTheta")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float DTheta;
+		[NativeName(NativeNameType.Field, "dDist")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float DDist;
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+		[NativeName(NativeNameType.Field, "numFingers")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort NumFingers;
+		[NativeName(NativeNameType.Field, "padding")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Padding;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_DollarGestureEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLDollarGestureEvent
+	{
+		/// <summary>
+		/// ::SDL_DOLLARGESTURE or ::SDL_DOLLARRECORD <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The touch device id <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "touchId")]
+		[NativeName(NativeNameType.Type, "SDL_TouchID")]
+		public long TouchId;
+
+		[NativeName(NativeNameType.Field, "gestureId")]
+		[NativeName(NativeNameType.Type, "SDL_GestureID")]
+		public long GestureId;
+		[NativeName(NativeNameType.Field, "numFingers")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint NumFingers;
+		[NativeName(NativeNameType.Field, "error")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Error;
+		/// <summary>
+		/// Normalized center of gesture <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "x")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float X;
+
+		/// <summary>
+		/// Normalized center of gesture <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "y")]
+		[NativeName(NativeNameType.Type, "float")]
+		public float Y;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_DropEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLDropEvent
+	{
+		/// <summary>
+		/// ::SDL_DROPBEGIN or ::SDL_DROPFILE or ::SDL_DROPTEXT or ::SDL_DROPCOMPLETE <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The file name, which should be freed with SDL_free(), is NULL on begin/complete <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "file")]
+		[NativeName(NativeNameType.Type, "char*")]
+		public unsafe byte* File;
+
+		/// <summary>
+		/// The window that was dropped on, if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_SensorEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLSensorEvent
+	{
+		/// <summary>
+		/// ::SDL_SENSORUPDATE <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The instance ID of the sensor <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "which")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Which;
+
+		/// <summary>
+		/// Up to 6 values from the sensor - additional values can be queried using SDL_SensorGetData() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data")]
+		[NativeName(NativeNameType.Type, "float[6]")]
+		public float Data_0;
+		public float Data_1;
+		public float Data_2;
+		public float Data_3;
+		public float Data_4;
+		public float Data_5;
+
+		/// <summary>
+		/// The timestamp of the sensor reading in microseconds, if the hardware provides this information. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp_us")]
+		[NativeName(NativeNameType.Type, "Uint64")]
+		public ulong TimestampUs;
+
+
+
+		/// <summary>
+		/// Up to 6 values from the sensor - additional values can be queried using SDL_SensorGetData() <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_QuitEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLQuitEvent
+	{
+		/// <summary>
+		/// ::SDL_QUIT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_OSEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLOSEvent
+	{
+		/// <summary>
+		/// ::SDL_QUIT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_UserEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLUserEvent
+	{
+		/// <summary>
+		/// ::SDL_USEREVENT through ::SDL_LASTEVENT-1 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// The associated window if any <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "windowID")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint WindowID;
+
+		/// <summary>
+		/// User defined event code <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "code")]
+		[NativeName(NativeNameType.Type, "Sint32")]
+		public int Code;
+
+		/// <summary>
+		/// User defined data pointer <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data1")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Data1;
+
+		/// <summary>
+		/// User defined data pointer <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data2")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* Data2;
+
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_SysWMmsg")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLSysWMmsg
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_SysWMmsg")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLSysWMmsgPtr : IEquatable<SDLSysWMmsgPtr>
+	{
+		public SDLSysWMmsgPtr(SDLSysWMmsg* handle) { Handle = handle; }
+
+		public SDLSysWMmsg* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLSysWMmsgPtr Null => new SDLSysWMmsgPtr(null);
+
+		public static implicit operator SDLSysWMmsgPtr(SDLSysWMmsg* handle) => new SDLSysWMmsgPtr(handle);
+
+		public static implicit operator SDLSysWMmsg*(SDLSysWMmsgPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLSysWMmsgPtr left, SDLSysWMmsgPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLSysWMmsgPtr left, SDLSysWMmsgPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLSysWMmsgPtr left, SDLSysWMmsg* right) => left.Handle == right;
+
+		public static bool operator !=(SDLSysWMmsgPtr left, SDLSysWMmsg* right) => left.Handle != right;
+
+		public bool Equals(SDLSysWMmsgPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLSysWMmsgPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLSysWMmsgPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_SysWMEvent")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLSysWMEvent
+	{
+		/// <summary>
+		/// ::SDL_SYSWMEVENT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Type;
+
+		/// <summary>
+		/// In milliseconds, populated using SDL_GetTicks() <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "timestamp")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Timestamp;
+
+		/// <summary>
+		/// driver dependent data, defined in SDL_syswm.h <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "msg")]
+		[NativeName(NativeNameType.Type, "SDL_SysWMmsg*")]
+		public unsafe SDLSysWMmsg* Msg;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Event")]
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct SDLEvent
+	{
+		/// <summary>
+		/// Event type, shared with all events <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		[FieldOffset(0)]
+		public uint Type;
+
+		/// <summary>
+		/// Common event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "common")]
+		[NativeName(NativeNameType.Type, "SDL_CommonEvent")]
+		[FieldOffset(0)]
+		public SDLCommonEvent Common;
+
+		/// <summary>
+		/// Display event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "display")]
+		[NativeName(NativeNameType.Type, "SDL_DisplayEvent")]
+		[FieldOffset(0)]
+		public SDLDisplayEvent Display;
+
+		/// <summary>
+		/// Window event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "window")]
+		[NativeName(NativeNameType.Type, "SDL_WindowEvent")]
+		[FieldOffset(0)]
+		public SDLWindowEvent Window;
+
+		/// <summary>
+		/// Keyboard event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "key")]
+		[NativeName(NativeNameType.Type, "SDL_KeyboardEvent")]
+		[FieldOffset(0)]
+		public SDLKeyboardEvent Key;
+
+		/// <summary>
+		/// Text editing event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "edit")]
+		[NativeName(NativeNameType.Type, "SDL_TextEditingEvent")]
+		[FieldOffset(0)]
+		public SDLTextEditingEvent Edit;
+
+		/// <summary>
+		/// Extended text editing event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "editExt")]
+		[NativeName(NativeNameType.Type, "SDL_TextEditingExtEvent")]
+		[FieldOffset(0)]
+		public SDLTextEditingExtEvent EditExt;
+
+		/// <summary>
+		/// Text input event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "text")]
+		[NativeName(NativeNameType.Type, "SDL_TextInputEvent")]
+		[FieldOffset(0)]
+		public SDLTextInputEvent Text;
+
+		/// <summary>
+		/// Mouse motion event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "motion")]
+		[NativeName(NativeNameType.Type, "SDL_MouseMotionEvent")]
+		[FieldOffset(0)]
+		public SDLMouseMotionEvent Motion;
+
+		/// <summary>
+		/// Mouse button event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "SDL_MouseButtonEvent")]
+		[FieldOffset(0)]
+		public SDLMouseButtonEvent Button;
+
+		/// <summary>
+		/// Mouse wheel event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "wheel")]
+		[NativeName(NativeNameType.Type, "SDL_MouseWheelEvent")]
+		[FieldOffset(0)]
+		public SDLMouseWheelEvent Wheel;
+
+		/// <summary>
+		/// Joystick axis event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jaxis")]
+		[NativeName(NativeNameType.Type, "SDL_JoyAxisEvent")]
+		[FieldOffset(0)]
+		public SDLJoyAxisEvent Jaxis;
+
+		/// <summary>
+		/// Joystick ball event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jball")]
+		[NativeName(NativeNameType.Type, "SDL_JoyBallEvent")]
+		[FieldOffset(0)]
+		public SDLJoyBallEvent Jball;
+
+		/// <summary>
+		/// Joystick hat event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jhat")]
+		[NativeName(NativeNameType.Type, "SDL_JoyHatEvent")]
+		[FieldOffset(0)]
+		public SDLJoyHatEvent Jhat;
+
+		/// <summary>
+		/// Joystick button event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jbutton")]
+		[NativeName(NativeNameType.Type, "SDL_JoyButtonEvent")]
+		[FieldOffset(0)]
+		public SDLJoyButtonEvent Jbutton;
+
+		/// <summary>
+		/// Joystick device change event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jdevice")]
+		[NativeName(NativeNameType.Type, "SDL_JoyDeviceEvent")]
+		[FieldOffset(0)]
+		public SDLJoyDeviceEvent Jdevice;
+
+		/// <summary>
+		/// Joystick battery event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "jbattery")]
+		[NativeName(NativeNameType.Type, "SDL_JoyBatteryEvent")]
+		[FieldOffset(0)]
+		public SDLJoyBatteryEvent Jbattery;
+
+		/// <summary>
+		/// Game Controller axis event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "caxis")]
+		[NativeName(NativeNameType.Type, "SDL_ControllerAxisEvent")]
+		[FieldOffset(0)]
+		public SDLControllerAxisEvent Caxis;
+
+		/// <summary>
+		/// Game Controller button event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "cbutton")]
+		[NativeName(NativeNameType.Type, "SDL_ControllerButtonEvent")]
+		[FieldOffset(0)]
+		public SDLControllerButtonEvent Cbutton;
+
+		/// <summary>
+		/// Game Controller device event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "cdevice")]
+		[NativeName(NativeNameType.Type, "SDL_ControllerDeviceEvent")]
+		[FieldOffset(0)]
+		public SDLControllerDeviceEvent Cdevice;
+
+		/// <summary>
+		/// Game Controller touchpad event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ctouchpad")]
+		[NativeName(NativeNameType.Type, "SDL_ControllerTouchpadEvent")]
+		[FieldOffset(0)]
+		public SDLControllerTouchpadEvent Ctouchpad;
+
+		/// <summary>
+		/// Game Controller sensor event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "csensor")]
+		[NativeName(NativeNameType.Type, "SDL_ControllerSensorEvent")]
+		[FieldOffset(0)]
+		public SDLControllerSensorEvent Csensor;
+
+		/// <summary>
+		/// Audio device event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "adevice")]
+		[NativeName(NativeNameType.Type, "SDL_AudioDeviceEvent")]
+		[FieldOffset(0)]
+		public SDLAudioDeviceEvent Adevice;
+
+		/// <summary>
+		/// Sensor event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "sensor")]
+		[NativeName(NativeNameType.Type, "SDL_SensorEvent")]
+		[FieldOffset(0)]
+		public SDLSensorEvent Sensor;
+
+		/// <summary>
+		/// Quit request event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "quit")]
+		[NativeName(NativeNameType.Type, "SDL_QuitEvent")]
+		[FieldOffset(0)]
+		public SDLQuitEvent Quit;
+
+		/// <summary>
+		/// Custom event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "user")]
+		[NativeName(NativeNameType.Type, "SDL_UserEvent")]
+		[FieldOffset(0)]
+		public SDLUserEvent User;
+
+		/// <summary>
+		/// System dependent window event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "syswm")]
+		[NativeName(NativeNameType.Type, "SDL_SysWMEvent")]
+		[FieldOffset(0)]
+		public SDLSysWMEvent Syswm;
+
+		/// <summary>
+		/// Touch finger event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "tfinger")]
+		[NativeName(NativeNameType.Type, "SDL_TouchFingerEvent")]
+		[FieldOffset(0)]
+		public SDLTouchFingerEvent Tfinger;
+
+		/// <summary>
+		/// Gesture event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "mgesture")]
+		[NativeName(NativeNameType.Type, "SDL_MultiGestureEvent")]
+		[FieldOffset(0)]
+		public SDLMultiGestureEvent Mgesture;
+
+		/// <summary>
+		/// Gesture event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "dgesture")]
+		[NativeName(NativeNameType.Type, "SDL_DollarGestureEvent")]
+		[FieldOffset(0)]
+		public SDLDollarGestureEvent Dgesture;
+
+		/// <summary>
+		/// Drag and drop event data <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "drop")]
+		[NativeName(NativeNameType.Type, "SDL_DropEvent")]
+		[FieldOffset(0)]
+		public SDLDropEvent Drop;
+
+		/// <summary>
+		/// This is necessary for ABI compatibility between Visual C++ and GCC.<br/>
+		/// Visual C++ will respect the push pack pragma and use 52 bytes (size of<br/>
+		/// SDL_TextEditingEvent, the largest structure for 32-bit and 64-bit<br/>
+		/// architectures) for this union, and GCC will use the alignment of the<br/>
+		/// largest datatype within the union, which is 8 bytes on 64-bit<br/>
+		/// architectures.<br/>
+		/// So... we'll add padding to force the size to be 56 bytes for both.<br/>
+		/// On architectures where pointers are 16 bytes, this needs rounding up to<br/>
+		/// the next multiple of 16, 64, and on architectures where pointers are<br/>
+		/// even larger the size of SDL_UserEvent will dominate as being 3 pointers.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "padding")]
+		[NativeName(NativeNameType.Type, "Uint8[56]")]
+		[FieldOffset(0)]
+		public byte Padding_0;
+		[FieldOffset(56)]
+		public byte Padding_1;
+		[FieldOffset(112)]
+		public byte Padding_2;
+		[FieldOffset(168)]
+		public byte Padding_3;
+		[FieldOffset(224)]
+		public byte Padding_4;
+		[FieldOffset(280)]
+		public byte Padding_5;
+		[FieldOffset(336)]
+		public byte Padding_6;
+		[FieldOffset(392)]
+		public byte Padding_7;
+		[FieldOffset(448)]
+		public byte Padding_8;
+		[FieldOffset(504)]
+		public byte Padding_9;
+		[FieldOffset(560)]
+		public byte Padding_10;
+		[FieldOffset(616)]
+		public byte Padding_11;
+		[FieldOffset(672)]
+		public byte Padding_12;
+		[FieldOffset(728)]
+		public byte Padding_13;
+		[FieldOffset(784)]
+		public byte Padding_14;
+		[FieldOffset(840)]
+		public byte Padding_15;
+		[FieldOffset(896)]
+		public byte Padding_16;
+		[FieldOffset(952)]
+		public byte Padding_17;
+		[FieldOffset(1008)]
+		public byte Padding_18;
+		[FieldOffset(1064)]
+		public byte Padding_19;
+		[FieldOffset(1120)]
+		public byte Padding_20;
+		[FieldOffset(1176)]
+		public byte Padding_21;
+		[FieldOffset(1232)]
+		public byte Padding_22;
+		[FieldOffset(1288)]
+		public byte Padding_23;
+		[FieldOffset(1344)]
+		public byte Padding_24;
+		[FieldOffset(1400)]
+		public byte Padding_25;
+		[FieldOffset(1456)]
+		public byte Padding_26;
+		[FieldOffset(1512)]
+		public byte Padding_27;
+		[FieldOffset(1568)]
+		public byte Padding_28;
+		[FieldOffset(1624)]
+		public byte Padding_29;
+		[FieldOffset(1680)]
+		public byte Padding_30;
+		[FieldOffset(1736)]
+		public byte Padding_31;
+		[FieldOffset(1792)]
+		public byte Padding_32;
+		[FieldOffset(1848)]
+		public byte Padding_33;
+		[FieldOffset(1904)]
+		public byte Padding_34;
+		[FieldOffset(1960)]
+		public byte Padding_35;
+		[FieldOffset(2016)]
+		public byte Padding_36;
+		[FieldOffset(2072)]
+		public byte Padding_37;
+		[FieldOffset(2128)]
+		public byte Padding_38;
+		[FieldOffset(2184)]
+		public byte Padding_39;
+		[FieldOffset(2240)]
+		public byte Padding_40;
+		[FieldOffset(2296)]
+		public byte Padding_41;
+		[FieldOffset(2352)]
+		public byte Padding_42;
+		[FieldOffset(2408)]
+		public byte Padding_43;
+		[FieldOffset(2464)]
+		public byte Padding_44;
+		[FieldOffset(2520)]
+		public byte Padding_45;
+		[FieldOffset(2576)]
+		public byte Padding_46;
+		[FieldOffset(2632)]
+		public byte Padding_47;
+		[FieldOffset(2688)]
+		public byte Padding_48;
+		[FieldOffset(2744)]
+		public byte Padding_49;
+		[FieldOffset(2800)]
+		public byte Padding_50;
+		[FieldOffset(2856)]
+		public byte Padding_51;
+		[FieldOffset(2912)]
+		public byte Padding_52;
+		[FieldOffset(2968)]
+		public byte Padding_53;
+		[FieldOffset(3024)]
+		public byte Padding_54;
+		[FieldOffset(3080)]
+		public byte Padding_55;
+
+
+
+		/// <summary>
+		/// This is necessary for ABI compatibility between Visual C++ and GCC.<br/>
+		/// Visual C++ will respect the push pack pragma and use 52 bytes (size of<br/>
+		/// SDL_TextEditingEvent, the largest structure for 32-bit and 64-bit<br/>
+		/// architectures) for this union, and GCC will use the alignment of the<br/>
+		/// largest datatype within the union, which is 8 bytes on 64-bit<br/>
+		/// architectures.<br/>
+		/// So... we'll add padding to force the size to be 56 bytes for both.<br/>
+		/// On architectures where pointers are 16 bytes, this needs rounding up to<br/>
+		/// the next multiple of 16, 64, and on architectures where pointers are<br/>
+		/// even larger the size of SDL_UserEvent will dominate as being 3 pointers.<br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Event")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLEventPtr : IEquatable<SDLEventPtr>
+	{
+		public SDLEventPtr(SDLEvent* handle) { Handle = handle; }
+
+		public SDLEvent* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLEventPtr Null => new SDLEventPtr(null);
+
+		public static implicit operator SDLEventPtr(SDLEvent* handle) => new SDLEventPtr(handle);
+
+		public static implicit operator SDLEvent*(SDLEventPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLEventPtr left, SDLEventPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLEventPtr left, SDLEventPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLEventPtr left, SDLEvent* right) => left.Handle == right;
+
+		public static bool operator !=(SDLEventPtr left, SDLEvent* right) => left.Handle != right;
+
+		public bool Equals(SDLEventPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLEventPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLEventPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Event type, shared with all events <br/>
+		/// </summary>
+		public ref uint Type => ref Unsafe.AsRef<uint>(&Handle->Type);
+		/// <summary>
+		/// Common event data <br/>
+		/// </summary>
+		public ref SDLCommonEvent Common => ref Unsafe.AsRef<SDLCommonEvent>(&Handle->Common);
+		/// <summary>
+		/// Display event data <br/>
+		/// </summary>
+		public ref SDLDisplayEvent Display => ref Unsafe.AsRef<SDLDisplayEvent>(&Handle->Display);
+		/// <summary>
+		/// Window event data <br/>
+		/// </summary>
+		public ref SDLWindowEvent Window => ref Unsafe.AsRef<SDLWindowEvent>(&Handle->Window);
+		/// <summary>
+		/// Keyboard event data <br/>
+		/// </summary>
+		public ref SDLKeyboardEvent Key => ref Unsafe.AsRef<SDLKeyboardEvent>(&Handle->Key);
+		/// <summary>
+		/// Text editing event data <br/>
+		/// </summary>
+		public ref SDLTextEditingEvent Edit => ref Unsafe.AsRef<SDLTextEditingEvent>(&Handle->Edit);
+		/// <summary>
+		/// Extended text editing event data <br/>
+		/// </summary>
+		public ref SDLTextEditingExtEvent EditExt => ref Unsafe.AsRef<SDLTextEditingExtEvent>(&Handle->EditExt);
+		/// <summary>
+		/// Text input event data <br/>
+		/// </summary>
+		public ref SDLTextInputEvent Text => ref Unsafe.AsRef<SDLTextInputEvent>(&Handle->Text);
+		/// <summary>
+		/// Mouse motion event data <br/>
+		/// </summary>
+		public ref SDLMouseMotionEvent Motion => ref Unsafe.AsRef<SDLMouseMotionEvent>(&Handle->Motion);
+		/// <summary>
+		/// Mouse button event data <br/>
+		/// </summary>
+		public ref SDLMouseButtonEvent Button => ref Unsafe.AsRef<SDLMouseButtonEvent>(&Handle->Button);
+		/// <summary>
+		/// Mouse wheel event data <br/>
+		/// </summary>
+		public ref SDLMouseWheelEvent Wheel => ref Unsafe.AsRef<SDLMouseWheelEvent>(&Handle->Wheel);
+		/// <summary>
+		/// Joystick axis event data <br/>
+		/// </summary>
+		public ref SDLJoyAxisEvent Jaxis => ref Unsafe.AsRef<SDLJoyAxisEvent>(&Handle->Jaxis);
+		/// <summary>
+		/// Joystick ball event data <br/>
+		/// </summary>
+		public ref SDLJoyBallEvent Jball => ref Unsafe.AsRef<SDLJoyBallEvent>(&Handle->Jball);
+		/// <summary>
+		/// Joystick hat event data <br/>
+		/// </summary>
+		public ref SDLJoyHatEvent Jhat => ref Unsafe.AsRef<SDLJoyHatEvent>(&Handle->Jhat);
+		/// <summary>
+		/// Joystick button event data <br/>
+		/// </summary>
+		public ref SDLJoyButtonEvent Jbutton => ref Unsafe.AsRef<SDLJoyButtonEvent>(&Handle->Jbutton);
+		/// <summary>
+		/// Joystick device change event data <br/>
+		/// </summary>
+		public ref SDLJoyDeviceEvent Jdevice => ref Unsafe.AsRef<SDLJoyDeviceEvent>(&Handle->Jdevice);
+		/// <summary>
+		/// Joystick battery event data <br/>
+		/// </summary>
+		public ref SDLJoyBatteryEvent Jbattery => ref Unsafe.AsRef<SDLJoyBatteryEvent>(&Handle->Jbattery);
+		/// <summary>
+		/// Game Controller axis event data <br/>
+		/// </summary>
+		public ref SDLControllerAxisEvent Caxis => ref Unsafe.AsRef<SDLControllerAxisEvent>(&Handle->Caxis);
+		/// <summary>
+		/// Game Controller button event data <br/>
+		/// </summary>
+		public ref SDLControllerButtonEvent Cbutton => ref Unsafe.AsRef<SDLControllerButtonEvent>(&Handle->Cbutton);
+		/// <summary>
+		/// Game Controller device event data <br/>
+		/// </summary>
+		public ref SDLControllerDeviceEvent Cdevice => ref Unsafe.AsRef<SDLControllerDeviceEvent>(&Handle->Cdevice);
+		/// <summary>
+		/// Game Controller touchpad event data <br/>
+		/// </summary>
+		public ref SDLControllerTouchpadEvent Ctouchpad => ref Unsafe.AsRef<SDLControllerTouchpadEvent>(&Handle->Ctouchpad);
+		/// <summary>
+		/// Game Controller sensor event data <br/>
+		/// </summary>
+		public ref SDLControllerSensorEvent Csensor => ref Unsafe.AsRef<SDLControllerSensorEvent>(&Handle->Csensor);
+		/// <summary>
+		/// Audio device event data <br/>
+		/// </summary>
+		public ref SDLAudioDeviceEvent Adevice => ref Unsafe.AsRef<SDLAudioDeviceEvent>(&Handle->Adevice);
+		/// <summary>
+		/// Sensor event data <br/>
+		/// </summary>
+		public ref SDLSensorEvent Sensor => ref Unsafe.AsRef<SDLSensorEvent>(&Handle->Sensor);
+		/// <summary>
+		/// Quit request event data <br/>
+		/// </summary>
+		public ref SDLQuitEvent Quit => ref Unsafe.AsRef<SDLQuitEvent>(&Handle->Quit);
+		/// <summary>
+		/// Custom event data <br/>
+		/// </summary>
+		public ref SDLUserEvent User => ref Unsafe.AsRef<SDLUserEvent>(&Handle->User);
+		/// <summary>
+		/// System dependent window event data <br/>
+		/// </summary>
+		public ref SDLSysWMEvent Syswm => ref Unsafe.AsRef<SDLSysWMEvent>(&Handle->Syswm);
+		/// <summary>
+		/// Touch finger event data <br/>
+		/// </summary>
+		public ref SDLTouchFingerEvent Tfinger => ref Unsafe.AsRef<SDLTouchFingerEvent>(&Handle->Tfinger);
+		/// <summary>
+		/// Gesture event data <br/>
+		/// </summary>
+		public ref SDLMultiGestureEvent Mgesture => ref Unsafe.AsRef<SDLMultiGestureEvent>(&Handle->Mgesture);
+		/// <summary>
+		/// Gesture event data <br/>
+		/// </summary>
+		public ref SDLDollarGestureEvent Dgesture => ref Unsafe.AsRef<SDLDollarGestureEvent>(&Handle->Dgesture);
+		/// <summary>
+		/// Drag and drop event data <br/>
+		/// </summary>
+		public ref SDLDropEvent Drop => ref Unsafe.AsRef<SDLDropEvent>(&Handle->Drop);
+		/// <summary>
+		/// This is necessary for ABI compatibility between Visual C++ and GCC.<br/>
+		/// Visual C++ will respect the push pack pragma and use 52 bytes (size of<br/>
+		/// SDL_TextEditingEvent, the largest structure for 32-bit and 64-bit<br/>
+		/// architectures) for this union, and GCC will use the alignment of the<br/>
+		/// largest datatype within the union, which is 8 bytes on 64-bit<br/>
+		/// architectures.<br/>
+		/// So... we'll add padding to force the size to be 56 bytes for both.<br/>
+		/// On architectures where pointers are 16 bytes, this needs rounding up to<br/>
+		/// the next multiple of 16, 64, and on architectures where pointers are<br/>
+		/// even larger the size of SDL_UserEvent will dominate as being 3 pointers.<br/>
+		/// </summary>
+		public unsafe Span<byte> Padding
+		
+		{
+			get
+			{
+				return new Span<byte>(&Handle->Padding_0, 56);
+			}
+		}
+	}
+
+	/// <summary>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "_SDL_Haptic")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHaptic
+	{
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This is the direction where the force comes from,<br/>
+	/// instead of the direction in which the force is exerted.<br/>
+	/// Directions can be specified by:<br/>
+	/// - ::SDL_HAPTIC_POLAR : Specified by polar coordinates.<br/>
+	/// - ::SDL_HAPTIC_CARTESIAN : Specified by cartesian coordinates.<br/>
+	/// - ::SDL_HAPTIC_SPHERICAL : Specified by spherical coordinates.<br/>
+	/// Cardinal directions of the haptic device are relative to the positioning<br/>
+	/// of the device.  North is considered to be away from the user.<br/>
+	/// The following diagram represents the cardinal directions:<br/>
+	/// <br/>
+	/// If type is ::SDL_HAPTIC_POLAR, direction is encoded by hundredths of a<br/>
+	/// degree starting north and turning clockwise.  ::SDL_HAPTIC_POLAR only uses<br/>
+	/// the first <br/>
+	/// parameter.  The cardinal directions would be:<br/>
+	/// - North: 0 (0 degrees)<br/>
+	/// - East: 9000 (90 degrees)<br/>
+	/// - South: 18000 (180 degrees)<br/>
+	/// - West: 27000 (270 degrees)<br/>
+	/// If type is ::SDL_HAPTIC_CARTESIAN, direction is encoded by three positions<br/>
+	/// (X axis, Y axis and Z axis (with 3 axes)).  ::SDL_HAPTIC_CARTESIAN uses<br/>
+	/// the first three <br/>
+	/// parameters.  The cardinal directions would be:<br/>
+	/// - North:  0,-1, 0<br/>
+	/// - East:   1, 0, 0<br/>
+	/// - South:  0, 1, 0<br/>
+	/// - West:  -1, 0, 0<br/>
+	/// The Z axis represents the height of the effect if supported, otherwise<br/>
+	/// it's unused.  In cartesian encoding (1, 2) would be the same as (2, 4), you<br/>
+	/// can use any multiple you want, only the direction matters.<br/>
+	/// If type is ::SDL_HAPTIC_SPHERICAL, direction is encoded by two rotations.<br/>
+	/// The first two <br/>
+	/// parameters are used.  The <br/>
+	/// parameters are as<br/>
+	/// follows (all values are in hundredths of degrees):<br/>
+	/// - Degrees from (1, 0) rotated towards (0, 1).<br/>
+	/// - Degrees towards (0, 0, 1) (device needs at least 3 axes).<br/>
+	/// Example of force coming from the south with all encodings (force coming<br/>
+	/// from the south means the user will have to pull the stick to counteract):<br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticDirection")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticDirection
+	{
+		/// <summary>
+		/// The type of encoding. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Type;
+
+		/// <summary>
+		/// The encoded direction. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "dir")]
+		[NativeName(NativeNameType.Type, "Sint32[3]")]
+		public int Dir_0;
+		public int Dir_1;
+		public int Dir_2;
+
+
+
+		/// <summary>
+		/// The encoded direction. <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This struct is exclusively for the ::SDL_HAPTIC_CONSTANT effect.<br/>
+	/// A constant effect applies a constant force in the specified direction<br/>
+	/// to the joystick.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticConstant")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticConstant
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_CONSTANT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Direction of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "SDL_HapticDirection")]
+		public SDLHapticDirection Direction;
+
+		/// <summary>
+		/// Duration of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Delay before starting the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "delay")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Delay;
+
+		/// <summary>
+		/// Button that triggers the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Button;
+
+		/// <summary>
+		/// How soon it can be triggered again after button. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interval")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Interval;
+
+		/// <summary>
+		/// Strength of the constant effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "level")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Level;
+
+		/// <summary>
+		/// Duration of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLength;
+
+		/// <summary>
+		/// Level at the start of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLevel;
+
+		/// <summary>
+		/// Duration of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLength;
+
+		/// <summary>
+		/// Level at the end of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLevel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// The struct handles the following effects:<br/>
+	/// - ::SDL_HAPTIC_SINE<br/>
+	/// - ::SDL_HAPTIC_LEFTRIGHT<br/>
+	/// - ::SDL_HAPTIC_TRIANGLE<br/>
+	/// - ::SDL_HAPTIC_SAWTOOTHUP<br/>
+	/// - ::SDL_HAPTIC_SAWTOOTHDOWN<br/>
+	/// A periodic effect consists in a wave-shaped effect that repeats itself<br/>
+	/// over time.  The type determines the shape of the wave and the parameters<br/>
+	/// determine the dimensions of the wave.<br/>
+	/// Phase is given by hundredth of a degree meaning that giving the phase a value<br/>
+	/// of 9000 will displace it 25% of its period.  Here are sample values:<br/>
+	/// -     0: No phase displacement.<br/>
+	/// -  9000: Displaced 25% of its period.<br/>
+	/// - 18000: Displaced 50% of its period.<br/>
+	/// - 27000: Displaced 75% of its period.<br/>
+	/// - 36000: Displaced 100% of its period, same as 0, but 0 is preferred.<br/>
+	/// Examples:<br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticPeriodic")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticPeriodic
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_SINE, ::SDL_HAPTIC_LEFTRIGHT,<br/>
+		/// ::SDL_HAPTIC_TRIANGLE, ::SDL_HAPTIC_SAWTOOTHUP or<br/>
+		/// ::SDL_HAPTIC_SAWTOOTHDOWN <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Direction of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "SDL_HapticDirection")]
+		public SDLHapticDirection Direction;
+
+		/// <summary>
+		/// Duration of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Delay before starting the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "delay")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Delay;
+
+		/// <summary>
+		/// Button that triggers the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Button;
+
+		/// <summary>
+		/// How soon it can be triggered again after button. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interval")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Interval;
+
+		/// <summary>
+		/// Period of the wave. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "period")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Period;
+
+		/// <summary>
+		/// Peak value; if negative, equivalent to 180 degrees extra phase shift. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "magnitude")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Magnitude;
+
+		/// <summary>
+		/// Mean value of the wave. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "offset")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Offset;
+
+		/// <summary>
+		/// Positive phase shift given by hundredth of a degree. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "phase")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Phase;
+
+		/// <summary>
+		/// Duration of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLength;
+
+		/// <summary>
+		/// Level at the start of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLevel;
+
+		/// <summary>
+		/// Duration of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLength;
+
+		/// <summary>
+		/// Level at the end of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLevel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// The struct handles the following effects:<br/>
+	/// - ::SDL_HAPTIC_SPRING: Effect based on axes position.<br/>
+	/// - ::SDL_HAPTIC_DAMPER: Effect based on axes velocity.<br/>
+	/// - ::SDL_HAPTIC_INERTIA: Effect based on axes acceleration.<br/>
+	/// - ::SDL_HAPTIC_FRICTION: Effect based on axes movement.<br/>
+	/// Direction is handled by condition internals instead of a direction member.<br/>
+	/// The condition effect specific members have three parameters.  The first<br/>
+	/// refers to the X axis, the second refers to the Y axis and the third<br/>
+	/// refers to the Z axis.  The right terms refer to the positive side of the<br/>
+	/// axis and the left terms refer to the negative side of the axis.  Please<br/>
+	/// refer to the ::SDL_HapticDirection diagram for which side is positive and<br/>
+	/// which is negative.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticCondition")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticCondition
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_SPRING, ::SDL_HAPTIC_DAMPER,<br/>
+		/// ::SDL_HAPTIC_INERTIA or ::SDL_HAPTIC_FRICTION <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Direction of the effect - Not used ATM. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "SDL_HapticDirection")]
+		public SDLHapticDirection Direction;
+
+		/// <summary>
+		/// Duration of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Delay before starting the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "delay")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Delay;
+
+		/// <summary>
+		/// Button that triggers the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Button;
+
+		/// <summary>
+		/// How soon it can be triggered again after button. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interval")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Interval;
+
+		/// <summary>
+		/// Level when joystick is to the positive side; max 0xFFFF. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "right_sat")]
+		[NativeName(NativeNameType.Type, "Uint16[3]")]
+		public ushort RightSat_0;
+		public ushort RightSat_1;
+		public ushort RightSat_2;
+
+		/// <summary>
+		/// Level when joystick is to the negative side; max 0xFFFF. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "left_sat")]
+		[NativeName(NativeNameType.Type, "Uint16[3]")]
+		public ushort LeftSat_0;
+		public ushort LeftSat_1;
+		public ushort LeftSat_2;
+
+		/// <summary>
+		/// How fast to increase the force towards the positive side. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "right_coeff")]
+		[NativeName(NativeNameType.Type, "Sint16[3]")]
+		public short RightCoeff_0;
+		public short RightCoeff_1;
+		public short RightCoeff_2;
+
+		/// <summary>
+		/// How fast to increase the force towards the negative side. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "left_coeff")]
+		[NativeName(NativeNameType.Type, "Sint16[3]")]
+		public short LeftCoeff_0;
+		public short LeftCoeff_1;
+		public short LeftCoeff_2;
+
+		/// <summary>
+		/// Size of the dead zone; max 0xFFFF: whole axis-range when 0-centered. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "deadband")]
+		[NativeName(NativeNameType.Type, "Uint16[3]")]
+		public ushort Deadband_0;
+		public ushort Deadband_1;
+		public ushort Deadband_2;
+
+		/// <summary>
+		/// Position of the dead zone. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "center")]
+		[NativeName(NativeNameType.Type, "Sint16[3]")]
+		public short Center_0;
+		public short Center_1;
+		public short Center_2;
+
+
+
+		/// <summary>
+		/// Level when joystick is to the positive side; max 0xFFFF. <br/>
+		/// </summary>
+		/// <summary>
+		/// Level when joystick is to the negative side; max 0xFFFF. <br/>
+		/// </summary>
+		/// <summary>
+		/// How fast to increase the force towards the positive side. <br/>
+		/// </summary>
+		/// <summary>
+		/// How fast to increase the force towards the negative side. <br/>
+		/// </summary>
+		/// <summary>
+		/// Size of the dead zone; max 0xFFFF: whole axis-range when 0-centered. <br/>
+		/// </summary>
+		/// <summary>
+		/// Position of the dead zone. <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This struct is exclusively for the ::SDL_HAPTIC_RAMP effect.<br/>
+	/// The ramp effect starts at start strength and ends at end strength.<br/>
+	/// It augments in linear fashion.  If you use attack and fade with a ramp<br/>
+	/// the effects get added to the ramp effect making the effect become<br/>
+	/// quadratic instead of linear.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticRamp")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticRamp
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_RAMP <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Direction of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "SDL_HapticDirection")]
+		public SDLHapticDirection Direction;
+
+		/// <summary>
+		/// Duration of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Delay before starting the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "delay")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Delay;
+
+		/// <summary>
+		/// Button that triggers the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Button;
+
+		/// <summary>
+		/// How soon it can be triggered again after button. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interval")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Interval;
+
+		/// <summary>
+		/// Beginning strength level. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "start")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short Start;
+
+		/// <summary>
+		/// Ending strength level. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "end")]
+		[NativeName(NativeNameType.Type, "Sint16")]
+		public short End;
+
+		/// <summary>
+		/// Duration of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLength;
+
+		/// <summary>
+		/// Level at the start of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLevel;
+
+		/// <summary>
+		/// Duration of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLength;
+
+		/// <summary>
+		/// Level at the end of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLevel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This struct is exclusively for the ::SDL_HAPTIC_LEFTRIGHT effect.<br/>
+	/// The Left/Right effect is used to explicitly control the large and small<br/>
+	/// motors, commonly found in modern game controllers. The small (right) motor<br/>
+	/// is high frequency, and the large (left) motor is low frequency.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticLeftRight")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticLeftRight
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_LEFTRIGHT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Duration of the effect in milliseconds. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Control of the large controller motor. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "large_magnitude")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort LargeMagnitude;
+
+		/// <summary>
+		/// Control of the small controller motor. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "small_magnitude")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort SmallMagnitude;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This struct is exclusively for the ::SDL_HAPTIC_CUSTOM effect.<br/>
+	/// A custom force feedback effect is much like a periodic effect, where the<br/>
+	/// application can define its exact shape.  You will have to allocate the<br/>
+	/// data yourself.  Data should consist of channels * samples Uint16 samples.<br/>
+	/// If channels is one, the effect is rotated using the defined direction.<br/>
+	/// Otherwise it uses the samples in data for the different axes.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticCustom")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticCustom
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_CUSTOM <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Direction of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "direction")]
+		[NativeName(NativeNameType.Type, "SDL_HapticDirection")]
+		public SDLHapticDirection Direction;
+
+		/// <summary>
+		/// Duration of the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Delay before starting the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "delay")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Delay;
+
+		/// <summary>
+		/// Button that triggers the effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "button")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Button;
+
+		/// <summary>
+		/// How soon it can be triggered again after button. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interval")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Interval;
+
+		/// <summary>
+		/// Axes to use, minimum of one. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "channels")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Channels;
+
+		/// <summary>
+		/// Sample periods. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "period")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Period;
+
+		/// <summary>
+		/// Amount of samples. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "samples")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Samples;
+
+		/// <summary>
+		/// Should contain channels*samples items. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "data")]
+		[NativeName(NativeNameType.Type, "Uint16*")]
+		public unsafe ushort* Data;
+
+		/// <summary>
+		/// Duration of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLength;
+
+		/// <summary>
+		/// Level at the start of the attack. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "attack_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort AttackLevel;
+
+		/// <summary>
+		/// Duration of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_length")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLength;
+
+		/// <summary>
+		/// Level at the end of the fade. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "fade_level")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort FadeLevel;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// All values max at 32767 (0x7FFF).  Signed values also can be negative.<br/>
+	/// Time values unless specified otherwise are in milliseconds.<br/>
+	/// You can also pass ::SDL_HAPTIC_INFINITY to length instead of a 0-32767<br/>
+	/// value.  Neither delay, interval, attack_length nor fade_length support<br/>
+	/// ::SDL_HAPTIC_INFINITY.  Fade will also not be used since effect never ends.<br/>
+	/// Additionally, the ::SDL_HAPTIC_RAMP effect does not support a duration of<br/>
+	/// ::SDL_HAPTIC_INFINITY.<br/>
+	/// Button triggers may not be supported on all devices, it is advised to not<br/>
+	/// use them if possible.  Buttons start at index 1 instead of index 0 like<br/>
+	/// the joystick.<br/>
+	/// If both attack_length and fade_level are 0, the envelope is not used,<br/>
+	/// otherwise both values are used.<br/>
+	/// Common parts:<br/>
+	/// <br/>
+	/// Here we have an example of a constant effect evolution in time:<br/>
+	/// <br/>
+	/// Note either the attack_level or the fade_level may be above the actual<br/>
+	/// effect level.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticEffect")]
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct SDLHapticEffect
+	{
+		/// <summary>
+		/// Effect type. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		[FieldOffset(0)]
+		public ushort Type;
+
+		/// <summary>
+		/// Constant effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "constant")]
+		[NativeName(NativeNameType.Type, "SDL_HapticConstant")]
+		[FieldOffset(0)]
+		public SDLHapticConstant Constant;
+
+		/// <summary>
+		/// Periodic effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "periodic")]
+		[NativeName(NativeNameType.Type, "SDL_HapticPeriodic")]
+		[FieldOffset(0)]
+		public SDLHapticPeriodic Periodic;
+
+		/// <summary>
+		/// Condition effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "condition")]
+		[NativeName(NativeNameType.Type, "SDL_HapticCondition")]
+		[FieldOffset(0)]
+		public SDLHapticCondition Condition;
+
+		/// <summary>
+		/// Ramp effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ramp")]
+		[NativeName(NativeNameType.Type, "SDL_HapticRamp")]
+		[FieldOffset(0)]
+		public SDLHapticRamp Ramp;
+
+		/// <summary>
+		/// Left/Right effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "leftright")]
+		[NativeName(NativeNameType.Type, "SDL_HapticLeftRight")]
+		[FieldOffset(0)]
+		public SDLHapticLeftRight Leftright;
+
+		/// <summary>
+		/// Custom effect. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "custom")]
+		[NativeName(NativeNameType.Type, "SDL_HapticCustom")]
+		[FieldOffset(0)]
+		public SDLHapticCustom Custom;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// All values max at 32767 (0x7FFF).  Signed values also can be negative.<br/>
+	/// Time values unless specified otherwise are in milliseconds.<br/>
+	/// You can also pass ::SDL_HAPTIC_INFINITY to length instead of a 0-32767<br/>
+	/// value.  Neither delay, interval, attack_length nor fade_length support<br/>
+	/// ::SDL_HAPTIC_INFINITY.  Fade will also not be used since effect never ends.<br/>
+	/// Additionally, the ::SDL_HAPTIC_RAMP effect does not support a duration of<br/>
+	/// ::SDL_HAPTIC_INFINITY.<br/>
+	/// Button triggers may not be supported on all devices, it is advised to not<br/>
+	/// use them if possible.  Buttons start at index 1 instead of index 0 like<br/>
+	/// the joystick.<br/>
+	/// If both attack_length and fade_level are 0, the envelope is not used,<br/>
+	/// otherwise both values are used.<br/>
+	/// Common parts:<br/>
+	/// <br/>
+	/// Here we have an example of a constant effect evolution in time:<br/>
+	/// <br/>
+	/// Note either the attack_level or the fade_level may be above the actual<br/>
+	/// effect level.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_HapticEffect")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLHapticEffectPtr : IEquatable<SDLHapticEffectPtr>
+	{
+		public SDLHapticEffectPtr(SDLHapticEffect* handle) { Handle = handle; }
+
+		public SDLHapticEffect* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLHapticEffectPtr Null => new SDLHapticEffectPtr(null);
+
+		public static implicit operator SDLHapticEffectPtr(SDLHapticEffect* handle) => new SDLHapticEffectPtr(handle);
+
+		public static implicit operator SDLHapticEffect*(SDLHapticEffectPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLHapticEffectPtr left, SDLHapticEffectPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLHapticEffectPtr left, SDLHapticEffectPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLHapticEffectPtr left, SDLHapticEffect* right) => left.Handle == right;
+
+		public static bool operator !=(SDLHapticEffectPtr left, SDLHapticEffect* right) => left.Handle != right;
+
+		public bool Equals(SDLHapticEffectPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLHapticEffectPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLHapticEffectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Effect type. <br/>
+		/// </summary>
+		public ref ushort Type => ref Unsafe.AsRef<ushort>(&Handle->Type);
+		/// <summary>
+		/// Constant effect. <br/>
+		/// </summary>
+		public ref SDLHapticConstant Constant => ref Unsafe.AsRef<SDLHapticConstant>(&Handle->Constant);
+		/// <summary>
+		/// Periodic effect. <br/>
+		/// </summary>
+		public ref SDLHapticPeriodic Periodic => ref Unsafe.AsRef<SDLHapticPeriodic>(&Handle->Periodic);
+		/// <summary>
+		/// Condition effect. <br/>
+		/// </summary>
+		public ref SDLHapticCondition Condition => ref Unsafe.AsRef<SDLHapticCondition>(&Handle->Condition);
+		/// <summary>
+		/// Ramp effect. <br/>
+		/// </summary>
+		public ref SDLHapticRamp Ramp => ref Unsafe.AsRef<SDLHapticRamp>(&Handle->Ramp);
+		/// <summary>
+		/// Left/Right effect. <br/>
+		/// </summary>
+		public ref SDLHapticLeftRight Leftright => ref Unsafe.AsRef<SDLHapticLeftRight>(&Handle->Leftright);
+		/// <summary>
+		/// Custom effect. <br/>
+		/// </summary>
+		public ref SDLHapticCustom Custom => ref Unsafe.AsRef<SDLHapticCustom>(&Handle->Custom);
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_hid_device_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHidDevice
+	{
+
+
+	}
+
+	/// <summary>
+	/// hidapi info structure <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_hid_device_info")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHidDeviceInfo
+	{
+		/// <summary>
+		/// Platform-specific device path <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "path")]
+		[NativeName(NativeNameType.Type, "char*")]
+		public unsafe byte* Path;
+
+		/// <summary>
+		/// Device Vendor ID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "vendor_id")]
+		[NativeName(NativeNameType.Type, "unsigned short")]
+		public ushort VendorId;
+
+		/// <summary>
+		/// Device Product ID <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "product_id")]
+		[NativeName(NativeNameType.Type, "unsigned short")]
+		public ushort ProductId;
+
+		/// <summary>
+		/// Serial Number <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "serial_number")]
+		[NativeName(NativeNameType.Type, "wchar*")]
+		public unsafe char* SerialNumber;
+
+		/// <summary>
+		/// Device Release Number in binary-coded decimal,<br/>
+		/// also known as Device Version Number <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "release_number")]
+		[NativeName(NativeNameType.Type, "unsigned short")]
+		public ushort ReleaseNumber;
+
+		/// <summary>
+		/// Manufacturer String <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "manufacturer_string")]
+		[NativeName(NativeNameType.Type, "wchar*")]
+		public unsafe char* ManufacturerString;
+
+		/// <summary>
+		/// Product string <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "product_string")]
+		[NativeName(NativeNameType.Type, "wchar*")]
+		public unsafe char* ProductString;
+
+		/// <summary>
+		/// Usage Page for this Device/Interface<br/>
+		/// (Windows/Mac only). <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "usage_page")]
+		[NativeName(NativeNameType.Type, "unsigned short")]
+		public ushort UsagePage;
+
+		/// <summary>
+		/// Usage for this Device/Interface<br/>
+		/// (Windows/Mac only).<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "usage")]
+		[NativeName(NativeNameType.Type, "unsigned short")]
+		public ushort Usage;
+
+		/// <summary>
+		/// The USB interface which this logical device<br/>
+		/// represents.<br/>
+		/// Valid on both Linux implementations in all cases.<br/>
+		/// Valid on the Windows implementation only if the device<br/>
+		/// contains more than one interface. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interface_number")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int InterfaceNumber;
+
+		/// <summary>
+		/// Additional information about the USB interface.<br/>
+		/// Valid on libusb and Android implementations. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "interface_class")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int InterfaceClass;
+
+		[NativeName(NativeNameType.Field, "interface_subclass")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int InterfaceSubclass;
+		[NativeName(NativeNameType.Field, "interface_protocol")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int InterfaceProtocol;
+		/// <summary>
+		/// Pointer to the next device <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "next")]
+		[NativeName(NativeNameType.Type, "SDL_hid_device_info*")]
+		public unsafe SDLHidDeviceInfo* Next;
+
+
+
+	}
+
+	/// <summary>
+	/// hidapi info structure <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_hid_device_info")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLHidDeviceInfoPtr : IEquatable<SDLHidDeviceInfoPtr>
+	{
+		public SDLHidDeviceInfoPtr(SDLHidDeviceInfo* handle) { Handle = handle; }
+
+		public SDLHidDeviceInfo* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLHidDeviceInfoPtr Null => new SDLHidDeviceInfoPtr(null);
+
+		public static implicit operator SDLHidDeviceInfoPtr(SDLHidDeviceInfo* handle) => new SDLHidDeviceInfoPtr(handle);
+
+		public static implicit operator SDLHidDeviceInfo*(SDLHidDeviceInfoPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLHidDeviceInfoPtr left, SDLHidDeviceInfoPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLHidDeviceInfoPtr left, SDLHidDeviceInfoPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLHidDeviceInfoPtr left, SDLHidDeviceInfo* right) => left.Handle == right;
+
+		public static bool operator !=(SDLHidDeviceInfoPtr left, SDLHidDeviceInfo* right) => left.Handle != right;
+
+		public bool Equals(SDLHidDeviceInfoPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLHidDeviceInfoPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLHidDeviceInfoPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Platform-specific device path <br/>
+		/// </summary>
+		public byte* Path { get => Handle->Path; set => Handle->Path = value; }
+		/// <summary>
+		/// Device Vendor ID <br/>
+		/// </summary>
+		public ref ushort VendorId => ref Unsafe.AsRef<ushort>(&Handle->VendorId);
+		/// <summary>
+		/// Device Product ID <br/>
+		/// </summary>
+		public ref ushort ProductId => ref Unsafe.AsRef<ushort>(&Handle->ProductId);
+		/// <summary>
+		/// Serial Number <br/>
+		/// </summary>
+		public char* SerialNumber { get => Handle->SerialNumber; set => Handle->SerialNumber = value; }
+		/// <summary>
+		/// Device Release Number in binary-coded decimal,<br/>
+		/// also known as Device Version Number <br/>
+		/// </summary>
+		public ref ushort ReleaseNumber => ref Unsafe.AsRef<ushort>(&Handle->ReleaseNumber);
+		/// <summary>
+		/// Manufacturer String <br/>
+		/// </summary>
+		public char* ManufacturerString { get => Handle->ManufacturerString; set => Handle->ManufacturerString = value; }
+		/// <summary>
+		/// Product string <br/>
+		/// </summary>
+		public char* ProductString { get => Handle->ProductString; set => Handle->ProductString = value; }
+		/// <summary>
+		/// Usage Page for this Device/Interface<br/>
+		/// (Windows/Mac only). <br/>
+		/// </summary>
+		public ref ushort UsagePage => ref Unsafe.AsRef<ushort>(&Handle->UsagePage);
+		/// <summary>
+		/// Usage for this Device/Interface<br/>
+		/// (Windows/Mac only).<br/>
+		/// </summary>
+		public ref ushort Usage => ref Unsafe.AsRef<ushort>(&Handle->Usage);
+		/// <summary>
+		/// The USB interface which this logical device<br/>
+		/// represents.<br/>
+		/// Valid on both Linux implementations in all cases.<br/>
+		/// Valid on the Windows implementation only if the device<br/>
+		/// contains more than one interface. <br/>
+		/// </summary>
+		public ref int InterfaceNumber => ref Unsafe.AsRef<int>(&Handle->InterfaceNumber);
+		/// <summary>
+		/// Additional information about the USB interface.<br/>
+		/// Valid on libusb and Android implementations. <br/>
+		/// </summary>
+		public ref int InterfaceClass => ref Unsafe.AsRef<int>(&Handle->InterfaceClass);
+		public ref int InterfaceSubclass => ref Unsafe.AsRef<int>(&Handle->InterfaceSubclass);
+		public ref int InterfaceProtocol => ref Unsafe.AsRef<int>(&Handle->InterfaceProtocol);
+		/// <summary>
+		/// Pointer to the next device <br/>
+		/// </summary>
+		public ref SDLHidDeviceInfoPtr Next => ref Unsafe.AsRef<SDLHidDeviceInfoPtr>(&Handle->Next);
+	}
+
+	/// <summary>
+	/// Individual button data.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MessageBoxButtonData")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMessageBoxButtonData
+	{
+		/// <summary>
+		/// ::SDL_MessageBoxButtonFlags <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "flags")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Flags;
+
+		/// <summary>
+		/// User defined button id (value returned via SDL_ShowMessageBox) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "buttonid")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Buttonid;
+
+		/// <summary>
+		/// The UTF-8 button text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "text")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Text;
+
+
+
+	}
+
+	/// <summary>
+	/// Individual button data.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxButtonData")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLMessageBoxButtonDataPtr : IEquatable<SDLMessageBoxButtonDataPtr>
+	{
+		public SDLMessageBoxButtonDataPtr(SDLMessageBoxButtonData* handle) { Handle = handle; }
+
+		public SDLMessageBoxButtonData* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLMessageBoxButtonDataPtr Null => new SDLMessageBoxButtonDataPtr(null);
+
+		public static implicit operator SDLMessageBoxButtonDataPtr(SDLMessageBoxButtonData* handle) => new SDLMessageBoxButtonDataPtr(handle);
+
+		public static implicit operator SDLMessageBoxButtonData*(SDLMessageBoxButtonDataPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonDataPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonDataPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonData* right) => left.Handle == right;
+
+		public static bool operator !=(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonData* right) => left.Handle != right;
+
+		public bool Equals(SDLMessageBoxButtonDataPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLMessageBoxButtonDataPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLMessageBoxButtonDataPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// ::SDL_MessageBoxButtonFlags <br/>
+		/// </summary>
+		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
+		/// <summary>
+		/// User defined button id (value returned via SDL_ShowMessageBox) <br/>
+		/// </summary>
+		public ref int Buttonid => ref Unsafe.AsRef<int>(&Handle->Buttonid);
+		/// <summary>
+		/// The UTF-8 button text <br/>
+		/// </summary>
+		public byte* Text { get => Handle->Text; set => Handle->Text = value; }
+	}
+
+	/// <summary>
+	/// RGB value used in a message box color scheme<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MessageBoxColor")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMessageBoxColor
+	{
+		[NativeName(NativeNameType.Field, "r")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte R;
+		[NativeName(NativeNameType.Field, "g")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte G;
+		[NativeName(NativeNameType.Field, "b")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte B;
+
+
+	}
+
+	/// <summary>
+	/// A set of colors to use for message box dialogs<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MessageBoxColorScheme")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMessageBoxColorScheme
+	{
+		[NativeName(NativeNameType.Field, "colors")]
+		[NativeName(NativeNameType.Type, "SDL_MessageBoxColor[5]")]
+		public SDLMessageBoxColor Colors_0;
+		public SDLMessageBoxColor Colors_1;
+		public SDLMessageBoxColor Colors_2;
+		public SDLMessageBoxColor Colors_3;
+		public SDLMessageBoxColor Colors_4;
+
+
+		public unsafe Span<SDLMessageBoxColor> Colors
+		
+		{
+			get
+			{
+				fixed (SDLMessageBoxColor* p = &this.Colors_0)
+				{
+					return new Span<SDLMessageBoxColor>(p, 5);
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// A set of colors to use for message box dialogs<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxColorScheme")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLMessageBoxColorSchemePtr : IEquatable<SDLMessageBoxColorSchemePtr>
+	{
+		public SDLMessageBoxColorSchemePtr(SDLMessageBoxColorScheme* handle) { Handle = handle; }
+
+		public SDLMessageBoxColorScheme* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLMessageBoxColorSchemePtr Null => new SDLMessageBoxColorSchemePtr(null);
+
+		public static implicit operator SDLMessageBoxColorSchemePtr(SDLMessageBoxColorScheme* handle) => new SDLMessageBoxColorSchemePtr(handle);
+
+		public static implicit operator SDLMessageBoxColorScheme*(SDLMessageBoxColorSchemePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorSchemePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorSchemePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorScheme* right) => left.Handle == right;
+
+		public static bool operator !=(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorScheme* right) => left.Handle != right;
+
+		public bool Equals(SDLMessageBoxColorSchemePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLMessageBoxColorSchemePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLMessageBoxColorSchemePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public unsafe Span<SDLMessageBoxColor> Colors
+		
+		{
+			get
+			{
+				return new Span<SDLMessageBoxColor>(&Handle->Colors_0, 5);
+			}
+		}
+	}
+
+	/// <summary>
+	/// MessageBox structure containing title, text, window, etc.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_MessageBoxData")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLMessageBoxData
+	{
+		/// <summary>
+		/// ::SDL_MessageBoxFlags <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "flags")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Flags;
+
+		/// <summary>
+		/// Parent window, can be NULL <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "window")]
+		[NativeName(NativeNameType.Type, "SDL_Window*")]
+		public unsafe SDLWindow* Window;
+
+		/// <summary>
+		/// UTF-8 title <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "title")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Title;
+
+		/// <summary>
+		/// UTF-8 message text <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "message")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Message;
+
+		[NativeName(NativeNameType.Field, "numbuttons")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int Numbuttons;
+		[NativeName(NativeNameType.Field, "buttons")]
+		[NativeName(NativeNameType.Type, "const SDL_MessageBoxButtonData*")]
+		public unsafe SDLMessageBoxButtonData* Buttons;
+		/// <summary>
+		/// ::SDL_MessageBoxColorScheme, can be NULL to use system settings <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "colorScheme")]
+		[NativeName(NativeNameType.Type, "const SDL_MessageBoxColorScheme*")]
+		public unsafe SDLMessageBoxColorScheme* ColorScheme;
+
+
+
+	}
+
+	/// <summary>
+	/// MessageBox structure containing title, text, window, etc.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxData")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLMessageBoxDataPtr : IEquatable<SDLMessageBoxDataPtr>
+	{
+		public SDLMessageBoxDataPtr(SDLMessageBoxData* handle) { Handle = handle; }
+
+		public SDLMessageBoxData* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLMessageBoxDataPtr Null => new SDLMessageBoxDataPtr(null);
+
+		public static implicit operator SDLMessageBoxDataPtr(SDLMessageBoxData* handle) => new SDLMessageBoxDataPtr(handle);
+
+		public static implicit operator SDLMessageBoxData*(SDLMessageBoxDataPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLMessageBoxDataPtr left, SDLMessageBoxDataPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLMessageBoxDataPtr left, SDLMessageBoxDataPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLMessageBoxDataPtr left, SDLMessageBoxData* right) => left.Handle == right;
+
+		public static bool operator !=(SDLMessageBoxDataPtr left, SDLMessageBoxData* right) => left.Handle != right;
+
+		public bool Equals(SDLMessageBoxDataPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLMessageBoxDataPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLMessageBoxDataPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// ::SDL_MessageBoxFlags <br/>
+		/// </summary>
+		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
+		/// <summary>
+		/// Parent window, can be NULL <br/>
+		/// </summary>
+		public ref SDLWindowPtr Window => ref Unsafe.AsRef<SDLWindowPtr>(&Handle->Window);
+		/// <summary>
+		/// UTF-8 title <br/>
+		/// </summary>
+		public byte* Title { get => Handle->Title; set => Handle->Title = value; }
+		/// <summary>
+		/// UTF-8 message text <br/>
+		/// </summary>
+		public byte* Message { get => Handle->Message; set => Handle->Message = value; }
+		public ref int Numbuttons => ref Unsafe.AsRef<int>(&Handle->Numbuttons);
+		public ref SDLMessageBoxButtonDataPtr Buttons => ref Unsafe.AsRef<SDLMessageBoxButtonDataPtr>(&Handle->Buttons);
+		/// <summary>
+		/// ::SDL_MessageBoxColorScheme, can be NULL to use system settings <br/>
+		/// </summary>
+		public ref SDLMessageBoxColorSchemePtr ColorScheme => ref Unsafe.AsRef<SDLMessageBoxColorSchemePtr>(&Handle->ColorScheme);
+	}
+
+	/// <summary>
+	/// Information on the capabilities of a render driver or context.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_RendererInfo")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLRendererInfo
+	{
+		/// <summary>
+		/// The name of the renderer <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "name")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Name;
+
+		/// <summary>
+		/// Supported ::SDL_RendererFlags <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "flags")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Flags;
+
+		/// <summary>
+		/// The number of available texture formats <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "num_texture_formats")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint NumTextureFormats;
+
+		/// <summary>
+		/// The available texture formats <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "texture_formats")]
+		[NativeName(NativeNameType.Type, "Uint32[16]")]
+		public uint TextureFormats_0;
+		public uint TextureFormats_1;
+		public uint TextureFormats_2;
+		public uint TextureFormats_3;
+		public uint TextureFormats_4;
+		public uint TextureFormats_5;
+		public uint TextureFormats_6;
+		public uint TextureFormats_7;
+		public uint TextureFormats_8;
+		public uint TextureFormats_9;
+		public uint TextureFormats_10;
+		public uint TextureFormats_11;
+		public uint TextureFormats_12;
+		public uint TextureFormats_13;
+		public uint TextureFormats_14;
+		public uint TextureFormats_15;
+
+		/// <summary>
+		/// The maximum texture width <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "max_texture_width")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int MaxTextureWidth;
+
+		/// <summary>
+		/// The maximum texture height <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "max_texture_height")]
+		[NativeName(NativeNameType.Type, "int")]
+		public int MaxTextureHeight;
+
+
+
+		/// <summary>
+		/// The available texture formats <br/>
+		/// </summary>
+	}
+
+	/// <summary>
+	/// Information on the capabilities of a render driver or context.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_RendererInfo")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLRendererInfoPtr : IEquatable<SDLRendererInfoPtr>
+	{
+		public SDLRendererInfoPtr(SDLRendererInfo* handle) { Handle = handle; }
+
+		public SDLRendererInfo* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLRendererInfoPtr Null => new SDLRendererInfoPtr(null);
+
+		public static implicit operator SDLRendererInfoPtr(SDLRendererInfo* handle) => new SDLRendererInfoPtr(handle);
+
+		public static implicit operator SDLRendererInfo*(SDLRendererInfoPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLRendererInfoPtr left, SDLRendererInfoPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLRendererInfoPtr left, SDLRendererInfoPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLRendererInfoPtr left, SDLRendererInfo* right) => left.Handle == right;
+
+		public static bool operator !=(SDLRendererInfoPtr left, SDLRendererInfo* right) => left.Handle != right;
+
+		public bool Equals(SDLRendererInfoPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLRendererInfoPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLRendererInfoPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// The name of the renderer <br/>
+		/// </summary>
+		public byte* Name { get => Handle->Name; set => Handle->Name = value; }
+		/// <summary>
+		/// Supported ::SDL_RendererFlags <br/>
+		/// </summary>
+		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
+		/// <summary>
+		/// The number of available texture formats <br/>
+		/// </summary>
+		public ref uint NumTextureFormats => ref Unsafe.AsRef<uint>(&Handle->NumTextureFormats);
+		/// <summary>
+		/// The available texture formats <br/>
+		/// </summary>
+		public unsafe Span<uint> TextureFormats
+		
+		{
+			get
+			{
+				return new Span<uint>(&Handle->TextureFormats_0, 16);
+			}
+		}
+		/// <summary>
+		/// The maximum texture width <br/>
+		/// </summary>
+		public ref int MaxTextureWidth => ref Unsafe.AsRef<int>(&Handle->MaxTextureWidth);
+		/// <summary>
+		/// The maximum texture height <br/>
+		/// </summary>
+		public ref int MaxTextureHeight => ref Unsafe.AsRef<int>(&Handle->MaxTextureHeight);
+	}
+
+	/// <summary>
+	/// Vertex structure<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Vertex")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLVertex
+	{
+		/// <summary>
+		/// Vertex position, in SDL_Renderer coordinates  <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "position")]
+		[NativeName(NativeNameType.Type, "SDL_FPoint")]
+		public SDLFPoint Position;
+
+		/// <summary>
+		/// Vertex color <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "color")]
+		[NativeName(NativeNameType.Type, "SDL_Color")]
+		public SDLColor Color;
+
+		/// <summary>
+		/// Normalized texture coordinates, if needed <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "tex_coord")]
+		[NativeName(NativeNameType.Type, "SDL_FPoint")]
+		public SDLFPoint TexCoord;
+
+
+
+	}
+
+	/// <summary>
+	/// Vertex structure<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Vertex")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLVertexPtr : IEquatable<SDLVertexPtr>
+	{
+		public SDLVertexPtr(SDLVertex* handle) { Handle = handle; }
+
+		public SDLVertex* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLVertexPtr Null => new SDLVertexPtr(null);
+
+		public static implicit operator SDLVertexPtr(SDLVertex* handle) => new SDLVertexPtr(handle);
+
+		public static implicit operator SDLVertex*(SDLVertexPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLVertexPtr left, SDLVertexPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLVertexPtr left, SDLVertexPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLVertexPtr left, SDLVertex* right) => left.Handle == right;
+
+		public static bool operator !=(SDLVertexPtr left, SDLVertex* right) => left.Handle != right;
+
+		public bool Equals(SDLVertexPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLVertexPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLVertexPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// Vertex position, in SDL_Renderer coordinates  <br/>
+		/// </summary>
+		public ref SDLFPoint Position => ref Unsafe.AsRef<SDLFPoint>(&Handle->Position);
+		/// <summary>
+		/// Vertex color <br/>
+		/// </summary>
+		public ref SDLColor Color => ref Unsafe.AsRef<SDLColor>(&Handle->Color);
+		/// <summary>
+		/// Normalized texture coordinates, if needed <br/>
+		/// </summary>
+		public ref SDLFPoint TexCoord => ref Unsafe.AsRef<SDLFPoint>(&Handle->TexCoord);
+	}
+
+	/// <summary>
+	/// A structure representing rendering state<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Renderer")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLRenderer
+	{
+
+
+	}
+
+	/// <summary>
+	/// A structure representing rendering state<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Renderer")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLRendererPtrPtr : IEquatable<SDLRendererPtrPtr>
+	{
+		public SDLRendererPtrPtr(SDLRenderer** handle) { Handle = handle; }
+
+		public SDLRenderer** Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLRendererPtrPtr Null => new SDLRendererPtrPtr(null);
+
+		public static implicit operator SDLRendererPtrPtr(SDLRenderer** handle) => new SDLRendererPtrPtr(handle);
+
+		public static implicit operator SDLRenderer**(SDLRendererPtrPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLRendererPtrPtr left, SDLRendererPtrPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLRendererPtrPtr left, SDLRendererPtrPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLRendererPtrPtr left, SDLRenderer** right) => left.Handle == right;
+
+		public static bool operator !=(SDLRendererPtrPtr left, SDLRenderer** right) => left.Handle != right;
+
+		public bool Equals(SDLRendererPtrPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLRendererPtrPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLRendererPtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		public SDLRendererPtr this[int index]
+		{
+			get => Handle[index]; set => Handle[index] = value;
+		}
+	}
+
+	/// <summary>
+	/// A structure representing rendering state<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Renderer")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLRendererPtr : IEquatable<SDLRendererPtr>
+	{
+		public SDLRendererPtr(SDLRenderer* handle) { Handle = handle; }
+
+		public SDLRenderer* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLRendererPtr Null => new SDLRendererPtr(null);
+
+		public static implicit operator SDLRendererPtr(SDLRenderer* handle) => new SDLRendererPtr(handle);
+
+		public static implicit operator SDLRenderer*(SDLRendererPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLRendererPtr left, SDLRendererPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLRendererPtr left, SDLRendererPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLRendererPtr left, SDLRenderer* right) => left.Handle == right;
+
+		public static bool operator !=(SDLRendererPtr left, SDLRenderer* right) => left.Handle != right;
+
+		public bool Equals(SDLRendererPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLRendererPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLRendererPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// An efficient driver-specific representation of pixel data<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_Texture")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLTexture
+	{
+
+
+	}
+
+	/// <summary>
+	/// An efficient driver-specific representation of pixel data<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_Texture")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLTexturePtr : IEquatable<SDLTexturePtr>
+	{
+		public SDLTexturePtr(SDLTexture* handle) { Handle = handle; }
+
+		public SDLTexture* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLTexturePtr Null => new SDLTexturePtr(null);
+
+		public static implicit operator SDLTexturePtr(SDLTexture* handle) => new SDLTexturePtr(handle);
+
+		public static implicit operator SDLTexture*(SDLTexturePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLTexturePtr left, SDLTexturePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLTexturePtr left, SDLTexturePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLTexturePtr left, SDLTexture* right) => left.Handle == right;
+
+		public static bool operator !=(SDLTexturePtr left, SDLTexture* right) => left.Handle != right;
+
+		public bool Equals(SDLTexturePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLTexturePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLTexturePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_WindowShapeParams")]
+	[StructLayout(LayoutKind.Explicit)]
+	public partial struct SDLWindowShapeParams
+	{
+		/// <summary>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "binarizationCutoff")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		[FieldOffset(0)]
+		public byte BinarizationCutoff;
+
+		[NativeName(NativeNameType.Field, "colorKey")]
+		[NativeName(NativeNameType.Type, "SDL_Color")]
+		[FieldOffset(0)]
+		public SDLColor ColorKey;
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_WindowShapeMode")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLWindowShapeMode
+	{
+		/// <summary>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "mode")]
+		[NativeName(NativeNameType.Type, "WindowShapeMode")]
+		public WindowShapeMode Mode;
+
+		/// <summary>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "parameters")]
+		[NativeName(NativeNameType.Type, "SDL_WindowShapeParams")]
+		public SDLWindowShapeParams Parameters;
+
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_WindowShapeMode")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLWindowShapeModePtr : IEquatable<SDLWindowShapeModePtr>
+	{
+		public SDLWindowShapeModePtr(SDLWindowShapeMode* handle) { Handle = handle; }
+
+		public SDLWindowShapeMode* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLWindowShapeModePtr Null => new SDLWindowShapeModePtr(null);
+
+		public static implicit operator SDLWindowShapeModePtr(SDLWindowShapeMode* handle) => new SDLWindowShapeModePtr(handle);
+
+		public static implicit operator SDLWindowShapeMode*(SDLWindowShapeModePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLWindowShapeModePtr left, SDLWindowShapeModePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLWindowShapeModePtr left, SDLWindowShapeModePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLWindowShapeModePtr left, SDLWindowShapeMode* right) => left.Handle == right;
+
+		public static bool operator !=(SDLWindowShapeModePtr left, SDLWindowShapeMode* right) => left.Handle != right;
+
+		public bool Equals(SDLWindowShapeModePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLWindowShapeModePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLWindowShapeModePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// <br/>
+		/// </summary>
+		public ref WindowShapeMode Mode => ref Unsafe.AsRef<WindowShapeMode>(&Handle->Mode);
+		/// <summary>
+		/// <br/>
+		/// </summary>
+		public ref SDLWindowShapeParams Parameters => ref Unsafe.AsRef<SDLWindowShapeParams>(&Handle->Parameters);
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "IDirect3DDevice9")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct IDirect3DDevice9
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "IDirect3DDevice9")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct IDirect3DDevice9Ptr : IEquatable<IDirect3DDevice9Ptr>
+	{
+		public IDirect3DDevice9Ptr(IDirect3DDevice9* handle) { Handle = handle; }
+
+		public IDirect3DDevice9* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static IDirect3DDevice9Ptr Null => new IDirect3DDevice9Ptr(null);
+
+		public static implicit operator IDirect3DDevice9Ptr(IDirect3DDevice9* handle) => new IDirect3DDevice9Ptr(handle);
+
+		public static implicit operator IDirect3DDevice9*(IDirect3DDevice9Ptr handle) => handle.Handle;
+
+		public static bool operator ==(IDirect3DDevice9Ptr left, IDirect3DDevice9Ptr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(IDirect3DDevice9Ptr left, IDirect3DDevice9Ptr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(IDirect3DDevice9Ptr left, IDirect3DDevice9* right) => left.Handle == right;
+
+		public static bool operator !=(IDirect3DDevice9Ptr left, IDirect3DDevice9* right) => left.Handle != right;
+
+		public bool Equals(IDirect3DDevice9Ptr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is IDirect3DDevice9Ptr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("IDirect3DDevice9Ptr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "ID3D11Device")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct ID3D11Device
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "ID3D11Device")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct ID3D11DevicePtr : IEquatable<ID3D11DevicePtr>
+	{
+		public ID3D11DevicePtr(ID3D11Device* handle) { Handle = handle; }
+
+		public ID3D11Device* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static ID3D11DevicePtr Null => new ID3D11DevicePtr(null);
+
+		public static implicit operator ID3D11DevicePtr(ID3D11Device* handle) => new ID3D11DevicePtr(handle);
+
+		public static implicit operator ID3D11Device*(ID3D11DevicePtr handle) => handle.Handle;
+
+		public static bool operator ==(ID3D11DevicePtr left, ID3D11DevicePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(ID3D11DevicePtr left, ID3D11DevicePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(ID3D11DevicePtr left, ID3D11Device* right) => left.Handle == right;
+
+		public static bool operator !=(ID3D11DevicePtr left, ID3D11Device* right) => left.Handle != right;
+
+		public bool Equals(ID3D11DevicePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is ID3D11DevicePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("ID3D11DevicePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "ID3D12Device")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct ID3D12Device
+	{
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "ID3D12Device")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct ID3D12DevicePtr : IEquatable<ID3D12DevicePtr>
+	{
+		public ID3D12DevicePtr(ID3D12Device* handle) { Handle = handle; }
+
+		public ID3D12Device* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static ID3D12DevicePtr Null => new ID3D12DevicePtr(null);
+
+		public static implicit operator ID3D12DevicePtr(ID3D12Device* handle) => new ID3D12DevicePtr(handle);
+
+		public static implicit operator ID3D12Device*(ID3D12DevicePtr handle) => handle.Handle;
+
+		public static bool operator ==(ID3D12DevicePtr left, ID3D12DevicePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(ID3D12DevicePtr left, ID3D12DevicePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(ID3D12DevicePtr left, ID3D12Device* right) => left.Handle == right;
+
+		public static bool operator !=(ID3D12DevicePtr left, ID3D12Device* right) => left.Handle != right;
+
+		public bool Equals(ID3D12DevicePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is ID3D12DevicePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("ID3D12DevicePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+	}
+
+	/// <summary>
+	/// Information about the version of SDL in use.<br/>
+	/// Represents the library's version as three levels: major revision<br/>
+	/// (increments with massive changes, additions, and enhancements),<br/>
+	/// minor revision (increments with backwards-compatible changes to the<br/>
+	/// major revision), and patchlevel (increments with fixes to the minor<br/>
+	/// revision).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_version")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLVersion
+	{
+		/// <summary>
+		/// major version <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "major")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Major;
+
+		/// <summary>
+		/// minor version <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "minor")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Minor;
+
+		/// <summary>
+		/// update version <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "patch")]
+		[NativeName(NativeNameType.Type, "Uint8")]
+		public byte Patch;
+
+
+
+	}
+
+	/// <summary>
+	/// Information about the version of SDL in use.<br/>
+	/// Represents the library's version as three levels: major revision<br/>
+	/// (increments with massive changes, additions, and enhancements),<br/>
+	/// minor revision (increments with backwards-compatible changes to the<br/>
+	/// major revision), and patchlevel (increments with fixes to the minor<br/>
+	/// revision).<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "SDL_version")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLVersionPtr : IEquatable<SDLVersionPtr>
+	{
+		public SDLVersionPtr(SDLVersion* handle) { Handle = handle; }
+
+		public SDLVersion* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLVersionPtr Null => new SDLVersionPtr(null);
+
+		public static implicit operator SDLVersionPtr(SDLVersion* handle) => new SDLVersionPtr(handle);
+
+		public static implicit operator SDLVersion*(SDLVersionPtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLVersionPtr left, SDLVersionPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLVersionPtr left, SDLVersionPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLVersionPtr left, SDLVersion* right) => left.Handle == right;
+
+		public static bool operator !=(SDLVersionPtr left, SDLVersion* right) => left.Handle != right;
+
+		public bool Equals(SDLVersionPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLVersionPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLVersionPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// major version <br/>
+		/// </summary>
+		public ref byte Major => ref Unsafe.AsRef<byte>(&Handle->Major);
+		/// <summary>
+		/// minor version <br/>
+		/// </summary>
+		public ref byte Minor => ref Unsafe.AsRef<byte>(&Handle->Minor);
+		/// <summary>
+		/// update version <br/>
+		/// </summary>
+		public ref byte Patch => ref Unsafe.AsRef<byte>(&Handle->Patch);
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "SDL_Locale")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLLocale
+	{
+		/// <summary>
+		/// A language name, like "en" for English. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "language")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Language;
+
+		/// <summary>
+		/// A country, like "US" for America. Can be NULL. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "country")]
+		[NativeName(NativeNameType.Type, "const char*")]
+		public unsafe byte* Country;
+
+
+
+	}
+
+	[NativeName(NativeNameType.Typedef, "SDL_Locale")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public unsafe struct SDLLocalePtr : IEquatable<SDLLocalePtr>
+	{
+		public SDLLocalePtr(SDLLocale* handle) { Handle = handle; }
+
+		public SDLLocale* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static SDLLocalePtr Null => new SDLLocalePtr(null);
+
+		public static implicit operator SDLLocalePtr(SDLLocale* handle) => new SDLLocalePtr(handle);
+
+		public static implicit operator SDLLocale*(SDLLocalePtr handle) => handle.Handle;
+
+		public static bool operator ==(SDLLocalePtr left, SDLLocalePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(SDLLocalePtr left, SDLLocalePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(SDLLocalePtr left, SDLLocale* right) => left.Handle == right;
+
+		public static bool operator !=(SDLLocalePtr left, SDLLocale* right) => left.Handle != right;
+
+		public bool Equals(SDLLocalePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is SDLLocalePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		private string DebuggerDisplay => string.Format("SDLLocalePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		/// <summary>
+		/// A language name, like "en" for English. <br/>
+		/// </summary>
+		public byte* Language { get => Handle->Language; set => Handle->Language = value; }
+		/// <summary>
+		/// A country, like "US" for America. Can be NULL. <br/>
+		/// </summary>
+		public byte* Country { get => Handle->Country; set => Handle->Country = value; }
+	}
+
+}

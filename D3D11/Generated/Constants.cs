@@ -1160,9 +1160,6 @@ namespace HexaEngine.D3D11
 		[NativeName(NativeNameType.Const, "_FACD3D11")]
 		public const int Facd3D11 = (0x87c);
 
-		[NativeName(NativeNameType.Const, "_FACD3D11DEBUG")]
-		public const string Facd3D11Debug = ((_FACD3D11+1));
-
 		[NativeName(NativeNameType.Const, "D3D11_APPEND_ALIGNED_ELEMENT")]
 		public const int D3D11AppendAlignedElement = (0xffffffff);
 
@@ -1217,57 +1214,6 @@ namespace HexaEngine.D3D11
 		[NativeName(NativeNameType.Const, "D3D11_DEBUG_FEATURE_DISABLE_TILED_RESOURCE_MAPPING_TRACKING_AND_VALIDATION")]
 		public const int D3D11DebugFeatureDisableTiledResourceMappingTrackingAndValidation = (0x80);
 
-		[NativeName(NativeNameType.Const, "D3D11_REGKEY_PATH")]
-		public const string D3D11RegkeyPath = __TEXT("Software\\Microsoft\\Direct3D");
-
-		[NativeName(NativeNameType.Const, "D3D11_MUTE_DEBUG_OUTPUT")]
-		public const string D3D11MuteDebugOutput = __TEXT("MuteDebugOutput");
-
-		[NativeName(NativeNameType.Const, "D3D11_ENABLE_BREAK_ON_MESSAGE")]
-		public const string D3D11EnableBreakOnMessage = __TEXT("EnableBreakOnMessage");
-
-		[NativeName(NativeNameType.Const, "D3D11_INFOQUEUE_STORAGE_FILTER_OVERRIDE")]
-		public const string D3D11InfoqueueStorageFilterOverride = __TEXT("InfoQueueStorageFilterOverride");
-
-		[NativeName(NativeNameType.Const, "D3D11_MUTE_CATEGORY")]
-		public const string D3D11MuteCategory = __TEXT("Mute_CATEGORY_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_MUTE_SEVERITY")]
-		public const string D3D11MuteSeverity = __TEXT("Mute_SEVERITY_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_MUTE_ID_STRING")]
-		public const string D3D11MuteIdString = __TEXT("Mute_ID_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_MUTE_ID_DECIMAL")]
-		public const string D3D11MuteIdDecimal = __TEXT("Mute_ID_%d");
-
-		[NativeName(NativeNameType.Const, "D3D11_UNMUTE_SEVERITY_INFO")]
-		public const string D3D11UnmuteSeverityInfo = __TEXT("Unmute_SEVERITY_INFO");
-
-		[NativeName(NativeNameType.Const, "D3D11_BREAKON_CATEGORY")]
-		public const string D3D11BreakonCategory = __TEXT("BreakOn_CATEGORY_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_BREAKON_SEVERITY")]
-		public const string D3D11BreakonSeverity = __TEXT("BreakOn_SEVERITY_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_BREAKON_ID_STRING")]
-		public const string D3D11BreakonIdString = __TEXT("BreakOn_ID_%s");
-
-		[NativeName(NativeNameType.Const, "D3D11_BREAKON_ID_DECIMAL")]
-		public const string D3D11BreakonIdDecimal = __TEXT("BreakOn_ID_%d");
-
-		[NativeName(NativeNameType.Const, "D3D11_APPSIZE_STRING")]
-		public const string D3D11AppsizeString = __TEXT("Size");
-
-		[NativeName(NativeNameType.Const, "D3D11_APPNAME_STRING")]
-		public const string D3D11AppnameString = __TEXT("Name");
-
-		[NativeName(NativeNameType.Const, "D3D11_FORCE_DEBUGGABLE")]
-		public const string D3D11ForceDebuggable = __TEXT("ForceDebuggable");
-
-		[NativeName(NativeNameType.Const, "D3D11_FORCE_SHADER_SKIP_OPTIMIZATION")]
-		public const string D3D11ForceShaderSkipOptimization = __TEXT("ForceShaderSkipOptimization");
-
 		[NativeName(NativeNameType.Const, "D3D11_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT")]
 		public const int D3D11InfoQueueDefaultMessageCountLimit = 1024;
 
@@ -1300,9 +1246,6 @@ namespace HexaEngine.D3D11
 
 		[NativeName(NativeNameType.Const, "D3D_SHADER_REQUIRES_TILED_RESOURCES")]
 		public const int D3DShaderRequiresTiledResources = 0x00000100;
-
-		[NativeName(NativeNameType.Const, "INTERFACE")]
-		public const string Interface = ID3D11ShaderReflectionType;
 
 		[NativeName(NativeNameType.Const, "D3D11_TRACE_COMPONENT_X")]
 		public const int D3D11TraceComponentX = 0x1;
