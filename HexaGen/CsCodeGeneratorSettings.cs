@@ -143,7 +143,7 @@
         public List<string> Usings { get; set; } = new();
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.PascalCase;
+        public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.Unknown;
 
         public void Save(string path)
         {

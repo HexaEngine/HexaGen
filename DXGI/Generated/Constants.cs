@@ -18,151 +18,151 @@ namespace HexaEngine.DXGI
 	public unsafe partial class DXGI
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const int MscVer = 1930;
+		public const uint _MSC_VER = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const int Win32 = 1;
+		public const uint _WIN32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const int MAmd64 = 100;
+		public const uint _M_AMD64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const int MX64 = 100;
+		public const uint _M_X64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const int Win64 = 1;
+		public const uint _WIN64 = 1;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
-		public const int RequiredRpcndrHVersion = 501;
+		public const uint __REQUIRED_RPCNDR_H_VERSION__ = 501;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
-		public const int RequiredRpcsalHVersion = 100;
+		public const uint __REQUIRED_RPCSAL_H_VERSION__ = 100;
 
 		[NativeName(NativeNameType.Const, "DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN")]
-		public const int DxgiStandardMultisampleQualityPattern = 0xffffffff;
+		public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = 0xffffffff;
 
 		[NativeName(NativeNameType.Const, "DXGI_CENTER_MULTISAMPLE_QUALITY_PATTERN")]
-		public const int DxgiCenterMultisampleQualityPattern = 0xfffffffe;
+		public const uint DXGI_CENTER_MULTISAMPLE_QUALITY_PATTERN = 0xfffffffe;
 
 		[NativeName(NativeNameType.Const, "DXGI_FORMAT_DEFINED")]
-		public const int DxgiFormatDefined = 1;
+		public const uint DXGI_FORMAT_DEFINED = 1;
 
 		[NativeName(NativeNameType.Const, "_FACDXGI")]
-		public const int Facdxgi = 0x87a;
+		public const uint _FACDXGI = 0x87a;
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_NONE")]
-		public const int DxgiCpuAccessNone = (0);
+		public const uint DXGI_CPU_ACCESS_NONE = (0);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_DYNAMIC")]
-		public const int DxgiCpuAccessDynamic = (1);
+		public const uint DXGI_CPU_ACCESS_DYNAMIC = (1);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_READ_WRITE")]
-		public const int DxgiCpuAccessReadWrite = (2);
+		public const uint DXGI_CPU_ACCESS_READ_WRITE = (2);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_SCRATCH")]
-		public const int DxgiCpuAccessScratch = (3);
+		public const uint DXGI_CPU_ACCESS_SCRATCH = (3);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_FIELD")]
-		public const int DxgiCpuAccessField = 15;
+		public const uint DXGI_CPU_ACCESS_FIELD = 15;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_SHADER_INPUT")]
-		public const uint DxgiUsageShaderInput = 0x00000010UL;
+		public const ulong DXGI_USAGE_SHADER_INPUT = 0x00000010UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_RENDER_TARGET_OUTPUT")]
-		public const uint DxgiUsageRenderTargetOutput = 0x00000020UL;
+		public const ulong DXGI_USAGE_RENDER_TARGET_OUTPUT = 0x00000020UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_BACK_BUFFER")]
-		public const uint DxgiUsageBackBuffer = 0x00000040UL;
+		public const ulong DXGI_USAGE_BACK_BUFFER = 0x00000040UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_SHARED")]
-		public const uint DxgiUsageShared = 0x00000080UL;
+		public const ulong DXGI_USAGE_SHARED = 0x00000080UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_READ_ONLY")]
-		public const uint DxgiUsageReadOnly = 0x00000100UL;
+		public const ulong DXGI_USAGE_READ_ONLY = 0x00000100UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_DISCARD_ON_PRESENT")]
-		public const uint DxgiUsageDiscardOnPresent = 0x00000200UL;
+		public const ulong DXGI_USAGE_DISCARD_ON_PRESENT = 0x00000200UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_UNORDERED_ACCESS")]
-		public const uint DxgiUsageUnorderedAccess = 0x00000400UL;
+		public const ulong DXGI_USAGE_UNORDERED_ACCESS = 0x00000400UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_MINIMUM")]
-		public const int DxgiResourcePriorityMinimum = (0x28000000);
+		public const uint DXGI_RESOURCE_PRIORITY_MINIMUM = (0x28000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_LOW")]
-		public const int DxgiResourcePriorityLow = (0x50000000);
+		public const uint DXGI_RESOURCE_PRIORITY_LOW = (0x50000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_NORMAL")]
-		public const int DxgiResourcePriorityNormal = (0x78000000);
+		public const uint DXGI_RESOURCE_PRIORITY_NORMAL = (0x78000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_HIGH")]
-		public const int DxgiResourcePriorityHigh = (0xa0000000);
+		public const uint DXGI_RESOURCE_PRIORITY_HIGH = (0xa0000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_MAXIMUM")]
-		public const int DxgiResourcePriorityMaximum = (0xc8000000);
+		public const uint DXGI_RESOURCE_PRIORITY_MAXIMUM = (0xc8000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_MAP_READ")]
-		public const uint DxgiMapRead = (1UL);
+		public const ulong DXGI_MAP_READ = (1UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_MAP_WRITE")]
-		public const uint DxgiMapWrite = (2UL);
+		public const ulong DXGI_MAP_WRITE = (2UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_MAP_DISCARD")]
-		public const uint DxgiMapDiscard = (4UL);
+		public const ulong DXGI_MAP_DISCARD = (4UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_INTERLACED")]
-		public const uint DxgiEnumModesInterlaced = (1UL);
+		public const ulong DXGI_ENUM_MODES_INTERLACED = (1UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_SCALING")]
-		public const uint DxgiEnumModesScaling = (2UL);
+		public const ulong DXGI_ENUM_MODES_SCALING = (2UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_MAX_SWAP_CHAIN_BUFFERS")]
-		public const int DxgiMaxSwapChainBuffers = (16);
+		public const uint DXGI_MAX_SWAP_CHAIN_BUFFERS = (16);
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_TEST")]
-		public const uint DxgiPresentTest = 0x00000001UL;
+		public const ulong DXGI_PRESENT_TEST = 0x00000001UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_DO_NOT_SEQUENCE")]
-		public const uint DxgiPresentDoNotSequence = 0x00000002UL;
+		public const ulong DXGI_PRESENT_DO_NOT_SEQUENCE = 0x00000002UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_RESTART")]
-		public const uint DxgiPresentRestart = 0x00000004UL;
+		public const ulong DXGI_PRESENT_RESTART = 0x00000004UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_DO_NOT_WAIT")]
-		public const uint DxgiPresentDoNotWait = 0x00000008UL;
+		public const ulong DXGI_PRESENT_DO_NOT_WAIT = 0x00000008UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_STEREO_PREFER_RIGHT")]
-		public const uint DxgiPresentStereoPreferRight = 0x00000010UL;
+		public const ulong DXGI_PRESENT_STEREO_PREFER_RIGHT = 0x00000010UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_STEREO_TEMPORARY_MONO")]
-		public const uint DxgiPresentStereoTemporaryMono = 0x00000020UL;
+		public const ulong DXGI_PRESENT_STEREO_TEMPORARY_MONO = 0x00000020UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_RESTRICT_TO_OUTPUT")]
-		public const uint DxgiPresentRestrictToOutput = 0x00000040UL;
+		public const ulong DXGI_PRESENT_RESTRICT_TO_OUTPUT = 0x00000040UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_USE_DURATION")]
-		public const uint DxgiPresentUseDuration = 0x00000100UL;
+		public const ulong DXGI_PRESENT_USE_DURATION = 0x00000100UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_ALLOW_TEARING")]
-		public const uint DxgiPresentAllowTearing = 0x00000200UL;
+		public const ulong DXGI_PRESENT_ALLOW_TEARING = 0x00000200UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_MWA_VALID")]
-		public const int DxgiMwaValid = (0x7);
+		public const uint DXGI_MWA_VALID = (0x7);
 
 		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_STEREO")]
-		public const uint DxgiEnumModesStereo = (4UL);
+		public const ulong DXGI_ENUM_MODES_STEREO = (4UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_DISABLED_STEREO")]
-		public const uint DxgiEnumModesDisabledStereo = (8UL);
+		public const ulong DXGI_ENUM_MODES_DISABLED_STEREO = (8UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_SHARED_RESOURCE_READ")]
-		public const long DxgiSharedResourceRead = (0x80000000L);
+		public const long DXGI_SHARED_RESOURCE_READ = (0x80000000L);
 
 		[NativeName(NativeNameType.Const, "DXGI_SHARED_RESOURCE_WRITE")]
-		public const int DxgiSharedResourceWrite = (1);
+		public const uint DXGI_SHARED_RESOURCE_WRITE = (1);
 
 		[NativeName(NativeNameType.Const, "DXGI_CREATE_FACTORY_DEBUG")]
-		public const int DxgiCreateFactoryDebug = 0x1;
+		public const uint DXGI_CREATE_FACTORY_DEBUG = 0x1;
 
 	}
 }

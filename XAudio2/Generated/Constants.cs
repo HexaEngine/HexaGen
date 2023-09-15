@@ -16,154 +16,154 @@ namespace HexaEngine.XAudio2
 	public unsafe partial class XAudio2
 	{
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_CROSSPROCESS")]
-		public const uint AudclntStreamflagsCrossprocess = 0x00010000;
+		public const uint AUDCLNT_STREAMFLAGS_CROSSPROCESS = 0x00010000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_LOOPBACK")]
-		public const uint AudclntStreamflagsLoopback = 0x00020000;
+		public const uint AUDCLNT_STREAMFLAGS_LOOPBACK = 0x00020000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_EVENTCALLBACK")]
-		public const uint AudclntStreamflagsEventcallback = 0x00040000;
+		public const uint AUDCLNT_STREAMFLAGS_EVENTCALLBACK = 0x00040000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_NOPERSIST")]
-		public const uint AudclntStreamflagsNopersist = 0x00080000;
+		public const uint AUDCLNT_STREAMFLAGS_NOPERSIST = 0x00080000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_RATEADJUST")]
-		public const uint AudclntStreamflagsRateadjust = 0x00100000;
+		public const uint AUDCLNT_STREAMFLAGS_RATEADJUST = 0x00100000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_SRC_DEFAULT_QUALITY")]
-		public const uint AudclntStreamflagsSrcDefaultQuality = 0x08000000;
+		public const uint AUDCLNT_STREAMFLAGS_SRC_DEFAULT_QUALITY = 0x08000000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_STREAMFLAGS_AUTOCONVERTPCM")]
-		public const uint AudclntStreamflagsAutoconvertpcm = 0x80000000;
+		public const uint AUDCLNT_STREAMFLAGS_AUTOCONVERTPCM = 0x80000000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_SESSIONFLAGS_EXPIREWHENUNOWNED")]
-		public const uint AudclntSessionflagsExpirewhenunowned = 0x10000000;
+		public const uint AUDCLNT_SESSIONFLAGS_EXPIREWHENUNOWNED = 0x10000000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_SESSIONFLAGS_DISPLAY_HIDE")]
-		public const uint AudclntSessionflagsDisplayHide = 0x20000000;
+		public const uint AUDCLNT_SESSIONFLAGS_DISPLAY_HIDE = 0x20000000;
 
 		[NativeName(NativeNameType.Const, "AUDCLNT_SESSIONFLAGS_DISPLAY_HIDEWHENEXPIRED")]
-		public const uint AudclntSessionflagsDisplayHidewhenexpired = 0x40000000;
+		public const uint AUDCLNT_SESSIONFLAGS_DISPLAY_HIDEWHENEXPIRED = 0x40000000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DLL_A")]
-		public const string XAudio2DllA = "xaudio2_9.dll";
+		public const string XAudio2_DLL_A = "xaudio2_9.dll";
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DLL_W")]
-		public const string XAudio2DllW = "xaudio2_9.dll";
+		public const string XAudio2_DLL_W = "xaudio2_9.dll";
 
 		[NativeName(NativeNameType.Const, "XAUDIO2D_DLL_A")]
-		public const string XAudio2dDllA = "xaudio2_9d.dll";
+		public const string XAudio2D_DLL_A = "xaudio2_9d.dll";
 
 		[NativeName(NativeNameType.Const, "XAUDIO2D_DLL_W")]
-		public const string XAudio2dDllW = "xaudio2_9d.dll";
+		public const string XAudio2D_DLL_W = "xaudio2_9d.dll";
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_BUFFER_BYTES")]
-		public const uint XAudio2MaxBufferBytes = 0x80000000;
+		public const uint XAudio2_MAX_BUFFER_BYTES = 0x80000000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_QUEUED_BUFFERS")]
-		public const uint XAudio2MaxQueuedBuffers = 64;
+		public const uint XAudio2_MAX_QUEUED_BUFFERS = 64;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_BUFFERS_SYSTEM")]
-		public const uint XAudio2MaxBuffersSystem = 2;
+		public const uint XAudio2_MAX_BUFFERS_SYSTEM = 2;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_AUDIO_CHANNELS")]
-		public const uint XAudio2MaxAudioChannels = 64;
+		public const uint XAudio2_MAX_AUDIO_CHANNELS = 64;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MIN_SAMPLE_RATE")]
-		public const uint XAudio2MinSampleRate = 1000;
+		public const uint XAudio2_MIN_SAMPLE_RATE = 1000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_SAMPLE_RATE")]
-		public const uint XAudio2MaxSampleRate = 200000;
+		public const uint XAudio2_MAX_SAMPLE_RATE = 200000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_VOLUME_LEVEL")]
-		public const float XAudio2MaxVolumeLevel = 16777216.0f;
+		public const float XAudio2_MAX_VOLUME_LEVEL = 16777216.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_FREQ_RATIO")]
-		public const float XAudio2MaxFreqRatio = 1024.0f;
+		public const float XAudio2_MAX_FREQ_RATIO = 1024.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DEFAULT_FREQ_RATIO")]
-		public const float XAudio2DefaultFreqRatio = 2.0f;
+		public const float XAudio2_DEFAULT_FREQ_RATIO = 2.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_FILTER_ONEOVERQ")]
-		public const float XAudio2MaxFilterOneoverq = 1.5f;
+		public const float XAudio2_MAX_FILTER_ONEOVERQ = 1.5f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_FILTER_FREQUENCY")]
-		public const float XAudio2MaxFilterFrequency = 1.0f;
+		public const float XAudio2_MAX_FILTER_FREQUENCY = 1.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_LOOP_COUNT")]
-		public const uint XAudio2MaxLoopCount = 254;
+		public const uint XAudio2_MAX_LOOP_COUNT = 254;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_INSTANCES")]
-		public const uint XAudio2MaxInstances = 8;
+		public const uint XAudio2_MAX_INSTANCES = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_RATIO_TIMES_RATE_XMA_MONO")]
-		public const uint XAudio2MaxRatioTimesRateXmaMono = 600000;
+		public const uint XAudio2_MAX_RATIO_TIMES_RATE_XMA_MONO = 600000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_MAX_RATIO_TIMES_RATE_XMA_MULTICHANNEL")]
-		public const uint XAudio2MaxRatioTimesRateXmaMultichannel = 300000;
+		public const uint XAudio2_MAX_RATIO_TIMES_RATE_XMA_MULTICHANNEL = 300000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_COMMIT_NOW")]
-		public const uint XAudio2CommitNow = 0;
+		public const uint XAudio2_COMMIT_NOW = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_COMMIT_ALL")]
-		public const uint XAudio2CommitAll = 0;
+		public const uint XAudio2_COMMIT_ALL = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_NO_LOOP_REGION")]
-		public const uint XAudio2NoLoopRegion = 0;
+		public const uint XAudio2_NO_LOOP_REGION = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOOP_INFINITE")]
-		public const uint XAudio2LoopInfinite = 255;
+		public const uint XAudio2_LOOP_INFINITE = 255;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DEFAULT_CHANNELS")]
-		public const uint XAudio2DefaultChannels = 0;
+		public const uint XAudio2_DEFAULT_CHANNELS = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DEFAULT_SAMPLERATE")]
-		public const uint XAudio2DefaultSamplerate = 0;
+		public const uint XAudio2_DEFAULT_SAMPLERATE = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DEBUG_ENGINE")]
-		public const uint XAudio2DebugEngine = 0x0001;
+		public const uint XAudio2_DEBUG_ENGINE = 0x0001;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_VOICE_NOPITCH")]
-		public const uint XAudio2VoiceNopitch = 0x0002;
+		public const uint XAudio2_VOICE_NOPITCH = 0x0002;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_VOICE_NOSRC")]
-		public const uint XAudio2VoiceNosrc = 0x0004;
+		public const uint XAudio2_VOICE_NOSRC = 0x0004;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_VOICE_USEFILTER")]
-		public const uint XAudio2VoiceUsefilter = 0x0008;
+		public const uint XAudio2_VOICE_USEFILTER = 0x0008;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_PLAY_TAILS")]
-		public const uint XAudio2PlayTails = 0x0020;
+		public const uint XAudio2_PLAY_TAILS = 0x0020;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_END_OF_STREAM")]
-		public const uint XAudio2EndOfStream = 0x0040;
+		public const uint XAudio2_END_OF_STREAM = 0x0040;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_SEND_USEFILTER")]
-		public const uint XAudio2SendUsefilter = 0x0080;
+		public const uint XAudio2_SEND_USEFILTER = 0x0080;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_VOICE_NOSAMPLESPLAYED")]
-		public const uint XAudio2VoiceNosamplesplayed = 0x0100;
+		public const uint XAudio2_VOICE_NOSAMPLESPLAYED = 0x0100;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_STOP_ENGINE_WHEN_IDLE")]
-		public const uint XAudio2StopEngineWhenIdle = 0x2000;
+		public const uint XAudio2_STOP_ENGINE_WHEN_IDLE = 0x2000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_1024_QUANTUM")]
-		public const uint XAudio21024Quantum = 0x8000;
+		public const uint XAudio2_1024_QUANTUM = 0x8000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_NO_VIRTUAL_AUDIO_CLIENT")]
-		public const uint XAudio2NoVirtualAudioClient = 0x10000;
+		public const uint XAudio2_NO_VIRTUAL_AUDIO_CLIENT = 0x10000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_DEFAULT_FILTER_ONEOVERQ")]
-		public const float XAudio2DefaultFilterOneoverq = 1.0f;
+		public const float XAudio2_DEFAULT_FILTER_ONEOVERQ = 1.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_QUANTUM_NUMERATOR")]
-		public const uint XAudio2QuantumNumerator = 1;
+		public const uint XAudio2_QUANTUM_NUMERATOR = 1;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_QUANTUM_DENOMINATOR")]
-		public const uint XAudio2QuantumDenominator = 100;
+		public const uint XAudio2_QUANTUM_DENOMINATOR = 100;
 
 		[NativeName(NativeNameType.Const, "FACILITY_XAUDIO2")]
-		public const uint FacilityXAudio2 = 0x896;
+		public const uint FACILITY_XAudio2 = 0x896;
 
 		[NativeName(NativeNameType.Const, "Processor1")]
 		public const uint Processor1 = 0x00000001;
@@ -262,229 +262,229 @@ namespace HexaEngine.XAudio2
 		public const uint Processor32 = 0x80000000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_ANY_PROCESSOR")]
-		public const uint XAudio2AnyProcessor = 0xffffffff;
+		public const uint XAudio2_ANY_PROCESSOR = 0xffffffff;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_USE_DEFAULT_PROCESSOR")]
-		public const uint XAudio2UseDefaultProcessor = 0x00000000;
+		public const uint XAudio2_USE_DEFAULT_PROCESSOR = 0x00000000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_ERRORS")]
-		public const uint XAudio2LogErrors = 0x0001;
+		public const uint XAudio2_LOG_ERRORS = 0x0001;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_WARNINGS")]
-		public const uint XAudio2LogWarnings = 0x0002;
+		public const uint XAudio2_LOG_WARNINGS = 0x0002;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_INFO")]
-		public const uint XAudio2LogInfo = 0x0004;
+		public const uint XAudio2_LOG_INFO = 0x0004;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_DETAIL")]
-		public const uint XAudio2LogDetail = 0x0008;
+		public const uint XAudio2_LOG_DETAIL = 0x0008;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_API_CALLS")]
-		public const uint XAudio2LogApiCalls = 0x0010;
+		public const uint XAudio2_LOG_API_CALLS = 0x0010;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_FUNC_CALLS")]
-		public const uint XAudio2LogFuncCalls = 0x0020;
+		public const uint XAudio2_LOG_FUNC_CALLS = 0x0020;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_TIMING")]
-		public const uint XAudio2LogTiming = 0x0040;
+		public const uint XAudio2_LOG_TIMING = 0x0040;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_LOCKS")]
-		public const uint XAudio2LogLocks = 0x0080;
+		public const uint XAudio2_LOG_LOCKS = 0x0080;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_MEMORY")]
-		public const uint XAudio2LogMemory = 0x0100;
+		public const uint XAudio2_LOG_MEMORY = 0x0100;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2_LOG_STREAMING")]
-		public const uint XAudio2LogStreaming = 0x1000;
+		public const uint XAudio2_LOG_STREAMING = 0x1000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_FRAMERATE")]
-		public const uint XAudio2fxReverbMinFramerate = 20000;
+		public const uint XAudio2FX_REVERB_MIN_FRAMERATE = 20000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_FRAMERATE")]
-		public const uint XAudio2fxReverbMaxFramerate = 48000;
+		public const uint XAudio2FX_REVERB_MAX_FRAMERATE = 48000;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_WET_DRY_MIX")]
-		public const float XAudio2fxReverbMinWetDryMix = 0.0f;
+		public const float XAudio2FX_REVERB_MIN_WET_DRY_MIX = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_REFLECTIONS_DELAY")]
-		public const uint XAudio2fxReverbMinReflectionsDelay = 0;
+		public const uint XAudio2FX_REVERB_MIN_REFLECTIONS_DELAY = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_REVERB_DELAY")]
-		public const uint XAudio2fxReverbMinReverbDelay = 0;
+		public const uint XAudio2FX_REVERB_MIN_REVERB_DELAY = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_REAR_DELAY")]
-		public const uint XAudio2fxReverbMinRearDelay = 0;
+		public const uint XAudio2FX_REVERB_MIN_REAR_DELAY = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_7POINT1_SIDE_DELAY")]
-		public const uint XAudio2fxReverbMin7point1SideDelay = 0;
+		public const uint XAudio2FX_REVERB_MIN_7POINT1_SIDE_DELAY = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_7POINT1_REAR_DELAY")]
-		public const uint XAudio2fxReverbMin7point1RearDelay = 0;
+		public const uint XAudio2FX_REVERB_MIN_7POINT1_REAR_DELAY = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_POSITION")]
-		public const uint XAudio2fxReverbMinPosition = 0;
+		public const uint XAudio2FX_REVERB_MIN_POSITION = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_DIFFUSION")]
-		public const uint XAudio2fxReverbMinDiffusion = 0;
+		public const uint XAudio2FX_REVERB_MIN_DIFFUSION = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_LOW_EQ_GAIN")]
-		public const uint XAudio2fxReverbMinLowEqGain = 0;
+		public const uint XAudio2FX_REVERB_MIN_LOW_EQ_GAIN = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_LOW_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbMinLowEqCutoff = 0;
+		public const uint XAudio2FX_REVERB_MIN_LOW_EQ_CUTOFF = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_HIGH_EQ_GAIN")]
-		public const uint XAudio2fxReverbMinHighEqGain = 0;
+		public const uint XAudio2FX_REVERB_MIN_HIGH_EQ_GAIN = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_HIGH_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbMinHighEqCutoff = 0;
+		public const uint XAudio2FX_REVERB_MIN_HIGH_EQ_CUTOFF = 0;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_ROOM_FILTER_FREQ")]
-		public const float XAudio2fxReverbMinRoomFilterFreq = 20.0f;
+		public const float XAudio2FX_REVERB_MIN_ROOM_FILTER_FREQ = 20.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_ROOM_FILTER_MAIN")]
-		public const float XAudio2fxReverbMinRoomFilterMain = -100.0f;
+		public const float XAudio2FX_REVERB_MIN_ROOM_FILTER_MAIN = -100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_ROOM_FILTER_HF")]
-		public const float XAudio2fxReverbMinRoomFilterHf = -100.0f;
+		public const float XAudio2FX_REVERB_MIN_ROOM_FILTER_HF = -100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_REFLECTIONS_GAIN")]
-		public const float XAudio2fxReverbMinReflectionsGain = -100.0f;
+		public const float XAudio2FX_REVERB_MIN_REFLECTIONS_GAIN = -100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_REVERB_GAIN")]
-		public const float XAudio2fxReverbMinReverbGain = -100.0f;
+		public const float XAudio2FX_REVERB_MIN_REVERB_GAIN = -100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_DECAY_TIME")]
-		public const float XAudio2fxReverbMinDecayTime = 0.1f;
+		public const float XAudio2FX_REVERB_MIN_DECAY_TIME = 0.1f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_DENSITY")]
-		public const float XAudio2fxReverbMinDensity = 0.0f;
+		public const float XAudio2FX_REVERB_MIN_DENSITY = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MIN_ROOM_SIZE")]
-		public const float XAudio2fxReverbMinRoomSize = 0.0f;
+		public const float XAudio2FX_REVERB_MIN_ROOM_SIZE = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_WET_DRY_MIX")]
-		public const float XAudio2fxReverbMaxWetDryMix = 100.0f;
+		public const float XAudio2FX_REVERB_MAX_WET_DRY_MIX = 100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_REFLECTIONS_DELAY")]
-		public const uint XAudio2fxReverbMaxReflectionsDelay = 300;
+		public const uint XAudio2FX_REVERB_MAX_REFLECTIONS_DELAY = 300;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_REVERB_DELAY")]
-		public const uint XAudio2fxReverbMaxReverbDelay = 85;
+		public const uint XAudio2FX_REVERB_MAX_REVERB_DELAY = 85;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_REAR_DELAY")]
-		public const uint XAudio2fxReverbMaxRearDelay = 5;
+		public const uint XAudio2FX_REVERB_MAX_REAR_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_7POINT1_SIDE_DELAY")]
-		public const uint XAudio2fxReverbMax7point1SideDelay = 5;
+		public const uint XAudio2FX_REVERB_MAX_7POINT1_SIDE_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_7POINT1_REAR_DELAY")]
-		public const uint XAudio2fxReverbMax7point1RearDelay = 20;
+		public const uint XAudio2FX_REVERB_MAX_7POINT1_REAR_DELAY = 20;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_POSITION")]
-		public const uint XAudio2fxReverbMaxPosition = 30;
+		public const uint XAudio2FX_REVERB_MAX_POSITION = 30;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_DIFFUSION")]
-		public const uint XAudio2fxReverbMaxDiffusion = 15;
+		public const uint XAudio2FX_REVERB_MAX_DIFFUSION = 15;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_LOW_EQ_GAIN")]
-		public const uint XAudio2fxReverbMaxLowEqGain = 12;
+		public const uint XAudio2FX_REVERB_MAX_LOW_EQ_GAIN = 12;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_LOW_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbMaxLowEqCutoff = 9;
+		public const uint XAudio2FX_REVERB_MAX_LOW_EQ_CUTOFF = 9;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_HIGH_EQ_GAIN")]
-		public const uint XAudio2fxReverbMaxHighEqGain = 8;
+		public const uint XAudio2FX_REVERB_MAX_HIGH_EQ_GAIN = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_HIGH_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbMaxHighEqCutoff = 14;
+		public const uint XAudio2FX_REVERB_MAX_HIGH_EQ_CUTOFF = 14;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_ROOM_FILTER_FREQ")]
-		public const float XAudio2fxReverbMaxRoomFilterFreq = 20000.0f;
+		public const float XAudio2FX_REVERB_MAX_ROOM_FILTER_FREQ = 20000.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_ROOM_FILTER_MAIN")]
-		public const float XAudio2fxReverbMaxRoomFilterMain = 0.0f;
+		public const float XAudio2FX_REVERB_MAX_ROOM_FILTER_MAIN = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_ROOM_FILTER_HF")]
-		public const float XAudio2fxReverbMaxRoomFilterHf = 0.0f;
+		public const float XAudio2FX_REVERB_MAX_ROOM_FILTER_HF = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_REFLECTIONS_GAIN")]
-		public const float XAudio2fxReverbMaxReflectionsGain = 20.0f;
+		public const float XAudio2FX_REVERB_MAX_REFLECTIONS_GAIN = 20.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_REVERB_GAIN")]
-		public const float XAudio2fxReverbMaxReverbGain = 20.0f;
+		public const float XAudio2FX_REVERB_MAX_REVERB_GAIN = 20.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_DENSITY")]
-		public const float XAudio2fxReverbMaxDensity = 100.0f;
+		public const float XAudio2FX_REVERB_MAX_DENSITY = 100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_MAX_ROOM_SIZE")]
-		public const float XAudio2fxReverbMaxRoomSize = 100.0f;
+		public const float XAudio2FX_REVERB_MAX_ROOM_SIZE = 100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_WET_DRY_MIX")]
-		public const float XAudio2fxReverbDefaultWetDryMix = 100.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_WET_DRY_MIX = 100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_REFLECTIONS_DELAY")]
-		public const uint XAudio2fxReverbDefaultReflectionsDelay = 5;
+		public const uint XAudio2FX_REVERB_DEFAULT_REFLECTIONS_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_REVERB_DELAY")]
-		public const uint XAudio2fxReverbDefaultReverbDelay = 5;
+		public const uint XAudio2FX_REVERB_DEFAULT_REVERB_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_REAR_DELAY")]
-		public const uint XAudio2fxReverbDefaultRearDelay = 5;
+		public const uint XAudio2FX_REVERB_DEFAULT_REAR_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_7POINT1_SIDE_DELAY")]
-		public const uint XAudio2fxReverbDefault7point1SideDelay = 5;
+		public const uint XAudio2FX_REVERB_DEFAULT_7POINT1_SIDE_DELAY = 5;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_7POINT1_REAR_DELAY")]
-		public const uint XAudio2fxReverbDefault7point1RearDelay = 20;
+		public const uint XAudio2FX_REVERB_DEFAULT_7POINT1_REAR_DELAY = 20;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_POSITION")]
-		public const uint XAudio2fxReverbDefaultPosition = 6;
+		public const uint XAudio2FX_REVERB_DEFAULT_POSITION = 6;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_POSITION_MATRIX")]
-		public const uint XAudio2fxReverbDefaultPositionMatrix = 27;
+		public const uint XAudio2FX_REVERB_DEFAULT_POSITION_MATRIX = 27;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_EARLY_DIFFUSION")]
-		public const uint XAudio2fxReverbDefaultEarlyDiffusion = 8;
+		public const uint XAudio2FX_REVERB_DEFAULT_EARLY_DIFFUSION = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_LATE_DIFFUSION")]
-		public const uint XAudio2fxReverbDefaultLateDiffusion = 8;
+		public const uint XAudio2FX_REVERB_DEFAULT_LATE_DIFFUSION = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_LOW_EQ_GAIN")]
-		public const uint XAudio2fxReverbDefaultLowEqGain = 8;
+		public const uint XAudio2FX_REVERB_DEFAULT_LOW_EQ_GAIN = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_LOW_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbDefaultLowEqCutoff = 4;
+		public const uint XAudio2FX_REVERB_DEFAULT_LOW_EQ_CUTOFF = 4;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_HIGH_EQ_GAIN")]
-		public const uint XAudio2fxReverbDefaultHighEqGain = 8;
+		public const uint XAudio2FX_REVERB_DEFAULT_HIGH_EQ_GAIN = 8;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_HIGH_EQ_CUTOFF")]
-		public const uint XAudio2fxReverbDefaultHighEqCutoff = 4;
+		public const uint XAudio2FX_REVERB_DEFAULT_HIGH_EQ_CUTOFF = 4;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_ROOM_FILTER_FREQ")]
-		public const float XAudio2fxReverbDefaultRoomFilterFreq = 5000.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_ROOM_FILTER_FREQ = 5000.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_ROOM_FILTER_MAIN")]
-		public const float XAudio2fxReverbDefaultRoomFilterMain = 0.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_ROOM_FILTER_MAIN = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_ROOM_FILTER_HF")]
-		public const float XAudio2fxReverbDefaultRoomFilterHf = 0.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_ROOM_FILTER_HF = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_REFLECTIONS_GAIN")]
-		public const float XAudio2fxReverbDefaultReflectionsGain = 0.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_REFLECTIONS_GAIN = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_REVERB_GAIN")]
-		public const float XAudio2fxReverbDefaultReverbGain = 0.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_REVERB_GAIN = 0.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_DECAY_TIME")]
-		public const float XAudio2fxReverbDefaultDecayTime = 1.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_DECAY_TIME = 1.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_DENSITY")]
-		public const float XAudio2fxReverbDefaultDensity = 100.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_DENSITY = 100.0f;
 
 		[NativeName(NativeNameType.Const, "XAUDIO2FX_REVERB_DEFAULT_ROOM_SIZE")]
-		public const float XAudio2fxReverbDefaultRoomSize = 100.0f;
+		public const float XAudio2FX_REVERB_DEFAULT_ROOM_SIZE = 100.0f;
 
 	}
 }

@@ -293,6 +293,12 @@
                 isHex = true;
             }
 
+            if (allowSuffix && name[index..length].EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.ULong;
+                length -= 2;
+            }
+
             if (allowSuffix && name[index..length].EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.Long;
@@ -303,12 +309,6 @@
             {
                 numberType = NumberType.UInt;
                 length -= 1;
-            }
-
-            if (allowSuffix && name[index..length].EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
-            {
-                numberType = NumberType.ULong;
-                length -= 2;
             }
 
             if (allowSuffix && !isHex && name[index..length].EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
@@ -362,7 +362,7 @@
                 {
                     if (c == '.')
                     {
-                        if (numberType == NumberType.Int)
+                        if (numberType == NumberType.UInt)
                             numberType = NumberType.Double;
                     }
                     else if (!isHex || !char.IsAsciiHexDigit(c))

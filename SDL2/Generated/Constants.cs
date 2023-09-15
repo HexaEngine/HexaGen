@@ -15,178 +15,178 @@ namespace HexaEngine.SDL2
 	public unsafe partial class SDL2
 	{
 		[NativeName(NativeNameType.Const, "HAVE_WINAPIFAMILY_H")]
-		public const int HAVE_WINAPIFAMILY_H = 1;
+		public const uint HAVE_WINAPIFAMILY_H = 1;
 
 		[NativeName(NativeNameType.Const, "__WINDOWS__")]
-		public const int __WINDOWS__ = 1;
+		public const uint __WINDOWS__ = 1;
 
 		[NativeName(NativeNameType.Const, "__WIN32__")]
-		public const int __WIN32__ = 1;
+		public const uint __WIN32__ = 1;
 
 		[NativeName(NativeNameType.Const, "NULL")]
-		public const int NULL = 0;
+		public const uint NULL = 0;
 
 		[NativeName(NativeNameType.Const, "HAVE_WINSDKVER_H")]
-		public const int HAVE_WINSDKVER_H = 1;
+		public const uint HAVE_WINSDKVER_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_SDKDDKVER_H")]
-		public const int HAVE_SDKDDKVER_H = 1;
+		public const uint HAVE_SDKDDKVER_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_STDINT_H")]
-		public const int HAVE_STDINT_H = 1;
+		public const uint HAVE_STDINT_H = 1;
 
 		[NativeName(NativeNameType.Const, "SIZEOF_VOIDP")]
-		public const int SIZEOF_VOIDP = 8;
+		public const uint SIZEOF_VOIDP = 8;
 
 		[NativeName(NativeNameType.Const, "HAVE_GCC_ATOMICS")]
-		public const int HAVE_GCC_ATOMICS = 1;
+		public const uint HAVE_GCC_ATOMICS = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_DDRAW_H")]
-		public const int HAVE_DDRAW_H = 1;
+		public const uint HAVE_DDRAW_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_DINPUT_H")]
-		public const int HAVE_DINPUT_H = 1;
+		public const uint HAVE_DINPUT_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_DSOUND_H")]
-		public const int HAVE_DSOUND_H = 1;
+		public const uint HAVE_DSOUND_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_DXGI_H")]
-		public const int HAVE_DXGI_H = 1;
+		public const uint HAVE_DXGI_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_XINPUT_H")]
-		public const int HAVE_XINPUT_H = 1;
+		public const uint HAVE_XINPUT_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_WINDOWS_GAMING_INPUT_H")]
-		public const int HAVE_WINDOWS_GAMING_INPUT_H = 1;
+		public const uint HAVE_WINDOWS_GAMING_INPUT_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_D3D11_H")]
-		public const int HAVE_D3D11_H = 1;
+		public const uint HAVE_D3D11_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_ROAPI_H")]
-		public const int HAVE_ROAPI_H = 1;
+		public const uint HAVE_ROAPI_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_D3D12_H")]
-		public const int HAVE_D3D12_H = 1;
+		public const uint HAVE_D3D12_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_SHELLSCALINGAPI_H")]
-		public const int HAVE_SHELLSCALINGAPI_H = 1;
+		public const uint HAVE_SHELLSCALINGAPI_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_MMDEVICEAPI_H")]
-		public const int HAVE_MMDEVICEAPI_H = 1;
+		public const uint HAVE_MMDEVICEAPI_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_AUDIOCLIENT_H")]
-		public const int HAVE_AUDIOCLIENT_H = 1;
+		public const uint HAVE_AUDIOCLIENT_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_TPCSHRD_H")]
-		public const int HAVE_TPCSHRD_H = 1;
+		public const uint HAVE_TPCSHRD_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_SENSORSAPI_H")]
-		public const int HAVE_SENSORSAPI_H = 1;
+		public const uint HAVE_SENSORSAPI_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_IMMINTRIN_H")]
-		public const int HAVE_IMMINTRIN_H = 1;
+		public const uint HAVE_IMMINTRIN_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_STDARG_H")]
-		public const int HAVE_STDARG_H = 1;
+		public const uint HAVE_STDARG_H = 1;
 
 		[NativeName(NativeNameType.Const, "HAVE_STDDEF_H")]
-		public const int HAVE_STDDEF_H = 1;
+		public const uint HAVE_STDDEF_H = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_DRIVER_WASAPI")]
-		public const int SDL_AUDIO_DRIVER_WASAPI = 1;
+		public const uint SDL_AUDIO_DRIVER_WASAPI = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_DRIVER_DSOUND")]
-		public const int SDL_AUDIO_DRIVER_DSOUND = 1;
+		public const uint SDL_AUDIO_DRIVER_DSOUND = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_DRIVER_WINMM")]
-		public const int SDL_AUDIO_DRIVER_WINMM = 1;
+		public const uint SDL_AUDIO_DRIVER_WINMM = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_DRIVER_DISK")]
-		public const int SDL_AUDIO_DRIVER_DISK = 1;
+		public const uint SDL_AUDIO_DRIVER_DISK = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_DRIVER_DUMMY")]
-		public const int SDL_AUDIO_DRIVER_DUMMY = 1;
+		public const uint SDL_AUDIO_DRIVER_DUMMY = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_DINPUT")]
-		public const int SDL_JOYSTICK_DINPUT = 1;
+		public const uint SDL_JOYSTICK_DINPUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_HIDAPI")]
-		public const int SDL_JOYSTICK_HIDAPI = 1;
+		public const uint SDL_JOYSTICK_HIDAPI = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_RAWINPUT")]
-		public const int SDL_JOYSTICK_RAWINPUT = 1;
+		public const uint SDL_JOYSTICK_RAWINPUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_VIRTUAL")]
-		public const int SDL_JOYSTICK_VIRTUAL = 1;
+		public const uint SDL_JOYSTICK_VIRTUAL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_WGI")]
-		public const int SDL_JOYSTICK_WGI = 1;
+		public const uint SDL_JOYSTICK_WGI = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_XINPUT")]
-		public const int SDL_JOYSTICK_XINPUT = 1;
+		public const uint SDL_JOYSTICK_XINPUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_DINPUT")]
-		public const int SDL_HAPTIC_DINPUT = 1;
+		public const uint SDL_HAPTIC_DINPUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_XINPUT")]
-		public const int SDL_HAPTIC_XINPUT = 1;
+		public const uint SDL_HAPTIC_XINPUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_SENSOR_WINDOWS")]
-		public const int SDL_SENSOR_WINDOWS = 1;
+		public const uint SDL_SENSOR_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_LOADSO_WINDOWS")]
-		public const int SDL_LOADSO_WINDOWS = 1;
+		public const uint SDL_LOADSO_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_THREAD_GENERIC_COND_SUFFIX")]
-		public const int SDL_THREAD_GENERIC_COND_SUFFIX = 1;
+		public const uint SDL_THREAD_GENERIC_COND_SUFFIX = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_THREAD_WINDOWS")]
-		public const int SDL_THREAD_WINDOWS = 1;
+		public const uint SDL_THREAD_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_TIMER_WINDOWS")]
-		public const int SDL_TIMER_WINDOWS = 1;
+		public const uint SDL_TIMER_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_DRIVER_DUMMY")]
-		public const int SDL_VIDEO_DRIVER_DUMMY = 1;
+		public const uint SDL_VIDEO_DRIVER_DUMMY = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_DRIVER_WINDOWS")]
-		public const int SDL_VIDEO_DRIVER_WINDOWS = 1;
+		public const uint SDL_VIDEO_DRIVER_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_RENDER_D3D")]
-		public const int SDL_VIDEO_RENDER_D3D = 1;
+		public const uint SDL_VIDEO_RENDER_D3D = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_RENDER_D3D11")]
-		public const int SDL_VIDEO_RENDER_D3D11 = 1;
+		public const uint SDL_VIDEO_RENDER_D3D11 = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_RENDER_D3D12")]
-		public const int SDL_VIDEO_RENDER_D3D12 = 1;
+		public const uint SDL_VIDEO_RENDER_D3D12 = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_OPENGL")]
-		public const int SDL_VIDEO_OPENGL = 1;
+		public const uint SDL_VIDEO_OPENGL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_OPENGL_WGL")]
-		public const int SDL_VIDEO_OPENGL_WGL = 1;
+		public const uint SDL_VIDEO_OPENGL_WGL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_RENDER_OGL")]
-		public const int SDL_VIDEO_RENDER_OGL = 1;
+		public const uint SDL_VIDEO_RENDER_OGL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_RENDER_OGL_ES2")]
-		public const int SDL_VIDEO_RENDER_OGL_ES2 = 1;
+		public const uint SDL_VIDEO_RENDER_OGL_ES2 = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_OPENGL_ES2")]
-		public const int SDL_VIDEO_OPENGL_ES2 = 1;
+		public const uint SDL_VIDEO_OPENGL_ES2 = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_OPENGL_EGL")]
-		public const int SDL_VIDEO_OPENGL_EGL = 1;
+		public const uint SDL_VIDEO_OPENGL_EGL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_VIDEO_VULKAN")]
-		public const int SDL_VIDEO_VULKAN = 1;
+		public const uint SDL_VIDEO_VULKAN = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_POWER_WINDOWS")]
-		public const int SDL_POWER_WINDOWS = 1;
+		public const uint SDL_POWER_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_FILESYSTEM_WINDOWS")]
-		public const int SDL_FILESYSTEM_WINDOWS = 1;
+		public const uint SDL_FILESYSTEM_WINDOWS = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_FLT_EPSILON")]
 		public const float SDL_FLT_EPSILON = 1.1920928955078125e-07F;
@@ -219,16 +219,16 @@ namespace HexaEngine.SDL2
 		public const double M_PI = 3.14159265358979323846264338327950288;
 
 		[NativeName(NativeNameType.Const, "SDL_ASSERT_LEVEL")]
-		public const int SDL_ASSERT_LEVEL = 1;
+		public const uint SDL_ASSERT_LEVEL = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_LIL_ENDIAN")]
-		public const int SDL_LIL_ENDIAN = 1234;
+		public const uint SDL_LIL_ENDIAN = 1234;
 
 		[NativeName(NativeNameType.Const, "SDL_BIG_ENDIAN")]
-		public const int SDL_BIG_ENDIAN = 4321;
+		public const uint SDL_BIG_ENDIAN = 4321;
 
 		[NativeName(NativeNameType.Const, "SDL_MUTEX_TIMEDOUT")]
-		public const int SDL_MUTEX_TIMEDOUT = 1;
+		public const uint SDL_MUTEX_TIMEDOUT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_RWOPS_UNKNOWN")]
 		public const uint SDL_RWOPS_UNKNOWN = 0U;
@@ -249,88 +249,88 @@ namespace HexaEngine.SDL2
 		public const uint SDL_RWOPS_MEMORY_RO = 5U;
 
 		[NativeName(NativeNameType.Const, "RW_SEEK_SET")]
-		public const int RW_SEEK_SET = 0;
+		public const uint RW_SEEK_SET = 0;
 
 		[NativeName(NativeNameType.Const, "RW_SEEK_CUR")]
-		public const int RW_SEEK_CUR = 1;
+		public const uint RW_SEEK_CUR = 1;
 
 		[NativeName(NativeNameType.Const, "RW_SEEK_END")]
-		public const int RW_SEEK_END = 2;
+		public const uint RW_SEEK_END = 2;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_MASK_BITSIZE")]
-		public const int SDL_AUDIO_MASK_BITSIZE = (0xFF);
+		public const uint SDL_AUDIO_MASK_BITSIZE = (0xFF);
 
 		[NativeName(NativeNameType.Const, "AUDIO_U8")]
-		public const int AUDIO_U8 = 0x0008;
+		public const uint AUDIO_U8 = 0x0008;
 
 		[NativeName(NativeNameType.Const, "AUDIO_S8")]
-		public const int AUDIO_S8 = 0x8008;
+		public const uint AUDIO_S8 = 0x8008;
 
 		[NativeName(NativeNameType.Const, "AUDIO_U16LSB")]
-		public const int AUDIO_U16LSB = 0x0010;
+		public const uint AUDIO_U16LSB = 0x0010;
 
 		[NativeName(NativeNameType.Const, "AUDIO_S16LSB")]
-		public const int AUDIO_S16LSB = 0x8010;
+		public const uint AUDIO_S16LSB = 0x8010;
 
 		[NativeName(NativeNameType.Const, "AUDIO_U16MSB")]
-		public const int AUDIO_U16MSB = 0x1010;
+		public const uint AUDIO_U16MSB = 0x1010;
 
 		[NativeName(NativeNameType.Const, "AUDIO_S16MSB")]
-		public const int AUDIO_S16MSB = 0x9010;
+		public const uint AUDIO_S16MSB = 0x9010;
 
 		[NativeName(NativeNameType.Const, "AUDIO_S32LSB")]
-		public const int AUDIO_S32LSB = 0x8020;
+		public const uint AUDIO_S32LSB = 0x8020;
 
 		[NativeName(NativeNameType.Const, "AUDIO_S32MSB")]
-		public const int AUDIO_S32MSB = 0x9020;
+		public const uint AUDIO_S32MSB = 0x9020;
 
 		[NativeName(NativeNameType.Const, "AUDIO_F32LSB")]
-		public const int AUDIO_F32LSB = 0x8120;
+		public const uint AUDIO_F32LSB = 0x8120;
 
 		[NativeName(NativeNameType.Const, "AUDIO_F32MSB")]
-		public const int AUDIO_F32MSB = 0x9120;
+		public const uint AUDIO_F32MSB = 0x9120;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_ALLOW_FREQUENCY_CHANGE")]
-		public const int SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
+		public const uint SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_ALLOW_FORMAT_CHANGE")]
-		public const int SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
+		public const uint SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_ALLOW_CHANNELS_CHANGE")]
-		public const int SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
+		public const uint SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIO_ALLOW_SAMPLES_CHANGE")]
-		public const int SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
+		public const uint SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
 
 		[NativeName(NativeNameType.Const, "SDL_AUDIOCVT_MAX_FILTERS")]
-		public const int SDL_AUDIOCVT_MAX_FILTERS = 9;
+		public const uint SDL_AUDIOCVT_MAX_FILTERS = 9;
 
 		[NativeName(NativeNameType.Const, "SDL_MIX_MAXVOLUME")]
-		public const int SDL_MIX_MAXVOLUME = 128;
+		public const uint SDL_MIX_MAXVOLUME = 128;
 
 		[NativeName(NativeNameType.Const, "SDL_CACHELINE_SIZE")]
-		public const int SDL_CACHELINE_SIZE = 128;
+		public const uint SDL_CACHELINE_SIZE = 128;
 
 		[NativeName(NativeNameType.Const, "SDL_ALPHA_OPAQUE")]
-		public const int SDL_ALPHA_OPAQUE = 255;
+		public const uint SDL_ALPHA_OPAQUE = 255;
 
 		[NativeName(NativeNameType.Const, "SDL_ALPHA_TRANSPARENT")]
-		public const int SDL_ALPHA_TRANSPARENT = 0;
+		public const uint SDL_ALPHA_TRANSPARENT = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_SWSURFACE")]
-		public const int SDL_SWSURFACE = 0;
+		public const uint SDL_SWSURFACE = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_PREALLOC")]
-		public const int SDL_PREALLOC = 0x00000001;
+		public const uint SDL_PREALLOC = 0x00000001;
 
 		[NativeName(NativeNameType.Const, "SDL_RLEACCEL")]
-		public const int SDL_RLEACCEL = 0x00000002;
+		public const uint SDL_RLEACCEL = 0x00000002;
 
 		[NativeName(NativeNameType.Const, "SDL_DONTFREE")]
-		public const int SDL_DONTFREE = 0x00000004;
+		public const uint SDL_DONTFREE = 0x00000004;
 
 		[NativeName(NativeNameType.Const, "SDL_SIMD_ALIGNED")]
-		public const int SDL_SIMD_ALIGNED = 0x00000008;
+		public const uint SDL_SIMD_ALIGNED = 0x00000008;
 
 		[NativeName(NativeNameType.Const, "SDL_WINDOWPOS_UNDEFINED_MASK")]
 		public const uint SDL_WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000u;
@@ -339,85 +339,85 @@ namespace HexaEngine.SDL2
 		public const uint SDL_WINDOWPOS_CENTERED_MASK = 0x2FFF0000u;
 
 		[NativeName(NativeNameType.Const, "SDL_BUTTON_LEFT")]
-		public const int SDL_BUTTON_LEFT = 1;
+		public const uint SDL_BUTTON_LEFT = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_BUTTON_MIDDLE")]
-		public const int SDL_BUTTON_MIDDLE = 2;
+		public const uint SDL_BUTTON_MIDDLE = 2;
 
 		[NativeName(NativeNameType.Const, "SDL_BUTTON_RIGHT")]
-		public const int SDL_BUTTON_RIGHT = 3;
+		public const uint SDL_BUTTON_RIGHT = 3;
 
 		[NativeName(NativeNameType.Const, "SDL_BUTTON_X1")]
-		public const int SDL_BUTTON_X1 = 4;
+		public const uint SDL_BUTTON_X1 = 4;
 
 		[NativeName(NativeNameType.Const, "SDL_BUTTON_X2")]
-		public const int SDL_BUTTON_X2 = 5;
+		public const uint SDL_BUTTON_X2 = 5;
 
 		[NativeName(NativeNameType.Const, "SDL_IPHONE_MAX_GFORCE")]
 		public const double SDL_IPHONE_MAX_GFORCE = 5.0;
 
 		[NativeName(NativeNameType.Const, "SDL_VIRTUAL_JOYSTICK_DESC_VERSION")]
-		public const int SDL_VIRTUAL_JOYSTICK_DESC_VERSION = 1;
+		public const uint SDL_VIRTUAL_JOYSTICK_DESC_VERSION = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_AXIS_MAX")]
-		public const int SDL_JOYSTICK_AXIS_MAX = 32767;
+		public const uint SDL_JOYSTICK_AXIS_MAX = 32767;
 
 		[NativeName(NativeNameType.Const, "SDL_JOYSTICK_AXIS_MIN")]
 		public const int SDL_JOYSTICK_AXIS_MIN = -32768;
 
 		[NativeName(NativeNameType.Const, "SDL_HAT_CENTERED")]
-		public const int SDL_HAT_CENTERED = 0x00;
+		public const uint SDL_HAT_CENTERED = 0x00;
 
 		[NativeName(NativeNameType.Const, "SDL_HAT_UP")]
-		public const int SDL_HAT_UP = 0x01;
+		public const uint SDL_HAT_UP = 0x01;
 
 		[NativeName(NativeNameType.Const, "SDL_HAT_RIGHT")]
-		public const int SDL_HAT_RIGHT = 0x02;
+		public const uint SDL_HAT_RIGHT = 0x02;
 
 		[NativeName(NativeNameType.Const, "SDL_HAT_DOWN")]
-		public const int SDL_HAT_DOWN = 0x04;
+		public const uint SDL_HAT_DOWN = 0x04;
 
 		[NativeName(NativeNameType.Const, "SDL_HAT_LEFT")]
-		public const int SDL_HAT_LEFT = 0x08;
+		public const uint SDL_HAT_LEFT = 0x08;
 
 		[NativeName(NativeNameType.Const, "SDL_STANDARD_GRAVITY")]
 		public const float SDL_STANDARD_GRAVITY = 9.80665f;
 
 		[NativeName(NativeNameType.Const, "SDL_RELEASED")]
-		public const int SDL_RELEASED = 0;
+		public const uint SDL_RELEASED = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_PRESSED")]
-		public const int SDL_PRESSED = 1;
+		public const uint SDL_PRESSED = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_TEXTEDITINGEVENT_TEXT_SIZE")]
-		public const int SDL_TEXTEDITINGEVENT_TEXT_SIZE = (32);
+		public const uint SDL_TEXTEDITINGEVENT_TEXT_SIZE = (32);
 
 		[NativeName(NativeNameType.Const, "SDL_TEXTINPUTEVENT_TEXT_SIZE")]
-		public const int SDL_TEXTINPUTEVENT_TEXT_SIZE = (32);
+		public const uint SDL_TEXTINPUTEVENT_TEXT_SIZE = (32);
 
 		[NativeName(NativeNameType.Const, "SDL_QUERY")]
 		public const int SDL_QUERY = -1;
 
 		[NativeName(NativeNameType.Const, "SDL_IGNORE")]
-		public const int SDL_IGNORE = 0;
+		public const uint SDL_IGNORE = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_DISABLE")]
-		public const int SDL_DISABLE = 0;
+		public const uint SDL_DISABLE = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_ENABLE")]
-		public const int SDL_ENABLE = 1;
+		public const uint SDL_ENABLE = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_POLAR")]
-		public const int SDL_HAPTIC_POLAR = 0;
+		public const uint SDL_HAPTIC_POLAR = 0;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_CARTESIAN")]
-		public const int SDL_HAPTIC_CARTESIAN = 1;
+		public const uint SDL_HAPTIC_CARTESIAN = 1;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_SPHERICAL")]
-		public const int SDL_HAPTIC_SPHERICAL = 2;
+		public const uint SDL_HAPTIC_SPHERICAL = 2;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_STEERING_AXIS")]
-		public const int SDL_HAPTIC_STEERING_AXIS = 3;
+		public const uint SDL_HAPTIC_STEERING_AXIS = 3;
 
 		[NativeName(NativeNameType.Const, "SDL_HAPTIC_INFINITY")]
 		public const uint SDL_HAPTIC_INFINITY = 4294967295U;
@@ -948,7 +948,7 @@ namespace HexaEngine.SDL2
 		public const string SDL_HINT_TRACKPAD_IS_TOUCH_ONLY = "SDL_TRACKPAD_IS_TOUCH_ONLY";
 
 		[NativeName(NativeNameType.Const, "SDL_MAX_LOG_MESSAGE")]
-		public const int SDL_MAX_LOG_MESSAGE = 4096;
+		public const uint SDL_MAX_LOG_MESSAGE = 4096;
 
 		[NativeName(NativeNameType.Const, "SDL_NONSHAPEABLE_WINDOW")]
 		public const int SDL_NONSHAPEABLE_WINDOW = -1;
@@ -960,13 +960,13 @@ namespace HexaEngine.SDL2
 		public const int SDL_WINDOW_LACKS_SHAPE = -3;
 
 		[NativeName(NativeNameType.Const, "SDL_MAJOR_VERSION")]
-		public const int SDL_MAJOR_VERSION = 2;
+		public const uint SDL_MAJOR_VERSION = 2;
 
 		[NativeName(NativeNameType.Const, "SDL_MINOR_VERSION")]
-		public const int SDL_MINOR_VERSION = 28;
+		public const uint SDL_MINOR_VERSION = 28;
 
 		[NativeName(NativeNameType.Const, "SDL_PATCHLEVEL")]
-		public const int SDL_PATCHLEVEL = 2;
+		public const uint SDL_PATCHLEVEL = 2;
 
 		[NativeName(NativeNameType.Const, "SDL_INIT_TIMER")]
 		public const uint SDL_INIT_TIMER = 0x00000001u;
