@@ -16,7 +16,7 @@ namespace HexaEngine.SDL2
 {
 	public unsafe partial class SDL2
 	{
-		internal const string LibName = "sdl2";
+		internal const string LibName = "SDL2d";
 
 		/// <summary>
 		/// Get the name of the platform.<br/>

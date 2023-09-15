@@ -1,8 +1,9 @@
 {
   "Namespace": "HexaEngine.SDL2",
   "ApiName": "SDL2",
-  "LibName": "sdl2",
+  "LibName": "SDL2d",
   "GenerateSizeOfStructs": false,
+  "ConstantNamingConvention": "Unknown",
   "KnownConstantNames": {
   },
   "KnownEnumValueNames": {

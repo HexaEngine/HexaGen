@@ -228,5 +228,18 @@ namespace HexaGen.Tests
             EvaluateResult(generator);
             Assert.Pass();
         }
+
+        [Test]
+        public void OpenAL()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("openal/generator.json");
+            string headerFile = "openal/main.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../OpenAL/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
     }
 }

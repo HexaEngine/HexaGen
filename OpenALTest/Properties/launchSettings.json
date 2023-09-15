@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OpenALTest": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "Namespace": "HexaEngine.OpenAL",
+  "ApiName": "OpenAL",
+  "LibName": "OpenAL32",
+  "GenerateSizeOfStructs": false,
+  "ConstantNamingConvention": "ScreamingSnakeCase",
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "size_t": "nuint",
+    "bool": "bool",
+    "ALboolean": "byte",
+    "ALchar": "byte",
+    "ALbyte": "sbyte",
+    "ALubyte": "byte",
+    "ALshort": "short",
+    "ALushort": "ushort",
+    "ALint": "int",
+    "ALuint": "uint",
+    "ALsizei": "int",
+    "ALenum": "int",
+    "ALfloat": "float",
+    "ALdouble": "double",
+    "ALvoid": "void",
+    "ALint64SOFT": "long",
+    "ALuint64SOFT": "ulong",
+    "ALCboolean": "byte",
+    "ALCchar": "byte",
+    "ALCbyte": "sbyte",
+    "ALCubyte": "byte",
+    "ALCshort": "short",
+    "ALCushort": "ushort",
+    "ALCint": "int",
+    "ALCuint": "uint",
+    "ALCsizei": "int",
+    "ALCenum": "int",
+    "ALCfloat": "float",
+    "ALCdouble": "double",
+    "ALCvoid": "void",
+    "ALCint64SOFT": "long",
+    "ALCuint64SOFT": "ulong"
+  }
+}

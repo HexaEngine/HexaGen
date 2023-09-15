@@ -4,7 +4,6 @@
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Numerics;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -234,21 +233,6 @@
             }
             cppEnum = null;
             return false;
-        }
-
-        public static unsafe string ToUpperCaseOverwrite(this string str)
-        {
-            fixed (char* p = str)
-            {
-                for (int i = 1; i < str.Length; i++)
-                {
-                    if (str[i] != 'x')
-                    {
-                        p[i] = char.ToUpper(str[i]);
-                    }
-                }
-            }
-            return str;
         }
 
         public static unsafe string ToCamelCase(this string str)

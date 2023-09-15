@@ -273,7 +273,7 @@
             int length = name.Length;
             bool isHex = false;
 
-            numberType = NumberType.Int;
+            numberType = NumberType.UInt;
 
             if (allowBrackets && name.StartsWith("(") && name.EndsWith(")"))
             {
@@ -283,6 +283,7 @@
 
             if (allowMinus && name[index..length].StartsWith('-'))
             {
+                numberType = NumberType.Int;
                 index += 1;
             }
 
@@ -370,6 +371,7 @@
                     }
                 }
             }
+
             return true;
         }
 

@@ -3,7 +3,6 @@
     using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
-    using Humanizer;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
@@ -142,6 +141,9 @@
         public HashSet<string> AllowedConstants { get; set; } = new();
 
         public List<string> Usings { get; set; } = new();
+
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         public void Save(string path)
         {
@@ -486,10 +488,12 @@
             if (type is CppTypedef typedef)
             {
                 var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate(out var _))
+                if (typedef.IsDelegate())
                 {
                     return typeDefCsName;
                 }
+                if (isPointer && typeDefCsName == "void")
+                    return "void*";
                 if (isPointer)
                     return "ref " + typeDefCsName;
 
@@ -499,6 +503,8 @@
             if (type is CppClass @class)
             {
                 var className = GetCsCleanName(@class.Name);
+                if (isPointer && className == "void")
+                    return "void*";
                 if (isPointer)
                     return "ref " + className;
 
@@ -880,7 +886,7 @@
                 return knownName;
             }
 
-            return GetCsCleanName(value);
+            return GetCsCleanNameWithConvention(value, ConstantNamingConvention, false);
         }
 
         public EnumPrefix GetEnumNamePrefix(string typeName)

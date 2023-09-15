@@ -1,9 +1,4 @@
-﻿using Humanizer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace HexaGen
 {
@@ -55,6 +50,31 @@ namespace HexaGen
             }
 
             string newName = sb.ToString();
+
+            foreach (var item in NameMappings)
+            {
+                newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
+            }
+
+            return newName;
+        }
+
+        public string GetCsCleanNameWithConvention(string name, NamingConvention convention, bool removeTailingT = true)
+        {
+            if (TypeMappings.TryGetValue(name, out string? mappedName))
+            {
+                return mappedName;
+            }
+
+            string newName = NamingHelper.ConvertTo(name, convention);
+
+            if (removeTailingT)
+            {
+                if (newName.Length > 0 && newName[^1] == 'T')
+                {
+                    newName = newName.Remove(newName.Length - 1, 1);
+                }
+            }
 
             foreach (var item in NameMappings)
             {
