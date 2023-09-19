@@ -16,7 +16,7 @@ namespace HexaEngine.ImGuiNET
 	public unsafe partial class ImGui
 	{
 		[NativeName(NativeNameType.Const, "IMGUI_HAS_DOCK")]
-		public const uint IMGUI_HAS_DOCK = 1;
+		public const int IMGUI_HAS_DOCK = 1;
 
 	}
 }

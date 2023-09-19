@@ -19,80 +19,80 @@ namespace HexaEngine.ImGuiNET
 	{
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV1, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, uv1, tintCol, borderCol);
+			ImGui.ImageNative(userTextureId, sIZE, uV0, uV1, tintCol, borderCol);
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV1, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, uv1, tintCol, (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, uV0, uV1, tintCol, (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV1)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, uv1, (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, uV0, uV1, (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, uV0, (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE)
 		{
-			ImGui.ImageNative(userTextureId, size, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(1,1,1,1)), (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, (Vector2)(new Vector2(1,1)), tintCol, (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, uV0, (Vector2)(new Vector2(1,1)), tintCol, (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol)
 		{
-			ImGui.ImageNative(userTextureId, size, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), tintCol, (Vector4)(new Vector4(0,0,0,0)));
+			ImGui.ImageNative(userTextureId, sIZE, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), tintCol, (Vector4)(new Vector4(0,0,0,0)));
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uV0, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
 		{
-			ImGui.ImageNative(userTextureId, size, uv0, (Vector2)(new Vector2(1,1)), tintCol, borderCol);
+			ImGui.ImageNative(userTextureId, sIZE, uV0, (Vector2)(new Vector2(1,1)), tintCol, borderCol);
 		}
 
 		[NativeName(NativeNameType.Func, "igImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
+		public static void Image(this ImTextureID userTextureId, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sIZE, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "border_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 borderCol)
 		{
-			ImGui.ImageNative(userTextureId, size, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), tintCol, borderCol);
+			ImGui.ImageNative(userTextureId, sIZE, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), tintCol, borderCol);
 		}
 
 		[NativeName(NativeNameType.Func, "igImFileClose")]
 		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool Close(this ImFileHandle file)
+		public static bool Close(this ImFileHandle fILE)
 		{
-			byte ret = ImGui.ImFileCloseNative(file);
+			byte ret = ImGui.ImFileCloseNative(fILE);
 			return ret != 0;
 		}
 
 		[NativeName(NativeNameType.Func, "igImFileGetSize")]
 		[return: NativeName(NativeNameType.Type, "ImU64")]
-		public static ulong GetSize(this ImFileHandle file)
+		public static ulong GetSize(this ImFileHandle fILE)
 		{
-			ulong ret = ImGui.ImFileGetSizeNative(file);
+			ulong ret = ImGui.ImFileGetSizeNative(fILE);
 			return ret;
 		}
 

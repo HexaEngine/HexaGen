@@ -67,7 +67,10 @@
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
                 WriteClass(context, compilation.Classes[i]);
-                WriteHandle(context, compilation.Classes[i]);
+                if (settings.WrapPointersAsHandle)
+                {
+                    WriteHandle(context, compilation.Classes[i]);
+                }
             }
         }
 
@@ -151,7 +154,7 @@
                         }
                         if (subClass == default)
                         {
-                            string csFieldName = settings.NormalizeFieldName(cppField.Name);
+                            string csFieldName = settings.GetFieldName(cppField.Name);
                             string csFieldType = settings.GetCsCleanName(cppClass1.Name);
 
                             writer.WriteLine($"public {csFieldType} {csFieldName};");
@@ -178,7 +181,7 @@
                         writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                         writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
 
-                        string csFieldName = settings.NormalizeFieldName(cppField.Name);
+                        string csFieldName = settings.GetFieldName(cppField.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunctionType.ReturnType, false);
                         string signature = settings.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
                         returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
@@ -295,7 +298,7 @@
 
         private void WriteField(CodeWriter writer, CppField field, TypeFieldMapping? mapping, List<(CppType, string, string)> subClasses, bool isUnion = false, bool isReadOnly = false)
         {
-            string csFieldName = settings.NormalizeFieldName(field.Name);
+            string csFieldName = settings.GetFieldName(field.Name);
 
             var fieldCommentWritten = field.Comment.WriteCsSummary(writer);
             if (!fieldCommentWritten)
@@ -395,7 +398,7 @@
 
         private void WriteProperty(CodeWriter writer, CppClass cppClass, string classCsName, CppField field, TypeFieldMapping? mapping, bool isUnion = false, bool isReadOnly = false)
         {
-            string csFieldName = settings.NormalizeFieldName(field.Name);
+            string csFieldName = settings.GetFieldName(field.Name);
 
             var fieldCommentWritten = field.Comment.WriteCsSummary(writer);
             if (!fieldCommentWritten)
@@ -536,7 +539,7 @@
 
         private void WriteProperty(CodeWriter writer, CppField field)
         {
-            string csFieldName = settings.NormalizeFieldName(field.Name);
+            string csFieldName = settings.GetFieldName(field.Name);
             field.Comment.WriteCsSummary(writer);
             if (field.Type is CppArrayType arrayType)
             {

@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core;
     using System.Text;
 
     public enum NamingConvention
@@ -9,7 +10,8 @@
         CamelCase,
         SnakeCase,
         ScreamingSnakeCase,
-        Caps,
+        UpperFlatCase,
+        LowerFlatCase,
     }
 
     public static class NamingHelper
@@ -64,7 +66,11 @@
             }
             else if (hasUpperCase)
             {
-                return NamingConvention.Caps;
+                return NamingConvention.UpperFlatCase;
+            }
+            else if (hasLowerCase)
+            {
+                return NamingConvention.LowerFlatCase;
             }
 
             return NamingConvention.Unknown;
@@ -72,10 +78,6 @@
 
         public static string[] GetParts(string input, NamingConvention convention)
         {
-            if (convention == NamingConvention.Unknown || convention == NamingConvention.Caps)
-            {
-                return new string[] { input };
-            }
             string[] parts = new string[] { input };
             switch (convention)
             {
@@ -87,6 +89,12 @@
                 case NamingConvention.ScreamingSnakeCase:
                 case NamingConvention.SnakeCase:
                     parts = input.Split("_");
+                    break;
+
+                case NamingConvention.Unknown:
+                case NamingConvention.LowerFlatCase:
+                case NamingConvention.UpperFlatCase:
+                    parts = WordList.EN_EN.SplitWords(input);
                     break;
             }
 
@@ -102,6 +110,12 @@
             }
 
             var sourceConvention = AnalyzeNamingConvention(input);
+
+            if (sourceConvention == targetConvention)
+            {
+                return input;
+            }
+
             var parts = GetParts(input, sourceConvention);
 
             StringBuilder sb = new();
@@ -138,8 +152,12 @@
                         sb.Append(part.ToUpper());
                         break;
 
-                    case NamingConvention.Caps:
+                    case NamingConvention.UpperFlatCase:
                         sb.Append(part.ToUpper());
+                        break;
+
+                    case NamingConvention.LowerFlatCase:
+                        sb.Append(part.ToLower());
                         break;
                 }
             }

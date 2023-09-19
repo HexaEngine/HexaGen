@@ -23,7 +23,7 @@ namespace HexaEngine.D3DCompiler
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3DCOMPILER_STRIP_FLAGS")]
-	public enum D3DcompilerStripFlags
+	public enum D3DCOMPILER_STRIP_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_REFLECTION_DATA")]
 		ReflectionData = unchecked(1),
@@ -47,7 +47,7 @@ namespace HexaEngine.D3DCompiler
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D_BLOB_PART")]
-	public enum D3DBlobPart
+	public enum D3D_BLOB_PAR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_INPUT_SIGNATURE_BLOB")]
 		InputSignatureBlob = unchecked(0),

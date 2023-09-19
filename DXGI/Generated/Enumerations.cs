@@ -16,7 +16,7 @@ using HexaGen.Runtime.COM;
 namespace HexaEngine.DXGI
 {
 	[NativeName(NativeNameType.Enum, "DXGI_FORMAT")]
-	public enum DxgiFormat
+	public enum DXGI_FORMA
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -265,7 +265,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_ROTATION")]
-	public enum DxgiModeRotation
+	public enum DXGI_MODE_ROTATION
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_UNSPECIFIED")]
 		Unspecified = unchecked(0),
@@ -280,7 +280,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCANLINE_ORDER")]
-	public enum DxgiModeScanlineOrder
+	public enum DXGI_MODE_SCANLINE_ORDER
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED")]
 		Unspecified = unchecked(0),
@@ -293,7 +293,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCALING")]
-	public enum DxgiModeScaling
+	public enum DXGI_MODE_SCALING
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_UNSPECIFIED")]
 		Unspecified = unchecked(0),
@@ -304,7 +304,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_EFFECT")]
-	public enum DxgiSwapEffect
+	public enum DXGI_SWAP_EFFEC
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_DISCARD")]
 		Discard = unchecked(0),
@@ -317,7 +317,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_RESIDENCY")]
-	public enum DxgiResidency
+	public enum DXGI_RESIDENCY
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_FULLY_RESIDENT")]
 		FullyResident = unchecked(1),
@@ -328,7 +328,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_COLOR_SPACE_TYPE")]
-	public enum DxgiColorSpaceType
+	public enum DXGI_COLOR_SPACE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709")]
 		RgbFullg22Nonep709 = unchecked(0),
@@ -385,7 +385,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_FLAG")]
-	public enum DxgiSwapChainFlag
+	public enum DXGI_SWAP_CHAIN_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_NONPREROTATED")]
 		Nonprerotated = unchecked(1),
@@ -420,7 +420,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG")]
-	public enum DxgiAdapterFlag
+	public enum DXGI_ADAPTER_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_NONE")]
 		None = unchecked(0),
@@ -437,7 +437,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_PRIORITY")]
-	public enum DxgiOfferResourcePriority
+	public enum _DXGI_OFFER_RESOURCE_PRIORITY
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
 		Low = unchecked(1),
@@ -448,7 +448,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_SCALING")]
-	public enum DxgiScaling
+	public enum DXGI_SCALING
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_STRETCH")]
 		Stretch = unchecked(0),
@@ -459,7 +459,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_ALPHA_MODE")]
-	public enum DxgiAlphaMode
+	public enum DXGI_ALPHA_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
@@ -478,7 +478,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
-	public enum DxgiGraphicsPreemptionGranularity
+	public enum DXGI_GRAPHICS_PREEMPTION_GRANULARITY
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
@@ -493,7 +493,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
-	public enum DxgiComputePreemptionGranularity
+	public enum DXGI_COMPUTE_PREEMPTION_GRANULARITY
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
@@ -508,7 +508,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE")]
-	public enum DxgiOutduplPointerShapeType
+	public enum DXGI_OUTDUPL_POINTER_SHAPE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME")]
 		Monochrome = unchecked(1),
@@ -534,7 +534,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_FRAME_PRESENTATION_MODE")]
-	public enum DxgiFramePresentationMode
+	public enum DXGI_FRAME_PRESENTATION_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_COMPOSED")]
 		Composed = unchecked(0),
@@ -551,7 +551,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_SUPPORT_FLAG")]
-	public enum DxgiOverlaySupportFlag
+	public enum DXGI_OVERLAY_SUPPORT_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_SUPPORT_FLAG_DIRECT")]
 		Direct = unchecked(1),
@@ -564,7 +564,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MEMORY_SEGMENT_GROUP")]
-	public enum DxgiMemorySegmentGroup
+	public enum DXGI_MEMORY_SEGMENT_GROUP
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_MEMORY_SEGMENT_GROUP_LOCAL")]
 		Local = unchecked(0),
@@ -573,7 +573,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG")]
-	public enum DxgiSwapChainColorSpaceSupportFlag
+	public enum DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
@@ -586,7 +586,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG")]
-	public enum DxgiOverlayColorSpaceSupportFlag
+	public enum DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
@@ -597,7 +597,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
-	public enum DxgiHdrMetadataType
+	public enum DXGI_HDR_METADATA_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
 		None = unchecked(0),
@@ -608,7 +608,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "_DXGI_RECLAIM_RESOURCE_RESULTS")]
-	public enum DxgiReclaimResourceResults
+	public enum _DXGI_RECLAIM_RESOURCE_RESULTS
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_OK")]
 		ResultOk = unchecked(0),
@@ -623,14 +623,14 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_FEATURE")]
-	public enum DxgiFeature
+	public enum DXGI_FEATURE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_FEATURE_PRESENT_ALLOW_TEARING")]
 		PresentAllowTearing = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_FLAG")]
-	public enum DxgiOutduplFlag
+	public enum DXGI_OUTDUPL_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_COMPOSITED_UI_CAPTURE_ONLY")]
 		CompositedUiCaptureOnly = unchecked(1),
@@ -641,14 +641,14 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_FLAGS")]
-	public enum DxgiOfferResourceFlags
+	public enum _DXGI_OFFER_RESOURCE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
 		FlagAllowDecommit = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG3")]
-	public enum DxgiAdapterFlag3
+	public enum DXGI_ADAPTER_FLAG3
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_NONE")]
 		None = unchecked(0),
@@ -673,7 +673,7 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_GPU_PREFERENCE")]
-	public enum DxgiGpuPreference
+	public enum DXGI_GPU_PREFERENCE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
@@ -684,7 +684,7 @@ namespace HexaEngine.DXGI
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS")]
-	public enum DxgiHardwareCompositionSupportFlags
+	public enum DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_FULLSCREEN")]
 		FlagFullscreen = unchecked(1),
@@ -692,6 +692,43 @@ namespace HexaEngine.DXGI
 		FlagWindowed = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_CURSOR_STRETCHED")]
 		FlagCursorStretched = unchecked(4),
+	}
+
+	/// <summary>
+	/// interface __MIDL_itf_dxgi1_2_0000_0004 <br/>
+	/// [local] <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_PRIORITY")]
+	public enum DXGI_OFFER_RESOURCE_PRIORITY
+	{
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
+		Low = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_NORMAL")]
+		Normal = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_HIGH")]
+		High = unchecked(3),
+	}
+
+	[NativeName(NativeNameType.Enum, "_DXGI_RECLAIM_RESOURCE_RESULTS")]
+	public enum DXGI_RECLAIM_RESOURCE_RESULTS
+	{
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_OK")]
+		ResultOk = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED")]
+		ResultDiscarded = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED")]
+		ResultNotCommitted = unchecked(2),
+	}
+
+	/// <summary>
+	/// interface __MIDL_itf_dxgi1_5_0000_0002 <br/>
+	/// [local] <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_FLAGS")]
+	public enum DXGI_OFFER_RESOURCE_FLAGS
+	{
+		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
+		FlagAllowDecommit = unchecked(1),
 	}
 
 }

@@ -12,6 +12,6 @@ using HexaGen.Runtime;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.X3DAudio
+namespace Hexa.NET.X3DAudio
 {
 }

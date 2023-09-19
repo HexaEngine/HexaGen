@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\X3DAudio\X3DAudio.csproj" />
-    <ProjectReference Include="..\XAudio2\XAudio2.csproj" />
+    <ProjectReference Include="..\X3DAudio\Hexa.NET.X3DAudio.csproj" />
+    <ProjectReference Include="..\XAudio2\Hexa.NET.XAudio2.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.Core
 {
     using System.Collections.Generic;
+    using System.Text;
 
     //
     // Summary:
@@ -19,6 +20,22 @@
 
     public static class Extensions
     {
+        public static void Reverse(this StringBuilder sb)
+        {
+            char t;
+            int end = sb.Length - 1;
+            int start = 0;
+
+            while (end - start > 0)
+            {
+                t = sb[end];
+                sb[end] = sb[start];
+                sb[start] = t;
+                start++;
+                end--;
+            }
+        }
+
         public static Dictionary<TKey, TValue> Clone<TKey, TValue>(this Dictionary<TKey, TValue> dictionary) where TKey : notnull
         {
             return new(dictionary);

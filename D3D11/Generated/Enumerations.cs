@@ -16,7 +16,7 @@ using HexaGen.Runtime.COM;
 namespace HexaEngine.D3D11
 {
 	[NativeName(NativeNameType.Enum, "D3D11_USAGE")]
-	public enum D3D11Usage
+	public enum D3D11_USAGE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_DEFAULT")]
 		Default = unchecked(0),
@@ -29,7 +29,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_DIMENSION")]
-	public enum D3D11ResourceDimension
+	public enum D3D11_RESOURCE_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -44,7 +44,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_UAV_DIMENSION")]
-	public enum D3D11UavDimension
+	public enum D3D11_UAV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -63,7 +63,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_RTV_DIMENSION")]
-	public enum D3D11RtvDimension
+	public enum D3D11_RTV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -86,7 +86,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_DSV_DIMENSION")]
-	public enum D3D11DsvDimension
+	public enum D3D11_DSV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -105,7 +105,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_INPUT_CLASSIFICATION")]
-	public enum D3D11InputClassification
+	public enum D3D11_INPUT_CLASSIFICATION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_INPUT_PER_VERTEX_DATA")]
 		PerVertexData = unchecked(0),
@@ -118,7 +118,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_BLEND")]
-	public enum D3D11Blend
+	public enum D3D11_BLEND
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_ZERO")]
 		Zero = unchecked(1),
@@ -157,7 +157,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_BLEND_OP")]
-	public enum D3D11BlendOp
+	public enum D3D11_BLEND_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_ADD")]
 		Add = unchecked(1),
@@ -172,7 +172,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_DEPTH_WRITE_MASK")]
-	public enum D3D11DepthWriteMask
+	public enum D3D11_DEPTH_WRITE_MASK
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_DEPTH_WRITE_MASK_ZERO")]
 		Zero = unchecked(0),
@@ -185,7 +185,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_COMPARISON_FUNC")]
-	public enum D3D11ComparisonFunc
+	public enum D3D11_COMPARISON_FUNC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_NEVER")]
 		Never = unchecked(1),
@@ -206,7 +206,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_STENCIL_OP")]
-	public enum D3D11StencilOp
+	public enum D3D11_STENCIL_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_KEEP")]
 		Keep = unchecked(1),
@@ -227,7 +227,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_FILL_MODE")]
-	public enum D3D11FillMode
+	public enum D3D11_FILL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FILL_WIREFRAME")]
 		Wireframe = unchecked(2),
@@ -236,7 +236,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CULL_MODE")]
-	public enum D3D11CullMode
+	public enum D3D11_CULL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_NONE")]
 		None = unchecked(1),
@@ -251,7 +251,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_FILTER")]
-	public enum D3D11Filter
+	public enum D3D11_FILTER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_MIP_POINT")]
 		MinMagMipPoint = unchecked(0),
@@ -328,7 +328,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_ADDRESS_MODE")]
-	public enum D3D11TextureAddressMode
+	public enum D3D11_TEXTURE_ADDRESS_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_WRAP")]
 		Wrap = unchecked(1),
@@ -343,7 +343,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_QUERY")]
-	public enum D3D11Query
+	public enum D3D11_QUERY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_EVENT")]
 		Event = unchecked(0),
@@ -380,14 +380,14 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_COUNTER")]
-	public enum D3D11Counter
+	public enum D3D11_COUNTER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_DEVICE_DEPENDENT_0")]
 		DeviceDependent0 = unchecked(1073741824),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_MAP")]
-	public enum D3D11Map
+	public enum D3D11_MAP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_READ")]
 		Read = unchecked(1),
@@ -402,7 +402,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3DPrimitiveTopology
+	public enum D3D_PRIMITIVE_TOPOLOGY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -595,7 +595,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_DEVICE_CONTEXT_TYPE")]
-	public enum D3D11DeviceContextType
+	public enum D3D11_DEVICE_CONTEXT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_DEVICE_CONTEXT_IMMEDIATE")]
 		Immediate = unchecked(0),
@@ -604,7 +604,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_COUNTER_TYPE")]
-	public enum D3D11CounterType
+	public enum D3D11_COUNTER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_FLOAT32")]
 		Float32 = unchecked(0),
@@ -621,7 +621,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_FEATURE")]
-	public enum D3D11Feature
+	public enum D3D11_FEATURE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_THREADING")]
 		Threading = unchecked(0),
@@ -668,7 +668,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_FRAME_FORMAT")]
-	public enum D3D11VideoFrameFormat
+	public enum D3D11_VIDEO_FRAME_FORMA
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_PROGRESSIVE")]
 		Progressive = unchecked(0),
@@ -679,7 +679,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_USAGE")]
-	public enum D3D11VideoUsage
+	public enum D3D11_VIDEO_USAGE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_PLAYBACK_NORMAL")]
 		PlaybackNormal = unchecked(0),
@@ -690,7 +690,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER")]
-	public enum D3D11VideoProcessorFilter
+	public enum D3D11_VIDEO_PROCESSOR_FILTER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_BRIGHTNESS")]
 		Brightness = unchecked(0),
@@ -715,7 +715,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_VDOV_DIMENSION")]
-	public enum D3D11VdovDimension
+	public enum D3D11_VDOV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VDOV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -728,7 +728,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_VPIV_DIMENSION")]
-	public enum D3D11VpivDimension
+	public enum D3D11_VPIV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VPIV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -741,7 +741,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_VPOV_DIMENSION")]
-	public enum D3D11VpovDimension
+	public enum D3D11_VPOV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -752,7 +752,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_BUFFER_TYPE")]
-	public enum D3D11VideoDecoderBufferType
+	public enum D3D11_VIDEO_DECODER_BUFFER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_PICTURE_PARAMETERS")]
 		PictureParameters = unchecked(0),
@@ -775,7 +775,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE")]
-	public enum D3D11VideoProcessorAlphaFillMode
+	public enum D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_OPAQUE")]
 		Opaque = unchecked(0),
@@ -788,7 +788,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE")]
-	public enum D3D11VideoProcessorOutputRate
+	public enum D3D11_VIDEO_PROCESSOR_OUTPUT_RATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_NORMAL")]
 		Normal = unchecked(0),
@@ -799,7 +799,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT")]
-	public enum D3D11VideoProcessorStereoFormat
+	public enum D3D11_VIDEO_PROCESSOR_STEREO_FORMA
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO")]
 		Mono = unchecked(0),
@@ -820,7 +820,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE")]
-	public enum D3D11VideoProcessorStereoFlipMode
+	public enum D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_NONE")]
 		None = unchecked(0),
@@ -831,7 +831,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ROTATION")]
-	public enum D3D11VideoProcessorRotation
+	public enum D3D11_VIDEO_PROCESSOR_ROTATION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_IDENTITY")]
 		Identity = unchecked(0),
@@ -844,7 +844,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_CHANNEL_TYPE")]
-	public enum D3D11AuthenticatedChannelType
+	public enum D3D11_AUTHENTICATED_CHANNEL_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_D3D11")]
 		Channeld3D11 = unchecked(1),
@@ -855,7 +855,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_BIND_FLAG")]
-	public enum D3D11BindFlag
+	public enum D3D11_BIND_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_VERTEX_BUFFER")]
 		VertexBuffer = unchecked((int)0x1L),
@@ -880,7 +880,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CPU_ACCESS_FLAG")]
-	public enum D3D11CpuAccessFlag
+	public enum D3D11_CPU_ACCESS_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CPU_ACCESS_WRITE")]
 		Write = unchecked((int)0x10000L),
@@ -889,7 +889,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_MISC_FLAG")]
-	public enum D3D11ResourceMiscFlag
+	public enum D3D11_RESOURCE_MISC_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GENERATE_MIPS")]
 		GenerateMips = unchecked((int)0x1L),
@@ -932,21 +932,21 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_MAP_FLAG")]
-	public enum D3D11MapFlag
+	public enum D3D11_MAP_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_FLAG_DO_NOT_WAIT")]
 		DoNotWait = unchecked((int)0x100000L),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_RAISE_FLAG")]
-	public enum D3D11RaiseFlag
+	public enum D3D11_RAISE_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR")]
 		DriverInternalError = unchecked((int)0x1L),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CLEAR_FLAG")]
-	public enum D3D11ClearFlag
+	public enum D3D11_CLEAR_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CLEAR_DEPTH")]
 		Depth = unchecked((int)0x1L),
@@ -955,7 +955,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_COLOR_WRITE_ENABLE")]
-	public enum D3D11ColorWriteEnable
+	public enum D3D11_COLOR_WRITE_ENABLE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_RED")]
 		Red = unchecked(1),
@@ -974,7 +974,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_TEXTURECUBE_FACE")]
-	public enum D3D11TexturecubeFace
+	public enum D3D11_TEXTURECUBE_FACE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_X")]
 		Positivex = unchecked(0),
@@ -991,14 +991,14 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_BUFFEREX_SRV_FLAG")]
-	public enum D3D11BufferexSrvFlag
+	public enum D3D11_BUFFEREX_SRV_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFEREX_SRV_FLAG_RAW")]
 		Raw = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_DSV_FLAG")]
-	public enum D3D11DsvFlag
+	public enum D3D11_DSV_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_READ_ONLY_DEPTH")]
 		ReadOnlyDepth = unchecked((int)0x1L),
@@ -1011,7 +1011,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_BUFFER_UAV_FLAG")]
-	public enum D3D11BufferUavFlag
+	public enum D3D11_BUFFER_UAV_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_RAW")]
 		Raw = unchecked(1),
@@ -1022,7 +1022,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_FILTER_TYPE")]
-	public enum D3D11FilterType
+	public enum D3D11_FILTER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_TYPE_POINT")]
 		Point = unchecked(0),
@@ -1031,7 +1031,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_FILTER_REDUCTION_TYPE")]
-	public enum D3D11FilterReductionType
+	public enum D3D11_FILTER_REDUCTION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_STANDARD")]
 		Standard = unchecked(0),
@@ -1048,7 +1048,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT")]
-	public enum D3D11FormatSupport
+	public enum D3D11_FORMAT_SUPPOR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BUFFER")]
 		Buffer = unchecked(1),
@@ -1115,7 +1115,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT2")]
-	public enum D3D11FormatSupport2
+	public enum D3D11_FORMAT_SUPPORT2
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD")]
 		UavAtomicAdd = unchecked(1),
@@ -1148,14 +1148,14 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_ASYNC_GETDATA_FLAG")]
-	public enum D3D11AsyncGetdataFlag
+	public enum D3D11_ASYNC_GETDATA_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_ASYNC_GETDATA_DONOTFLUSH")]
 		Donotflush = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_QUERY_MISC_FLAG")]
-	public enum D3D11QueryMiscFlag
+	public enum D3D11_QUERY_MISC_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_MISC_PREDICATEHINT")]
 		Predicatehint = unchecked(1),
@@ -1166,7 +1166,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS")]
-	public enum D3D11StandardMultisampleQualityLevels
+	public enum D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_STANDARD_MULTISAMPLE_PATTERN")]
 		Pattern = unchecked((int)0xffffffff),
@@ -1175,7 +1175,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_MIN_PRECISION_SUPPORT")]
-	public enum D3D11ShaderMinPrecisionSupport
+	public enum D3D11_SHADER_MIN_PRECISION_SUPPOR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_MIN_PRECISION_10_BIT")]
 		Precision10 = unchecked(1),
@@ -1184,7 +1184,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TILED_RESOURCES_TIER")]
-	public enum D3D11TiledResourcesTier
+	public enum D3D11_TILED_RESOURCES_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -1197,7 +1197,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_TIER")]
-	public enum D3D11ConservativeRasterizationTier
+	public enum D3D11_CONSERVATIVE_RASTERIZATION_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -1210,7 +1210,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_CACHE_SUPPORT_FLAGS")]
-	public enum D3D11ShaderCacheSupportFlags
+	public enum D3D11_SHADER_CACHE_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_NONE")]
 		None = unchecked(0),
@@ -1221,7 +1221,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHARED_RESOURCE_TIER")]
-	public enum D3D11SharedResourceTier
+	public enum D3D11_SHARED_RESOURCE_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_0")]
 		Tier0 = unchecked(0),
@@ -1238,7 +1238,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT")]
-	public enum D3D11VideoProcessorFormatSupport
+	public enum D3D11_VIDEO_PROCESSOR_FORMAT_SUPPOR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT")]
 		Input = unchecked(1),
@@ -1247,7 +1247,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS")]
-	public enum D3D11VideoProcessorDeviceCaps
+	public enum D3D11_VIDEO_PROCESSOR_DEVICE_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE")]
 		LinearSpace = unchecked(1),
@@ -1262,7 +1262,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS")]
-	public enum D3D11VideoProcessorFeatureCaps
+	public enum D3D11_VIDEO_PROCESSOR_FEATURE_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL")]
 		AlphaFill = unchecked(1),
@@ -1291,7 +1291,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS")]
-	public enum D3D11VideoProcessorFilterCaps
+	public enum D3D11_VIDEO_PROCESSOR_FILTER_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS")]
 		Brightness = unchecked(1),
@@ -1312,7 +1312,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS")]
-	public enum D3D11VideoProcessorFormatCaps
+	public enum D3D11_VIDEO_PROCESSOR_FORMAT_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED")]
 		RgbInterlaced = unchecked(1),
@@ -1325,7 +1325,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS")]
-	public enum D3D11VideoProcessorAutoStreamCaps
+	public enum D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE")]
 		Denoise = unchecked(1),
@@ -1346,7 +1346,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS")]
-	public enum D3D11VideoProcessorStereoCaps
+	public enum D3D11_VIDEO_PROCESSOR_STEREO_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET")]
 		MonoOffset = unchecked(1),
@@ -1361,7 +1361,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS")]
-	public enum D3D11VideoProcessorProcessorCaps
+	public enum D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BLEND")]
 		DeinterlaceBlend = unchecked(1),
@@ -1378,7 +1378,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS")]
-	public enum D3D11VideoProcessorItelecineCaps
+	public enum D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32")]
 		Caps32 = unchecked(1),
@@ -1403,7 +1403,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CONTENT_PROTECTION_CAPS")]
-	public enum D3D11ContentProtectionCaps
+	public enum D3D11_CONTENT_PROTECTION_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_SOFTWARE")]
 		Software = unchecked(1),
@@ -1440,7 +1440,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE")]
-	public enum D3D11VideoProcessorNominalRange
+	public enum D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1451,7 +1451,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE")]
-	public enum D3D11AuthenticatedProcessIdentifierType
+	public enum D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_UNKNOWN")]
 		ProcessidtypeUnknown = unchecked(0),
@@ -1462,7 +1462,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_BUS_TYPE")]
-	public enum D3D11BusType
+	public enum D3D11_BUS_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_OTHER")]
 		Other = unchecked(0),
@@ -1493,7 +1493,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_CREATE_DEVICE_FLAG")]
-	public enum D3D11CreateDeviceFlag
+	public enum D3D11_CREATE_DEVICE_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_SINGLETHREADED")]
 		Singlethreaded = unchecked(1),
@@ -1516,7 +1516,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_RLDO_FLAGS")]
-	public enum D3D11RldoFlags
+	public enum D3D11_RLDO_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_SUMMARY")]
 		Summary = unchecked(1),
@@ -1527,7 +1527,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_CATEGORY")]
-	public enum D3D11MessageCategory
+	public enum D3D11_MESSAGE_CATEGORY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED")]
 		ApplicationDefined = unchecked(0),
@@ -1554,7 +1554,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_SEVERITY")]
-	public enum D3D11MessageSeverity
+	public enum D3D11_MESSAGE_SEVERITY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_CORRUPTION")]
 		Corruption = unchecked(0),
@@ -1569,7 +1569,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_ID")]
-	public enum D3D11MessageId
+	public enum D3D11_MESSAGE_ID
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -4248,7 +4248,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_RESOURCE_TYPE")]
-	public enum D3D11ShaderTrackingResourceType
+	public enum D3D11_SHADER_TRACKING_RESOURCE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_NONE")]
 		None = unchecked(0),
@@ -4269,7 +4269,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
-	public enum D3D11ShaderTrackingOption
+	public enum D3D11_SHADER_TRACKING_OPTION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
 		Ignore = unchecked(0),
@@ -4304,7 +4304,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_VERSION_TYPE")]
-	public enum D3D11ShaderVersionType
+	public enum D3D11_SHADER_VERSION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_PIXEL_SHADER")]
 		ShverPixelShader = unchecked(0),
@@ -4343,7 +4343,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TYPE")]
-	public enum D3D11ShaderType
+	public enum D3D11_SHADER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VERTEX_SHADER")]
 		VertexShader = unchecked(1),
@@ -4360,7 +4360,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TRACE_GS_INPUT_PRIMITIVE")]
-	public enum D3D11TraceGsInputPrimitive
+	public enum D3D11_TRACE_GS_INPUT_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -4377,7 +4377,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TRACE_REGISTER_TYPE")]
-	public enum D3D11TraceRegisterType
+	public enum D3D11_TRACE_REGISTER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_NULL_REGISTER")]
 		OutputNullRegister = unchecked(0),
@@ -4454,7 +4454,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_LOGIC_OP")]
-	public enum D3D11LogicOp
+	public enum D3D11_LOGIC_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_CLEAR")]
 		Clear = unchecked(0),
@@ -4491,7 +4491,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_STATUS")]
-	public enum D3D11CryptoSessionStatus
+	public enum D3D11_CRYPTO_SESSION_STATUS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_OK")]
 		Ok = unchecked(0),
@@ -4502,7 +4502,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_COPY_FLAGS")]
-	public enum D3D11CopyFlags
+	public enum D3D11_COPY_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_COPY_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
@@ -4515,14 +4515,14 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG")]
-	public enum D3D111CreateDeviceContextStateFlag
+	public enum D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED")]
 		Singlethreaded = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_CAPS")]
-	public enum D3D11VideoDecoderCaps
+	public enum D3D11_VIDEO_DECODER_CAPS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE")]
 		Downsample = unchecked(1),
@@ -4537,7 +4537,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS")]
-	public enum D3D11VideoProcessorBehaviorHints
+	public enum D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION")]
 		HintMultiplaneOverlayRotation = unchecked(1),
@@ -4550,14 +4550,14 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TILE_MAPPING_FLAG")]
-	public enum D3D11TileMappingFlag
+	public enum D3D11_TILE_MAPPING_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_MAPPING_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TILE_RANGE_FLAG")]
-	public enum D3D11TileRangeFlag
+	public enum D3D11_TILE_RANGE_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_NULL")]
 		Null = unchecked(1),
@@ -4568,14 +4568,14 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG")]
-	public enum D3D11CheckMultisampleQualityLevelsFlag
+	public enum D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_TILED_RESOURCE")]
 		TiledResource = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TILE_COPY_FLAG")]
-	public enum D3D11TileCopyFlag
+	public enum D3D11_TILE_COPY_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_NO_OVERWRITE")]
 		NoOverwrite = unchecked(1),
@@ -4586,7 +4586,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_LAYOUT")]
-	public enum D3D11TextureLayout
+	public enum D3D11_TEXTURE_LAYOU
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -4601,7 +4601,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_MODE")]
-	public enum D3D11ConservativeRasterizationMode
+	public enum D3D11_CONSERVATIVE_RASTERIZATION_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_MODE_OFF")]
 		Off = unchecked(0),
@@ -4610,7 +4610,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CONTEXT_TYPE")]
-	public enum D3D11ContextType
+	public enum D3D11_CONTEXT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_ALL")]
 		All = unchecked(0),
@@ -4629,7 +4629,7 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_FENCE_FLAG")]
-	public enum D3D11FenceFlag
+	public enum D3D11_FENCE_FLAG
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_NONE")]
 		None = unchecked(0),
@@ -4642,7 +4642,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
-	public enum DxgiHdrMetadataType
+	public enum DXGI_HDR_METADATA_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
 		None = unchecked(0),
@@ -4657,21 +4657,21 @@ namespace HexaEngine.D3D11
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D11_FEATURE_VIDEO")]
-	public enum D3D11FeatureVideo
+	public enum D3D11_FEATURE_VIDEO
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_VIDEO_DECODER_HISTOGRAM")]
 		DecoderHistogram = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS")]
-	public enum D3D11CryptoSessionKeyExchangeFlags
+	public enum D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT")]
-	public enum D3D11VideoDecoderHistogramComponent
+	public enum D3D11_VIDEO_DECODER_HISTOGRAM_COMPONEN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_Y")]
 		Componenty = unchecked(0),
@@ -4690,7 +4690,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAGS")]
-	public enum D3D11VideoDecoderHistogramComponentFlags
+	public enum D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -4711,7 +4711,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_SRV_DIMENSION")]
-	public enum D3D11SrvDimension
+	public enum D3D11_SRV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_UNKNOWN")]
 		D3DSrvDimensionUnknown = unchecked(0),
@@ -4806,7 +4806,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3D11PrimitiveTopology
+	public enum D3D11_PRIMITIVE_TOPOLOGY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3DPrimitiveTopologyUndefined = unchecked(0),
@@ -4999,7 +4999,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE")]
-	public enum D3D11Primitive
+	public enum D3D11_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_UNDEFINED")]
 		D3DPrimitiveUndefined = unchecked(0),
@@ -5168,7 +5168,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
-	public enum D3D11ShaderTrackingOptions
+	public enum D3D11_SHADER_TRACKING_OPTIONS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
 		OptionIgnore = unchecked(0),
@@ -5203,7 +5203,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_RESOURCE_RETURN_TYPE")]
-	public enum D3D11ResourceReturnType
+	public enum D3D11_RESOURCE_RETURN_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UNORM")]
 		D3DReturnTypeUnorm = unchecked(1),
@@ -5252,7 +5252,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
-	public enum D3D11CbufferType
+	public enum D3D11_CBUFFER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
 		D3DCtCbuffer = unchecked(0),
@@ -5277,7 +5277,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_DOMAIN")]
-	public enum D3D11TessellatorDomain
+	public enum D3D11_TESSELLATOR_DOMAIN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
 		D3DTessellatorDomainUndefined = unchecked(0),
@@ -5298,7 +5298,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_PARTITIONING")]
-	public enum D3D11TessellatorPartitioning
+	public enum D3D11_TESSELLATOR_PARTITIONING
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
 		D3DTessellatorPartitioningUndefined = unchecked(0),
@@ -5323,7 +5323,7 @@ namespace HexaEngine.D3D11
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_OUTPUT_PRIMITIVE")]
-	public enum D3D11TessellatorOutputPrimitive
+	public enum D3D11_TESSELLATOR_OUTPUT_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
 		D3DTessellatorOutputUndefined = unchecked(0),

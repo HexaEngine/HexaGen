@@ -18,7 +18,7 @@ namespace HexaEngine.DXC
 	/// Note: text outputs returned from version 2 APIs are UTF-8 or UTF-16 based on -encoding option<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXC_OUT_KIND")]
-	public enum DxcOutKind
+	public enum DXC_OUT_KIND
 	{
 		[NativeName(NativeNameType.EnumItem, "DXC_OUT_NONE")]
 		None = unchecked(0),

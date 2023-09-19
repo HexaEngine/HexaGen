@@ -272,8 +272,10 @@
             int index = 0;
             int length = name.Length;
             bool isHex = false;
+            bool isMinus = false;
+            bool typeOverwrite = false;
 
-            numberType = NumberType.UInt;
+            numberType = NumberType.Int;
 
             if (allowBrackets && name.StartsWith("(") && name.EndsWith(")"))
             {
@@ -285,6 +287,7 @@
             {
                 numberType = NumberType.Int;
                 index += 1;
+                isMinus = true;
             }
 
             if (allowHex && name[index..length].StartsWith("0x"))
@@ -297,36 +300,42 @@
             {
                 numberType = NumberType.ULong;
                 length -= 2;
+                typeOverwrite = true;
             }
 
             if (allowSuffix && name[index..length].EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.Long;
                 length -= 1;
+                typeOverwrite = true;
             }
 
             if (allowSuffix && name[index..length].EndsWith("U", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.UInt;
                 length -= 1;
+                typeOverwrite = true;
             }
 
             if (allowSuffix && !isHex && name[index..length].EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.Float;
                 length -= 1;
+                typeOverwrite = true;
             }
 
             if (allowSuffix && !isHex && name[index..length].EndsWith("D", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.Double;
                 length -= 1;
+                typeOverwrite = true;
             }
 
             if (allowSuffix && name[index..length].EndsWith("M", StringComparison.InvariantCultureIgnoreCase))
             {
                 numberType = NumberType.Decimal;
                 length -= 1;
+                typeOverwrite = true;
             }
 
             if (allowExponent && name.Contains("E-", StringComparison.InvariantCultureIgnoreCase))
@@ -362,14 +371,74 @@
                 {
                     if (c == '.')
                     {
-                        if (numberType == NumberType.UInt)
+                        if ((numberType & NumberType.AnyInt) != 0)
+                        {
                             numberType = NumberType.Double;
+                        }
                     }
                     else if (!isHex || !char.IsAsciiHexDigit(c))
                     {
                         return false;
                     }
                 }
+            }
+
+            if (typeOverwrite)
+            {
+                return true;
+            }
+
+            if ((numberType & NumberType.AnyInt) != 0 && !isHex)
+            {
+                var span = name.AsSpan(index, length - index).TrimStart('0');
+                if (NumberStringCompareLessEquals(span, int.MaxValue.ToString()))
+                {
+                    numberType = NumberType.Int;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, uint.MaxValue.ToString()))
+                {
+                    numberType = NumberType.UInt;
+                    return true;
+                }
+                if (NumberStringCompareLessEquals(span, long.MaxValue.ToString()))
+                {
+                    numberType = NumberType.Long;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, ulong.MaxValue.ToString()))
+                {
+                    numberType = NumberType.ULong;
+                    return true;
+                }
+
+                throw new InvalidDataException($"The number {name} is outside known number ranges!");
+            }
+            if ((numberType & NumberType.AnyInt) != 0 && isHex)
+            {
+                var span = name.AsSpan(index, length - index).TrimStart('0');
+                if (NumberStringCompareLessEquals(span, "7fffffff"))
+                {
+                    numberType = NumberType.Int;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, "ffffffff"))
+                {
+                    numberType = NumberType.UInt;
+                    return true;
+                }
+                if (NumberStringCompareLessEquals(span, "7fffffffffffffff"))
+                {
+                    numberType = NumberType.Long;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, "ffffffffffffffff"))
+                {
+                    numberType = NumberType.ULong;
+                    return true;
+                }
+
+                throw new InvalidDataException($"The number {name} is outside known number ranges!");
             }
 
             return true;
@@ -458,6 +527,70 @@
                 }
             }
 
+            return true;
+        }
+
+        public static bool NumberStringCompareLess(ReadOnlySpan<char> value, string max)
+        {
+            // Greater
+            if (value.Length > max.Length)
+                return false;
+
+            // Less
+            if (value.Length < max.Length)
+                return true;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                var c = char.ToLower(value[i]);
+                var cmp = char.ToLower(max[i]);
+
+                // Greater
+                if (cmp < c)
+                {
+                    return false;
+                }
+
+                // Less
+                if (cmp > c)
+                {
+                    return true;
+                }
+            }
+
+            // Equals
+            return false;
+        }
+
+        public static bool NumberStringCompareLessEquals(ReadOnlySpan<char> value, string max)
+        {
+            // Greater
+            if (value.Length > max.Length)
+                return false;
+
+            // Less
+            if (value.Length < max.Length)
+                return true;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                var c = char.ToLower(value[i]);
+                var cmp = char.ToLower(max[i]);
+
+                // Greater
+                if (cmp < c)
+                {
+                    return false;
+                }
+
+                // Less
+                if (cmp > c)
+                {
+                    return true;
+                }
+            }
+
+            // Equals
             return true;
         }
 

@@ -18,25 +18,25 @@ namespace HexaEngine.DXGI
 	public unsafe partial class DXGI
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const uint _MSC_VER = 1930;
+		public const int _MSC_VER = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const uint _WIN32 = 1;
+		public const int _WIN32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const uint _M_AMD64 = 100;
+		public const int _M_AMD64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const uint _M_X64 = 100;
+		public const int _M_X64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const uint _WIN64 = 1;
+		public const int _WIN64 = 1;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCNDR_H_VERSION__")]
-		public const uint __REQUIRED_RPCNDR_H_VERSION__ = 501;
+		public const int __REQUIRED_RPCNDR_H_VERSION__ = 501;
 
 		[NativeName(NativeNameType.Const, "__REQUIRED_RPCSAL_H_VERSION__")]
-		public const uint __REQUIRED_RPCSAL_H_VERSION__ = 100;
+		public const int __REQUIRED_RPCSAL_H_VERSION__ = 100;
 
 		[NativeName(NativeNameType.Const, "DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN")]
 		public const uint DXGI_STANDARD_MULTISAMPLE_QUALITY_PATTERN = 0xffffffff;
@@ -45,25 +45,25 @@ namespace HexaEngine.DXGI
 		public const uint DXGI_CENTER_MULTISAMPLE_QUALITY_PATTERN = 0xfffffffe;
 
 		[NativeName(NativeNameType.Const, "DXGI_FORMAT_DEFINED")]
-		public const uint DXGI_FORMAT_DEFINED = 1;
+		public const int DXGI_FORMAT_DEFINED = 1;
 
 		[NativeName(NativeNameType.Const, "_FACDXGI")]
-		public const uint _FACDXGI = 0x87a;
+		public const int _FACDXGI = 0x87a;
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_NONE")]
-		public const uint DXGI_CPU_ACCESS_NONE = (0);
+		public const int DXGI_CPU_ACCESS_NONE = (0);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_DYNAMIC")]
-		public const uint DXGI_CPU_ACCESS_DYNAMIC = (1);
+		public const int DXGI_CPU_ACCESS_DYNAMIC = (1);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_READ_WRITE")]
-		public const uint DXGI_CPU_ACCESS_READ_WRITE = (2);
+		public const int DXGI_CPU_ACCESS_READ_WRITE = (2);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_SCRATCH")]
-		public const uint DXGI_CPU_ACCESS_SCRATCH = (3);
+		public const int DXGI_CPU_ACCESS_SCRATCH = (3);
 
 		[NativeName(NativeNameType.Const, "DXGI_CPU_ACCESS_FIELD")]
-		public const uint DXGI_CPU_ACCESS_FIELD = 15;
+		public const int DXGI_CPU_ACCESS_FIELD = 15;
 
 		[NativeName(NativeNameType.Const, "DXGI_USAGE_SHADER_INPUT")]
 		public const ulong DXGI_USAGE_SHADER_INPUT = 0x00000010UL;
@@ -87,13 +87,13 @@ namespace HexaEngine.DXGI
 		public const ulong DXGI_USAGE_UNORDERED_ACCESS = 0x00000400UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_MINIMUM")]
-		public const uint DXGI_RESOURCE_PRIORITY_MINIMUM = (0x28000000);
+		public const int DXGI_RESOURCE_PRIORITY_MINIMUM = (0x28000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_LOW")]
-		public const uint DXGI_RESOURCE_PRIORITY_LOW = (0x50000000);
+		public const int DXGI_RESOURCE_PRIORITY_LOW = (0x50000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_NORMAL")]
-		public const uint DXGI_RESOURCE_PRIORITY_NORMAL = (0x78000000);
+		public const int DXGI_RESOURCE_PRIORITY_NORMAL = (0x78000000);
 
 		[NativeName(NativeNameType.Const, "DXGI_RESOURCE_PRIORITY_HIGH")]
 		public const uint DXGI_RESOURCE_PRIORITY_HIGH = (0xa0000000);
@@ -117,7 +117,7 @@ namespace HexaEngine.DXGI
 		public const ulong DXGI_ENUM_MODES_SCALING = (2UL);
 
 		[NativeName(NativeNameType.Const, "DXGI_MAX_SWAP_CHAIN_BUFFERS")]
-		public const uint DXGI_MAX_SWAP_CHAIN_BUFFERS = (16);
+		public const int DXGI_MAX_SWAP_CHAIN_BUFFERS = (16);
 
 		[NativeName(NativeNameType.Const, "DXGI_PRESENT_TEST")]
 		public const ulong DXGI_PRESENT_TEST = 0x00000001UL;
@@ -147,7 +147,7 @@ namespace HexaEngine.DXGI
 		public const ulong DXGI_PRESENT_ALLOW_TEARING = 0x00000200UL;
 
 		[NativeName(NativeNameType.Const, "DXGI_MWA_VALID")]
-		public const uint DXGI_MWA_VALID = (0x7);
+		public const int DXGI_MWA_VALID = (0x7);
 
 		[NativeName(NativeNameType.Const, "DXGI_ENUM_MODES_STEREO")]
 		public const ulong DXGI_ENUM_MODES_STEREO = (4UL);
@@ -159,10 +159,10 @@ namespace HexaEngine.DXGI
 		public const long DXGI_SHARED_RESOURCE_READ = (0x80000000L);
 
 		[NativeName(NativeNameType.Const, "DXGI_SHARED_RESOURCE_WRITE")]
-		public const uint DXGI_SHARED_RESOURCE_WRITE = (1);
+		public const int DXGI_SHARED_RESOURCE_WRITE = (1);
 
 		[NativeName(NativeNameType.Const, "DXGI_CREATE_FACTORY_DEBUG")]
-		public const uint DXGI_CREATE_FACTORY_DEBUG = 0x1;
+		public const int DXGI_CREATE_FACTORY_DEBUG = 0x1;
 
 	}
 }

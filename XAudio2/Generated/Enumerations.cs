@@ -11,7 +11,7 @@ using System;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.XAudio2
+namespace Hexa.NET.XAudio2
 {
 	/// <summary>
 	/// -------------------------------------------------------------------------<br/>

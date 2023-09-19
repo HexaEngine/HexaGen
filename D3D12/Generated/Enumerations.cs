@@ -16,7 +16,7 @@ using HexaGen.Runtime.COM;
 namespace HexaEngine.D3D12
 {
 	[NativeName(NativeNameType.Enum, "D3D12_ROOT_PARAMETER_TYPE")]
-	public enum D3D12RootParameterType
+	public enum D3D12_ROOT_PARAMETER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE")]
 		DescriptorTable = unchecked(0),
@@ -31,7 +31,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DESCRIPTOR_RANGE_TYPE")]
-	public enum D3D12DescriptorRangeType
+	public enum D3D12_DESCRIPTOR_RANGE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DESCRIPTOR_RANGE_TYPE_SRV")]
 		Srv = unchecked(0),
@@ -44,7 +44,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_VISIBILITY")]
-	public enum D3D12ShaderVisibility
+	public enum D3D12_SHADER_VISIBILITY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_VISIBILITY_ALL")]
 		All = unchecked(0),
@@ -65,7 +65,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FILTER")]
-	public enum D3D12Filter
+	public enum D3D12_FILTER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FILTER_MIN_MAG_MIP_POINT")]
 		MinMagMipPoint = unchecked(0),
@@ -142,7 +142,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TEXTURE_ADDRESS_MODE")]
-	public enum D3D12TextureAddressMode
+	public enum D3D12_TEXTURE_ADDRESS_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TEXTURE_ADDRESS_MODE_WRAP")]
 		Wrap = unchecked(1),
@@ -157,7 +157,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMPARISON_FUNC")]
-	public enum D3D12ComparisonFunc
+	public enum D3D12_COMPARISON_FUNC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMPARISON_FUNC_NEVER")]
 		Never = unchecked(1),
@@ -178,7 +178,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_STATIC_BORDER_COLOR")]
-	public enum D3D12StaticBorderColor
+	public enum D3D12_STATIC_BORDER_COLOR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK")]
 		TransparentBlack = unchecked(0),
@@ -189,7 +189,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_ROOT_SIGNATURE_FLAGS")]
-	public enum D3D12RootSignatureFlags
+	public enum D3D12_ROOT_SIGNATURE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_ROOT_SIGNATURE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -220,7 +220,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_ROOT_SIGNATURE_VERSION")]
-	public enum D3DRootSignatureVersion
+	public enum D3D_ROOT_SIGNATURE_VERSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_ROOT_SIGNATURE_VERSION_1")]
 		Version1 = unchecked(1),
@@ -231,7 +231,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DESCRIPTOR_RANGE_FLAGS")]
-	public enum D3D12DescriptorRangeFlags
+	public enum D3D12_DESCRIPTOR_RANGE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DESCRIPTOR_RANGE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -248,7 +248,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_ROOT_DESCRIPTOR_FLAGS")]
-	public enum D3D12RootDescriptorFlags
+	public enum D3D12_ROOT_DESCRIPTOR_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_ROOT_DESCRIPTOR_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -261,7 +261,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_HEAP_TYPE")]
-	public enum D3D12HeapType
+	public enum D3D12_HEAP_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_HEAP_TYPE_DEFAULT")]
 		Default = unchecked(1),
@@ -274,7 +274,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_CPU_PAGE_PROPERTY")]
-	public enum D3D12CpuPageProperty
+	public enum D3D12_CPU_PAGE_PROPERTY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CPU_PAGE_PROPERTY_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -287,7 +287,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MEMORY_POOL")]
-	public enum D3D12MemoryPool
+	public enum D3D12_MEMORY_POOL
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MEMORY_POOL_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -298,7 +298,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_HEAP_FLAGS")]
-	public enum D3D12HeapFlags
+	public enum D3D12_HEAP_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_HEAP_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -335,7 +335,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_DIMENSION")]
-	public enum D3D12ResourceDimension
+	public enum D3D12_RESOURCE_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -350,7 +350,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TEXTURE_LAYOUT")]
-	public enum D3D12TextureLayout
+	public enum D3D12_TEXTURE_LAYOU
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TEXTURE_LAYOUT_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -363,7 +363,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_FLAGS")]
-	public enum D3D12ResourceFlags
+	public enum D3D12_RESOURCE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -388,7 +388,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FENCE_FLAGS")]
-	public enum D3D12FenceFlags
+	public enum D3D12_FENCE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FENCE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -401,7 +401,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DESCRIPTOR_HEAP_TYPE")]
-	public enum D3D12DescriptorHeapType
+	public enum D3D12_DESCRIPTOR_HEAP_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV")]
 		CbvSrvUav = unchecked(0),
@@ -416,7 +416,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DESCRIPTOR_HEAP_FLAGS")]
-	public enum D3D12DescriptorHeapFlags
+	public enum D3D12_DESCRIPTOR_HEAP_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DESCRIPTOR_HEAP_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -425,7 +425,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_LIST_TYPE")]
-	public enum D3D12CommandListType
+	public enum D3D12_COMMAND_LIST_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_LIST_TYPE_DIRECT")]
 		Direct = unchecked(0),
@@ -444,7 +444,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TEXTURE_COPY_TYPE")]
-	public enum D3D12TextureCopyType
+	public enum D3D12_TEXTURE_COPY_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TEXTURE_COPY_TYPE_SUBRESOURCE_INDEX")]
 		SubresourceIndex = unchecked(0),
@@ -453,7 +453,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TILE_COPY_FLAGS")]
-	public enum D3D12TileCopyFlags
+	public enum D3D12_TILE_COPY_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TILE_COPY_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -466,7 +466,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3DPrimitiveTopology
+	public enum D3D_PRIMITIVE_TOPOLOGY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -659,7 +659,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_BARRIER_TYPE")]
-	public enum D3D12ResourceBarrierType
+	public enum D3D12_RESOURCE_BARRIER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_BARRIER_TYPE_TRANSITION")]
 		Transition = unchecked(0),
@@ -670,7 +670,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_BARRIER_FLAGS")]
-	public enum D3D12ResourceBarrierFlags
+	public enum D3D12_RESOURCE_BARRIER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_BARRIER_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -681,7 +681,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_STATES")]
-	public enum D3D12ResourceStates
+	public enum D3D12_RESOURCE_STATES
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_STATE_COMMON")]
 		StateCommon = unchecked(0),
@@ -740,7 +740,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_CLEAR_FLAGS")]
-	public enum D3D12ClearFlags
+	public enum D3D12_CLEAR_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CLEAR_FLAG_DEPTH")]
 		FlagDepth = unchecked(1),
@@ -749,7 +749,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_QUERY_TYPE")]
-	public enum D3D12QueryType
+	public enum D3D12_QUERY_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_QUERY_TYPE_OCCLUSION")]
 		Occlusion = unchecked(0),
@@ -774,7 +774,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PREDICATION_OP")]
-	public enum D3D12PredicationOp
+	public enum D3D12_PREDICATION_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PREDICATION_OP_EQUAL_ZERO")]
 		EqualZero = unchecked(0),
@@ -783,7 +783,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOLVE_MODE")]
-	public enum D3D12ResolveMode
+	public enum D3D12_RESOLVE_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOLVE_MODE_DECOMPRESS")]
 		Decompress = unchecked(0),
@@ -800,7 +800,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_WRITEBUFFERIMMEDIATE_MODE")]
-	public enum D3D12WritebufferimmediateMode
+	public enum D3D12_WRITEBUFFERIMMEDIATE_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_WRITEBUFFERIMMEDIATE_MODE_DEFAULT")]
 		Default = unchecked(0),
@@ -811,7 +811,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TILE_RANGE_FLAGS")]
-	public enum D3D12TileRangeFlags
+	public enum D3D12_TILE_RANGE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TILE_RANGE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -824,7 +824,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TILE_MAPPING_FLAGS")]
-	public enum D3D12TileMappingFlags
+	public enum D3D12_TILE_MAPPING_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TILE_MAPPING_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -833,7 +833,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_QUEUE_FLAGS")]
-	public enum D3D12CommandQueueFlags
+	public enum D3D12_COMMAND_QUEUE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_QUEUE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -842,7 +842,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BLEND")]
-	public enum D3D12Blend
+	public enum D3D12_BLEND
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BLEND_ZERO")]
 		Zero = unchecked(1),
@@ -885,7 +885,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BLEND_OP")]
-	public enum D3D12BlendOp
+	public enum D3D12_BLEND_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BLEND_OP_ADD")]
 		Add = unchecked(1),
@@ -900,7 +900,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_LOGIC_OP")]
-	public enum D3D12LogicOp
+	public enum D3D12_LOGIC_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_LOGIC_OP_CLEAR")]
 		Clear = unchecked(0),
@@ -937,7 +937,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FILL_MODE")]
-	public enum D3D12FillMode
+	public enum D3D12_FILL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FILL_MODE_WIREFRAME")]
 		Wireframe = unchecked(2),
@@ -946,7 +946,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_CULL_MODE")]
-	public enum D3D12CullMode
+	public enum D3D12_CULL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CULL_MODE_NONE")]
 		None = unchecked(1),
@@ -961,7 +961,7 @@ namespace HexaEngine.D3D12
 	/// IDL processing/generation of this header replaces the define; this comment is merely explaining what happened. <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_CONSERVATIVE_RASTERIZATION_MODE")]
-	public enum D3D12ConservativeRasterizationMode
+	public enum D3D12_CONSERVATIVE_RASTERIZATION_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF")]
 		Off = unchecked(0),
@@ -970,7 +970,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DEPTH_WRITE_MASK")]
-	public enum D3D12DepthWriteMask
+	public enum D3D12_DEPTH_WRITE_MASK
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DEPTH_WRITE_MASK_ZERO")]
 		Zero = unchecked(0),
@@ -979,7 +979,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_STENCIL_OP")]
-	public enum D3D12StencilOp
+	public enum D3D12_STENCIL_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_STENCIL_OP_KEEP")]
 		Keep = unchecked(1),
@@ -1000,7 +1000,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_INPUT_CLASSIFICATION")]
-	public enum D3D12InputClassification
+	public enum D3D12_INPUT_CLASSIFICATION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA")]
 		PerVertexData = unchecked(0),
@@ -1009,7 +1009,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_INDEX_BUFFER_STRIP_CUT_VALUE")]
-	public enum D3D12IndexBufferStripCutValue
+	public enum D3D12_INDEX_BUFFER_STRIP_CUT_VALUE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED")]
 		Disabled = unchecked(0),
@@ -1020,7 +1020,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PRIMITIVE_TOPOLOGY_TYPE")]
-	public enum D3D12PrimitiveTopologyType
+	public enum D3D12_PRIMITIVE_TOPOLOGY_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PRIMITIVE_TOPOLOGY_TYPE_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1035,7 +1035,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PIPELINE_STATE_FLAGS")]
-	public enum D3D12PipelineStateFlags
+	public enum D3D12_PIPELINE_STATE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PIPELINE_STATE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1044,7 +1044,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FEATURE")]
-	public enum D3D12Feature
+	public enum D3D12_FEATURE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FEATURE_D3D12_OPTIONS")]
 		Featured3D12Options = unchecked(0),
@@ -1115,7 +1115,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SRV_DIMENSION")]
-	public enum D3D12SrvDimension
+	public enum D3D12_SRV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SRV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1144,7 +1144,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BUFFER_SRV_FLAGS")]
-	public enum D3D12BufferSrvFlags
+	public enum D3D12_BUFFER_SRV_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BUFFER_SRV_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1153,7 +1153,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_UAV_DIMENSION")]
-	public enum D3D12UavDimension
+	public enum D3D12_UAV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_UAV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1172,7 +1172,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BUFFER_UAV_FLAGS")]
-	public enum D3D12BufferUavFlags
+	public enum D3D12_BUFFER_UAV_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BUFFER_UAV_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1181,7 +1181,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RTV_DIMENSION")]
-	public enum D3D12RtvDimension
+	public enum D3D12_RTV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RTV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1204,7 +1204,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DSV_DIMENSION")]
-	public enum D3D12DsvDimension
+	public enum D3D12_DSV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DSV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1223,7 +1223,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DSV_FLAGS")]
-	public enum D3D12DsvFlags
+	public enum D3D12_DSV_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DSV_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1234,7 +1234,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_QUERY_HEAP_TYPE")]
-	public enum D3D12QueryHeapType
+	public enum D3D12_QUERY_HEAP_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_QUERY_HEAP_TYPE_OCCLUSION")]
 		Occlusion = unchecked(0),
@@ -1253,7 +1253,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_INDIRECT_ARGUMENT_TYPE")]
-	public enum D3D12IndirectArgumentType
+	public enum D3D12_INDIRECT_ARGUMENT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_INDIRECT_ARGUMENT_TYPE_DRAW")]
 		Draw = unchecked(0),
@@ -1284,7 +1284,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_MULTIPLE_FENCE_WAIT_FLAGS")]
-	public enum D3D12MultipleFenceWaitFlags
+	public enum D3D12_MULTIPLE_FENCE_WAIT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MULTIPLE_FENCE_WAIT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1295,7 +1295,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESIDENCY_PRIORITY")]
-	public enum D3D12ResidencyPriority
+	public enum D3D12_RESIDENCY_PRIORITY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESIDENCY_PRIORITY_MINIMUM")]
 		Minimum = unchecked(671088640),
@@ -1314,7 +1314,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_RESIDENCY_FLAGS")]
-	public enum D3D12ResidencyFlags
+	public enum D3D12_RESIDENCY_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESIDENCY_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1323,7 +1323,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PROTECTED_SESSION_STATUS")]
-	public enum D3D12ProtectedSessionStatus
+	public enum D3D12_PROTECTED_SESSION_STATUS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PROTECTED_SESSION_STATUS_OK")]
 		Ok = unchecked(0),
@@ -1332,7 +1332,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PROTECTED_RESOURCE_SESSION_FLAGS")]
-	public enum D3D12ProtectedResourceSessionFlags
+	public enum D3D12_PROTECTED_RESOURCE_SESSION_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PROTECTED_RESOURCE_SESSION_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1343,7 +1343,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_LIST_FLAGS")]
-	public enum D3D12CommandListFlags
+	public enum D3D12_COMMAND_LIST_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_LIST_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1354,7 +1354,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_LIFETIME_STATE")]
-	public enum D3D12LifetimeState
+	public enum D3D12_LIFETIME_STATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_LIFETIME_STATE_IN_USE")]
 		InUse = unchecked(0),
@@ -1363,7 +1363,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_GRAPHICS_STATES")]
-	public enum D3D12GraphicsStates
+	public enum D3D12_GRAPHICS_STATES
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_GRAPHICS_STATE_NONE")]
 		StateNone = unchecked(0),
@@ -1404,7 +1404,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_META_COMMAND_PARAMETER_STAGE")]
-	public enum D3D12MetaCommandParameterStage
+	public enum D3D12_META_COMMAND_PARAMETER_STAGE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_META_COMMAND_PARAMETER_STAGE_CREATION")]
 		Creation = unchecked(0),
@@ -1419,7 +1419,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_META_COMMAND_PARAMETER_TYPE")]
-	public enum D3D12MetaCommandParameterType
+	public enum D3D12_META_COMMAND_PARAMETER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_META_COMMAND_PARAMETER_TYPE_FLOAT")]
 		Float = unchecked(0),
@@ -1434,7 +1434,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_META_COMMAND_PARAMETER_FLAGS")]
-	public enum D3D12MetaCommandParameterFlags
+	public enum D3D12_META_COMMAND_PARAMETER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_META_COMMAND_PARAMETER_FLAG_INPUT")]
 		FlagInput = unchecked(1),
@@ -1443,7 +1443,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_STATE_OBJECT_TYPE")]
-	public enum D3D12StateObjectType
+	public enum D3D12_STATE_OBJECT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_STATE_OBJECT_TYPE_COLLECTION")]
 		Collection = unchecked(0),
@@ -1456,7 +1456,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_STATE_SUBOBJECT_TYPE")]
-	public enum D3D12StateSubobjectType
+	public enum D3D12_STATE_SUBOBJECT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_STATE_SUBOBJECT_TYPE_STATE_OBJECT_CONFIG")]
 		ObjectConfig = unchecked(0),
@@ -1487,7 +1487,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE")]
-	public enum D3D12RaytracingAccelerationStructureType
+	public enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL")]
 		TopLevel = unchecked(0),
@@ -1496,7 +1496,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS")]
-	public enum D3D12RaytracingAccelerationStructureBuildFlags
+	public enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_BUILD_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1515,7 +1515,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_ELEMENTS_LAYOUT")]
-	public enum D3D12ElementsLayout
+	public enum D3D12_ELEMENTS_LAYOU
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_ELEMENTS_LAYOUT_ARRAY")]
 		Array = unchecked(0),
@@ -1524,7 +1524,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_GEOMETRY_TYPE")]
-	public enum D3D12RaytracingGeometryType
+	public enum D3D12_RAYTRACING_GEOMETRY_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_GEOMETRY_TYPE_TRIANGLES")]
 		Triangles = unchecked(0),
@@ -1533,7 +1533,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_GEOMETRY_FLAGS")]
-	public enum D3D12RaytracingGeometryFlags
+	public enum D3D12_RAYTRACING_GEOMETRY_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_GEOMETRY_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1544,7 +1544,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRIVER_MATCHING_IDENTIFIER_STATUS")]
-	public enum D3D12DriverMatchingIdentifierStatus
+	public enum D3D12_DRIVER_MATCHING_IDENTIFIER_STATUS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRIVER_MATCHING_IDENTIFIER_COMPATIBLE_WITH_DEVICE")]
 		CompatibleWithDevice = unchecked(0),
@@ -1559,14 +1559,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SERIALIZED_DATA_TYPE")]
-	public enum D3D12SerializedDataType
+	public enum D3D12_SERIALIZED_DATA_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SERIALIZED_DATA_RAYTRACING_ACCELERATION_STRUCTURE")]
 		RaytracingAccelerationStructure = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_ENABLEMENT")]
-	public enum D3D12DredEnablement
+	public enum D3D12_DRED_ENABLEMEN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_ENABLEMENT_SYSTEM_CONTROLLED")]
 		SystemControlled = unchecked(0),
@@ -1581,7 +1581,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_AUTO_BREADCRUMB_OP")]
-	public enum D3D12AutoBreadcrumbOp
+	public enum D3D12_AUTO_BREADCRUMB_OP
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_AUTO_BREADCRUMB_OP_SETMARKER")]
 		Setmarker = unchecked(0),
@@ -1676,7 +1676,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_ALLOCATION_TYPE")]
-	public enum D3D12DredAllocationType
+	public enum D3D12_DRED_ALLOCATION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_ALLOCATION_TYPE_COMMAND_QUEUE")]
 		CommandQueue = unchecked(19),
@@ -1739,14 +1739,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_PAGE_FAULT_FLAGS")]
-	public enum D3D12DredPageFaultFlags
+	public enum D3D12_DRED_PAGE_FAULT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_PAGE_FAULT_FLAGS_NONE")]
 		None = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_DEVICE_STATE")]
-	public enum D3D12DredDeviceState
+	public enum D3D12_DRED_DEVICE_STATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_DEVICE_STATE_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1763,7 +1763,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_BACKGROUND_PROCESSING_MODE")]
-	public enum D3D12BackgroundProcessingMode
+	public enum D3D12_BACKGROUND_PROCESSING_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BACKGROUND_PROCESSING_MODE_ALLOWED")]
 		Allowed = unchecked(0),
@@ -1776,7 +1776,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MEASUREMENTS_ACTION")]
-	public enum D3D12MeasurementsAction
+	public enum D3D12_MEASUREMENTS_ACTION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MEASUREMENTS_ACTION_KEEP_ALL")]
 		KeepAll = unchecked(0),
@@ -1793,7 +1793,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_RENDER_PASS_BEGINNING_ACCESS_TYPE")]
-	public enum D3D12RenderPassBeginningAccessType
+	public enum D3D12_RENDER_PASS_BEGINNING_ACCESS_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RENDER_PASS_BEGINNING_ACCESS_TYPE_DISCARD")]
 		Discard = unchecked(0),
@@ -1806,7 +1806,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RENDER_PASS_ENDING_ACCESS_TYPE")]
-	public enum D3D12RenderPassEndingAccessType
+	public enum D3D12_RENDER_PASS_ENDING_ACCESS_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RENDER_PASS_ENDING_ACCESS_TYPE_DISCARD")]
 		Discard = unchecked(0),
@@ -1819,7 +1819,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RENDER_PASS_FLAGS")]
-	public enum D3D12RenderPassFlags
+	public enum D3D12_RENDER_PASS_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RENDER_PASS_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1832,7 +1832,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TYPE")]
-	public enum D3D12RaytracingAccelerationStructurePostbuildInfoType
+	public enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE")]
 		CompactedSize = unchecked(0),
@@ -1845,7 +1845,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_COPY_MODE")]
-	public enum D3D12RaytracingAccelerationStructureCopyMode
+	public enum D3D12_RAYTRACING_ACCELERATION_STRUCTURE_COPY_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_ACCELERATION_STRUCTURE_COPY_MODE_CLONE")]
 		Clone = unchecked(0),
@@ -1864,7 +1864,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_CACHE_MODE")]
-	public enum D3D12ShaderCacheMode
+	public enum D3D12_SHADER_CACHE_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_CACHE_MODE_MEMORY")]
 		Memory = unchecked(0),
@@ -1873,7 +1873,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_CACHE_FLAGS")]
-	public enum D3D12ShaderCacheFlags
+	public enum D3D12_SHADER_CACHE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_CACHE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -1888,7 +1888,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_CACHE_KIND_FLAGS")]
-	public enum D3D12ShaderCacheKindFlags
+	public enum D3D12_SHADER_CACHE_KIND_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_CACHE_KIND_FLAG_IMPLICIT_D3D_CACHE_FOR_DRIVER")]
 		FlagImplicitd3DCacheForDriver = unchecked(1),
@@ -1901,7 +1901,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_CACHE_CONTROL_FLAGS")]
-	public enum D3D12ShaderCacheControlFlags
+	public enum D3D12_SHADER_CACHE_CONTROL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_CACHE_CONTROL_FLAG_DISABLE")]
 		FlagDisable = unchecked(1),
@@ -1912,7 +1912,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BARRIER_LAYOUT")]
-	public enum D3D12BarrierLayout
+	public enum D3D12_BARRIER_LAYOU
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BARRIER_LAYOUT_UNDEFINED")]
 		Undefined = unchecked((int)0xffffffff),
@@ -1983,7 +1983,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADING_RATE")]
-	public enum D3D12ShadingRate
+	public enum D3D12_SHADING_RATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADING_RATE_1X1")]
 		Rate1X1 = unchecked(0),
@@ -2002,7 +2002,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADING_RATE_COMBINER")]
-	public enum D3D12ShadingRateCombiner
+	public enum D3D12_SHADING_RATE_COMBINER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADING_RATE_COMBINER_PASSTHROUGH")]
 		Passthrough = unchecked(0),
@@ -2017,7 +2017,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BARRIER_TYPE")]
-	public enum D3D12BarrierType
+	public enum D3D12_BARRIER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BARRIER_TYPE_GLOBAL")]
 		Global = unchecked(0),
@@ -2028,7 +2028,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BARRIER_SYNC")]
-	public enum D3D12BarrierSync
+	public enum D3D12_BARRIER_SYNC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BARRIER_SYNC_NONE")]
 		None = unchecked(0),
@@ -2079,7 +2079,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BARRIER_ACCESS")]
-	public enum D3D12BarrierAccess
+	public enum D3D12_BARRIER_ACCESS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BARRIER_ACCESS_COMMON")]
 		Common = unchecked(0),
@@ -2136,7 +2136,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TEXTURE_BARRIER_FLAGS")]
-	public enum D3D12TextureBarrierFlags
+	public enum D3D12_TEXTURE_BARRIER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TEXTURE_BARRIER_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2145,7 +2145,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_QUEUE_PRIORITY")]
-	public enum D3D12CommandQueuePriority
+	public enum D3D12_COMMAND_QUEUE_PRIORITY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_QUEUE_PRIORITY_NORMAL")]
 		Normal = unchecked(0),
@@ -2156,7 +2156,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COLOR_WRITE_ENABLE")]
-	public enum D3D12ColorWriteEnable
+	public enum D3D12_COLOR_WRITE_ENABLE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COLOR_WRITE_ENABLE_RED")]
 		Red = unchecked(1),
@@ -2171,7 +2171,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PIPELINE_STATE_SUBOBJECT_TYPE")]
-	public enum D3D12PipelineStateSubobjectType
+	public enum D3D12_PIPELINE_STATE_SUBOBJECT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PIPELINE_STATE_SUBOBJECT_TYPE_ROOT_SIGNATURE")]
 		RootSignature = unchecked(0),
@@ -2228,7 +2228,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_MIN_PRECISION_SUPPORT")]
-	public enum D3D12ShaderMinPrecisionSupport
+	public enum D3D12_SHADER_MIN_PRECISION_SUPPOR
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_MIN_PRECISION_SUPPORT_NONE")]
 		None = unchecked(0),
@@ -2239,7 +2239,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TILED_RESOURCES_TIER")]
-	public enum D3D12TiledResourcesTier
+	public enum D3D12_TILED_RESOURCES_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TILED_RESOURCES_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2254,7 +2254,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_BINDING_TIER")]
-	public enum D3D12ResourceBindingTier
+	public enum D3D12_RESOURCE_BINDING_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_BINDING_TIER_1")]
 		Tier1 = unchecked(1),
@@ -2265,7 +2265,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_CONSERVATIVE_RASTERIZATION_TIER")]
-	public enum D3D12ConservativeRasterizationTier
+	public enum D3D12_CONSERVATIVE_RASTERIZATION_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CONSERVATIVE_RASTERIZATION_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2278,7 +2278,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FORMAT_SUPPORT1")]
-	public enum D3D12FormatSupport1
+	public enum D3D12_FORMAT_SUPPORT1
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FORMAT_SUPPORT1_NONE")]
 		None = unchecked(0),
@@ -2343,7 +2343,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FORMAT_SUPPORT2")]
-	public enum D3D12FormatSupport2
+	public enum D3D12_FORMAT_SUPPORT2
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FORMAT_SUPPORT2_NONE")]
 		None = unchecked(0),
@@ -2374,7 +2374,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS")]
-	public enum D3D12MultisampleQualityLevelFlags
+	public enum D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MULTISAMPLE_QUALITY_LEVELS_FLAG_NONE")]
 		LevelsFlagNone = unchecked(0),
@@ -2383,7 +2383,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_CROSS_NODE_SHARING_TIER")]
-	public enum D3D12CrossNodeSharingTier
+	public enum D3D12_CROSS_NODE_SHARING_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_CROSS_NODE_SHARING_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2398,7 +2398,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RESOURCE_HEAP_TIER")]
-	public enum D3D12ResourceHeapTier
+	public enum D3D12_RESOURCE_HEAP_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RESOURCE_HEAP_TIER_1")]
 		Tier1 = unchecked(1),
@@ -2407,7 +2407,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER")]
-	public enum D3D12ProgrammableSamplePositionsTier
+	public enum D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2418,7 +2418,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIEW_INSTANCING_TIER")]
-	public enum D3D12ViewInstancingTier
+	public enum D3D12_VIEW_INSTANCING_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIEW_INSTANCING_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2431,7 +2431,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_SHADER_MODEL")]
-	public enum D3DShaderModel
+	public enum D3D_SHADER_MODEL
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SHADER_MODEL_5_1")]
 		Model51 = unchecked(81),
@@ -2456,7 +2456,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_CACHE_SUPPORT_FLAGS")]
-	public enum D3D12ShaderCacheSupportFlags
+	public enum D3D12_SHADER_CACHE_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_CACHE_SUPPORT_NONE")]
 		None = unchecked(0),
@@ -2477,7 +2477,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_LIST_SUPPORT_FLAGS")]
-	public enum D3D12CommandListSupportFlags
+	public enum D3D12_COMMAND_LIST_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_LIST_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2498,7 +2498,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHARED_RESOURCE_COMPATIBILITY_TIER")]
-	public enum D3D12SharedResourceCompatibilityTier
+	public enum D3D12_SHARED_RESOURCE_COMPATIBILITY_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHARED_RESOURCE_COMPATIBILITY_TIER_0")]
 		Tier0 = unchecked(0),
@@ -2509,7 +2509,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_HEAP_SERIALIZATION_TIER")]
-	public enum D3D12HeapSerializationTier
+	public enum D3D12_HEAP_SERIALIZATION_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_HEAP_SERIALIZATION_TIER_0")]
 		Tier0 = unchecked(0),
@@ -2518,7 +2518,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RENDER_PASS_TIER")]
-	public enum D3D12RenderPassTier
+	public enum D3D12_RENDER_PASS_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RENDER_PASS_TIER_0")]
 		Tier0 = unchecked(0),
@@ -2529,7 +2529,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_TIER")]
-	public enum D3D12RaytracingTier
+	public enum D3D12_RAYTRACING_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2540,7 +2540,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VARIABLE_SHADING_RATE_TIER")]
-	public enum D3D12VariableShadingRateTier
+	public enum D3D12_VARIABLE_SHADING_RATE_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VARIABLE_SHADING_RATE_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2551,7 +2551,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MESH_SHADER_TIER")]
-	public enum D3D12MeshShaderTier
+	public enum D3D12_MESH_SHADER_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MESH_SHADER_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2560,7 +2560,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SAMPLER_FEEDBACK_TIER")]
-	public enum D3D12SamplerFeedbackTier
+	public enum D3D12_SAMPLER_FEEDBACK_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SAMPLER_FEEDBACK_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2571,7 +2571,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_WAVE_MMA_TIER")]
-	public enum D3D12WaveMmaTier
+	public enum D3D12_WAVE_MMA_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_WAVE_MMA_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -2580,7 +2580,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_TRI_STATE")]
-	public enum D3D12TriState
+	public enum D3D12_TRI_STATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_TRI_STATE_UNKNOWN")]
 		Unknown = unchecked(-1),
@@ -2591,7 +2591,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIEW_INSTANCING_FLAGS")]
-	public enum D3D12ViewInstancingFlags
+	public enum D3D12_VIEW_INSTANCING_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIEW_INSTANCING_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2600,7 +2600,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_COMPONENT_MAPPING")]
-	public enum D3D12ShaderComponentMapping
+	public enum D3D12_SHADER_COMPONENT_MAPPING
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHADER_COMPONENT_MAPPING_FROM_MEMORY_COMPONENT_0")]
 		FromMemoryComponent0 = unchecked(0),
@@ -2617,7 +2617,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FILTER_TYPE")]
-	public enum D3D12FilterType
+	public enum D3D12_FILTER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FILTER_TYPE_POINT")]
 		Point = unchecked(0),
@@ -2626,7 +2626,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FILTER_REDUCTION_TYPE")]
-	public enum D3D12FilterReductionType
+	public enum D3D12_FILTER_REDUCTION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FILTER_REDUCTION_TYPE_STANDARD")]
 		Standard = unchecked(0),
@@ -2639,14 +2639,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_POOL_FLAGS")]
-	public enum D3D12CommandPoolFlags
+	public enum D3D12_COMMAND_POOL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_POOL_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMMAND_RECORDER_FLAGS")]
-	public enum D3D12CommandRecorderFlags
+	public enum D3D12_COMMAND_RECORDER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMMAND_RECORDER_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2657,7 +2657,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS")]
-	public enum D3D12ProtectedResourceSessionSupportFlags
+	public enum D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_PROTECTED_RESOURCE_SESSION_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2666,7 +2666,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_STATE_OBJECT_FLAGS")]
-	public enum D3D12StateObjectFlags
+	public enum D3D12_STATE_OBJECT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_STATE_OBJECT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2679,14 +2679,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_EXPORT_FLAGS")]
-	public enum D3D12ExportFlags
+	public enum D3D12_EXPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_EXPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_HIT_GROUP_TYPE")]
-	public enum D3D12HitGroupType
+	public enum D3D12_HIT_GROUP_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_HIT_GROUP_TYPE_TRIANGLES")]
 		Triangles = unchecked(0),
@@ -2695,7 +2695,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_PIPELINE_FLAGS")]
-	public enum D3D12RaytracingPipelineFlags
+	public enum D3D12_RAYTRACING_PIPELINE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_PIPELINE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2706,7 +2706,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAYTRACING_INSTANCE_FLAGS")]
-	public enum D3D12RaytracingInstanceFlags
+	public enum D3D12_RAYTRACING_INSTANCE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAYTRACING_INSTANCE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2721,7 +2721,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RAY_FLAGS")]
-	public enum D3D12RayFlags
+	public enum D3D12_RAY_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RAY_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2748,7 +2748,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_HIT_KIND")]
-	public enum D3D12HitKind
+	public enum D3D12_HIT_KIND
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_HIT_KIND_TRIANGLE_FRONT_FACE")]
 		TriangleFrontFace = unchecked(254),
@@ -2757,7 +2757,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_VERSION")]
-	public enum D3D12DredVersion
+	public enum D3D12_DRED_VERSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_VERSION_1_0")]
 		Version10 = unchecked(1),
@@ -2770,7 +2770,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DRED_FLAGS")]
-	public enum D3D12DredFlags
+	public enum D3D12_DRED_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DRED_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -2785,7 +2785,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_GPU_BASED_VALIDATION_FLAGS")]
-	public enum D3D12GpuBasedValidationFlags
+	public enum D3D12_GPU_BASED_VALIDATION_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_GPU_BASED_VALIDATION_FLAGS_NONE")]
 		None = unchecked(0),
@@ -2794,7 +2794,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DEBUG_DEVICE_PARAMETER_TYPE")]
-	public enum D3D12DebugDeviceParameterType
+	public enum D3D12_DEBUG_DEVICE_PARAMETER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DEBUG_DEVICE_PARAMETER_FEATURE_FLAGS")]
 		FeatureFlags = unchecked(0),
@@ -2805,7 +2805,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_RLDO_FLAGS")]
-	public enum D3D12RldoFlags
+	public enum D3D12_RLDO_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_RLDO_NONE")]
 		None = unchecked(0),
@@ -2818,7 +2818,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_DEBUG_FEATURE")]
-	public enum D3D12DebugFeature
+	public enum D3D12_DEBUG_FEATURE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DEBUG_FEATURE_NONE")]
 		None = unchecked(0),
@@ -2837,7 +2837,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE")]
-	public enum D3D12DebugCommandListParameterType
+	public enum D3D12_DEBUG_COMMAND_LIST_PARAMETER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_DEBUG_COMMAND_LIST_PARAMETER_GPU_BASED_VALIDATION_SETTINGS")]
 		GpuBasedValidationSettings = unchecked(0),
@@ -2848,7 +2848,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_MESSAGE_CATEGORY")]
-	public enum D3D12MessageCategory
+	public enum D3D12_MESSAGE_CATEGORY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MESSAGE_CATEGORY_APPLICATION_DEFINED")]
 		ApplicationDefined = unchecked(0),
@@ -2875,7 +2875,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MESSAGE_SEVERITY")]
-	public enum D3D12MessageSeverity
+	public enum D3D12_MESSAGE_SEVERITY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MESSAGE_SEVERITY_CORRUPTION")]
 		Corruption = unchecked(0),
@@ -2890,7 +2890,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_MESSAGE_ID")]
-	public enum D3D12MessageId
+	public enum D3D12_MESSAGE_ID
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MESSAGE_ID_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -4727,7 +4727,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_MESSAGE_CALLBACK_FLAGS")]
-	public enum D3D12MessageCallbackFlags
+	public enum D3D12_MESSAGE_CALLBACK_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_MESSAGE_CALLBACK_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -4736,7 +4736,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_GPU_BASED_VALIDATION_SHADER_PATCH_MODE")]
-	public enum D3D12GpuBasedValidationShaderPatchMode
+	public enum D3D12_GPU_BASED_VALIDATION_SHADER_PATCH_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_GPU_BASED_VALIDATION_SHADER_PATCH_MODE_NONE")]
 		None = unchecked(0),
@@ -4751,7 +4751,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_GPU_BASED_VALIDATION_PIPELINE_STATE_CREATE_FLAGS")]
-	public enum D3D12GpuBasedValidationPipelineStateCreateFlags
+	public enum D3D12_GPU_BASED_VALIDATION_PIPELINE_STATE_CREATE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_GPU_BASED_VALIDATION_PIPELINE_STATE_CREATE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -4770,7 +4770,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_AXIS_SHADING_RATE")]
-	public enum D3D12AxisShadingRate
+	public enum D3D12_AXIS_SHADING_RATE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_AXIS_SHADING_RATE_1X")]
 		Rate1X = unchecked(0),
@@ -4781,7 +4781,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_COMPATIBILITY_SHARED_FLAGS")]
-	public enum D3D12CompatibilitySharedFlags
+	public enum D3D12_COMPATIBILITY_SHARED_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_COMPATIBILITY_SHARED_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -4794,7 +4794,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_REFLECT_SHARED_PROPERTY")]
-	public enum D3D12ReflectSharedProperty
+	public enum D3D12_REFLECT_SHARED_PROPERTY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_REFLECT_SHARED_PROPERTY_D3D11_RESOURCE_FLAGS")]
 		Propertyd3D11ResourceFlags = unchecked(0),
@@ -4805,7 +4805,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_SHADER_VERSION_TYPE")]
-	public enum D3D12ShaderVersionType
+	public enum D3D12_SHADER_VERSION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_SHVER_PIXEL_SHADER")]
 		ShverPixelShader = unchecked(0),
@@ -4894,14 +4894,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_BITSTREAM_ENCRYPTION_TYPE")]
-	public enum D3D12BitstreamEncryptionType
+	public enum D3D12_BITSTREAM_ENCRYPTION_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_BITSTREAM_ENCRYPTION_TYPE_NONE")]
 		None = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_FRAME_CODED_INTERLACE_TYPE")]
-	public enum D3D12VideoFrameCodedInterlaceType
+	public enum D3D12_VIDEO_FRAME_CODED_INTERLACE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_FRAME_CODED_INTERLACE_TYPE_NONE")]
 		None = unchecked(0),
@@ -4910,7 +4910,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_FEATURE_VIDEO")]
-	public enum D3D12FeatureVideo
+	public enum D3D12_FEATURE_VIDEO
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_FEATURE_VIDEO_DECODE_SUPPORT")]
 		DecodeSupport = unchecked(0),
@@ -4995,7 +4995,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_ALPHA_FILL_MODE")]
-	public enum D3D12VideoProcessAlphaFillMode
+	public enum D3D12_VIDEO_PROCESS_ALPHA_FILL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_ALPHA_FILL_MODE_OPAQUE")]
 		Opaque = unchecked(0),
@@ -5008,7 +5008,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_FILTER_FLAGS")]
-	public enum D3D12VideoProcessFilterFlags
+	public enum D3D12_VIDEO_PROCESS_FILTER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_FILTER_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5031,7 +5031,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_FRAME_STEREO_FORMAT")]
-	public enum D3D12VideoFrameStereoFormat
+	public enum D3D12_VIDEO_FRAME_STEREO_FORMA
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_FRAME_STEREO_FORMAT_NONE")]
 		None = unchecked(0),
@@ -5046,7 +5046,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_FIELD_TYPE")]
-	public enum D3D12VideoFieldType
+	public enum D3D12_VIDEO_FIELD_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_FIELD_TYPE_NONE")]
 		None = unchecked(0),
@@ -5057,7 +5057,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_DEINTERLACE_FLAGS")]
-	public enum D3D12VideoProcessDeinterlaceFlags
+	public enum D3D12_VIDEO_PROCESS_DEINTERLACE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_DEINTERLACE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5068,7 +5068,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_ARGUMENT_TYPE")]
-	public enum D3D12VideoDecodeArgumentType
+	public enum D3D12_VIDEO_DECODE_ARGUMENT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_ARGUMENT_TYPE_PICTURE_PARAMETERS")]
 		PictureParameters = unchecked(0),
@@ -5081,7 +5081,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_ORIENTATION")]
-	public enum D3D12VideoProcessOrientation
+	public enum D3D12_VIDEO_PROCESS_ORIENTATION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_ORIENTATION_DEFAULT")]
 		Default = unchecked(0),
@@ -5102,7 +5102,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAGS")]
-	public enum D3D12VideoProcessInputStreamFlags
+	public enum D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_INPUT_STREAM_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5117,7 +5117,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE")]
-	public enum D3D12VideoMotionEstimatorSearchBlockSize
+	public enum D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE_8X8")]
 		Size8X8 = unchecked(0),
@@ -5126,21 +5126,21 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION")]
-	public enum D3D12VideoMotionEstimatorVectorPrecision
+	public enum D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION_QUARTER_PEL")]
 		QuarterPel = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_FLAGS")]
-	public enum D3D12VideoEncoderFlags
+	public enum D3D12_VIDEO_ENCODER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC")]
-	public enum D3D12VideoEncoderCodec
+	public enum D3D12_VIDEO_ENCODER_CODEC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_H264")]
 		Codech264 = unchecked(0),
@@ -5149,7 +5149,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_PROFILE_H264")]
-	public enum D3D12VideoEncoderProfileH264
+	public enum D3D12_VIDEO_ENCODER_PROFILE_H264
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_PROFILE_H264_MAIN")]
 		Main = unchecked(0),
@@ -5160,7 +5160,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_PROFILE_HEVC")]
-	public enum D3D12VideoEncoderProfileHevc
+	public enum D3D12_VIDEO_ENCODER_PROFILE_HEVC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_PROFILE_HEVC_MAIN")]
 		Main = unchecked(0),
@@ -5169,7 +5169,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_FLAGS")]
-	public enum D3D12VideoEncoderCodecConfigurationH264Flags
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5184,7 +5184,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_DIRECT_MODES")]
-	public enum D3D12VideoEncoderCodecConfigurationH264DirectModes
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_DIRECT_MODES
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_DIRECT_MODES_DISABLED")]
 		Disabled = unchecked(0),
@@ -5195,7 +5195,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODES")]
-	public enum D3D12VideoEncoderCodecConfigurationH264SlicesDeblockingModes
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODES
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODE_0_ALL_LUMA_CHROMA_SLICE_BLOCK_EDGES_ALWAYS_FILTERED")]
 		Mode0AllLumaChromaSliceBlockEdgesAlwaysFiltered = unchecked(0),
@@ -5214,7 +5214,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_FLAGS")]
-	public enum D3D12VideoEncoderCodecConfigurationHevcFlags
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5235,7 +5235,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_CUSIZE")]
-	public enum D3D12VideoEncoderCodecConfigurationHevcCusize
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_CUSIZE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_CUSIZE_8x8")]
 		Cusize8X8 = unchecked(0),
@@ -5248,7 +5248,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_TUSIZE")]
-	public enum D3D12VideoEncoderCodecConfigurationHevcTusize
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_TUSIZE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_HEVC_TUSIZE_4x4")]
 		Tusize4X4 = unchecked(0),
@@ -5261,7 +5261,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_MOTION_ESTIMATION_PRECISION_MODE")]
-	public enum D3D12VideoEncoderMotionEstimationPrecisionMode
+	public enum D3D12_VIDEO_ENCODER_MOTION_ESTIMATION_PRECISION_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_MOTION_ESTIMATION_PRECISION_MODE_MAXIMUM")]
 		Maximum = unchecked(0),
@@ -5274,14 +5274,14 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_HEAP_FLAGS")]
-	public enum D3D12VideoEncoderHeapFlags
+	public enum D3D12_VIDEO_ENCODER_HEAP_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_HEAP_FLAG_NONE")]
 		FlagNone = unchecked(0),
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_LEVELS_H264")]
-	public enum D3D12VideoEncoderLevelsH264
+	public enum D3D12_VIDEO_ENCODER_LEVELS_H264
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_LEVELS_H264_1")]
 		Levelsh2641 = unchecked(0),
@@ -5326,7 +5326,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_LEVELS_HEVC")]
-	public enum D3D12VideoEncoderLevelsHevc
+	public enum D3D12_VIDEO_ENCODER_LEVELS_HEVC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_LEVELS_HEVC_1")]
 		Hevc1 = unchecked(0),
@@ -5357,7 +5357,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_TIER_HEVC")]
-	public enum D3D12VideoEncoderTierHevc
+	public enum D3D12_VIDEO_ENCODER_TIER_HEVC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_TIER_HEVC_MAIN")]
 		Main = unchecked(0),
@@ -5366,7 +5366,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_SEQUENCE_CONTROL_FLAGS")]
-	public enum D3D12VideoEncoderSequenceControlFlags
+	public enum D3D12_VIDEO_ENCODER_SEQUENCE_CONTROL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_SEQUENCE_CONTROL_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5383,7 +5383,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_INTRA_REFRESH_MODE")]
-	public enum D3D12VideoEncoderIntraRefreshMode
+	public enum D3D12_VIDEO_ENCODER_INTRA_REFRESH_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_INTRA_REFRESH_MODE_NONE")]
 		None = unchecked(0),
@@ -5392,7 +5392,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_RATE_CONTROL_MODE")]
-	public enum D3D12VideoEncoderRateControlMode
+	public enum D3D12_VIDEO_ENCODER_RATE_CONTROL_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_RATE_CONTROL_MODE_ABSOLUTE_QP_MAP")]
 		AbsoluteQpMap = unchecked(0),
@@ -5407,7 +5407,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_RATE_CONTROL_FLAGS")]
-	public enum D3D12VideoEncoderRateControlFlags
+	public enum D3D12_VIDEO_ENCODER_RATE_CONTROL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_RATE_CONTROL_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5426,7 +5426,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MODE")]
-	public enum D3D12VideoEncoderFrameSubregionLayoutMode
+	public enum D3D12_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_FRAME_SUBREGION_LAYOUT_MODE_FULL_FRAME")]
 		FullFrame = unchecked(0),
@@ -5441,7 +5441,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_FLAGS")]
-	public enum D3D12VideoEncoderPictureControlFlags
+	public enum D3D12_VIDEO_ENCODER_PICTURE_CONTROL_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5450,7 +5450,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_H264_FLAGS")]
-	public enum D3D12VideoEncoderPictureControlCodecDataH264Flags
+	public enum D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_H264_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_H264_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5463,7 +5463,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_FRAME_TYPE_H264")]
-	public enum D3D12VideoEncoderFrameTypeH264
+	public enum D3D12_VIDEO_ENCODER_FRAME_TYPE_H264
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_FRAME_TYPE_H264_I_FRAME")]
 		Typeh264IFrame = unchecked(0),
@@ -5476,7 +5476,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_HEVC_FLAGS")]
-	public enum D3D12VideoEncoderPictureControlCodecDataHevcFlags
+	public enum D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_HEVC_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_PICTURE_CONTROL_CODEC_DATA_HEVC_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5485,7 +5485,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_FRAME_TYPE_HEVC")]
-	public enum D3D12VideoEncoderFrameTypeHevc
+	public enum D3D12_VIDEO_ENCODER_FRAME_TYPE_HEVC
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_FRAME_TYPE_HEVC_I_FRAME")]
 		HevciFrame = unchecked(0),
@@ -5498,7 +5498,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_FILTER")]
-	public enum D3D12VideoProcessFilter
+	public enum D3D12_VIDEO_PROCESS_FILTER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_FILTER_BRIGHTNESS")]
 		Brightness = unchecked(0),
@@ -5523,7 +5523,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_TIER")]
-	public enum D3D12VideoDecodeTier
+	public enum D3D12_VIDEO_DECODE_TIER
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_TIER_NOT_SUPPORTED")]
 		NotSupported = unchecked(0),
@@ -5536,7 +5536,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_SUPPORT_FLAGS")]
-	public enum D3D12VideoDecodeSupportFlags
+	public enum D3D12_VIDEO_DECODE_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5545,7 +5545,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_CONFIGURATION_FLAGS")]
-	public enum D3D12VideoDecodeConfigurationFlags
+	public enum D3D12_VIDEO_DECODE_CONFIGURATION_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_CONFIGURATION_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5560,7 +5560,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_STATUS")]
-	public enum D3D12VideoDecodeStatus
+	public enum D3D12_VIDEO_DECODE_STATUS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_STATUS_OK")]
 		Ok = unchecked(0),
@@ -5575,7 +5575,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT")]
-	public enum D3D12VideoDecodeHistogramComponent
+	public enum D3D12_VIDEO_DECODE_HISTOGRAM_COMPONEN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_Y")]
 		Componenty = unchecked(0),
@@ -5594,7 +5594,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_FLAGS")]
-	public enum D3D12VideoDecodeHistogramComponentFlags
+	public enum D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_HISTOGRAM_COMPONENT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5615,7 +5615,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_DECODE_CONVERSION_SUPPORT_FLAGS")]
-	public enum D3D12VideoDecodeConversionSupportFlags
+	public enum D3D12_VIDEO_DECODE_CONVERSION_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_DECODE_CONVERSION_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5624,7 +5624,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_SCALE_SUPPORT_FLAGS")]
-	public enum D3D12VideoScaleSupportFlags
+	public enum D3D12_VIDEO_SCALE_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_SCALE_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5639,7 +5639,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_FEATURE_FLAGS")]
-	public enum D3D12VideoProcessFeatureFlags
+	public enum D3D12_VIDEO_PROCESS_FEATURE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_FEATURE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5660,7 +5660,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_AUTO_PROCESSING_FLAGS")]
-	public enum D3D12VideoProcessAutoProcessingFlags
+	public enum D3D12_VIDEO_PROCESS_AUTO_PROCESSING_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_AUTO_PROCESSING_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5685,7 +5685,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROCESS_SUPPORT_FLAGS")]
-	public enum D3D12VideoProcessSupportFlags
+	public enum D3D12_VIDEO_PROCESS_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROCESS_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5694,7 +5694,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE_FLAGS")]
-	public enum D3D12VideoMotionEstimatorSearchBlockSizeFlags
+	public enum D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_MOTION_ESTIMATOR_SEARCH_BLOCK_SIZE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5705,7 +5705,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION_FLAGS")]
-	public enum D3D12VideoMotionEstimatorVectorPrecisionFlags
+	public enum D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_MOTION_ESTIMATOR_VECTOR_PRECISION_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5718,7 +5718,7 @@ namespace HexaEngine.D3D12
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_PROTECTED_RESOURCE_SUPPORT_FLAGS")]
-	public enum D3D12VideoProtectedResourceSupportFlags
+	public enum D3D12_VIDEO_PROTECTED_RESOURCE_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_PROTECTED_RESOURCE_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5727,7 +5727,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_STAGE")]
-	public enum D3D12VideoExtensionCommandParameterStage
+	public enum D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_STAGE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_STAGE_CREATION")]
 		Creation = unchecked(0),
@@ -5746,7 +5746,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE")]
-	public enum D3D12VideoExtensionCommandParameterType
+	public enum D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_TYPE_UINT8")]
 		Uint8 = unchecked(0),
@@ -5773,7 +5773,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAGS")]
-	public enum D3D12VideoExtensionCommandParameterFlags
+	public enum D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_EXTENSION_COMMAND_PARAMETER_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5784,7 +5784,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_H264_FLAGS")]
-	public enum D3D12VideoEncoderCodecConfigurationSupportH264Flags
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_H264_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_H264_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5805,7 +5805,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODE_FLAGS")]
-	public enum D3D12VideoEncoderCodecConfigurationH264SlicesDeblockingModeFlags
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_H264_SLICES_DEBLOCKING_MODE_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5826,7 +5826,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_HEVC_FLAGS")]
-	public enum D3D12VideoEncoderCodecConfigurationSupportHevcFlags
+	public enum D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_HEVC_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_CODEC_CONFIGURATION_SUPPORT_HEVC_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5851,7 +5851,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_SUPPORT_FLAGS")]
-	public enum D3D12VideoEncoderSupportFlags
+	public enum D3D12_VIDEO_ENCODER_SUPPORT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_SUPPORT_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5884,7 +5884,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_VALIDATION_FLAGS")]
-	public enum D3D12VideoEncoderValidationFlags
+	public enum D3D12_VIDEO_ENCODER_VALIDATION_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_VALIDATION_FLAG_NONE")]
 		FlagNone = unchecked(0),
@@ -5909,7 +5909,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D12_VIDEO_ENCODER_ENCODE_ERROR_FLAGS")]
-	public enum D3D12VideoEncoderEncodeErrorFlags
+	public enum D3D12_VIDEO_ENCODER_ENCODE_ERROR_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D12_VIDEO_ENCODER_ENCODE_ERROR_FLAG_NO_ERROR")]
 		FlagNoError = unchecked(0),
@@ -5926,7 +5926,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3D12PrimitiveTopology
+	public enum D3D12_PRIMITIVE_TOPOLOGY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		D3DPrimitiveTopologyUndefined = unchecked(0),
@@ -6119,7 +6119,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE")]
-	public enum D3D12Primitive
+	public enum D3D12_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_UNDEFINED")]
 		D3DPrimitiveUndefined = unchecked(0),
@@ -6288,7 +6288,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_RESOURCE_RETURN_TYPE")]
-	public enum D3D12ResourceReturnType
+	public enum D3D12_RESOURCE_RETURN_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UNORM")]
 		D3DReturnTypeUnorm = unchecked(1),
@@ -6337,7 +6337,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
-	public enum D3D12CbufferType
+	public enum D3D12_CBUFFER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
 		D3DCtCbuffer = unchecked(0),
@@ -6362,7 +6362,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_DOMAIN")]
-	public enum D3D12TessellatorDomain
+	public enum D3D12_TESSELLATOR_DOMAIN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
 		D3DTessellatorDomainUndefined = unchecked(0),
@@ -6383,7 +6383,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_PARTITIONING")]
-	public enum D3D12TessellatorPartitioning
+	public enum D3D12_TESSELLATOR_PARTITIONING
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
 		D3DTessellatorPartitioningUndefined = unchecked(0),
@@ -6408,7 +6408,7 @@ namespace HexaEngine.D3D12
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_OUTPUT_PRIMITIVE")]
-	public enum D3D12TessellatorOutputPrimitive
+	public enum D3D12_TESSELLATOR_OUTPUT_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
 		D3DTessellatorOutputUndefined = unchecked(0),

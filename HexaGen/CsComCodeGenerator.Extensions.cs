@@ -127,7 +127,7 @@
                 var extensionPrefix = settings.GetExtensionNamePrefix(cppClass.Name);
 
                 var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                var csName = settings.GetPrettyExtensionName(csFunctionName, extensionPrefix);
+                var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
 
                 CreateCsFunction(cppFunction, csName, commands, out var overload);
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);

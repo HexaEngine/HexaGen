@@ -19,6 +19,6 @@ namespace HexaEngine.D3DCommon
 	[NativeName(NativeNameType.Delegate, "PFN_DESTRUCTION_CALLBACK")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PfnDestructionCallback([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
+	public unsafe delegate void PFN_DESTRUCTION_CALLBACK([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
 
 }

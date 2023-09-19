@@ -1,4 +1,4 @@
-﻿namespace HexaEngine.XAudio2
+﻿namespace Hexa.NET.XAudio2
 {
     public struct WaveFormatEx
     {

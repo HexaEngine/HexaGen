@@ -18,7 +18,7 @@ namespace HexaEngine.D3DCommon
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D_DRIVER_TYPE")]
-	public enum D3DDriverType
+	public enum D3D_DRIVER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_DRIVER_TYPE_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -35,7 +35,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_FEATURE_LEVEL")]
-	public enum D3DFeatureLevel
+	public enum D3D_FEATURE_LEVEL
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_FEATURE_LEVEL_1_0_CORE")]
 		Level10Core = unchecked(4096),
@@ -62,7 +62,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3DPrimitiveTopology
+	public enum D3D_PRIMITIVE_TOPOLOGY
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -255,7 +255,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE")]
-	public enum D3DPrimitive
+	public enum D3D_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -424,7 +424,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_SRV_DIMENSION")]
-	public enum D3DSrvDimension
+	public enum D3D_SRV_DIMENSION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -523,7 +523,7 @@ namespace HexaEngine.D3DCommon
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "_D3D_INCLUDE_TYPE")]
-	public enum D3DIncludeType
+	public enum _D3D_INCLUDE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_INCLUDE_LOCAL")]
 		Local = unchecked(0),
@@ -538,7 +538,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_CLASS")]
-	public enum D3DShaderVariableClass
+	public enum _D3D_SHADER_VARIABLE_CLASS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SVC_SCALAR")]
 		SvcScalar = unchecked(0),
@@ -577,7 +577,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_FLAGS")]
-	public enum D3DShaderVariableFlags
+	public enum _D3D_SHADER_VARIABLE_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SVF_USERPACKED")]
 		SvfUserpacked = unchecked(1),
@@ -600,7 +600,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_TYPE")]
-	public enum D3DShaderVariableType
+	public enum _D3D_SHADER_VARIABLE_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SVT_VOID")]
 		SvtVoid = unchecked(0),
@@ -837,7 +837,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_INPUT_FLAGS")]
-	public enum D3DShaderInputFlags
+	public enum _D3D_SHADER_INPUT_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SIF_USERPACKED")]
 		SifUserpacked = unchecked(1),
@@ -866,7 +866,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_INPUT_TYPE")]
-	public enum D3DShaderInputType
+	public enum _D3D_SHADER_INPUT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_SIT_CBUFFER")]
 		SitCbuffer = unchecked(0),
@@ -923,7 +923,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_SHADER_CBUFFER_FLAGS")]
-	public enum D3DShaderCbufferFlags
+	public enum _D3D_SHADER_CBUFFER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_CBF_USERPACKED")]
 		CbfUserpacked = unchecked(1),
@@ -934,7 +934,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
-	public enum D3DCbufferType
+	public enum _D3D_CBUFFER_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
 		CtCbuffer = unchecked(0),
@@ -959,7 +959,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_NAME")]
-	public enum D3DName
+	public enum D3D_NAME
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_NAME_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1072,7 +1072,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_RESOURCE_RETURN_TYPE")]
-	public enum D3DResourceReturnType
+	public enum D3D_RESOURCE_RETURN_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UNORM")]
 		Unorm = unchecked(1),
@@ -1121,7 +1121,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_REGISTER_COMPONENT_TYPE")]
-	public enum D3DRegisterComponentType
+	public enum D3D_REGISTER_COMPONENT_TYPE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_REGISTER_COMPONENT_UNKNOWN")]
 		Unknown = unchecked(0),
@@ -1142,7 +1142,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_DOMAIN")]
-	public enum D3DTessellatorDomain
+	public enum D3D_TESSELLATOR_DOMAIN
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1163,7 +1163,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_PARTITIONING")]
-	public enum D3DTessellatorPartitioning
+	public enum D3D_TESSELLATOR_PARTITIONING
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1188,7 +1188,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_OUTPUT_PRIMITIVE")]
-	public enum D3DTessellatorOutputPrimitive
+	public enum D3D_TESSELLATOR_OUTPUT_PRIMITIVE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1213,7 +1213,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_MIN_PRECISION")]
-	public enum D3DMinPrecision
+	public enum D3D_MIN_PRECISION
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_MIN_PRECISION_DEFAULT")]
 		Default = unchecked(0),
@@ -1234,7 +1234,7 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "D3D_INTERPOLATION_MODE")]
-	public enum D3DInterpolationMode
+	public enum D3D_INTERPOLATION_MODE
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_INTERPOLATION_UNDEFINED")]
 		Undefined = unchecked(0),
@@ -1255,7 +1255,460 @@ namespace HexaEngine.D3DCommon
 	}
 
 	[NativeName(NativeNameType.Enum, "_D3D_PARAMETER_FLAGS")]
-	public enum D3DParameterFlags
+	public enum _D3D_PARAMETER_FLAGS
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_PF_NONE")]
+		PfNone = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_PF_IN")]
+		PfIn = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_PF_OUT")]
+		PfOut = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_PF_FORCE_DWORD")]
+		PfForceDword = unchecked(2147483647),
+	}
+
+	/// <summary>
+	/// interface __MIDL_itf_d3dcommon_0000_0002 <br/>
+	/// [local] <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Enum, "_D3D_INCLUDE_TYPE")]
+	public enum D3D_INCLUDE_TYPE
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_INCLUDE_LOCAL")]
+		Local = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_INCLUDE_SYSTEM")]
+		System = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D10_INCLUDE_LOCAL")]
+		D3D10IncludeLocal = Local,
+		[NativeName(NativeNameType.EnumItem, "D3D10_INCLUDE_SYSTEM")]
+		D3D10IncludeSystem = System,
+		[NativeName(NativeNameType.EnumItem, "D3D_INCLUDE_FORCE_DWORD")]
+		ForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_CLASS")]
+	public enum D3D_SHADER_VARIABLE_CLASS
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_SCALAR")]
+		SvcScalar = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_VECTOR")]
+		SvcVector = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_MATRIX_ROWS")]
+		SvcMatrixRows = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_MATRIX_COLUMNS")]
+		SvcMatrixColumns = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_OBJECT")]
+		SvcObject = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_STRUCT")]
+		SvcStruct = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_INTERFACE_CLASS")]
+		SvcInterfaceClass = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_INTERFACE_POINTER")]
+		SvcInterfacePointer = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_SCALAR")]
+		D3D10SvcScalar = SvcScalar,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_VECTOR")]
+		D3D10SvcVector = SvcVector,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_MATRIX_ROWS")]
+		D3D10SvcMatrixRows = SvcMatrixRows,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_MATRIX_COLUMNS")]
+		D3D10SvcMatrixColumns = SvcMatrixColumns,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_OBJECT")]
+		D3D10SvcObject = SvcObject,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVC_STRUCT")]
+		D3D10SvcStruct = SvcStruct,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVC_INTERFACE_CLASS")]
+		D3D11SvcInterfaceClass = SvcInterfaceClass,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVC_INTERFACE_POINTER")]
+		D3D11SvcInterfacePointer = SvcInterfacePointer,
+		[NativeName(NativeNameType.EnumItem, "D3D_SVC_FORCE_DWORD")]
+		SvcForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_FLAGS")]
+	public enum D3D_SHADER_VARIABLE_FLAGS
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_SVF_USERPACKED")]
+		SvfUserpacked = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVF_USED")]
+		SvfUsed = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVF_INTERFACE_POINTER")]
+		SvfInterfacePointer = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVF_INTERFACE_PARAMETER")]
+		SvfInterfaceParameter = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVF_USERPACKED")]
+		D3D10SvfUserpacked = SvfUserpacked,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVF_USED")]
+		D3D10SvfUsed = SvfUsed,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVF_INTERFACE_POINTER")]
+		D3D11SvfInterfacePointer = SvfInterfacePointer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVF_INTERFACE_PARAMETER")]
+		D3D11SvfInterfaceParameter = SvfInterfaceParameter,
+		[NativeName(NativeNameType.EnumItem, "D3D_SVF_FORCE_DWORD")]
+		SvfForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_VARIABLE_TYPE")]
+	public enum D3D_SHADER_VARIABLE_TYPE
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_VOID")]
+		SvtVoid = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_BOOL")]
+		SvtBool = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_INT")]
+		SvtInt = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_FLOAT")]
+		SvtFloat = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_STRING")]
+		SvtString = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE")]
+		SvtTexture = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE1D")]
+		SvtTexture1D = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE2D")]
+		SvtTexture2D = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE3D")]
+		SvtTexture3D = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURECUBE")]
+		SvtTexturecube = unchecked(9),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_SAMPLER")]
+		SvtSampler = unchecked(10),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_SAMPLER1D")]
+		SvtSampler1D = unchecked(11),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_SAMPLER2D")]
+		SvtSampler2D = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_SAMPLER3D")]
+		SvtSampler3D = unchecked(13),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_SAMPLERCUBE")]
+		SvtSamplercube = unchecked(14),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_PIXELSHADER")]
+		SvtPixelshader = unchecked(15),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_VERTEXSHADER")]
+		SvtVertexshader = unchecked(16),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_PIXELFRAGMENT")]
+		SvtPixelfragment = unchecked(17),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_VERTEXFRAGMENT")]
+		SvtVertexfragment = unchecked(18),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_UINT")]
+		SvtUint = unchecked(19),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_UINT8")]
+		SvtUint8 = unchecked(20),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_GEOMETRYSHADER")]
+		SvtGeometryshader = unchecked(21),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RASTERIZER")]
+		SvtRasterizer = unchecked(22),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_DEPTHSTENCIL")]
+		SvtDepthstencil = unchecked(23),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_BLEND")]
+		SvtBlend = unchecked(24),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_BUFFER")]
+		SvtBuffer = unchecked(25),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_CBUFFER")]
+		SvtCbuffer = unchecked(26),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TBUFFER")]
+		SvtTbuffer = unchecked(27),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE1DARRAY")]
+		SvtTexture1Darray = unchecked(28),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE2DARRAY")]
+		SvtTexture2Darray = unchecked(29),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RENDERTARGETVIEW")]
+		SvtRendertargetview = unchecked(30),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_DEPTHSTENCILVIEW")]
+		SvtDepthstencilview = unchecked(31),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE2DMS")]
+		SvtTexture2Dms = unchecked(32),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURE2DMSARRAY")]
+		SvtTexture2Dmsarray = unchecked(33),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_TEXTURECUBEARRAY")]
+		SvtTexturecubearray = unchecked(34),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_HULLSHADER")]
+		SvtHullshader = unchecked(35),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_DOMAINSHADER")]
+		SvtDomainshader = unchecked(36),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_INTERFACE_POINTER")]
+		SvtInterfacePointer = unchecked(37),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_COMPUTESHADER")]
+		SvtComputeshader = unchecked(38),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_DOUBLE")]
+		SvtDouble = unchecked(39),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWTEXTURE1D")]
+		SvtRwtexture1D = unchecked(40),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWTEXTURE1DARRAY")]
+		SvtRwtexture1Darray = unchecked(41),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWTEXTURE2D")]
+		SvtRwtexture2D = unchecked(42),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWTEXTURE2DARRAY")]
+		SvtRwtexture2Darray = unchecked(43),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWTEXTURE3D")]
+		SvtRwtexture3D = unchecked(44),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWBUFFER")]
+		SvtRwbuffer = unchecked(45),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_BYTEADDRESS_BUFFER")]
+		SvtByteaddressBuffer = unchecked(46),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWBYTEADDRESS_BUFFER")]
+		SvtRwbyteaddressBuffer = unchecked(47),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_STRUCTURED_BUFFER")]
+		SvtStructuredBuffer = unchecked(48),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_RWSTRUCTURED_BUFFER")]
+		SvtRwstructuredBuffer = unchecked(49),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_APPEND_STRUCTURED_BUFFER")]
+		SvtAppendStructuredBuffer = unchecked(50),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_CONSUME_STRUCTURED_BUFFER")]
+		SvtConsumeStructuredBuffer = unchecked(51),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN8FLOAT")]
+		SvtMin8Float = unchecked(52),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN10FLOAT")]
+		SvtMin10Float = unchecked(53),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN16FLOAT")]
+		SvtMin16Float = unchecked(54),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN12INT")]
+		SvtMin12Int = unchecked(55),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN16INT")]
+		SvtMin16Int = unchecked(56),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_MIN16UINT")]
+		SvtMin16Uint = unchecked(57),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_INT16")]
+		SvtInt16 = unchecked(58),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_UINT16")]
+		SvtUint16 = unchecked(59),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_FLOAT16")]
+		SvtFloat16 = unchecked(60),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_INT64")]
+		SvtInt64 = unchecked(61),
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_UINT64")]
+		SvtUint64 = unchecked(62),
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_VOID")]
+		D3D10SvtVoid = SvtVoid,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_BOOL")]
+		D3D10SvtBool = SvtBool,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_INT")]
+		D3D10SvtInt = SvtInt,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_FLOAT")]
+		D3D10SvtFloat = SvtFloat,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_STRING")]
+		D3D10SvtString = SvtString,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE")]
+		D3D10SvtTexture = SvtTexture,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE1D")]
+		D3D10SvtTexture1D = SvtTexture1D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE2D")]
+		D3D10SvtTexture2D = SvtTexture2D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE3D")]
+		D3D10SvtTexture3D = SvtTexture3D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURECUBE")]
+		D3D10SvtTexturecube = SvtTexturecube,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_SAMPLER")]
+		D3D10SvtSampler = SvtSampler,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_SAMPLER1D")]
+		D3D10SvtSampler1D = SvtSampler1D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_SAMPLER2D")]
+		D3D10SvtSampler2D = SvtSampler2D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_SAMPLER3D")]
+		D3D10SvtSampler3D = SvtSampler3D,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_SAMPLERCUBE")]
+		D3D10SvtSamplercube = SvtSamplercube,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_PIXELSHADER")]
+		D3D10SvtPixelshader = SvtPixelshader,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_VERTEXSHADER")]
+		D3D10SvtVertexshader = SvtVertexshader,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_PIXELFRAGMENT")]
+		D3D10SvtPixelfragment = SvtPixelfragment,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_VERTEXFRAGMENT")]
+		D3D10SvtVertexfragment = SvtVertexfragment,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_UINT")]
+		D3D10SvtUint = SvtUint,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_UINT8")]
+		D3D10SvtUint8 = SvtUint8,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_GEOMETRYSHADER")]
+		D3D10SvtGeometryshader = SvtGeometryshader,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_RASTERIZER")]
+		D3D10SvtRasterizer = SvtRasterizer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_DEPTHSTENCIL")]
+		D3D10SvtDepthstencil = SvtDepthstencil,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_BLEND")]
+		D3D10SvtBlend = SvtBlend,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_BUFFER")]
+		D3D10SvtBuffer = SvtBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_CBUFFER")]
+		D3D10SvtCbuffer = SvtCbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TBUFFER")]
+		D3D10SvtTbuffer = SvtTbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE1DARRAY")]
+		D3D10SvtTexture1Darray = SvtTexture1Darray,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE2DARRAY")]
+		D3D10SvtTexture2Darray = SvtTexture2Darray,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_RENDERTARGETVIEW")]
+		D3D10SvtRendertargetview = SvtRendertargetview,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_DEPTHSTENCILVIEW")]
+		D3D10SvtDepthstencilview = SvtDepthstencilview,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE2DMS")]
+		D3D10SvtTexture2Dms = SvtTexture2Dms,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURE2DMSARRAY")]
+		D3D10SvtTexture2Dmsarray = SvtTexture2Dmsarray,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SVT_TEXTURECUBEARRAY")]
+		D3D10SvtTexturecubearray = SvtTexturecubearray,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_HULLSHADER")]
+		D3D11SvtHullshader = SvtHullshader,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_DOMAINSHADER")]
+		D3D11SvtDomainshader = SvtDomainshader,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_INTERFACE_POINTER")]
+		D3D11SvtInterfacePointer = SvtInterfacePointer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_COMPUTESHADER")]
+		D3D11SvtComputeshader = SvtComputeshader,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_DOUBLE")]
+		D3D11SvtDouble = SvtDouble,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWTEXTURE1D")]
+		D3D11SvtRwtexture1D = SvtRwtexture1D,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWTEXTURE1DARRAY")]
+		D3D11SvtRwtexture1Darray = SvtRwtexture1Darray,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWTEXTURE2D")]
+		D3D11SvtRwtexture2D = SvtRwtexture2D,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWTEXTURE2DARRAY")]
+		D3D11SvtRwtexture2Darray = SvtRwtexture2Darray,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWTEXTURE3D")]
+		D3D11SvtRwtexture3D = SvtRwtexture3D,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWBUFFER")]
+		D3D11SvtRwbuffer = SvtRwbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_BYTEADDRESS_BUFFER")]
+		D3D11SvtByteaddressBuffer = SvtByteaddressBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWBYTEADDRESS_BUFFER")]
+		D3D11SvtRwbyteaddressBuffer = SvtRwbyteaddressBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_STRUCTURED_BUFFER")]
+		D3D11SvtStructuredBuffer = SvtStructuredBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_RWSTRUCTURED_BUFFER")]
+		D3D11SvtRwstructuredBuffer = SvtRwstructuredBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_APPEND_STRUCTURED_BUFFER")]
+		D3D11SvtAppendStructuredBuffer = SvtAppendStructuredBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SVT_CONSUME_STRUCTURED_BUFFER")]
+		D3D11SvtConsumeStructuredBuffer = SvtConsumeStructuredBuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D_SVT_FORCE_DWORD")]
+		SvtForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_INPUT_FLAGS")]
+	public enum D3D_SHADER_INPUT_FLAGS
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_USERPACKED")]
+		SifUserpacked = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_COMPARISON_SAMPLER")]
+		SifComparisonSampler = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_TEXTURE_COMPONENT_0")]
+		SifTextureComponent0 = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_TEXTURE_COMPONENT_1")]
+		SifTextureComponent1 = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_TEXTURE_COMPONENTS")]
+		SifTextureComponents = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_UNUSED")]
+		SifUnused = unchecked(16),
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIF_USERPACKED")]
+		D3D10SifUserpacked = SifUserpacked,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIF_COMPARISON_SAMPLER")]
+		D3D10SifComparisonSampler = SifComparisonSampler,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIF_TEXTURE_COMPONENT_0")]
+		D3D10SifTextureComponent0 = SifTextureComponent0,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIF_TEXTURE_COMPONENT_1")]
+		D3D10SifTextureComponent1 = SifTextureComponent1,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIF_TEXTURE_COMPONENTS")]
+		D3D10SifTextureComponents = SifTextureComponents,
+		[NativeName(NativeNameType.EnumItem, "D3D_SIF_FORCE_DWORD")]
+		SifForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_INPUT_TYPE")]
+	public enum D3D_SHADER_INPUT_TYPE
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_CBUFFER")]
+		SitCbuffer = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_TBUFFER")]
+		SitTbuffer = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_TEXTURE")]
+		SitTexture = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_SAMPLER")]
+		SitSampler = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_RWTYPED")]
+		SitUavRwtyped = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_STRUCTURED")]
+		SitStructured = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_RWSTRUCTURED")]
+		SitUavRwstructured = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_BYTEADDRESS")]
+		SitByteaddress = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_RWBYTEADDRESS")]
+		SitUavRwbyteaddress = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_APPEND_STRUCTURED")]
+		SitUavAppendStructured = unchecked(9),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_CONSUME_STRUCTURED")]
+		SitUavConsumeStructured = unchecked(10),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_RWSTRUCTURED_WITH_COUNTER")]
+		SitUavRwstructuredWithCounter = unchecked(11),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_RTACCELERATIONSTRUCTURE")]
+		SitRtaccelerationstructure = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "D3D_SIT_UAV_FEEDBACKTEXTURE")]
+		SitUavFeedbacktexture = unchecked(13),
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIT_CBUFFER")]
+		D3D10SitCbuffer = SitCbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIT_TBUFFER")]
+		D3D10SitTbuffer = SitTbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIT_TEXTURE")]
+		D3D10SitTexture = SitTexture,
+		[NativeName(NativeNameType.EnumItem, "D3D10_SIT_SAMPLER")]
+		D3D10SitSampler = SitSampler,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_RWTYPED")]
+		D3D11SitUavRwtyped = SitUavRwtyped,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_STRUCTURED")]
+		D3D11SitStructured = SitStructured,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_RWSTRUCTURED")]
+		D3D11SitUavRwstructured = SitUavRwstructured,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_BYTEADDRESS")]
+		D3D11SitByteaddress = SitByteaddress,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_RWBYTEADDRESS")]
+		D3D11SitUavRwbyteaddress = SitUavRwbyteaddress,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_APPEND_STRUCTURED")]
+		D3D11SitUavAppendStructured = SitUavAppendStructured,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_CONSUME_STRUCTURED")]
+		D3D11SitUavConsumeStructured = SitUavConsumeStructured,
+		[NativeName(NativeNameType.EnumItem, "D3D11_SIT_UAV_RWSTRUCTURED_WITH_COUNTER")]
+		D3D11SitUavRwstructuredWithCounter = SitUavRwstructuredWithCounter,
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_SHADER_CBUFFER_FLAGS")]
+	public enum D3D_SHADER_CBUFFER_FLAGS
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_CBF_USERPACKED")]
+		CbfUserpacked = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D10_CBF_USERPACKED")]
+		D3D10CbfUserpacked = CbfUserpacked,
+		[NativeName(NativeNameType.EnumItem, "D3D_CBF_FORCE_DWORD")]
+		CbfForceDword = unchecked(2147483647),
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
+	public enum D3D_CBUFFER_TYPE
+	{
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
+		CtCbuffer = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_TBUFFER")]
+		CtTbuffer = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_INTERFACE_POINTERS")]
+		CtInterfacePointers = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "D3D_CT_RESOURCE_BIND_INFO")]
+		CtResourceBindInfo = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "D3D10_CT_CBUFFER")]
+		D3D10CtCbuffer = CtCbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D10_CT_TBUFFER")]
+		D3D10CtTbuffer = CtTbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_CBUFFER")]
+		D3D11CtCbuffer = CtCbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_TBUFFER")]
+		D3D11CtTbuffer = CtTbuffer,
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_INTERFACE_POINTERS")]
+		D3D11CtInterfacePointers = CtInterfacePointers,
+		[NativeName(NativeNameType.EnumItem, "D3D11_CT_RESOURCE_BIND_INFO")]
+		D3D11CtResourceBindInfo = CtResourceBindInfo,
+	}
+
+	[NativeName(NativeNameType.Enum, "_D3D_PARAMETER_FLAGS")]
+	public enum D3D_PARAMETER_FLAGS
 	{
 		[NativeName(NativeNameType.EnumItem, "D3D_PF_NONE")]
 		PfNone = unchecked(0),

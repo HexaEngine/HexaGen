@@ -15,7 +15,7 @@ using HexaGen.Runtime;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.X3DAudio
+namespace Hexa.NET.X3DAudio
 {
 	/// <summary>
 	/// Distance curve point:<br/>
@@ -23,7 +23,7 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DISTANCE_CURVE_POINT")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioDistanceCurvePoint
+	public partial struct X3DAudioDistanceCurvePoint
 	{
 		/// <summary>
 		/// normalized distance, must be within [0.0f, 1.0f]<br/>
@@ -62,14 +62,14 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DISTANCE_CURVE")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioDistanceCurve
+	public partial struct X3DAudioDistanceCurve
 	{
 		/// <summary>
 		/// distance curve point array, must have at least PointCount elements with no duplicates and be sorted in ascending order with respect to Distance<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pPoints")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE_POINT*")]
-		public unsafe X3DaudioDistanceCurvePoint* PPoints;
+		public unsafe X3DAudioDistanceCurvePoint* PPoints;
 
 		/// <summary>
 		/// number of distance curve points, must be >= 2 as all distance curves must have at least two endpoints, defining DSP settings at 0.0f and 1.0f normalized distance<br/>
@@ -96,7 +96,7 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_CONE")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioCone
+	public partial struct X3DAudioCone
 	{
 		/// <summary>
 		/// inner cone angle in radians, must be within [0.0f, X3DAUDIO_2PI]<br/>
@@ -165,7 +165,7 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_LISTENER")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioListener
+	public partial struct X3DAudioListener
 	{
 		/// <summary>
 		/// orientation of front direction, used only for matrix and delay calculations or listeners with cones for matrix, LPF (both direct and reverb paths), and reverb calculations, must be normalized when used<br/>
@@ -200,7 +200,7 @@ namespace HexaEngine.X3DAudio
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pCone")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_CONE*")]
-		public unsafe X3DaudioCone* PCone;
+		public unsafe X3DAudioCone* PCone;
 
 
 
@@ -235,14 +235,14 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_EMITTER")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioEmitter
+	public partial struct X3DAudioEmitter
 	{
 		/// <summary>
 		/// sound cone, used only with single-channel emitters for matrix, LPF (both direct and reverb paths), and reverb calculations, NULL specifies omnidirectionality<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pCone")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_CONE*")]
-		public unsafe X3DaudioCone* PCone;
+		public unsafe X3DAudioCone* PCone;
 
 		/// <summary>
 		/// orientation of front direction, used only for emitter angle calculations or with multi-channel emitters for matrix calculations or single-channel emitters with cones for matrix, LPF (both direct and reverb paths), and reverb calculations, must be normalized when used<br/>
@@ -314,7 +314,7 @@ namespace HexaEngine.X3DAudio
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pVolumeCurve")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
-		public unsafe X3DaudioDistanceCurve* PVolumeCurve;
+		public unsafe X3DAudioDistanceCurve* PVolumeCurve;
 
 		/// <summary>
 		/// LFE level distance curve, used only for matrix calculations, NULL specifies a default curve that conforms to the inverse square law, calculated in user-defined world units with distances <br/>
@@ -323,28 +323,28 @@ namespace HexaEngine.X3DAudio
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pLFECurve")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
-		public unsafe X3DaudioDistanceCurve* PLFECurve;
+		public unsafe X3DAudioDistanceCurve* PLFECurve;
 
 		/// <summary>
 		/// LPF direct-path coefficient distance curve, used only for LPF direct-path calculations, NULL specifies the default curve: [0.0f,1.0f], [1.0f,0.75f]<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pLPFDirectCurve")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
-		public unsafe X3DaudioDistanceCurve* PLPFDirectCurve;
+		public unsafe X3DAudioDistanceCurve* PLPFDirectCurve;
 
 		/// <summary>
 		/// LPF reverb-path coefficient distance curve, used only for LPF reverb-path calculations, NULL specifies the default curve: [0.0f,0.75f], [1.0f,0.75f]<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pLPFReverbCurve")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
-		public unsafe X3DaudioDistanceCurve* PLPFReverbCurve;
+		public unsafe X3DAudioDistanceCurve* PLPFReverbCurve;
 
 		/// <summary>
 		/// reverb send level distance curve, used only for reverb calculations, NULL specifies the default curve: [0.0f,1.0f], [1.0f,0.0f]<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "pReverbCurve")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_DISTANCE_CURVE*")]
-		public unsafe X3DaudioDistanceCurve* PReverbCurve;
+		public unsafe X3DAudioDistanceCurve* PReverbCurve;
 
 		/// <summary>
 		/// curve distance scaler, used to scale normalized distance curves to user-defined world units and/or exaggerate their effect, used only for matrix, LPF (both direct and reverb paths), and reverb calculations, must be within [FLT_MIN, FLT_MAX] when used<br/>
@@ -373,7 +373,7 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "X3DAUDIO_DSP_SETTINGS")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct X3DaudioDspSettings
+	public partial struct X3DAudioDspSettings
 	{
 		/// <summary>
 		/// [inout] matrix coefficient table, receives an array representing the volume level used to send from source channel S to destination channel D, stored as pMatrixCoefficients[SrcChannelCount * D + S], must have at least SrcChannelCount*DstChannelCount elements<br/>

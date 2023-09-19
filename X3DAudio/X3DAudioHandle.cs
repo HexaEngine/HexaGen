@@ -7,7 +7,7 @@
 // </auto-generated>
 // ------------------------------------------------------------------------------
 
-namespace HexaEngine.X3DAudio
+namespace Hexa.NET.X3DAudio
 {
     using System;
     using System.Collections.Generic;

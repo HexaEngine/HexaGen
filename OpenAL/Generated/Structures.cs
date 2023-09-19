@@ -27,44 +27,6 @@ namespace HexaEngine.OpenAL
 	}
 
 	/// <summary>
-	/// Opaque device handle <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "ALCdevice")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct ALCdevicePtr : IEquatable<ALCdevicePtr>
-	{
-		public ALCdevicePtr(ALCdevice* handle) { Handle = handle; }
-
-		public ALCdevice* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static ALCdevicePtr Null => new ALCdevicePtr(null);
-
-		public static implicit operator ALCdevicePtr(ALCdevice* handle) => new ALCdevicePtr(handle);
-
-		public static implicit operator ALCdevice*(ALCdevicePtr handle) => handle.Handle;
-
-		public static bool operator ==(ALCdevicePtr left, ALCdevicePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(ALCdevicePtr left, ALCdevicePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(ALCdevicePtr left, ALCdevice* right) => left.Handle == right;
-
-		public static bool operator !=(ALCdevicePtr left, ALCdevice* right) => left.Handle != right;
-
-		public bool Equals(ALCdevicePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is ALCdevicePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("ALCdevicePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
-	/// <summary>
 	/// Opaque context handle <br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "ALCcontext")]
@@ -75,47 +37,9 @@ namespace HexaEngine.OpenAL
 
 	}
 
-	/// <summary>
-	/// Opaque context handle <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "ALCcontext")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct ALCcontextPtr : IEquatable<ALCcontextPtr>
-	{
-		public ALCcontextPtr(ALCcontext* handle) { Handle = handle; }
-
-		public ALCcontext* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static ALCcontextPtr Null => new ALCcontextPtr(null);
-
-		public static implicit operator ALCcontextPtr(ALCcontext* handle) => new ALCcontextPtr(handle);
-
-		public static implicit operator ALCcontext*(ALCcontextPtr handle) => handle.Handle;
-
-		public static bool operator ==(ALCcontextPtr left, ALCcontextPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(ALCcontextPtr left, ALCcontextPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(ALCcontextPtr left, ALCcontext* right) => left.Handle == right;
-
-		public static bool operator !=(ALCcontextPtr left, ALCcontext* right) => left.Handle != right;
-
-		public bool Equals(ALCcontextPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is ALCcontextPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("ALCcontextPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "EFXEAXREVERBPROPERTIES")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct Efxeaxreverbproperties
+	public partial struct EfXEaXrEverBpRoperTies
 	{
 		[NativeName(NativeNameType.Field, "flDensity")]
 		[NativeName(NativeNameType.Type, "float")]

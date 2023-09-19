@@ -12,39 +12,48 @@ using HexaGen.Runtime;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.X3DAudio
+namespace Hexa.NET.X3DAudio
 {
 	public unsafe partial class X3DAudio
 	{
 		[NativeName(NativeNameType.Const, "X3DAUDIO_HANDLE_BYTESIZE")]
-		public const uint X3DaudioHandleBytesize = 20;
+		public const int X3DAudio_HANDLE_BYTESIZE = 20;
+
+		[NativeName(NativeNameType.Const, "X3DAUDIO_PI")]
+		public const float X3DAudio_PI = 3.141592654f;
+
+		[NativeName(NativeNameType.Const, "X3DAUDIO_2PI")]
+		public const float X3DAudio_2PI = 6.283185307f;
+
+		[NativeName(NativeNameType.Const, "X3DAUDIO_SPEED_OF_SOUND")]
+		public const float X3DAudio_SPEED_OF_SOUND = 343.5f;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_MATRIX")]
-		public const uint X3DaudioCalculateMatrix = 0x00000001;
+		public const int X3DAudio_CALCULATE_MATRIX = 0x00000001;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_DELAY")]
-		public const uint X3DaudioCalculateDelay = 0x00000002;
+		public const int X3DAudio_CALCULATE_DELAY = 0x00000002;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_LPF_DIRECT")]
-		public const uint X3DaudioCalculateLpfDirect = 0x00000004;
+		public const int X3DAudio_CALCULATE_LPF_DIRECT = 0x00000004;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_LPF_REVERB")]
-		public const uint X3DaudioCalculateLpfReverb = 0x00000008;
+		public const int X3DAudio_CALCULATE_LPF_REVERB = 0x00000008;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_REVERB")]
-		public const uint X3DaudioCalculateReverb = 0x00000010;
+		public const int X3DAudio_CALCULATE_REVERB = 0x00000010;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_DOPPLER")]
-		public const uint X3DaudioCalculateDoppler = 0x00000020;
+		public const int X3DAudio_CALCULATE_DOPPLER = 0x00000020;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_EMITTER_ANGLE")]
-		public const uint X3DaudioCalculateEmitterAngle = 0x00000040;
+		public const int X3DAudio_CALCULATE_EMITTER_ANGLE = 0x00000040;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_ZEROCENTER")]
-		public const uint X3DaudioCalculateZerocenter = 0x00010000;
+		public const int X3DAudio_CALCULATE_ZEROCENTER = 0x00010000;
 
 		[NativeName(NativeNameType.Const, "X3DAUDIO_CALCULATE_REDIRECT_TO_LFE")]
-		public const uint X3DaudioCalculateRedirectToLfe = 0x00020000;
+		public const int X3DAudio_CALCULATE_REDIRECT_TO_LFE = 0x00020000;
 
 	}
 }

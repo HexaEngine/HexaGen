@@ -28,7 +28,7 @@ namespace HexaEngine.Shaderc
 	[NativeName(NativeNameType.Delegate, "shaderc_include_resolve_fn")]
 	[return: NativeName(NativeNameType.Type, "shaderc_include_result*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate ShadercIncludeResult* ShadercIncludeResolveFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "requested_source")] [NativeName(NativeNameType.Type, "const char*")] byte* requestedSource, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "int")] int type, [NativeName(NativeNameType.Param, "requesting_source")] [NativeName(NativeNameType.Type, "const char*")] byte* requestingSource, [NativeName(NativeNameType.Param, "include_depth")] [NativeName(NativeNameType.Type, "size_t")] nuint includeDepth);
+	public unsafe delegate ShadercIncludeResult* ShadercIncludeResolveFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "requested_source")] [NativeName(NativeNameType.Type, "const char*")] byte* requestedSource, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "int")] int tYPE, [NativeName(NativeNameType.Param, "requesting_source")] [NativeName(NativeNameType.Type, "const char*")] byte* requestingSource, [NativeName(NativeNameType.Param, "include_depth")] [NativeName(NativeNameType.Type, "size_t")] nuint includeDepth);
 
 	/// <summary>
 	/// An includer callback type for destroying an include result.<br/>

@@ -1,9 +1,12 @@
-﻿using System.Text;
+﻿using System.Collections.Concurrent;
+using System.Text;
 
 namespace HexaGen
 {
     public partial class CsCodeGeneratorSettings
     {
+        private readonly ConcurrentDictionary<string, string> nameCache = new();
+
         public string GetCsCleanName(string name)
         {
             if (TypeMappings.TryGetValue(name, out string? mappedName))
@@ -11,10 +14,16 @@ namespace HexaGen
                 return mappedName;
             }
 
+            if (nameCache.TryGetValue(name, out string? cacheEntry))
+            {
+                return cacheEntry;
+            }
+
             StringBuilder sb = new();
             bool isCaps = name.IsCaps();
             bool wasLowerCase = false;
             bool wasNumber = false;
+
             for (int i = 0; i < name.Length; i++)
             {
                 char c = name[i];
@@ -56,6 +65,8 @@ namespace HexaGen
                 newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
             }
 
+            nameCache.TryAdd(name, newName);
+
             return newName;
         }
 
@@ -64,6 +75,11 @@ namespace HexaGen
             if (TypeMappings.TryGetValue(name, out string? mappedName))
             {
                 return mappedName;
+            }
+
+            if (nameCache.TryGetValue(name, out string? cacheEntry))
+            {
+                return cacheEntry;
             }
 
             string newName = NamingHelper.ConvertTo(name, convention);
@@ -80,6 +96,8 @@ namespace HexaGen
             {
                 newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
             }
+
+            nameCache.TryAdd(name, newName);
 
             return newName;
         }

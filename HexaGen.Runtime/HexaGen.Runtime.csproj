@@ -1,10 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
 
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<PackageVersion>1.0.0</PackageVersion>
+		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
+		<Authors>Juna Meinhold</Authors>
+		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Update="README.md" Pack="true" PackagePath="\" />
+		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
+	</ItemGroup>
 </Project>

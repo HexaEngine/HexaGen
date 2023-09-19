@@ -32,7 +32,7 @@ namespace HexaGen
                     var field = parentClass.Fields[idxSubClass];
                     if (field.Type == subClass)
                     {
-                        string csFieldName = NormalizeFieldName(field.Name);
+                        string csFieldName = GetFieldName(field.Name);
 
                         if (string.IsNullOrEmpty(csFieldName))
                         {

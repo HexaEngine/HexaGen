@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.X3DAudio",
+  "Namespace": "Hexa.NET.X3DAudio",
   "ApiName": "X3DAudio",
   "LibName": "x3daudio1_7.dll",
   "GenerateSizeOfStructs": false,
@@ -35,6 +35,9 @@
     "object",
     "event"
   ],
+  "NameMappings": {
+    "x3daudio": "X3DAudio"
+  },
   "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",
@@ -84,5 +87,8 @@
     "LPVOID": "void*",
     "X3DAUDIO_VECTOR": "Vector4",
     "X3DAUDIO_HANDLE": "X3DAudioHandle"
-  }
+  },
+  "SystemIncludeFolders": [
+    "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\Llvm\\x64\\lib\\clang\\16\\include"
+  ]
 }

@@ -20,7 +20,7 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int Close(this SDLIconv cd)
 		{
-			int ret = SDL2.SDLIconvCloseNative(cd);
+			int ret = SDL.SDLIconvCloseNative(cd);
 			return ret;
 		}
 
@@ -28,7 +28,7 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
-			nuint ret = SDL2.SDLIconvNative(cd, inbuf, inbytesleft, outbuf, outbytesleft);
+			nuint ret = SDL.SDLIconvNative(cd, inbuf, inbytesleft, outbuf, outbytesleft);
 			return ret;
 		}
 
@@ -38,7 +38,7 @@ namespace HexaEngine.SDL2
 		{
 			fixed (byte** pinbuf = &inbuf)
 			{
-				nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, outbytesleft);
+				nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, outbytesleft);
 				return ret;
 			}
 		}
@@ -49,7 +49,7 @@ namespace HexaEngine.SDL2
 		{
 			fixed (nuint* pinbytesleft = &inbytesleft)
 			{
-				nuint ret = SDL2.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, outbuf, outbytesleft);
+				nuint ret = SDL.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, outbuf, outbytesleft);
 				return ret;
 			}
 		}
@@ -62,7 +62,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (nuint* pinbytesleft = &inbytesleft)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, outbuf, outbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, outbuf, outbytesleft);
 					return ret;
 				}
 			}
@@ -74,7 +74,7 @@ namespace HexaEngine.SDL2
 		{
 			fixed (byte** poutbuf = &outbuf)
 			{
-				nuint ret = SDL2.SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
+				nuint ret = SDL.SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
 				return ret;
 			}
 		}
@@ -87,7 +87,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (byte** poutbuf = &outbuf)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
 					return ret;
 				}
 			}
@@ -101,7 +101,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (byte** poutbuf = &outbuf)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, (byte**)poutbuf, outbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, (byte**)poutbuf, outbytesleft);
 					return ret;
 				}
 			}
@@ -117,7 +117,7 @@ namespace HexaEngine.SDL2
 				{
 					fixed (byte** poutbuf = &outbuf)
 					{
-						nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, (byte**)poutbuf, outbytesleft);
+						nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, (byte**)poutbuf, outbytesleft);
 						return ret;
 					}
 				}
@@ -130,7 +130,7 @@ namespace HexaEngine.SDL2
 		{
 			fixed (nuint* poutbytesleft = &outbytesleft)
 			{
-				nuint ret = SDL2.SDLIconvNative(cd, inbuf, inbytesleft, outbuf, (nuint*)poutbytesleft);
+				nuint ret = SDL.SDLIconvNative(cd, inbuf, inbytesleft, outbuf, (nuint*)poutbytesleft);
 				return ret;
 			}
 		}
@@ -143,7 +143,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (nuint* poutbytesleft = &outbytesleft)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, (nuint*)poutbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, (nuint*)poutbytesleft);
 					return ret;
 				}
 			}
@@ -157,7 +157,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (nuint* poutbytesleft = &outbytesleft)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, outbuf, (nuint*)poutbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, outbuf, (nuint*)poutbytesleft);
 					return ret;
 				}
 			}
@@ -173,7 +173,7 @@ namespace HexaEngine.SDL2
 				{
 					fixed (nuint* poutbytesleft = &outbytesleft)
 					{
-						nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, outbuf, (nuint*)poutbytesleft);
+						nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, outbuf, (nuint*)poutbytesleft);
 						return ret;
 					}
 				}
@@ -188,7 +188,7 @@ namespace HexaEngine.SDL2
 			{
 				fixed (nuint* poutbytesleft = &outbytesleft)
 				{
-					nuint ret = SDL2.SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
+					nuint ret = SDL.SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
 					return ret;
 				}
 			}
@@ -204,7 +204,7 @@ namespace HexaEngine.SDL2
 				{
 					fixed (nuint* poutbytesleft = &outbytesleft)
 					{
-						nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
+						nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
 						return ret;
 					}
 				}
@@ -221,7 +221,7 @@ namespace HexaEngine.SDL2
 				{
 					fixed (nuint* poutbytesleft = &outbytesleft)
 					{
-						nuint ret = SDL2.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
+						nuint ret = SDL.SDLIconvNative(cd, inbuf, (nuint*)pinbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
 						return ret;
 					}
 				}
@@ -240,7 +240,7 @@ namespace HexaEngine.SDL2
 					{
 						fixed (nuint* poutbytesleft = &outbytesleft)
 						{
-							nuint ret = SDL2.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
+							nuint ret = SDL.SDLIconvNative(cd, (byte**)pinbuf, (nuint*)pinbytesleft, (byte**)poutbuf, (nuint*)poutbytesleft);
 							return ret;
 						}
 					}
@@ -252,21 +252,21 @@ namespace HexaEngine.SDL2
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SdlglDeleteContext(this SDLGLContext context)
 		{
-			SDL2.SDLGLDeleteContextNative(context);
+			SDL.SDLGLDeleteContextNative(context);
 		}
 
 		/// <summary>		/// Destroy an existing SDL_MetalView object.<br/>		/// This should be called before SDL_DestroyWindow, if SDL_Metal_CreateView was<br/>		/// called after SDL_CreateWindow.<br/>		/// <br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_DestroyView")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void DestroyView(this SDLMetalView view)
 		{
-			SDL2.SDLMetalDestroyViewNative(view);
+			SDL.SDLMetalDestroyViewNative(view);
 		}
 
 		/// <summary>		/// Get a pointer to the backing CAMetalLayer for the given view.<br/>		/// <br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetLayer")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* GetLayer(this SDLMetalView view)
 		{
-			void* ret = SDL2.SDLMetalGetLayerNative(view);
+			void* ret = SDL.SDLMetalGetLayerNative(view);
 			return ret;
 		}
 

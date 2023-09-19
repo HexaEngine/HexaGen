@@ -71,7 +71,7 @@
                 return;
 
             var writer = context.Writer;
-            var name = settings.GetPrettyConstantName(macro.Name);
+            var name = settings.GetConstantName(macro.Name);
             var value = macro.Value.NormalizeConstantValue();
 
             if (value == string.Empty)

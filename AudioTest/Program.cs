@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using HexaEngine.XAudio2;
+using Hexa.NET.XAudio2;
 using HexaGen.Runtime.COM;
 using XAudioTest;
 
@@ -7,7 +7,7 @@ unsafe
 {
     ComPtr<IXAudio2> audio = default;
 
-    XAudio2.XAudio2CreateWithVersionInfo(audio.GetAddressOf(), 0, XAudio2.XAudio2UseDefaultProcessor, 0).ThrowIf();
+    XAudio2.XAudio2CreateWithVersionInfo(audio.GetAddressOf(), 0, XAudio2.XAudio2_USE_DEFAULT_PROCESSOR, 0).ThrowIf();
 
     audio.StartEngine().ThrowIf();
     ComPtr<IXAudio2MasteringVoice> master = default;

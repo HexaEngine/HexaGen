@@ -141,7 +141,7 @@
         {
             var writer = context.Writer;
             var itemMapping = mapping?.GetItemMapping(enumItem.Name);
-            var enumItemName = settings.GetPrettyEnumName(enumItem.Name, enumNamePrefix);
+            var enumItemName = settings.GetEnumName(enumItem.Name, enumNamePrefix);
 
             if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
             {
@@ -164,7 +164,7 @@
 
             if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
             {
-                string enumValueName = settings.GetPrettyEnumName(rawExpression.Text, enumNamePrefix);
+                string enumValueName = settings.GetEnumName(rawExpression.Text, enumNamePrefix);
 
                 if (enumItem.Name == rawExpression.Text)
                 {

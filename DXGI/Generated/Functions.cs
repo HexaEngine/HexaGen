@@ -24,23 +24,23 @@ namespace HexaEngine.DXGI
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CreateDXGIFactory")]
-		internal static extern HResult CreateDXGIFactoryNative([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
+		internal static extern HResult CreateDXGIFactoryNative([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			HResult ret = CreateDXGIFactoryNative(riid, ppFactory);
+			HResult ret = CreateDXGIFactoryNative(rIID, ppFactory);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			fixed (Guid* priid = &riid)
+			fixed (Guid* prIID = &rIID)
 			{
-				HResult ret = CreateDXGIFactoryNative((Guid*)priid, ppFactory);
+				HResult ret = CreateDXGIFactoryNative((Guid*)prIID, ppFactory);
 				return ret;
 			}
 		}
@@ -48,23 +48,23 @@ namespace HexaEngine.DXGI
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CreateDXGIFactory1")]
-		internal static extern HResult CreateDXGIFactory1Native([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
+		internal static extern HResult CreateDXGIFactory1Native([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory1([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory1([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			HResult ret = CreateDXGIFactory1Native(riid, ppFactory);
+			HResult ret = CreateDXGIFactory1Native(rIID, ppFactory);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory1([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory1([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			fixed (Guid* priid = &riid)
+			fixed (Guid* prIID = &rIID)
 			{
-				HResult ret = CreateDXGIFactory1Native((Guid*)priid, ppFactory);
+				HResult ret = CreateDXGIFactory1Native((Guid*)prIID, ppFactory);
 				return ret;
 			}
 		}
@@ -72,23 +72,23 @@ namespace HexaEngine.DXGI
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CreateDXGIFactory2")]
-		internal static extern HResult CreateDXGIFactory2Native([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
+		internal static extern HResult CreateDXGIFactory2Native([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory);
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory2([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory2([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			HResult ret = CreateDXGIFactory2Native(flags, riid, ppFactory);
+			HResult ret = CreateDXGIFactory2Native(flags, rIID, ppFactory);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "CreateDXGIFactory2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateDXGIFactory2([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
+		public static HResult CreateDXGIFactory2([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppFactory")] [NativeName(NativeNameType.Type, "void**")] void** ppFactory)
 		{
-			fixed (Guid* priid = &riid)
+			fixed (Guid* prIID = &rIID)
 			{
-				HResult ret = CreateDXGIFactory2Native(flags, (Guid*)priid, ppFactory);
+				HResult ret = CreateDXGIFactory2Native(flags, (Guid*)prIID, ppFactory);
 				return ret;
 			}
 		}
@@ -96,23 +96,23 @@ namespace HexaEngine.DXGI
 		[NativeName(NativeNameType.Func, "DXGIGetDebugInterface1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DXGIGetDebugInterface1")]
-		internal static extern HResult DXGIGetDebugInterface1Native([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug);
+		internal static extern HResult DXGIGetDebugInterface1Native([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug);
 
 		[NativeName(NativeNameType.Func, "DXGIGetDebugInterface1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DXGIGetDebugInterface1([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug)
+		public static HResult DXGIGetDebugInterface1([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug)
 		{
-			HResult ret = DXGIGetDebugInterface1Native(flags, riid, pDebug);
+			HResult ret = DXGIGetDebugInterface1Native(flags, rIID, pDebug);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "DXGIGetDebugInterface1")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DXGIGetDebugInterface1([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug)
+		public static HResult DXGIGetDebugInterface1([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "pDebug")] [NativeName(NativeNameType.Type, "void**")] void** pDebug)
 		{
-			fixed (Guid* priid = &riid)
+			fixed (Guid* prIID = &rIID)
 			{
-				HResult ret = DXGIGetDebugInterface1Native(flags, (Guid*)priid, pDebug);
+				HResult ret = DXGIGetDebugInterface1Native(flags, (Guid*)prIID, pDebug);
 				return ret;
 			}
 		}

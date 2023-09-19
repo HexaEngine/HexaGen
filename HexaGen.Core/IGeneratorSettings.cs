@@ -108,17 +108,17 @@
 
         string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true);
 
-        string GetPrettyConstantName(string value);
+        string GetConstantName(string value);
 
-        string GetPrettyEnumName(string value, EnumPrefix enumPrefix);
+        string GetEnumName(string value, EnumPrefix enumPrefix);
 
-        string GetPrettyExtensionName(string value, string extensionPrefix);
+        string GetExtensionName(string value, string extensionPrefix);
 
         string GetPrettyFunctionName(string function);
 
         TypeMapping? GetTypeMapping(string typeName);
 
-        string NormalizeFieldName(string name);
+        string GetFieldName(string name);
 
         string NormalizeParameterName(string name);
 

@@ -14,7 +14,7 @@ using HexaGen.Runtime;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.X3DAudio
+namespace Hexa.NET.X3DAudio
 {
 	/// <summary>
 	/// Distance curve point:<br/>
@@ -22,23 +22,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DISTANCE_CURVE_POINT")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioDistanceCurvePoint : IEquatable<Lpx3DaudioDistanceCurvePoint>
+	public readonly partial struct LpX3DAudioDistanceCurvePoint : IEquatable<LpX3DAudioDistanceCurvePoint>
 	{
-		public Lpx3DaudioDistanceCurvePoint(nint handle) { Handle = handle; }
+		public LpX3DAudioDistanceCurvePoint(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioDistanceCurvePoint Null => new Lpx3DaudioDistanceCurvePoint(0);
-		public static implicit operator Lpx3DaudioDistanceCurvePoint(nint handle) => new Lpx3DaudioDistanceCurvePoint(handle);
-		public static bool operator ==(Lpx3DaudioDistanceCurvePoint left, Lpx3DaudioDistanceCurvePoint right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioDistanceCurvePoint left, Lpx3DaudioDistanceCurvePoint right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioDistanceCurvePoint left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioDistanceCurvePoint left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioDistanceCurvePoint other) => Handle == other.Handle;
+		public static LpX3DAudioDistanceCurvePoint Null => new LpX3DAudioDistanceCurvePoint(0);
+		public static implicit operator LpX3DAudioDistanceCurvePoint(nint handle) => new LpX3DAudioDistanceCurvePoint(handle);
+		public static bool operator ==(LpX3DAudioDistanceCurvePoint left, LpX3DAudioDistanceCurvePoint right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioDistanceCurvePoint left, LpX3DAudioDistanceCurvePoint right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioDistanceCurvePoint left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioDistanceCurvePoint left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioDistanceCurvePoint other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioDistanceCurvePoint handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioDistanceCurvePoint handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioDistanceCurvePoint [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioDistanceCurvePoint [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -60,23 +60,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DISTANCE_CURVE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioDistanceCurve : IEquatable<Lpx3DaudioDistanceCurve>
+	public readonly partial struct LpX3DAudioDistanceCurve : IEquatable<LpX3DAudioDistanceCurve>
 	{
-		public Lpx3DaudioDistanceCurve(nint handle) { Handle = handle; }
+		public LpX3DAudioDistanceCurve(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioDistanceCurve Null => new Lpx3DaudioDistanceCurve(0);
-		public static implicit operator Lpx3DaudioDistanceCurve(nint handle) => new Lpx3DaudioDistanceCurve(handle);
-		public static bool operator ==(Lpx3DaudioDistanceCurve left, Lpx3DaudioDistanceCurve right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioDistanceCurve left, Lpx3DaudioDistanceCurve right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioDistanceCurve left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioDistanceCurve left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioDistanceCurve other) => Handle == other.Handle;
+		public static LpX3DAudioDistanceCurve Null => new LpX3DAudioDistanceCurve(0);
+		public static implicit operator LpX3DAudioDistanceCurve(nint handle) => new LpX3DAudioDistanceCurve(handle);
+		public static bool operator ==(LpX3DAudioDistanceCurve left, LpX3DAudioDistanceCurve right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioDistanceCurve left, LpX3DAudioDistanceCurve right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioDistanceCurve left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioDistanceCurve left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioDistanceCurve other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioDistanceCurve handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioDistanceCurve handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioDistanceCurve [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioDistanceCurve [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -93,23 +93,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_CONE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioCone : IEquatable<Lpx3DaudioCone>
+	public readonly partial struct LpX3DAudioCone : IEquatable<LpX3DAudioCone>
 	{
-		public Lpx3DaudioCone(nint handle) { Handle = handle; }
+		public LpX3DAudioCone(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioCone Null => new Lpx3DaudioCone(0);
-		public static implicit operator Lpx3DaudioCone(nint handle) => new Lpx3DaudioCone(handle);
-		public static bool operator ==(Lpx3DaudioCone left, Lpx3DaudioCone right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioCone left, Lpx3DaudioCone right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioCone left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioCone left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioCone other) => Handle == other.Handle;
+		public static LpX3DAudioCone Null => new LpX3DAudioCone(0);
+		public static implicit operator LpX3DAudioCone(nint handle) => new LpX3DAudioCone(handle);
+		public static bool operator ==(LpX3DAudioCone left, LpX3DAudioCone right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioCone left, LpX3DAudioCone right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioCone left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioCone left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioCone other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioCone handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioCone handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioCone [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioCone [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -119,23 +119,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_LISTENER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioListener : IEquatable<Lpx3DaudioListener>
+	public readonly partial struct LpX3DAudioListener : IEquatable<LpX3DAudioListener>
 	{
-		public Lpx3DaudioListener(nint handle) { Handle = handle; }
+		public LpX3DAudioListener(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioListener Null => new Lpx3DaudioListener(0);
-		public static implicit operator Lpx3DaudioListener(nint handle) => new Lpx3DaudioListener(handle);
-		public static bool operator ==(Lpx3DaudioListener left, Lpx3DaudioListener right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioListener left, Lpx3DaudioListener right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioListener left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioListener left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioListener other) => Handle == other.Handle;
+		public static LpX3DAudioListener Null => new LpX3DAudioListener(0);
+		public static implicit operator LpX3DAudioListener(nint handle) => new LpX3DAudioListener(handle);
+		public static bool operator ==(LpX3DAudioListener left, LpX3DAudioListener right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioListener left, LpX3DAudioListener right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioListener left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioListener left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioListener other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioListener handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioListener handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioListener [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioListener [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -167,23 +167,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_EMITTER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioEmitter : IEquatable<Lpx3DaudioEmitter>
+	public readonly partial struct LpX3DAudioEmitter : IEquatable<LpX3DAudioEmitter>
 	{
-		public Lpx3DaudioEmitter(nint handle) { Handle = handle; }
+		public LpX3DAudioEmitter(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioEmitter Null => new Lpx3DaudioEmitter(0);
-		public static implicit operator Lpx3DaudioEmitter(nint handle) => new Lpx3DaudioEmitter(handle);
-		public static bool operator ==(Lpx3DaudioEmitter left, Lpx3DaudioEmitter right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioEmitter left, Lpx3DaudioEmitter right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioEmitter left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioEmitter left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioEmitter other) => Handle == other.Handle;
+		public static LpX3DAudioEmitter Null => new LpX3DAudioEmitter(0);
+		public static implicit operator LpX3DAudioEmitter(nint handle) => new LpX3DAudioEmitter(handle);
+		public static bool operator ==(LpX3DAudioEmitter left, LpX3DAudioEmitter right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioEmitter left, LpX3DAudioEmitter right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioEmitter left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioEmitter left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioEmitter other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioEmitter handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioEmitter handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioEmitter [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioEmitter [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -195,23 +195,23 @@ namespace HexaEngine.X3DAudio
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPX3DAUDIO_DSP_SETTINGS")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpx3DaudioDspSettings : IEquatable<Lpx3DaudioDspSettings>
+	public readonly partial struct LpX3DAudioDspSettings : IEquatable<LpX3DAudioDspSettings>
 	{
-		public Lpx3DaudioDspSettings(nint handle) { Handle = handle; }
+		public LpX3DAudioDspSettings(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpx3DaudioDspSettings Null => new Lpx3DaudioDspSettings(0);
-		public static implicit operator Lpx3DaudioDspSettings(nint handle) => new Lpx3DaudioDspSettings(handle);
-		public static bool operator ==(Lpx3DaudioDspSettings left, Lpx3DaudioDspSettings right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpx3DaudioDspSettings left, Lpx3DaudioDspSettings right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpx3DaudioDspSettings left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpx3DaudioDspSettings left, nint right) => left.Handle != right;
-		public bool Equals(Lpx3DaudioDspSettings other) => Handle == other.Handle;
+		public static LpX3DAudioDspSettings Null => new LpX3DAudioDspSettings(0);
+		public static implicit operator LpX3DAudioDspSettings(nint handle) => new LpX3DAudioDspSettings(handle);
+		public static bool operator ==(LpX3DAudioDspSettings left, LpX3DAudioDspSettings right) => left.Handle == right.Handle;
+		public static bool operator !=(LpX3DAudioDspSettings left, LpX3DAudioDspSettings right) => left.Handle != right.Handle;
+		public static bool operator ==(LpX3DAudioDspSettings left, nint right) => left.Handle == right;
+		public static bool operator !=(LpX3DAudioDspSettings left, nint right) => left.Handle != right;
+		public bool Equals(LpX3DAudioDspSettings other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpx3DaudioDspSettings handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LpX3DAudioDspSettings handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpx3DaudioDspSettings [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LpX3DAudioDspSettings [0x{0}]", Handle.ToString("X"));
 	}
 
 }

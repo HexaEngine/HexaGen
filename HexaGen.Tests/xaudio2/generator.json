@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.XAudio2",
+  "Namespace": "Hexa.NET.XAudio2",
   "ApiName": "XAudio2",
   "LibName": "xaudio2_9.dll",
   "GenerateSizeOfStructs": false,

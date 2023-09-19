@@ -17,23 +17,23 @@ namespace HexaEngine.D3DCommon
 {
 	[NativeName(NativeNameType.Typedef, "LPD3D_SHADER_MACRO")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpd3DShaderMacro : IEquatable<Lpd3DShaderMacro>
+	public readonly partial struct LPD3D_SHADER_MACRO : IEquatable<LPD3D_SHADER_MACRO>
 	{
-		public Lpd3DShaderMacro(nint handle) { Handle = handle; }
+		public LPD3D_SHADER_MACRO(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpd3DShaderMacro Null => new Lpd3DShaderMacro(0);
-		public static implicit operator Lpd3DShaderMacro(nint handle) => new Lpd3DShaderMacro(handle);
-		public static bool operator ==(Lpd3DShaderMacro left, Lpd3DShaderMacro right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpd3DShaderMacro left, Lpd3DShaderMacro right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpd3DShaderMacro left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpd3DShaderMacro left, nint right) => left.Handle != right;
-		public bool Equals(Lpd3DShaderMacro other) => Handle == other.Handle;
+		public static LPD3D_SHADER_MACRO Null => new LPD3D_SHADER_MACRO(0);
+		public static implicit operator LPD3D_SHADER_MACRO(nint handle) => new LPD3D_SHADER_MACRO(handle);
+		public static bool operator ==(LPD3D_SHADER_MACRO left, LPD3D_SHADER_MACRO right) => left.Handle == right.Handle;
+		public static bool operator !=(LPD3D_SHADER_MACRO left, LPD3D_SHADER_MACRO right) => left.Handle != right.Handle;
+		public static bool operator ==(LPD3D_SHADER_MACRO left, nint right) => left.Handle == right;
+		public static bool operator !=(LPD3D_SHADER_MACRO left, nint right) => left.Handle != right;
+		public bool Equals(LPD3D_SHADER_MACRO other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpd3DShaderMacro handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LPD3D_SHADER_MACRO handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpd3DShaderMacro [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LPD3D_SHADER_MACRO [0x{0}]", Handle.ToString("X"));
 	}
 
 	/// <summary>
@@ -42,65 +42,65 @@ namespace HexaEngine.D3DCommon
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D10BLOB")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpd3D10Blob : IEquatable<Lpd3D10Blob>
+	public readonly partial struct LPD3D10BLOB : IEquatable<LPD3D10BLOB>
 	{
-		public Lpd3D10Blob(nint handle) { Handle = handle; }
+		public LPD3D10BLOB(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpd3D10Blob Null => new Lpd3D10Blob(0);
-		public static implicit operator Lpd3D10Blob(nint handle) => new Lpd3D10Blob(handle);
-		public static bool operator ==(Lpd3D10Blob left, Lpd3D10Blob right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpd3D10Blob left, Lpd3D10Blob right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpd3D10Blob left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpd3D10Blob left, nint right) => left.Handle != right;
-		public bool Equals(Lpd3D10Blob other) => Handle == other.Handle;
+		public static LPD3D10BLOB Null => new LPD3D10BLOB(0);
+		public static implicit operator LPD3D10BLOB(nint handle) => new LPD3D10BLOB(handle);
+		public static bool operator ==(LPD3D10BLOB left, LPD3D10BLOB right) => left.Handle == right.Handle;
+		public static bool operator !=(LPD3D10BLOB left, LPD3D10BLOB right) => left.Handle != right.Handle;
+		public static bool operator ==(LPD3D10BLOB left, nint right) => left.Handle == right;
+		public static bool operator !=(LPD3D10BLOB left, nint right) => left.Handle != right;
+		public bool Equals(LPD3D10BLOB other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpd3D10Blob handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LPD3D10BLOB handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpd3D10Blob [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LPD3D10BLOB [0x{0}]", Handle.ToString("X"));
 	}
 
 	[NativeName(NativeNameType.Typedef, "LPD3DBLOB")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpd3Dblob : IEquatable<Lpd3Dblob>
+	public readonly partial struct LPD3DBLOB : IEquatable<LPD3DBLOB>
 	{
-		public Lpd3Dblob(nint handle) { Handle = handle; }
+		public LPD3DBLOB(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpd3Dblob Null => new Lpd3Dblob(0);
-		public static implicit operator Lpd3Dblob(nint handle) => new Lpd3Dblob(handle);
-		public static bool operator ==(Lpd3Dblob left, Lpd3Dblob right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpd3Dblob left, Lpd3Dblob right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpd3Dblob left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpd3Dblob left, nint right) => left.Handle != right;
-		public bool Equals(Lpd3Dblob other) => Handle == other.Handle;
+		public static LPD3DBLOB Null => new LPD3DBLOB(0);
+		public static implicit operator LPD3DBLOB(nint handle) => new LPD3DBLOB(handle);
+		public static bool operator ==(LPD3DBLOB left, LPD3DBLOB right) => left.Handle == right.Handle;
+		public static bool operator !=(LPD3DBLOB left, LPD3DBLOB right) => left.Handle != right.Handle;
+		public static bool operator ==(LPD3DBLOB left, nint right) => left.Handle == right;
+		public static bool operator !=(LPD3DBLOB left, nint right) => left.Handle != right;
+		public bool Equals(LPD3DBLOB other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpd3Dblob handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LPD3DBLOB handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpd3Dblob [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LPD3DBLOB [0x{0}]", Handle.ToString("X"));
 	}
 
 	[NativeName(NativeNameType.Typedef, "LPD3DINCLUDE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct Lpd3Dinclude : IEquatable<Lpd3Dinclude>
+	public readonly partial struct LPD3DINCLUDE : IEquatable<LPD3DINCLUDE>
 	{
-		public Lpd3Dinclude(nint handle) { Handle = handle; }
+		public LPD3DINCLUDE(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static Lpd3Dinclude Null => new Lpd3Dinclude(0);
-		public static implicit operator Lpd3Dinclude(nint handle) => new Lpd3Dinclude(handle);
-		public static bool operator ==(Lpd3Dinclude left, Lpd3Dinclude right) => left.Handle == right.Handle;
-		public static bool operator !=(Lpd3Dinclude left, Lpd3Dinclude right) => left.Handle != right.Handle;
-		public static bool operator ==(Lpd3Dinclude left, nint right) => left.Handle == right;
-		public static bool operator !=(Lpd3Dinclude left, nint right) => left.Handle != right;
-		public bool Equals(Lpd3Dinclude other) => Handle == other.Handle;
+		public static LPD3DINCLUDE Null => new LPD3DINCLUDE(0);
+		public static implicit operator LPD3DINCLUDE(nint handle) => new LPD3DINCLUDE(handle);
+		public static bool operator ==(LPD3DINCLUDE left, LPD3DINCLUDE right) => left.Handle == right.Handle;
+		public static bool operator !=(LPD3DINCLUDE left, LPD3DINCLUDE right) => left.Handle != right.Handle;
+		public static bool operator ==(LPD3DINCLUDE left, nint right) => left.Handle == right;
+		public static bool operator !=(LPD3DINCLUDE left, nint right) => left.Handle != right;
+		public bool Equals(LPD3DINCLUDE other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is Lpd3Dinclude handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LPD3DINCLUDE handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("Lpd3Dinclude [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LPD3DINCLUDE [0x{0}]", Handle.ToString("X"));
 	}
 
 }

@@ -8,7 +8,7 @@
 
     public class FunctionGenerator
     {
-        private CsCodeGeneratorSettings settings;
+        private readonly CsCodeGeneratorSettings settings;
 
         public FunctionGenerator(CsCodeGeneratorSettings settings)
         {

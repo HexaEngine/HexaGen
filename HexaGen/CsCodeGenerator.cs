@@ -13,12 +13,36 @@
             funcGen = new(settings);
         }
 
-        public virtual void Generate(string headerFile, string outputPath)
+        protected virtual CppParserOptions PrepareSettings()
         {
             var options = new CppParserOptions
             {
                 ParseMacros = true,
+                ParseAttributes = false,
+                ParseComments = true,
+                ParseSystemIncludes = true,
+                ParseAsCpp = true,
             };
+
+            for (int i = 0; i < settings.IncludeFolders.Count; i++)
+            {
+                options.IncludeFolders.Add(settings.IncludeFolders[i]);
+            }
+
+            for (int i = 0; i < settings.SystemIncludeFolders.Count; i++)
+            {
+                options.SystemIncludeFolders.Add(settings.SystemIncludeFolders[i]);
+            }
+
+            options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
+            options.AdditionalArguments.Add("-std=c++17");
+
+            return options;
+        }
+
+        public virtual void Generate(string headerFile, string outputPath)
+        {
+            var options = PrepareSettings();
 
             var compilation = CppParser.ParseFile(headerFile, options);
 
@@ -27,10 +51,7 @@
 
         public virtual void Generate(List<string> headerFiles, string outputPath)
         {
-            var options = new CppParserOptions
-            {
-                ParseMacros = true,
-            };
+            var options = PrepareSettings();
 
             var compilation = CppParser.ParseFiles(headerFiles, options);
 

@@ -14,6 +14,6 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.XAudio2
+namespace Hexa.NET.XAudio2
 {
 }

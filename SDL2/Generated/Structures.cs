@@ -52,48 +52,6 @@ namespace HexaEngine.SDL2
 
 	}
 
-	[NativeName(NativeNameType.Typedef, "SDL_AssertData")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLAssertDataPtr : IEquatable<SDLAssertDataPtr>
-	{
-		public SDLAssertDataPtr(SDLAssertData* handle) { Handle = handle; }
-
-		public SDLAssertData* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLAssertDataPtr Null => new SDLAssertDataPtr(null);
-
-		public static implicit operator SDLAssertDataPtr(SDLAssertData* handle) => new SDLAssertDataPtr(handle);
-
-		public static implicit operator SDLAssertData*(SDLAssertDataPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLAssertDataPtr left, SDLAssertDataPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLAssertDataPtr left, SDLAssertDataPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLAssertDataPtr left, SDLAssertData* right) => left.Handle == right;
-
-		public static bool operator !=(SDLAssertDataPtr left, SDLAssertData* right) => left.Handle != right;
-
-		public bool Equals(SDLAssertDataPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLAssertDataPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLAssertDataPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref int AlwaysIgnore => ref Unsafe.AsRef<int>(&Handle->AlwaysIgnore);
-		public ref uint TriggerCount => ref Unsafe.AsRef<uint>(&Handle->TriggerCount);
-		public byte* Condition { get => Handle->Condition; set => Handle->Condition = value; }
-		public byte* Filename { get => Handle->Filename; set => Handle->Filename = value; }
-		public ref int Linenum => ref Unsafe.AsRef<int>(&Handle->Linenum);
-		public byte* Function { get => Handle->Function; set => Handle->Function = value; }
-		public ref SDLAssertDataPtr Next => ref Unsafe.AsRef<SDLAssertDataPtr>(&Handle->Next);
-	}
-
 	/// <summary>
 	/// <br/>
 	/// </summary>
@@ -109,45 +67,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_atomic_t")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLAtomicPtr : IEquatable<SDLAtomicPtr>
-	{
-		public SDLAtomicPtr(SDLAtomic* handle) { Handle = handle; }
-
-		public SDLAtomic* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLAtomicPtr Null => new SDLAtomicPtr(null);
-
-		public static implicit operator SDLAtomicPtr(SDLAtomic* handle) => new SDLAtomicPtr(handle);
-
-		public static implicit operator SDLAtomic*(SDLAtomicPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLAtomicPtr left, SDLAtomicPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLAtomicPtr left, SDLAtomicPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLAtomicPtr left, SDLAtomic* right) => left.Handle == right;
-
-		public static bool operator !=(SDLAtomicPtr left, SDLAtomic* right) => left.Handle != right;
-
-		public bool Equals(SDLAtomicPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLAtomicPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLAtomicPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref int Value => ref Unsafe.AsRef<int>(&Handle->Value);
-	}
-
-	/// <summary>
 	/// The SDL mutex structure, defined in SDL_sysmutex.c <br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_mutex")]
@@ -156,44 +75,6 @@ namespace HexaEngine.SDL2
 	{
 
 
-	}
-
-	/// <summary>
-	/// The SDL mutex structure, defined in SDL_sysmutex.c <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_mutex")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLMutexPtr : IEquatable<SDLMutexPtr>
-	{
-		public SDLMutexPtr(SDLMutex* handle) { Handle = handle; }
-
-		public SDLMutex* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLMutexPtr Null => new SDLMutexPtr(null);
-
-		public static implicit operator SDLMutexPtr(SDLMutex* handle) => new SDLMutexPtr(handle);
-
-		public static implicit operator SDLMutex*(SDLMutexPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLMutexPtr left, SDLMutexPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLMutexPtr left, SDLMutexPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLMutexPtr left, SDLMutex* right) => left.Handle == right;
-
-		public static bool operator !=(SDLMutexPtr left, SDLMutex* right) => left.Handle != right;
-
-		public bool Equals(SDLMutexPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLMutexPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLMutexPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	/// <summary>
@@ -219,44 +100,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// The SDL condition variable structure, defined in SDL_syscond.c <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_cond")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLCondPtr : IEquatable<SDLCondPtr>
-	{
-		public SDLCondPtr(SDLCond* handle) { Handle = handle; }
-
-		public SDLCond* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLCondPtr Null => new SDLCondPtr(null);
-
-		public static implicit operator SDLCondPtr(SDLCond* handle) => new SDLCondPtr(handle);
-
-		public static implicit operator SDLCond*(SDLCondPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLCondPtr left, SDLCondPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLCondPtr left, SDLCondPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLCondPtr left, SDLCond* right) => left.Handle == right;
-
-		public static bool operator !=(SDLCondPtr left, SDLCond* right) => left.Handle != right;
-
-		public bool Equals(SDLCondPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLCondPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLCondPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
-	/// <summary>
 	/// The SDL thread structure, defined in SDL_thread.c <br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_Thread")]
@@ -265,44 +108,6 @@ namespace HexaEngine.SDL2
 	{
 
 
-	}
-
-	/// <summary>
-	/// The SDL thread structure, defined in SDL_thread.c <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Thread")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLThreadPtr : IEquatable<SDLThreadPtr>
-	{
-		public SDLThreadPtr(SDLThread* handle) { Handle = handle; }
-
-		public SDLThread* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLThreadPtr Null => new SDLThreadPtr(null);
-
-		public static implicit operator SDLThreadPtr(SDLThread* handle) => new SDLThreadPtr(handle);
-
-		public static implicit operator SDLThread*(SDLThreadPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLThreadPtr left, SDLThreadPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLThreadPtr left, SDLThreadPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLThreadPtr left, SDLThread* right) => left.Handle == right;
-
-		public static bool operator !=(SDLThreadPtr left, SDLThread* right) => left.Handle != right;
-
-		public bool Equals(SDLThreadPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLThreadPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLThreadPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	/// <summary>
@@ -457,80 +262,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// This is the read/write operation structure -- very basic.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_RWops")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLRWopsPtr : IEquatable<SDLRWopsPtr>
-	{
-		public SDLRWopsPtr(SDLRWops* handle) { Handle = handle; }
-
-		public SDLRWops* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLRWopsPtr Null => new SDLRWopsPtr(null);
-
-		public static implicit operator SDLRWopsPtr(SDLRWops* handle) => new SDLRWopsPtr(handle);
-
-		public static implicit operator SDLRWops*(SDLRWopsPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLRWopsPtr left, SDLRWopsPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLRWopsPtr left, SDLRWopsPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLRWopsPtr left, SDLRWops* right) => left.Handle == right;
-
-		public static bool operator !=(SDLRWopsPtr left, SDLRWops* right) => left.Handle != right;
-
-		public bool Equals(SDLRWopsPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLRWopsPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLRWopsPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Return the size of the file in this rwops, or -1 if unknown<br/>
-		/// </summary>
-		public void* Size { get => Handle->Size; set => Handle->Size = value; }
-		/// <summary>
-		/// Seek to <br/>
-		/// relative to <br/>
-		/// one of stdio's whence values:<br/>
-		/// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END<br/>
-		/// <br/>
-		/// </summary>
-		public void* Seek { get => Handle->Seek; set => Handle->Seek = value; }
-		/// <summary>
-		/// Read up to <br/>
-		/// objects each of size <br/>
-		/// from the data<br/>
-		/// stream to the area pointed at by <br/>
-		/// <br/>
-		/// </summary>
-		public void* Read { get => Handle->Read; set => Handle->Read = value; }
-		/// <summary>
-		/// Write exactly <br/>
-		/// objects each of size <br/>
-		/// from the area<br/>
-		/// pointed at by <br/>
-		/// to data stream.<br/>
-		/// <br/>
-		/// </summary>
-		public void* Write { get => Handle->Write; set => Handle->Write = value; }
-		/// <summary>
-		/// Close and free an allocated SDL_RWops structure.<br/>
-		/// <br/>
-		/// </summary>
-		public void* Close { get => Handle->Close; set => Handle->Close = value; }
-		public ref uint Type => ref Unsafe.AsRef<uint>(&Handle->Type);
-		public ref SDLRWops.HiddenUnion Union => ref Unsafe.AsRef<SDLRWops.HiddenUnion>(&Handle->Union);
-	}
-
-	/// <summary>
 	/// The calculated values in this structure are calculated by SDL_OpenAudio().<br/>
 	/// For multi-channel audio, the default SDL channel mapping is:<br/>
 	/// 2:  FL  FR                          (stereo)<br/>
@@ -609,88 +340,6 @@ namespace HexaEngine.SDL2
 
 
 
-	}
-
-	/// <summary>
-	/// The calculated values in this structure are calculated by SDL_OpenAudio().<br/>
-	/// For multi-channel audio, the default SDL channel mapping is:<br/>
-	/// 2:  FL  FR                          (stereo)<br/>
-	/// 3:  FL  FR LFE                      (2.1 surround)<br/>
-	/// 4:  FL  FR  BL  BR                  (quad)<br/>
-	/// 5:  FL  FR LFE  BL  BR              (4.1 surround)<br/>
-	/// 6:  FL  FR  FC LFE  SL  SR          (5.1 surround - last two can also be BL BR)<br/>
-	/// 7:  FL  FR  FC LFE  BC  SL  SR      (6.1 surround)<br/>
-	/// 8:  FL  FR  FC LFE  BL  BR  SL  SR  (7.1 surround)<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_AudioSpec")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLAudioSpecPtr : IEquatable<SDLAudioSpecPtr>
-	{
-		public SDLAudioSpecPtr(SDLAudioSpec* handle) { Handle = handle; }
-
-		public SDLAudioSpec* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLAudioSpecPtr Null => new SDLAudioSpecPtr(null);
-
-		public static implicit operator SDLAudioSpecPtr(SDLAudioSpec* handle) => new SDLAudioSpecPtr(handle);
-
-		public static implicit operator SDLAudioSpec*(SDLAudioSpecPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLAudioSpecPtr left, SDLAudioSpecPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLAudioSpecPtr left, SDLAudioSpecPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLAudioSpecPtr left, SDLAudioSpec* right) => left.Handle == right;
-
-		public static bool operator !=(SDLAudioSpecPtr left, SDLAudioSpec* right) => left.Handle != right;
-
-		public bool Equals(SDLAudioSpecPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLAudioSpecPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLAudioSpecPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// DSP frequency -- samples per second <br/>
-		/// </summary>
-		public ref int Freq => ref Unsafe.AsRef<int>(&Handle->Freq);
-		/// <summary>
-		/// Audio data format <br/>
-		/// </summary>
-		public ref ushort Format => ref Unsafe.AsRef<ushort>(&Handle->Format);
-		/// <summary>
-		/// Number of channels: 1 mono, 2 stereo <br/>
-		/// </summary>
-		public ref byte Channels => ref Unsafe.AsRef<byte>(&Handle->Channels);
-		/// <summary>
-		/// Audio buffer silence value (calculated) <br/>
-		/// </summary>
-		public ref byte Silence => ref Unsafe.AsRef<byte>(&Handle->Silence);
-		/// <summary>
-		/// Audio buffer size in sample FRAMES (total samples divided by channel count) <br/>
-		/// </summary>
-		public ref ushort Samples => ref Unsafe.AsRef<ushort>(&Handle->Samples);
-		/// <summary>
-		/// Necessary for some compile environments <br/>
-		/// </summary>
-		public ref ushort Padding => ref Unsafe.AsRef<ushort>(&Handle->Padding);
-		/// <summary>
-		/// Audio buffer size in bytes (calculated) <br/>
-		/// </summary>
-		public ref uint Size => ref Unsafe.AsRef<uint>(&Handle->Size);
-		/// <summary>
-		/// Callback that feeds the audio device (NULL to use SDL_QueueAudio()). <br/>
-		/// </summary>
-		public void* Callback { get => Handle->Callback; set => Handle->Callback = value; }
-		/// <summary>
-		/// Userdata passed to callback (ignored for NULL callbacks). <br/>
-		/// </summary>
-		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
 	}
 
 	/// <summary>
@@ -805,95 +454,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_AudioCVT")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLAudioCVPtr : IEquatable<SDLAudioCVPtr>
-	{
-		public SDLAudioCVPtr(SDLAudioCV* handle) { Handle = handle; }
-
-		public SDLAudioCV* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLAudioCVPtr Null => new SDLAudioCVPtr(null);
-
-		public static implicit operator SDLAudioCVPtr(SDLAudioCV* handle) => new SDLAudioCVPtr(handle);
-
-		public static implicit operator SDLAudioCV*(SDLAudioCVPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLAudioCVPtr left, SDLAudioCVPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLAudioCVPtr left, SDLAudioCVPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLAudioCVPtr left, SDLAudioCV* right) => left.Handle == right;
-
-		public static bool operator !=(SDLAudioCVPtr left, SDLAudioCV* right) => left.Handle != right;
-
-		public bool Equals(SDLAudioCVPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLAudioCVPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLAudioCVPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Set to 1 if conversion possible <br/>
-		/// </summary>
-		public ref int Needed => ref Unsafe.AsRef<int>(&Handle->Needed);
-		/// <summary>
-		/// Source audio format <br/>
-		/// </summary>
-		public ref ushort SrcFormat => ref Unsafe.AsRef<ushort>(&Handle->SrcFormat);
-		/// <summary>
-		/// Target audio format <br/>
-		/// </summary>
-		public ref ushort DstFormat => ref Unsafe.AsRef<ushort>(&Handle->DstFormat);
-		/// <summary>
-		/// Rate conversion increment <br/>
-		/// </summary>
-		public ref double RateIncr => ref Unsafe.AsRef<double>(&Handle->RateIncr);
-		/// <summary>
-		/// Buffer to hold entire audio data <br/>
-		/// </summary>
-		public byte* Buf { get => Handle->Buf; set => Handle->Buf = value; }
-		/// <summary>
-		/// Length of original audio buffer <br/>
-		/// </summary>
-		public ref int Len => ref Unsafe.AsRef<int>(&Handle->Len);
-		/// <summary>
-		/// Length of converted audio buffer <br/>
-		/// </summary>
-		public ref int LenCvt => ref Unsafe.AsRef<int>(&Handle->LenCvt);
-		/// <summary>
-		/// buffer must be len*len_mult big <br/>
-		/// </summary>
-		public ref int LenMult => ref Unsafe.AsRef<int>(&Handle->LenMult);
-		/// <summary>
-		/// Given len, final size is len*len_ratio <br/>
-		/// </summary>
-		public ref double LenRatio => ref Unsafe.AsRef<double>(&Handle->LenRatio);
-		/// <summary>
-		/// NULL-terminated list of filter functions <br/>
-		/// </summary>
-		public unsafe Span<SDLAudioFilter> Filters
-		
-		{
-			get
-			{
-				return new Span<SDLAudioFilter>(&Handle->Filters_0, 10);
-			}
-		}
-		/// <summary>
-		/// Current audio conversion function <br/>
-		/// </summary>
-		public ref int FilterIndex => ref Unsafe.AsRef<int>(&Handle->FilterIndex);
-	}
-
-	/// <summary>
 	/// SDL_AudioStream is a new audio conversion interface.<br/>
 	/// The benefits vs SDL_AudioCVT:<br/>
 	/// - it can handle resampling data in chunks without generating<br/>
@@ -935,50 +495,6 @@ namespace HexaEngine.SDL2
 
 	}
 
-	/// <summary>
-	/// The bits of this structure can be directly reinterpreted as an integer-packed<br/>
-	/// color which uses the SDL_PIXELFORMAT_RGBA32 format (SDL_PIXELFORMAT_ABGR8888<br/>
-	/// on little-endian systems and SDL_PIXELFORMAT_RGBA8888 on big-endian systems).<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Color")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLColorPtr : IEquatable<SDLColorPtr>
-	{
-		public SDLColorPtr(SDLColor* handle) { Handle = handle; }
-
-		public SDLColor* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLColorPtr Null => new SDLColorPtr(null);
-
-		public static implicit operator SDLColorPtr(SDLColor* handle) => new SDLColorPtr(handle);
-
-		public static implicit operator SDLColor*(SDLColorPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLColorPtr left, SDLColorPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLColorPtr left, SDLColorPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLColorPtr left, SDLColor* right) => left.Handle == right;
-
-		public static bool operator !=(SDLColorPtr left, SDLColor* right) => left.Handle != right;
-
-		public bool Equals(SDLColorPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLColorPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLColorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref byte R => ref Unsafe.AsRef<byte>(&Handle->R);
-		public ref byte G => ref Unsafe.AsRef<byte>(&Handle->G);
-		public ref byte B => ref Unsafe.AsRef<byte>(&Handle->B);
-		public ref byte A => ref Unsafe.AsRef<byte>(&Handle->A);
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "SDL_Palette")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SDLPalette
@@ -997,45 +513,6 @@ namespace HexaEngine.SDL2
 		public int Refcount;
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "SDL_Palette")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLPalettePtr : IEquatable<SDLPalettePtr>
-	{
-		public SDLPalettePtr(SDLPalette* handle) { Handle = handle; }
-
-		public SDLPalette* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLPalettePtr Null => new SDLPalettePtr(null);
-
-		public static implicit operator SDLPalettePtr(SDLPalette* handle) => new SDLPalettePtr(handle);
-
-		public static implicit operator SDLPalette*(SDLPalettePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLPalettePtr left, SDLPalettePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLPalettePtr left, SDLPalettePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLPalettePtr left, SDLPalette* right) => left.Handle == right;
-
-		public static bool operator !=(SDLPalettePtr left, SDLPalette* right) => left.Handle != right;
-
-		public bool Equals(SDLPalettePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLPalettePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLPalettePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref int Ncolors => ref Unsafe.AsRef<int>(&Handle->Ncolors);
-		public ref SDLColorPtr Colors => ref Unsafe.AsRef<SDLColorPtr>(&Handle->Colors);
-		public ref uint Version => ref Unsafe.AsRef<uint>(&Handle->Version);
-		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
 	}
 
 	/// <summary>
@@ -1108,70 +585,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_PixelFormat")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLPixelFormatPtr : IEquatable<SDLPixelFormatPtr>
-	{
-		public SDLPixelFormatPtr(SDLPixelFormat* handle) { Handle = handle; }
-
-		public SDLPixelFormat* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLPixelFormatPtr Null => new SDLPixelFormatPtr(null);
-
-		public static implicit operator SDLPixelFormatPtr(SDLPixelFormat* handle) => new SDLPixelFormatPtr(handle);
-
-		public static implicit operator SDLPixelFormat*(SDLPixelFormatPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLPixelFormatPtr left, SDLPixelFormatPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLPixelFormatPtr left, SDLPixelFormatPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLPixelFormatPtr left, SDLPixelFormat* right) => left.Handle == right;
-
-		public static bool operator !=(SDLPixelFormatPtr left, SDLPixelFormat* right) => left.Handle != right;
-
-		public bool Equals(SDLPixelFormatPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLPixelFormatPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLPixelFormatPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref uint Format => ref Unsafe.AsRef<uint>(&Handle->Format);
-		public ref SDLPalettePtr Palette => ref Unsafe.AsRef<SDLPalettePtr>(&Handle->Palette);
-		public ref byte BitsPerPixel => ref Unsafe.AsRef<byte>(&Handle->BitsPerPixel);
-		public ref byte BytesPerPixel => ref Unsafe.AsRef<byte>(&Handle->BytesPerPixel);
-		public unsafe Span<byte> Padding
-		
-		{
-			get
-			{
-				return new Span<byte>(&Handle->Padding_0, 2);
-			}
-		}
-		public ref uint Rmask => ref Unsafe.AsRef<uint>(&Handle->Rmask);
-		public ref uint Gmask => ref Unsafe.AsRef<uint>(&Handle->Gmask);
-		public ref uint Bmask => ref Unsafe.AsRef<uint>(&Handle->Bmask);
-		public ref uint Amask => ref Unsafe.AsRef<uint>(&Handle->Amask);
-		public ref byte Rloss => ref Unsafe.AsRef<byte>(&Handle->Rloss);
-		public ref byte Gloss => ref Unsafe.AsRef<byte>(&Handle->Gloss);
-		public ref byte Bloss => ref Unsafe.AsRef<byte>(&Handle->Bloss);
-		public ref byte Aloss => ref Unsafe.AsRef<byte>(&Handle->Aloss);
-		public ref byte Rshift => ref Unsafe.AsRef<byte>(&Handle->Rshift);
-		public ref byte Gshift => ref Unsafe.AsRef<byte>(&Handle->Gshift);
-		public ref byte Bshift => ref Unsafe.AsRef<byte>(&Handle->Bshift);
-		public ref byte Ashift => ref Unsafe.AsRef<byte>(&Handle->Ashift);
-		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
-		public ref SDLPixelFormatPtr Next => ref Unsafe.AsRef<SDLPixelFormatPtr>(&Handle->Next);
-	}
-
-	/// <summary>
 	/// The structure that defines a point (integer)<br/>
 	/// <br/>
 	/// </summary>
@@ -1190,47 +603,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// The structure that defines a point (integer)<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Point")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLPointPtr : IEquatable<SDLPointPtr>
-	{
-		public SDLPointPtr(SDLPoint* handle) { Handle = handle; }
-
-		public SDLPoint* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLPointPtr Null => new SDLPointPtr(null);
-
-		public static implicit operator SDLPointPtr(SDLPoint* handle) => new SDLPointPtr(handle);
-
-		public static implicit operator SDLPoint*(SDLPointPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLPointPtr left, SDLPointPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLPointPtr left, SDLPointPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLPointPtr left, SDLPoint* right) => left.Handle == right;
-
-		public static bool operator !=(SDLPointPtr left, SDLPoint* right) => left.Handle != right;
-
-		public bool Equals(SDLPointPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLPointPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLPointPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref int X => ref Unsafe.AsRef<int>(&Handle->X);
-		public ref int Y => ref Unsafe.AsRef<int>(&Handle->Y);
-	}
-
-	/// <summary>
 	/// The structure that defines a point (floating point)<br/>
 	/// <br/>
 	/// </summary>
@@ -1246,47 +618,6 @@ namespace HexaEngine.SDL2
 		public float Y;
 
 
-	}
-
-	/// <summary>
-	/// The structure that defines a point (floating point)<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_FPoint")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLFPointPtr : IEquatable<SDLFPointPtr>
-	{
-		public SDLFPointPtr(SDLFPoint* handle) { Handle = handle; }
-
-		public SDLFPoint* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLFPointPtr Null => new SDLFPointPtr(null);
-
-		public static implicit operator SDLFPointPtr(SDLFPoint* handle) => new SDLFPointPtr(handle);
-
-		public static implicit operator SDLFPoint*(SDLFPointPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLFPointPtr left, SDLFPointPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLFPointPtr left, SDLFPointPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLFPointPtr left, SDLFPoint* right) => left.Handle == right;
-
-		public static bool operator !=(SDLFPointPtr left, SDLFPoint* right) => left.Handle != right;
-
-		public bool Equals(SDLFPointPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLFPointPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLFPointPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
-		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
 	}
 
 	/// <summary>
@@ -1314,49 +645,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// A rectangle, with the origin at the upper left (integer).<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Rect")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLRectPtr : IEquatable<SDLRectPtr>
-	{
-		public SDLRectPtr(SDLRect* handle) { Handle = handle; }
-
-		public SDLRect* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLRectPtr Null => new SDLRectPtr(null);
-
-		public static implicit operator SDLRectPtr(SDLRect* handle) => new SDLRectPtr(handle);
-
-		public static implicit operator SDLRect*(SDLRectPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLRectPtr left, SDLRectPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLRectPtr left, SDLRectPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLRectPtr left, SDLRect* right) => left.Handle == right;
-
-		public static bool operator !=(SDLRectPtr left, SDLRect* right) => left.Handle != right;
-
-		public bool Equals(SDLRectPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLRectPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLRectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref int X => ref Unsafe.AsRef<int>(&Handle->X);
-		public ref int Y => ref Unsafe.AsRef<int>(&Handle->Y);
-		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
-		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
-	}
-
-	/// <summary>
 	/// A rectangle, with the origin at the upper left (floating point).<br/>
 	/// <br/>
 	/// </summary>
@@ -1380,90 +668,12 @@ namespace HexaEngine.SDL2
 
 	}
 
-	/// <summary>
-	/// A rectangle, with the origin at the upper left (floating point).<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_FRect")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLFRectPtr : IEquatable<SDLFRectPtr>
-	{
-		public SDLFRectPtr(SDLFRect* handle) { Handle = handle; }
-
-		public SDLFRect* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLFRectPtr Null => new SDLFRectPtr(null);
-
-		public static implicit operator SDLFRectPtr(SDLFRect* handle) => new SDLFRectPtr(handle);
-
-		public static implicit operator SDLFRect*(SDLFRectPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLFRectPtr left, SDLFRectPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLFRectPtr left, SDLFRectPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLFRectPtr left, SDLFRect* right) => left.Handle == right;
-
-		public static bool operator !=(SDLFRectPtr left, SDLFRect* right) => left.Handle != right;
-
-		public bool Equals(SDLFRectPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLFRectPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLFRectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
-		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
-		public ref float W => ref Unsafe.AsRef<float>(&Handle->W);
-		public ref float H => ref Unsafe.AsRef<float>(&Handle->H);
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "SDL_BlitMap")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SDLBlitMap
 	{
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "SDL_BlitMap")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLBlitMapPtr : IEquatable<SDLBlitMapPtr>
-	{
-		public SDLBlitMapPtr(SDLBlitMap* handle) { Handle = handle; }
-
-		public SDLBlitMap* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLBlitMapPtr Null => new SDLBlitMapPtr(null);
-
-		public static implicit operator SDLBlitMapPtr(SDLBlitMap* handle) => new SDLBlitMapPtr(handle);
-
-		public static implicit operator SDLBlitMap*(SDLBlitMapPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLBlitMapPtr left, SDLBlitMapPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLBlitMapPtr left, SDLBlitMapPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLBlitMapPtr left, SDLBlitMap* right) => left.Handle == right;
-
-		public static bool operator !=(SDLBlitMapPtr left, SDLBlitMap* right) => left.Handle != right;
-
-		public bool Equals(SDLBlitMapPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLBlitMapPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLBlitMapPtr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	/// <summary>
@@ -1566,136 +776,6 @@ namespace HexaEngine.SDL2
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Surface")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLSurfacePtr : IEquatable<SDLSurfacePtr>
-	{
-		public SDLSurfacePtr(SDLSurface* handle) { Handle = handle; }
-
-		public SDLSurface* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLSurfacePtr Null => new SDLSurfacePtr(null);
-
-		public static implicit operator SDLSurfacePtr(SDLSurface* handle) => new SDLSurfacePtr(handle);
-
-		public static implicit operator SDLSurface*(SDLSurfacePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLSurfacePtr left, SDLSurfacePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLSurfacePtr left, SDLSurfacePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLSurfacePtr left, SDLSurface* right) => left.Handle == right;
-
-		public static bool operator !=(SDLSurfacePtr left, SDLSurface* right) => left.Handle != right;
-
-		public bool Equals(SDLSurfacePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLSurfacePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLSurfacePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref SDLPixelFormatPtr Format => ref Unsafe.AsRef<SDLPixelFormatPtr>(&Handle->Format);
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref int Pitch => ref Unsafe.AsRef<int>(&Handle->Pitch);
-		/// <summary>
-		/// Read-write <br/>
-		/// </summary>
-		public void* Pixels { get => Handle->Pixels; set => Handle->Pixels = value; }
-		/// <summary>
-		/// Read-write <br/>
-		/// </summary>
-		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref int Locked => ref Unsafe.AsRef<int>(&Handle->Locked);
-		/// <summary>
-		/// Private <br/>
-		/// </summary>
-		public void* ListBlitmap { get => Handle->ListBlitmap; set => Handle->ListBlitmap = value; }
-		/// <summary>
-		/// Read-only <br/>
-		/// </summary>
-		public ref SDLRect ClipRect => ref Unsafe.AsRef<SDLRect>(&Handle->ClipRect);
-		/// <summary>
-		/// Private <br/>
-		/// </summary>
-		public ref SDLBlitMapPtr Map => ref Unsafe.AsRef<SDLBlitMapPtr>(&Handle->Map);
-		/// <summary>
-		/// Read-mostly <br/>
-		/// </summary>
-		public ref int Refcount => ref Unsafe.AsRef<int>(&Handle->Refcount);
-	}
-
-	/// <summary>
-	/// <br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Surface")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLSurfacePtrPtr : IEquatable<SDLSurfacePtrPtr>
-	{
-		public SDLSurfacePtrPtr(SDLSurface** handle) { Handle = handle; }
-
-		public SDLSurface** Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLSurfacePtrPtr Null => new SDLSurfacePtrPtr(null);
-
-		public static implicit operator SDLSurfacePtrPtr(SDLSurface** handle) => new SDLSurfacePtrPtr(handle);
-
-		public static implicit operator SDLSurface**(SDLSurfacePtrPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLSurfacePtrPtr left, SDLSurfacePtrPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLSurfacePtrPtr left, SDLSurfacePtrPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLSurfacePtrPtr left, SDLSurface** right) => left.Handle == right;
-
-		public static bool operator !=(SDLSurfacePtrPtr left, SDLSurface** right) => left.Handle != right;
-
-		public bool Equals(SDLSurfacePtrPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLSurfacePtrPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLSurfacePtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public SDLSurfacePtr this[int index]
-		{
-			get => Handle[index]; set => Handle[index] = value;
-		}
-	}
-
-	/// <summary>
-	/// <br/>
-	/// <br/>
-	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_DisplayMode")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SDLDisplayMode
@@ -1743,153 +823,12 @@ namespace HexaEngine.SDL2
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_DisplayMode")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLDisplayModePtr : IEquatable<SDLDisplayModePtr>
-	{
-		public SDLDisplayModePtr(SDLDisplayMode* handle) { Handle = handle; }
-
-		public SDLDisplayMode* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLDisplayModePtr Null => new SDLDisplayModePtr(null);
-
-		public static implicit operator SDLDisplayModePtr(SDLDisplayMode* handle) => new SDLDisplayModePtr(handle);
-
-		public static implicit operator SDLDisplayMode*(SDLDisplayModePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLDisplayModePtr left, SDLDisplayModePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLDisplayModePtr left, SDLDisplayModePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLDisplayModePtr left, SDLDisplayMode* right) => left.Handle == right;
-
-		public static bool operator !=(SDLDisplayModePtr left, SDLDisplayMode* right) => left.Handle != right;
-
-		public bool Equals(SDLDisplayModePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLDisplayModePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLDisplayModePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// pixel format <br/>
-		/// </summary>
-		public ref uint Format => ref Unsafe.AsRef<uint>(&Handle->Format);
-		/// <summary>
-		/// width, in screen coordinates <br/>
-		/// </summary>
-		public ref int W => ref Unsafe.AsRef<int>(&Handle->W);
-		/// <summary>
-		/// height, in screen coordinates <br/>
-		/// </summary>
-		public ref int H => ref Unsafe.AsRef<int>(&Handle->H);
-		/// <summary>
-		/// refresh rate (or zero for unspecified) <br/>
-		/// </summary>
-		public ref int RefreshRate => ref Unsafe.AsRef<int>(&Handle->RefreshRate);
-		/// <summary>
-		/// driver-specific data, initialize to 0 <br/>
-		/// </summary>
-		public void* Driverdata { get => Handle->Driverdata; set => Handle->Driverdata = value; }
-	}
-
-	/// <summary>
-	/// <br/>
-	/// <br/>
-	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_Window")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SDLWindow
 	{
 
 
-	}
-
-	/// <summary>
-	/// <br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Window")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLWindowPtr : IEquatable<SDLWindowPtr>
-	{
-		public SDLWindowPtr(SDLWindow* handle) { Handle = handle; }
-
-		public SDLWindow* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLWindowPtr Null => new SDLWindowPtr(null);
-
-		public static implicit operator SDLWindowPtr(SDLWindow* handle) => new SDLWindowPtr(handle);
-
-		public static implicit operator SDLWindow*(SDLWindowPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLWindowPtr left, SDLWindowPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLWindowPtr left, SDLWindowPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLWindowPtr left, SDLWindow* right) => left.Handle == right;
-
-		public static bool operator !=(SDLWindowPtr left, SDLWindow* right) => left.Handle != right;
-
-		public bool Equals(SDLWindowPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLWindowPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLWindowPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
-	/// <summary>
-	/// <br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Window")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLWindowPtrPtr : IEquatable<SDLWindowPtrPtr>
-	{
-		public SDLWindowPtrPtr(SDLWindow** handle) { Handle = handle; }
-
-		public SDLWindow** Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLWindowPtrPtr Null => new SDLWindowPtrPtr(null);
-
-		public static implicit operator SDLWindowPtrPtr(SDLWindow** handle) => new SDLWindowPtrPtr(handle);
-
-		public static implicit operator SDLWindow**(SDLWindowPtrPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLWindowPtrPtr left, SDLWindowPtrPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLWindowPtrPtr left, SDLWindowPtrPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLWindowPtrPtr left, SDLWindow** right) => left.Handle == right;
-
-		public static bool operator !=(SDLWindowPtrPtr left, SDLWindow** right) => left.Handle != right;
-
-		public bool Equals(SDLWindowPtrPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLWindowPtrPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLWindowPtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public SDLWindowPtr this[int index]
-		{
-			get => Handle[index]; set => Handle[index] = value;
-		}
 	}
 
 	/// <summary>
@@ -1936,41 +875,6 @@ namespace HexaEngine.SDL2
 
 	}
 
-	[NativeName(NativeNameType.Typedef, "SDL_Cursor")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLCursorPtr : IEquatable<SDLCursorPtr>
-	{
-		public SDLCursorPtr(SDLCursor* handle) { Handle = handle; }
-
-		public SDLCursor* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLCursorPtr Null => new SDLCursorPtr(null);
-
-		public static implicit operator SDLCursorPtr(SDLCursor* handle) => new SDLCursorPtr(handle);
-
-		public static implicit operator SDLCursor*(SDLCursorPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLCursorPtr left, SDLCursorPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLCursorPtr left, SDLCursorPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLCursorPtr left, SDLCursor* right) => left.Handle == right;
-
-		public static bool operator !=(SDLCursorPtr left, SDLCursor* right) => left.Handle != right;
-
-		public bool Equals(SDLCursorPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLCursorPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLCursorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
 	/// <summary>
 	/// An SDL_GUID is a 128-bit identifier for an input device that<br/>
 	/// identifies that device across runs of SDL programs on the same<br/>
@@ -1986,7 +890,7 @@ namespace HexaEngine.SDL2
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_GUID")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct SdlGuid
+	public partial struct SdL_Guid
 	{
 		[NativeName(NativeNameType.Field, "data")]
 		[NativeName(NativeNameType.Type, "Uint8[16]")]
@@ -2167,127 +1071,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// The structure that defines an extended virtual joystick description<br/>
-	/// The caller must zero the structure and then initialize the version with `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` before passing it to SDL_JoystickAttachVirtualEx()<br/>
-	/// All other elements of this structure are optional and can be left 0.<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_VirtualJoystickDesc")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLVirtualJoystickDescPtr : IEquatable<SDLVirtualJoystickDescPtr>
-	{
-		public SDLVirtualJoystickDescPtr(SDLVirtualJoystickDesc* handle) { Handle = handle; }
-
-		public SDLVirtualJoystickDesc* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLVirtualJoystickDescPtr Null => new SDLVirtualJoystickDescPtr(null);
-
-		public static implicit operator SDLVirtualJoystickDescPtr(SDLVirtualJoystickDesc* handle) => new SDLVirtualJoystickDescPtr(handle);
-
-		public static implicit operator SDLVirtualJoystickDesc*(SDLVirtualJoystickDescPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDescPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDescPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDesc* right) => left.Handle == right;
-
-		public static bool operator !=(SDLVirtualJoystickDescPtr left, SDLVirtualJoystickDesc* right) => left.Handle != right;
-
-		public bool Equals(SDLVirtualJoystickDescPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLVirtualJoystickDescPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLVirtualJoystickDescPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// `SDL_VIRTUAL_JOYSTICK_DESC_VERSION` <br/>
-		/// </summary>
-		public ref ushort Version => ref Unsafe.AsRef<ushort>(&Handle->Version);
-		/// <summary>
-		/// `SDL_JoystickType` <br/>
-		/// </summary>
-		public ref ushort Type => ref Unsafe.AsRef<ushort>(&Handle->Type);
-		/// <summary>
-		/// the number of axes on this joystick <br/>
-		/// </summary>
-		public ref ushort Naxes => ref Unsafe.AsRef<ushort>(&Handle->Naxes);
-		/// <summary>
-		/// the number of buttons on this joystick <br/>
-		/// </summary>
-		public ref ushort Nbuttons => ref Unsafe.AsRef<ushort>(&Handle->Nbuttons);
-		/// <summary>
-		/// the number of hats on this joystick <br/>
-		/// </summary>
-		public ref ushort Nhats => ref Unsafe.AsRef<ushort>(&Handle->Nhats);
-		/// <summary>
-		/// the USB vendor ID of this joystick <br/>
-		/// </summary>
-		public ref ushort VendorId => ref Unsafe.AsRef<ushort>(&Handle->VendorId);
-		/// <summary>
-		/// the USB product ID of this joystick <br/>
-		/// </summary>
-		public ref ushort ProductId => ref Unsafe.AsRef<ushort>(&Handle->ProductId);
-		/// <summary>
-		/// unused <br/>
-		/// </summary>
-		public ref ushort Padding => ref Unsafe.AsRef<ushort>(&Handle->Padding);
-		/// <summary>
-		/// A mask of which buttons are valid for this controller<br/>
-		/// e.g. (1 <br/>
-		/// <<br/>
-		/// <<br/>
-		/// SDL_CONTROLLER_BUTTON_A) <br/>
-		/// </summary>
-		public ref uint ButtonMask => ref Unsafe.AsRef<uint>(&Handle->ButtonMask);
-		/// <summary>
-		/// A mask of which axes are valid for this controller<br/>
-		/// e.g. (1 <br/>
-		/// <<br/>
-		/// <<br/>
-		/// SDL_CONTROLLER_AXIS_LEFTX) <br/>
-		/// </summary>
-		public ref uint AxisMask => ref Unsafe.AsRef<uint>(&Handle->AxisMask);
-		/// <summary>
-		/// the name of the joystick <br/>
-		/// </summary>
-		public byte* Name { get => Handle->Name; set => Handle->Name = value; }
-		/// <summary>
-		/// User data pointer passed to callbacks <br/>
-		/// </summary>
-		public void* Userdata { get => Handle->Userdata; set => Handle->Userdata = value; }
-		/// <summary>
-		/// Called when the joystick state should be updated <br/>
-		/// </summary>
-		public void* Update { get => Handle->Update; set => Handle->Update = value; }
-		/// <summary>
-		/// Called when the player index is set <br/>
-		/// </summary>
-		public void* SetPlayerIndex { get => Handle->SetPlayerIndex; set => Handle->SetPlayerIndex = value; }
-		/// <summary>
-		/// Implements SDL_JoystickRumble() <br/>
-		/// </summary>
-		public void* Rumble { get => Handle->Rumble; set => Handle->Rumble = value; }
-		/// <summary>
-		/// Implements SDL_JoystickRumbleTriggers() <br/>
-		/// </summary>
-		public void* RumbleTriggers { get => Handle->RumbleTriggers; set => Handle->RumbleTriggers = value; }
-		/// <summary>
-		/// Implements SDL_JoystickSetLED() <br/>
-		/// </summary>
-		public void* SetLED { get => Handle->SetLED; set => Handle->SetLED = value; }
-		/// <summary>
-		/// Implements SDL_JoystickSendEffect() <br/>
-		/// </summary>
-		public void* SendEffect { get => Handle->SendEffect; set => Handle->SendEffect = value; }
-	}
-
-	/// <summary>
 	/// <br/>
 	/// In order to use these functions, SDL_Init() must have been called<br/>
 	/// with the ::SDL_INIT_SENSOR flag.  This causes SDL to scan the system<br/>
@@ -2381,45 +1164,6 @@ namespace HexaEngine.SDL2
 		public float Pressure;
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "SDL_Finger")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLFingerPtr : IEquatable<SDLFingerPtr>
-	{
-		public SDLFingerPtr(SDLFinger* handle) { Handle = handle; }
-
-		public SDLFinger* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLFingerPtr Null => new SDLFingerPtr(null);
-
-		public static implicit operator SDLFingerPtr(SDLFinger* handle) => new SDLFingerPtr(handle);
-
-		public static implicit operator SDLFinger*(SDLFingerPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLFingerPtr left, SDLFingerPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLFingerPtr left, SDLFingerPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLFingerPtr left, SDLFinger* right) => left.Handle == right;
-
-		public static bool operator !=(SDLFingerPtr left, SDLFinger* right) => left.Handle != right;
-
-		public bool Equals(SDLFingerPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLFingerPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLFingerPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public ref long Id => ref Unsafe.AsRef<long>(&Handle->Id);
-		public ref float X => ref Unsafe.AsRef<float>(&Handle->X);
-		public ref float Y => ref Unsafe.AsRef<float>(&Handle->Y);
-		public ref float Pressure => ref Unsafe.AsRef<float>(&Handle->Pressure);
 	}
 
 	/// <summary>
@@ -4069,41 +2813,6 @@ namespace HexaEngine.SDL2
 
 	}
 
-	[NativeName(NativeNameType.Typedef, "SDL_SysWMmsg")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLSysWMmsgPtr : IEquatable<SDLSysWMmsgPtr>
-	{
-		public SDLSysWMmsgPtr(SDLSysWMmsg* handle) { Handle = handle; }
-
-		public SDLSysWMmsg* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLSysWMmsgPtr Null => new SDLSysWMmsgPtr(null);
-
-		public static implicit operator SDLSysWMmsgPtr(SDLSysWMmsg* handle) => new SDLSysWMmsgPtr(handle);
-
-		public static implicit operator SDLSysWMmsg*(SDLSysWMmsgPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLSysWMmsgPtr left, SDLSysWMmsgPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLSysWMmsgPtr left, SDLSysWMmsgPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLSysWMmsgPtr left, SDLSysWMmsg* right) => left.Handle == right;
-
-		public static bool operator !=(SDLSysWMmsgPtr left, SDLSysWMmsg* right) => left.Handle != right;
-
-		public bool Equals(SDLSysWMmsgPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLSysWMmsgPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLSysWMmsgPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
 	/// <summary>
 	/// <br/>
 	/// <br/>
@@ -4533,188 +3242,6 @@ namespace HexaEngine.SDL2
 		/// the next multiple of 16, 64, and on architectures where pointers are<br/>
 		/// even larger the size of SDL_UserEvent will dominate as being 3 pointers.<br/>
 		/// </summary>
-	}
-
-	/// <summary>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Event")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLEventPtr : IEquatable<SDLEventPtr>
-	{
-		public SDLEventPtr(SDLEvent* handle) { Handle = handle; }
-
-		public SDLEvent* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLEventPtr Null => new SDLEventPtr(null);
-
-		public static implicit operator SDLEventPtr(SDLEvent* handle) => new SDLEventPtr(handle);
-
-		public static implicit operator SDLEvent*(SDLEventPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLEventPtr left, SDLEventPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLEventPtr left, SDLEventPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLEventPtr left, SDLEvent* right) => left.Handle == right;
-
-		public static bool operator !=(SDLEventPtr left, SDLEvent* right) => left.Handle != right;
-
-		public bool Equals(SDLEventPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLEventPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLEventPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Event type, shared with all events <br/>
-		/// </summary>
-		public ref uint Type => ref Unsafe.AsRef<uint>(&Handle->Type);
-		/// <summary>
-		/// Common event data <br/>
-		/// </summary>
-		public ref SDLCommonEvent Common => ref Unsafe.AsRef<SDLCommonEvent>(&Handle->Common);
-		/// <summary>
-		/// Display event data <br/>
-		/// </summary>
-		public ref SDLDisplayEvent Display => ref Unsafe.AsRef<SDLDisplayEvent>(&Handle->Display);
-		/// <summary>
-		/// Window event data <br/>
-		/// </summary>
-		public ref SDLWindowEvent Window => ref Unsafe.AsRef<SDLWindowEvent>(&Handle->Window);
-		/// <summary>
-		/// Keyboard event data <br/>
-		/// </summary>
-		public ref SDLKeyboardEvent Key => ref Unsafe.AsRef<SDLKeyboardEvent>(&Handle->Key);
-		/// <summary>
-		/// Text editing event data <br/>
-		/// </summary>
-		public ref SDLTextEditingEvent Edit => ref Unsafe.AsRef<SDLTextEditingEvent>(&Handle->Edit);
-		/// <summary>
-		/// Extended text editing event data <br/>
-		/// </summary>
-		public ref SDLTextEditingExtEvent EditExt => ref Unsafe.AsRef<SDLTextEditingExtEvent>(&Handle->EditExt);
-		/// <summary>
-		/// Text input event data <br/>
-		/// </summary>
-		public ref SDLTextInputEvent Text => ref Unsafe.AsRef<SDLTextInputEvent>(&Handle->Text);
-		/// <summary>
-		/// Mouse motion event data <br/>
-		/// </summary>
-		public ref SDLMouseMotionEvent Motion => ref Unsafe.AsRef<SDLMouseMotionEvent>(&Handle->Motion);
-		/// <summary>
-		/// Mouse button event data <br/>
-		/// </summary>
-		public ref SDLMouseButtonEvent Button => ref Unsafe.AsRef<SDLMouseButtonEvent>(&Handle->Button);
-		/// <summary>
-		/// Mouse wheel event data <br/>
-		/// </summary>
-		public ref SDLMouseWheelEvent Wheel => ref Unsafe.AsRef<SDLMouseWheelEvent>(&Handle->Wheel);
-		/// <summary>
-		/// Joystick axis event data <br/>
-		/// </summary>
-		public ref SDLJoyAxisEvent Jaxis => ref Unsafe.AsRef<SDLJoyAxisEvent>(&Handle->Jaxis);
-		/// <summary>
-		/// Joystick ball event data <br/>
-		/// </summary>
-		public ref SDLJoyBallEvent Jball => ref Unsafe.AsRef<SDLJoyBallEvent>(&Handle->Jball);
-		/// <summary>
-		/// Joystick hat event data <br/>
-		/// </summary>
-		public ref SDLJoyHatEvent Jhat => ref Unsafe.AsRef<SDLJoyHatEvent>(&Handle->Jhat);
-		/// <summary>
-		/// Joystick button event data <br/>
-		/// </summary>
-		public ref SDLJoyButtonEvent Jbutton => ref Unsafe.AsRef<SDLJoyButtonEvent>(&Handle->Jbutton);
-		/// <summary>
-		/// Joystick device change event data <br/>
-		/// </summary>
-		public ref SDLJoyDeviceEvent Jdevice => ref Unsafe.AsRef<SDLJoyDeviceEvent>(&Handle->Jdevice);
-		/// <summary>
-		/// Joystick battery event data <br/>
-		/// </summary>
-		public ref SDLJoyBatteryEvent Jbattery => ref Unsafe.AsRef<SDLJoyBatteryEvent>(&Handle->Jbattery);
-		/// <summary>
-		/// Game Controller axis event data <br/>
-		/// </summary>
-		public ref SDLControllerAxisEvent Caxis => ref Unsafe.AsRef<SDLControllerAxisEvent>(&Handle->Caxis);
-		/// <summary>
-		/// Game Controller button event data <br/>
-		/// </summary>
-		public ref SDLControllerButtonEvent Cbutton => ref Unsafe.AsRef<SDLControllerButtonEvent>(&Handle->Cbutton);
-		/// <summary>
-		/// Game Controller device event data <br/>
-		/// </summary>
-		public ref SDLControllerDeviceEvent Cdevice => ref Unsafe.AsRef<SDLControllerDeviceEvent>(&Handle->Cdevice);
-		/// <summary>
-		/// Game Controller touchpad event data <br/>
-		/// </summary>
-		public ref SDLControllerTouchpadEvent Ctouchpad => ref Unsafe.AsRef<SDLControllerTouchpadEvent>(&Handle->Ctouchpad);
-		/// <summary>
-		/// Game Controller sensor event data <br/>
-		/// </summary>
-		public ref SDLControllerSensorEvent Csensor => ref Unsafe.AsRef<SDLControllerSensorEvent>(&Handle->Csensor);
-		/// <summary>
-		/// Audio device event data <br/>
-		/// </summary>
-		public ref SDLAudioDeviceEvent Adevice => ref Unsafe.AsRef<SDLAudioDeviceEvent>(&Handle->Adevice);
-		/// <summary>
-		/// Sensor event data <br/>
-		/// </summary>
-		public ref SDLSensorEvent Sensor => ref Unsafe.AsRef<SDLSensorEvent>(&Handle->Sensor);
-		/// <summary>
-		/// Quit request event data <br/>
-		/// </summary>
-		public ref SDLQuitEvent Quit => ref Unsafe.AsRef<SDLQuitEvent>(&Handle->Quit);
-		/// <summary>
-		/// Custom event data <br/>
-		/// </summary>
-		public ref SDLUserEvent User => ref Unsafe.AsRef<SDLUserEvent>(&Handle->User);
-		/// <summary>
-		/// System dependent window event data <br/>
-		/// </summary>
-		public ref SDLSysWMEvent Syswm => ref Unsafe.AsRef<SDLSysWMEvent>(&Handle->Syswm);
-		/// <summary>
-		/// Touch finger event data <br/>
-		/// </summary>
-		public ref SDLTouchFingerEvent Tfinger => ref Unsafe.AsRef<SDLTouchFingerEvent>(&Handle->Tfinger);
-		/// <summary>
-		/// Gesture event data <br/>
-		/// </summary>
-		public ref SDLMultiGestureEvent Mgesture => ref Unsafe.AsRef<SDLMultiGestureEvent>(&Handle->Mgesture);
-		/// <summary>
-		/// Gesture event data <br/>
-		/// </summary>
-		public ref SDLDollarGestureEvent Dgesture => ref Unsafe.AsRef<SDLDollarGestureEvent>(&Handle->Dgesture);
-		/// <summary>
-		/// Drag and drop event data <br/>
-		/// </summary>
-		public ref SDLDropEvent Drop => ref Unsafe.AsRef<SDLDropEvent>(&Handle->Drop);
-		/// <summary>
-		/// This is necessary for ABI compatibility between Visual C++ and GCC.<br/>
-		/// Visual C++ will respect the push pack pragma and use 52 bytes (size of<br/>
-		/// SDL_TextEditingEvent, the largest structure for 32-bit and 64-bit<br/>
-		/// architectures) for this union, and GCC will use the alignment of the<br/>
-		/// largest datatype within the union, which is 8 bytes on 64-bit<br/>
-		/// architectures.<br/>
-		/// So... we'll add padding to force the size to be 56 bytes for both.<br/>
-		/// On architectures where pointers are 16 bytes, this needs rounding up to<br/>
-		/// the next multiple of 16, 64, and on architectures where pointers are<br/>
-		/// even larger the size of SDL_UserEvent will dominate as being 3 pointers.<br/>
-		/// </summary>
-		public unsafe Span<byte> Padding
-		
-		{
-			get
-			{
-				return new Span<byte>(&Handle->Padding_0, 56);
-			}
-		}
 	}
 
 	/// <summary>
@@ -5510,91 +4037,6 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// <br/>
-	/// All values max at 32767 (0x7FFF).  Signed values also can be negative.<br/>
-	/// Time values unless specified otherwise are in milliseconds.<br/>
-	/// You can also pass ::SDL_HAPTIC_INFINITY to length instead of a 0-32767<br/>
-	/// value.  Neither delay, interval, attack_length nor fade_length support<br/>
-	/// ::SDL_HAPTIC_INFINITY.  Fade will also not be used since effect never ends.<br/>
-	/// Additionally, the ::SDL_HAPTIC_RAMP effect does not support a duration of<br/>
-	/// ::SDL_HAPTIC_INFINITY.<br/>
-	/// Button triggers may not be supported on all devices, it is advised to not<br/>
-	/// use them if possible.  Buttons start at index 1 instead of index 0 like<br/>
-	/// the joystick.<br/>
-	/// If both attack_length and fade_level are 0, the envelope is not used,<br/>
-	/// otherwise both values are used.<br/>
-	/// Common parts:<br/>
-	/// <br/>
-	/// Here we have an example of a constant effect evolution in time:<br/>
-	/// <br/>
-	/// Note either the attack_level or the fade_level may be above the actual<br/>
-	/// effect level.<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_HapticEffect")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLHapticEffectPtr : IEquatable<SDLHapticEffectPtr>
-	{
-		public SDLHapticEffectPtr(SDLHapticEffect* handle) { Handle = handle; }
-
-		public SDLHapticEffect* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLHapticEffectPtr Null => new SDLHapticEffectPtr(null);
-
-		public static implicit operator SDLHapticEffectPtr(SDLHapticEffect* handle) => new SDLHapticEffectPtr(handle);
-
-		public static implicit operator SDLHapticEffect*(SDLHapticEffectPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLHapticEffectPtr left, SDLHapticEffectPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLHapticEffectPtr left, SDLHapticEffectPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLHapticEffectPtr left, SDLHapticEffect* right) => left.Handle == right;
-
-		public static bool operator !=(SDLHapticEffectPtr left, SDLHapticEffect* right) => left.Handle != right;
-
-		public bool Equals(SDLHapticEffectPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLHapticEffectPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLHapticEffectPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Effect type. <br/>
-		/// </summary>
-		public ref ushort Type => ref Unsafe.AsRef<ushort>(&Handle->Type);
-		/// <summary>
-		/// Constant effect. <br/>
-		/// </summary>
-		public ref SDLHapticConstant Constant => ref Unsafe.AsRef<SDLHapticConstant>(&Handle->Constant);
-		/// <summary>
-		/// Periodic effect. <br/>
-		/// </summary>
-		public ref SDLHapticPeriodic Periodic => ref Unsafe.AsRef<SDLHapticPeriodic>(&Handle->Periodic);
-		/// <summary>
-		/// Condition effect. <br/>
-		/// </summary>
-		public ref SDLHapticCondition Condition => ref Unsafe.AsRef<SDLHapticCondition>(&Handle->Condition);
-		/// <summary>
-		/// Ramp effect. <br/>
-		/// </summary>
-		public ref SDLHapticRamp Ramp => ref Unsafe.AsRef<SDLHapticRamp>(&Handle->Ramp);
-		/// <summary>
-		/// Left/Right effect. <br/>
-		/// </summary>
-		public ref SDLHapticLeftRight Leftright => ref Unsafe.AsRef<SDLHapticLeftRight>(&Handle->Leftright);
-		/// <summary>
-		/// Custom effect. <br/>
-		/// </summary>
-		public ref SDLHapticCustom Custom => ref Unsafe.AsRef<SDLHapticCustom>(&Handle->Custom);
-	}
-
-	/// <summary>
-	/// <br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_hid_device_")]
 	[StructLayout(LayoutKind.Sequential)]
@@ -5715,103 +4157,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// hidapi info structure <br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_hid_device_info")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLHidDeviceInfoPtr : IEquatable<SDLHidDeviceInfoPtr>
-	{
-		public SDLHidDeviceInfoPtr(SDLHidDeviceInfo* handle) { Handle = handle; }
-
-		public SDLHidDeviceInfo* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLHidDeviceInfoPtr Null => new SDLHidDeviceInfoPtr(null);
-
-		public static implicit operator SDLHidDeviceInfoPtr(SDLHidDeviceInfo* handle) => new SDLHidDeviceInfoPtr(handle);
-
-		public static implicit operator SDLHidDeviceInfo*(SDLHidDeviceInfoPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLHidDeviceInfoPtr left, SDLHidDeviceInfoPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLHidDeviceInfoPtr left, SDLHidDeviceInfoPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLHidDeviceInfoPtr left, SDLHidDeviceInfo* right) => left.Handle == right;
-
-		public static bool operator !=(SDLHidDeviceInfoPtr left, SDLHidDeviceInfo* right) => left.Handle != right;
-
-		public bool Equals(SDLHidDeviceInfoPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLHidDeviceInfoPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLHidDeviceInfoPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Platform-specific device path <br/>
-		/// </summary>
-		public byte* Path { get => Handle->Path; set => Handle->Path = value; }
-		/// <summary>
-		/// Device Vendor ID <br/>
-		/// </summary>
-		public ref ushort VendorId => ref Unsafe.AsRef<ushort>(&Handle->VendorId);
-		/// <summary>
-		/// Device Product ID <br/>
-		/// </summary>
-		public ref ushort ProductId => ref Unsafe.AsRef<ushort>(&Handle->ProductId);
-		/// <summary>
-		/// Serial Number <br/>
-		/// </summary>
-		public char* SerialNumber { get => Handle->SerialNumber; set => Handle->SerialNumber = value; }
-		/// <summary>
-		/// Device Release Number in binary-coded decimal,<br/>
-		/// also known as Device Version Number <br/>
-		/// </summary>
-		public ref ushort ReleaseNumber => ref Unsafe.AsRef<ushort>(&Handle->ReleaseNumber);
-		/// <summary>
-		/// Manufacturer String <br/>
-		/// </summary>
-		public char* ManufacturerString { get => Handle->ManufacturerString; set => Handle->ManufacturerString = value; }
-		/// <summary>
-		/// Product string <br/>
-		/// </summary>
-		public char* ProductString { get => Handle->ProductString; set => Handle->ProductString = value; }
-		/// <summary>
-		/// Usage Page for this Device/Interface<br/>
-		/// (Windows/Mac only). <br/>
-		/// </summary>
-		public ref ushort UsagePage => ref Unsafe.AsRef<ushort>(&Handle->UsagePage);
-		/// <summary>
-		/// Usage for this Device/Interface<br/>
-		/// (Windows/Mac only).<br/>
-		/// </summary>
-		public ref ushort Usage => ref Unsafe.AsRef<ushort>(&Handle->Usage);
-		/// <summary>
-		/// The USB interface which this logical device<br/>
-		/// represents.<br/>
-		/// Valid on both Linux implementations in all cases.<br/>
-		/// Valid on the Windows implementation only if the device<br/>
-		/// contains more than one interface. <br/>
-		/// </summary>
-		public ref int InterfaceNumber => ref Unsafe.AsRef<int>(&Handle->InterfaceNumber);
-		/// <summary>
-		/// Additional information about the USB interface.<br/>
-		/// Valid on libusb and Android implementations. <br/>
-		/// </summary>
-		public ref int InterfaceClass => ref Unsafe.AsRef<int>(&Handle->InterfaceClass);
-		public ref int InterfaceSubclass => ref Unsafe.AsRef<int>(&Handle->InterfaceSubclass);
-		public ref int InterfaceProtocol => ref Unsafe.AsRef<int>(&Handle->InterfaceProtocol);
-		/// <summary>
-		/// Pointer to the next device <br/>
-		/// </summary>
-		public ref SDLHidDeviceInfoPtr Next => ref Unsafe.AsRef<SDLHidDeviceInfoPtr>(&Handle->Next);
-	}
-
-	/// <summary>
 	/// Individual button data.<br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_MessageBoxButtonData")]
@@ -5841,56 +4186,6 @@ namespace HexaEngine.SDL2
 
 
 
-	}
-
-	/// <summary>
-	/// Individual button data.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxButtonData")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLMessageBoxButtonDataPtr : IEquatable<SDLMessageBoxButtonDataPtr>
-	{
-		public SDLMessageBoxButtonDataPtr(SDLMessageBoxButtonData* handle) { Handle = handle; }
-
-		public SDLMessageBoxButtonData* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLMessageBoxButtonDataPtr Null => new SDLMessageBoxButtonDataPtr(null);
-
-		public static implicit operator SDLMessageBoxButtonDataPtr(SDLMessageBoxButtonData* handle) => new SDLMessageBoxButtonDataPtr(handle);
-
-		public static implicit operator SDLMessageBoxButtonData*(SDLMessageBoxButtonDataPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonDataPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonDataPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonData* right) => left.Handle == right;
-
-		public static bool operator !=(SDLMessageBoxButtonDataPtr left, SDLMessageBoxButtonData* right) => left.Handle != right;
-
-		public bool Equals(SDLMessageBoxButtonDataPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLMessageBoxButtonDataPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLMessageBoxButtonDataPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// ::SDL_MessageBoxButtonFlags <br/>
-		/// </summary>
-		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
-		/// <summary>
-		/// User defined button id (value returned via SDL_ShowMessageBox) <br/>
-		/// </summary>
-		public ref int Buttonid => ref Unsafe.AsRef<int>(&Handle->Buttonid);
-		/// <summary>
-		/// The UTF-8 button text <br/>
-		/// </summary>
-		public byte* Text { get => Handle->Text; set => Handle->Text = value; }
 	}
 
 	/// <summary>
@@ -5938,52 +4233,6 @@ namespace HexaEngine.SDL2
 				{
 					return new Span<SDLMessageBoxColor>(p, 5);
 				}
-			}
-		}
-	}
-
-	/// <summary>
-	/// A set of colors to use for message box dialogs<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxColorScheme")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLMessageBoxColorSchemePtr : IEquatable<SDLMessageBoxColorSchemePtr>
-	{
-		public SDLMessageBoxColorSchemePtr(SDLMessageBoxColorScheme* handle) { Handle = handle; }
-
-		public SDLMessageBoxColorScheme* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLMessageBoxColorSchemePtr Null => new SDLMessageBoxColorSchemePtr(null);
-
-		public static implicit operator SDLMessageBoxColorSchemePtr(SDLMessageBoxColorScheme* handle) => new SDLMessageBoxColorSchemePtr(handle);
-
-		public static implicit operator SDLMessageBoxColorScheme*(SDLMessageBoxColorSchemePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorSchemePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorSchemePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorScheme* right) => left.Handle == right;
-
-		public static bool operator !=(SDLMessageBoxColorSchemePtr left, SDLMessageBoxColorScheme* right) => left.Handle != right;
-
-		public bool Equals(SDLMessageBoxColorSchemePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLMessageBoxColorSchemePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLMessageBoxColorSchemePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public unsafe Span<SDLMessageBoxColor> Colors
-		
-		{
-			get
-			{
-				return new Span<SDLMessageBoxColor>(&Handle->Colors_0, 5);
 			}
 		}
 	}
@@ -6038,66 +4287,6 @@ namespace HexaEngine.SDL2
 
 
 
-	}
-
-	/// <summary>
-	/// MessageBox structure containing title, text, window, etc.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_MessageBoxData")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLMessageBoxDataPtr : IEquatable<SDLMessageBoxDataPtr>
-	{
-		public SDLMessageBoxDataPtr(SDLMessageBoxData* handle) { Handle = handle; }
-
-		public SDLMessageBoxData* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLMessageBoxDataPtr Null => new SDLMessageBoxDataPtr(null);
-
-		public static implicit operator SDLMessageBoxDataPtr(SDLMessageBoxData* handle) => new SDLMessageBoxDataPtr(handle);
-
-		public static implicit operator SDLMessageBoxData*(SDLMessageBoxDataPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLMessageBoxDataPtr left, SDLMessageBoxDataPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLMessageBoxDataPtr left, SDLMessageBoxDataPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLMessageBoxDataPtr left, SDLMessageBoxData* right) => left.Handle == right;
-
-		public static bool operator !=(SDLMessageBoxDataPtr left, SDLMessageBoxData* right) => left.Handle != right;
-
-		public bool Equals(SDLMessageBoxDataPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLMessageBoxDataPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLMessageBoxDataPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// ::SDL_MessageBoxFlags <br/>
-		/// </summary>
-		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
-		/// <summary>
-		/// Parent window, can be NULL <br/>
-		/// </summary>
-		public ref SDLWindowPtr Window => ref Unsafe.AsRef<SDLWindowPtr>(&Handle->Window);
-		/// <summary>
-		/// UTF-8 title <br/>
-		/// </summary>
-		public byte* Title { get => Handle->Title; set => Handle->Title = value; }
-		/// <summary>
-		/// UTF-8 message text <br/>
-		/// </summary>
-		public byte* Message { get => Handle->Message; set => Handle->Message = value; }
-		public ref int Numbuttons => ref Unsafe.AsRef<int>(&Handle->Numbuttons);
-		public ref SDLMessageBoxButtonDataPtr Buttons => ref Unsafe.AsRef<SDLMessageBoxButtonDataPtr>(&Handle->Buttons);
-		/// <summary>
-		/// ::SDL_MessageBoxColorScheme, can be NULL to use system settings <br/>
-		/// </summary>
-		public ref SDLMessageBoxColorSchemePtr ColorScheme => ref Unsafe.AsRef<SDLMessageBoxColorSchemePtr>(&Handle->ColorScheme);
 	}
 
 	/// <summary>
@@ -6172,75 +4361,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// Information on the capabilities of a render driver or context.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_RendererInfo")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLRendererInfoPtr : IEquatable<SDLRendererInfoPtr>
-	{
-		public SDLRendererInfoPtr(SDLRendererInfo* handle) { Handle = handle; }
-
-		public SDLRendererInfo* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLRendererInfoPtr Null => new SDLRendererInfoPtr(null);
-
-		public static implicit operator SDLRendererInfoPtr(SDLRendererInfo* handle) => new SDLRendererInfoPtr(handle);
-
-		public static implicit operator SDLRendererInfo*(SDLRendererInfoPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLRendererInfoPtr left, SDLRendererInfoPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLRendererInfoPtr left, SDLRendererInfoPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLRendererInfoPtr left, SDLRendererInfo* right) => left.Handle == right;
-
-		public static bool operator !=(SDLRendererInfoPtr left, SDLRendererInfo* right) => left.Handle != right;
-
-		public bool Equals(SDLRendererInfoPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLRendererInfoPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLRendererInfoPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// The name of the renderer <br/>
-		/// </summary>
-		public byte* Name { get => Handle->Name; set => Handle->Name = value; }
-		/// <summary>
-		/// Supported ::SDL_RendererFlags <br/>
-		/// </summary>
-		public ref uint Flags => ref Unsafe.AsRef<uint>(&Handle->Flags);
-		/// <summary>
-		/// The number of available texture formats <br/>
-		/// </summary>
-		public ref uint NumTextureFormats => ref Unsafe.AsRef<uint>(&Handle->NumTextureFormats);
-		/// <summary>
-		/// The available texture formats <br/>
-		/// </summary>
-		public unsafe Span<uint> TextureFormats
-		
-		{
-			get
-			{
-				return new Span<uint>(&Handle->TextureFormats_0, 16);
-			}
-		}
-		/// <summary>
-		/// The maximum texture width <br/>
-		/// </summary>
-		public ref int MaxTextureWidth => ref Unsafe.AsRef<int>(&Handle->MaxTextureWidth);
-		/// <summary>
-		/// The maximum texture height <br/>
-		/// </summary>
-		public ref int MaxTextureHeight => ref Unsafe.AsRef<int>(&Handle->MaxTextureHeight);
-	}
-
-	/// <summary>
 	/// Vertex structure<br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_Vertex")]
@@ -6273,56 +4393,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// Vertex structure<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Vertex")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLVertexPtr : IEquatable<SDLVertexPtr>
-	{
-		public SDLVertexPtr(SDLVertex* handle) { Handle = handle; }
-
-		public SDLVertex* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLVertexPtr Null => new SDLVertexPtr(null);
-
-		public static implicit operator SDLVertexPtr(SDLVertex* handle) => new SDLVertexPtr(handle);
-
-		public static implicit operator SDLVertex*(SDLVertexPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLVertexPtr left, SDLVertexPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLVertexPtr left, SDLVertexPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLVertexPtr left, SDLVertex* right) => left.Handle == right;
-
-		public static bool operator !=(SDLVertexPtr left, SDLVertex* right) => left.Handle != right;
-
-		public bool Equals(SDLVertexPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLVertexPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLVertexPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// Vertex position, in SDL_Renderer coordinates  <br/>
-		/// </summary>
-		public ref SDLFPoint Position => ref Unsafe.AsRef<SDLFPoint>(&Handle->Position);
-		/// <summary>
-		/// Vertex color <br/>
-		/// </summary>
-		public ref SDLColor Color => ref Unsafe.AsRef<SDLColor>(&Handle->Color);
-		/// <summary>
-		/// Normalized texture coordinates, if needed <br/>
-		/// </summary>
-		public ref SDLFPoint TexCoord => ref Unsafe.AsRef<SDLFPoint>(&Handle->TexCoord);
-	}
-
-	/// <summary>
 	/// A structure representing rendering state<br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_Renderer")]
@@ -6334,86 +4404,6 @@ namespace HexaEngine.SDL2
 	}
 
 	/// <summary>
-	/// A structure representing rendering state<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Renderer")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLRendererPtrPtr : IEquatable<SDLRendererPtrPtr>
-	{
-		public SDLRendererPtrPtr(SDLRenderer** handle) { Handle = handle; }
-
-		public SDLRenderer** Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLRendererPtrPtr Null => new SDLRendererPtrPtr(null);
-
-		public static implicit operator SDLRendererPtrPtr(SDLRenderer** handle) => new SDLRendererPtrPtr(handle);
-
-		public static implicit operator SDLRenderer**(SDLRendererPtrPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLRendererPtrPtr left, SDLRendererPtrPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLRendererPtrPtr left, SDLRendererPtrPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLRendererPtrPtr left, SDLRenderer** right) => left.Handle == right;
-
-		public static bool operator !=(SDLRendererPtrPtr left, SDLRenderer** right) => left.Handle != right;
-
-		public bool Equals(SDLRendererPtrPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLRendererPtrPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLRendererPtrPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		public SDLRendererPtr this[int index]
-		{
-			get => Handle[index]; set => Handle[index] = value;
-		}
-	}
-
-	/// <summary>
-	/// A structure representing rendering state<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Renderer")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLRendererPtr : IEquatable<SDLRendererPtr>
-	{
-		public SDLRendererPtr(SDLRenderer* handle) { Handle = handle; }
-
-		public SDLRenderer* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLRendererPtr Null => new SDLRendererPtr(null);
-
-		public static implicit operator SDLRendererPtr(SDLRenderer* handle) => new SDLRendererPtr(handle);
-
-		public static implicit operator SDLRenderer*(SDLRendererPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLRendererPtr left, SDLRendererPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLRendererPtr left, SDLRendererPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLRendererPtr left, SDLRenderer* right) => left.Handle == right;
-
-		public static bool operator !=(SDLRendererPtr left, SDLRenderer* right) => left.Handle != right;
-
-		public bool Equals(SDLRendererPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLRendererPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLRendererPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
-	/// <summary>
 	/// An efficient driver-specific representation of pixel data<br/>
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "SDL_Texture")]
@@ -6422,44 +4412,6 @@ namespace HexaEngine.SDL2
 	{
 
 
-	}
-
-	/// <summary>
-	/// An efficient driver-specific representation of pixel data<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_Texture")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLTexturePtr : IEquatable<SDLTexturePtr>
-	{
-		public SDLTexturePtr(SDLTexture* handle) { Handle = handle; }
-
-		public SDLTexture* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLTexturePtr Null => new SDLTexturePtr(null);
-
-		public static implicit operator SDLTexturePtr(SDLTexture* handle) => new SDLTexturePtr(handle);
-
-		public static implicit operator SDLTexture*(SDLTexturePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLTexturePtr left, SDLTexturePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLTexturePtr left, SDLTexturePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLTexturePtr left, SDLTexture* right) => left.Handle == right;
-
-		public static bool operator !=(SDLTexturePtr left, SDLTexture* right) => left.Handle != right;
-
-		public bool Equals(SDLTexturePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLTexturePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLTexturePtr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	/// <summary>
@@ -6510,93 +4462,12 @@ namespace HexaEngine.SDL2
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_WindowShapeMode")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLWindowShapeModePtr : IEquatable<SDLWindowShapeModePtr>
-	{
-		public SDLWindowShapeModePtr(SDLWindowShapeMode* handle) { Handle = handle; }
-
-		public SDLWindowShapeMode* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLWindowShapeModePtr Null => new SDLWindowShapeModePtr(null);
-
-		public static implicit operator SDLWindowShapeModePtr(SDLWindowShapeMode* handle) => new SDLWindowShapeModePtr(handle);
-
-		public static implicit operator SDLWindowShapeMode*(SDLWindowShapeModePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLWindowShapeModePtr left, SDLWindowShapeModePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLWindowShapeModePtr left, SDLWindowShapeModePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLWindowShapeModePtr left, SDLWindowShapeMode* right) => left.Handle == right;
-
-		public static bool operator !=(SDLWindowShapeModePtr left, SDLWindowShapeMode* right) => left.Handle != right;
-
-		public bool Equals(SDLWindowShapeModePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLWindowShapeModePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLWindowShapeModePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// <br/>
-		/// </summary>
-		public ref WindowShapeMode Mode => ref Unsafe.AsRef<WindowShapeMode>(&Handle->Mode);
-		/// <summary>
-		/// <br/>
-		/// </summary>
-		public ref SDLWindowShapeParams Parameters => ref Unsafe.AsRef<SDLWindowShapeParams>(&Handle->Parameters);
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "IDirect3DDevice9")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct IDirect3DDevice9
 	{
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "IDirect3DDevice9")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct IDirect3DDevice9Ptr : IEquatable<IDirect3DDevice9Ptr>
-	{
-		public IDirect3DDevice9Ptr(IDirect3DDevice9* handle) { Handle = handle; }
-
-		public IDirect3DDevice9* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static IDirect3DDevice9Ptr Null => new IDirect3DDevice9Ptr(null);
-
-		public static implicit operator IDirect3DDevice9Ptr(IDirect3DDevice9* handle) => new IDirect3DDevice9Ptr(handle);
-
-		public static implicit operator IDirect3DDevice9*(IDirect3DDevice9Ptr handle) => handle.Handle;
-
-		public static bool operator ==(IDirect3DDevice9Ptr left, IDirect3DDevice9Ptr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(IDirect3DDevice9Ptr left, IDirect3DDevice9Ptr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(IDirect3DDevice9Ptr left, IDirect3DDevice9* right) => left.Handle == right;
-
-		public static bool operator !=(IDirect3DDevice9Ptr left, IDirect3DDevice9* right) => left.Handle != right;
-
-		public bool Equals(IDirect3DDevice9Ptr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is IDirect3DDevice9Ptr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("IDirect3DDevice9Ptr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "ID3D11Device")]
@@ -6607,82 +4478,12 @@ namespace HexaEngine.SDL2
 
 	}
 
-	[NativeName(NativeNameType.Typedef, "ID3D11Device")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct ID3D11DevicePtr : IEquatable<ID3D11DevicePtr>
-	{
-		public ID3D11DevicePtr(ID3D11Device* handle) { Handle = handle; }
-
-		public ID3D11Device* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static ID3D11DevicePtr Null => new ID3D11DevicePtr(null);
-
-		public static implicit operator ID3D11DevicePtr(ID3D11Device* handle) => new ID3D11DevicePtr(handle);
-
-		public static implicit operator ID3D11Device*(ID3D11DevicePtr handle) => handle.Handle;
-
-		public static bool operator ==(ID3D11DevicePtr left, ID3D11DevicePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(ID3D11DevicePtr left, ID3D11DevicePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(ID3D11DevicePtr left, ID3D11Device* right) => left.Handle == right;
-
-		public static bool operator !=(ID3D11DevicePtr left, ID3D11Device* right) => left.Handle != right;
-
-		public bool Equals(ID3D11DevicePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is ID3D11DevicePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("ID3D11DevicePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "ID3D12Device")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ID3D12Device
 	{
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "ID3D12Device")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct ID3D12DevicePtr : IEquatable<ID3D12DevicePtr>
-	{
-		public ID3D12DevicePtr(ID3D12Device* handle) { Handle = handle; }
-
-		public ID3D12Device* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static ID3D12DevicePtr Null => new ID3D12DevicePtr(null);
-
-		public static implicit operator ID3D12DevicePtr(ID3D12Device* handle) => new ID3D12DevicePtr(handle);
-
-		public static implicit operator ID3D12Device*(ID3D12DevicePtr handle) => handle.Handle;
-
-		public static bool operator ==(ID3D12DevicePtr left, ID3D12DevicePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(ID3D12DevicePtr left, ID3D12DevicePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(ID3D12DevicePtr left, ID3D12Device* right) => left.Handle == right;
-
-		public static bool operator !=(ID3D12DevicePtr left, ID3D12Device* right) => left.Handle != right;
-
-		public bool Equals(ID3D12DevicePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is ID3D12DevicePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("ID3D12DevicePtr [0x{0}]", ((nuint)Handle).ToString("X"));
 	}
 
 	/// <summary>
@@ -6723,62 +4524,6 @@ namespace HexaEngine.SDL2
 
 	}
 
-	/// <summary>
-	/// Information about the version of SDL in use.<br/>
-	/// Represents the library's version as three levels: major revision<br/>
-	/// (increments with massive changes, additions, and enhancements),<br/>
-	/// minor revision (increments with backwards-compatible changes to the<br/>
-	/// major revision), and patchlevel (increments with fixes to the minor<br/>
-	/// revision).<br/>
-	/// <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Typedef, "SDL_version")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLVersionPtr : IEquatable<SDLVersionPtr>
-	{
-		public SDLVersionPtr(SDLVersion* handle) { Handle = handle; }
-
-		public SDLVersion* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLVersionPtr Null => new SDLVersionPtr(null);
-
-		public static implicit operator SDLVersionPtr(SDLVersion* handle) => new SDLVersionPtr(handle);
-
-		public static implicit operator SDLVersion*(SDLVersionPtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLVersionPtr left, SDLVersionPtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLVersionPtr left, SDLVersionPtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLVersionPtr left, SDLVersion* right) => left.Handle == right;
-
-		public static bool operator !=(SDLVersionPtr left, SDLVersion* right) => left.Handle != right;
-
-		public bool Equals(SDLVersionPtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLVersionPtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLVersionPtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// major version <br/>
-		/// </summary>
-		public ref byte Major => ref Unsafe.AsRef<byte>(&Handle->Major);
-		/// <summary>
-		/// minor version <br/>
-		/// </summary>
-		public ref byte Minor => ref Unsafe.AsRef<byte>(&Handle->Minor);
-		/// <summary>
-		/// update version <br/>
-		/// </summary>
-		public ref byte Patch => ref Unsafe.AsRef<byte>(&Handle->Patch);
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "SDL_Locale")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct SDLLocale
@@ -6799,49 +4544,6 @@ namespace HexaEngine.SDL2
 
 
 
-	}
-
-	[NativeName(NativeNameType.Typedef, "SDL_Locale")]
-	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public unsafe struct SDLLocalePtr : IEquatable<SDLLocalePtr>
-	{
-		public SDLLocalePtr(SDLLocale* handle) { Handle = handle; }
-
-		public SDLLocale* Handle;
-
-		public bool IsNull => Handle == null;
-
-		public static SDLLocalePtr Null => new SDLLocalePtr(null);
-
-		public static implicit operator SDLLocalePtr(SDLLocale* handle) => new SDLLocalePtr(handle);
-
-		public static implicit operator SDLLocale*(SDLLocalePtr handle) => handle.Handle;
-
-		public static bool operator ==(SDLLocalePtr left, SDLLocalePtr right) => left.Handle == right.Handle;
-
-		public static bool operator !=(SDLLocalePtr left, SDLLocalePtr right) => left.Handle != right.Handle;
-
-		public static bool operator ==(SDLLocalePtr left, SDLLocale* right) => left.Handle == right;
-
-		public static bool operator !=(SDLLocalePtr left, SDLLocale* right) => left.Handle != right;
-
-		public bool Equals(SDLLocalePtr other) => Handle == other.Handle;
-
-		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is SDLLocalePtr handle && Equals(handle);
-
-		/// <inheritdoc/>
-		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
-
-		private string DebuggerDisplay => string.Format("SDLLocalePtr [0x{0}]", ((nuint)Handle).ToString("X"));
-		/// <summary>
-		/// A language name, like "en" for English. <br/>
-		/// </summary>
-		public byte* Language { get => Handle->Language; set => Handle->Language = value; }
-		/// <summary>
-		/// A country, like "US" for America. Can be NULL. <br/>
-		/// </summary>
-		public byte* Country { get => Handle->Country; set => Handle->Country = value; }
 	}
 
 }

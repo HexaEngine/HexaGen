@@ -13,6 +13,8 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public static void Free(void* ptr) => Marshal.FreeHGlobal((nint)ptr);
 
+        public static void FreeBSTR(void* ptr) => Marshal.FreeBSTR((nint)ptr);
+
         public const int MaxStackallocSize = 2048;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -51,6 +53,11 @@
             return new(MemoryMarshal.CreateReadOnlySpanFromNullTerminated(data));
         }
 
+        public static string DecodeStringBSTR(void* data)
+        {
+            return Marshal.PtrToStringBSTR((nint)data);
+        }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public static byte* StringToUTF8Ptr(string str)
         {
@@ -70,6 +77,12 @@
             var result = (char*)ptr;
             result[str.Length] = '\0';
             return result;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        public static void* StringToBSTR(string str)
+        {
+            return (void*)Marshal.StringToBSTR(str);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

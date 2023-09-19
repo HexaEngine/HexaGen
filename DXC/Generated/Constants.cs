@@ -16,31 +16,31 @@ namespace HexaEngine.DXC
 	public unsafe partial class DXC
 	{
 		[NativeName(NativeNameType.Const, "_MSC_VER")]
-		public const uint _MSC_VER = 1930;
+		public const int _MSC_VER = 1930;
 
 		[NativeName(NativeNameType.Const, "_WIN32")]
-		public const uint _WIN32 = 1;
+		public const int _WIN32 = 1;
 
 		[NativeName(NativeNameType.Const, "_M_AMD64")]
-		public const uint _M_AMD64 = 100;
+		public const int _M_AMD64 = 100;
 
 		[NativeName(NativeNameType.Const, "_M_X64")]
-		public const uint _M_X64 = 100;
+		public const int _M_X64 = 100;
 
 		[NativeName(NativeNameType.Const, "_WIN64")]
-		public const uint _WIN64 = 1;
+		public const int _WIN64 = 1;
 
 		[NativeName(NativeNameType.Const, "DXC_CP_UTF8")]
-		public const uint DXC_CP_UTF8 = 65001;
+		public const int DXC_CP_UTF8 = 65001;
 
 		[NativeName(NativeNameType.Const, "DXC_CP_UTF16")]
-		public const uint DXC_CP_UTF16 = 1200;
+		public const int DXC_CP_UTF16 = 1200;
 
 		[NativeName(NativeNameType.Const, "DXC_CP_ACP")]
-		public const uint DXC_CP_ACP = 0;
+		public const int DXC_CP_ACP = 0;
 
 		[NativeName(NativeNameType.Const, "DXC_HASHFLAG_INCLUDES_SOURCE")]
-		public const uint DXC_HASHFLAG_INCLUDES_SOURCE = 1;
+		public const int DXC_HASHFLAG_INCLUDES_SOURCE = 1;
 
 		[NativeName(NativeNameType.Const, "DXC_ARG_DEBUG")]
 		public const string DXC_ARG_DEBUG = "-Zi";

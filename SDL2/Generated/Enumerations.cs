@@ -25,7 +25,7 @@ namespace HexaEngine.SDL2
 	/// TODO: include/SDL_stdinc.h:174: error: size of array 'SDL_dummy_enum' is negative <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "SDL_DUMMY_ENUM")]
-	public enum SdlDummyEnum
+	public enum SdL_Dummy_EnUm
 	{
 		[NativeName(NativeNameType.EnumItem, "DUMMY_ENUM_VALUE")]
 		Value = unchecked(0),
@@ -543,7 +543,7 @@ namespace HexaEngine.SDL2
 	/// <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "SDL_YUV_CONVERSION_MODE")]
-	public enum SdlYuvConversionMode
+	public enum SdL_YUV_Conversion_Mode
 	{
 		/// <summary>
 		/// Full range JPEG <br/>

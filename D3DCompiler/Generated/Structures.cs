@@ -27,7 +27,7 @@ namespace HexaEngine.D3DCompiler
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "_D3D_SHADER_DATA")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct D3DShaderData
+	public partial struct _D3D_SHADER_DATA
 	{
 		[NativeName(NativeNameType.Field, "pBytecode")]
 		[NativeName(NativeNameType.Type, "LPCVOID")]

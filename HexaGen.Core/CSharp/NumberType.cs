@@ -7,36 +7,40 @@
         /// <summary>
         /// 1
         /// </summary>
-        Int,
+        Int = 1,
 
         /// <summary>
         /// 1.0 or 1.0d
         /// </summary>
-        Double,
+        Double = 2,
 
         /// <summary>
         /// 1.0f
         /// </summary>
-        Float,
+        Float = 4,
 
         /// <summary>
         /// 1.0m
         /// </summary>
-        Decimal,
+        Decimal = 8,
 
         /// <summary>
         /// 1u
         /// </summary>
-        UInt,
+        UInt = 16,
 
         /// <summary>
         /// 1l or 1L
         /// </summary>
-        Long,
+        Long = 32,
 
         /// <summary>
         /// 1ul or 1UL
         /// </summary>
-        ULong
+        ULong = 64,
+
+        AnyInt = Int | UInt | Long | ULong,
+
+        AnyFloat = Float | Double | Decimal,
     }
 }
