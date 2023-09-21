@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.OpenAL",
+  "Namespace": "Hexa.NET.OpenAL",
   "ApiName": "OpenAL",
   "LibName": "OpenAL32",
   "GenerateSizeOfStructs": false,

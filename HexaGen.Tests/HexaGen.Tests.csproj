@@ -477,6 +477,15 @@
     <None Update="shaderc\visibility.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="spirvcross\generator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="spirvcross\spirv.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="spirvcross\spirv_cross_c.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="xaudio2\AudioSessionTypes.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenAL\OpenAL.csproj" />
+    <ProjectReference Include="..\Hexa.NET.OpenAL\Hexa.NET.OpenAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

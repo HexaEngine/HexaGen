@@ -90,10 +90,10 @@
             string modifier = "partial";
 
             LogInfo("defined struct " + csName);
-            var commentWritten = cppClass.Comment.WriteCsSummary(writer);
+            var commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
+                commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
 
             writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
@@ -139,10 +139,10 @@
                     var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
                     if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                     {
-                        var fieldCommentWritten = cppField.Comment.WriteCsSummary(writer);
+                        var fieldCommentWritten = settings.WriteCsSummary(cppField.Comment, writer);
                         if (!fieldCommentWritten)
                         {
-                            fieldCommentWritten = fieldMapping?.Comment.WriteCsSummary(writer) ?? false;
+                            fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
                         writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                         writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
@@ -173,10 +173,10 @@
                     }
                     else if (cppField.Type is CppPointerType cppPointer && cppPointer.IsDelegate(out var cppFunctionType))
                     {
-                        var fieldCommentWritten = cppField.Comment.WriteCsSummary(writer);
+                        var fieldCommentWritten = settings.WriteCsSummary(cppField.Comment, writer);
                         if (!fieldCommentWritten)
                         {
-                            fieldCommentWritten = fieldMapping?.Comment.WriteCsSummary(writer) ?? false;
+                            fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
                         writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                         writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
@@ -300,10 +300,10 @@
         {
             string csFieldName = settings.GetFieldName(field.Name);
 
-            var fieldCommentWritten = field.Comment.WriteCsSummary(writer);
+            var fieldCommentWritten = settings.WriteCsSummary(field.Comment, writer);
             if (!fieldCommentWritten)
             {
-                fieldCommentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
+                fieldCommentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
 
             writer.WriteLine($"[NativeName(NativeNameType.Field, \"{field.Name}\")]");
@@ -400,10 +400,10 @@
         {
             string csFieldName = settings.GetFieldName(field.Name);
 
-            var fieldCommentWritten = field.Comment.WriteCsSummary(writer);
+            var fieldCommentWritten = settings.WriteCsSummary(field.Comment, writer);
             if (!fieldCommentWritten)
             {
-                fieldCommentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
+                fieldCommentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
 
             if (field.Type is CppArrayType arrayType)
@@ -540,7 +540,7 @@
         private void WriteProperty(CodeWriter writer, CppField field)
         {
             string csFieldName = settings.GetFieldName(field.Name);
-            field.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(field.Comment, writer);
             if (field.Type is CppArrayType arrayType)
             {
                 string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
@@ -585,7 +585,7 @@
             var writer = context.Writer;
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
             LogInfo("defined handle " + csName);
-            cppClass.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(cppClass.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"public unsafe struct {csName} : IEquatable<{csName}>"))

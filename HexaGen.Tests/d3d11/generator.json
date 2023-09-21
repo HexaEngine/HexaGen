@@ -1,8 +1,8 @@
 {
-  "Namespace": "HexaEngine.D3D11",
+  "Namespace": "Hexa.NET.D3D11",
   "ApiName": "D3D11",
   "LibName": "d3d11",
-  "Usings": [ "HexaEngine.DXGI", "HexaEngine.D3DCommon" ],
+  "Usings": [ "Hexa.NET.DXGI", "Hexa.NET.D3DCommon" ],
   "GenerateSizeOfStructs": false,
   "GenerateDelegates": false,
   "BoolType": 1,

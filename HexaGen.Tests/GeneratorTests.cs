@@ -47,8 +47,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xaudio2/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            Directory.CreateDirectory("../../../../XAudio2/Generated");
-            generator1.Generate(Directory.GetFiles("xaudio2", "*.h").ToList(), "../../../../XAudio2/Generated");
+            generator1.Generate(Directory.GetFiles("xaudio2", "*.h").ToList(), "../../../../Hexa.NET.XAudio2/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -58,8 +57,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xd3audio/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            Directory.CreateDirectory("../../../../X3DAudio/Generated");
-            generator1.Generate("xd3audio/main.h", "../../../../X3DAudio/Generated");
+            generator1.Generate("xd3audio/main.h", "../../../../Hexa.NET.X3DAudio/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -69,7 +67,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcommon/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate("d3dcommon/d3dcommon.h", "../../../../D3DCommon/Generated");
+            generator1.Generate("d3dcommon/d3dcommon.h", "../../../../Hexa.NET.D3DCommon/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -79,7 +77,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcompiler/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate("d3dcompiler/d3dcompiler.h", "../../../../D3DCompiler/Generated");
+            generator1.Generate("d3dcompiler/d3dcompiler.h", "../../../../Hexa.NET.D3DCompiler/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -89,7 +87,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxc/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate("dxc/main.h", "../../../../DXC/Generated");
+            generator1.Generate("dxc/main.h", "../../../../Hexa.NET.DXC/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -99,7 +97,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxgi/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("dxgi", "*.h").ToList(), "../../../../DXGI/Generated");
+            generator1.Generate(Directory.GetFiles("dxgi", "*.h").ToList(), "../../../../Hexa.NET.DXGI/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -109,7 +107,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d11/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("d3d11", "*.h").ToList(), "../../../../D3D11/Generated");
+            generator1.Generate(Directory.GetFiles("d3d11", "*.h").ToList(), "../../../../Hexa.NET.D3D11/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -119,7 +117,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d12/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("d3d12", "*.h").ToList(), "../../../../D3D12/Generated");
+            generator1.Generate(Directory.GetFiles("d3d12", "*.h").ToList(), "../../../../Hexa.NET.D3D12/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -198,7 +196,7 @@ namespace HexaGen.Tests
 
             CsCodeGenerator generator = new(settings);
 
-            generator.Generate(headerFile, "../../../../ImGui/Generated");
+            generator.Generate(headerFile, "../../../../Hexa.NET.ImGui/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }
@@ -211,7 +209,20 @@ namespace HexaGen.Tests
 
             CsCodeGenerator generator = new(settings);
 
-            generator.Generate(headerFile, "../../../../Shaderc/Generated");
+            generator.Generate(headerFile, "../../../../Hexa.NET.Shaderc/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
+
+        [Test]
+        public void SPIRVCross()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("spirvcross/generator.json");
+            string headerFile = "spirvcross/spirv_cross_c.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.SPIRVCross/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }
@@ -224,7 +235,7 @@ namespace HexaGen.Tests
 
             CsCodeGenerator generator = new(settings);
 
-            generator.Generate(headerFile, "../../../../SDL2/Generated");
+            generator.Generate(headerFile, "../../../../Hexa.NET.SDL2/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }
@@ -237,7 +248,7 @@ namespace HexaGen.Tests
 
             CsCodeGenerator generator = new(settings);
 
-            generator.Generate(headerFile, "../../../../OpenAL/Generated");
+            generator.Generate(headerFile, "../../../../Hexa.NET.OpenAL/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }

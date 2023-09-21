@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+		<EnableAotAnalyzer>true</EnableAotAnalyzer>
+		<IsAotCompatible>true</IsAotCompatible>
+
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<PackageVersion>1.0.1</PackageVersion>
+		<Description>A .NET Wrapper for XAudio2 (v 2.9), generated with the HexaGen code generator. HexaGen allows users to access native libraries easily and with high performance.</Description>
+		<PackageTags>XAudio2 X3DAudio Audio Sound Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows Bindings Wrapper Native</PackageTags>
+		<Authors>Juna Meinhold</Authors>
+		<Copyright>Copyright (c) 2023 Juna Meinhold</Copyright>
+		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\HexaGen.Runtime.COM\HexaGen.Runtime.COM.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md" Pack="true" PackagePath="\" />
+		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>

@@ -1,5 +1,6 @@
-﻿namespace HexaEngine.OpenAL
+﻿namespace OpenALTest
 {
+    using Hexa.NET.OpenAL;
     using System.IO;
 
     public struct WaveHeader

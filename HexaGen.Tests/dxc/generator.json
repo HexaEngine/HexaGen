@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.DXC",
+  "Namespace": "Hexa.NET.DXC",
   "ApiName": "DXC",
   "LibName": "dxcompiler",
   "GenerateSizeOfStructs": false,

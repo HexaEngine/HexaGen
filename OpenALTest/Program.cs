@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using HexaEngine.OpenAL;
+using Hexa.NET.OpenAL;
+using OpenALTest;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 

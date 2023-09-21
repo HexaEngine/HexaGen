@@ -140,7 +140,7 @@
 
             string header = $"{returnCsName} {csFieldName}({signature})";
             LogInfo("defined delegate " + header);
-            field.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(field.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
             writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");

@@ -1,8 +1,8 @@
 {
-  "Namespace": "HexaEngine.D3DCompiler",
+  "Namespace": "Hexa.NET.D3DCompiler",
   "ApiName": "D3DCompiler",
   "LibName": "d3dcompiler_47",
-  "Usings": [ "HexaEngine.D3DCommon", "HexaEngine.D3D11" ],
+  "Usings": [ "Hexa.NET.D3DCommon", "Hexa.NET.D3D11" ],
   "GenerateSizeOfStructs": false,
   "BoolType": 1,
   "KnownConstantNames": {

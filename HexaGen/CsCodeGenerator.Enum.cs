@@ -123,7 +123,7 @@
             string extensionPrefix = "";
 
             bool noneAdded = false;
-            cppEnum.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(cppEnum.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{cppEnum.Name}\")]");
             using (writer.PushBlock($"public enum {csName}"))
             {
@@ -155,10 +155,10 @@
                 return;
             }
 
-            var commentWritten = enumItem.Comment.WriteCsSummary(writer);
+            var commentWritten = settings.WriteCsSummary(enumItem.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = FormatHelper.WriteCsSummary(itemMapping?.Comment, writer);
+                commentWritten = settings.WriteCsSummary(itemMapping?.Comment, writer);
             }
             writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]");
 

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SDL2\SDL2.csproj" />
+    <ProjectReference Include="..\Hexa.NET.SDL2\Hexa.NET.SDL2.csproj" />
   </ItemGroup>
 
   <ItemGroup>

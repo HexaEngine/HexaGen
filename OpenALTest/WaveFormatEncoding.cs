@@ -1,4 +1,4 @@
-﻿namespace HexaEngine.OpenAL
+﻿namespace OpenALTest
 {
     public enum WaveFormatEncoding : ushort
     {

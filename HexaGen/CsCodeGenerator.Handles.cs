@@ -64,7 +64,7 @@
             var csName = settings.GetCsCleanName(typedef.Name);
 
             LogInfo("defined handle " + csName);
-            typedef.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(typedef.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))

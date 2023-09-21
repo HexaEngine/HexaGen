@@ -227,7 +227,7 @@
 
             if (function == null)
             {
-                cppFunction.Comment.WriteCsSummary(out string? comment);
+                settings.WriteCsSummary(cppFunction.Comment, out string? comment);
                 function = new(csName, comment);
                 functions.Add(function);
             }

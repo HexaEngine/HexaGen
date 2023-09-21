@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.Shaderc",
+  "Namespace": "Hexa.NET.Shaderc",
   "ApiName": "Shaderc",
   "LibName": "shaderc_shared",
   "GenerateSizeOfStructs": false,

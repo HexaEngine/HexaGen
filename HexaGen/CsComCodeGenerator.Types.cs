@@ -117,10 +117,10 @@
             string modifier = "partial";
 
             LogInfo("defined struct " + csName);
-            var commentWritten = cppClass.Comment.WriteCsSummary(writer);
+            var commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
+                commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
             if (guid != null)
             {

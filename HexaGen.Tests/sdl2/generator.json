@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.SDL2",
+  "Namespace": "Hexa.NET.SDL2",
   "ApiName": "SDL",
   "LibName": "SDL2d",
   "GenerateSizeOfStructs": false,

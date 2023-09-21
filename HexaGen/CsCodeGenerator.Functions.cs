@@ -117,7 +117,7 @@
                             continue;
                         }
 
-                        cppFunction.Comment.WriteCsSummary(writer);
+                        settings.WriteCsSummary(cppFunction.Comment, writer);
                         writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
                         writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                         writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
@@ -183,7 +183,7 @@
                                 continue;
                             }
 
-                            cppFunction.Comment.WriteCsSummary(writer);
+                            settings.WriteCsSummary(cppFunction.Comment, writer);
                             writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
                             writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                             writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");

@@ -10,6 +10,7 @@
     using System.Text;
     using System.Text.Json;
     using System.Text.Json.Serialization;
+    using System.Xml.Linq;
 
     public partial class CsCodeGeneratorSettings : IGeneratorSettings
     {
@@ -52,6 +53,11 @@
         /// This option makes the resulting wrapper more "safe" so you don't need unsafe blocks everywhere.
         /// </summary>
         public bool WrapPointersAsHandle { get; set; } = false;
+
+        /// <summary>
+        /// This causes the code generator to generate summary xml comments if it's missing with the text "To be documented."
+        /// </summary>
+        public bool GeneratePlaceholderComments { get; set; } = true;
 
         /// <summary>
         /// Enables generation for constants (CPP: Macros)
@@ -1278,6 +1284,178 @@
                 BoolType.Bool32 => "int",
                 _ => throw new NotSupportedException(),
             };
+        }
+
+        public bool WriteCsSummary(string? comment, CodeWriter writer)
+        {
+            if (comment == null)
+            {
+                if (GeneratePlaceholderComments)
+                {
+                    writer.WriteLine("/// <summary>");
+                    writer.WriteLine("/// To be documented.");
+                    writer.WriteLine("/// </summary>");
+                    return true;
+                }
+                return false;
+            }
+
+            var lines = comment.Replace("/", string.Empty).Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            writer.WriteLine("/// <summary>");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                writer.WriteLine($"/// {new XText(line)}<br/>");
+            }
+            writer.WriteLine($"/// </summary>");
+            return true;
+        }
+
+        public bool WriteCsSummary(CppComment? comment, CodeWriter writer)
+        {
+            bool result = false;
+            if (comment is CppCommentFull full)
+            {
+                writer.WriteLine("/// <summary>");
+                for (int i = 0; i < full.Children.Count; i++)
+                {
+                    WriteCsSummary(full.Children[i], writer);
+                }
+                writer.WriteLine("/// </summary>");
+                result = true;
+            }
+            if (comment is CppCommentParagraph paragraph)
+            {
+                for (int i = 0; i < paragraph.Children.Count; i++)
+                {
+                    WriteCsSummary(paragraph.Children[i], writer);
+                }
+                result = true;
+            }
+
+            if (comment is CppCommentBlockCommand blockCommand)
+            {
+            }
+            if (comment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+            }
+
+            if (comment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+            }
+
+            if (comment is CppCommentVerbatimLine line)
+            {
+            }
+
+            if (comment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+            }
+
+            if (comment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+            }
+
+            if (comment is CppCommentText text)
+            {
+                writer.WriteLine($"/// " + text.Text + "<br/>");
+                result = true;
+            }
+
+            if (comment == null || comment.Kind == CppCommentKind.Null)
+            {
+            }
+
+            if (!result && GeneratePlaceholderComments)
+            {
+                writer.WriteLine("/// <summary>");
+                writer.WriteLine("/// To be documented.");
+                writer.WriteLine("/// </summary>");
+                return true;
+            }
+
+            return result;
+        }
+
+        public void WriteCsSummary(CppComment? cppComment, out string? comment)
+        {
+            comment = null;
+            StringBuilder sb = new();
+            if (cppComment is CppCommentFull full)
+            {
+                sb.AppendLine("/// <summary>");
+                for (int i = 0; i < full.Children.Count; i++)
+                {
+                    WriteCsSummary(full.Children[i], out var subComment);
+                    sb.Append(subComment);
+                }
+                sb.AppendLine("/// </summary>");
+                comment = sb.ToString();
+                return;
+            }
+            if (cppComment is CppCommentParagraph paragraph)
+            {
+                for (int i = 0; i < paragraph.Children.Count; i++)
+                {
+                    WriteCsSummary(paragraph.Children[i], out var subComment);
+                    sb.Append(subComment);
+                }
+                comment = sb.ToString();
+                return;
+            }
+            if (cppComment is CppCommentText text)
+            {
+                sb.AppendLine($"/// " + text.Text + "<br/>");
+                comment = sb.ToString();
+                return;
+            }
+
+            if (cppComment is CppCommentBlockCommand blockCommand)
+            {
+                comment = null;
+            }
+            if (cppComment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentVerbatimLine line)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+                comment = null;
+            }
+
+            if (cppComment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+                comment = null;
+            }
+
+            if (cppComment == null || cppComment.Kind == CppCommentKind.Null)
+            {
+                comment = null;
+            }
+
+            if (comment == null && GeneratePlaceholderComments)
+            {
+                sb.AppendLine("/// <summary>");
+                sb.AppendLine("/// To be documented.");
+                sb.AppendLine("/// </summary>");
+                comment = sb.ToString();
+                return;
+            }
         }
     }
 }
