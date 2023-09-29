@@ -201,6 +201,11 @@
                 }
             }
 
+            if (!result.EnableExperimentalOptions)
+            {
+                result.GenerateConstructorsForStructs = false;
+            }
+
             result.Save(file);
             return result;
         }
@@ -231,12 +236,17 @@
         public LogSevertiy CppLogLevel { get; set; } = LogSevertiy.Error;
 
         /// <summary>
+        /// This allows to use the (EXPERIMENTAL) options, otherwise they will be set back to false. (Default: <see langword="false"/>)
+        /// </summary>
+        public bool EnableExperimentalOptions { get; set; } = false;
+
+        /// <summary>
         /// This option generates the sizes of the structs. (Default: <see langword="false"/>)
         /// </summary>
         public bool GenerateSizeOfStructs { get; set; } = false;
 
         /// <summary>
-        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>)
+        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>) (EXPERIMENTAL)
         /// </summary>
         public bool GenerateConstructorsForStructs { get; set; } = true;
 

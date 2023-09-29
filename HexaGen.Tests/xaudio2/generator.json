@@ -2,6 +2,8 @@
   "Namespace": "Hexa.NET.XAudio2",
   "ApiName": "XAudio2",
   "LibName": "xaudio2_9.dll",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "BoolType": 1,
   "KnownConstantNames": {

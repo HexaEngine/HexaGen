@@ -52,7 +52,7 @@
             }
 
             long maxVariations = (long)Math.Pow(2L, parameters.Count);
-            Parallel.For(0, maxVariations, ix =>
+            for (long ix = 0; ix < maxVariations; ix++)
             {
                 {
                     CsParameterInfo[] refParameterList = new CsParameterInfo[parameters.Count];
@@ -178,7 +178,7 @@
                         }
                     }
                 }
-            });
+            }
         }
 
         public unsafe void GenerateCOMVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)
@@ -191,7 +191,7 @@
             }
 
             long maxVariations = (long)Math.Pow(2L, parameters.Count);
-            Parallel.For(0, maxVariations, ix =>
+            for (long ix = 0; ix < maxVariations; ix++)
             {
                 {
                     CsFunctionVariation refVariation = function.CreateVariationWith();
@@ -424,7 +424,7 @@
                         }
                     }
                 }
-            });
+            }
         }
 
         public static unsafe void GenerateDefaultValueVariations(IList<CppField> parameters, CsFunctionOverload function, CsFunctionVariation variation, bool isMember, bool isConstructor)

@@ -2,6 +2,8 @@
   "Namespace": "Hexa.NET.X3DAudio",
   "ApiName": "X3DAudio",
   "LibName": "x3daudio1_7.dll",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "Usings": [ "System.Numerics" ],
   "BoolType": 1,

@@ -81,6 +81,15 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult RegisterForCallbacks(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] IXAudio2EngineCallback* pCallback) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2EngineCallback*, HResult>)(handle->LpVtbl[3]))(handle, pCallback);
+			return ret;
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult RegisterForCallbacks(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] ref IXAudio2EngineCallback pCallback) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -97,15 +106,6 @@ namespace Hexa.NET.XAudio2
 		{
 			IXAudio2* handle = comObj.Handle;
 			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2EngineCallback*, HResult>)(handle->LpVtbl[3]))(handle, (IXAudio2EngineCallback*)pCallback.GetAddressOf());
-			return ret;
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult RegisterForCallbacks(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] IXAudio2EngineCallback* pCallback) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2EngineCallback*, HResult>)(handle->LpVtbl[3]))(handle, pCallback);
 			return ret;
 		}
 
@@ -183,27 +183,6 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
-			return ret;
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -212,21 +191,6 @@ namespace Hexa.NET.XAudio2
 				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 				{
 					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, pEffectChain);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-			{
-				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
 					return ret;
 				}
 			}
@@ -249,14 +213,23 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
 				return ret;
 			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
+			return ret;
 		}
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
@@ -276,16 +249,55 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
 			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 			{
 				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 				{
-					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				{
+					fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
 						return ret;
 					}
 				}
@@ -294,14 +306,14 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
+			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
 			{
-				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
 					return ret;
 				}
 			}
@@ -309,43 +321,13 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-			{
-				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
 			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
 				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-			{
-				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-					return ret;
-				}
 			}
 		}
 
@@ -359,21 +341,6 @@ namespace Hexa.NET.XAudio2
 				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
 				{
 					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-			{
-				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
 					return ret;
 				}
 			}
@@ -396,54 +363,6 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-			{
-				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-				{
-					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -454,36 +373,6 @@ namespace Hexa.NET.XAudio2
 					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
 					return ret;
 				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
-				return ret;
 			}
 		}
 
@@ -525,14 +414,14 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 			{
-				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
 					return ret;
 				}
 			}
@@ -540,120 +429,30 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
 			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
 			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
 						return ret;
 					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-				{
-					fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-					{
-						fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-				{
-					fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, pEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
-			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, pEffectChain);
-					return ret;
 				}
 			}
 		}
@@ -675,13 +474,34 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
-				return ret;
+				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
+				{
+					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, pEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			{
+				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
+					return ret;
+				}
 			}
 		}
 
@@ -708,16 +528,31 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
 			{
-				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
-					return ret;
+					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
+						return ret;
+					}
 				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+				return ret;
 			}
 		}
 
@@ -753,6 +588,102 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			{
+				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
+			{
+				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -768,16 +699,16 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
 			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 			{
-				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+				fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 				{
 					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
 					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
 						return ret;
 					}
 				}
@@ -786,39 +717,69 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
-			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 			{
-				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
 				{
-					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, pEffectChain);
-						return ret;
-					}
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
+					return ret;
 				}
 			}
 		}
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
 			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
 			{
 				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
 				{
-					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+					fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
 					{
 						fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
 						{
-							HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+							HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, pSendList, (XAudio2EffectChain*)ppEffectChain);
 							return ret;
 						}
 					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (ComPtr<IXAudio2SourceVoice>* pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), pSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			{
+				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+					return ret;
 				}
 			}
 		}
@@ -861,6 +822,45 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+			{
+				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2SourceVoice** pppSourceVoice = &ppSourceVoice)
+			{
+				fixed (WaveFormatEx* ppSourceFormat = &pSourceFormat)
+				{
+					fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+					{
+						fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+						{
+							HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, (IXAudio2SourceVoice**)pppSourceVoice, (WaveFormatEx*)ppSourceFormat, flags, maxFrequencyRatio, pCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -876,6 +876,39 @@ namespace Hexa.NET.XAudio2
 							return ret;
 						}
 					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
+			{
+				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+				{
+					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+					{
+						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
+		{
+			IXAudio2* handle = comObj.Handle;
+			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
+			{
+				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
+				{
+					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
+					return ret;
 				}
 			}
 		}
@@ -960,24 +993,6 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (IXAudio2VoiceCallback* ppCallback = &pCallback)
-			{
-				fixed (XAudio2VoiceSends* ppSendList = &pSendList)
-				{
-					fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-					{
-						HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)ppCallback, (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -1017,21 +1032,6 @@ namespace Hexa.NET.XAudio2
 							return ret;
 						}
 					}
-				}
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateSourceVoice(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
-		{
-			IXAudio2* handle = comObj.Handle;
-			fixed (XAudio2VoiceSends* ppSendList = &pSendList)
-			{
-				fixed (XAudio2EffectChain* ppEffectChain = &pEffectChain)
-				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2SourceVoice**, WaveFormatEx*, uint, float, IXAudio2VoiceCallback*, XAudio2VoiceSends*, XAudio2EffectChain*, HResult>)(handle->LpVtbl[5]))(handle, ppSourceVoice, pSourceFormat, flags, maxFrequencyRatio, (IXAudio2VoiceCallback*)pCallback.GetAddressOf(), (XAudio2VoiceSends*)ppSendList, (XAudio2EffectChain*)ppEffectChain);
-					return ret;
 				}
 			}
 		}
@@ -1345,6 +1345,14 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SetDebugConfiguration<T>(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pDebugConfiguration")] [NativeName(NativeNameType.Type, "const XAUDIO2_DEBUG_CONFIGURATION*")] XAudio2DebugConfiguration* pDebugConfiguration, [NativeName(NativeNameType.Param, "pReserved")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pReserved) where T : unmanaged, IComObject, IComObject<T>
+		{
+			IXAudio2* handle = comObj.Handle;
+			((delegate* unmanaged[Stdcall]<IXAudio2*, XAudio2DebugConfiguration*, void*, void>)(handle->LpVtbl[12]))(handle, pDebugConfiguration, (void*)pReserved.GetAddressOf());
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SetDebugConfiguration<T>(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pDebugConfiguration")] [NativeName(NativeNameType.Type, "const XAUDIO2_DEBUG_CONFIGURATION*")] ref XAudio2DebugConfiguration pDebugConfiguration, [NativeName(NativeNameType.Param, "pReserved")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pReserved) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IXAudio2* handle = comObj.Handle;
@@ -1352,14 +1360,6 @@ namespace Hexa.NET.XAudio2
 			{
 				((delegate* unmanaged[Stdcall]<IXAudio2*, XAudio2DebugConfiguration*, void*, void>)(handle->LpVtbl[12]))(handle, (XAudio2DebugConfiguration*)ppDebugConfiguration, (void*)pReserved.GetAddressOf());
 			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetDebugConfiguration<T>(this ComPtr<IXAudio2> comObj, [NativeName(NativeNameType.Param, "pDebugConfiguration")] [NativeName(NativeNameType.Type, "const XAUDIO2_DEBUG_CONFIGURATION*")] XAudio2DebugConfiguration* pDebugConfiguration, [NativeName(NativeNameType.Param, "pReserved")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pReserved) where T : unmanaged, IComObject, IComObject<T>
-		{
-			IXAudio2* handle = comObj.Handle;
-			((delegate* unmanaged[Stdcall]<IXAudio2*, XAudio2DebugConfiguration*, void*, void>)(handle->LpVtbl[12]))(handle, pDebugConfiguration, (void*)pReserved.GetAddressOf());
 		}
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
@@ -1434,23 +1434,23 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetProcessingQuantum(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumDenominator) 
-		{
-			IXAudio2Extension* handle = comObj.Handle;
-			fixed (uint* pquantumDenominator = &quantumDenominator)
-			{
-				((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint*, uint*, void>)(handle->LpVtbl[3]))(handle, quantumNumerator, (uint*)pquantumDenominator);
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetProcessingQuantum(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumDenominator) 
 		{
 			IXAudio2Extension* handle = comObj.Handle;
 			fixed (uint* pquantumNumerator = &quantumNumerator)
 			{
 				((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint*, uint*, void>)(handle->LpVtbl[3]))(handle, (uint*)pquantumNumerator, quantumDenominator);
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetProcessingQuantum(this ComPtr<IXAudio2Extension> comObj, [NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumDenominator) 
+		{
+			IXAudio2Extension* handle = comObj.Handle;
+			fixed (uint* pquantumDenominator = &quantumDenominator)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint*, uint*, void>)(handle->LpVtbl[3]))(handle, quantumNumerator, (uint*)pquantumDenominator);
 			}
 		}
 
@@ -1884,6 +1884,18 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputMatrix(this ComPtr<IXAudio2Voice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2Voice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult SetOutputMatrix(this ComPtr<IXAudio2Voice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
 			IXAudio2Voice* handle = comObj.Handle;
@@ -1905,18 +1917,6 @@ namespace Hexa.NET.XAudio2
 			fixed (float* ppLevelMatrix = &pLevelMatrix)
 			{
 				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetOutputMatrix(this ComPtr<IXAudio2Voice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
-		{
-			IXAudio2Voice* handle = comObj.Handle;
-			fixed (float* ppLevelMatrix = &pLevelMatrix)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, uint, uint, float*, uint, HResult>)(handle->LpVtbl[16]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix, operationSet);
 				return ret;
 			}
 		}
@@ -2189,6 +2189,18 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
 			IXAudio2SourceVoice* handle = comObj.Handle;
@@ -2210,18 +2222,6 @@ namespace Hexa.NET.XAudio2
 			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
 			{
 				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters, operationSet);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
-		{
-			IXAudio2SourceVoice* handle = comObj.Handle;
-			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
 				return ret;
 			}
 		}
@@ -2255,6 +2255,17 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters);
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
 			IXAudio2SourceVoice* handle = comObj.Handle;
@@ -2275,17 +2286,6 @@ namespace Hexa.NET.XAudio2
 			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
 			{
 				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters);
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetOutputFilterParameters(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
-		{
-			IXAudio2SourceVoice* handle = comObj.Handle;
-			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
-			{
-				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(handle->LpVtbl[11]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters);
 			}
 		}
 
@@ -2455,6 +2455,17 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
+		{
+			IXAudio2SourceVoice* handle = comObj.Handle;
+			fixed (float* ppLevelMatrix = &pLevelMatrix)
+			{
+				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
 			IXAudio2SourceVoice* handle = comObj.Handle;
@@ -2475,17 +2486,6 @@ namespace Hexa.NET.XAudio2
 			fixed (float* ppLevelMatrix = &pLevelMatrix)
 			{
 				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, (float*)ppLevelMatrix);
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetOutputMatrix(this ComPtr<IXAudio2SourceVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
-		{
-			IXAudio2SourceVoice* handle = comObj.Handle;
-			fixed (float* ppLevelMatrix = &pLevelMatrix)
-			{
-				((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(handle->LpVtbl[17]))(handle, pDestinationVoice, sourceChannels, destinationChannels, (float*)ppLevelMatrix);
 			}
 		}
 
@@ -2843,6 +2843,18 @@ namespace Hexa.NET.XAudio2
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
+		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
+		{
+			IXAudio2SubmixVoice* handle = comObj.Handle;
+			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
+			{
+				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
 			IXAudio2SubmixVoice* handle = comObj.Handle;
@@ -2864,18 +2876,6 @@ namespace Hexa.NET.XAudio2
 			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
 			{
 				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), (XAudio2FilterParameters*)ppParameters, operationSet);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult SetOutputFilterParameters(this ComPtr<IXAudio2SubmixVoice> comObj, [NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
-		{
-			IXAudio2SubmixVoice* handle = comObj.Handle;
-			fixed (XAudio2FilterParameters* ppParameters = &pParameters)
-			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, uint, HResult>)(handle->LpVtbl[10]))(handle, pDestinationVoice, (XAudio2FilterParameters*)ppParameters, operationSet);
 				return ret;
 			}
 		}
