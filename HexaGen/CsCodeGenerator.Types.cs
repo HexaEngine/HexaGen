@@ -216,6 +216,7 @@
                         var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
 
                         CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
+                        overload.StructName = csName;
                         funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
 
                         bool useThisRef = false;
@@ -232,7 +233,7 @@
 
                         if (useThis || useThisRef)
                         {
-                            WriteConstructors(writer, definedConstructors, function, overload, csName, "public unsafe");
+                            WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, "public unsafe");
                         }
                     }
                 }
@@ -240,24 +241,27 @@
                 if (settings.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
                 {
                     settings.WriteCsSummary(null, out string? comment);
+                    CsFunction function = new(csName, comment);
                     CsFunctionOverload overload = new(string.Empty, csName, comment, csName, true, true, false, new(string.Empty, CppPrimitiveKind.Void));
+                    function.Overloads.Add(overload);
                     for (int j = 0; j < cppClass.Fields.Count; j++)
                     {
-                        var cppParameter = cppClass.Fields[j];
-                        var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
-                        var direction = cppParameter.Type.GetDirection();
-                        var kind = cppParameter.Type.GetPrimitiveKind();
+                        var cppField = cppClass.Fields[j];
+                        var csFieldName = settings.GetFieldName(cppField.Name);
+                        var paramCsTypeName = settings.GetCsTypeName(cppField.Type, false);
+                        var paramCsName = settings.GetParameterName(j, cppField.Name);
+                        var direction = cppField.Type.GetDirection();
+                        var kind = cppField.Type.GetPrimitiveKind();
 
                         CsType csType = new(paramCsTypeName, kind);
 
-                        CsParameterInfo csParameter = new(paramCsName, csType, direction);
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
-                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
+                        CsParameterInfo csParameter = new(paramCsName, csType, direction, "default", csFieldName);
+                        overload.DefaultValues.Add(paramCsName, "default");
                         overload.Parameters.Add(csParameter);
                     }
 
-                    funcGen.GenerateVariations(cppClass.Fields, overload, true, true);
+                    funcGen.GenerateConstructorVariations(cppClass.Fields, overload);
+                    WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, "public unsafe");
                 }
 
                 writer.WriteLine();
@@ -307,16 +311,68 @@
             }
         }
 
-        private static void WriteConstructors(CodeWriter writer, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string typeName, params string[] modifiers)
+        protected virtual bool FilterConstructor(GenContext context, HashSet<string> definedFunctions, string header)
+        {
+            if (definedFunctions.Contains(header))
+            {
+                LogWarn($"{context.FilePath}: {header} constructor is already defined!");
+                return true;
+            }
+            definedFunctions.Add(header);
+            return false;
+        }
+
+        private void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteConstructor(writer, definedFunctions, csFunction, overload, overload.Variations[j], typeName, modifiers);
+                WriteConstructor(context, definedFunctions, csFunction, overload, overload.Variations[j], fields, modifiers);
             }
         }
 
-        private static void WriteConstructor(CodeWriter writer, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string typeName, params string[] modifiers)
+        private void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, params string[] modifiers)
         {
+            var writer = context.Writer;
+            CsType returnType = variation.ReturnType;
+            PrepareArgs(variation, returnType);
+
+            string header = variation.BuildFullConstructorSignature();
+            string id = variation.BuildConstructorSignatureIdentifier();
+
+            if (FilterConstructor(context, definedFunctions, id))
+            {
+                return;
+            }
+
+            ClassifyParameters(overload, variation, returnType, out bool _, out int offset, out bool _);
+
+            LogInfo("defined constructor " + header);
+
+            writer.WriteLines(overload.Comment);
+            writer.WriteLines(overload.Attributes);
+
+            using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
+            {
+                for (int i = 0; i < overload.Parameters.Count - offset; i++)
+                {
+                    var cppParameter = overload.Parameters[i + offset];
+
+                    if (variation.TryGetParameter(cppParameter.Name, out var param))
+                    {
+                        cppParameter = param;
+                    }
+
+                    var fieldName = cppParameter.FieldName;
+                    if (fieldName == cppParameter.Name)
+                    {
+                        fieldName = $"this.{fieldName}";
+                    }
+
+                    writer.WriteLine($"{fieldName} = {cppParameter.Name};");
+                }
+            }
+
+            writer.WriteLine();
         }
 
         private void WriteField(CodeWriter writer, CppField field, TypeFieldMapping? mapping, List<(CppType, string, string)> subClasses, bool isUnion = false, bool isReadOnly = false)

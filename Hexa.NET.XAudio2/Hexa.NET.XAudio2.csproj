@@ -12,7 +12,7 @@
 		<IsAotCompatible>true</IsAotCompatible>
 
 		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.0.1</PackageVersion>
+		<PackageVersion>1.0.2</PackageVersion>
 		<Description>A .NET Wrapper for XAudio2 (v 2.9), generated with the HexaGen code generator. HexaGen allows users to access native libraries easily and with high performance.</Description>
 		<PackageTags>XAudio2 X3DAudio Audio Sound Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows Bindings Wrapper Native</PackageTags>
 		<Authors>Juna Meinhold</Authors>

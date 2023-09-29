@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.Core.CSharp
 {
+    using HexaGen.Core.Collections;
     using System.Collections.Generic;
 
     public class CsFunctionOverload : ICsFunction, ICloneable<CsFunctionOverload>
@@ -16,7 +17,7 @@
             IsDestructor = isDestructor;
             ReturnType = returnType;
             Parameters = parameters;
-            Variations = variations;
+            Variations = new(variations);
             Modifiers = modifiers;
             Attributes = attributes;
         }
@@ -58,7 +59,7 @@
 
         public List<CsParameterInfo> Parameters { get; set; }
 
-        public List<CsFunctionVariation> Variations { get; set; }
+        public ConcurrentList<CsFunctionVariation> Variations { get; set; }
 
         public List<string> Modifiers { get; set; }
 
@@ -66,30 +67,60 @@
 
         public bool HasVariation(CsFunctionVariation variation)
         {
-            for (int i = 0; i < Variations.Count; i++)
+            lock (Variations.SyncObject)
             {
-                var iation = Variations[i];
-                if (variation.Parameters.Count != iation.Parameters.Count)
-                    continue;
-                if (variation.Name != iation.Name)
-                    continue;
-
-                bool skip = false;
-                for (int j = 0; j < iation.Parameters.Count; j++)
+                for (int i = 0; i < Variations.Count; i++)
                 {
-                    if (variation.Parameters[j].Type.Name != iation.Parameters[j].Type.Name || variation.Parameters[j].DefaultValue != iation.Parameters[j].DefaultValue)
+                    var iation = Variations[i];
+                    if (variation.Parameters.Count != iation.Parameters.Count)
+                        continue;
+                    if (variation.Name != iation.Name)
+                        continue;
+
+                    bool skip = false;
+                    for (int j = 0; j < iation.Parameters.Count; j++)
                     {
-                        skip = true;
-                        break;
+                        if (variation.Parameters[j].Type.Name != iation.Parameters[j].Type.Name || variation.Parameters[j].DefaultValue != iation.Parameters[j].DefaultValue)
+                        {
+                            skip = true;
+                            break;
+                        }
                     }
+
+                    if (skip)
+                        continue;
+
+                    return true;
                 }
 
-                if (skip)
-                    continue;
-
-                return true;
+                return false;
             }
+        }
 
+        public bool TryAddVariation(CsFunctionVariation variation)
+        {
+            lock (Variations.SyncObject)
+            {
+                if (!HasVariation(variation))
+                {
+                    Variations.Add(variation);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool TryUpdateVariation(CsFunctionVariation oldVariation, CsFunctionVariation newVariation)
+        {
+            lock (Variations.SyncObject)
+            {
+                if (!HasVariation(newVariation))
+                {
+                    Variations.Add(newVariation);
+                    Variations.Remove(oldVariation);
+                    return true;
+                }
+            }
             return false;
         }
 

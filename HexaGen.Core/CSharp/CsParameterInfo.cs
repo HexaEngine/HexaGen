@@ -19,7 +19,7 @@
 
     public class CsParameterInfo : ICloneable<CsParameterInfo>
     {
-        public CsParameterInfo(string name, CsType type, List<string> modifiers, List<string> attributes, Direction direction, string? defaultValue)
+        public CsParameterInfo(string name, CsType type, List<string> modifiers, List<string> attributes, Direction direction, string? defaultValue, string? fieldName)
         {
             Name = name;
             Type = type;
@@ -27,6 +27,7 @@
             Attributes = attributes;
             Direction = direction;
             DefaultValue = defaultValue;
+            FieldName = fieldName;
         }
 
         public CsParameterInfo(string name, CsType type, List<string> modifiers, List<string> attributes, Direction direction)
@@ -36,6 +37,17 @@
             Modifiers = modifiers;
             Attributes = attributes;
             Direction = direction;
+        }
+
+        public CsParameterInfo(string name, CsType type, Direction direction, string? defaultValue, string? fieldName)
+        {
+            Name = name;
+            Type = type;
+            Modifiers = new();
+            Attributes = new();
+            Direction = direction;
+            DefaultValue = defaultValue;
+            FieldName = fieldName;
         }
 
         public CsParameterInfo(string name, CsType type, Direction direction)
@@ -58,6 +70,8 @@
         public Direction Direction { get; set; }
 
         public string? DefaultValue { get; set; }
+
+        public string? FieldName { get; set; }
 
         public ParameterFlags Flags
         {
@@ -84,7 +98,7 @@
 
         public CsParameterInfo Clone()
         {
-            return new CsParameterInfo(Name, Type.Clone(), Modifiers.Clone(), Attributes.Clone(), Direction, DefaultValue);
+            return new CsParameterInfo(Name, Type.Clone(), Modifiers.Clone(), Attributes.Clone(), Direction, DefaultValue, FieldName);
         }
     }
 }

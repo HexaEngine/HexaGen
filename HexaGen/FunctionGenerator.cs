@@ -15,7 +15,7 @@
             this.settings = settings;
         }
 
-        public void GenerateVariations(IList<CppField> parameters, CsFunctionOverload function, bool isMember, bool isConstructor)
+        public void GenerateConstructorVariations(IList<CppField> parameters, CsFunctionOverload function)
         {
             settings.TryGetFunctionMapping(function.ExportedName, out var mapping);
 
@@ -24,148 +24,22 @@
                 function.Comment = mapping.Comment;
             }
 
-            for (long ix = 0; ix < Math.Pow(2, parameters.Count); ix++)
+            CsParameterInfo[] parameterList = new CsParameterInfo[parameters.Count];
+            for (int i = 0; i < parameters.Count; i++)
             {
-                {
-                    CsParameterInfo[] refParameterList = new CsParameterInfo[parameters.Count];
-                    CsParameterInfo[] stringParameterList = new CsParameterInfo[parameters.Count];
-                    CsParameterInfo[][] customParameterList = new CsParameterInfo[mapping?.CustomVariations.Count ?? 0][];
-                    for (int i = 0; i < (mapping?.CustomVariations.Count ?? 0); i++)
-                    {
-                        customParameterList[i] = new CsParameterInfo[parameters.Count];
-                    }
-                    for (int j = 0; j < parameters.Count; j++)
-                    {
-                        var bit = (ix & (1 << j - 64)) != 0;
-                        CppField cppParameter = parameters[j];
-                        CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
+                CppField cppField = parameters[i];
+                CppPrimitiveKind kind = cppField.Type.GetPrimitiveKind();
 
-                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
-                        var direction = cppParameter.Type.GetDirection();
-
-                        if (bit)
-                        {
-                            if (cppParameter.Type is CppArrayType arrayType)
-                            {
-                                if (arrayType.Size > 0)
-                                {
-                                    refParameterList[j] = new(paramCsName, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
-                                }
-                                else
-                                {
-                                    refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-
-                                if (arrayType.ElementType.IsString())
-                                {
-                                    stringParameterList[j] = new(paramCsName, new("string[]", kind), direction);
-                                }
-                                else
-                                {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-                            else
-                            {
-                                refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-
-                                if (cppParameter.Type.IsString())
-                                {
-                                    stringParameterList[j] = new(paramCsName, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
-                                }
-                                else
-                                {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-
-                            if (mapping != null)
-                            {
-                                for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                                {
-                                    if (mapping.CustomVariations[i].TryGetValue(paramCsName, out var paramType))
-                                    {
-                                        customParameterList[i][j] = new(paramCsName, new(paramType, kind), direction);
-                                    }
-                                    else
-                                    {
-                                        customParameterList[i][j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            refParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            stringParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            if (mapping != null)
-                            {
-                                for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                                {
-                                    customParameterList[i][j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-                        }
-
-                        string paramAttr = $"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]";
-                        string typeAttr = $"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]";
-                        refParameterList[j].Attributes.Add(paramAttr);
-                        refParameterList[j].Attributes.Add(typeAttr);
-                        stringParameterList[j].Attributes.Add(paramAttr);
-                        stringParameterList[j].Attributes.Add(typeAttr);
-
-                        if (mapping != null)
-                        {
-                            for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                            {
-                                customParameterList[i][j].Attributes.Add(paramAttr);
-                                customParameterList[i][j].Attributes.Add(typeAttr);
-                            }
-                        }
-                    }
-
-                    CsFunctionVariation refVariation = function.CreateVariationWith();
-                    refVariation.Parameters.AddRange(refParameterList);
-                    CsFunctionVariation stringVariation = function.CreateVariationWith();
-                    stringVariation.Parameters.AddRange(stringParameterList);
-
-                    if (!function.HasVariation(refVariation))
-                    {
-                        function.Variations.Add(refVariation);
-                        GenerateDefaultValueVariations(parameters, function, refVariation, isMember, isConstructor);
-                        if (!isConstructor)
-                        {
-                            if (!isConstructor)
-                                GenerateReturnVariations(function, refVariation, isMember);
-                        }
-                    }
-                    if (!function.HasVariation(stringVariation))
-                    {
-                        function.Variations.Add(stringVariation);
-                        GenerateDefaultValueVariations(parameters, function, stringVariation, isMember, isConstructor);
-                        if (!isConstructor)
-                        {
-                            if (!isConstructor)
-                                GenerateReturnVariations(function, stringVariation, isMember);
-                        }
-                    }
-                    for (int i = 0; i < (mapping?.CustomVariations.Count ?? 0); i++)
-                    {
-                        CsFunctionVariation customVariation = function.CreateVariationWith();
-                        customVariation.Parameters.AddRange(customParameterList[i]);
-                        if (!function.HasVariation(customVariation))
-                        {
-                            function.Variations.Add(customVariation);
-                            GenerateDefaultValueVariations(parameters, function, customVariation, isMember, isConstructor);
-                            if (!isConstructor)
-                            {
-                                if (!isConstructor)
-                                    GenerateReturnVariations(function, customVariation, isMember);
-                            }
-                        }
-                    }
-                }
+                var fieldCsName = settings.GetFieldName(cppField.Name);
+                var paramCsName = settings.GetParameterName(i, cppField.Name);
+                var direction = cppField.Type.GetDirection();
+                parameterList[i] = new(paramCsName, new(settings.GetCsTypeName(cppField.Type, false), kind), direction, "default", fieldCsName);
             }
+
+            CsFunctionVariation variation = function.CreateVariationWith();
+            variation.Parameters.AddRange(parameterList);
+
+            function.TryAddVariation(variation);
         }
 
         public void GenerateVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)
@@ -177,7 +51,8 @@
                 function.Comment = mapping.Comment;
             }
 
-            for (long ix = 0; ix < Math.Pow(2, parameters.Count); ix++)
+            long maxVariations = (long)Math.Pow(2L, parameters.Count);
+            Parallel.For(0, maxVariations, ix =>
             {
                 {
                     CsParameterInfo[] refParameterList = new CsParameterInfo[parameters.Count];
@@ -282,15 +157,13 @@
                     CsFunctionVariation stringVariation = function.CreateVariationWith();
                     stringVariation.Parameters.AddRange(stringParameterList);
 
-                    if (!function.HasVariation(refVariation))
+                    if (function.TryAddVariation(refVariation))
                     {
-                        function.Variations.Add(refVariation);
                         GenerateDefaultValueVariations(parameters, function, refVariation, isMember);
                         GenerateReturnVariations(function, refVariation, isMember);
                     }
-                    if (!function.HasVariation(stringVariation))
+                    if (function.TryAddVariation(stringVariation))
                     {
-                        function.Variations.Add(stringVariation);
                         GenerateDefaultValueVariations(parameters, function, stringVariation, isMember);
                         GenerateReturnVariations(function, stringVariation, isMember);
                     }
@@ -298,15 +171,14 @@
                     {
                         CsFunctionVariation customVariation = function.CreateVariationWith();
                         customVariation.Parameters.AddRange(customParameterList[i]);
-                        if (!function.HasVariation(customVariation))
+                        if (function.TryAddVariation(customVariation))
                         {
-                            function.Variations.Add(customVariation);
                             GenerateDefaultValueVariations(parameters, function, customVariation, isMember);
                             GenerateReturnVariations(function, customVariation, isMember);
                         }
                     }
                 }
-            }
+            });
         }
 
         public unsafe void GenerateCOMVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)
@@ -318,7 +190,8 @@
                 function.Comment = mapping.Comment;
             }
 
-            for (long ix = 0; ix < Math.Pow(2, parameters.Count); ix++)
+            long maxVariations = (long)Math.Pow(2L, parameters.Count);
+            Parallel.For(0, maxVariations, ix =>
             {
                 {
                     CsFunctionVariation refVariation = function.CreateVariationWith();
@@ -522,26 +395,21 @@
                     }
 
                     refVariation.Parameters.AddRange(refParameterList);
-
                     stringVariation.Parameters.AddRange(stringParameterList);
-
                     comVariation.Parameters.AddRange(comPtrParameterList.Where(x => x != null));
 
-                    if (!function.HasVariation(refVariation))
+                    if (function.TryAddVariation(refVariation))
                     {
-                        function.Variations.Add(refVariation);
                         GenerateDefaultValueVariations(parameters, function, refVariation, isMember);
                         GenerateReturnVariations(function, refVariation, isMember);
                     }
-                    if (!function.HasVariation(stringVariation))
+                    if (function.TryAddVariation(stringVariation))
                     {
-                        function.Variations.Add(stringVariation);
                         GenerateDefaultValueVariations(parameters, function, stringVariation, isMember);
                         GenerateReturnVariations(function, stringVariation, isMember);
                     }
-                    if (!function.HasVariation(comVariation))
+                    if (function.TryAddVariation(comVariation))
                     {
-                        function.Variations.Add(comVariation);
                         GenerateDefaultValueVariations(parameters, function, comVariation, isMember);
                         GenerateReturnVariations(function, comVariation, isMember);
                     }
@@ -549,15 +417,14 @@
                     {
                         CsFunctionVariation customVariation = function.CreateVariationWith();
                         customVariation.Parameters.AddRange(customParameterList[i]);
-                        if (!function.HasVariation(customVariation))
+                        if (function.TryAddVariation(customVariation))
                         {
-                            function.Variations.Add(customVariation);
                             GenerateDefaultValueVariations(parameters, function, customVariation, isMember);
                             GenerateReturnVariations(function, customVariation, isMember);
                         }
                     }
                 }
-            }
+            });
         }
 
         public static unsafe void GenerateDefaultValueVariations(IList<CppField> parameters, CsFunctionOverload function, CsFunctionVariation variation, bool isMember, bool isConstructor)
@@ -591,10 +458,8 @@
                     }
                 }
 
-                if (function.HasVariation(defaultVariation))
+                if (!function.TryAddVariation(defaultVariation))
                     continue;
-
-                function.Variations.Add(defaultVariation);
 
                 GenerateDefaultValueVariations(parameters, function, defaultVariation, isMember, isConstructor);
                 if (!isConstructor)
@@ -635,10 +500,8 @@
                     }
                 }
 
-                if (function.HasVariation(defaultVariation))
+                if (!function.TryAddVariation(defaultVariation))
                     continue;
-
-                function.Variations.Add(defaultVariation);
 
                 GenerateDefaultValueVariations(parameters, function, defaultVariation, isMember);
                 GenerateReturnVariations(function, defaultVariation, isMember);
@@ -654,10 +517,8 @@
                     CsFunctionVariation returnVariation = new(variation.ExportedName, variation.Name, variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
                     returnVariation.GenericParameters.AddRange(variation.GenericParameters);
                     returnVariation.Parameters = variation.Parameters.Skip(1).ToList();
-                    if (!function.HasVariation(returnVariation))
+                    if (function.TryUpdateVariation(variation, returnVariation))
                     {
-                        function.Variations.Add(returnVariation);
-                        function.Variations.Remove(variation);
                         returnVariation.ReturnType = new(variation.Parameters[0].Type.Name[..^1], variation.Parameters[0].Type.PrimitiveType);
                     }
                 }
@@ -667,8 +528,10 @@
                 CsFunctionVariation returnVariation = new(variation.ExportedName, variation.Name + "S", variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
                 returnVariation.GenericParameters.AddRange(variation.GenericParameters);
                 returnVariation.Parameters = variation.Parameters.ToList();
-                function.Variations.Add(returnVariation);
-                returnVariation.ReturnType = new("string", variation.ReturnType.PrimitiveType);
+                if (function.TryAddVariation(returnVariation))
+                {
+                    returnVariation.ReturnType = new("string", variation.ReturnType.PrimitiveType);
+                }
             }
         }
     }

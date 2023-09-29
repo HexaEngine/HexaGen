@@ -40,6 +40,12 @@ namespace Hexa.NET.X3DAudio
 		public float DSPSetting;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioDistanceCurvePoint(float distance = default, float dspSetting = default)
+		{
+			Distance = distance;
+			DSPSetting = dspSetting;
+		}
+
 
 	}
 
@@ -78,6 +84,12 @@ namespace Hexa.NET.X3DAudio
 		[NativeName(NativeNameType.Type, "UINT32")]
 		public uint PointCount;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioDistanceCurve(X3DAudioDistanceCurvePoint* pPoints = default, uint pointCount = default)
+		{
+			PPoints = pPoints;
+			PointCount = pointCount;
+		}
 
 
 	}
@@ -155,6 +167,18 @@ namespace Hexa.NET.X3DAudio
 		public float OuterReverb;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioCone(float innerAngle = default, float outerAngle = default, float innerVolume = default, float outerVolume = default, float innerLpf = default, float outerLpf = default, float innerReverb = default, float outerReverb = default)
+		{
+			InnerAngle = innerAngle;
+			OuterAngle = outerAngle;
+			InnerVolume = innerVolume;
+			OuterVolume = outerVolume;
+			InnerLPF = innerLpf;
+			OuterLPF = outerLpf;
+			InnerReverb = innerReverb;
+			OuterReverb = outerReverb;
+		}
+
 
 	}
 
@@ -202,6 +226,15 @@ namespace Hexa.NET.X3DAudio
 		[NativeName(NativeNameType.Type, "X3DAUDIO_CONE*")]
 		public unsafe X3DAudioCone* PCone;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioListener(Vector4 orientFront = default, Vector4 orientTop = default, Vector4 position = default, Vector4 velocity = default, X3DAudioCone* pCone = default)
+		{
+			OrientFront = orientFront;
+			OrientTop = orientTop;
+			Position = position;
+			Velocity = velocity;
+			PCone = pCone;
+		}
 
 
 	}
@@ -361,6 +394,27 @@ namespace Hexa.NET.X3DAudio
 		public float DopplerScaler;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioEmitter(X3DAudioCone* pCone = default, Vector4 orientFront = default, Vector4 orientTop = default, Vector4 position = default, Vector4 velocity = default, float innerRadius = default, float innerRadiusAngle = default, uint channelCount = default, float channelRadius = default, float* pChannelAzimuths = default, X3DAudioDistanceCurve* pVolumeCurve = default, X3DAudioDistanceCurve* pLFECurve = default, X3DAudioDistanceCurve* pLPFDirectCurve = default, X3DAudioDistanceCurve* pLPFReverbCurve = default, X3DAudioDistanceCurve* pReverbCurve = default, float curveDistanceScaler = default, float dopplerScaler = default)
+		{
+			PCone = pCone;
+			OrientFront = orientFront;
+			OrientTop = orientTop;
+			Position = position;
+			Velocity = velocity;
+			InnerRadius = innerRadius;
+			InnerRadiusAngle = innerRadiusAngle;
+			ChannelCount = channelCount;
+			ChannelRadius = channelRadius;
+			PChannelAzimuths = pChannelAzimuths;
+			PVolumeCurve = pVolumeCurve;
+			PLFECurve = pLFECurve;
+			PLPFDirectCurve = pLPFDirectCurve;
+			PLPFReverbCurve = pLPFReverbCurve;
+			PReverbCurve = pReverbCurve;
+			CurveDistanceScaler = curveDistanceScaler;
+			DopplerScaler = dopplerScaler;
+		}
+
 
 	}
 
@@ -459,6 +513,22 @@ namespace Hexa.NET.X3DAudio
 		[NativeName(NativeNameType.Type, "FLOAT32")]
 		public float ListenerVelocityComponent;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioDspSettings(float* pMatrixCoefficients = default, float* pDelayTimes = default, uint srcChannelCount = default, uint dstChannelCount = default, float lpfDirectCoefficient = default, float lpfReverbCoefficient = default, float reverbLevel = default, float dopplerFactor = default, float emitterToListenerAngle = default, float emitterToListenerDistance = default, float emitterVelocityComponent = default, float listenerVelocityComponent = default)
+		{
+			PMatrixCoefficients = pMatrixCoefficients;
+			PDelayTimes = pDelayTimes;
+			SrcChannelCount = srcChannelCount;
+			DstChannelCount = dstChannelCount;
+			LPFDirectCoefficient = lpfDirectCoefficient;
+			LPFReverbCoefficient = lpfReverbCoefficient;
+			ReverbLevel = reverbLevel;
+			DopplerFactor = dopplerFactor;
+			EmitterToListenerAngle = emitterToListenerAngle;
+			EmitterToListenerDistance = emitterToListenerDistance;
+			EmitterVelocityComponent = emitterVelocityComponent;
+			ListenerVelocityComponent = listenerVelocityComponent;
+		}
 
 
 	}

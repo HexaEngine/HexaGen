@@ -68,6 +68,11 @@
             return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
         }
 
+        public string BuildConstructorSignatureIdentifier()
+        {
+            return $"{StructName}({BuildConstructorSignature(false, false, false)})";
+        }
+
         public string BuildExtensionSignatureIdentifier(string type)
         {
             return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignature(type, null, false, false)})";
@@ -84,6 +89,11 @@
         }
 
         #endregion IDs
+
+        public string BuildFullConstructorSignature()
+        {
+            return $"{StructName}({BuildConstructorSignature()})";
+        }
 
         public string BuildFullSignature()
         {
@@ -112,6 +122,7 @@
             for (int i = 0; i < Parameters.Count; i++)
             {
                 var param = Parameters[i];
+                var writeAttr = useAttributes && param.Attributes.Count > 0;
 
                 if (param.DefaultValue != null)
                     continue;
@@ -119,7 +130,28 @@
                 if (!isFirst)
                     sb.Append(", ");
 
-                sb.Append($"{(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                sb.Append($"{(writeAttr ? string.Join(" ", param.Attributes) + " " : string.Empty)}{param.Type}{(useNames ? " " + param.Name : string.Empty)}");
+                isFirst = false;
+            }
+
+            return sb.ToString();
+        }
+
+        public string BuildConstructorSignature(bool useAttributes = true, bool useNames = true, bool useDefaults = true)
+        {
+            StringBuilder sb = new();
+            bool isFirst = true;
+
+            for (int i = 0; i < Parameters.Count; i++)
+            {
+                var param = Parameters[i];
+                var writeAttr = useAttributes && param.Attributes.Count > 0;
+                var writeDefault = useDefaults && param.DefaultValue != null;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                sb.Append($"{(writeAttr ? string.Join(" ", param.Attributes) + " " : string.Empty)}{param.Type}{(useNames ? " " + param.Name : string.Empty)}{(writeDefault ? $" = {param.DefaultValue}" : string.Empty)}");
                 isFirst = false;
             }
 
@@ -133,11 +165,12 @@
             for (int i = 0; i < Parameters.Count; i++)
             {
                 var param = Parameters[i];
+                var writeAttr = useAttributes && param.Attributes.Count > 0;
 
                 if (param.DefaultValue != null)
                     continue;
 
-                sb.Append($", {(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                sb.Append($", {(writeAttr ? string.Join(" ", param.Attributes) + " " : string.Empty)}{param.Type}{(useNames ? " " + param.Name : string.Empty)}");
             }
 
             return sb.ToString();
@@ -150,11 +183,12 @@
             for (int i = 0; i < Parameters.Count; i++)
             {
                 var param = Parameters[i];
+                var writeAttr = useAttributes && param.Attributes.Count > 0;
 
                 if (param.DefaultValue != null)
                     continue;
 
-                sb.Append($", {(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                sb.Append($", {(writeAttr ? string.Join(" ", param.Attributes) + " " : string.Empty)}{param.Type}{(useNames ? " " + param.Name : string.Empty)}");
             }
 
             return sb.ToString();

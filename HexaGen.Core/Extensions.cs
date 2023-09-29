@@ -46,7 +46,7 @@
             return new(list);
         }
 
-        public static List<T> CloneValues<T>(this List<T> list) where T : ICloneable<T>
+        public static List<T> CloneValues<T>(this IList<T> list) where T : ICloneable<T>
         {
             return new(list.Select(x => x.Clone()));
         }
