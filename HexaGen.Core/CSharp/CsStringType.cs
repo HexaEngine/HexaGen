@@ -4,6 +4,7 @@
     {
         None,
         StringUTF8,
-        StringUTF16
+        StringUTF16,
+        StringBSTR,
     }
 }

@@ -6,8 +6,6 @@
 
     public class ComObject : IDisposable
     {
-        private readonly bool disposedValue;
-
         private ComObject()
         {
         }

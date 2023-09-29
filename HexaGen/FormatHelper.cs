@@ -2,10 +2,7 @@
 {
     using CppAst;
     using System;
-    using System.Reflection;
-    using System.Security.AccessControl;
     using System.Text;
-    using System.Xml.Linq;
 
     public static class FormatHelper
     {
@@ -37,8 +34,6 @@
             return false;
         }
 
-       
-
         public static bool IsPointer(this CppType type, ref int depth)
         {
             bool isPointer = false;
@@ -58,6 +53,28 @@
                 }
             }
 
+            return isPointer;
+        }
+
+        public static bool IsPointer(this CppType type, ref int depth, out CppType pointerType)
+        {
+            bool isPointer = false;
+            CppType d = type;
+            depth = 0;
+            while (true)
+            {
+                if (d is CppPointerType pointer)
+                {
+                    depth++;
+                    d = pointer.ElementType;
+                    isPointer = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            pointerType = d;
             return isPointer;
         }
 
@@ -268,18 +285,357 @@
             return true;
         }
 
-        public static bool IsNumeric(this string name, bool allowHex)
+        public static bool IsNumeric(this string name, out NumberType numberType, bool allowBrackets = true, bool allowHex = true, bool allowMinus = true, bool allowExponent = true, bool allowSuffix = true)
+        {
+            numberType = NumberType.None;
+            if (string.IsNullOrEmpty(name))
+                return false;
+            int index = 0;
+            int length = name.Length;
+            bool isHex = false;
+            bool isMinus = false;
+            bool typeOverwrite = false;
+
+            numberType = NumberType.Int;
+
+            if (allowBrackets && name.StartsWith("(") && name.EndsWith(")"))
+            {
+                index += 1;
+                length -= 1;
+            }
+
+            if (allowMinus && name[index..length].StartsWith('-'))
+            {
+                numberType = NumberType.Int;
+                index += 1;
+                isMinus = true;
+            }
+
+            if (allowHex && name[index..length].StartsWith("0x"))
+            {
+                index += 2;
+                isHex = true;
+            }
+
+            if (allowSuffix && name[index..length].EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.ULong;
+                length -= 2;
+                typeOverwrite = true;
+            }
+
+            if (allowSuffix && name[index..length].EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.Long;
+                length -= 1;
+                typeOverwrite = true;
+            }
+
+            if (allowSuffix && name[index..length].EndsWith("U", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.UInt;
+                length -= 1;
+                typeOverwrite = true;
+            }
+
+            if (allowSuffix && !isHex && name[index..length].EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.Float;
+                length -= 1;
+                typeOverwrite = true;
+            }
+
+            if (allowSuffix && !isHex && name[index..length].EndsWith("D", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.Double;
+                length -= 1;
+                typeOverwrite = true;
+            }
+
+            if (allowSuffix && name[index..length].EndsWith("M", StringComparison.InvariantCultureIgnoreCase))
+            {
+                numberType = NumberType.Decimal;
+                length -= 1;
+                typeOverwrite = true;
+            }
+
+            if (allowExponent && name.Contains("E-", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var idx = name.IndexOf("E-", StringComparison.InvariantCultureIgnoreCase);
+                for (int i = idx + 2; i < length; i++)
+                {
+                    if (!char.IsDigit(name[i]))
+                    {
+                        return false;
+                    }
+                }
+                length = idx;
+            }
+
+            if (allowExponent && name.Contains("E+", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var idx = name.IndexOf("E+", StringComparison.InvariantCultureIgnoreCase);
+                for (int i = idx + 2; i < length; i++)
+                {
+                    if (!char.IsDigit(name[i]))
+                    {
+                        return false;
+                    }
+                }
+                length = idx;
+            }
+
+            for (int i = index; i < length; i++)
+            {
+                var c = name[i];
+                if (!char.IsNumber(c))
+                {
+                    if (c == '.')
+                    {
+                        if ((numberType & NumberType.AnyInt) != 0)
+                        {
+                            numberType = NumberType.Double;
+                        }
+                    }
+                    else if (!isHex || !char.IsAsciiHexDigit(c))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (typeOverwrite)
+            {
+                return true;
+            }
+
+            if ((numberType & NumberType.AnyInt) != 0 && !isHex)
+            {
+                var span = name.AsSpan(index, length - index).TrimStart('0');
+                if (NumberStringCompareLessEquals(span, int.MaxValue.ToString()))
+                {
+                    numberType = NumberType.Int;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, uint.MaxValue.ToString()))
+                {
+                    numberType = NumberType.UInt;
+                    return true;
+                }
+                if (NumberStringCompareLessEquals(span, long.MaxValue.ToString()))
+                {
+                    numberType = NumberType.Long;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, ulong.MaxValue.ToString()))
+                {
+                    numberType = NumberType.ULong;
+                    return true;
+                }
+
+                throw new InvalidDataException($"The number {name} is outside known number ranges!");
+            }
+            if ((numberType & NumberType.AnyInt) != 0 && isHex)
+            {
+                var span = name.AsSpan(index, length - index).TrimStart('0');
+                if (NumberStringCompareLessEquals(span, "7fffffff"))
+                {
+                    numberType = NumberType.Int;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, "ffffffff"))
+                {
+                    numberType = NumberType.UInt;
+                    return true;
+                }
+                if (NumberStringCompareLessEquals(span, "7fffffffffffffff"))
+                {
+                    numberType = NumberType.Long;
+                    return true;
+                }
+                if (!isMinus && NumberStringCompareLessEquals(span, "ffffffffffffffff"))
+                {
+                    numberType = NumberType.ULong;
+                    return true;
+                }
+
+                throw new InvalidDataException($"The number {name} is outside known number ranges!");
+            }
+
+            return true;
+        }
+
+        public static bool IsNumeric(this string name, bool allowHex = true, bool allowMinus = true, bool allowExponent = true, bool allowSuffix = true)
         {
             if (string.IsNullOrEmpty(name))
                 return false;
             int index = 0;
+            int length = name.Length;
+            bool isHex = false;
             if (allowHex && name.StartsWith("0x"))
-                index = 2;
-            for (int i = index; i < name.Length; i++)
             {
-                if (!char.IsNumber(name[i]))
-                    return false;
+                index = 2;
+                isHex = true;
             }
+
+            if (allowMinus && name.StartsWith('-'))
+            {
+                index = 1;
+            }
+
+            if (allowSuffix && name.EndsWith("L", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowSuffix && name.EndsWith("U", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowSuffix && name.EndsWith("UL", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 2;
+            }
+
+            if (allowSuffix && name.EndsWith("F", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowSuffix && name.EndsWith("D", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowSuffix && name.EndsWith("M", StringComparison.InvariantCultureIgnoreCase))
+            {
+                length = name.Length - 1;
+            }
+
+            if (allowExponent && name.Contains("E-", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var idx = name.IndexOf("E-", StringComparison.InvariantCultureIgnoreCase);
+                for (int i = idx + 2; i < length; i++)
+                {
+                    if (!char.IsDigit(name[i]))
+                    {
+                        return false;
+                    }
+                }
+                length = idx;
+            }
+
+            if (allowExponent && name.Contains("E+", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var idx = name.IndexOf("E+", StringComparison.InvariantCultureIgnoreCase);
+                for (int i = idx + 2; i < length; i++)
+                {
+                    if (!char.IsDigit(name[i]))
+                    {
+                        return false;
+                    }
+                }
+                length = idx;
+            }
+
+            for (int i = index; i < length; i++)
+            {
+                var c = name[i];
+                if ((!isHex || !char.IsAsciiHexDigit(c)) && !char.IsNumber(c) && c != '.')
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool NumberStringCompareLess(ReadOnlySpan<char> value, string max)
+        {
+            // Greater
+            if (value.Length > max.Length)
+                return false;
+
+            // Less
+            if (value.Length < max.Length)
+                return true;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                var c = char.ToLower(value[i]);
+                var cmp = char.ToLower(max[i]);
+
+                // Greater
+                if (cmp < c)
+                {
+                    return false;
+                }
+
+                // Less
+                if (cmp > c)
+                {
+                    return true;
+                }
+            }
+
+            // Equals
+            return false;
+        }
+
+        public static bool NumberStringCompareLessEquals(ReadOnlySpan<char> value, string max)
+        {
+            // Greater
+            if (value.Length > max.Length)
+                return false;
+
+            // Less
+            if (value.Length < max.Length)
+                return true;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                var c = char.ToLower(value[i]);
+                var cmp = char.ToLower(max[i]);
+
+                // Greater
+                if (cmp < c)
+                {
+                    return false;
+                }
+
+                // Less
+                if (cmp > c)
+                {
+                    return true;
+                }
+            }
+
+            // Equals
+            return true;
+        }
+
+        public static bool IsConstantExpression(this string expression)
+        {
+            for (int i = 0; i < expression.Length; i++)
+            {
+                var c = expression[i];
+                if (char.IsLetter(c))
+                {
+                    continue;
+                }
+                if (char.IsNumber(c) || c == '.')
+                {
+                    continue;
+                }
+                if (c == '+' || c == '-' || c == '*' || c == '/' || c == '<' || c == '>')
+                {
+                    continue;
+                }
+
+                return false;
+            }
+
             return true;
         }
 
@@ -408,164 +764,20 @@
             return CppPrimitiveKind.Void;
         }
 
-        public static bool WriteCsSummary(this string? comment, CodeWriter writer)
+        public static string GetNumberType(this NumberType number)
         {
-            if (comment == null)
-                return false;
-
-            var lines = comment.Replace("/", string.Empty).Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            writer.WriteLine("/// <summary>");
-            for (int i = 0; i < lines.Length; i++)
+            return number switch
             {
-                var line = lines[i];
-                writer.WriteLine($"/// {new XText(line)}<br/>");
-            }
-            writer.WriteLine($"/// </summary>");
-            return true;
-        }
-
-        public static bool WriteCsSummary(this CppComment? comment, CodeWriter writer)
-        {
-            if (comment is CppCommentFull full)
-            {
-                writer.WriteLine("/// <summary>");
-                for (int i = 0; i < full.Children.Count; i++)
-                {
-                    WriteCsSummary(full.Children[i], writer);
-                }
-                writer.WriteLine("/// </summary>");
-                return true;
-            }
-            if (comment is CppCommentParagraph paragraph)
-            {
-                for (int i = 0; i < paragraph.Children.Count; i++)
-                {
-                    WriteCsSummary(paragraph.Children[i], writer);
-                }
-                return true;
-            }
-
-            if (comment is CppCommentBlockCommand blockCommand)
-            {
-                return false;
-            }
-            if (comment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
-            {
-                return false;
-            }
-
-            if (comment is CppCommentVerbatimBlockLine verbatimBlockLine)
-            {
-                return false;
-            }
-
-            if (comment is CppCommentVerbatimLine line)
-            {
-                return false;
-            }
-
-            if (comment is CppCommentParamCommand paramCommand)
-            {
-                // TODO: add param comment support
-                return false;
-            }
-
-            if (comment is CppCommentInlineCommand inlineCommand)
-            {
-                // TODO: add inline comment support
-                return false;
-            }
-
-            if (comment is CppCommentText text)
-            {
-                writer.WriteLine($"/// " + text.Text + "<br/>");
-                return true;
-            }
-
-            if (comment == null || comment.Kind == CppCommentKind.Null)
-            {
-                return false;
-            }
-
-            throw new NotSupportedException($"The comment type {comment.GetType()} is not supported");
-        }
-
-        public static void WriteCsSummary(this CppComment? cppComment, out string? comment)
-        {
-            StringBuilder sb = new();
-            if (cppComment is CppCommentFull full)
-            {
-                sb.AppendLine("/// <summary>");
-                for (int i = 0; i < full.Children.Count; i++)
-                {
-                    WriteCsSummary(full.Children[i], out var subComment);
-                    sb.Append(subComment);
-                }
-                sb.AppendLine("/// </summary>");
-                comment = sb.ToString();
-                return;
-            }
-            if (cppComment is CppCommentParagraph paragraph)
-            {
-                for (int i = 0; i < paragraph.Children.Count; i++)
-                {
-                    WriteCsSummary(paragraph.Children[i], out var subComment);
-                    sb.Append(subComment);
-                }
-                comment = sb.ToString();
-                return;
-            }
-            if (cppComment is CppCommentText text)
-            {
-                sb.AppendLine($"/// " + text.Text + "<br/>");
-                comment = sb.ToString();
-                return;
-            }
-
-            if (cppComment is CppCommentBlockCommand blockCommand)
-            {
-                comment = null;
-                return;
-            }
-            if (cppComment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
-            {
-                comment = null;
-                return;
-            }
-
-            if (cppComment is CppCommentVerbatimBlockLine verbatimBlockLine)
-            {
-                comment = null;
-                return;
-            }
-
-            if (cppComment is CppCommentVerbatimLine line)
-            {
-                comment = null;
-                return;
-            }
-
-            if (cppComment is CppCommentParamCommand paramCommand)
-            {
-                // TODO: add param comment support
-                comment = null;
-                return;
-            }
-
-            if (cppComment is CppCommentInlineCommand inlineCommand)
-            {
-                // TODO: add inline comment support
-                comment = null;
-                return;
-            }
-
-            if (cppComment == null || cppComment.Kind == CppCommentKind.Null)
-            {
-                comment = null;
-                return;
-            }
-
-            throw new NotSupportedException($"The comment type {cppComment.GetType()} is not supported");
+                NumberType.None => throw new InvalidOperationException(),
+                NumberType.Int => "int",
+                NumberType.Double => "double",
+                NumberType.Float => "float",
+                NumberType.Decimal => "decimal",
+                NumberType.UInt => "uint",
+                NumberType.Long => "long",
+                NumberType.ULong => "ulong",
+                _ => throw new InvalidOperationException(),
+            };
         }
     }
 }

@@ -123,7 +123,7 @@
             string extensionPrefix = "";
 
             bool noneAdded = false;
-            cppEnum.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(cppEnum.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{cppEnum.Name}\")]");
             using (writer.PushBlock($"public enum {csName}"))
             {
@@ -141,7 +141,7 @@
         {
             var writer = context.Writer;
             var itemMapping = mapping?.GetItemMapping(enumItem.Name);
-            var enumItemName = settings.GetPrettyEnumName(enumItem.Name, enumNamePrefix);
+            var enumItemName = settings.GetEnumName(enumItem.Name, enumNamePrefix);
 
             if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
             {
@@ -155,16 +155,16 @@
                 return;
             }
 
-            var commentWritten = enumItem.Comment.WriteCsSummary(writer);
+            var commentWritten = settings.WriteCsSummary(enumItem.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = FormatHelper.WriteCsSummary(itemMapping?.Comment, writer);
+                commentWritten = settings.WriteCsSummary(itemMapping?.Comment, writer);
             }
             writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]");
 
-            if (enumItem.ValueExpression is CppRawExpression rawExpression)
+            if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
             {
-                string enumValueName = settings.GetPrettyEnumName(rawExpression.Text, enumNamePrefix);
+                string enumValueName = settings.GetEnumName(rawExpression.Text, enumNamePrefix);
 
                 if (enumItem.Name == rawExpression.Text)
                 {
@@ -178,6 +178,12 @@
 
                     if (enumItemName == enumValueName)
                         return;
+                }
+
+                if (rawExpression.Text == "'_'")
+                {
+                    writer.WriteLine($"{enumItemName} = unchecked((int){rawExpression.Text}),");
+                    return;
                 }
 
                 if (rawExpression.Kind == CppExpressionKind.Unexposed)

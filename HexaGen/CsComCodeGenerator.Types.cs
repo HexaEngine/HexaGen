@@ -4,7 +4,6 @@
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
 
     public partial class CsComCodeGenerator
@@ -117,10 +116,10 @@
             string modifier = "partial";
 
             LogInfo("defined struct " + csName);
-            var commentWritten = cppClass.Comment.WriteCsSummary(writer);
+            var commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = mapping?.Comment.WriteCsSummary(writer) ?? false;
+                commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
             if (guid != null)
             {
@@ -197,7 +196,7 @@
                         continue;
                     }
 
-                    WriteCOMObjectMemberFunctions(context, cppClass, baseClass, csName, ref vTableIndex);
+                    WriteCOMObjectMemberFunctions(context, targetClass, baseClass, csName, ref vTableIndex);
                 }
             }
 
@@ -277,22 +276,8 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
-            {
-                csReturnType.Name = value;
-            }
+            PrepareArgs(variation, csReturnType);
 
-            for (int i = 0; i < variation.Parameters.Count; i++)
-            {
-                var cppParameter = variation.Parameters[i];
-                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
-                {
-                    cppParameter.Type.Name = v;
-                    cppParameter.Type.Classify();
-                }
-            }
-
-            string modifierString = string.Join(" ", modifiers);
             string header = variation.BuildFullSignatureForCOM();
             string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
 
@@ -302,39 +287,17 @@
                 return false;
             }
 
+            ClassifyParameters(overload, variation, csReturnType, out _, out int offset, out bool hasManaged);
+
             LogInfo("defined function " + header);
 
-            if (overload.Comment != null)
-            {
-                writer.WriteLines(overload.Comment);
-            }
+            writer.WriteLines(overload.Comment);
+            writer.WriteLines(overload.Attributes);
 
-            for (int i = 0; i < overload.Attributes.Count; i++)
-            {
-                writer.WriteLine(overload.Attributes[i]);
-            }
-            using (writer.PushBlock($"{modifierString} {header}"))
+            using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {
                 writer.WriteLine($"{className}* ptr = ({className}*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));");
                 StringBuilder sb = new();
-
-                int offset = 0;
-
-                bool hasManaged = false;
-                for (int j = 0; j < overload.Parameters.Count - offset; j++)
-                {
-                    var cppParameter = overload.Parameters[j + offset];
-                    if (variation.HasParameter(cppParameter))
-                    {
-                        continue;
-                    }
-
-                    var paramCsDefault = overload.DefaultValues[cppParameter.Name];
-                    if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
-                    {
-                        hasManaged = true;
-                    }
-                }
 
                 if (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)
                 {
@@ -367,45 +330,18 @@
                 for (int i = 0; i < overload.Parameters.Count - offset; i++)
                 {
                     var cppParameter = overload.Parameters[i + offset];
-                    var isOut = false;
-                    var isRef = false;
-                    var isPointer = false;
-                    var isStr = false;
-                    var isArray = false;
-                    var isBool = false;
-                    var isConst = true;
-                    var isIID = false;
-                    var isCOMPtr = false;
+                    var paramFlags = ParameterFlags.None;
 
-                    for (int j = 0; j < variation.Parameters.Count; j++)
+                    if (variation.TryGetParameter(cppParameter.Name, out var param))
                     {
-                        var param = variation.Parameters[j];
-                        if (param.Name == cppParameter.Name)
-                        {
-                            cppParameter = param;
-                            isOut = param.Type.IsOut;
-                            isRef = param.Type.IsRef;
-                            isPointer = param.Type.IsPointer;
-                            isStr = param.Type.IsString;
-                            isArray = param.Type.IsArray;
-                            isBool = param.Type.IsBool;
-                            isIID = param.Type.Name.Contains("Guid*");
-                            isCOMPtr = param.Type.Name.Contains("ComPtr<");
-                            isConst = false;
-                        }
+                        paramFlags = param.Flags;
+                        cppParameter = param;
                     }
 
-                    if (isConst)
+                    if (paramFlags.HasFlag(ParameterFlags.Default))
                     {
                         var rootParam = overload.Parameters[i + offset];
-                        if (!overload.DefaultValues.TryGetValue(cppParameter.Name, out string? paramCsDefault))
-                        {
-                            if (isIID)
-                            {
-                                sb.Append($"ComUtils.GuidPtrOf<T>()");
-                            }
-                            continue;
-                        }
+                        var paramCsDefault = cppParameter.DefaultValue;
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                         {
                             sb.Append($"(string){paramCsDefault}");
@@ -427,9 +363,9 @@
                             sb.Append($"{paramCsDefault}");
                         }
                     }
-                    else if (isStr)
+                    else if (paramFlags.HasFlag(ParameterFlags.String))
                     {
-                        if (isArray)
+                        if (paramFlags.HasFlag(ParameterFlags.Array))
                         {
                             WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, arrays.Count);
                             sb.Append($"pStrArray{arrays.Count}");
@@ -437,7 +373,7 @@
                         }
                         else
                         {
-                            if (isRef)
+                            if (paramFlags.HasFlag(ParameterFlags.Ref))
                             {
                                 stack.Push((cppParameter.Name, cppParameter, $"pStr{strings}"));
                             }
@@ -447,16 +383,16 @@
                             strings++;
                         }
                     }
-                    else if (isRef)
+                    else if (paramFlags.HasFlag(ParameterFlags.Ref))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = &{cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }
-                    else if (isOut)
+                    else if (paramFlags.HasFlag(ParameterFlags.Out))
                     {
                         writer.WriteLine($"{cppParameter.Name} = default;");
-                        if (isCOMPtr)
+                        if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                         {
                             sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
                         }
@@ -465,17 +401,17 @@
                             sb.Append($"out {cppParameter.Name}");
                         }
                     }
-                    else if (isArray)
+                    else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }
-                    else if (isBool && !isRef && !isPointer)
+                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
                         sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
                     }
-                    else if (isCOMPtr)
+                    else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {
                         sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
                     }
@@ -538,11 +474,6 @@
 
             writer.WriteLine();
             return true;
-        }
-
-        private static string BuildCOMSignature(CsFunctionVariation variation)
-        {
-            return string.Join(", ", variation.Parameters.Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}"));
         }
     }
 }

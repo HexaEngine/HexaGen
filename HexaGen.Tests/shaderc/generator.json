@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.Shaderc",
+  "Namespace": "Hexa.NET.Shaderc",
   "ApiName": "Shaderc",
   "LibName": "shaderc_shared",
   "GenerateSizeOfStructs": false,
@@ -40,6 +40,6 @@
     "signed char": "sbyte",
     "char": "byte",
     "size_t": "nuint",
-    "bool": "bool"
+    "bool": "byte"
   }
 }

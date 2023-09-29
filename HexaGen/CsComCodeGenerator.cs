@@ -96,17 +96,7 @@
 
         public override void Generate(List<string> headerFiles, string outputPath)
         {
-            var options = new CppParserOptions
-            {
-                ParseMacros = true,
-                ParseAttributes = false,
-                ParseComments = true,
-                ParseSystemIncludes = true,
-                ParseAsCpp = true,
-            };
-
-            options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
-            options.AdditionalArguments.Add("-std=c++17");
+            var options = PrepareSettings();
 
             for (int i = 0; i < headerFiles.Count; i++)
             {
@@ -121,17 +111,7 @@
 
         public override void Generate(string headerFile, string outputPath)
         {
-            var options = new CppParserOptions
-            {
-                ParseMacros = true,
-                ParseAttributes = false,
-                ParseComments = true,
-                ParseSystemIncludes = true,
-                ParseAsCpp = true,
-            };
-            options.SystemIncludeFolders.Add("C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\Llvm\\x64\\lib\\clang\\15.0.1\\include");
-            options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
-            options.AdditionalArguments.Add("-std=c++17");
+            var options = PrepareSettings();
 
             string text = File.ReadAllText(headerFile);
             ExtractGuids(text);

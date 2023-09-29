@@ -10,6 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="LeakTracer - Copy.cs" />
+    <Compile Remove="LeakTracer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LeakTracer - Copy.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="LeakTracer.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
@@ -19,6 +33,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HexaGen\HexaGen.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GeneratorTests.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -124,6 +144,9 @@
     <None Update="dxgi\dxgicommon.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="dxgi\dxgidebug.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="dxgi\dxgiformat.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -131,6 +154,30 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="dxgi\generator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\al.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\alc.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\alext.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\efx-creative.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\efx-presets.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\efx.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\generator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="openal\main.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="sdl2\begin_code.h">
@@ -431,6 +478,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="shaderc\visibility.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="spirvcross\generator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="spirvcross\spirv.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="spirvcross\spirv_cross_c.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="xaudio2\AudioSessionTypes.h">

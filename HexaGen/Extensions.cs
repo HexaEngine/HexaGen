@@ -235,21 +235,6 @@
             return false;
         }
 
-        public static unsafe string ToUpperCaseOverwrite(this string str)
-        {
-            fixed (char* p = str)
-            {
-                for (int i = 1; i < str.Length; i++)
-                {
-                    if (str[i] != 'x')
-                    {
-                        p[i] = char.ToUpper(str[i]);
-                    }
-                }
-            }
-            return str;
-        }
-
         public static unsafe string ToCamelCase(this string str)
         {
             string output = new('\0', str.Length);
@@ -314,6 +299,23 @@
             }
             if (ᴛ.Length != 0) ʀ.Add(ᴛ.ToString());
             return ʀ.ToArray();
+        }
+
+        public static CppMacro? FindMacro(this CppCompilation compilation, string name)
+        {
+            for (int i = 0; i < compilation.Macros.Count; i++)
+            {
+                var macro = compilation.Macros[i];
+                if (macro.Name == name)
+                    return macro;
+            }
+            return null;
+        }
+
+        public static bool TryFindMacro(this CppCompilation compilation, string name, [NotNullWhen(true)] out CppMacro? macro)
+        {
+            macro = FindMacro(compilation, name);
+            return macro != null;
         }
     }
 }

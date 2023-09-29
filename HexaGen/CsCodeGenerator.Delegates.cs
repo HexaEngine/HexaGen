@@ -1,10 +1,7 @@
 ﻿namespace HexaGen
 {
-    using ClangSharp;
     using CppAst;
-    using HexaGen;
     using System.IO;
-    using System.Linq;
 
     public partial class CsCodeGenerator
     {
@@ -84,7 +81,7 @@
 
         protected virtual void WriteClassDelegates(GenContext context, CppClass cppClass, string? csName = null)
         {
-            csName ??= settings.GetCsCleanName(cppClass.Name);
+            csName ??= settings.GetDelegateName(cppClass.Name);
 
             if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
             {
@@ -102,7 +99,7 @@
                 }
                 else
                 {
-                    csSubName = settings.GetCsCleanName(subClass.Name);
+                    csSubName = settings.GetDelegateName(subClass.Name);
                 }
 
                 WriteClassDelegates(context, subClass, csSubName);
@@ -129,7 +126,7 @@
                 return;
 
             var writer = context.Writer;
-            string csFieldName = settings.GetCsCleanName(field.Name);
+            string csFieldName = settings.GetDelegateName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
             string signature = settings.GetParameterSignature(functionType.Parameters, false);
             string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
@@ -143,7 +140,7 @@
 
             string header = $"{returnCsName} {csFieldName}({signature})";
             LogInfo("defined delegate " + header);
-            field.Comment.WriteCsSummary(writer);
+            settings.WriteCsSummary(field.Comment, writer);
             writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
             writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");

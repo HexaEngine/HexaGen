@@ -1,6 +1,6 @@
 ﻿namespace XAudioTest
 {
-    using HexaEngine.XAudio2;
+    using Hexa.NET.XAudio2;
     using HexaGen.Runtime;
     using HexaGen.Runtime.COM;
     using System;
@@ -65,7 +65,7 @@
             XAudio2Buffer buffer = default;
             buffer.PAudioData = fullCommitBuffer;
             buffer.AudioBytes = (uint)Header.DataSize;
-            buffer.Flags = XAudio2.XAudio2EndOfStream;
+            buffer.Flags = XAudio2.XAudio2_END_OF_STREAM;
 
             source.SubmitSourceBuffer(ref buffer, null);
         }
@@ -116,7 +116,7 @@
 
                         submitBuffer.PAudioData = buffer;
                         submitBuffer.AudioBytes = (uint)dataSizeToCopy;
-                        submitBuffer.Flags = XAudio2.XAudio2EndOfStream;
+                        submitBuffer.Flags = XAudio2.XAudio2_END_OF_STREAM;
                         source.SubmitSourceBuffer(ref submitBuffer, null);
 
                         return;
@@ -167,7 +167,7 @@
 
                         submitBuffer.PAudioData = buffer;
                         submitBuffer.AudioBytes = (uint)dataSizeToCopy;
-                        submitBuffer.Flags = XAudio2.XAudio2EndOfStream;
+                        submitBuffer.Flags = XAudio2.XAudio2_END_OF_STREAM;
                         source.SubmitSourceBuffer(ref submitBuffer, null);
 
                         return;

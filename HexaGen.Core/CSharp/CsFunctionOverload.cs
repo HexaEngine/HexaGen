@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class CsFunctionOverload : ICsFunction
+    public class CsFunctionOverload : ICsFunction, ICloneable<CsFunctionOverload>
     {
         public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations, List<string> modifiers, List<string> attributes)
         {
@@ -77,7 +77,7 @@
                 bool skip = false;
                 for (int j = 0; j < iation.Parameters.Count; j++)
                 {
-                    if (variation.Parameters[j].Type.Name != iation.Parameters[j].Type.Name)
+                    if (variation.Parameters[j].Type.Name != iation.Parameters[j].Type.Name || variation.Parameters[j].DefaultValue != iation.Parameters[j].DefaultValue)
                     {
                         skip = true;
                         break;
@@ -126,6 +126,11 @@
         public CsFunctionVariation CreateVariationWith()
         {
             return new(ExportedName, Name, StructName, IsMember, IsConstructor, IsDestructor, ReturnType);
+        }
+
+        public CsFunctionOverload Clone()
+        {
+            return new CsFunctionOverload(ExportedName, Name, Comment, DefaultValues.Clone(), StructName, IsMember, IsConstructor, IsDestructor, ReturnType.Clone(), Parameters.CloneValues(), Variations.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
     }
 }

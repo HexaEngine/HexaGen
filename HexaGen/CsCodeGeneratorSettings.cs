@@ -3,16 +3,171 @@
     using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
-    using Humanizer;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
     using System.Text.Json;
     using System.Text.Json.Serialization;
+    using System.Xml.Linq;
 
     public partial class CsCodeGeneratorSettings : IGeneratorSettings
     {
+        public static CsCodeGeneratorSettings Default { get; } = new CsCodeGeneratorSettings()
+        {
+            TypeMappings = new()
+            {
+                {"uint8_t", "byte"},
+                {"uint16_t", "ushort"},
+                {"uint32_t", "uint"},
+                {"uint64_t", "ulong"},
+                {"int8_t", "sbyte"},
+                {"int32_t", "int"},
+                {"int16_t", "short"},
+                {"int64_t", "long"},
+                {"int64_t*", "long*"},
+                {"unsigned char", "byte"},
+                {"signed char", "sbyte"},
+                {"char", "byte"},
+                {"size_t", "nuint"},
+                {"bool", "int"},
+                {"BOOL", "int"},
+                {"BYTE", "byte"},
+                {"Uint8", "byte"},
+                {"Uint16", "ushort"},
+                {"Uint32", "uint"},
+                {"Uint64", "ulong"},
+                {"Sint8", "sbyte"},
+                {"Sint16", "short"},
+                {"Sint32", "int"},
+                {"Sint64", "long"},
+                {"UCHAR", "byte"},
+                {"WCHAR", "char"},
+                {"UINT8", "byte"},
+                {"USHORT", "ushort"},
+                {"UINT16", "ushort"},
+                {"UINT", "uint"},
+                {"UINT32", "uint"},
+                {"ULONG", "uint"},
+                {"DWORD", "uint"},
+                {"WORD", "short"},
+                {"INT", "int"},
+                {"INT32", "int"},
+                {"ULONGLONG", "ulong"},
+                {"UINT64", "ulong"},
+                {"LONGLONG", "long"},
+                {"LARGE_INTEGER", "long"},
+                {"FLOAT", "float"},
+                {"LPCSTR", "byte*"},
+                {"LPCWSTR", "char*"},
+                {"LPSTR", "byte*"},
+                {"LPWSTR", "char*"},
+                {"BSTR", "void*"},
+                {"GUID", "Guid"},
+                {"HWND", "nint"},
+                {"LPCVOID", "void*"},
+                {"LPVOID", "void*"},
+                {"SIZE", "nint"},
+                {"SIZE_T", "nuint"},
+                {"LUID", "Luid"},
+                {"IID", "Guid"},
+                {"RECT", "Rect32"},
+                {"POINT", "Point32"},
+                {"WPARAM", "nuint"},
+                {"LPARAM", "nint"},
+                {"HDC", "nint"},
+                {"HINSTANCE", "nint"},
+            },
+            Keywords = new()
+            {
+                "abstract",
+                "as",
+                "base",
+                "bool",
+                "break",
+                "byte",
+                "case",
+                "catch",
+                "char",
+                "checked",
+                "class",
+                "const",
+                "continue",
+                "decimal",
+                "default",
+                "delegate",
+                "do",
+                "double",
+                "else",
+                "enum",
+                "event",
+                "explicit",
+                "extern",
+                "false",
+                "finally",
+                "fixed",
+                "float",
+                "for",
+                "foreach",
+                "goto",
+                "if",
+                "implicit",
+                "in",
+                "int",
+                "interface",
+                "internal",
+                "is",
+                "lock",
+                "long",
+                "namespace",
+                "new",
+                "null",
+                "object",
+                "operator",
+                "out",
+                "override",
+                "params",
+                "private",
+                "protected",
+                "public",
+                "readonly",
+                "ref",
+                "return",
+                "sbyte",
+                "sealed",
+                "short",
+                "sizeof",
+                "stackalloc",
+                "static",
+                "string",
+                "struct",
+                "switch",
+                "this",
+                "throw",
+                "true",
+                "try",
+                "typeof",
+                "uint",
+                "ulong",
+                "unchecked",
+                "unsafe",
+                "ushort",
+                "using",
+                "using static",
+                "virtual",
+                "void",
+                "volatile",
+                "while",
+                "yield"
+            },
+            IgnoredTypedefs =
+            {
+                "HWND",
+                "nint"
+            }
+        };
+
         public static CsCodeGeneratorSettings Load(string file)
         {
             CsCodeGeneratorSettings result;
@@ -24,124 +179,361 @@
             {
                 result = new();
             }
+
+            foreach (var item in Default.TypeMappings)
+            {
+                result.TypeMappings.TryAdd(item.Key, item.Value);
+            }
+
+            foreach (var item in Default.Keywords)
+            {
+                if (!result.Keywords.Contains(item))
+                {
+                    result.Keywords.Add(item);
+                }
+            }
+
+            foreach (var item in Default.IgnoredTypedefs)
+            {
+                if (!result.IgnoredTypedefs.Contains(item))
+                {
+                    result.IgnoredTypedefs.Add(item);
+                }
+            }
+
             result.Save(file);
             return result;
         }
 
+        /// <summary>
+        /// The namespace of the generated wrapper. (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string Namespace { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The api name of the wrapper. (Used for exported functions and macros) (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string ApiName { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The name of the .dll or .so or .dylib. (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string LibName { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The log level of the generator. (Default <see cref="LogSevertiy.Warning"/>)
+        /// </summary>
         public LogSevertiy LogLevel { get; set; } = LogSevertiy.Warning;
 
+        /// <summary>
+        /// The log level of the Clang Compiler. (Default <see cref="LogSevertiy.Error"/>)
+        /// </summary>
         public LogSevertiy CppLogLevel { get; set; } = LogSevertiy.Error;
 
+        /// <summary>
+        /// This option generates the sizes of the structs. (Default: <see langword="false"/>)
+        /// </summary>
         public bool GenerateSizeOfStructs { get; set; } = false;
 
+        /// <summary>
+        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>)
+        /// </summary>
+        public bool GenerateConstructorsForStructs { get; set; } = true;
+
+        /// <summary>
+        /// This option makes that the delegates are just void* and not delegate pointer (<see cref="delegate*&lt;void&gt;"/>) (Default: <see langword="true"/>)
+        /// </summary>
         public bool DelegatesAsVoidPointer { get; set; } = true;
 
+        /// <summary>
+        /// This option makes the resulting wrapper more "safe" so you don't need unsafe blocks everywhere. (Default: <see langword="false"/>)
+        /// </summary>
+        public bool WrapPointersAsHandle { get; set; } = false;
+
+        /// <summary>
+        /// This causes the code generator to generate summary xml comments if it's missing with the text "To be documented." (Default: <see langword="true"/>)
+        /// </summary>
+        public bool GeneratePlaceholderComments { get; set; } = true;
+
+        /// <summary>
+        /// Enables generation for constants (CPP: Macros) (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateConstants { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for enums. (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateEnums { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for extensions, this option is very useful if you have an handle type or COM objects. (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateExtensions { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for functions. This option generates the public API dllexport functions. (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateFunctions { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for handles. (CPP: Typedefs) (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateHandles { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for types. This includes COM objects and normal C-Structs. (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateTypes { get; set; } = true;
 
+        /// <summary>
+        /// Enables generation for delegates. (Default: <see langword="true"/>)
+        /// </summary>
         public bool GenerateDelegates { get; set; } = true;
 
+        /// <summary>
+        /// This option controls the bool type eg. 8Bit Bool and 32Bit Bool. (Default: <see cref="BoolType.Bool8"/>)
+        /// </summary>
         public BoolType BoolType { get; set; } = BoolType.Bool8;
 
+        /// <summary>
+        /// Allows to map names for constants. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownConstantNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for enums. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownEnumValueNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for enum prefixes. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownEnumPrefixes { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for extension prefixes. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownExtensionPrefixes { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for extension. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownExtensionNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for default values. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownDefaultValueNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to define constructors functions for types. (Default: Empty)
+        /// </summary>
         public Dictionary<string, List<string>> KnownConstructors { get; set; } = new();
 
+        /// <summary>
+        /// Allows to define member functions for types. (Default: Empty)
+        /// </summary>
         public Dictionary<string, List<string>> KnownMemberFunctions { get; set; } = new();
 
+        /// <summary>
+        /// Ignores parts like OpenAl in OpenALFunction -> Function. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredParts { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
-        public HashSet<string> PreserveCaps { get; set; } = new(StringComparer.OrdinalIgnoreCase);
-
+        /// <summary>
+        /// C# keywords that would cause issues with naming. (Default: all common C# keywords)
+        /// </summary>
         public HashSet<string> Keywords { get; set; } = new();
 
+        /// <summary>
+        /// All function names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredFunctions { get; set; } = new();
 
+        /// <summary>
+        /// All types names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredTypes { get; set; } = new();
 
+        /// <summary>
+        /// All enums names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredEnums { get; set; } = new();
 
+        /// <summary>
+        /// All typedefs names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredTypedefs { get; set; } = new();
 
+        /// <summary>
+        /// All delegates names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredDelegates { get; set; } = new();
 
+        /// <summary>
+        /// All constants names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredConstants { get; set; } = new();
 
-        public Dictionary<string, string> IIDMappings { get; set; } = new();
-
-        public List<ConstantMapping> ConstantMappings { get; set; } = new();
-
-        public List<EnumMapping> EnumMappings { get; set; } = new();
-
-        public List<FunctionMapping> FunctionMappings { get; set; } = new();
-
-        public List<HandleMapping> HandleMappings { get; set; } = new();
-
-        public List<TypeMapping> ClassMappings { get; set; } = new();
-
-        public List<DelegateMapping> DelegateMappings { get; set; } = new();
-
-        public List<ArrayMapping> ArrayMappings { get; set; } = new();
-
-        public Dictionary<string, string> NameMappings { get; set; } = new()
-        {
-        };
-
-        public Dictionary<string, string> TypeMappings { get; set; } = new()
-        {
-            { "uint8_t", "byte" },
-            { "uint16_t", "ushort" },
-            { "uint32_t", "uint" },
-            { "uint64_t", "ulong" },
-            { "int8_t", "sbyte" },
-            { "int32_t", "int" },
-            { "int16_t", "short" },
-            { "int64_t", "long" },
-            { "int64_t*", "long*" },
-            { "unsigned char", "byte" },
-            { "signed char", "sbyte" },
-            { "char", "byte" },
-            { "size_t", "nuint" }
-        };
-
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on functions. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedFunctions { get; set; } = new();
 
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on types. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedTypes { get; set; } = new();
 
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on enums. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedEnums { get; set; } = new();
 
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on typedefs. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedTypedefs { get; set; } = new();
 
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on delegates. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedDelegates { get; set; } = new();
 
+        /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on constants. (Default: Empty)
+        /// </summary>
         public HashSet<string> AllowedConstants { get; set; } = new();
 
+        /// <summary>
+        /// Allows to define or overwrite COM object Guids. where the Key is the com object name and the value the guid. (Default: Empty)
+        /// </summary>
+        public Dictionary<string, string> IIDMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify constants. (Default: Empty)
+        /// </summary>
+        public List<ConstantMapping> ConstantMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify enums. (Default: Empty)
+        /// </summary>
+        public List<EnumMapping> EnumMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify functions. (Default: Empty)
+        /// </summary>
+        public List<FunctionMapping> FunctionMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify handles. (Default: Empty)
+        /// </summary>
+        public List<HandleMapping> HandleMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify classes. (Default: Empty)
+        /// </summary>
+        public List<TypeMapping> ClassMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify delegates. (Default: Empty)
+        /// </summary>
+        public List<DelegateMapping> DelegateMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to inject data and modify arrays. (Default: Empty)
+        /// </summary>
+        public List<ArrayMapping> ArrayMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to modify names fully or partially. newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase); (Default: Empty)
+        /// </summary>
+        public Dictionary<string, string> NameMappings { get; set; } = new();
+
+        /// <summary>
+        /// Maps type Key to type Value. (Default: a list with common types, like size_t : nuint)
+        /// </summary>
+        public Dictionary<string, string> TypeMappings { get; set; } = new();
+
+        /// <summary>
+        /// Allows to add or manage usings. (Default: Empty)
+        /// </summary>
         public List<string> Usings { get; set; } = new();
+
+        /// <summary>
+        /// The naming convention for constants, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.Unknown"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.Unknown;
+
+        /// <summary>
+        /// The naming convention for enums, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention EnumNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for enum items, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention EnumItemNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for extension functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention ExtensionNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention FunctionNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for handles, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention HandleNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for classes and structs, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention TypeNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for delegates, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention DelegateNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// The naming convention for parameters, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.CamelCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention ParameterNamingConvention { get; set; } = NamingConvention.CamelCase;
+
+        /// <summary>
+        /// The naming convention for members, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public NamingConvention MemberNamingConvention { get; set; } = NamingConvention.PascalCase;
+
+        /// <summary>
+        /// List of the include folders. (Default: Empty)
+        /// </summary>
+        public List<string> IncludeFolders { get; set; } = new();
+
+        /// <summary>
+        /// List of the system include folders. (Default: Empty)
+        /// </summary>
+        public List<string> SystemIncludeFolders { get; set; } = new();
+
+        /// <summary>
+        /// List of the additional arguments passed directly to the C++ Clang compiler. (Default: Empty)
+        /// </summary>
+        public List<string> AdditionalArguments { get; set; } = new();
 
         public void Save(string path)
         {
@@ -291,21 +683,62 @@
 
         #endregion Mapping Helpers
 
+        private readonly ConcurrentDictionary<CppType, string> typeNameCache = new();
+
         public string GetCsTypeName(CppType? type, bool isPointer = false)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (typeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsTypeNameInternal(type, isPointer);
+            typeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        public string GetCsTypeName(CppPointerType type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (typeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsTypeNameInternal(type);
+            typeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        public string GetCsTypeName(CppPrimitiveType type, bool isPointer)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (typeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsTypeNameInternal(type, isPointer);
+            typeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        private string GetCsTypeNameInternal(CppType? type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
-                return GetCsTypeName(primitiveType, isPointer);
+                return GetCsTypeNameInternal(primitiveType, isPointer);
             }
 
             if (type is CppQualifiedType qualifiedType)
             {
-                return GetCsTypeName(qualifiedType.ElementType, isPointer);
+                return GetCsTypeNameInternal(qualifiedType.ElementType, isPointer);
             }
 
             if (type is CppReferenceType referenceType)
             {
-                return GetCsTypeName(referenceType.ElementType, true);
+                return GetCsTypeNameInternal(referenceType.ElementType, true);
             }
 
             if (type is CppEnum enumType)
@@ -342,7 +775,7 @@
 
             if (type is CppPointerType pointerType)
             {
-                var pointerName = GetCsTypeName(pointerType);
+                var pointerName = GetCsTypeNameInternal(pointerType);
                 if (isPointer)
                     return pointerName + "*";
 
@@ -351,7 +784,7 @@
 
             if (type is CppArrayType arrayType)
             {
-                var arrayName = GetCsTypeName(arrayType.ElementType, false);
+                var arrayName = GetCsTypeNameInternal(arrayType.ElementType, false);
                 return arrayName + "*";
             }
 
@@ -363,32 +796,32 @@
             return string.Empty;
         }
 
-        public string GetCsTypeName(CppPointerType pointerType)
+        private string GetCsTypeNameInternal(CppPointerType pointerType)
         {
             if (pointerType.ElementType is CppQualifiedType qualifiedType)
             {
                 if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
                 {
-                    return GetCsTypeName(primitiveType, true);
+                    return GetCsTypeNameInternal(primitiveType, true);
                 }
                 else if (qualifiedType.ElementType is CppClass @classType)
                 {
-                    return GetCsTypeName(@classType, true);
+                    return GetCsTypeNameInternal(@classType, true);
                 }
                 else if (qualifiedType.ElementType is CppPointerType subPointerType)
                 {
-                    return GetCsTypeName(subPointerType.ElementType, true) + "*";
+                    return GetCsTypeNameInternal(subPointerType.ElementType, true) + "*";
                 }
                 else if (qualifiedType.ElementType is CppTypedef typedef)
                 {
-                    return GetCsTypeName(typedef, true);
+                    return GetCsTypeNameInternal(typedef, true);
                 }
                 else if (qualifiedType.ElementType is CppEnum @enum)
                 {
-                    return GetCsTypeName(@enum, true);
+                    return GetCsTypeNameInternal(@enum, true);
                 }
 
-                return GetCsTypeName(qualifiedType.ElementType, true);
+                return GetCsTypeNameInternal(qualifiedType.ElementType, true);
             }
 
             if (pointerType.ElementType is CppFunctionType functionType)
@@ -398,13 +831,13 @@
 
             if (pointerType.ElementType is CppPointerType subPointer)
             {
-                return GetCsTypeName(subPointer) + "*";
+                return GetCsTypeNameInternal(subPointer) + "*";
             }
 
-            return GetCsTypeName(pointerType.ElementType, true);
+            return GetCsTypeNameInternal(pointerType.ElementType, true);
         }
 
-        public string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer)
+        private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
         {
             switch (primitiveType.Kind)
             {
@@ -457,21 +890,62 @@
             return string.Empty;
         }
 
+        private readonly ConcurrentDictionary<CppType, string> wrapperTypeNameCache = new();
+
         public string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrapperTypeNameInternal(type, isPointer);
+            wrapperTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        public string GetCsWrapperTypeName(CppPointerType type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrapperTypeNameInternal(type);
+            wrapperTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        public string GetCsWrapperTypeName(CppPrimitiveType type, bool isPointer)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrapperTypeNameInternal(type, isPointer);
+            wrapperTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        private string GetCsWrapperTypeNameInternal(CppType? type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
-                return GetCsWrapperTypeName(primitiveType, isPointer);
+                return GetCsWrapperTypeNameInternal(primitiveType, isPointer);
             }
 
             if (type is CppQualifiedType qualifiedType)
             {
-                return GetCsWrapperTypeName(qualifiedType.ElementType, isPointer);
+                return GetCsWrapperTypeNameInternal(qualifiedType.ElementType, isPointer);
             }
 
             if (type is CppReferenceType referenceType)
             {
-                return GetCsWrapperTypeName(referenceType.ElementType, true);
+                return GetCsWrapperTypeNameInternal(referenceType.ElementType, true);
             }
 
             if (type is CppEnum enumType)
@@ -486,10 +960,12 @@
             if (type is CppTypedef typedef)
             {
                 var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate(out var _))
+                if (typedef.IsDelegate())
                 {
                     return typeDefCsName;
                 }
+                if (isPointer && typeDefCsName == "void")
+                    return "void*";
                 if (isPointer)
                     return "ref " + typeDefCsName;
 
@@ -499,6 +975,8 @@
             if (type is CppClass @class)
             {
                 var className = GetCsCleanName(@class.Name);
+                if (isPointer && className == "void")
+                    return "void*";
                 if (isPointer)
                     return "ref " + className;
 
@@ -507,7 +985,7 @@
 
             if (type is CppPointerType pointerType)
             {
-                return GetCsWrapperTypeName(pointerType);
+                return GetCsWrapperTypeNameInternal(pointerType);
             }
 
             if (type is CppArrayType arrayType && arrayType.Size > 0)
@@ -517,7 +995,7 @@
                     return mapping;
                 }
 
-                return GetCsWrapperTypeName(arrayType.ElementType, true);
+                return GetCsWrapperTypeNameInternal(arrayType.ElementType, true);
             }
             else if (type is CppArrayType arrayType1 && arrayType1.Size < 0)
             {
@@ -528,7 +1006,7 @@
             return string.Empty;
         }
 
-        public string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer)
+        private string GetCsWrapperTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
         {
             switch (primitiveType.Kind)
             {
@@ -581,32 +1059,32 @@
             return string.Empty;
         }
 
-        public string GetCsWrapperTypeName(CppPointerType pointerType)
+        private string GetCsWrapperTypeNameInternal(CppPointerType pointerType)
         {
             if (pointerType.ElementType is CppQualifiedType qualifiedType)
             {
                 if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
                 {
-                    return GetCsWrapperTypeName(primitiveType, true);
+                    return GetCsWrapperTypeNameInternal(primitiveType, true);
                 }
                 else if (qualifiedType.ElementType is CppClass @classType)
                 {
-                    return GetCsWrapperTypeName(@classType, true);
+                    return GetCsWrapperTypeNameInternal(@classType, true);
                 }
                 else if (qualifiedType.ElementType is CppPointerType subPointerType)
                 {
-                    return GetCsWrapperTypeName(subPointerType, true) + "*";
+                    return GetCsWrapperTypeNameInternal(subPointerType, true) + "*";
                 }
                 else if (qualifiedType.ElementType is CppTypedef typedef)
                 {
-                    return GetCsWrapperTypeName(typedef, true);
+                    return GetCsWrapperTypeNameInternal(typedef, true);
                 }
                 else if (qualifiedType.ElementType is CppEnum @enum)
                 {
-                    return GetCsWrapperTypeName(@enum, true);
+                    return GetCsWrapperTypeNameInternal(@enum, true);
                 }
 
-                return GetCsWrapperTypeName(qualifiedType.ElementType, true);
+                return GetCsWrapperTypeNameInternal(qualifiedType.ElementType, true);
             }
 
             if (pointerType.ElementType is CppFunctionType functionType)
@@ -616,10 +1094,10 @@
 
             if (pointerType.ElementType is CppPointerType subPointer)
             {
-                return GetCsWrapperTypeName(subPointer) + "*";
+                return GetCsWrapperTypeNameInternal(subPointer) + "*";
             }
 
-            return GetCsWrapperTypeName(pointerType.ElementType, true);
+            return GetCsWrapperTypeNameInternal(pointerType.ElementType, true);
         }
 
         public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true)
@@ -631,7 +1109,7 @@
             {
                 CppParameter cppParameter = parameters[i];
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
-                var paramCsName = GetParameterName(cppParameter.Type, cppParameter.Name);
+                var paramCsName = GetParameterName(i, cppParameter.Name);
 
                 if (attributes)
                 {
@@ -691,7 +1169,9 @@
             return argumentBuilder.ToString();
         }
 
-        public string GetParameterName(CppType type, string name)
+        private readonly ConcurrentDictionary<string, string> parameterNameCache = new();
+
+        public string GetParameterName(int paramIdx, string name)
         {
             if (name == "out")
             {
@@ -740,73 +1220,34 @@
 
             if (name == string.Empty)
             {
-                switch (type.TypeKind)
-                {
-                    case CppTypeKind.Primitive:
-                        return GetParameterName(type, (type as CppPrimitiveType).GetDisplayName());
-
-                    case CppTypeKind.Pointer:
-                        return GetParameterName((type as CppPointerType).ElementType, (type as CppPointerType).ElementType.GetDisplayName());
-
-                    case CppTypeKind.Reference:
-                        return GetParameterName((type as CppReferenceType).ElementType, (type as CppReferenceType).ElementType.GetDisplayName());
-
-                    case CppTypeKind.Array:
-                        break;
-
-                    case CppTypeKind.Qualified:
-                        return (type as CppQualifiedType).ElementType.GetDisplayName();
-
-                    case CppTypeKind.Function:
-                        break;
-
-                    case CppTypeKind.Typedef:
-                        return GetParameterName((type as CppTypedef).ElementType, name);
-
-                    case CppTypeKind.StructOrClass:
-                        break;
-
-                    case CppTypeKind.Enum:
-                        return (type as CppEnum).GetDisplayName();
-
-                    case CppTypeKind.TemplateParameterType:
-                        break;
-
-                    case CppTypeKind.TemplateParameterNonType:
-                        break;
-
-                    case CppTypeKind.Unexposed:
-                        break;
-                }
+                return $"unknown{paramIdx}";
             }
 
             return NormalizeParameterName(name);
         }
 
+        public string GetDelegateName(string name)
+        {
+            return GetCsCleanNameWithConvention(name, DelegateNamingConvention, false);
+        }
+
         public string NormalizeParameterName(string name)
         {
-            var parts = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder sb = new();
-            for (int i = 0; i < parts.Length; i++)
+            if (parameterNameCache.TryGetValue(name, out var newName))
             {
-                if (i == 0)
-                {
-                    sb.Append(char.ToLower(parts[i][0]));
-                    sb.Append(parts[i][1..]);
-                }
-                else
-                {
-                    sb.Append(char.ToUpper(parts[i][0]));
-                    sb.Append(parts[i][1..]);
-                }
-            }
-            name = sb.ToString();
-            if (Keywords.Contains(name))
-            {
-                return "@" + name;
+                return newName;
             }
 
-            return name;
+            newName = NamingHelper.ConvertTo(name, ParameterNamingConvention);
+
+            if (Keywords.Contains(newName))
+            {
+                return "@" + newName;
+            }
+
+            parameterNameCache.TryAdd(name, newName);
+
+            return newName;
         }
 
         public string? NormalizeValue(string value, bool sanitize)
@@ -897,7 +1338,7 @@
                         {
                             csName = csName.Remove(csName.Length - 1);
                         }
-                        var enumItemName = GetPrettyEnumName(value, enumNamePrefix);
+                        var enumItemName = GetEnumName(value, enumNamePrefix);
 
                         defaultValue = $"{csName}.{enumItemName}";
                         return true;
@@ -910,14 +1351,14 @@
             return false;
         }
 
-        public string GetPrettyConstantName(string value)
+        public string GetConstantName(string value)
         {
             if (KnownConstantNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
             }
 
-            return GetCsCleanName(value);
+            return GetCsCleanNameWithConvention(value, ConstantNamingConvention, false);
         }
 
         public EnumPrefix GetEnumNamePrefix(string typeName)
@@ -966,7 +1407,7 @@
             return new(partList.ToArray());
         }
 
-        public string GetPrettyEnumName(string value, EnumPrefix enumPrefix)
+        public string GetEnumName(string value, EnumPrefix enumPrefix)
         {
             if (KnownEnumValueNames.TryGetValue(value, out string? knownName))
             {
@@ -1016,12 +1457,12 @@
 
             if (sb.Length == 0)
             {
-                sb.Append(prefixParts[^1].ToCamelCase());
+                sb.Append(parts[^1].ToCamelCase());
             }
 
             string prettyName = sb.ToString();
 
-            return char.IsNumber(prettyName[0]) ? prefixParts[^1].ToCamelCase() + prettyName : prettyName;
+            return char.IsNumber(prettyName[0]) ? parts[^1].ToCamelCase() + prettyName : prettyName;
         }
 
         public string GetExtensionNamePrefix(string typeName)
@@ -1036,7 +1477,7 @@
             return string.Join("_", parts.Select(s => s.ToUpper()));
         }
 
-        public string GetPrettyExtensionName(string value, string extensionPrefix)
+        public string GetExtensionName(string value, string extensionPrefix)
         {
             if (KnownExtensionNames.TryGetValue(value, out string? knownName))
             {
@@ -1070,7 +1511,7 @@
             return (char.IsNumber(prettyName[0])) ? prefixParts[^1].ToCamelCase() + prettyName : prettyName;
         }
 
-        public string NormalizeFieldName(string name)
+        public string GetFieldName(string name)
         {
             var parts = name.Split('_', StringSplitOptions.RemoveEmptyEntries);
             StringBuilder sb = new();
@@ -1099,6 +1540,178 @@
                 BoolType.Bool32 => "int",
                 _ => throw new NotSupportedException(),
             };
+        }
+
+        public bool WriteCsSummary(string? comment, CodeWriter writer)
+        {
+            if (comment == null)
+            {
+                if (GeneratePlaceholderComments)
+                {
+                    writer.WriteLine("/// <summary>");
+                    writer.WriteLine("/// To be documented.");
+                    writer.WriteLine("/// </summary>");
+                    return true;
+                }
+                return false;
+            }
+
+            var lines = comment.Replace("/", string.Empty).Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            writer.WriteLine("/// <summary>");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                writer.WriteLine($"/// {new XText(line)}<br/>");
+            }
+            writer.WriteLine($"/// </summary>");
+            return true;
+        }
+
+        public bool WriteCsSummary(CppComment? comment, CodeWriter writer)
+        {
+            bool result = false;
+            if (comment is CppCommentFull full)
+            {
+                writer.WriteLine("/// <summary>");
+                for (int i = 0; i < full.Children.Count; i++)
+                {
+                    WriteCsSummary(full.Children[i], writer);
+                }
+                writer.WriteLine("/// </summary>");
+                result = true;
+            }
+            if (comment is CppCommentParagraph paragraph)
+            {
+                for (int i = 0; i < paragraph.Children.Count; i++)
+                {
+                    WriteCsSummary(paragraph.Children[i], writer);
+                }
+                result = true;
+            }
+
+            if (comment is CppCommentBlockCommand blockCommand)
+            {
+            }
+            if (comment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+            }
+
+            if (comment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+            }
+
+            if (comment is CppCommentVerbatimLine line)
+            {
+            }
+
+            if (comment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+            }
+
+            if (comment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+            }
+
+            if (comment is CppCommentText text)
+            {
+                writer.WriteLine($"/// " + text.Text + "<br/>");
+                result = true;
+            }
+
+            if (comment == null || comment.Kind == CppCommentKind.Null)
+            {
+            }
+
+            if (!result && GeneratePlaceholderComments)
+            {
+                writer.WriteLine("/// <summary>");
+                writer.WriteLine("/// To be documented.");
+                writer.WriteLine("/// </summary>");
+                return true;
+            }
+
+            return result;
+        }
+
+        public void WriteCsSummary(CppComment? cppComment, out string? comment)
+        {
+            comment = null;
+            StringBuilder sb = new();
+            if (cppComment is CppCommentFull full)
+            {
+                sb.AppendLine("/// <summary>");
+                for (int i = 0; i < full.Children.Count; i++)
+                {
+                    WriteCsSummary(full.Children[i], out var subComment);
+                    sb.Append(subComment);
+                }
+                sb.AppendLine("/// </summary>");
+                comment = sb.ToString();
+                return;
+            }
+            if (cppComment is CppCommentParagraph paragraph)
+            {
+                for (int i = 0; i < paragraph.Children.Count; i++)
+                {
+                    WriteCsSummary(paragraph.Children[i], out var subComment);
+                    sb.Append(subComment);
+                }
+                comment = sb.ToString();
+                return;
+            }
+            if (cppComment is CppCommentText text)
+            {
+                sb.AppendLine($"/// " + text.Text + "<br/>");
+                comment = sb.ToString();
+                return;
+            }
+
+            if (cppComment is CppCommentBlockCommand blockCommand)
+            {
+                comment = null;
+            }
+            if (cppComment is CppCommentVerbatimBlockCommand verbatimBlockCommand)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentVerbatimBlockLine verbatimBlockLine)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentVerbatimLine line)
+            {
+                comment = null;
+            }
+
+            if (cppComment is CppCommentParamCommand paramCommand)
+            {
+                // TODO: add param comment support
+                comment = null;
+            }
+
+            if (cppComment is CppCommentInlineCommand inlineCommand)
+            {
+                // TODO: add inline comment support
+                comment = null;
+            }
+
+            if (cppComment == null || cppComment.Kind == CppCommentKind.Null)
+            {
+                comment = null;
+            }
+
+            if (comment == null && GeneratePlaceholderComments)
+            {
+                sb.AppendLine("/// <summary>");
+                sb.AppendLine("/// To be documented.");
+                sb.AppendLine("/// </summary>");
+                comment = sb.ToString();
+                return;
+            }
         }
     }
 }

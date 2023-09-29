@@ -1,5 +1,5 @@
 {
-  "Namespace": "HexaEngine.D3DCommon",
+  "Namespace": "Hexa.NET.D3DCommon",
   "ApiName": "D3DCommon",
   "LibName": "",
   "GenerateSizeOfStructs": false,

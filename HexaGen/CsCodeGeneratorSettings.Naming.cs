@@ -1,14 +1,12 @@
-﻿using Humanizer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Concurrent;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HexaGen
 {
     public partial class CsCodeGeneratorSettings
     {
+        private readonly ConcurrentDictionary<string, string> nameCache = new();
+
         public string GetCsCleanName(string name)
         {
             if (TypeMappings.TryGetValue(name, out string? mappedName))
@@ -16,10 +14,16 @@ namespace HexaGen
                 return mappedName;
             }
 
+            if (nameCache.TryGetValue(name, out string? cacheEntry))
+            {
+                return cacheEntry;
+            }
+
             StringBuilder sb = new();
             bool isCaps = name.IsCaps();
             bool wasLowerCase = false;
             bool wasNumber = false;
+
             for (int i = 0; i < name.Length; i++)
             {
                 char c = name[i];
@@ -60,6 +64,40 @@ namespace HexaGen
             {
                 newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
             }
+
+            nameCache.TryAdd(name, newName);
+
+            return newName;
+        }
+
+        public string GetCsCleanNameWithConvention(string name, NamingConvention convention, bool removeTailingT = true)
+        {
+            if (TypeMappings.TryGetValue(name, out string? mappedName))
+            {
+                return mappedName;
+            }
+
+            if (nameCache.TryGetValue(name, out string? cacheEntry))
+            {
+                return cacheEntry;
+            }
+
+            string newName = NamingHelper.ConvertTo(name, convention);
+
+            if (removeTailingT)
+            {
+                if (newName.Length > 0 && newName[^1] == 'T')
+                {
+                    newName = newName.Remove(newName.Length - 1, 1);
+                }
+            }
+
+            foreach (var item in NameMappings)
+            {
+                newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
+            }
+
+            nameCache.TryAdd(name, newName);
 
             return newName;
         }

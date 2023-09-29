@@ -1,10 +1,13 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Language.Cpp;
     using System.Collections.Generic;
 
-    public partial class CsCodeGenerator
+    public unsafe partial class CsCodeGenerator
     {
+        private CppMacroParser parser = new();
+
         protected readonly HashSet<string> LibDefinedConstants = new();
 
         public readonly HashSet<string> DefinedConstants = new();
@@ -68,16 +71,16 @@
                 return;
 
             var writer = context.Writer;
-            var name = settings.GetPrettyConstantName(macro.Name);
+            var name = settings.GetConstantName(macro.Name);
             var value = macro.Value.NormalizeConstantValue();
 
             if (value == string.Empty)
                 return;
 
-            if (value.IsNumeric(true))
+            if (value.IsNumeric(out var type))
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
-                writer.WriteLine($"public const uint {name} = {value};");
+                writer.WriteLine($"public const {type.GetNumberType()} {name} = {value};");
                 writer.WriteLine();
             }
             else if (value.IsString())
@@ -85,6 +88,13 @@
                 writer.WriteLine($"[NativeName(NativeNameType.Const, \"{macro.Name}\")]");
                 writer.WriteLine($"public const string {name} = {value};");
                 writer.WriteLine();
+            }
+            else if (macro.Parameters == null)
+            {
+                //var result = parser.Parse(value, "");
+                //writer.WriteLine($"[NativeName(NativeNameType.NoneOrConst, \"{macro.Name}\")]");
+                //writer.WriteLine($"public const string {name} = {value};");
+                //writer.WriteLine();
             }
         }
     }

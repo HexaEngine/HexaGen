@@ -1,8 +1,9 @@
 {
-  "Namespace": "HexaEngine.SDL2",
-  "ApiName": "SDL2",
-  "LibName": "sdl2",
+  "Namespace": "Hexa.NET.SDL2",
+  "ApiName": "SDL",
+  "LibName": "SDL2",
   "GenerateSizeOfStructs": false,
+  "ConstantNamingConvention": "Unknown",
   "KnownConstantNames": {
   },
   "KnownEnumValueNames": {
@@ -41,7 +42,7 @@
     "signed char": "sbyte",
     "char": "byte",
     "size_t": "nuint",
-    "bool": "bool",
+    "bool": "byte",
     "Uint8": "byte",
     "Uint16": "ushort",
     "Uint32": "uint",

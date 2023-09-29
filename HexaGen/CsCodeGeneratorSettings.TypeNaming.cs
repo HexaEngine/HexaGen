@@ -1,26 +1,32 @@
 ﻿using CppAst;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace HexaGen
 {
     public partial class CsCodeGeneratorSettings
     {
+        public static int IndexOfUnionField(CppClass parent, CppClass union)
+        {
+            for (int i = 0; i < parent.Fields.Count; i++)
+            {
+                var field = parent.Fields[i];
+                if (field.Type == union)
+                    return i;
+            }
+            return -1;
+        }
+
         public string GetCsSubTypeName(CppClass parentClass, string parentCsName, CppClass subClass, int idxSubClass)
         {
             string csSubName;
             if (string.IsNullOrEmpty(subClass.Name))
             {
-                if (parentClass.Fields.Count > idxSubClass)
+                idxSubClass = IndexOfUnionField(parentClass, subClass);
+                if (idxSubClass != -1)
                 {
                     var field = parentClass.Fields[idxSubClass];
                     if (field.Type == subClass)
                     {
-                        string csFieldName = NormalizeFieldName(field.Name);
+                        string csFieldName = GetFieldName(field.Name);
 
                         if (string.IsNullOrEmpty(csFieldName))
                         {

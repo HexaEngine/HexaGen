@@ -1,8 +1,8 @@
 {
-  "Namespace": "HexaEngine.D3D12",
+  "Namespace": "Hexa.NET.D3D12",
   "ApiName": "D3D12",
   "LibName": "d3d12",
-  "Usings": [ "HexaEngine.DXGI", "HexaEngine.D3DCommon" ],
+  "Usings": [ "Hexa.NET.DXGI", "Hexa.NET.D3DCommon" ],
   "GenerateSizeOfStructs": false,
   "BoolType": 1,
   "KnownConstantNames": {

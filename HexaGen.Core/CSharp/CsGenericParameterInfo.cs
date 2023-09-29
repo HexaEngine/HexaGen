@@ -1,6 +1,6 @@
 ﻿namespace HexaGen.Core.CSharp
 {
-    public class CsGenericParameterInfo
+    public class CsGenericParameterInfo : ICloneable<CsGenericParameterInfo>
     {
         public CsGenericParameterInfo(string name, string constrain)
         {
@@ -11,5 +11,10 @@
         public string Name { get; set; }
 
         public string Constrain { get; set; }
+
+        public CsGenericParameterInfo Clone()
+        {
+            return new CsGenericParameterInfo(Name, Constrain);
+        }
     }
 }

@@ -1,0 +1,51 @@
+{
+  "Namespace": "Hexa.NET.SPIRVCross",
+  "ApiName": "SPIRV",
+  "LibName": "spirv-cross-c-shared",
+  "GenerateSizeOfStructs": false,
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "size_t": "nuint",
+    "spvc_bool": "byte",
+    "spvc_constant_id": "uint",
+    "spvc_variable_id": "uint",
+    "spvc_type_id": "uint",
+    "spvc_hlsl_binding_flags": "uint",
+    "spvc_msl_shader_input": "SpvcMslShaderInterfaceVar",
+    "spvc_msl_vertex_format": "SpvcMslShaderVariableFormat"
+  }
+}

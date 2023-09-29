@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Generated\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hexa.NET.D3DCommon\Hexa.NET.D3DCommon.csproj" />
+    <ProjectReference Include="..\Hexa.NET.DXGI\Hexa.NET.DXGI.csproj" />
+    <ProjectReference Include="..\HexaGen.Runtime.COM\HexaGen.Runtime.COM.csproj" />
+  </ItemGroup>
+
+</Project>

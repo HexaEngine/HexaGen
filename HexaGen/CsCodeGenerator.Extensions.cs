@@ -2,7 +2,6 @@
 {
     using CppAst;
     using HexaGen.Core.CSharp;
-    using System;
     using System.Collections.Generic;
     using System.Text;
 
@@ -104,7 +103,7 @@
                 var extensionPrefix = settings.GetExtensionNamePrefix(handleName);
 
                 var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                var csName = settings.GetPrettyExtensionName(csFunctionName, extensionPrefix);
+                var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
 
                 CreateCsFunction(cppFunction, csName, functions, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
@@ -120,54 +119,30 @@
             }
         }
 
-        protected virtual string BuildExtensionSignature(CsFunctionVariation variation)
-        {
-            var first = variation.Parameters[0];
-            return string.Join(", ", variation.Parameters.Skip(1).Select(x => $"{string.Join(" ", x.Attributes)} {x.Type} {x.Name}").Reverse().Append($"this {first.Type} {first.Name}").Reverse());
-        }
-
         protected virtual void WriteExtension(GenContext context, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, CsFunctionVariation variation, string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string modifierString = string.Join(" ", modifiers);
-            string signature = BuildExtensionSignature(variation);
-            string header = $"{csReturnType.Name} {variation.Name}({signature})";
+            string header = BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension);
+            string id = BuildFunctionHeaderId(variation, WriteFunctionFlags.Extension);
 
-            string identifier = variation.BuildSignatureIdentifier();
-            if (FilterExtension(context, definedExtensions, identifier))
+            if (FilterExtension(context, definedExtensions, id))
+            {
                 return;
+            }
+
+            ClassifyParameters(overload, variation, csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged);
 
             LogInfo("defined extension " + header);
 
-            if (overload.Comment != null)
-                writer.WriteLines(overload.Comment);
-
+            writer.WriteLines(overload.Comment);
             writer.WriteLines(overload.Attributes);
 
-            using (writer.PushBlock($"{modifierString} {header}"))
+            using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {
                 StringBuilder sb = new();
-                bool firstParamReturn = false;
-                if (!csReturnType.IsString && csReturnType.Name != overload.ReturnType.Name)
-                {
-                    firstParamReturn = true;
-                }
-
-                int offset = firstParamReturn ? 1 : 0;
-
-                bool hasManaged = false;
-                for (int j = 0; j < overload.Parameters.Count - offset; j++)
-                {
-                    var cppParameter = overload.Parameters[j + offset];
-                    if (variation.HasParameter(cppParameter))
-                        continue;
-                    var paramCsDefault = overload.DefaultValues[cppParameter.Name];
-                    if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
-                        hasManaged = true;
-                }
 
                 if (!firstParamReturn && (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer))
                 {
@@ -202,32 +177,18 @@
                 for (int i = 0; i < overload.Parameters.Count - offset; i++)
                 {
                     var cppParameter = overload.Parameters[i + offset];
-                    var isRef = false;
-                    var isPointer = false;
-                    var isStr = false;
-                    var isArray = false;
-                    var isBool = false;
-                    var isConst = true;
+                    var paramFlags = ParameterFlags.None;
 
-                    for (int j = 0; j < variation.Parameters.Count; j++)
+                    if (variation.TryGetParameter(cppParameter.Name, out var param))
                     {
-                        var param = variation.Parameters[j];
-                        if (param.Name == cppParameter.Name)
-                        {
-                            cppParameter = param;
-                            isRef = param.Type.IsRef;
-                            isPointer = param.Type.IsPointer;
-                            isStr = param.Type.IsString;
-                            isArray = param.Type.IsArray;
-                            isBool = param.Type.IsBool;
-                            isConst = false;
-                        }
+                        paramFlags = param.Flags;
+                        cppParameter = param;
                     }
 
-                    if (isConst)
+                    if (paramFlags.HasFlag(ParameterFlags.Default))
                     {
                         var rootParam = overload.Parameters[i + offset];
-                        var paramCsDefault = overload.DefaultValues[cppParameter.Name];
+                        var paramCsDefault = cppParameter.DefaultValue;
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                             sb.Append($"(string){paramCsDefault}");
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
@@ -239,9 +200,9 @@
                         else
                             sb.Append($"{paramCsDefault}");
                     }
-                    else if (isStr)
+                    else if (paramFlags.HasFlag(ParameterFlags.String))
                     {
-                        if (isArray)
+                        if (paramFlags.HasFlag(ParameterFlags.Array))
                         {
                             WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, arrays.Count);
                             sb.Append($"pStrArray{arrays.Count}");
@@ -249,7 +210,7 @@
                         }
                         else
                         {
-                            if (isRef)
+                            if (paramFlags.HasFlag(ParameterFlags.Ref))
                             {
                                 stack.Push((cppParameter.Name, cppParameter, $"pStr{strings}"));
                             }
@@ -259,19 +220,19 @@
                             strings++;
                         }
                     }
-                    else if (isRef)
+                    else if (paramFlags.HasFlag(ParameterFlags.Ref))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = &{cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }
-                    else if (isArray)
+                    else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }
-                    else if (isBool && !isRef && !isPointer)
+                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
                         sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
                     }

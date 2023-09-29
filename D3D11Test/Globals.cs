@@ -1,0 +1,1 @@
+﻿global using static D3D11Test.Utils;
