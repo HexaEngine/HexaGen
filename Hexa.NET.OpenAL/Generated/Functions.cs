@@ -1753,16 +1753,6 @@ namespace Hexa.NET.OpenAL
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "alGetBuffer3f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void AlGetBuffer3F([NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "ALuint")] uint buffer, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "ALenum")] int param, [NativeName(NativeNameType.Param, "value1")] [NativeName(NativeNameType.Type, "ALfloat*")] float* value1, [NativeName(NativeNameType.Param, "value2")] [NativeName(NativeNameType.Type, "ALfloat*")] float* value2, [NativeName(NativeNameType.Param, "value3")] [NativeName(NativeNameType.Type, "ALfloat*")] ref float value3)
-		{
-			fixed (float* pvalue3 = &value3)
-			{
-				AlGetBuffer3FNative(buffer, param, value1, value2, (float*)pvalue3);
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "alGetBuffer3f")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		public static void AlGetBuffer3F([NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "ALuint")] uint buffer, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "ALenum")] int param, [NativeName(NativeNameType.Param, "value1")] [NativeName(NativeNameType.Type, "ALfloat*")] ref float value1, [NativeName(NativeNameType.Param, "value2")] [NativeName(NativeNameType.Type, "ALfloat*")] ref float value2, [NativeName(NativeNameType.Param, "value3")] [NativeName(NativeNameType.Type, "ALfloat*")] float* value3)
 		{
 			fixed (float* pvalue1 = &value1)
@@ -1771,6 +1761,16 @@ namespace Hexa.NET.OpenAL
 				{
 					AlGetBuffer3FNative(buffer, param, (float*)pvalue1, (float*)pvalue2, value3);
 				}
+			}
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "alGetBuffer3f")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AlGetBuffer3F([NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "ALuint")] uint buffer, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "ALenum")] int param, [NativeName(NativeNameType.Param, "value1")] [NativeName(NativeNameType.Type, "ALfloat*")] float* value1, [NativeName(NativeNameType.Param, "value2")] [NativeName(NativeNameType.Type, "ALfloat*")] float* value2, [NativeName(NativeNameType.Param, "value3")] [NativeName(NativeNameType.Type, "ALfloat*")] ref float value3)
+		{
+			fixed (float* pvalue3 = &value3)
+			{
+				AlGetBuffer3FNative(buffer, param, value1, value2, (float*)pvalue3);
 			}
 		}
 
@@ -2406,6 +2406,17 @@ namespace Hexa.NET.OpenAL
 
 		/// <summary>		/// Retrieve the value of an enum. Given a non-NULL device, the returned value<br/>		/// may be device-specific.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "alcGetEnumValue")]
 		[return: NativeName(NativeNameType.Type, "ALCenum")]
+		public static int AlcGetEnumValue([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "ALCdevice*")] ALCdevice* device, [NativeName(NativeNameType.Param, "enumname")] [NativeName(NativeNameType.Type, "const ALCchar*")] ref byte enumname)
+		{
+			fixed (byte* penumname = &enumname)
+			{
+				int ret = AlcGetEnumValueNative(device, (byte*)penumname);
+				return ret;
+			}
+		}
+
+		/// <summary>		/// Retrieve the value of an enum. Given a non-NULL device, the returned value<br/>		/// may be device-specific.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "alcGetEnumValue")]
+		[return: NativeName(NativeNameType.Type, "ALCenum")]
 		public static int AlcGetEnumValue([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "ALCdevice*")] ref ALCdevice device, [NativeName(NativeNameType.Param, "enumname")] [NativeName(NativeNameType.Type, "const ALCchar*")] ref byte enumname)
 		{
 			fixed (ALCdevice* pdevice = &device)
@@ -2415,17 +2426,6 @@ namespace Hexa.NET.OpenAL
 					int ret = AlcGetEnumValueNative((ALCdevice*)pdevice, (byte*)penumname);
 					return ret;
 				}
-			}
-		}
-
-		/// <summary>		/// Retrieve the value of an enum. Given a non-NULL device, the returned value<br/>		/// may be device-specific.<br/>		/// </summary>		[NativeName(NativeNameType.Func, "alcGetEnumValue")]
-		[return: NativeName(NativeNameType.Type, "ALCenum")]
-		public static int AlcGetEnumValue([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "ALCdevice*")] ALCdevice* device, [NativeName(NativeNameType.Param, "enumname")] [NativeName(NativeNameType.Type, "const ALCchar*")] ref byte enumname)
-		{
-			fixed (byte* penumname = &enumname)
-			{
-				int ret = AlcGetEnumValueNative(device, (byte*)penumname);
-				return ret;
 			}
 		}
 
