@@ -9,410 +9,1153 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXGI
+namespace Hexa.NET.DXGI
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_FORMAT")]
-	public enum DXGI_FORMA
+	public enum DxgiFormat
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_UNKNOWN")]
 		Unknown = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_TYPELESS")]
 		Formatr32g32b32a32Typeless = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_FLOAT")]
 		Formatr32g32b32a32Float = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_UINT")]
 		Formatr32g32b32a32Uint = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32A32_SINT")]
 		Formatr32g32b32a32Sint = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_TYPELESS")]
 		Formatr32g32b32Typeless = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_FLOAT")]
 		Formatr32g32b32Float = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_UINT")]
 		Formatr32g32b32Uint = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32B32_SINT")]
 		Formatr32g32b32Sint = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_TYPELESS")]
 		Formatr16g16b16a16Typeless = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_FLOAT")]
 		Formatr16g16b16a16Float = unchecked(10),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_UNORM")]
 		Formatr16g16b16a16Unorm = unchecked(11),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_UINT")]
 		Formatr16g16b16a16Uint = unchecked(12),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_SNORM")]
 		Formatr16g16b16a16Snorm = unchecked(13),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16B16A16_SINT")]
 		Formatr16g16b16a16Sint = unchecked(14),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_TYPELESS")]
 		Formatr32g32Typeless = unchecked(15),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_FLOAT")]
 		Formatr32g32Float = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_UINT")]
 		Formatr32g32Uint = unchecked(17),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G32_SINT")]
 		Formatr32g32Sint = unchecked(18),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32G8X24_TYPELESS")]
 		Formatr32g8X24Typeless = unchecked(19),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D32_FLOAT_S8X24_UINT")]
 		Formatd32Floats8X24Uint = unchecked(20),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_FLOAT_X8X24_TYPELESS")]
 		Formatr32Floatx8X24Typeless = unchecked(21),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_X32_TYPELESS_G8X24_UINT")]
 		Formatx32Typelessg8X24Uint = unchecked(22),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_TYPELESS")]
 		Formatr10g10b10a2Typeless = unchecked(23),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_UNORM")]
 		Formatr10g10b10a2Unorm = unchecked(24),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10A2_UINT")]
 		Formatr10g10b10a2Uint = unchecked(25),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R11G11B10_FLOAT")]
 		Formatr11g11b10Float = unchecked(26),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_TYPELESS")]
 		Formatr8G8B8A8Typeless = unchecked(27),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UNORM")]
 		Formatr8G8B8A8Unorm = unchecked(28),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UNORM_SRGB")]
 		Formatr8G8B8A8UnormSrgb = unchecked(29),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_UINT")]
 		Formatr8G8B8A8Uint = unchecked(30),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_SNORM")]
 		Formatr8G8B8A8Snorm = unchecked(31),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8B8A8_SINT")]
 		Formatr8G8B8A8Sint = unchecked(32),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_TYPELESS")]
 		Formatr16g16Typeless = unchecked(33),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_FLOAT")]
 		Formatr16g16Float = unchecked(34),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_UNORM")]
 		Formatr16g16Unorm = unchecked(35),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_UINT")]
 		Formatr16g16Uint = unchecked(36),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_SNORM")]
 		Formatr16g16Snorm = unchecked(37),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16G16_SINT")]
 		Formatr16g16Sint = unchecked(38),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_TYPELESS")]
 		Formatr32Typeless = unchecked(39),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D32_FLOAT")]
 		Formatd32Float = unchecked(40),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_FLOAT")]
 		Formatr32Float = unchecked(41),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_UINT")]
 		Formatr32Uint = unchecked(42),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R32_SINT")]
 		Formatr32Sint = unchecked(43),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R24G8_TYPELESS")]
 		Formatr24g8Typeless = unchecked(44),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D24_UNORM_S8_UINT")]
 		Formatd24Unorms8Uint = unchecked(45),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R24_UNORM_X8_TYPELESS")]
 		Formatr24Unormx8Typeless = unchecked(46),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_X24_TYPELESS_G8_UINT")]
 		Formatx24Typelessg8Uint = unchecked(47),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_TYPELESS")]
 		Formatr8G8Typeless = unchecked(48),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_UNORM")]
 		Formatr8G8Unorm = unchecked(49),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_UINT")]
 		Formatr8G8Uint = unchecked(50),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_SNORM")]
 		Formatr8G8Snorm = unchecked(51),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_SINT")]
 		Formatr8G8Sint = unchecked(52),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_TYPELESS")]
 		Formatr16Typeless = unchecked(53),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_FLOAT")]
 		Formatr16Float = unchecked(54),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_D16_UNORM")]
 		Formatd16Unorm = unchecked(55),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_UNORM")]
 		Formatr16Unorm = unchecked(56),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_UINT")]
 		Formatr16Uint = unchecked(57),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_SNORM")]
 		Formatr16Snorm = unchecked(58),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R16_SINT")]
 		Formatr16Sint = unchecked(59),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_TYPELESS")]
 		Formatr8Typeless = unchecked(60),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_UNORM")]
 		Formatr8Unorm = unchecked(61),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_UINT")]
 		Formatr8Uint = unchecked(62),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_SNORM")]
 		Formatr8Snorm = unchecked(63),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8_SINT")]
 		Formatr8Sint = unchecked(64),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_A8_UNORM")]
 		Formata8Unorm = unchecked(65),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R1_UNORM")]
 		Formatr1Unorm = unchecked(66),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R9G9B9E5_SHAREDEXP")]
 		Formatr9G9B9E5Sharedexp = unchecked(67),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R8G8_B8G8_UNORM")]
 		Formatr8G8B8G8Unorm = unchecked(68),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_G8R8_G8B8_UNORM")]
 		Formatg8R8G8B8Unorm = unchecked(69),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_TYPELESS")]
 		Bc1Typeless = unchecked(70),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_UNORM")]
 		Bc1Unorm = unchecked(71),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC1_UNORM_SRGB")]
 		Bc1UnormSrgb = unchecked(72),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_TYPELESS")]
 		Bc2Typeless = unchecked(73),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_UNORM")]
 		Bc2Unorm = unchecked(74),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC2_UNORM_SRGB")]
 		Bc2UnormSrgb = unchecked(75),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_TYPELESS")]
 		Bc3Typeless = unchecked(76),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_UNORM")]
 		Bc3Unorm = unchecked(77),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC3_UNORM_SRGB")]
 		Bc3UnormSrgb = unchecked(78),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_TYPELESS")]
 		Bc4Typeless = unchecked(79),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_UNORM")]
 		Bc4Unorm = unchecked(80),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC4_SNORM")]
 		Bc4Snorm = unchecked(81),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_TYPELESS")]
 		Bc5Typeless = unchecked(82),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_UNORM")]
 		Bc5Unorm = unchecked(83),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC5_SNORM")]
 		Bc5Snorm = unchecked(84),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B5G6R5_UNORM")]
 		Formatb5G6R5Unorm = unchecked(85),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B5G5R5A1_UNORM")]
 		Formatb5G5R5A1Unorm = unchecked(86),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_UNORM")]
 		Formatb8G8R8A8Unorm = unchecked(87),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_UNORM")]
 		Formatb8G8R8X8Unorm = unchecked(88),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_R10G10B10_XR_BIAS_A2_UNORM")]
 		Formatr10g10b10XrBiasa2Unorm = unchecked(89),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_TYPELESS")]
 		Formatb8G8R8A8Typeless = unchecked(90),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8A8_UNORM_SRGB")]
 		Formatb8G8R8A8UnormSrgb = unchecked(91),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_TYPELESS")]
 		Formatb8G8R8X8Typeless = unchecked(92),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B8G8R8X8_UNORM_SRGB")]
 		Formatb8G8R8X8UnormSrgb = unchecked(93),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_TYPELESS")]
 		Bc6HTypeless = unchecked(94),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_UF16")]
 		Bc6HUf16 = unchecked(95),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC6H_SF16")]
 		Bc6HSf16 = unchecked(96),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_TYPELESS")]
 		Bc7Typeless = unchecked(97),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_UNORM")]
 		Bc7Unorm = unchecked(98),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_BC7_UNORM_SRGB")]
 		Bc7UnormSrgb = unchecked(99),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_AYUV")]
 		Ayuv = unchecked(100),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y410")]
 		Formaty410 = unchecked(101),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y416")]
 		Formaty416 = unchecked(102),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_NV12")]
 		Nv12 = unchecked(103),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P010")]
 		Formatp010 = unchecked(104),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P016")]
 		Formatp016 = unchecked(105),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_420_OPAQUE")]
 		Format420Opaque = unchecked(106),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_YUY2")]
 		Yuy2 = unchecked(107),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y210")]
 		Formaty210 = unchecked(108),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_Y216")]
 		Formaty216 = unchecked(109),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_NV11")]
 		Nv11 = unchecked(110),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_AI44")]
 		Ai44 = unchecked(111),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_IA44")]
 		Ia44 = unchecked(112),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P8")]
 		Formatp8 = unchecked(113),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_A8P8")]
 		Formata8P8 = unchecked(114),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_B4G4R4A4_UNORM")]
 		Formatb4G4R4A4Unorm = unchecked(115),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_P208")]
 		Formatp208 = unchecked(130),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_V208")]
 		Formatv208 = unchecked(131),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_V408")]
 		Formatv408 = unchecked(132),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_SAMPLER_FEEDBACK_MIN_MIP_OPAQUE")]
 		SamplerFeedbackMinMipOpaque = unchecked(189),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_SAMPLER_FEEDBACK_MIP_REGION_USED_OPAQUE")]
 		SamplerFeedbackMipRegionUsedOpaque = unchecked(190),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FORMAT_FORCE_UINT")]
 		ForceUint = unchecked((int)0xffffffff),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_ROTATION")]
-	public enum DXGI_MODE_ROTATION
+	public enum DxgiModeRotation
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_UNSPECIFIED")]
 		Unspecified = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_IDENTITY")]
 		Identity = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE90")]
 		Rotate90 = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE180")]
 		Rotate180 = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_ROTATION_ROTATE270")]
 		Rotate270 = unchecked(4),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCANLINE_ORDER")]
-	public enum DXGI_MODE_SCANLINE_ORDER
+	public enum DxgiModeScanlineOrder
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED")]
 		Unspecified = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_PROGRESSIVE")]
 		Progressive = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_UPPER_FIELD_FIRST")]
 		UpperFieldFirst = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCANLINE_ORDER_LOWER_FIELD_FIRST")]
 		LowerFieldFirst = unchecked(3),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MODE_SCALING")]
-	public enum DXGI_MODE_SCALING
+	public enum DxgiModeScaling
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_UNSPECIFIED")]
 		Unspecified = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_CENTERED")]
 		Centered = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MODE_SCALING_STRETCHED")]
 		Stretched = unchecked(2),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_EFFECT")]
-	public enum DXGI_SWAP_EFFEC
+	public enum DxgiSwapEffect
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_DISCARD")]
 		Discard = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_SEQUENTIAL")]
 		Sequential = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL")]
 		FlipSequential = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_EFFECT_FLIP_DISCARD")]
 		FlipDiscard = unchecked(4),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_RESIDENCY")]
-	public enum DXGI_RESIDENCY
+	public enum DxgiResidency
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_FULLY_RESIDENT")]
 		FullyResident = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY")]
 		ResidentInSharedMemory = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RESIDENCY_EVICTED_TO_DISK")]
 		EvictedToDisk = unchecked(3),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_COLOR_SPACE_TYPE")]
-	public enum DXGI_COLOR_SPACE_TYPE
+	public enum DxgiColorSpaceType
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709")]
 		RgbFullg22Nonep709 = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G10_NONE_P709")]
 		RgbFullg10Nonep709 = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P709")]
 		RgbStudiog22Nonep709 = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G22_NONE_P2020")]
 		RgbStudiog22Nonep2020 = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RESERVED")]
 		Reserved = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601")]
 		YcbcrFullg22Nonep709X601 = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601")]
 		YcbcrStudiog22Leftp601 = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P601")]
 		YcbcrFullg22Leftp601 = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P709")]
 		YcbcrStudiog22Leftp709 = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P709")]
 		YcbcrFullg22Leftp709 = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P2020")]
 		YcbcrStudiog22Leftp2020 = unchecked(10),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020")]
 		YcbcrFullg22Leftp2020 = unchecked(11),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020")]
 		RgbFullg2084Nonep2020 = unchecked(12),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_LEFT_P2020")]
 		YcbcrStudiog2084Leftp2020 = unchecked(13),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G2084_NONE_P2020")]
 		RgbStudiog2084Nonep2020 = unchecked(14),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_TOPLEFT_P2020")]
 		YcbcrStudiog22Topleftp2020 = unchecked(15),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G2084_TOPLEFT_P2020")]
 		YcbcrStudiog2084Topleftp2020 = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P2020")]
 		RgbFullg22Nonep2020 = unchecked(17),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_GHLG_TOPLEFT_P2020")]
 		YcbcrStudioGhlgTopleftp2020 = unchecked(18),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_FULL_GHLG_TOPLEFT_P2020")]
 		YcbcrFullGhlgTopleftp2020 = unchecked(19),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P709")]
 		RgbStudiog24Nonep709 = unchecked(20),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_RGB_STUDIO_G24_NONE_P2020")]
 		RgbStudiog24Nonep2020 = unchecked(21),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P709")]
 		YcbcrStudiog24Leftp709 = unchecked(22),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_LEFT_P2020")]
 		YcbcrStudiog24Leftp2020 = unchecked(23),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_YCBCR_STUDIO_G24_TOPLEFT_P2020")]
 		YcbcrStudiog24Topleftp2020 = unchecked(24),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COLOR_SPACE_CUSTOM")]
 		Custom = unchecked((int)0xFFFFFFFF),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_FLAG")]
-	public enum DXGI_SWAP_CHAIN_FLAG
+	public enum DxgiSwapChainFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_NONPREROTATED")]
 		Nonprerotated = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH")]
 		AllowModeSwitch = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE")]
 		GdiCompatible = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT")]
 		RestrictedContent = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER")]
 		RestrictSharedResourceDriver = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY")]
 		DisplayOnly = unchecked(32),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT")]
 		FrameLatencyWaitableObject = unchecked(64),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER")]
 		ForegroundLayer = unchecked(128),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO")]
 		FullscreenVideo = unchecked(256),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO")]
 		YuvVideo = unchecked(512),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED")]
 		HwProtected = unchecked(1024),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING")]
 		AllowTearing = unchecked(2048),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_FLAG_RESTRICTED_TO_ALL_HOLOGRAPHIC_DISPLAYS")]
 		RestrictedToAllHolographicDisplays = unchecked(4096),
+
 	}
 
 	/// <summary>
@@ -420,16 +1163,32 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG")]
-	public enum DXGI_ADAPTER_FLAG
+	public enum DxgiAdapterFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_NONE")]
 		None = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_REMOTE")]
 		Remote = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_SOFTWARE")]
 		Software = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
+
 	}
 
 	/// <summary>
@@ -437,40 +1196,90 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_PRIORITY")]
-	public enum _DXGI_OFFER_RESOURCE_PRIORITY
+	public enum DxgiOfferResourcePriority
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
 		Low = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_NORMAL")]
 		Normal = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_HIGH")]
 		High = unchecked(3),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_SCALING")]
-	public enum DXGI_SCALING
+	public enum DxgiScaling
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_STRETCH")]
 		Stretch = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_NONE")]
 		None = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SCALING_ASPECT_RATIO_STRETCH")]
 		AspectRatioStretch = unchecked(2),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_ALPHA_MODE")]
-	public enum DXGI_ALPHA_MODE
+	public enum DxgiAlphaMode
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_PREMULTIPLIED")]
 		Premultiplied = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_STRAIGHT")]
 		Straight = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_IGNORE")]
 		Ignore = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ALPHA_MODE_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
+
 	}
 
 	/// <summary>
@@ -478,55 +1287,128 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_GRAPHICS_PREEMPTION_GRANULARITY")]
-	public enum DXGI_GRAPHICS_PREEMPTION_GRANULARITY
+	public enum DxgiGraphicsPreemptionGranularity
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_PRIMITIVE_BOUNDARY")]
 		PrimitiveBoundary = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_TRIANGLE_BOUNDARY")]
 		TriangleBoundary = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_PIXEL_BOUNDARY")]
 		PixelBoundary = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GRAPHICS_PREEMPTION_INSTRUCTION_BOUNDARY")]
 		InstructionBoundary = unchecked(4),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_COMPUTE_PREEMPTION_GRANULARITY")]
-	public enum DXGI_COMPUTE_PREEMPTION_GRANULARITY
+	public enum DxgiComputePreemptionGranularity
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY")]
 		DmaBufferBoundary = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_DISPATCH_BOUNDARY")]
 		DispatchBoundary = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_THREAD_GROUP_BOUNDARY")]
 		ThreadGroupBoundary = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_THREAD_BOUNDARY")]
 		ThreadBoundary = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_COMPUTE_PREEMPTION_INSTRUCTION_BOUNDARY")]
 		InstructionBoundary = unchecked(4),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE")]
-	public enum DXGI_OUTDUPL_POINTER_SHAPE_TYPE
+	public enum DxgiOutduplPointerShapeType
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME")]
 		Monochrome = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR")]
 		Color = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR")]
 		MaskedColor = unchecked(4),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS")]
 	public enum DXGIMULTIPLANEOVERLAYYCbCrFLAGS
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_NOMINAL_RANGE")]
 		FlagNominalRange = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_BT709")]
 		FlagBt709 = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_xvYCC")]
 		FlagXvYcc = unchecked(4),
+
 	}
 
 	/// <summary>
@@ -534,16 +1416,32 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_FRAME_PRESENTATION_MODE")]
-	public enum DXGI_FRAME_PRESENTATION_MODE
+	public enum DxgiFramePresentationMode
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_COMPOSED")]
 		Composed = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_OVERLAY")]
 		Overlay = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_NONE")]
 		None = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FRAME_PRESENTATION_MODE_COMPOSITION_FAILURE")]
 		CompositionFailure = unchecked(3),
+
 	}
 
 	/// <summary>
@@ -551,12 +1449,20 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_SUPPORT_FLAG")]
-	public enum DXGI_OVERLAY_SUPPORT_FLAG
+	public enum DxgiOverlaySupportFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_SUPPORT_FLAG_DIRECT")]
 		Direct = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_SUPPORT_FLAG_SCALING")]
 		Scaling = unchecked(2),
+
 	}
 
 	/// <summary>
@@ -564,21 +1470,40 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_MEMORY_SEGMENT_GROUP")]
-	public enum DXGI_MEMORY_SEGMENT_GROUP
+	public enum DxgiMemorySegmentGroup
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MEMORY_SEGMENT_GROUP_LOCAL")]
 		Local = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_MEMORY_SEGMENT_GROUP_NON_LOCAL")]
 		NonLocal = unchecked(1),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG")]
-	public enum DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG
+	public enum DxgiSwapChainColorSpaceSupportFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT")]
 		OverlayPresent = unchecked(2),
+
 	}
 
 	/// <summary>
@@ -586,10 +1511,14 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG")]
-	public enum DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG
+	public enum DxgiOverlayColorSpaceSupportFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT")]
 		Present = unchecked(1),
+
 	}
 
 	/// <summary>
@@ -597,25 +1526,52 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
-	public enum DXGI_HDR_METADATA_TYPE
+	public enum DxgiHdrMetadataType
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
 		None = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10")]
 		Hdr10 = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
 		Hdr10Plus = unchecked(2),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "_DXGI_RECLAIM_RESOURCE_RESULTS")]
-	public enum _DXGI_RECLAIM_RESOURCE_RESULTS
+	public enum DxgiReclaimResourceResults
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_OK")]
 		ResultOk = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED")]
 		ResultDiscarded = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED")]
 		ResultNotCommitted = unchecked(2),
+
 	}
 
 	/// <summary>
@@ -623,17 +1579,28 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_FEATURE")]
-	public enum DXGI_FEATURE
+	public enum DxgiFeature
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_FEATURE_PRESENT_ALLOW_TEARING")]
 		PresentAllowTearing = unchecked(0),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_OUTDUPL_FLAG")]
-	public enum DXGI_OUTDUPL_FLAG
+	public enum DxgiOutduplFlag
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OUTDUPL_COMPOSITED_UI_CAPTURE_ONLY")]
 		CompositedUiCaptureOnly = unchecked(1),
+
 	}
 
 	/// <summary>
@@ -641,31 +1608,70 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_FLAGS")]
-	public enum _DXGI_OFFER_RESOURCE_FLAGS
+	public enum DxgiOfferResourceFlags
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
 		FlagAllowDecommit = unchecked(1),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_ADAPTER_FLAG3")]
-	public enum DXGI_ADAPTER_FLAG3
+	public enum DxgiAdapterFlag3
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_NONE")]
 		None = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_REMOTE")]
 		Remote = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SOFTWARE")]
 		Software = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_ACG_COMPATIBLE")]
 		AcgCompatible = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SUPPORT_MONITORED_FENCES")]
 		SupportMonitoredFences = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_SUPPORT_NON_MONITORED_FENCES")]
 		SupportNonMonitoredFences = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_KEYED_MUTEX_CONFORMANCE")]
 		KeyedMutexConformance = unchecked(32),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_ADAPTER_FLAG3_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xffffffff),
+
 	}
 
 	/// <summary>
@@ -673,62 +1679,196 @@ namespace HexaEngine.DXGI
 	/// [local] <br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_GPU_PREFERENCE")]
-	public enum DXGI_GPU_PREFERENCE
+	public enum DxgiGpuPreference
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_UNSPECIFIED")]
 		Unspecified = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_MINIMUM_POWER")]
 		MinimumPower = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE")]
 		HighPerformance = unchecked(2),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS")]
-	public enum DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAGS
+	public enum DxgiHardwareCompositionSupportFlags
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_FULLSCREEN")]
 		FlagFullscreen = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_WINDOWED")]
 		FlagWindowed = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXGI_HARDWARE_COMPOSITION_SUPPORT_FLAG_CURSOR_STRETCHED")]
 		FlagCursorStretched = unchecked(4),
+
 	}
 
 	/// <summary>
-	/// interface __MIDL_itf_dxgi1_2_0000_0004 <br/>
-	/// [local] <br/>
+	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_PRIORITY")]
-	public enum DXGI_OFFER_RESOURCE_PRIORITY
+	[NativeName(NativeNameType.Enum, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY")]
+	public enum DxgiInfoQueueMessageCategory
 	{
-		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_LOW")]
-		Low = unchecked(1),
-		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_NORMAL")]
-		Normal = unchecked(2),
-		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_PRIORITY_HIGH")]
-		High = unchecked(3),
-	}
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_UNKNOWN")]
+		Unknown = unchecked(0),
 
-	[NativeName(NativeNameType.Enum, "_DXGI_RECLAIM_RESOURCE_RESULTS")]
-	public enum DXGI_RECLAIM_RESOURCE_RESULTS
-	{
-		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_OK")]
-		ResultOk = unchecked(0),
-		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED")]
-		ResultDiscarded = unchecked(1),
-		[NativeName(NativeNameType.EnumItem, "DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED")]
-		ResultNotCommitted = unchecked(2),
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_MISCELLANEOUS")]
+		Miscellaneous = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_INITIALIZATION")]
+		Initialization = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_CLEANUP")]
+		Cleanup = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_COMPILATION")]
+		Compilation = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_STATE_CREATION")]
+		StateCreation = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_STATE_SETTING")]
+		StateSetting = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_STATE_GETTING")]
+		StateGetting = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_RESOURCE_MANIPULATION")]
+		ResourceManipulation = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_EXECUTION")]
+		Execution = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_CATEGORY_SHADER")]
+		Shader = unchecked(10),
+
 	}
 
 	/// <summary>
-	/// interface __MIDL_itf_dxgi1_5_0000_0002 <br/>
-	/// [local] <br/>
+	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Enum, "_DXGI_OFFER_RESOURCE_FLAGS")]
-	public enum DXGI_OFFER_RESOURCE_FLAGS
+	[NativeName(NativeNameType.Enum, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY")]
+	public enum DxgiInfoQueueMessageSeverity
 	{
-		[NativeName(NativeNameType.EnumItem, "DXGI_OFFER_RESOURCE_FLAG_ALLOW_DECOMMIT")]
-		FlagAllowDecommit = unchecked(1),
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY_CORRUPTION")]
+		Corruption = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY_ERROR")]
+		Error = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY_WARNING")]
+		Warning = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY_INFO")]
+		Info = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_INFO_QUEUE_MESSAGE_SEVERITY_MESSAGE")]
+		Message = unchecked(4),
+
+	}
+
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	[NativeName(NativeNameType.Enum, "DXGI_DEBUG_RLO_FLAGS")]
+	public enum DxgiDebugRloFlags
+	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_DEBUG_RLO_SUMMARY")]
+		Summary = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_DEBUG_RLO_DETAIL")]
+		Detail = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_DEBUG_RLO_IGNORE_INTERNAL")]
+		IgnoreInternal = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.EnumItem, "DXGI_DEBUG_RLO_ALL")]
+		All = unchecked(7),
+
 	}
 
 }

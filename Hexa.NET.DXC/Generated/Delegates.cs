@@ -14,16 +14,22 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXC
+namespace Hexa.NET.DXC
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DxcCreateInstanceProc")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult DxcCreateInstanceProc([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV);
+	public unsafe delegate HResult DxcCreateInstanceProc([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "DxcCreateInstance2Proc")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult DxcCreateInstance2Proc([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV);
+	public unsafe delegate HResult DxcCreateInstance2Proc([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
 }

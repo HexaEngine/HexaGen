@@ -144,6 +144,9 @@
     <None Update="dxgi\dxgicommon.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="dxgi\dxgidebug.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="dxgi\dxgiformat.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using HexaEngine.SDL2;
+using Hexa.NET.SDL2;
 
 unsafe
 {

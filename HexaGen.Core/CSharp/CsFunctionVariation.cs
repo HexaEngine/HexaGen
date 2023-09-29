@@ -61,29 +61,48 @@
 
         public List<string> Attributes { get; set; }
 
+        #region IDs
+
         public string BuildSignatureIdentifier()
         {
             return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
         }
 
+        public string BuildExtensionSignatureIdentifier(string type)
+        {
+            return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignature(type, null, false, false)})";
+        }
+
         public string BuildSignatureIdentifierForCOM()
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)}) {BuildGenericConstraint()}";
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
         }
 
         public string BuildExtensionSignatureIdentifierForCOM(string comObject)
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, false, false)}) {BuildGenericConstraint()}";
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, false, false)})";
         }
 
-        public string BuildFullExtensionSignatureForCOM(string comObject)
+        #endregion IDs
+
+        public string BuildFullSignature()
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject)}) {BuildGenericConstraint()}";
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature()}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildFullExtensionSignature(string type, string name)
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignature(type, name)}) {BuildGenericConstraint()}";
         }
 
         public string BuildFullSignatureForCOM()
         {
             return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature()}) {BuildGenericConstraint()}";
+        }
+
+        public string BuildFullExtensionSignatureForCOM(string comObject)
+        {
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject)}) {BuildGenericConstraint()}";
         }
 
         public string BuildSignature(bool useAttributes = true, bool useNames = true)
@@ -107,11 +126,10 @@
             return sb.ToString();
         }
 
-        public string BuildExtensionSignatureForCOM(string comObject, bool useAttributes = true, bool useNames = true)
+        public string BuildExtensionSignature(string type, string? name, bool useAttributes = true, bool useNames = true)
         {
             StringBuilder sb = new();
-            sb.Append(useNames ? $"this ComPtr<{comObject}> comObj" : $"this ComPtr<{comObject}>");
-            bool isFirst = false;
+            sb.Append(useNames ? $"this {type} {name ?? string.Empty}" : $"this {type}");
             for (int i = 0; i < Parameters.Count; i++)
             {
                 var param = Parameters[i];
@@ -119,11 +137,24 @@
                 if (param.DefaultValue != null)
                     continue;
 
-                if (!isFirst)
-                    sb.Append(", ");
+                sb.Append($", {(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+            }
 
-                sb.Append($"{(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
-                isFirst = false;
+            return sb.ToString();
+        }
+
+        public string BuildExtensionSignatureForCOM(string comObject, bool useAttributes = true, bool useNames = true)
+        {
+            StringBuilder sb = new();
+            sb.Append(useNames ? $"this ComPtr<{comObject}> comObj" : $"this ComPtr<{comObject}>");
+            for (int i = 0; i < Parameters.Count; i++)
+            {
+                var param = Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                sb.Append($", {(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
             }
 
             return sb.ToString();

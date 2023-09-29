@@ -20,8 +20,10 @@
         {
             if (settings.AllowedTypedefs.Count != 0 && !settings.AllowedTypedefs.Contains(typedef.Name))
                 return true;
+
             if (settings.IgnoredTypedefs.Contains(typedef.Name))
                 return true;
+
             if (LibDefinedTypedefs.Contains(typedef.Name))
                 return true;
 

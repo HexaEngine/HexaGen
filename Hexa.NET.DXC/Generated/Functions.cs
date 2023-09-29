@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXC
+namespace Hexa.NET.DXC
 {
 	public unsafe partial class DXC
 	{
@@ -61,47 +61,47 @@ namespace HexaEngine.DXC
 		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DxcCreateInstance")]
-		internal static extern HResult DxcCreateInstanceNative([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV);
+		internal static extern HResult DxcCreateInstanceNative([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			HResult ret = DxcCreateInstanceNative(rCLSID, rIID, pPV);
+			HResult ret = DxcCreateInstanceNative(rclsid, riid, ppv);
 			return ret;
 		}
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				HResult ret = DxcCreateInstanceNative((Guid*)prCLSID, rIID, pPV);
+				HResult ret = DxcCreateInstanceNative((Guid*)prclsid, riid, ppv);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
-				HResult ret = DxcCreateInstanceNative(rCLSID, (Guid*)prIID, pPV);
+				HResult ret = DxcCreateInstanceNative(rclsid, (Guid*)priid, ppv);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					HResult ret = DxcCreateInstanceNative((Guid*)prCLSID, (Guid*)prIID, pPV);
+					HResult ret = DxcCreateInstanceNative((Guid*)prclsid, (Guid*)priid, ppv);
 					return ret;
 				}
 			}
@@ -109,24 +109,24 @@ namespace HexaEngine.DXC
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (void** ppPV = &pPV)
+			fixed (void** pppv = &ppv)
 			{
-				HResult ret = DxcCreateInstanceNative(rCLSID, rIID, (void**)ppPV);
+				HResult ret = DxcCreateInstanceNative(rclsid, riid, (void**)pppv);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (void** ppPV = &pPV)
+				fixed (void** pppv = &ppv)
 				{
-					HResult ret = DxcCreateInstanceNative((Guid*)prCLSID, rIID, (void**)ppPV);
+					HResult ret = DxcCreateInstanceNative((Guid*)prclsid, riid, (void**)pppv);
 					return ret;
 				}
 			}
@@ -134,13 +134,13 @@ namespace HexaEngine.DXC
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
-				fixed (void** ppPV = &pPV)
+				fixed (void** pppv = &ppv)
 				{
-					HResult ret = DxcCreateInstanceNative(rCLSID, (Guid*)prIID, (void**)ppPV);
+					HResult ret = DxcCreateInstanceNative(rclsid, (Guid*)priid, (void**)pppv);
 					return ret;
 				}
 			}
@@ -148,243 +148,246 @@ namespace HexaEngine.DXC
 
 		/// <summary>		/// <br/>		/// <summary<br/>		/// ><br/>		/// Creates a single uninitialized object of the class associated with a specified CLSID.<br/>		/// <br/>		/// </summary<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="rclsid"><br/>		/// The CLSID associated with the data and code that will be used to create the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="riid"><br/>		/// A reference to the identifier of the interface to be used to communicate<br/>		/// with the object.<br/>		/// <br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <param<br/>		/// name="ppv"><br/>		/// Address of pointer variable that receives the interface pointer requested<br/>		/// in riid. Upon successful return, *ppv contains the requested interface<br/>		/// pointer. Upon failure, *ppv contains NULL.<br/>		/// </param<br/>		/// ><br/>		/// <br/>		/// <remarks<br/>		/// ><br/>		/// While this function is similar to CoCreateInstance, there is no COM involvement.<br/>		/// <br/>		/// </remarks<br/>		/// ><br/>		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance([NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					fixed (void** ppPV = &pPV)
+					fixed (void** pppv = &ppv)
 					{
-						HResult ret = DxcCreateInstanceNative((Guid*)prCLSID, (Guid*)prIID, (void**)ppPV);
+						HResult ret = DxcCreateInstanceNative((Guid*)prclsid, (Guid*)priid, (void**)pppv);
 						return ret;
 					}
 				}
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "DxcCreateInstance2")]
-		internal static extern HResult DxcCreateInstance2Native([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV);
+		internal static extern HResult DxcCreateInstance2Native([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv);
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			HResult ret = DxcCreateInstance2Native(pMalloc, rCLSID, rIID, pPV);
+			HResult ret = DxcCreateInstance2Native(pMalloc, rclsid, riid, ppv);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rCLSID, rIID, pPV);
+				HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rclsid, riid, ppv);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prCLSID, rIID, pPV);
+				HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prclsid, riid, ppv);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prCLSID = &rCLSID)
+				fixed (Guid* prclsid = &rclsid)
 				{
-					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prCLSID, rIID, pPV);
+					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prclsid, riid, ppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
-				HResult ret = DxcCreateInstance2Native(pMalloc, rCLSID, (Guid*)prIID, pPV);
+				HResult ret = DxcCreateInstance2Native(pMalloc, rclsid, (Guid*)priid, ppv);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rCLSID, (Guid*)prIID, pPV);
+					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rclsid, (Guid*)priid, ppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prCLSID, (Guid*)prIID, pPV);
+					HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prclsid, (Guid*)priid, ppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prCLSID = &rCLSID)
+				fixed (Guid* prclsid = &rclsid)
 				{
-					fixed (Guid* prIID = &rIID)
+					fixed (Guid* priid = &riid)
 					{
-						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prCLSID, (Guid*)prIID, pPV);
+						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prclsid, (Guid*)priid, ppv);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (void** ppPV = &pPV)
+			fixed (void** pppv = &ppv)
 			{
-				HResult ret = DxcCreateInstance2Native(pMalloc, rCLSID, rIID, (void**)ppPV);
+				HResult ret = DxcCreateInstance2Native(pMalloc, rclsid, riid, (void**)pppv);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (void** ppPV = &pPV)
+				fixed (void** pppv = &ppv)
 				{
-					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rCLSID, rIID, (void**)ppPV);
+					HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rclsid, riid, (void**)pppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (void** ppPV = &pPV)
+				fixed (void** pppv = &ppv)
 				{
-					HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prCLSID, rIID, (void**)ppPV);
+					HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prclsid, riid, (void**)pppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prCLSID = &rCLSID)
+				fixed (Guid* prclsid = &rclsid)
 				{
-					fixed (void** ppPV = &pPV)
+					fixed (void** pppv = &ppv)
 					{
-						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prCLSID, rIID, (void**)ppPV);
+						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prclsid, riid, (void**)pppv);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
-				fixed (void** ppPV = &pPV)
+				fixed (void** pppv = &ppv)
 				{
-					HResult ret = DxcCreateInstance2Native(pMalloc, rCLSID, (Guid*)prIID, (void**)ppPV);
+					HResult ret = DxcCreateInstance2Native(pMalloc, rclsid, (Guid*)priid, (void**)pppv);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					fixed (void** ppPV = &pPV)
+					fixed (void** pppv = &ppv)
 					{
-						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rCLSID, (Guid*)prIID, (void**)ppPV);
+						HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, rclsid, (Guid*)priid, (void**)pppv);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] IMalloc* pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
-			fixed (Guid* prCLSID = &rCLSID)
+			fixed (Guid* prclsid = &rclsid)
 			{
-				fixed (Guid* prIID = &rIID)
+				fixed (Guid* priid = &riid)
 				{
-					fixed (void** ppPV = &pPV)
+					fixed (void** pppv = &ppv)
 					{
-						HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prCLSID, (Guid*)prIID, (void**)ppPV);
+						HResult ret = DxcCreateInstance2Native(pMalloc, (Guid*)prclsid, (Guid*)priid, (void**)pppv);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DxcCreateInstance2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rCLSID, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* pPV)
+		public static HResult DxcCreateInstance2([NativeName(NativeNameType.Param, "pMalloc")] [NativeName(NativeNameType.Type, "IMalloc*")] ref IMalloc pMalloc, [NativeName(NativeNameType.Param, "rclsid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rclsid, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppv")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppv)
 		{
 			fixed (IMalloc* ppMalloc = &pMalloc)
 			{
-				fixed (Guid* prCLSID = &rCLSID)
+				fixed (Guid* prclsid = &rclsid)
 				{
-					fixed (Guid* prIID = &rIID)
+					fixed (Guid* priid = &riid)
 					{
-						fixed (void** ppPV = &pPV)
+						fixed (void** pppv = &ppv)
 						{
-							HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prCLSID, (Guid*)prIID, (void**)ppPV);
+							HResult ret = DxcCreateInstance2Native((IMalloc*)ppMalloc, (Guid*)prclsid, (Guid*)priid, (void**)pppv);
 							return ret;
 						}
 					}

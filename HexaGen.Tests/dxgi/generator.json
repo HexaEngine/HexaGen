@@ -2,7 +2,7 @@
   "Namespace": "Hexa.NET.DXGI",
   "ApiName": "DXGI",
   "LibName": "dxgi",
-  "Usings": [ "Hexa.NET.D3DCommon", "System.Numerics" ],
+  "Usings": [ "System.Numerics" ],
   "GenerateSizeOfStructs": false,
   "BoolType": 1,
   "KnownConstantNames": {
@@ -76,6 +76,8 @@
     "LUID": "Luid",
     "IID": "Guid",
     "SECURITY_ATTRIBUTES": "SecurityAttributes",
-    "DXGI_RGBA": "Vector4"
+    "DXGI_RGBA": "Vector4",
+    "DXGI_DEBUG_ID": "Guid",
+    "DXGI_INFO_QUEUE_MESSAGE_ID": "int"
   }
 }

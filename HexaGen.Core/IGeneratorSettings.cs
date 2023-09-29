@@ -70,7 +70,7 @@
         LogSevertiy LogLevel { get; set; }
         Dictionary<string, string> NameMappings { get; set; }
         string Namespace { get; set; }
-        HashSet<string> PreserveCaps { get; set; }
+
         Dictionary<string, string> TypeMappings { get; set; }
         List<string> Usings { get; set; }
 

@@ -12,11 +12,11 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaEngine.DXGI;
-using HexaEngine.D3DCommon;
+using Hexa.NET.DXGI;
+using Hexa.NET.D3DCommon;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3D12
+namespace Hexa.NET.D3D12
 {
 	/// <summary>
 	/// interface __MIDL_itf_d3d12_0000_0003 <br/>
@@ -25,26 +25,38 @@ namespace HexaEngine.D3D12
 	[NativeName(NativeNameType.Delegate, "PFN_D3D12_SERIALIZE_ROOT_SIGNATURE")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult PFN_D3D12_SERIALIZE_ROOT_SIGNATURE([NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const D3D12_ROOT_SIGNATURE_DESC*")] D3D12_ROOT_SIGNATURE_DESC* pRootSignature, [NativeName(NativeNameType.Param, "Version")] [NativeName(NativeNameType.Type, "D3D_ROOT_SIGNATURE_VERSION")] D3D_ROOT_SIGNATURE_VERSION version, [NativeName(NativeNameType.Param, "ppBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppBlob, [NativeName(NativeNameType.Param, "ppErrorBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorBlob);
+	public unsafe delegate HResult PfnD3d12SerializeRootSignature([NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const D3D12_ROOT_SIGNATURE_DESC*")] D3D12RootSignatureDesc* pRootSignature, [NativeName(NativeNameType.Param, "Version")] [NativeName(NativeNameType.Type, "D3D_ROOT_SIGNATURE_VERSION")] D3DRootSignatureVersion version, [NativeName(NativeNameType.Param, "ppBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppBlob, [NativeName(NativeNameType.Param, "ppErrorBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorBlob);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "PFN_D3D12_CREATE_ROOT_SIGNATURE_DESERIALIZER")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult PFN_D3D12_CREATE_ROOT_SIGNATURE_DESERIALIZER([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSizeInBytes")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSizeInBytes, [NativeName(NativeNameType.Param, "pRootSignatureDeserializerInterface")] [NativeName(NativeNameType.Type, "const IID&")] Guid* pRootSignatureDeserializerInterface, [NativeName(NativeNameType.Param, "ppRootSignatureDeserializer")] [NativeName(NativeNameType.Type, "void**")] void** ppRootSignatureDeserializer);
+	public unsafe delegate HResult PfnD3d12CreateRootSignatureDeserializer([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSizeInBytes")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSizeInBytes, [NativeName(NativeNameType.Param, "pRootSignatureDeserializerInterface")] [NativeName(NativeNameType.Type, "const IID&")] Guid* pRootSignatureDeserializerInterface, [NativeName(NativeNameType.Param, "ppRootSignatureDeserializer")] [NativeName(NativeNameType.Type, "void**")] void** ppRootSignatureDeserializer);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "PFN_D3D12_SERIALIZE_VERSIONED_ROOT_SIGNATURE")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult PFN_D3D12_SERIALIZE_VERSIONED_ROOT_SIGNATURE([NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const D3D12_VERSIONED_ROOT_SIGNATURE_DESC*")] D3D12_VERSIONED_ROOT_SIGNATURE_DESC* pRootSignature, [NativeName(NativeNameType.Param, "ppBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppBlob, [NativeName(NativeNameType.Param, "ppErrorBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorBlob);
+	public unsafe delegate HResult PfnD3d12SerializeVersionedRootSignature([NativeName(NativeNameType.Param, "pRootSignature")] [NativeName(NativeNameType.Type, "const D3D12_VERSIONED_ROOT_SIGNATURE_DESC*")] D3D12VersionedRootSignatureDesc* pRootSignature, [NativeName(NativeNameType.Param, "ppBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppBlob, [NativeName(NativeNameType.Param, "ppErrorBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorBlob);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "PFN_D3D12_CREATE_VERSIONED_ROOT_SIGNATURE_DESERIALIZER")]
 	[return: NativeName(NativeNameType.Type, "HRESULT")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate HResult PFN_D3D12_CREATE_VERSIONED_ROOT_SIGNATURE_DESERIALIZER([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSizeInBytes")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSizeInBytes, [NativeName(NativeNameType.Param, "pRootSignatureDeserializerInterface")] [NativeName(NativeNameType.Type, "const IID&")] Guid* pRootSignatureDeserializerInterface, [NativeName(NativeNameType.Param, "ppRootSignatureDeserializer")] [NativeName(NativeNameType.Type, "void**")] void** ppRootSignatureDeserializer);
+	public unsafe delegate HResult PfnD3d12CreateVersionedRootSignatureDeserializer([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSizeInBytes")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSizeInBytes, [NativeName(NativeNameType.Param, "pRootSignatureDeserializerInterface")] [NativeName(NativeNameType.Type, "const IID&")] Guid* pRootSignatureDeserializerInterface, [NativeName(NativeNameType.Param, "ppRootSignatureDeserializer")] [NativeName(NativeNameType.Type, "void**")] void** ppRootSignatureDeserializer);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "D3D12MessageFunc")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void D3D12MessageFunc([NativeName(NativeNameType.Param, "Category")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_CATEGORY")] D3D12_MESSAGE_CATEGORY category, [NativeName(NativeNameType.Param, "Severity")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_SEVERITY")] D3D12_MESSAGE_SEVERITY severity, [NativeName(NativeNameType.Param, "ID")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_ID")] D3D12_MESSAGE_ID iD, [NativeName(NativeNameType.Param, "pDescription")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pDescription, [NativeName(NativeNameType.Param, "pContext")] [NativeName(NativeNameType.Type, "void*")] void* pContext);
+	public unsafe delegate void D3D12MessageFunc([NativeName(NativeNameType.Param, "Category")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_CATEGORY")] D3D12MessageCategory category, [NativeName(NativeNameType.Param, "Severity")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_SEVERITY")] D3D12MessageSeverity severity, [NativeName(NativeNameType.Param, "ID")] [NativeName(NativeNameType.Type, "D3D12_MESSAGE_ID")] D3D12MessageId id, [NativeName(NativeNameType.Param, "pDescription")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pDescription, [NativeName(NativeNameType.Param, "pContext")] [NativeName(NativeNameType.Type, "void*")] void* pContext);
 
 }

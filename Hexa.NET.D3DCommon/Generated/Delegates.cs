@@ -14,11 +14,14 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCommon
+namespace Hexa.NET.D3DCommon
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "PFN_DESTRUCTION_CALLBACK")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PFN_DESTRUCTION_CALLBACK([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
+	public unsafe delegate void PfnDestructionCallback([NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
 
 }

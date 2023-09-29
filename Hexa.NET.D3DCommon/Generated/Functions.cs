@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCommon
+namespace Hexa.NET.D3DCommon
 {
 	public unsafe partial class D3DCommon
 	{

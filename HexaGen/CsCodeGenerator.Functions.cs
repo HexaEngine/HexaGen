@@ -8,11 +8,11 @@
 
     public enum WriteFunctionFlags
     {
-        None,
-        UseHandle,
-        UseThis,
-        Extension,
-        COM,
+        None = 0,
+        UseHandle = 1,
+        UseThis = 2,
+        Extension = 4,
+        COM = 8,
     }
 
     public partial class CsCodeGenerator
@@ -78,142 +78,62 @@
             return false;
         }
 
-        private const bool SplitMode = false;
-
         protected virtual void GenerateFunctions(CppCompilation compilation, string outputPath)
         {
-            if (!SplitMode)
+            string filePath = Path.Combine(outputPath, "Functions.cs");
+            DefinedVariationsFunctions.Clear();
+
+            // Generate Functions
+            using var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            GenContext context = new(compilation, filePath, writer);
+
+            using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {
-                string filePath = Path.Combine(outputPath, "Functions.cs");
-                DefinedVariationsFunctions.Clear();
-
-                // Generate Functions
-                using var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
-                GenContext context = new(compilation, filePath, writer);
-
-                using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
+                writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
+                List<CsFunction> functions = new();
+                for (int i = 0; i < compilation.Functions.Count; i++)
                 {
-                    writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
-                    List<CsFunction> functions = new();
-                    for (int i = 0; i < compilation.Functions.Count; i++)
+                    CppFunction? cppFunction = compilation.Functions[i];
+                    if (FilterFunctionIgnored(context, cppFunction))
                     {
-                        CppFunction? cppFunction = compilation.Functions[i];
-                        if (FilterFunctionIgnored(context, cppFunction))
-                        {
-                            continue;
-                        }
-
-                        string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
-                        string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                        CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
-
-                        bool boolReturn = returnCsName == "bool";
-                        bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                        var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
-                        var header = $"{returnCsName} {csName}Native({argumentsString})";
-
-                        if (FilterNativeFunction(context, cppFunction, header))
-                        {
-                            continue;
-                        }
-
-                        settings.WriteCsSummary(cppFunction.Comment, writer);
-                        writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                        writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
-
-                        if (boolReturn)
-                        {
-                            writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
-                            writer.WriteLine();
-                        }
-                        else
-                        {
-                            writer.WriteLine($"internal static extern {header};");
-                            writer.WriteLine();
-                        }
-
-                        var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
-                        overload.Modifiers.Add("public");
-                        overload.Modifiers.Add("static");
-                        funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
-                        WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
-                    }
-                }
-            }
-            else
-            {
-                int func = 0;
-                int split = 0;
-
-                while (func < compilation.Functions.Count)
-                {
-                    string name = split == 0 ? $"Functions.cs" : $"Functions.{split}.cs";
-                    string filePath = Path.Combine(outputPath, name);
-                    DefinedVariationsFunctions.Clear();
-
-                    // Generate Functions
-                    var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
-                    GenContext context = new(compilation, filePath, writer);
-
-                    using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
-                    {
-                        if (split == 0)
-                            writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
-                        List<CsFunction> functions = new();
-                        for (int i = func; i < compilation.Functions.Count; i++, func++)
-                        {
-                            CppFunction? cppFunction = compilation.Functions[i];
-                            if (FilterFunctionIgnored(context, cppFunction))
-                            {
-                                continue;
-                            }
-
-                            string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
-                            string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
-                            CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
-
-                            bool boolReturn = returnCsName == "bool";
-                            bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                            var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
-                            var header = $"{returnCsName} {csName}Native({argumentsString})";
-
-                            if (FilterNativeFunction(context, cppFunction, header))
-                            {
-                                continue;
-                            }
-
-                            settings.WriteCsSummary(cppFunction.Comment, writer);
-                            writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                            writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                            writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
-
-                            if (boolReturn)
-                            {
-                                writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
-                                writer.WriteLine();
-                            }
-                            else
-                            {
-                                writer.WriteLine($"internal static extern {header};");
-                                writer.WriteLine();
-                            }
-
-                            var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
-                            overload.Modifiers.Add("public");
-                            overload.Modifiers.Add("static");
-                            funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
-                            WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
-
-                            if (writer.Lines > 4000)
-                            {
-                                break;
-                            }
-                        }
+                        continue;
                     }
 
-                    writer.Dispose();
-                    split++;
+                    string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
+                    string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
+                    CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
+
+                    bool boolReturn = returnCsName == "bool";
+                    bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
+                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
+                    var header = $"{returnCsName} {csName}Native({argumentsString})";
+
+                    if (FilterNativeFunction(context, cppFunction, header))
+                    {
+                        continue;
+                    }
+
+                    settings.WriteCsSummary(cppFunction.Comment, writer);
+                    writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
+                    writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+
+                    if (boolReturn)
+                    {
+                        writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
+                        writer.WriteLine();
+                    }
+                    else
+                    {
+                        writer.WriteLine($"internal static extern {header};");
+                        writer.WriteLine();
+                    }
+
+                    var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
+                    overload.Modifiers.Add("public");
+                    overload.Modifiers.Add("static");
+                    funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
+                    WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
                 }
             }
         }
@@ -479,7 +399,7 @@
             writer.WriteLine();
         }
 
-        private static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)
+        protected static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)
         {
             firstParamReturn = false;
             if (!csReturnType.IsString && csReturnType.Name != overload.ReturnType.Name)

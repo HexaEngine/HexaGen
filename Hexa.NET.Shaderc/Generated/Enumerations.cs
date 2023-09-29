@@ -12,6 +12,9 @@ using HexaGen.Runtime;
 
 namespace Hexa.NET.Shaderc
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "shaderc_target_env")]
 	public enum ShadercTargetEnv
 	{
@@ -42,10 +45,17 @@ namespace Hexa.NET.Shaderc
 		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_webgpu")]
 		Webgpu = unchecked(3),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_target_env_default")]
 		Default = Vulkan,
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "shaderc_env_version")]
 	public enum ShadercEnvVersion
 	{
@@ -178,32 +188,60 @@ namespace Hexa.NET.Shaderc
 	[NativeName(NativeNameType.Enum, "shaderc_compilation_status")]
 	public enum ShadercCompilationStatus
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_success")]
 		Success = unchecked(0),
+
 		/// <summary>
 		/// error stage deduction<br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_invalid_stage")]
 		InvalidStage = unchecked(1),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_compilation_error")]
 		Error = unchecked(2),
+
 		/// <summary>
 		/// unexpected failure<br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_internal_error")]
 		InternalError = unchecked(3),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_null_result_object")]
 		NullResultObject = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_invalid_assembly")]
 		InvalidAssembly = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_validation_error")]
 		ValidationError = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_transformation_error")]
 		TransformationError = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_compilation_status_configuration_error")]
 		ConfigurationError = unchecked(8),
+
 	}
 
 	/// <summary>
@@ -212,12 +250,23 @@ namespace Hexa.NET.Shaderc
 	[NativeName(NativeNameType.Enum, "shaderc_source_language")]
 	public enum ShadercSourceLanguage
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_source_language_glsl")]
 		Glsl = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_source_language_hlsl")]
 		Hlsl = unchecked(1),
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "shaderc_shader_kind")]
 	public enum ShadercShaderKind
 	{
@@ -562,6 +611,9 @@ namespace Hexa.NET.Shaderc
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Enum, "shaderc_profile")]
 	public enum ShadercProfile
 	{
@@ -572,16 +624,24 @@ namespace Hexa.NET.Shaderc
 		[NativeName(NativeNameType.EnumItem, "shaderc_profile_none")]
 		None = unchecked(0),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_profile_core")]
 		Core = unchecked(1),
+
 		/// <summary>
 		/// Disabled. This generates an error<br/>
 		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_profile_compatibility")]
 		Compatibility = unchecked(2),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_profile_es")]
 		Es = unchecked(3),
+
 	}
 
 	/// <summary>
@@ -616,210 +676,618 @@ namespace Hexa.NET.Shaderc
 	[NativeName(NativeNameType.Enum, "shaderc_limit")]
 	public enum ShadercLimit
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_lights")]
 		MaxLights = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_clip_planes")]
 		MaxClipPlanes = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_units")]
 		MaxTextureUnits = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_coords")]
 		MaxTextureCoords = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_attribs")]
 		MaxVertexAttribs = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_uniform_components")]
 		MaxVertexUniformComponents = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_floats")]
 		MaxVaryingFloats = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_texture_image_units")]
 		MaxVertexTextureImageUnits = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_texture_image_units")]
 		MaxCombinedTextureImageUnits = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_texture_image_units")]
 		MaxTextureImageUnits = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_uniform_components")]
 		MaxFragmentUniformComponents = unchecked(10),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_draw_buffers")]
 		MaxDrawBuffers = unchecked(11),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_uniform_vectors")]
 		MaxVertexUniformVectors = unchecked(12),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_vectors")]
 		MaxVaryingVectors = unchecked(13),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_uniform_vectors")]
 		MaxFragmentUniformVectors = unchecked(14),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_output_vectors")]
 		MaxVertexOutputVectors = unchecked(15),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_input_vectors")]
 		MaxFragmentInputVectors = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_min_program_texel_offset")]
 		MinProgramTexelOffset = unchecked(17),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_program_texel_offset")]
 		MaxProgramTexelOffset = unchecked(18),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_clip_distances")]
 		MaxClipDistances = unchecked(19),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_x")]
 		MaxComputeWorkGroupCountx = unchecked(20),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_y")]
 		MaxComputeWorkGroupCounty = unchecked(21),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_count_z")]
 		MaxComputeWorkGroupCountz = unchecked(22),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_x")]
 		MaxComputeWorkGroupSizex = unchecked(23),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_y")]
 		MaxComputeWorkGroupSizey = unchecked(24),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_work_group_size_z")]
 		MaxComputeWorkGroupSizez = unchecked(25),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_uniform_components")]
 		MaxComputeUniformComponents = unchecked(26),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_texture_image_units")]
 		MaxComputeTextureImageUnits = unchecked(27),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_image_uniforms")]
 		MaxComputeImageUniforms = unchecked(28),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_atomic_counters")]
 		MaxComputeAtomicCounters = unchecked(29),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_compute_atomic_counter_buffers")]
 		MaxComputeAtomicCounterBuffers = unchecked(30),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_varying_components")]
 		MaxVaryingComponents = unchecked(31),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_output_components")]
 		MaxVertexOutputComponents = unchecked(32),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_input_components")]
 		MaxGeometryInputComponents = unchecked(33),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_output_components")]
 		MaxGeometryOutputComponents = unchecked(34),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_input_components")]
 		MaxFragmentInputComponents = unchecked(35),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_image_units")]
 		MaxImageUnits = unchecked(36),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_image_units_and_fragment_outputs")]
 		MaxCombinedImageUnitsAndFragmentOutputs = unchecked(37),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_shader_output_resources")]
 		MaxCombinedShaderOutputResources = unchecked(38),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_image_samples")]
 		MaxImageSamples = unchecked(39),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_image_uniforms")]
 		MaxVertexImageUniforms = unchecked(40),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_image_uniforms")]
 		MaxTessControlImageUniforms = unchecked(41),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_image_uniforms")]
 		MaxTessEvaluationImageUniforms = unchecked(42),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_image_uniforms")]
 		MaxGeometryImageUniforms = unchecked(43),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_image_uniforms")]
 		MaxFragmentImageUniforms = unchecked(44),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_image_uniforms")]
 		MaxCombinedImageUniforms = unchecked(45),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_texture_image_units")]
 		MaxGeometryTextureImageUnits = unchecked(46),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_output_vertices")]
 		MaxGeometryOutputVertices = unchecked(47),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_total_output_components")]
 		MaxGeometryTotalOutputComponents = unchecked(48),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_uniform_components")]
 		MaxGeometryUniformComponents = unchecked(49),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_varying_components")]
 		MaxGeometryVaryingComponents = unchecked(50),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_input_components")]
 		MaxTessControlInputComponents = unchecked(51),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_output_components")]
 		MaxTessControlOutputComponents = unchecked(52),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_texture_image_units")]
 		MaxTessControlTextureImageUnits = unchecked(53),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_uniform_components")]
 		MaxTessControlUniformComponents = unchecked(54),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_total_output_components")]
 		MaxTessControlTotalOutputComponents = unchecked(55),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_input_components")]
 		MaxTessEvaluationInputComponents = unchecked(56),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_output_components")]
 		MaxTessEvaluationOutputComponents = unchecked(57),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_texture_image_units")]
 		MaxTessEvaluationTextureImageUnits = unchecked(58),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_uniform_components")]
 		MaxTessEvaluationUniformComponents = unchecked(59),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_patch_components")]
 		MaxTessPatchComponents = unchecked(60),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_patch_vertices")]
 		MaxPatchVertices = unchecked(61),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_gen_level")]
 		MaxTessGenLevel = unchecked(62),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_viewports")]
 		MaxViewports = unchecked(63),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_atomic_counters")]
 		MaxVertexAtomicCounters = unchecked(64),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_atomic_counters")]
 		MaxTessControlAtomicCounters = unchecked(65),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_atomic_counters")]
 		MaxTessEvaluationAtomicCounters = unchecked(66),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_atomic_counters")]
 		MaxGeometryAtomicCounters = unchecked(67),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_atomic_counters")]
 		MaxFragmentAtomicCounters = unchecked(68),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_atomic_counters")]
 		MaxCombinedAtomicCounters = unchecked(69),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_atomic_counter_bindings")]
 		MaxAtomicCounterBindings = unchecked(70),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_vertex_atomic_counter_buffers")]
 		MaxVertexAtomicCounterBuffers = unchecked(71),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_control_atomic_counter_buffers")]
 		MaxTessControlAtomicCounterBuffers = unchecked(72),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_tess_evaluation_atomic_counter_buffers")]
 		MaxTessEvaluationAtomicCounterBuffers = unchecked(73),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_geometry_atomic_counter_buffers")]
 		MaxGeometryAtomicCounterBuffers = unchecked(74),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_fragment_atomic_counter_buffers")]
 		MaxFragmentAtomicCounterBuffers = unchecked(75),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_atomic_counter_buffers")]
 		MaxCombinedAtomicCounterBuffers = unchecked(76),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_atomic_counter_buffer_size")]
 		MaxAtomicCounterBufferSize = unchecked(77),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_transform_feedback_buffers")]
 		MaxTransformFeedbackBuffers = unchecked(78),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_transform_feedback_interleaved_components")]
 		MaxTransformFeedbackInterleavedComponents = unchecked(79),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_cull_distances")]
 		MaxCullDistances = unchecked(80),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_combined_clip_and_cull_distances")]
 		MaxCombinedClipAndCullDistances = unchecked(81),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_samples")]
 		MaxSamples = unchecked(82),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_vertices_nv")]
 		MaxMeshOutputVerticesNv = unchecked(83),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_primitives_nv")]
 		MaxMeshOutputPrimitivesNv = unchecked(84),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_x_nv")]
 		MaxMeshWorkGroupSizexNv = unchecked(85),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_y_nv")]
 		MaxMeshWorkGroupSizeyNv = unchecked(86),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_z_nv")]
 		MaxMeshWorkGroupSizezNv = unchecked(87),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_x_nv")]
 		MaxTaskWorkGroupSizexNv = unchecked(88),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_y_nv")]
 		MaxTaskWorkGroupSizeyNv = unchecked(89),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_z_nv")]
 		MaxTaskWorkGroupSizezNv = unchecked(90),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_view_count_nv")]
 		MaxMeshViewCountNv = unchecked(91),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_vertices_ext")]
 		MaxMeshOutputVerticesExt = unchecked(92),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_output_primitives_ext")]
 		MaxMeshOutputPrimitivesExt = unchecked(93),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_x_ext")]
 		MaxMeshWorkGroupSizexExt = unchecked(94),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_y_ext")]
 		MaxMeshWorkGroupSizeyExt = unchecked(95),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_work_group_size_z_ext")]
 		MaxMeshWorkGroupSizezExt = unchecked(96),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_x_ext")]
 		MaxTaskWorkGroupSizexExt = unchecked(97),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_y_ext")]
 		MaxTaskWorkGroupSizeyExt = unchecked(98),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_task_work_group_size_z_ext")]
 		MaxTaskWorkGroupSizezExt = unchecked(99),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_mesh_view_count_ext")]
 		MaxMeshViewCountExt = unchecked(100),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "shaderc_limit_max_dual_source_draw_buffers_ext")]
 		MaxDualSourceDrawBuffersExt = unchecked(101),
+
 	}
 
 	/// <summary>

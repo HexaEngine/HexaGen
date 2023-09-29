@@ -27,6 +27,10 @@
     "object",
     "event"
   ],
+  "NameMappings": {
+    "LPEFXEAXREVERBPROPERTIES": "LPEFXEAXReverbProperties",
+    "EFXEAXREVERBPROPERTIES": "EFXEAXReverbProperties"
+  },
   "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",

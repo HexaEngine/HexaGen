@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 
-namespace HexaEngine.SDL2
+namespace Hexa.NET.SDL2
 {
 	/// <summary>
 	/// Return the size of the file in this rwops, or -1 if unknown<br/>
@@ -25,10 +25,19 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// Seek to <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// relative to <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// one of stdio's whence values:<br/>
 	/// RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "seek")]
 	[return: NativeName(NativeNameType.Type, "Sint64")]
@@ -37,10 +46,22 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// Read up to <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// objects each of size <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// from the data<br/>
 	/// stream to the area pointed at by <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "read")]
 	[return: NativeName(NativeNameType.Type, "size_t")]
@@ -49,11 +70,23 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// Write exactly <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// objects each of size <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// from the area<br/>
 	/// pointed at by <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// to data stream.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "write")]
 	[return: NativeName(NativeNameType.Type, "size_t")]
@@ -63,6 +96,9 @@ namespace HexaEngine.SDL2
 	/// <summary>
 	/// Close and free an allocated SDL_RWops structure.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "close")]
 	[return: NativeName(NativeNameType.Type, "int")]
@@ -125,25 +161,37 @@ namespace HexaEngine.SDL2
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate int SendEffect([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_malloc_func")]
 	[return: NativeName(NativeNameType.Type, "void*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* SDLMallocFunc([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
+	public unsafe delegate void* SdlMallocFunc([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_calloc_func")]
 	[return: NativeName(NativeNameType.Type, "void*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* SDLCallocFunc([NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] nuint nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
+	public unsafe delegate void* SdlCallocFunc([NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] nuint nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_realloc_func")]
 	[return: NativeName(NativeNameType.Type, "void*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* SDLReallocFunc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
+	public unsafe delegate void* SdlReallocFunc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_free_func")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SDLFreeFunc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem);
+	public unsafe delegate void SdlFreeFunc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem);
 
 	/// <summary>
 	/// The prototype for the application's main() function<br/>
@@ -151,39 +199,69 @@ namespace HexaEngine.SDL2
 	[NativeName(NativeNameType.Delegate, "SDL_main_func")]
 	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int SDLMainFunc([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv);
+	public unsafe delegate int SdlMainFunc([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv);
 
 	/// <summary>
 	/// A callback that fires when an SDL assertion fails.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_AssertionHandler")]
 	[return: NativeName(NativeNameType.Type, "SDL_AssertState")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate SDLAssertState SDLAssertionHandler([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const SDL_AssertData*")] SDLAssertData* data, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+	public unsafe delegate SDLAssertState SdlAssertionhandler([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const SDL_AssertData*")] SDLAssertData* data, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
 
 	/// <summary>
 	/// The function passed to SDL_CreateThread().<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_ThreadFunction")]
 	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int SDLThreadFunction([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data);
+	public unsafe delegate int SdlThreadfunction([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "pfnSDL_CurrentBeginThread")]
 	[return: NativeName(NativeNameType.Type, "uintptr_t")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nuint PfnSDLCurrentBeginThread([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown0, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown1, [NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "unsigned int (*)(void*)*")] delegate*<void*> func, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown3, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown4, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* unknown5);
+	public unsafe delegate nuint PfnsdlCurrentbeginthread([NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown0, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown1, [NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "unsigned int (*)(void*)*")] delegate*<void*> func, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "void*")] void* unknown3, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int")] uint unknown4, [NativeName(NativeNameType.Param, "")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* unknown5);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "pfnSDL_CurrentEndThread")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PfnSDLCurrentEndThread([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "unsigned int")] uint code);
+	public unsafe delegate void PfnsdlCurrentendthread([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "unsigned int")] uint code);
 
 	/// <summary>
 	/// This function is called when the audio device needs more data.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// Once the callback returns, the buffer will no longer be valid.<br/>
 	/// Stereo samples are stored in a LRLRLR ordering.<br/>
 	/// You can choose to avoid callbacks and use SDL_QueueAudio() instead, if<br/>
@@ -194,6 +272,9 @@ namespace HexaEngine.SDL2
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SDLAudioCallback([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "Uint8*")] byte* stream, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_AudioFilter")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -201,55 +282,115 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_blit")]
 	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int SDLBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
+	public unsafe delegate int SdlBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
 
 	/// <summary>
 	/// Callback used for hit-testing.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_HitTest")]
 	[return: NativeName(NativeNameType.Type, "SDL_HitTestResult")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate SDLHitTestResult SDLHitTest([NativeName(NativeNameType.Param, "win")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* win, [NativeName(NativeNameType.Param, "area")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* area, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data);
+	public unsafe delegate SDLHitTestResult SdlHittest([NativeName(NativeNameType.Param, "win")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* win, [NativeName(NativeNameType.Param, "area")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* area, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data);
 
 	/// <summary>
 	/// A function pointer used for callbacks that watch the event queue.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_EventFilter")]
 	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int SDLEventFilter([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
+	public unsafe delegate int SdlEventfilter([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
 
 	/// <summary>
 	/// Type definition of the hint callback function.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_HintCallback")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SDLHintCallback([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "oldValue")] [NativeName(NativeNameType.Type, "const char*")] byte* oldValue, [NativeName(NativeNameType.Param, "newValue")] [NativeName(NativeNameType.Type, "const char*")] byte* newValue);
+	public unsafe delegate void SdlHintcallback([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "oldValue")] [NativeName(NativeNameType.Type, "const char*")] byte* oldValue, [NativeName(NativeNameType.Param, "newValue")] [NativeName(NativeNameType.Type, "const char*")] byte* newValue);
 
 	/// <summary>
 	/// The prototype for the log output callback function.<br/>
 	/// This function is called by SDL when there is new text to be logged.<br/>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_LogOutputFunction")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SDLLogOutputFunction([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message);
+	public unsafe delegate void SdlLogoutputfunction([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message);
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Delegate, "SDL_WindowsMessageHook")]
 	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SDLWindowsMessageHook([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "void*")] void* hWnd, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "unsigned int")] uint message, [NativeName(NativeNameType.Param, "wParam")] [NativeName(NativeNameType.Type, "Uint64")] ulong wParam, [NativeName(NativeNameType.Param, "lParam")] [NativeName(NativeNameType.Type, "Sint64")] long lParam);
+	public unsafe delegate void SdlWindowsmessagehook([NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "void*")] void* hWnd, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "unsigned int")] uint message, [NativeName(NativeNameType.Param, "wParam")] [NativeName(NativeNameType.Type, "Uint64")] ulong wParam, [NativeName(NativeNameType.Param, "lParam")] [NativeName(NativeNameType.Type, "Sint64")] long lParam);
 
 	/// <summary>
 	/// Function prototype for the timer callback function.<br/>
@@ -261,6 +402,6 @@ namespace HexaEngine.SDL2
 	[NativeName(NativeNameType.Delegate, "SDL_TimerCallback")]
 	[return: NativeName(NativeNameType.Type, "Uint32")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate uint SDLTimerCallback([NativeName(NativeNameType.Param, "interval")] [NativeName(NativeNameType.Type, "Uint32")] uint interval, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "void*")] void* param);
+	public unsafe delegate uint SdlTimercallback([NativeName(NativeNameType.Param, "interval")] [NativeName(NativeNameType.Type, "Uint32")] uint interval, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "void*")] void* param);
 
 }

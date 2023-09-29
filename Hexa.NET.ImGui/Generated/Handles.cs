@@ -13,8 +13,11 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using System.Numerics;
 
-namespace HexaEngine.ImGuiNET
+namespace Hexa.NET.ImGuiNET
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "ImTextureID")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ImTextureID : IEquatable<ImTextureID>
@@ -36,6 +39,9 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImTextureID [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "ImBitArrayPtr")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ImBitArrayPtr : IEquatable<ImBitArrayPtr>
@@ -57,6 +63,9 @@ namespace HexaEngine.ImGuiNET
 		private string DebuggerDisplay => string.Format("ImBitArrayPtr [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "ImFileHandle")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct ImFileHandle : IEquatable<ImFileHandle>

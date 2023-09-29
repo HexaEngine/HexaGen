@@ -9,11 +9,10 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
 using System.Numerics;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXGI
+namespace Hexa.NET.DXGI
 {
 	public unsafe partial class DXGI
 	{
@@ -163,6 +162,15 @@ namespace HexaEngine.DXGI
 
 		[NativeName(NativeNameType.Const, "DXGI_CREATE_FACTORY_DEBUG")]
 		public const int DXGI_CREATE_FACTORY_DEBUG = 0x1;
+
+		[NativeName(NativeNameType.Const, "DXGI_DEBUG_BINARY_VERSION")]
+		public const int DXGI_DEBUG_BINARY_VERSION = (1);
+
+		[NativeName(NativeNameType.Const, "DXGI_INFO_QUEUE_MESSAGE_ID_STRING_FROM_APPLICATION")]
+		public const int DXGI_INFO_QUEUE_MESSAGE_ID_STRING_FROM_APPLICATION = 0;
+
+		[NativeName(NativeNameType.Const, "DXGI_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT")]
+		public const int DXGI_INFO_QUEUE_DEFAULT_MESSAGE_COUNT_LIMIT = 1024;
 
 	}
 }

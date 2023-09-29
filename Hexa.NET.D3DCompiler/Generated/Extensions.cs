@@ -11,11 +11,11 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
-using HexaEngine.D3D11;
+using Hexa.NET.D3DCommon;
+using Hexa.NET.D3D11;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCompiler
+namespace Hexa.NET.D3DCompiler
 {
 	public static unsafe class Extensions
 	{

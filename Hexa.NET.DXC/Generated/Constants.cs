@@ -11,7 +11,7 @@ using System;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXC
+namespace Hexa.NET.DXC
 {
 	public unsafe partial class DXC
 	{

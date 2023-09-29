@@ -11,11 +11,11 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
-using HexaEngine.D3D11;
+using Hexa.NET.D3DCommon;
+using Hexa.NET.D3D11;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCompiler
+namespace Hexa.NET.D3DCompiler
 {
 	public unsafe partial class D3DCompiler
 	{
@@ -84,33 +84,36 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DCompile")]
-		internal static extern HResult D3DCompileNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
+		internal static extern HResult D3DCompileNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, pDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
-				HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
+				HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -119,23 +122,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
-					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
+					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -144,23 +147,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
-					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
+					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -172,26 +175,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppCode = &ppCode)
 					{
-						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
+						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 			{
@@ -200,23 +203,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 				{
-					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
+					HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -228,26 +231,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -259,26 +262,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -293,11 +296,11 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
@@ -305,7 +308,7 @@ namespace HexaEngine.D3DCompiler
 					{
 						fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 						{
-							HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+							HResult ret = D3DCompileNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 							return ret;
 						}
 					}
@@ -313,33 +316,36 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DCompile2")]
-		internal static extern HResult D3DCompile2Native([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
+		internal static extern HResult D3DCompile2Native([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, pDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, ppErrorMsgs);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
-				HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, ppErrorMsgs);
+				HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, ppErrorMsgs);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -348,23 +354,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
-					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, ppErrorMsgs);
+					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -373,23 +379,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
-					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, ppErrorMsgs);
+					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -401,26 +407,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppCode = &ppCode)
 					{
-						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, ppErrorMsgs);
+						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, ppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 			{
@@ -429,23 +435,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 				{
-					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, (ID3D10Blob**)pppErrorMsgs);
+					HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, (ID3D10Blob**)pppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -457,26 +463,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, ppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -488,26 +494,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -522,11 +528,11 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompile2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompile2")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompile2([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "SecondaryDataFlags")] [NativeName(NativeNameType.Type, "UINT")] uint secondaryDataFlags, [NativeName(NativeNameType.Param, "pSecondaryData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSecondaryData, [NativeName(NativeNameType.Param, "SecondaryDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint secondaryDataSize, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
@@ -534,7 +540,7 @@ namespace HexaEngine.D3DCompiler
 					{
 						fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 						{
-							HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+							HResult ret = D3DCompile2Native(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, secondaryDataFlags, pSecondaryData, secondaryDataSize, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 							return ret;
 						}
 					}
@@ -542,33 +548,36 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DCompileFromFile")]
-		internal static extern HResult D3DCompileFromFileNative([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
+		internal static extern HResult D3DCompileFromFileNative([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			HResult ret = D3DCompileFromFileNative(pFileName, pDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
-				HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
+				HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -577,23 +586,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
-					HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
+					HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -602,23 +611,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
-					HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
+					HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -630,26 +639,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppCode = &ppCode)
 					{
-						HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
+						HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, ppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 			{
@@ -658,23 +667,23 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 				{
-					HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
+					HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
 					return ret;
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -686,26 +695,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, ppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCode = &ppCode)
 			{
@@ -717,26 +726,26 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCode = &ppCode)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, pInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -751,11 +760,11 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompileFromFile")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DCompileFromFile([NativeName(NativeNameType.Param, "pFileName")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* pFileName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "pEntrypoint")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pEntrypoint, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pTarget, [NativeName(NativeNameType.Param, "Flags1")] [NativeName(NativeNameType.Type, "UINT")] uint flags1, [NativeName(NativeNameType.Param, "Flags2")] [NativeName(NativeNameType.Type, "UINT")] uint flags2, [NativeName(NativeNameType.Param, "ppCode")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCode, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
@@ -763,7 +772,7 @@ namespace HexaEngine.D3DCompiler
 					{
 						fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 						{
-							HResult ret = D3DCompileFromFileNative(pFileName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
+							HResult ret = D3DCompileFromFileNative(pFileName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, pEntrypoint, pTarget, flags1, flags2, (ID3D10Blob**)pppCode, (ID3D10Blob**)pppErrorMsgs);
 							return ret;
 						}
 					}
@@ -782,11 +791,11 @@ namespace HexaEngine.D3DCompiler
 		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DPreprocess")]
-		internal static extern HResult D3DPreprocessNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
+		internal static extern HResult D3DPreprocessNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs);
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, pDefines, pInclude, ppCodeText, ppErrorMsgs);
 			return ret;
@@ -794,18 +803,18 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
-				HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, ppCodeText, ppErrorMsgs);
+				HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, ppCodeText, ppErrorMsgs);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -816,13 +825,13 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
-					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, ppCodeText, ppErrorMsgs);
+					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, ppCodeText, ppErrorMsgs);
 					return ret;
 				}
 			}
@@ -830,7 +839,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCodeText = &ppCodeText)
 			{
@@ -841,13 +850,13 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCodeText = &ppCodeText)
 				{
-					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, (ID3D10Blob**)pppCodeText, ppErrorMsgs);
+					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, (ID3D10Blob**)pppCodeText, ppErrorMsgs);
 					return ret;
 				}
 			}
@@ -855,7 +864,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -869,15 +878,15 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppCodeText = &ppCodeText)
 					{
-						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, (ID3D10Blob**)pppCodeText, ppErrorMsgs);
+						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, (ID3D10Blob**)pppCodeText, ppErrorMsgs);
 						return ret;
 					}
 				}
@@ -886,7 +895,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 			{
@@ -897,13 +906,13 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 				{
-					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, ppCodeText, (ID3D10Blob**)pppErrorMsgs);
+					HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, ppCodeText, (ID3D10Blob**)pppErrorMsgs);
 					return ret;
 				}
 			}
@@ -911,7 +920,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -925,15 +934,15 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, ppCodeText, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, ppCodeText, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
@@ -942,7 +951,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3D10Blob** pppCodeText = &ppCodeText)
 			{
@@ -956,15 +965,15 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ID3DInclude* pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3D10Blob** pppCodeText = &ppCodeText)
 				{
 					fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 					{
-						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, pInclude, (ID3D10Blob**)pppCodeText, (ID3D10Blob**)pppErrorMsgs);
+						HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, pInclude, (ID3D10Blob**)pppCodeText, (ID3D10Blob**)pppErrorMsgs);
 						return ret;
 					}
 				}
@@ -973,7 +982,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3D_SHADER_MACRO* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] D3DShaderMacro* pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
 			fixed (ID3DInclude* ppInclude = &pInclude)
 			{
@@ -990,9 +999,9 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DPreprocess:<br/>		/// -------------<br/>		/// Process source text with the compiler's preprocessor and return<br/>		/// the resulting text.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DPreprocess")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3D_SHADER_MACRO pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
+		public static HResult D3DPreprocess([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "pSourceName")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* pSourceName, [NativeName(NativeNameType.Param, "pDefines")] [NativeName(NativeNameType.Type, "const D3D_SHADER_MACRO*")] ref D3DShaderMacro pDefines, [NativeName(NativeNameType.Param, "pInclude")] [NativeName(NativeNameType.Type, "ID3DInclude*")] ref ID3DInclude pInclude, [NativeName(NativeNameType.Param, "ppCodeText")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCodeText, [NativeName(NativeNameType.Param, "ppErrorMsgs")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppErrorMsgs)
 		{
-			fixed (D3D_SHADER_MACRO* ppDefines = &pDefines)
+			fixed (D3DShaderMacro* ppDefines = &pDefines)
 			{
 				fixed (ID3DInclude* ppInclude = &pInclude)
 				{
@@ -1000,7 +1009,7 @@ namespace HexaEngine.D3DCompiler
 					{
 						fixed (ID3D10Blob** pppErrorMsgs = &ppErrorMsgs)
 						{
-							HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3D_SHADER_MACRO*)ppDefines, (ID3DInclude*)ppInclude, (ID3D10Blob**)pppCodeText, (ID3D10Blob**)pppErrorMsgs);
+							HResult ret = D3DPreprocessNative(pSrcData, srcDataSize, pSourceName, (D3DShaderMacro*)ppDefines, (ID3DInclude*)ppInclude, (ID3D10Blob**)pppCodeText, (ID3D10Blob**)pppErrorMsgs);
 							return ret;
 						}
 					}
@@ -1083,58 +1092,61 @@ namespace HexaEngine.D3DCompiler
 		[NativeName(NativeNameType.Func, "D3DReflectLibrary")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DReflectLibrary")]
-		internal static extern HResult D3DReflectLibraryNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector);
+		internal static extern HResult D3DReflectLibraryNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector);
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DReflectLibrary:<br/>		/// ----------<br/>		/// Library code contains metadata that can be inspected via the library<br/>		/// reflection APIs.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DReflectLibrary")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector)
+		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector)
 		{
-			HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, rIID, ppReflector);
+			HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, riid, ppReflector);
 			return ret;
 		}
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DReflectLibrary:<br/>		/// ----------<br/>		/// Library code contains metadata that can be inspected via the library<br/>		/// reflection APIs.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DReflectLibrary")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector)
+		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] void** ppReflector)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
-				HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, (Guid*)prIID, ppReflector);
+				HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, (Guid*)priid, ppReflector);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DReflectLibrary:<br/>		/// ----------<br/>		/// Library code contains metadata that can be inspected via the library<br/>		/// reflection APIs.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DReflectLibrary")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* rIID, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppReflector)
+		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppReflector)
 		{
 			fixed (void** pppReflector = &ppReflector)
 			{
-				HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, rIID, (void**)pppReflector);
+				HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, riid, (void**)pppReflector);
 				return ret;
 			}
 		}
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DReflectLibrary:<br/>		/// ----------<br/>		/// Library code contains metadata that can be inspected via the library<br/>		/// reflection APIs.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DReflectLibrary")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid rIID, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppReflector)
+		public static HResult D3DReflectLibrary([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppReflector")] [NativeName(NativeNameType.Type, "LPVOID*")] ref void* ppReflector)
 		{
-			fixed (Guid* prIID = &rIID)
+			fixed (Guid* priid = &riid)
 			{
 				fixed (void** pppReflector = &ppReflector)
 				{
-					HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, (Guid*)prIID, (void**)pppReflector);
+					HResult ret = D3DReflectLibraryNative(pSrcData, srcDataSize, (Guid*)priid, (void**)pppReflector);
 					return ret;
 				}
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DDisassemble")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DDisassemble")]
 		internal static extern HResult D3DDisassembleNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly);
 
-		[NativeName(NativeNameType.Func, "D3DDisassemble")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassemble")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassemble([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly)
 		{
@@ -1142,7 +1154,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DDisassemble")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassemble")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassemble([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppDisassembly)
 		{
@@ -1153,12 +1165,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DDisassembleRegion")]
 		internal static extern HResult D3DDisassembleRegionNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "StartByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startByteOffset, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pFinishByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pFinishByteOffset, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly);
 
-		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassembleRegion([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "StartByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startByteOffset, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pFinishByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pFinishByteOffset, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly)
 		{
@@ -1166,7 +1181,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassembleRegion([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "StartByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startByteOffset, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pFinishByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pFinishByteOffset, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppDisassembly)
 		{
@@ -1177,7 +1192,7 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassembleRegion([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "StartByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startByteOffset, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pFinishByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pFinishByteOffset, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppDisassembly)
 		{
@@ -1188,7 +1203,7 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DDisassembleRegion")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DDisassembleRegion([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "szComments")] [NativeName(NativeNameType.Type, "LPCSTR")] byte* szComments, [NativeName(NativeNameType.Param, "StartByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startByteOffset, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pFinishByteOffset")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pFinishByteOffset, [NativeName(NativeNameType.Param, "ppDisassembly")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppDisassembly)
 		{
@@ -1231,12 +1246,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DLoadModule")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DLoadModule")]
 		internal static extern HResult D3DLoadModuleNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "cbSrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint cbSrcDataSize, [NativeName(NativeNameType.Param, "ppModule")] [NativeName(NativeNameType.Type, "ID3D11Module**")] ID3D11Module** ppModule);
 
-		[NativeName(NativeNameType.Func, "D3DLoadModule")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DLoadModule")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DLoadModule([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "cbSrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint cbSrcDataSize, [NativeName(NativeNameType.Param, "ppModule")] [NativeName(NativeNameType.Type, "ID3D11Module**")] ID3D11Module** ppModule)
 		{
@@ -1244,7 +1262,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DLoadModule")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DLoadModule")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DLoadModule([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "cbSrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint cbSrcDataSize, [NativeName(NativeNameType.Param, "ppModule")] [NativeName(NativeNameType.Type, "ID3D11Module**")] ref ID3D11Module* ppModule)
 		{
@@ -1255,12 +1273,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DCreateFunctionLinkingGraph")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DCreateFunctionLinkingGraph")]
 		internal static extern HResult D3DCreateFunctionLinkingGraphNative([NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppFunctionLinkingGraph")] [NativeName(NativeNameType.Type, "ID3D11FunctionLinkingGraph**")] ID3D11FunctionLinkingGraph** ppFunctionLinkingGraph);
 
-		[NativeName(NativeNameType.Func, "D3DCreateFunctionLinkingGraph")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCreateFunctionLinkingGraph")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DCreateFunctionLinkingGraph([NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppFunctionLinkingGraph")] [NativeName(NativeNameType.Type, "ID3D11FunctionLinkingGraph**")] ID3D11FunctionLinkingGraph** ppFunctionLinkingGraph)
 		{
@@ -1268,7 +1289,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCreateFunctionLinkingGraph")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCreateFunctionLinkingGraph")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DCreateFunctionLinkingGraph([NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppFunctionLinkingGraph")] [NativeName(NativeNameType.Type, "ID3D11FunctionLinkingGraph**")] ref ID3D11FunctionLinkingGraph* ppFunctionLinkingGraph)
 		{
@@ -1279,12 +1300,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DGetTraceInstructionOffsets")]
 		internal static extern HResult D3DGetTraceInstructionOffsetsNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "StartInstIndex")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startInstIndex, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pOffsets, [NativeName(NativeNameType.Param, "pTotalInsts")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pTotalInsts);
 
-		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DGetTraceInstructionOffsets([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "StartInstIndex")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startInstIndex, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pOffsets, [NativeName(NativeNameType.Param, "pTotalInsts")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pTotalInsts)
 		{
@@ -1292,7 +1316,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DGetTraceInstructionOffsets([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "StartInstIndex")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startInstIndex, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pOffsets, [NativeName(NativeNameType.Param, "pTotalInsts")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pTotalInsts)
 		{
@@ -1303,7 +1327,7 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DGetTraceInstructionOffsets([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "StartInstIndex")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startInstIndex, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "SIZE_T*")] nuint* pOffsets, [NativeName(NativeNameType.Param, "pTotalInsts")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pTotalInsts)
 		{
@@ -1314,7 +1338,7 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetTraceInstructionOffsets")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DGetTraceInstructionOffsets([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "StartInstIndex")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint startInstIndex, [NativeName(NativeNameType.Param, "NumInsts")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint numInsts, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pOffsets, [NativeName(NativeNameType.Param, "pTotalInsts")] [NativeName(NativeNameType.Type, "SIZE_T*")] ref nuint pTotalInsts)
 		{
@@ -1421,12 +1445,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DStripShader")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DStripShader")]
 		internal static extern HResult D3DStripShaderNative([NativeName(NativeNameType.Param, "pShaderBytecode")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pShaderBytecode, [NativeName(NativeNameType.Param, "BytecodeLength")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint bytecodeLength, [NativeName(NativeNameType.Param, "uStripFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uStripFlags, [NativeName(NativeNameType.Param, "ppStrippedBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppStrippedBlob);
 
-		[NativeName(NativeNameType.Func, "D3DStripShader")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DStripShader")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DStripShader([NativeName(NativeNameType.Param, "pShaderBytecode")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pShaderBytecode, [NativeName(NativeNameType.Param, "BytecodeLength")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint bytecodeLength, [NativeName(NativeNameType.Param, "uStripFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uStripFlags, [NativeName(NativeNameType.Param, "ppStrippedBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppStrippedBlob)
 		{
@@ -1434,7 +1461,7 @@ namespace HexaEngine.D3DCompiler
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DStripShader")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DStripShader")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public static HResult D3DStripShader([NativeName(NativeNameType.Param, "pShaderBytecode")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pShaderBytecode, [NativeName(NativeNameType.Param, "BytecodeLength")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint bytecodeLength, [NativeName(NativeNameType.Param, "uStripFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uStripFlags, [NativeName(NativeNameType.Param, "ppStrippedBlob")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppStrippedBlob)
 		{
@@ -1445,22 +1472,25 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DGetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DGetBlobPart")]
-		internal static extern HResult D3DGetBlobPartNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppPart);
+		internal static extern HResult D3DGetBlobPartNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppPart);
 
-		[NativeName(NativeNameType.Func, "D3DGetBlobPart")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DGetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppPart)
+		public static HResult D3DGetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppPart)
 		{
 			HResult ret = D3DGetBlobPartNative(pSrcData, srcDataSize, part, flags, ppPart);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DGetBlobPart")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DGetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DGetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppPart)
+		public static HResult D3DGetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "ppPart")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppPart)
 		{
 			fixed (ID3D10Blob** pppPart = &ppPart)
 			{
@@ -1479,11 +1509,11 @@ namespace HexaEngine.D3DCompiler
 		[NativeName(NativeNameType.Func, "D3DSetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DSetBlobPart")]
-		internal static extern HResult D3DSetBlobPartNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppNewShader);
+		internal static extern HResult D3DSetBlobPartNative([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppNewShader);
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DSetBlobPart:<br/>		/// -----------------------<br/>		/// Update information in a compilation result.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DSetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DSetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppNewShader)
+		public static HResult D3DSetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppNewShader)
 		{
 			HResult ret = D3DSetBlobPartNative(pSrcData, srcDataSize, part, flags, pPart, partSize, ppNewShader);
 			return ret;
@@ -1491,7 +1521,7 @@ namespace HexaEngine.D3DCompiler
 
 		/// <summary>		/// ----------------------------------------------------------------------------<br/>		/// D3DSetBlobPart:<br/>		/// -----------------------<br/>		/// Update information in a compilation result.<br/>		/// ----------------------------------------------------------------------------<br/>		/// </summary>		[NativeName(NativeNameType.Func, "D3DSetBlobPart")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DSetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3D_BLOB_PAR part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppNewShader)
+		public static HResult D3DSetBlobPart([NativeName(NativeNameType.Param, "pSrcData")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pSrcData, [NativeName(NativeNameType.Param, "SrcDataSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint srcDataSize, [NativeName(NativeNameType.Param, "Part")] [NativeName(NativeNameType.Type, "D3D_BLOB_PART")] D3DBlobPart part, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "pPart")] [NativeName(NativeNameType.Type, "LPCVOID")] void* pPart, [NativeName(NativeNameType.Param, "PartSize")] [NativeName(NativeNameType.Type, "SIZE_T")] nuint partSize, [NativeName(NativeNameType.Param, "ppNewShader")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppNewShader)
 		{
 			fixed (ID3D10Blob** pppNewShader = &ppNewShader)
 			{
@@ -1531,33 +1561,36 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "D3DCompressShaders")]
-		internal static extern HResult D3DCompressShadersNative([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3D_SHADER_DATA* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData);
+		internal static extern HResult D3DCompressShadersNative([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3DShaderData* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData);
 
-		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3D_SHADER_DATA* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData)
+		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3DShaderData* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData)
 		{
 			HResult ret = D3DCompressShadersNative(uNumShaders, pShaderData, uFlags, ppCompressedData);
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] ref D3D_SHADER_DATA pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData)
+		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] ref D3DShaderData pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ID3D10Blob** ppCompressedData)
 		{
-			fixed (D3D_SHADER_DATA* ppShaderData = &pShaderData)
+			fixed (D3DShaderData* ppShaderData = &pShaderData)
 			{
-				HResult ret = D3DCompressShadersNative(uNumShaders, (D3D_SHADER_DATA*)ppShaderData, uFlags, ppCompressedData);
+				HResult ret = D3DCompressShadersNative(uNumShaders, (D3DShaderData*)ppShaderData, uFlags, ppCompressedData);
 				return ret;
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3D_SHADER_DATA* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCompressedData)
+		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] D3DShaderData* pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCompressedData)
 		{
 			fixed (ID3D10Blob** pppCompressedData = &ppCompressedData)
 			{
@@ -1566,15 +1599,15 @@ namespace HexaEngine.D3DCompiler
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "D3DCompressShaders")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] ref D3D_SHADER_DATA pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCompressedData)
+		public static HResult D3DCompressShaders([NativeName(NativeNameType.Param, "uNumShaders")] [NativeName(NativeNameType.Type, "UINT")] uint uNumShaders, [NativeName(NativeNameType.Param, "pShaderData")] [NativeName(NativeNameType.Type, "D3D_SHADER_DATA*")] ref D3DShaderData pShaderData, [NativeName(NativeNameType.Param, "uFlags")] [NativeName(NativeNameType.Type, "UINT")] uint uFlags, [NativeName(NativeNameType.Param, "ppCompressedData")] [NativeName(NativeNameType.Type, "ID3DBlob**")] ref ID3D10Blob* ppCompressedData)
 		{
-			fixed (D3D_SHADER_DATA* ppShaderData = &pShaderData)
+			fixed (D3DShaderData* ppShaderData = &pShaderData)
 			{
 				fixed (ID3D10Blob** pppCompressedData = &ppCompressedData)
 				{
-					HResult ret = D3DCompressShadersNative(uNumShaders, (D3D_SHADER_DATA*)ppShaderData, uFlags, (ID3D10Blob**)pppCompressedData);
+					HResult ret = D3DCompressShadersNative(uNumShaders, (D3DShaderData*)ppShaderData, uFlags, (ID3D10Blob**)pppCompressedData);
 					return ret;
 				}
 			}

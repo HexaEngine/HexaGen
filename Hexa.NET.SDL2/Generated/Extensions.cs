@@ -12,11 +12,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 
-namespace HexaEngine.SDL2
+namespace Hexa.NET.SDL2
 {
 	public static unsafe class Extensions
 	{
-		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int Close(this SDLIconv cd)
 		{
@@ -24,7 +24,7 @@ namespace HexaEngine.SDL2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -32,7 +32,7 @@ namespace HexaEngine.SDL2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -43,7 +43,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -54,7 +54,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -68,7 +68,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -79,7 +79,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -93,7 +93,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -107,7 +107,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* outbytesleft)
 		{
@@ -124,7 +124,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -135,7 +135,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -149,7 +149,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -163,7 +163,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -180,7 +180,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -194,7 +194,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] nuint* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -211,7 +211,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -228,7 +228,7 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static nuint SDLIconv(this SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
@@ -248,21 +248,21 @@ namespace HexaEngine.SDL2
 			}
 		}
 
-		/// <summary>		/// Delete an OpenGL context.<br/>		/// <br/>		/// <br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_DeleteContext")]
+		/// <summary>		/// Delete an OpenGL context.<br/>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_DeleteContext")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SdlglDeleteContext(this SDLGLContext context)
 		{
 			SDL.SDLGLDeleteContextNative(context);
 		}
 
-		/// <summary>		/// Destroy an existing SDL_MetalView object.<br/>		/// This should be called before SDL_DestroyWindow, if SDL_Metal_CreateView was<br/>		/// called after SDL_CreateWindow.<br/>		/// <br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_DestroyView")]
+		/// <summary>		/// Destroy an existing SDL_MetalView object.<br/>		/// This should be called before SDL_DestroyWindow, if SDL_Metal_CreateView was<br/>		/// called after SDL_CreateWindow.<br/>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_DestroyView")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void DestroyView(this SDLMetalView view)
 		{
 			SDL.SDLMetalDestroyViewNative(view);
 		}
 
-		/// <summary>		/// Get a pointer to the backing CAMetalLayer for the given view.<br/>		/// <br/>		/// <br/>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetLayer")]
+		/// <summary>		/// Get a pointer to the backing CAMetalLayer for the given view.<br/>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetLayer")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* GetLayer(this SDLMetalView view)
 		{

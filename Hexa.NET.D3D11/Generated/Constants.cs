@@ -9,11 +9,11 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaEngine.DXGI;
-using HexaEngine.D3DCommon;
+using Hexa.NET.DXGI;
+using Hexa.NET.D3DCommon;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3D11
+namespace Hexa.NET.D3D11
 {
 	public unsafe partial class D3D11
 	{

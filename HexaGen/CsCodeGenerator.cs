@@ -18,11 +18,18 @@
             var options = new CppParserOptions
             {
                 ParseMacros = true,
-                ParseAttributes = false,
+                ParseTokenAttributes = false,
+                ParseCommentAttribute = false,
                 ParseComments = true,
                 ParseSystemIncludes = true,
                 ParseAsCpp = true,
+                AutoSquashTypedef = true,
             };
+
+            for (int i = 0; i < settings.AdditionalArguments.Count; i++)
+            {
+                options.AdditionalArguments.Add(settings.AdditionalArguments[i]);
+            }
 
             for (int i = 0; i < settings.IncludeFolders.Count; i++)
             {

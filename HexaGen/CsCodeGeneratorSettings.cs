@@ -14,6 +14,160 @@
 
     public partial class CsCodeGeneratorSettings : IGeneratorSettings
     {
+        public static CsCodeGeneratorSettings Default { get; } = new CsCodeGeneratorSettings()
+        {
+            TypeMappings = new()
+            {
+                {"uint8_t", "byte"},
+                {"uint16_t", "ushort"},
+                {"uint32_t", "uint"},
+                {"uint64_t", "ulong"},
+                {"int8_t", "sbyte"},
+                {"int32_t", "int"},
+                {"int16_t", "short"},
+                {"int64_t", "long"},
+                {"int64_t*", "long*"},
+                {"unsigned char", "byte"},
+                {"signed char", "sbyte"},
+                {"char", "byte"},
+                {"size_t", "nuint"},
+                {"bool", "int"},
+                {"BOOL", "int"},
+                {"BYTE", "byte"},
+                {"Uint8", "byte"},
+                {"Uint16", "ushort"},
+                {"Uint32", "uint"},
+                {"Uint64", "ulong"},
+                {"Sint8", "sbyte"},
+                {"Sint16", "short"},
+                {"Sint32", "int"},
+                {"Sint64", "long"},
+                {"UCHAR", "byte"},
+                {"WCHAR", "char"},
+                {"UINT8", "byte"},
+                {"USHORT", "ushort"},
+                {"UINT16", "ushort"},
+                {"UINT", "uint"},
+                {"UINT32", "uint"},
+                {"ULONG", "uint"},
+                {"DWORD", "uint"},
+                {"WORD", "short"},
+                {"INT", "int"},
+                {"INT32", "int"},
+                {"ULONGLONG", "ulong"},
+                {"UINT64", "ulong"},
+                {"LONGLONG", "long"},
+                {"LARGE_INTEGER", "long"},
+                {"FLOAT", "float"},
+                {"LPCSTR", "byte*"},
+                {"LPCWSTR", "char*"},
+                {"LPSTR", "byte*"},
+                {"LPWSTR", "char*"},
+                {"BSTR", "void*"},
+                {"GUID", "Guid"},
+                {"HWND", "nint"},
+                {"LPCVOID", "void*"},
+                {"LPVOID", "void*"},
+                {"SIZE", "nint"},
+                {"SIZE_T", "nuint"},
+                {"LUID", "Luid"},
+                {"IID", "Guid"},
+                {"RECT", "Rect32"},
+                {"POINT", "Point32"},
+                {"WPARAM", "nuint"},
+                {"LPARAM", "nint"},
+                {"HDC", "nint"},
+                {"HINSTANCE", "nint"},
+            },
+            Keywords = new()
+            {
+                "abstract",
+                "as",
+                "base",
+                "bool",
+                "break",
+                "byte",
+                "case",
+                "catch",
+                "char",
+                "checked",
+                "class",
+                "const",
+                "continue",
+                "decimal",
+                "default",
+                "delegate",
+                "do",
+                "double",
+                "else",
+                "enum",
+                "event",
+                "explicit",
+                "extern",
+                "false",
+                "finally",
+                "fixed",
+                "float",
+                "for",
+                "foreach",
+                "goto",
+                "if",
+                "implicit",
+                "in",
+                "int",
+                "interface",
+                "internal",
+                "is",
+                "lock",
+                "long",
+                "namespace",
+                "new",
+                "null",
+                "object",
+                "operator",
+                "out",
+                "override",
+                "params",
+                "private",
+                "protected",
+                "public",
+                "readonly",
+                "ref",
+                "return",
+                "sbyte",
+                "sealed",
+                "short",
+                "sizeof",
+                "stackalloc",
+                "static",
+                "string",
+                "struct",
+                "switch",
+                "this",
+                "throw",
+                "true",
+                "try",
+                "typeof",
+                "uint",
+                "ulong",
+                "unchecked",
+                "unsafe",
+                "ushort",
+                "using",
+                "using static",
+                "virtual",
+                "void",
+                "volatile",
+                "while",
+                "yield"
+            },
+            IgnoredTypedefs =
+            {
+                "HWND",
+                "nint"
+            }
+        };
+
         public static CsCodeGeneratorSettings Load(string file)
         {
             CsCodeGeneratorSettings result;
@@ -25,264 +179,361 @@
             {
                 result = new();
             }
+
+            foreach (var item in Default.TypeMappings)
+            {
+                result.TypeMappings.TryAdd(item.Key, item.Value);
+            }
+
+            foreach (var item in Default.Keywords)
+            {
+                if (!result.Keywords.Contains(item))
+                {
+                    result.Keywords.Add(item);
+                }
+            }
+
+            foreach (var item in Default.IgnoredTypedefs)
+            {
+                if (!result.IgnoredTypedefs.Contains(item))
+                {
+                    result.IgnoredTypedefs.Add(item);
+                }
+            }
+
             result.Save(file);
             return result;
         }
 
+        /// <summary>
+        /// The namespace of the generated wrapper. (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string Namespace { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The api name of the wrapper. (Used for exported functions and macros) (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string ApiName { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The name of the .dll or .so or .dylib. (Default <see cref="string.Empty"/>)
+        /// </summary>
         public string LibName { get; set; } = string.Empty;
 
+        /// <summary>
+        /// The log level of the generator. (Default <see cref="LogSevertiy.Warning"/>)
+        /// </summary>
         public LogSevertiy LogLevel { get; set; } = LogSevertiy.Warning;
 
+        /// <summary>
+        /// The log level of the Clang Compiler. (Default <see cref="LogSevertiy.Error"/>)
+        /// </summary>
         public LogSevertiy CppLogLevel { get; set; } = LogSevertiy.Error;
 
         /// <summary>
-        /// This option generates the sizes of the structs.
+        /// This option generates the sizes of the structs. (Default: <see langword="false"/>)
         /// </summary>
         public bool GenerateSizeOfStructs { get; set; } = false;
 
         /// <summary>
-        /// This option makes that the delegates are just void* and not delegate pointer (delegate*<void>)
+        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>)
+        /// </summary>
+        public bool GenerateConstructorsForStructs { get; set; } = true;
+
+        /// <summary>
+        /// This option makes that the delegates are just void* and not delegate pointer (<see cref="delegate*&lt;void&gt;"/>) (Default: <see langword="true"/>)
         /// </summary>
         public bool DelegatesAsVoidPointer { get; set; } = true;
 
         /// <summary>
-        /// This option makes the resulting wrapper more "safe" so you don't need unsafe blocks everywhere.
+        /// This option makes the resulting wrapper more "safe" so you don't need unsafe blocks everywhere. (Default: <see langword="false"/>)
         /// </summary>
         public bool WrapPointersAsHandle { get; set; } = false;
 
         /// <summary>
-        /// This causes the code generator to generate summary xml comments if it's missing with the text "To be documented."
+        /// This causes the code generator to generate summary xml comments if it's missing with the text "To be documented." (Default: <see langword="true"/>)
         /// </summary>
         public bool GeneratePlaceholderComments { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for constants (CPP: Macros)
+        /// Enables generation for constants (CPP: Macros) (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateConstants { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for enums
+        /// Enables generation for enums. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateEnums { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for extensions, this option is very useful if you have an handle type or COM objects.
+        /// Enables generation for extensions, this option is very useful if you have an handle type or COM objects. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateExtensions { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for functions. This option generates the public API dllexport functions.
+        /// Enables generation for functions. This option generates the public API dllexport functions. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateFunctions { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for handles. (CPP: Typedefs)
+        /// Enables generation for handles. (CPP: Typedefs) (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateHandles { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for types. This includes COM objects and normal C-Structs.
+        /// Enables generation for types. This includes COM objects and normal C-Structs. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateTypes { get; set; } = true;
 
         /// <summary>
-        /// Enables generation for delegates.
+        /// Enables generation for delegates. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateDelegates { get; set; } = true;
 
         /// <summary>
-        /// This option controls the bool type eg. 8Bit Bool and 32Bit Bool
+        /// This option controls the bool type eg. 8Bit Bool and 32Bit Bool. (Default: <see cref="BoolType.Bool8"/>)
         /// </summary>
         public BoolType BoolType { get; set; } = BoolType.Bool8;
 
+        /// <summary>
+        /// Allows to map names for constants. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownConstantNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for enums. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownEnumValueNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for enum prefixes. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownEnumPrefixes { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for extension prefixes. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownExtensionPrefixes { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for extension. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownExtensionNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to map names for default values. (Default: Empty)
+        /// </summary>
         public Dictionary<string, string> KnownDefaultValueNames { get; set; } = new();
 
+        /// <summary>
+        /// Allows to define constructors functions for types. (Default: Empty)
+        /// </summary>
         public Dictionary<string, List<string>> KnownConstructors { get; set; } = new();
 
+        /// <summary>
+        /// Allows to define member functions for types. (Default: Empty)
+        /// </summary>
         public Dictionary<string, List<string>> KnownMemberFunctions { get; set; } = new();
 
+        /// <summary>
+        /// Ignores parts like OpenAl in OpenALFunction -> Function. (Default: Empty)
+        /// </summary>
         public HashSet<string> IgnoredParts { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
-        public HashSet<string> PreserveCaps { get; set; } = new(StringComparer.OrdinalIgnoreCase);
-
+        /// <summary>
+        /// C# keywords that would cause issues with naming. (Default: all common C# keywords)
+        /// </summary>
         public HashSet<string> Keywords { get; set; } = new();
 
         /// <summary>
-        /// All function names in this HashSet will be ignored in the generation process.
+        /// All function names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredFunctions { get; set; } = new();
 
         /// <summary>
-        /// All types names in this HashSet will be ignored in the generation process.
+        /// All types names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredTypes { get; set; } = new();
 
         /// <summary>
-        /// All enums names in this HashSet will be ignored in the generation process.
+        /// All enums names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredEnums { get; set; } = new();
 
         /// <summary>
-        /// All typedefs names in this HashSet will be ignored in the generation process.
+        /// All typedefs names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredTypedefs { get; set; } = new();
 
         /// <summary>
-        /// All delegates names in this HashSet will be ignored in the generation process.
+        /// All delegates names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredDelegates { get; set; } = new();
 
         /// <summary>
-        /// All constants names in this HashSet will be ignored in the generation process.
+        /// All constants names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredConstants { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on functions.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on functions. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedFunctions { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on types.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on types. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedTypes { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on enums.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on enums. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedEnums { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on typedefs.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on typedefs. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedTypedefs { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on delegates.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on delegates. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedDelegates { get; set; } = new();
 
         /// <summary>
-        /// Acts as a whitelist, if the list is empty no whitelisting is applied on constants.
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on constants. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedConstants { get; set; } = new();
 
         /// <summary>
-        /// Allows to define or overwrite COM object Guids. where the Key is the com object name and the value the guid.
+        /// Allows to define or overwrite COM object Guids. where the Key is the com object name and the value the guid. (Default: Empty)
         /// </summary>
         public Dictionary<string, string> IIDMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify constants
+        /// Allows to inject data and modify constants. (Default: Empty)
         /// </summary>
         public List<ConstantMapping> ConstantMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify enums
+        /// Allows to inject data and modify enums. (Default: Empty)
         /// </summary>
         public List<EnumMapping> EnumMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify functions
+        /// Allows to inject data and modify functions. (Default: Empty)
         /// </summary>
         public List<FunctionMapping> FunctionMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify handles
+        /// Allows to inject data and modify handles. (Default: Empty)
         /// </summary>
         public List<HandleMapping> HandleMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify classes
+        /// Allows to inject data and modify classes. (Default: Empty)
         /// </summary>
         public List<TypeMapping> ClassMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify delegates
+        /// Allows to inject data and modify delegates. (Default: Empty)
         /// </summary>
         public List<DelegateMapping> DelegateMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to inject data and modify arrays
+        /// Allows to inject data and modify arrays. (Default: Empty)
         /// </summary>
         public List<ArrayMapping> ArrayMappings { get; set; } = new();
 
         /// <summary>
-        /// Allows to modify names fully or partially. newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase);
+        /// Allows to modify names fully or partially. newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase); (Default: Empty)
         /// </summary>
-        public Dictionary<string, string> NameMappings { get; set; } = new()
-        {
-        };
+        public Dictionary<string, string> NameMappings { get; set; } = new();
 
         /// <summary>
-        /// Maps type Key to type Value.
+        /// Maps type Key to type Value. (Default: a list with common types, like size_t : nuint)
         /// </summary>
-        public Dictionary<string, string> TypeMappings { get; set; } = new()
-        {
-            { "uint8_t", "byte" },
-            { "uint16_t", "ushort" },
-            { "uint32_t", "uint" },
-            { "uint64_t", "ulong" },
-            { "int8_t", "sbyte" },
-            { "int32_t", "int" },
-            { "int16_t", "short" },
-            { "int64_t", "long" },
-            { "int64_t*", "long*" },
-            { "unsigned char", "byte" },
-            { "signed char", "sbyte" },
-            { "char", "byte" },
-            { "size_t", "nuint" }
-        };
+        public Dictionary<string, string> TypeMappings { get; set; } = new();
 
+        /// <summary>
+        /// Allows to add or manage usings. (Default: Empty)
+        /// </summary>
         public List<string> Usings { get; set; } = new();
 
+        /// <summary>
+        /// The naming convention for constants, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.Unknown"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.Unknown;
 
+        /// <summary>
+        /// The naming convention for enums, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention EnumNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for enum items, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention EnumItemNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for extension functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention ExtensionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention FunctionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for handles, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention HandleNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for classes and structs, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention TypeNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for delegates, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention DelegateNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// The naming convention for parameters, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.CamelCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention ParameterNamingConvention { get; set; } = NamingConvention.CamelCase;
 
+        /// <summary>
+        /// The naming convention for members, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
+        /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public NamingConvention MemberNamingConvention { get; set; } = NamingConvention.PascalCase;
 
+        /// <summary>
+        /// List of the include folders. (Default: Empty)
+        /// </summary>
         public List<string> IncludeFolders { get; set; } = new();
 
+        /// <summary>
+        /// List of the system include folders. (Default: Empty)
+        /// </summary>
         public List<string> SystemIncludeFolders { get; set; } = new();
+
+        /// <summary>
+        /// List of the additional arguments passed directly to the C++ Clang compiler. (Default: Empty)
+        /// </summary>
+        public List<string> AdditionalArguments { get; set; } = new();
 
         public void Save(string path)
         {
@@ -975,6 +1226,11 @@
             return NormalizeParameterName(name);
         }
 
+        public string GetDelegateName(string name)
+        {
+            return GetCsCleanNameWithConvention(name, DelegateNamingConvention, false);
+        }
+
         public string NormalizeParameterName(string name)
         {
             if (parameterNameCache.TryGetValue(name, out var newName))
@@ -1201,12 +1457,12 @@
 
             if (sb.Length == 0)
             {
-                sb.Append(prefixParts[^1].ToCamelCase());
+                sb.Append(parts[^1].ToCamelCase());
             }
 
             string prettyName = sb.ToString();
 
-            return char.IsNumber(prettyName[0]) ? prefixParts[^1].ToCamelCase() + prettyName : prettyName;
+            return char.IsNumber(prettyName[0]) ? parts[^1].ToCamelCase() + prettyName : prettyName;
         }
 
         public string GetExtensionNamePrefix(string typeName)

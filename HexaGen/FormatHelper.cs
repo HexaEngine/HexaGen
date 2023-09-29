@@ -3,7 +3,6 @@
     using CppAst;
     using System;
     using System.Text;
-    using System.Xml.Linq;
 
     public static class FormatHelper
     {
@@ -54,6 +53,28 @@
                 }
             }
 
+            return isPointer;
+        }
+
+        public static bool IsPointer(this CppType type, ref int depth, out CppType pointerType)
+        {
+            bool isPointer = false;
+            CppType d = type;
+            depth = 0;
+            while (true)
+            {
+                if (d is CppPointerType pointer)
+                {
+                    depth++;
+                    d = pointer.ElementType;
+                    isPointer = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            pointerType = d;
             return isPointer;
         }
 

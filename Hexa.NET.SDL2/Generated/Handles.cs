@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 
-namespace HexaEngine.SDL2
+namespace Hexa.NET.SDL2
 {
 	/// <summary>
 	/// SDL_iconv_* are now always real symbols/types, not macros or inlined. <br/>
@@ -40,6 +40,9 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "SDL_GLContext")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
@@ -64,7 +67,13 @@ namespace HexaEngine.SDL2
 
 	/// <summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// <br/>
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	/// </summary>
 	[NativeName(NativeNameType.Typedef, "SDL_MetalView")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]

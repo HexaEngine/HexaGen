@@ -24,10 +24,18 @@ namespace Hexa.NET.XAudio2
 	[NativeName(NativeNameType.Enum, "_AUDCLNT_SHAREMODE")]
 	public enum AudclntSharemode
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AUDCLNT_SHAREMODE_SHARED")]
 		Shared = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AUDCLNT_SHAREMODE_EXCLUSIVE")]
 		Exclusive = unchecked(1),
+
 	}
 
 	/// <summary>
@@ -52,34 +60,90 @@ namespace Hexa.NET.XAudio2
 	[NativeName(NativeNameType.Enum, "_AUDIO_STREAM_CATEGORY")]
 	public enum AudioStreamCategory
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Other")]
 		Other = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_ForegroundOnlyMedia")]
 		ForegroundOnlyMedia = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Communications")]
 		Communications = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Alerts")]
 		Alerts = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_SoundEffects")]
 		SoundEffects = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameEffects")]
 		GameEffects = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameMedia")]
 		GameMedia = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_GameChat")]
 		GameChat = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Speech")]
 		Speech = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Movie")]
 		Movie = unchecked(10),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_Media")]
 		Media = unchecked(11),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_FarFieldSpeech")]
 		FarFieldSpeech = unchecked(12),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_UniformSpeech")]
 		UniformSpeech = unchecked(13),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioCategory_VoiceTyping")]
 		VoiceTyping = unchecked(14),
+
 	}
 
 	/// <summary>
@@ -92,12 +156,24 @@ namespace Hexa.NET.XAudio2
 	[NativeName(NativeNameType.Enum, "_AudioSessionState")]
 	public enum AudioSessionState
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioSessionStateInactive")]
 		Inactive = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioSessionStateActive")]
 		Active = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "AudioSessionStateExpired")]
 		Expired = unchecked(2),
+
 	}
 
 	/// <summary>

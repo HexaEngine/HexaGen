@@ -15,6 +15,9 @@ using HexaGen.Runtime;
 
 namespace Hexa.NET.Shaderc
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "shaderc_compiler")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompiler
@@ -23,6 +26,9 @@ namespace Hexa.NET.Shaderc
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "shaderc_compile_options")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompileOptions
@@ -49,9 +55,13 @@ namespace Hexa.NET.Shaderc
 		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* SourceName;
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Field, "source_name_length")]
 		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint SourceNameLength;
+
 		/// <summary>
 		/// The text contents of the source file in the normal case.<br/>
 		/// For a failed inclusion, this contains the error message.<br/>
@@ -60,9 +70,13 @@ namespace Hexa.NET.Shaderc
 		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* Content;
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Field, "content_length")]
 		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint ContentLength;
+
 		/// <summary>
 		/// User data to be passed along with this request.<br/>
 		/// </summary>
@@ -74,6 +88,9 @@ namespace Hexa.NET.Shaderc
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "shaderc_compilation_result")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ShadercCompilationResult

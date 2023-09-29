@@ -9,11 +9,11 @@
 
 using System;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
-using HexaEngine.D3D11;
+using Hexa.NET.D3DCommon;
+using Hexa.NET.D3D11;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCompiler
+namespace Hexa.NET.D3DCompiler
 {
 	/// <summary>
 	/// ----------------------------------------------------------------------------<br/>
@@ -23,20 +23,44 @@ namespace HexaEngine.D3DCompiler
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3DCOMPILER_STRIP_FLAGS")]
-	public enum D3DCOMPILER_STRIP_FLAGS
+	public enum D3DcompilerStripFlags
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_REFLECTION_DATA")]
 		ReflectionData = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_DEBUG_INFO")]
 		DebugInfo = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_TEST_BLOBS")]
 		TestBlobs = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_PRIVATE_DATA")]
 		PrivateData = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_ROOT_SIGNATURE")]
 		RootSignature = unchecked(16),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3DCOMPILER_STRIP_FORCE_DWORD")]
 		ForceDword = unchecked(2147483647),
+
 	}
 
 	/// <summary>
@@ -47,34 +71,86 @@ namespace HexaEngine.D3DCompiler
 	/// ----------------------------------------------------------------------------<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "D3D_BLOB_PART")]
-	public enum D3D_BLOB_PAR
+	public enum D3DBlobPart
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_INPUT_SIGNATURE_BLOB")]
 		InputSignatureBlob = unchecked(0),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_OUTPUT_SIGNATURE_BLOB")]
 		OutputSignatureBlob = unchecked(1),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB")]
 		InputAndOutputSignatureBlob = unchecked(2),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB")]
 		PatchConstantSignatureBlob = unchecked(3),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_ALL_SIGNATURE_BLOB")]
 		AllSignatureBlob = unchecked(4),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_DEBUG_INFO")]
 		DebugInfo = unchecked(5),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_LEGACY_SHADER")]
 		LegacyShader = unchecked(6),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_XNA_PREPASS_SHADER")]
 		XnaPrepassShader = unchecked(7),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_XNA_SHADER")]
 		XnaShader = unchecked(8),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PDB")]
 		Pdb = unchecked(9),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_PRIVATE_DATA")]
 		PrivateData = unchecked(10),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_ROOT_SIGNATURE")]
 		RootSignature = unchecked(11),
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "D3D_BLOB_DEBUG_NAME")]
 		DebugName = unchecked(12),
+
 		/// <summary>
 		/// Test parts are only produced by special compiler versions and so<br/>
 		/// are usually not present in shaders.<br/>

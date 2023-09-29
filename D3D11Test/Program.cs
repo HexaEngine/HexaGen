@@ -1,3 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-Console.WriteLine("Hello, World!");
+using D3D11Test;
+
+Application.Run(new SDLWindow());

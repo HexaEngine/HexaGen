@@ -231,11 +231,8 @@ namespace HexaGen.Tests
         public void SDL2()
         {
             CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("sdl2/generator.json");
-            string headerFile = "sdl2/SDL.h";
-
             CsCodeGenerator generator = new(settings);
-
-            generator.Generate(headerFile, "../../../../Hexa.NET.SDL2/Generated");
+            generator.Generate(new List<string>() { "sdl2/SDL.h", "sdl2/SDL_syswm.h" }, "../../../../Hexa.NET.SDL2/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }

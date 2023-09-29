@@ -205,9 +205,9 @@
 
                 writer.WriteLine();
 
+                HashSet<string> definedConstructors = new();
                 if (settings.KnownConstructors.TryGetValue(cppClass.Name, out var constructors))
                 {
-                    HashSet<string> definedFunctions = new();
                     writer.WriteLine();
                     List<CsFunction> commands = new();
                     for (int i = 0; i < constructors.Count; i++)
@@ -232,9 +232,32 @@
 
                         if (useThis || useThisRef)
                         {
-                            WriteConstructors(writer, definedFunctions, function, overload, csName, "public unsafe");
+                            WriteConstructors(writer, definedConstructors, function, overload, csName, "public unsafe");
                         }
                     }
+                }
+
+                if (settings.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
+                {
+                    settings.WriteCsSummary(null, out string? comment);
+                    CsFunctionOverload overload = new(string.Empty, csName, comment, csName, true, true, false, new(string.Empty, CppPrimitiveKind.Void));
+                    for (int j = 0; j < cppClass.Fields.Count; j++)
+                    {
+                        var cppParameter = cppClass.Fields[j];
+                        var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
+                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
+                        var direction = cppParameter.Type.GetDirection();
+                        var kind = cppParameter.Type.GetPrimitiveKind();
+
+                        CsType csType = new(paramCsTypeName, kind);
+
+                        CsParameterInfo csParameter = new(paramCsName, csType, direction);
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                        csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
+                        overload.Parameters.Add(csParameter);
+                    }
+
+                    funcGen.GenerateVariations(cppClass.Fields, overload, true, true);
                 }
 
                 writer.WriteLine();

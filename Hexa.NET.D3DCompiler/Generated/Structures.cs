@@ -12,11 +12,11 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaEngine.D3DCommon;
-using HexaEngine.D3D11;
+using Hexa.NET.D3DCommon;
+using Hexa.NET.D3D11;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3DCompiler
+namespace Hexa.NET.D3DCompiler
 {
 	/// <summary>
 	/// ----------------------------------------------------------------------------<br/>
@@ -27,18 +27,29 @@ namespace HexaEngine.D3DCompiler
 	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "_D3D_SHADER_DATA")]
 	[StructLayout(LayoutKind.Sequential)]
-	public partial struct _D3D_SHADER_DATA
+	public partial struct D3DShaderData
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Field, "pBytecode")]
 		[NativeName(NativeNameType.Type, "LPCVOID")]
 		public unsafe void* PBytecode;
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Field, "BytecodeLength")]
 		[NativeName(NativeNameType.Type, "SIZE_T")]
 		public nuint BytecodeLength;
 
 
+
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "ID3D10Effect")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct ID3D10Effect

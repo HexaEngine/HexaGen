@@ -14,25 +14,28 @@ using HexaGen.Runtime;
 
 namespace Hexa.NET.OpenAL
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPEFXEAXREVERBPROPERTIES")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LpEfXEaXrEverBpRoperTies : IEquatable<LpEfXEaXrEverBpRoperTies>
+	public readonly partial struct LPEFXEAXReverbProperties : IEquatable<LPEFXEAXReverbProperties>
 	{
-		public LpEfXEaXrEverBpRoperTies(nint handle) { Handle = handle; }
+		public LPEFXEAXReverbProperties(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LpEfXEaXrEverBpRoperTies Null => new LpEfXEaXrEverBpRoperTies(0);
-		public static implicit operator LpEfXEaXrEverBpRoperTies(nint handle) => new LpEfXEaXrEverBpRoperTies(handle);
-		public static bool operator ==(LpEfXEaXrEverBpRoperTies left, LpEfXEaXrEverBpRoperTies right) => left.Handle == right.Handle;
-		public static bool operator !=(LpEfXEaXrEverBpRoperTies left, LpEfXEaXrEverBpRoperTies right) => left.Handle != right.Handle;
-		public static bool operator ==(LpEfXEaXrEverBpRoperTies left, nint right) => left.Handle == right;
-		public static bool operator !=(LpEfXEaXrEverBpRoperTies left, nint right) => left.Handle != right;
-		public bool Equals(LpEfXEaXrEverBpRoperTies other) => Handle == other.Handle;
+		public static LPEFXEAXReverbProperties Null => new LPEFXEAXReverbProperties(0);
+		public static implicit operator LPEFXEAXReverbProperties(nint handle) => new LPEFXEAXReverbProperties(handle);
+		public static bool operator ==(LPEFXEAXReverbProperties left, LPEFXEAXReverbProperties right) => left.Handle == right.Handle;
+		public static bool operator !=(LPEFXEAXReverbProperties left, LPEFXEAXReverbProperties right) => left.Handle != right.Handle;
+		public static bool operator ==(LPEFXEAXReverbProperties left, nint right) => left.Handle == right;
+		public static bool operator !=(LPEFXEAXReverbProperties left, nint right) => left.Handle != right;
+		public bool Equals(LPEFXEAXReverbProperties other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LpEfXEaXrEverBpRoperTies handle && Equals(handle);
+		public override bool Equals(object obj) => obj is LPEFXEAXReverbProperties handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LpEfXEaXrEverBpRoperTies [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("LPEFXEAXReverbProperties [0x{0}]", Handle.ToString("X"));
 	}
 
 }

@@ -11,157 +11,178 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using HexaEngine.DXGI;
-using HexaEngine.D3DCommon;
+using Hexa.NET.DXGI;
+using Hexa.NET.D3DCommon;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.D3D12
+namespace Hexa.NET.D3D12
 {
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12SHADERREFLECTIONTYPE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12SHADERREFLECTIONTYPE : IEquatable<LPD3D12SHADERREFLECTIONTYPE>
+	public readonly partial struct Lpd3D12Shaderreflectiontype : IEquatable<Lpd3D12Shaderreflectiontype>
 	{
-		public LPD3D12SHADERREFLECTIONTYPE(nint handle) { Handle = handle; }
+		public Lpd3D12Shaderreflectiontype(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12SHADERREFLECTIONTYPE Null => new LPD3D12SHADERREFLECTIONTYPE(0);
-		public static implicit operator LPD3D12SHADERREFLECTIONTYPE(nint handle) => new LPD3D12SHADERREFLECTIONTYPE(handle);
-		public static bool operator ==(LPD3D12SHADERREFLECTIONTYPE left, LPD3D12SHADERREFLECTIONTYPE right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONTYPE left, LPD3D12SHADERREFLECTIONTYPE right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12SHADERREFLECTIONTYPE left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONTYPE left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12SHADERREFLECTIONTYPE other) => Handle == other.Handle;
+		public static Lpd3D12Shaderreflectiontype Null => new Lpd3D12Shaderreflectiontype(0);
+		public static implicit operator Lpd3D12Shaderreflectiontype(nint handle) => new Lpd3D12Shaderreflectiontype(handle);
+		public static bool operator ==(Lpd3D12Shaderreflectiontype left, Lpd3D12Shaderreflectiontype right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Shaderreflectiontype left, Lpd3D12Shaderreflectiontype right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Shaderreflectiontype left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Shaderreflectiontype left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Shaderreflectiontype other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12SHADERREFLECTIONTYPE handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Shaderreflectiontype handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12SHADERREFLECTIONTYPE [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Shaderreflectiontype [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12SHADERREFLECTIONVARIABLE")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12SHADERREFLECTIONVARIABLE : IEquatable<LPD3D12SHADERREFLECTIONVARIABLE>
+	public readonly partial struct Lpd3D12Shaderreflectionvariable : IEquatable<Lpd3D12Shaderreflectionvariable>
 	{
-		public LPD3D12SHADERREFLECTIONVARIABLE(nint handle) { Handle = handle; }
+		public Lpd3D12Shaderreflectionvariable(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12SHADERREFLECTIONVARIABLE Null => new LPD3D12SHADERREFLECTIONVARIABLE(0);
-		public static implicit operator LPD3D12SHADERREFLECTIONVARIABLE(nint handle) => new LPD3D12SHADERREFLECTIONVARIABLE(handle);
-		public static bool operator ==(LPD3D12SHADERREFLECTIONVARIABLE left, LPD3D12SHADERREFLECTIONVARIABLE right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONVARIABLE left, LPD3D12SHADERREFLECTIONVARIABLE right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12SHADERREFLECTIONVARIABLE left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONVARIABLE left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12SHADERREFLECTIONVARIABLE other) => Handle == other.Handle;
+		public static Lpd3D12Shaderreflectionvariable Null => new Lpd3D12Shaderreflectionvariable(0);
+		public static implicit operator Lpd3D12Shaderreflectionvariable(nint handle) => new Lpd3D12Shaderreflectionvariable(handle);
+		public static bool operator ==(Lpd3D12Shaderreflectionvariable left, Lpd3D12Shaderreflectionvariable right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Shaderreflectionvariable left, Lpd3D12Shaderreflectionvariable right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Shaderreflectionvariable left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Shaderreflectionvariable left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Shaderreflectionvariable other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12SHADERREFLECTIONVARIABLE handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Shaderreflectionvariable handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12SHADERREFLECTIONVARIABLE [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Shaderreflectionvariable [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12SHADERREFLECTIONCONSTANTBUFFER")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12SHADERREFLECTIONCONSTANTBUFFER : IEquatable<LPD3D12SHADERREFLECTIONCONSTANTBUFFER>
+	public readonly partial struct Lpd3D12Shaderreflectionconstantbuffer : IEquatable<Lpd3D12Shaderreflectionconstantbuffer>
 	{
-		public LPD3D12SHADERREFLECTIONCONSTANTBUFFER(nint handle) { Handle = handle; }
+		public Lpd3D12Shaderreflectionconstantbuffer(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12SHADERREFLECTIONCONSTANTBUFFER Null => new LPD3D12SHADERREFLECTIONCONSTANTBUFFER(0);
-		public static implicit operator LPD3D12SHADERREFLECTIONCONSTANTBUFFER(nint handle) => new LPD3D12SHADERREFLECTIONCONSTANTBUFFER(handle);
-		public static bool operator ==(LPD3D12SHADERREFLECTIONCONSTANTBUFFER left, LPD3D12SHADERREFLECTIONCONSTANTBUFFER right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONCONSTANTBUFFER left, LPD3D12SHADERREFLECTIONCONSTANTBUFFER right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12SHADERREFLECTIONCONSTANTBUFFER left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12SHADERREFLECTIONCONSTANTBUFFER left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12SHADERREFLECTIONCONSTANTBUFFER other) => Handle == other.Handle;
+		public static Lpd3D12Shaderreflectionconstantbuffer Null => new Lpd3D12Shaderreflectionconstantbuffer(0);
+		public static implicit operator Lpd3D12Shaderreflectionconstantbuffer(nint handle) => new Lpd3D12Shaderreflectionconstantbuffer(handle);
+		public static bool operator ==(Lpd3D12Shaderreflectionconstantbuffer left, Lpd3D12Shaderreflectionconstantbuffer right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Shaderreflectionconstantbuffer left, Lpd3D12Shaderreflectionconstantbuffer right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Shaderreflectionconstantbuffer left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Shaderreflectionconstantbuffer left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Shaderreflectionconstantbuffer other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12SHADERREFLECTIONCONSTANTBUFFER handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Shaderreflectionconstantbuffer handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12SHADERREFLECTIONCONSTANTBUFFER [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Shaderreflectionconstantbuffer [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12SHADERREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12SHADERREFLECTION : IEquatable<LPD3D12SHADERREFLECTION>
+	public readonly partial struct Lpd3D12Shaderreflection : IEquatable<Lpd3D12Shaderreflection>
 	{
-		public LPD3D12SHADERREFLECTION(nint handle) { Handle = handle; }
+		public Lpd3D12Shaderreflection(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12SHADERREFLECTION Null => new LPD3D12SHADERREFLECTION(0);
-		public static implicit operator LPD3D12SHADERREFLECTION(nint handle) => new LPD3D12SHADERREFLECTION(handle);
-		public static bool operator ==(LPD3D12SHADERREFLECTION left, LPD3D12SHADERREFLECTION right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12SHADERREFLECTION left, LPD3D12SHADERREFLECTION right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12SHADERREFLECTION left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12SHADERREFLECTION left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12SHADERREFLECTION other) => Handle == other.Handle;
+		public static Lpd3D12Shaderreflection Null => new Lpd3D12Shaderreflection(0);
+		public static implicit operator Lpd3D12Shaderreflection(nint handle) => new Lpd3D12Shaderreflection(handle);
+		public static bool operator ==(Lpd3D12Shaderreflection left, Lpd3D12Shaderreflection right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Shaderreflection left, Lpd3D12Shaderreflection right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Shaderreflection left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Shaderreflection left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Shaderreflection other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12SHADERREFLECTION handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Shaderreflection handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12SHADERREFLECTION [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Shaderreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12LIBRARYREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12LIBRARYREFLECTION : IEquatable<LPD3D12LIBRARYREFLECTION>
+	public readonly partial struct Lpd3D12Libraryreflection : IEquatable<Lpd3D12Libraryreflection>
 	{
-		public LPD3D12LIBRARYREFLECTION(nint handle) { Handle = handle; }
+		public Lpd3D12Libraryreflection(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12LIBRARYREFLECTION Null => new LPD3D12LIBRARYREFLECTION(0);
-		public static implicit operator LPD3D12LIBRARYREFLECTION(nint handle) => new LPD3D12LIBRARYREFLECTION(handle);
-		public static bool operator ==(LPD3D12LIBRARYREFLECTION left, LPD3D12LIBRARYREFLECTION right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12LIBRARYREFLECTION left, LPD3D12LIBRARYREFLECTION right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12LIBRARYREFLECTION left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12LIBRARYREFLECTION left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12LIBRARYREFLECTION other) => Handle == other.Handle;
+		public static Lpd3D12Libraryreflection Null => new Lpd3D12Libraryreflection(0);
+		public static implicit operator Lpd3D12Libraryreflection(nint handle) => new Lpd3D12Libraryreflection(handle);
+		public static bool operator ==(Lpd3D12Libraryreflection left, Lpd3D12Libraryreflection right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Libraryreflection left, Lpd3D12Libraryreflection right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Libraryreflection left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Libraryreflection left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Libraryreflection other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12LIBRARYREFLECTION handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Libraryreflection handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12LIBRARYREFLECTION [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Libraryreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12FUNCTIONREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12FUNCTIONREFLECTION : IEquatable<LPD3D12FUNCTIONREFLECTION>
+	public readonly partial struct Lpd3D12Functionreflection : IEquatable<Lpd3D12Functionreflection>
 	{
-		public LPD3D12FUNCTIONREFLECTION(nint handle) { Handle = handle; }
+		public Lpd3D12Functionreflection(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12FUNCTIONREFLECTION Null => new LPD3D12FUNCTIONREFLECTION(0);
-		public static implicit operator LPD3D12FUNCTIONREFLECTION(nint handle) => new LPD3D12FUNCTIONREFLECTION(handle);
-		public static bool operator ==(LPD3D12FUNCTIONREFLECTION left, LPD3D12FUNCTIONREFLECTION right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12FUNCTIONREFLECTION left, LPD3D12FUNCTIONREFLECTION right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12FUNCTIONREFLECTION left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12FUNCTIONREFLECTION left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12FUNCTIONREFLECTION other) => Handle == other.Handle;
+		public static Lpd3D12Functionreflection Null => new Lpd3D12Functionreflection(0);
+		public static implicit operator Lpd3D12Functionreflection(nint handle) => new Lpd3D12Functionreflection(handle);
+		public static bool operator ==(Lpd3D12Functionreflection left, Lpd3D12Functionreflection right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Functionreflection left, Lpd3D12Functionreflection right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Functionreflection left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Functionreflection left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Functionreflection other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12FUNCTIONREFLECTION handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Functionreflection handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12FUNCTIONREFLECTION [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Functionreflection [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.Typedef, "LPD3D12FUNCTIONPARAMETERREFLECTION")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
-	public readonly partial struct LPD3D12FUNCTIONPARAMETERREFLECTION : IEquatable<LPD3D12FUNCTIONPARAMETERREFLECTION>
+	public readonly partial struct Lpd3D12Functionparameterreflection : IEquatable<Lpd3D12Functionparameterreflection>
 	{
-		public LPD3D12FUNCTIONPARAMETERREFLECTION(nint handle) { Handle = handle; }
+		public Lpd3D12Functionparameterreflection(nint handle) { Handle = handle; }
 		public nint Handle { get; }
 		public bool IsNull => Handle == 0;
-		public static LPD3D12FUNCTIONPARAMETERREFLECTION Null => new LPD3D12FUNCTIONPARAMETERREFLECTION(0);
-		public static implicit operator LPD3D12FUNCTIONPARAMETERREFLECTION(nint handle) => new LPD3D12FUNCTIONPARAMETERREFLECTION(handle);
-		public static bool operator ==(LPD3D12FUNCTIONPARAMETERREFLECTION left, LPD3D12FUNCTIONPARAMETERREFLECTION right) => left.Handle == right.Handle;
-		public static bool operator !=(LPD3D12FUNCTIONPARAMETERREFLECTION left, LPD3D12FUNCTIONPARAMETERREFLECTION right) => left.Handle != right.Handle;
-		public static bool operator ==(LPD3D12FUNCTIONPARAMETERREFLECTION left, nint right) => left.Handle == right;
-		public static bool operator !=(LPD3D12FUNCTIONPARAMETERREFLECTION left, nint right) => left.Handle != right;
-		public bool Equals(LPD3D12FUNCTIONPARAMETERREFLECTION other) => Handle == other.Handle;
+		public static Lpd3D12Functionparameterreflection Null => new Lpd3D12Functionparameterreflection(0);
+		public static implicit operator Lpd3D12Functionparameterreflection(nint handle) => new Lpd3D12Functionparameterreflection(handle);
+		public static bool operator ==(Lpd3D12Functionparameterreflection left, Lpd3D12Functionparameterreflection right) => left.Handle == right.Handle;
+		public static bool operator !=(Lpd3D12Functionparameterreflection left, Lpd3D12Functionparameterreflection right) => left.Handle != right.Handle;
+		public static bool operator ==(Lpd3D12Functionparameterreflection left, nint right) => left.Handle == right;
+		public static bool operator !=(Lpd3D12Functionparameterreflection left, nint right) => left.Handle != right;
+		public bool Equals(Lpd3D12Functionparameterreflection other) => Handle == other.Handle;
 		/// <inheritdoc/>
-		public override bool Equals(object obj) => obj is LPD3D12FUNCTIONPARAMETERREFLECTION handle && Equals(handle);
+		public override bool Equals(object obj) => obj is Lpd3D12Functionparameterreflection handle && Equals(handle);
 		/// <inheritdoc/>
 		public override int GetHashCode() => Handle.GetHashCode();
-		private string DebuggerDisplay => string.Format("LPD3D12FUNCTIONPARAMETERREFLECTION [0x{0}]", Handle.ToString("X"));
+		private string DebuggerDisplay => string.Format("Lpd3D12Functionparameterreflection [0x{0}]", Handle.ToString("X"));
 	}
 
 }

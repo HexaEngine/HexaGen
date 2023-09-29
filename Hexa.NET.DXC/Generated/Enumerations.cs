@@ -11,17 +11,21 @@ using System;
 using HexaGen.Runtime;
 using HexaGen.Runtime.COM;
 
-namespace HexaEngine.DXC
+namespace Hexa.NET.DXC
 {
 	/// <summary>
 	/// For use with IDxcResult::[Has|Get]Output dxcOutKind argument<br/>
 	/// Note: text outputs returned from version 2 APIs are UTF-8 or UTF-16 based on -encoding option<br/>
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "DXC_OUT_KIND")]
-	public enum DXC_OUT_KIND
+	public enum DxcOutKind
 	{
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXC_OUT_NONE")]
 		None = unchecked(0),
+
 		/// <summary>
 		/// IDxcBlob - Shader or library object<br/>
 		/// </summary>
@@ -82,8 +86,12 @@ namespace HexaEngine.DXC
 		[NativeName(NativeNameType.EnumItem, "DXC_OUT_EXTRA_OUTPUTS")]
 		ExtraOutputs = unchecked(10),
 
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.EnumItem, "DXC_OUT_FORCE_DWORD")]
 		ForceDword = unchecked((int)0xFFFFFFFF),
+
 	}
 
 }

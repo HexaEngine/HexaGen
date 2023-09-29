@@ -33,6 +33,11 @@
             return @this.Handle;
         }
 
+        public static unsafe implicit operator IUnknown*(ComPtr<T> @this)
+        {
+            return (IUnknown*)@this.Handle;
+        }
+
         [SupportedOSPlatform("windows")]
         public unsafe ComObject? AsComObject()
         {

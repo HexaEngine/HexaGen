@@ -32,7 +32,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
@@ -41,7 +41,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
@@ -53,7 +53,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
@@ -63,7 +63,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
@@ -76,7 +76,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "AddRef")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "AddRef")]
 		[return: NativeName(NativeNameType.Type, "ULONG")]
 		public readonly unsafe uint AddRef() 
 		{
@@ -85,7 +85,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "Release")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "Release")]
 		[return: NativeName(NativeNameType.Type, "ULONG")]
 		public readonly unsafe uint Release() 
 		{
@@ -94,7 +94,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult RegisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] IXAudio2EngineCallback* pCallback) 
 		{
@@ -103,7 +103,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult RegisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] ref IXAudio2EngineCallback pCallback) 
 		{
@@ -115,7 +115,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "RegisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult RegisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] ComPtr<IXAudio2EngineCallback> pCallback) 
 		{
@@ -124,7 +124,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void UnregisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] IXAudio2EngineCallback* pCallback) 
 		{
@@ -132,7 +132,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2EngineCallback*, void>)(LpVtbl[4]))(ptr, pCallback);
 		}
 
-		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void UnregisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] ref IXAudio2EngineCallback pCallback) 
 		{
@@ -143,7 +143,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "UnregisterForCallbacks")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void UnregisterForCallbacks([NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2EngineCallback*")] ComPtr<IXAudio2EngineCallback> pCallback) 
 		{
@@ -151,7 +151,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2*, IXAudio2EngineCallback*, void>)(LpVtbl[4]))(ptr, (IXAudio2EngineCallback*)pCallback.GetAddressOf());
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -160,7 +160,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -172,7 +172,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -184,7 +184,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -196,7 +196,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -211,7 +211,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -226,7 +226,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -238,7 +238,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -247,7 +247,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -262,7 +262,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -274,7 +274,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -289,7 +289,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -301,7 +301,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -319,7 +319,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -334,7 +334,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -346,7 +346,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -361,7 +361,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -376,7 +376,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -391,7 +391,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -409,7 +409,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -427,7 +427,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -442,7 +442,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -454,7 +454,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -472,7 +472,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -487,7 +487,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -505,7 +505,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -520,7 +520,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -541,7 +541,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -559,7 +559,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -571,7 +571,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -586,7 +586,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -601,7 +601,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -616,7 +616,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -634,7 +634,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -652,7 +652,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -667,7 +667,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -679,7 +679,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -697,7 +697,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -712,7 +712,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -730,7 +730,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -745,7 +745,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -766,7 +766,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -784,7 +784,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -799,7 +799,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -817,7 +817,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -835,7 +835,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -853,7 +853,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -874,7 +874,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] IXAudio2VoiceCallback* pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -895,7 +895,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -913,7 +913,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -928,7 +928,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -949,7 +949,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] WaveFormatEx* pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -967,7 +967,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -988,7 +988,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] IXAudio2SourceVoice** ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1006,7 +1006,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref IXAudio2SourceVoice* ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ref IXAudio2VoiceCallback pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1030,7 +1030,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSourceVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSourceVoice([NativeName(NativeNameType.Param, "ppSourceVoice")] [NativeName(NativeNameType.Type, "IXAudio2SourceVoice**")] ref ComPtr<IXAudio2SourceVoice> ppSourceVoice, [NativeName(NativeNameType.Param, "pSourceFormat")] [NativeName(NativeNameType.Type, "const WAVEFORMATEX*")] ref WaveFormatEx pSourceFormat, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "MaxFrequencyRatio")] [NativeName(NativeNameType.Type, "float")] float maxFrequencyRatio, [NativeName(NativeNameType.Param, "pCallback")] [NativeName(NativeNameType.Type, "IXAudio2VoiceCallback*")] ComPtr<IXAudio2VoiceCallback> pCallback, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1051,7 +1051,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] IXAudio2SubmixVoice** ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1060,7 +1060,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref IXAudio2SubmixVoice* ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1072,7 +1072,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref ComPtr<IXAudio2SubmixVoice> ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1084,7 +1084,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] IXAudio2SubmixVoice** ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1096,7 +1096,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref IXAudio2SubmixVoice* ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1111,7 +1111,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref ComPtr<IXAudio2SubmixVoice> ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1126,7 +1126,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] IXAudio2SubmixVoice** ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1138,7 +1138,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref IXAudio2SubmixVoice* ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1153,7 +1153,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref ComPtr<IXAudio2SubmixVoice> ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1168,7 +1168,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] IXAudio2SubmixVoice** ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1183,7 +1183,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref IXAudio2SubmixVoice* ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1201,7 +1201,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateSubmixVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateSubmixVoice([NativeName(NativeNameType.Param, "ppSubmixVoice")] [NativeName(NativeNameType.Type, "IXAudio2SubmixVoice**")] ref ComPtr<IXAudio2SubmixVoice> ppSubmixVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "ProcessingStage")] [NativeName(NativeNameType.Type, "UINT32")] uint processingStage, [NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1219,7 +1219,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] IXAudio2MasteringVoice** ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1228,7 +1228,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] ref IXAudio2MasteringVoice* ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1240,7 +1240,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] ref ComPtr<IXAudio2MasteringVoice> ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1252,7 +1252,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] IXAudio2MasteringVoice** ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1264,7 +1264,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] ref IXAudio2MasteringVoice* ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1279,7 +1279,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateMasteringVoice")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CreateMasteringVoice([NativeName(NativeNameType.Param, "ppMasteringVoice")] [NativeName(NativeNameType.Type, "IXAudio2MasteringVoice**")] ref ComPtr<IXAudio2MasteringVoice> ppMasteringVoice, [NativeName(NativeNameType.Param, "InputChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint inputChannels, [NativeName(NativeNameType.Param, "InputSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint inputSampleRate, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "szDeviceId")] [NativeName(NativeNameType.Type, "LPCWSTR")] char* szDeviceId, [NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain, [NativeName(NativeNameType.Param, "StreamCategory")] [NativeName(NativeNameType.Type, "AUDIO_STREAM_CATEGORY")] AudioStreamCategory streamCategory) 
 		{
@@ -1294,7 +1294,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "StartEngine")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "StartEngine")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult StartEngine() 
 		{
@@ -1303,7 +1303,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "StopEngine")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "StopEngine")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void StopEngine() 
 		{
@@ -1311,7 +1311,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2*, void>)(LpVtbl[9]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "CommitChanges")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CommitChanges")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult CommitChanges([NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1320,7 +1320,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetPerformanceData")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetPerformanceData")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetPerformanceData([NativeName(NativeNameType.Param, "pPerfData")] [NativeName(NativeNameType.Type, "XAUDIO2_PERFORMANCE_DATA*")] XAudio2PerformanceData* pPerfData) 
 		{
@@ -1328,7 +1328,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2*, XAudio2PerformanceData*, void>)(LpVtbl[11]))(ptr, pPerfData);
 		}
 
-		[NativeName(NativeNameType.Func, "GetPerformanceData")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetPerformanceData")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetPerformanceData([NativeName(NativeNameType.Param, "pPerfData")] [NativeName(NativeNameType.Type, "XAUDIO2_PERFORMANCE_DATA*")] ref XAudio2PerformanceData pPerfData) 
 		{
@@ -1339,7 +1339,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void SetDebugConfiguration([NativeName(NativeNameType.Param, "pDebugConfiguration")] [NativeName(NativeNameType.Type, "const XAUDIO2_DEBUG_CONFIGURATION*")] XAudio2DebugConfiguration* pDebugConfiguration, [NativeName(NativeNameType.Param, "pReserved")] [NativeName(NativeNameType.Type, "void*")] void* pReserved) 
 		{
@@ -1347,7 +1347,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2*, XAudio2DebugConfiguration*, void*, void>)(LpVtbl[12]))(ptr, pDebugConfiguration, pReserved);
 		}
 
-		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetDebugConfiguration")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void SetDebugConfiguration([NativeName(NativeNameType.Param, "pDebugConfiguration")] [NativeName(NativeNameType.Type, "const XAUDIO2_DEBUG_CONFIGURATION*")] ref XAudio2DebugConfiguration pDebugConfiguration, [NativeName(NativeNameType.Param, "pReserved")] [NativeName(NativeNameType.Type, "void*")] void* pReserved) 
 		{
@@ -1370,6 +1370,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[Guid("84ac29bb-d619-44d2-b197-e4acf7df3ed6")]
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2Extension")]
 	public partial struct IXAudio2Extension : IComObject, IComObject<IXAudio2Extension>, IComObject<IUnknown>
@@ -1383,7 +1386,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] Guid* riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
@@ -1392,7 +1395,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] void** ppvObject) 
 		{
@@ -1404,7 +1407,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
@@ -1414,7 +1417,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "QueryInterface")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "QueryInterface")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult QueryInterface<T>([NativeName(NativeNameType.Param, "riid")] [NativeName(NativeNameType.Type, "const IID&")] ref Guid riid, [NativeName(NativeNameType.Param, "ppvObject")] [NativeName(NativeNameType.Type, "void**")] out ComPtr<T> ppvObject) where T : unmanaged, IComObject, IComObject<T>
 		{
@@ -1427,7 +1430,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "AddRef")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "AddRef")]
 		[return: NativeName(NativeNameType.Type, "ULONG")]
 		public readonly unsafe uint AddRef() 
 		{
@@ -1436,7 +1439,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "Release")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "Release")]
 		[return: NativeName(NativeNameType.Type, "ULONG")]
 		public readonly unsafe uint Release() 
 		{
@@ -1445,7 +1448,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessingQuantum([NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumDenominator) 
 		{
@@ -1453,7 +1456,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint*, uint*, void>)(LpVtbl[3]))(ptr, quantumNumerator, quantumDenominator);
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessingQuantum([NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumDenominator) 
 		{
@@ -1464,7 +1467,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessingQuantum([NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] uint* quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumDenominator) 
 		{
@@ -1475,7 +1478,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessingQuantum")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessingQuantum([NativeName(NativeNameType.Param, "quantumNumerator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumNumerator, [NativeName(NativeNameType.Param, "quantumDenominator")] [NativeName(NativeNameType.Type, "UINT32*")] ref uint quantumDenominator) 
 		{
@@ -1489,7 +1492,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessor")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessor")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessor([NativeName(NativeNameType.Param, "processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR*")] uint* processor) 
 		{
@@ -1497,7 +1500,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Extension*, uint*, void>)(LpVtbl[4]))(ptr, processor);
 		}
 
-		[NativeName(NativeNameType.Func, "GetProcessor")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetProcessor")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetProcessor([NativeName(NativeNameType.Param, "processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR*")] ref uint processor) 
 		{
@@ -1520,6 +1523,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2Voice")]
 	public partial struct IXAudio2Voice : IComObject, IComObject<IXAudio2Voice>
 	{
@@ -1530,7 +1536,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
 		{
@@ -1538,7 +1544,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, XAudio2VoiceDetails*, void>)(*LpVtbl))(ptr, pVoiceDetails);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
 		{
@@ -1549,7 +1555,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
 		{
@@ -1558,7 +1564,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
 		{
@@ -1570,7 +1576,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -1579,7 +1585,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -1591,7 +1597,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "EnableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "EnableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult EnableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1600,7 +1606,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "DisableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DisableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult DisableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1609,7 +1615,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
 		{
@@ -1617,7 +1623,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, uint, int*, void>)(LpVtbl[5]))(ptr, effectIndex, pEnabled);
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
 		{
@@ -1628,7 +1634,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1637,7 +1643,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
 		{
@@ -1646,7 +1652,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1655,7 +1661,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1667,7 +1673,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -1675,7 +1681,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[9]))(ptr, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -1686,7 +1692,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1695,7 +1701,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1707,7 +1713,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1716,7 +1722,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1728,7 +1734,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1743,7 +1749,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1755,7 +1761,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -1763,7 +1769,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, pDestinationVoice, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -1774,7 +1780,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -1782,7 +1788,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -1793,7 +1799,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -1807,7 +1813,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -1818,7 +1824,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetVolume")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetVolume([NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1827,7 +1833,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
 		{
@@ -1835,7 +1841,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, float*, void>)(LpVtbl[13]))(ptr, pVolume);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
 		{
@@ -1846,7 +1852,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1855,7 +1861,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1867,7 +1873,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
 		{
@@ -1875,7 +1881,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, uint, float*, void>)(LpVtbl[15]))(ptr, channels, pVolumes);
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
 		{
@@ -1886,7 +1892,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1895,7 +1901,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1907,7 +1913,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1916,7 +1922,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1928,7 +1934,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1943,7 +1949,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -1955,7 +1961,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -1963,7 +1969,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -1974,7 +1980,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -1982,7 +1988,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2Voice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -1993,7 +1999,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -2007,7 +2013,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -2018,7 +2024,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DestroyVoice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void DestroyVoice() 
 		{
@@ -2033,6 +2039,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2SourceVoice")]
 	public partial struct IXAudio2SourceVoice : IComObject, IComObject<IXAudio2SourceVoice>, IComObject<IXAudio2Voice>
 	{
@@ -2043,7 +2052,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
 		{
@@ -2051,7 +2060,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceDetails*, void>)(*LpVtbl))(ptr, pVoiceDetails);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
 		{
@@ -2062,7 +2071,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
 		{
@@ -2071,7 +2080,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
 		{
@@ -2083,7 +2092,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -2092,7 +2101,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -2104,7 +2113,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "EnableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "EnableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult EnableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2113,7 +2122,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "DisableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DisableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult DisableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2122,7 +2131,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
 		{
@@ -2130,7 +2139,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, int*, void>)(LpVtbl[5]))(ptr, effectIndex, pEnabled);
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
 		{
@@ -2141,7 +2150,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2150,7 +2159,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
 		{
@@ -2159,7 +2168,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2168,7 +2177,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2180,7 +2189,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2188,7 +2197,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2FilterParameters*, void>)(LpVtbl[9]))(ptr, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2199,7 +2208,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2208,7 +2217,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2220,7 +2229,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2229,7 +2238,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2241,7 +2250,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2256,7 +2265,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2268,7 +2277,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2276,7 +2285,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, pDestinationVoice, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2287,7 +2296,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2295,7 +2304,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2306,7 +2315,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2320,7 +2329,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2331,7 +2340,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetVolume")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetVolume([NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2340,7 +2349,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
 		{
@@ -2348,7 +2357,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, float*, void>)(LpVtbl[13]))(ptr, pVolume);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
 		{
@@ -2359,7 +2368,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2368,7 +2377,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2380,7 +2389,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
 		{
@@ -2388,7 +2397,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, uint, float*, void>)(LpVtbl[15]))(ptr, channels, pVolumes);
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
 		{
@@ -2399,7 +2408,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2408,7 +2417,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2420,7 +2429,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2429,7 +2438,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2441,7 +2450,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2456,7 +2465,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2468,7 +2477,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -2476,7 +2485,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -2487,7 +2496,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -2495,7 +2504,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -2506,7 +2515,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -2520,7 +2529,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -2531,7 +2540,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DestroyVoice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void DestroyVoice() 
 		{
@@ -2539,7 +2548,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, void>)(LpVtbl[18]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "Start")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "Start")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult Start([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2548,7 +2557,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "Stop")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "Stop")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult Stop([NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2557,7 +2566,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SubmitSourceBuffer([NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER*")] XAudio2Buffer* pBuffer, [NativeName(NativeNameType.Param, "pBufferWMA")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER_WMA*")] XAudio2BufferWma* pBufferWMA) 
 		{
@@ -2566,7 +2575,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SubmitSourceBuffer([NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER*")] ref XAudio2Buffer pBuffer, [NativeName(NativeNameType.Param, "pBufferWMA")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER_WMA*")] XAudio2BufferWma* pBufferWMA) 
 		{
@@ -2578,7 +2587,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SubmitSourceBuffer([NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER*")] XAudio2Buffer* pBuffer, [NativeName(NativeNameType.Param, "pBufferWMA")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER_WMA*")] ref XAudio2BufferWma pBufferWMA) 
 		{
@@ -2590,7 +2599,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SubmitSourceBuffer")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SubmitSourceBuffer([NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER*")] ref XAudio2Buffer pBuffer, [NativeName(NativeNameType.Param, "pBufferWMA")] [NativeName(NativeNameType.Type, "const XAUDIO2_BUFFER_WMA*")] ref XAudio2BufferWma pBufferWMA) 
 		{
@@ -2605,7 +2614,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "FlushSourceBuffers")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "FlushSourceBuffers")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult FlushSourceBuffers() 
 		{
@@ -2614,7 +2623,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "Discontinuity")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "Discontinuity")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult Discontinuity() 
 		{
@@ -2623,7 +2632,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "ExitLoop")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "ExitLoop")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult ExitLoop([NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2632,7 +2641,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetState([NativeName(NativeNameType.Param, "pVoiceState")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_STATE*")] XAudio2VoiceState* pVoiceState, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags) 
 		{
@@ -2640,7 +2649,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, XAudio2VoiceState*, uint, void>)(LpVtbl[25]))(ptr, pVoiceState, flags);
 		}
 
-		[NativeName(NativeNameType.Func, "GetState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetState([NativeName(NativeNameType.Param, "pVoiceState")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_STATE*")] ref XAudio2VoiceState pVoiceState, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags) 
 		{
@@ -2651,7 +2660,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetFrequencyRatio")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFrequencyRatio")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFrequencyRatio([NativeName(NativeNameType.Param, "Ratio")] [NativeName(NativeNameType.Type, "float")] float ratio, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2660,7 +2669,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetFrequencyRatio")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFrequencyRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFrequencyRatio([NativeName(NativeNameType.Param, "pRatio")] [NativeName(NativeNameType.Type, "float*")] float* pRatio) 
 		{
@@ -2668,7 +2677,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SourceVoice*, float*, void>)(LpVtbl[27]))(ptr, pRatio);
 		}
 
-		[NativeName(NativeNameType.Func, "GetFrequencyRatio")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFrequencyRatio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFrequencyRatio([NativeName(NativeNameType.Param, "pRatio")] [NativeName(NativeNameType.Type, "float*")] ref float pRatio) 
 		{
@@ -2679,7 +2688,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetSourceSampleRate")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetSourceSampleRate")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetSourceSampleRate([NativeName(NativeNameType.Param, "NewSourceSampleRate")] [NativeName(NativeNameType.Type, "UINT32")] uint newSourceSampleRate) 
 		{
@@ -2700,6 +2709,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2SubmixVoice")]
 	public partial struct IXAudio2SubmixVoice : IComObject, IComObject<IXAudio2SubmixVoice>, IComObject<IXAudio2Voice>
 	{
@@ -2710,7 +2722,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
 		{
@@ -2718,7 +2730,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2VoiceDetails*, void>)(*LpVtbl))(ptr, pVoiceDetails);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
 		{
@@ -2729,7 +2741,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
 		{
@@ -2738,7 +2750,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
 		{
@@ -2750,7 +2762,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -2759,7 +2771,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -2771,7 +2783,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "EnableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "EnableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult EnableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2780,7 +2792,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "DisableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DisableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult DisableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2789,7 +2801,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
 		{
@@ -2797,7 +2809,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, int*, void>)(LpVtbl[5]))(ptr, effectIndex, pEnabled);
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
 		{
@@ -2808,7 +2820,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2817,7 +2829,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
 		{
@@ -2826,7 +2838,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2835,7 +2847,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2847,7 +2859,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2855,7 +2867,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, XAudio2FilterParameters*, void>)(LpVtbl[9]))(ptr, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2866,7 +2878,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2875,7 +2887,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2887,7 +2899,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2896,7 +2908,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2908,7 +2920,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2923,7 +2935,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -2935,7 +2947,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2943,7 +2955,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, pDestinationVoice, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2954,7 +2966,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -2962,7 +2974,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2973,7 +2985,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2987,7 +2999,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -2998,7 +3010,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetVolume")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetVolume([NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3007,7 +3019,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
 		{
@@ -3015,7 +3027,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, float*, void>)(LpVtbl[13]))(ptr, pVolume);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
 		{
@@ -3026,7 +3038,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3035,7 +3047,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3047,7 +3059,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
 		{
@@ -3055,7 +3067,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, uint, float*, void>)(LpVtbl[15]))(ptr, channels, pVolumes);
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
 		{
@@ -3066,7 +3078,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3075,7 +3087,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3087,7 +3099,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3096,7 +3108,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3108,7 +3120,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3123,7 +3135,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3135,7 +3147,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3143,7 +3155,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3154,7 +3166,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3162,7 +3174,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2SubmixVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3173,7 +3185,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3187,7 +3199,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3198,7 +3210,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DestroyVoice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void DestroyVoice() 
 		{
@@ -3218,6 +3230,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2MasteringVoice")]
 	public partial struct IXAudio2MasteringVoice : IComObject, IComObject<IXAudio2MasteringVoice>, IComObject<IXAudio2Voice>
 	{
@@ -3228,7 +3243,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] XAudio2VoiceDetails* pVoiceDetails) 
 		{
@@ -3236,7 +3251,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2VoiceDetails*, void>)(*LpVtbl))(ptr, pVoiceDetails);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVoiceDetails")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVoiceDetails([NativeName(NativeNameType.Param, "pVoiceDetails")] [NativeName(NativeNameType.Type, "XAUDIO2_VOICE_DETAILS*")] ref XAudio2VoiceDetails pVoiceDetails) 
 		{
@@ -3247,7 +3262,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] XAudio2VoiceSends* pSendList) 
 		{
@@ -3256,7 +3271,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputVoices")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputVoices")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputVoices([NativeName(NativeNameType.Param, "pSendList")] [NativeName(NativeNameType.Type, "const XAUDIO2_VOICE_SENDS*")] ref XAudio2VoiceSends pSendList) 
 		{
@@ -3268,7 +3283,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] XAudio2EffectChain* pEffectChain) 
 		{
@@ -3277,7 +3292,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectChain")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectChain")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectChain([NativeName(NativeNameType.Param, "pEffectChain")] [NativeName(NativeNameType.Type, "const XAUDIO2_EFFECT_CHAIN*")] ref XAudio2EffectChain pEffectChain) 
 		{
@@ -3289,7 +3304,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "EnableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "EnableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult EnableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3298,7 +3313,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "DisableEffect")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DisableEffect")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult DisableEffect([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3307,7 +3322,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] int* pEnabled) 
 		{
@@ -3315,7 +3330,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, int*, void>)(LpVtbl[5]))(ptr, effectIndex, pEnabled);
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectState")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectState")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetEffectState([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pEnabled")] [NativeName(NativeNameType.Type, "BOOL*")] ref int pEnabled) 
 		{
@@ -3326,7 +3341,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3335,7 +3350,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetEffectParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetEffectParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetEffectParameters([NativeName(NativeNameType.Param, "EffectIndex")] [NativeName(NativeNameType.Type, "UINT32")] uint effectIndex, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "void*")] void* pParameters, [NativeName(NativeNameType.Param, "ParametersByteSize")] [NativeName(NativeNameType.Type, "UINT32")] uint parametersByteSize) 
 		{
@@ -3344,7 +3359,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3353,7 +3368,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3365,7 +3380,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -3373,7 +3388,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, XAudio2FilterParameters*, void>)(LpVtbl[9]))(ptr, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetFilterParameters([NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -3384,7 +3399,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3393,7 +3408,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3405,7 +3420,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3414,7 +3429,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3426,7 +3441,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3441,7 +3456,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "const XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3453,7 +3468,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -3461,7 +3476,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, pDestinationVoice, pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -3472,7 +3487,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] XAudio2FilterParameters* pParameters) 
 		{
@@ -3480,7 +3495,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, XAudio2FilterParameters*, void>)(LpVtbl[11]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), pParameters);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -3491,7 +3506,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -3505,7 +3520,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputFilterParameters")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputFilterParameters([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "pParameters")] [NativeName(NativeNameType.Type, "XAUDIO2_FILTER_PARAMETERS*")] ref XAudio2FilterParameters pParameters) 
 		{
@@ -3516,7 +3531,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetVolume")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetVolume([NativeName(NativeNameType.Param, "Volume")] [NativeName(NativeNameType.Type, "float")] float volume, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3525,7 +3540,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] float* pVolume) 
 		{
@@ -3533,7 +3548,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, float*, void>)(LpVtbl[13]))(ptr, pVolume);
 		}
 
-		[NativeName(NativeNameType.Func, "GetVolume")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetVolume")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetVolume([NativeName(NativeNameType.Param, "pVolume")] [NativeName(NativeNameType.Type, "float*")] ref float pVolume) 
 		{
@@ -3544,7 +3559,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] float* pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3553,7 +3568,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "const float*")] ref float pVolumes, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3565,7 +3580,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] float* pVolumes) 
 		{
@@ -3573,7 +3588,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, uint, float*, void>)(LpVtbl[15]))(ptr, channels, pVolumes);
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelVolumes")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetChannelVolumes([NativeName(NativeNameType.Param, "Channels")] [NativeName(NativeNameType.Type, "UINT32")] uint channels, [NativeName(NativeNameType.Param, "pVolumes")] [NativeName(NativeNameType.Type, "float*")] ref float pVolumes) 
 		{
@@ -3584,7 +3599,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3593,7 +3608,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3605,7 +3620,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] float* pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3614,7 +3629,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3626,7 +3641,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3641,7 +3656,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "SetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult SetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "const float*")] ref float pLevelMatrix, [NativeName(NativeNameType.Param, "OperationSet")] [NativeName(NativeNameType.Type, "UINT32")] uint operationSet) 
 		{
@@ -3653,7 +3668,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3661,7 +3676,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, pDestinationVoice, sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3672,7 +3687,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] float* pLevelMatrix) 
 		{
@@ -3680,7 +3695,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, IXAudio2Voice*, uint, uint, float*, void>)(LpVtbl[17]))(ptr, (IXAudio2Voice*)pDestinationVoice.GetAddressOf(), sourceChannels, destinationChannels, pLevelMatrix);
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] IXAudio2Voice* pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3691,7 +3706,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ref IXAudio2Voice pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3705,7 +3720,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetOutputMatrix")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void GetOutputMatrix([NativeName(NativeNameType.Param, "pDestinationVoice")] [NativeName(NativeNameType.Type, "IXAudio2Voice*")] ComPtr<IXAudio2Voice> pDestinationVoice, [NativeName(NativeNameType.Param, "SourceChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint sourceChannels, [NativeName(NativeNameType.Param, "DestinationChannels")] [NativeName(NativeNameType.Type, "UINT32")] uint destinationChannels, [NativeName(NativeNameType.Param, "pLevelMatrix")] [NativeName(NativeNameType.Type, "float*")] ref float pLevelMatrix) 
 		{
@@ -3716,7 +3731,7 @@ namespace Hexa.NET.XAudio2
 			}
 		}
 
-		[NativeName(NativeNameType.Func, "DestroyVoice")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "DestroyVoice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void DestroyVoice() 
 		{
@@ -3724,7 +3739,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2MasteringVoice*, void>)(LpVtbl[18]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelMask")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelMask")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetChannelMask([NativeName(NativeNameType.Param, "pChannelmask")] [NativeName(NativeNameType.Type, "DWORD*")] uint* pChannelmask) 
 		{
@@ -3733,7 +3748,7 @@ namespace Hexa.NET.XAudio2
 			return ret;
 		}
 
-		[NativeName(NativeNameType.Func, "GetChannelMask")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "GetChannelMask")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
 		public readonly unsafe HResult GetChannelMask([NativeName(NativeNameType.Param, "pChannelmask")] [NativeName(NativeNameType.Type, "DWORD*")] ref uint pChannelmask) 
 		{
@@ -3757,6 +3772,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2EngineCallback")]
 	public partial struct IXAudio2EngineCallback : IComObject, IComObject<IXAudio2EngineCallback>
 	{
@@ -3767,7 +3785,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "OnProcessingPassStart")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnProcessingPassStart")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnProcessingPassStart() 
 		{
@@ -3775,7 +3793,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2EngineCallback*, void>)(*LpVtbl))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "OnProcessingPassEnd")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnProcessingPassEnd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnProcessingPassEnd() 
 		{
@@ -3783,7 +3801,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2EngineCallback*, void>)(LpVtbl[1]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "OnCriticalError")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnCriticalError")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnCriticalError([NativeName(NativeNameType.Param, "Error")] [NativeName(NativeNameType.Type, "HRESULT")] HResult error) 
 		{
@@ -3798,6 +3816,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "IXAudio2VoiceCallback")]
 	public partial struct IXAudio2VoiceCallback : IComObject, IComObject<IXAudio2VoiceCallback>
 	{
@@ -3808,7 +3829,7 @@ namespace Hexa.NET.XAudio2
 			LpVtbl = lpVtbl;
 		}
 
-		[NativeName(NativeNameType.Func, "OnVoiceProcessingPassStart")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnVoiceProcessingPassStart")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnVoiceProcessingPassStart([NativeName(NativeNameType.Param, "BytesRequired")] [NativeName(NativeNameType.Type, "UINT32")] uint bytesRequired) 
 		{
@@ -3816,7 +3837,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, uint, void>)(*LpVtbl))(ptr, bytesRequired);
 		}
 
-		[NativeName(NativeNameType.Func, "OnVoiceProcessingPassEnd")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnVoiceProcessingPassEnd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnVoiceProcessingPassEnd() 
 		{
@@ -3824,7 +3845,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, void>)(LpVtbl[1]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "OnStreamEnd")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnStreamEnd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnStreamEnd() 
 		{
@@ -3832,7 +3853,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, void>)(LpVtbl[2]))(ptr);
 		}
 
-		[NativeName(NativeNameType.Func, "OnBufferStart")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnBufferStart")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnBufferStart([NativeName(NativeNameType.Param, "pBufferContext")] [NativeName(NativeNameType.Type, "void*")] void* pBufferContext) 
 		{
@@ -3840,7 +3861,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, void*, void>)(LpVtbl[3]))(ptr, pBufferContext);
 		}
 
-		[NativeName(NativeNameType.Func, "OnBufferEnd")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnBufferEnd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnBufferEnd([NativeName(NativeNameType.Param, "pBufferContext")] [NativeName(NativeNameType.Type, "void*")] void* pBufferContext) 
 		{
@@ -3848,7 +3869,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, void*, void>)(LpVtbl[4]))(ptr, pBufferContext);
 		}
 
-		[NativeName(NativeNameType.Func, "OnLoopEnd")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnLoopEnd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnLoopEnd([NativeName(NativeNameType.Param, "pBufferContext")] [NativeName(NativeNameType.Type, "void*")] void* pBufferContext) 
 		{
@@ -3856,7 +3877,7 @@ namespace Hexa.NET.XAudio2
 			((delegate* unmanaged[Stdcall]<IXAudio2VoiceCallback*, void*, void>)(LpVtbl[5]))(ptr, pBufferContext);
 		}
 
-		[NativeName(NativeNameType.Func, "OnVoiceError")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "OnVoiceError")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public readonly unsafe void OnVoiceError([NativeName(NativeNameType.Param, "pBufferContext")] [NativeName(NativeNameType.Type, "void*")] void* pBufferContext, [NativeName(NativeNameType.Param, "Error")] [NativeName(NativeNameType.Type, "HRESULT")] HResult error) 
 		{
@@ -4387,6 +4408,9 @@ namespace Hexa.NET.XAudio2
 
 	}
 
+	/// <summary>
+	/// To be documented.
+	/// </summary>
 	[NativeName(NativeNameType.StructOrClass, "AudioReverb")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct AudioReverb

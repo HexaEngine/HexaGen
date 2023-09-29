@@ -14,6 +14,21 @@ namespace Hexa.NET.OpenAL
 {
 	public unsafe partial class OpenAL
 	{
+		[NativeName(NativeNameType.Const, "_MSC_VER")]
+		public const int _MSC_VER = 1930;
+
+		[NativeName(NativeNameType.Const, "_WIN32")]
+		public const int _WIN32 = 1;
+
+		[NativeName(NativeNameType.Const, "_M_AMD64")]
+		public const int _M_AMD64 = 100;
+
+		[NativeName(NativeNameType.Const, "_M_X64")]
+		public const int _M_X64 = 100;
+
+		[NativeName(NativeNameType.Const, "_WIN64")]
+		public const int _WIN64 = 1;
+
 		[NativeName(NativeNameType.Const, "AL_INVALID")]
 		public const int AL_INVALID = (-1);
 
