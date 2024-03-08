@@ -4,7 +4,6 @@
     using Hexa.NET.DXGI;
     using HexaGen.Runtime;
     using HexaGen.Runtime.COM;
-    using System.Diagnostics;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -26,6 +25,8 @@
 
         public DXGIAdapter(bool debug)
         {
+            Console.WriteLine("DXGI Init");
+
             if (debug)
             {
                 DXGI.DXGIGetDebugInterface1(0, out dxgiDebug);
@@ -46,6 +47,8 @@
 
             adapter = GetHardwareAdapter();
             this.debug = debug;
+
+            Console.WriteLine("DXGI Init Done");
         }
 
         public ComPtr<IDXGIFactory7> Factory => factory;
@@ -106,13 +109,13 @@
                         string msg = Encoding.UTF8.GetString(MemoryMarshal.CreateReadOnlySpanFromNullTerminated(message->PDescription));
 
                         if (message->Producer == DXGI_DEBUG_DX)
-                            Trace.WriteLine($"DX {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
+                            Console.WriteLine($"DX {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
                         if (message->Producer == DXGI_DEBUG_DXGI)
-                            Trace.WriteLine($"DXGI {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
+                            Console.WriteLine($"DXGI {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
                         if (message->Producer == DXGI_DEBUG_APP)
-                            Trace.WriteLine($"APP {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
+                            Console.WriteLine($"APP {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
                         if (message->Producer == DXGI_DEBUG_D3D11)
-                            Trace.WriteLine($"D3D11 {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
+                            Console.WriteLine($"D3D11 {Convert(message->Severity)}: {msg} [ {Convert(message->Category)} ]");
 
                         Free(message);
                     }
@@ -143,12 +146,13 @@
             {
                 Windowed = 1,
                 RefreshRate = new DxgiRational(0, 1),
-                Scaling = Silk.NET.DXGI.ModeScaling.Unspecified,
-                ScanlineOrdering = Silk.NET.DXGI.ModeScanlineOrder.Unspecified,
+                Scaling = DxgiModeScaling.Unspecified,
+                ScanlineOrdering = DxgiModeScanlineOrder.Unspecified,
             };
 
-            ComPtr<IDXGIOutput> output = default;
-            factory.CreateSwapChainForHwnd((IUnknown*)manager.Device, Hwnd, &desc, &fullscreenDesc, (IDXGIOutput*)null, out ComPtr<IDXGISwapChain2> swapChain);
+            factory.CreateSwapChainForHwnd((IUnknown*)manager.Device.Handle, Hwnd, &desc, &fullscreenDesc, (IDXGIOutput*)null, out ComPtr<IDXGISwapChain1> swapChain);
+
+            return new DXGISwapChain(manager, swapChain, desc);
         }
 
         private ComPtr<IDXGIAdapter4> GetHardwareAdapter()

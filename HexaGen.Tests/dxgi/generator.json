@@ -3,6 +3,8 @@
   "ApiName": "DXGI",
   "LibName": "dxgi",
   "Usings": [ "System.Numerics" ],
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "BoolType": 1,
   "KnownConstantNames": {

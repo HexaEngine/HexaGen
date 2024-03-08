@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -32,5 +32,4 @@
 		<None Update="README.md" Pack="true" PackagePath="\" />
 		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
 	</ItemGroup>
-
 </Project>

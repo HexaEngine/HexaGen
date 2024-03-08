@@ -61,6 +61,8 @@
 
         public string Name { get; set; }
 
+        public string CleanName => Name.Replace("@", string.Empty);
+
         public CsType Type { get; set; }
 
         public List<string> Modifiers { get; set; }

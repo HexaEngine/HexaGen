@@ -140,6 +140,8 @@
                     }
 
                     context.MoveNext();
+
+                    continue;
                 }
 
                 if (context.CurrentToken.IsOperator)
@@ -216,6 +218,7 @@
                     }
 
                     context.MoveNext();
+                    continue;
                 }
 
                 if (context.CurrentToken.IsOperator)

@@ -123,12 +123,35 @@
             for (int i = 0; i < parts.Length; i++)
             {
                 var part = parts[i];
+                if (string.IsNullOrWhiteSpace(part))
+                {
+                    continue;
+                }
+                if (char.IsDigit(part[0]) || char.IsDigit(part[^1]))
+                {
+                    sb.Append(part);
+                    continue;
+                }
                 switch (targetConvention)
                 {
                     case NamingConvention.CamelCase:
                         if (i == 0)
                         {
-                            sb.Append(part.ToLower());
+                            bool wasNumber = false;
+                            for (int j = 0; j < part.Length; j++)
+                            {
+                                var c = part[j];
+                                if (wasNumber)
+                                {
+                                    c = char.ToUpper(c);
+                                }
+                                else
+                                {
+                                    c = char.ToLower(c);
+                                }
+                                sb.Append(c);
+                                wasNumber = char.IsDigit(c);
+                            }
                         }
                         else
                         {
@@ -137,7 +160,23 @@
                         break;
 
                     case NamingConvention.PascalCase:
-                        sb.Append(part.Capitalize());
+                        {
+                            bool wasNumber = false;
+                            for (int j = 0; j < part.Length; j++)
+                            {
+                                var c = part[j];
+                                if (wasNumber || j == 0)
+                                {
+                                    c = char.ToUpper(c);
+                                }
+                                else
+                                {
+                                    c = char.ToLower(c);
+                                }
+                                sb.Append(c);
+                                wasNumber = char.IsDigit(c);
+                            }
+                        }
                         break;
 
                     case NamingConvention.SnakeCase:

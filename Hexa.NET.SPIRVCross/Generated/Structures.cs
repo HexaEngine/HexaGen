@@ -139,6 +139,14 @@ namespace Hexa.NET.SPIRVCross
 		public unsafe byte* Name;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcReflectedResource(uint id = default, uint baseTypeId = default, uint typeId = default, byte* name = default)
+		{
+			Id = id;
+			BaseTypeId = baseTypeId;
+			TypeId = typeId;
+			Name = name;
+		}
+
 
 	}
 
@@ -171,6 +179,13 @@ namespace Hexa.NET.SPIRVCross
 		public SpvcReflectedResource Resource;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcReflectedBuiltinResource(SpvBuiltIn builtin = default, uint valueTypeId = default, SpvcReflectedResource resource = default)
+		{
+			Builtin = builtin;
+			ValueTypeId = valueTypeId;
+			Resource = resource;
+		}
+
 
 	}
 
@@ -195,6 +210,12 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* Name;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcEntryPoint(SpvExecutionModel executionModel = default, byte* name = default)
+		{
+			ExecutionModel = executionModel;
+			Name = name;
+		}
 
 
 	}
@@ -228,6 +249,13 @@ namespace Hexa.NET.SPIRVCross
 		public uint SamplerId;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcCombinedImageSampler(uint combinedId = default, uint imageId = default, uint samplerId = default)
+		{
+			CombinedId = combinedId;
+			ImageId = imageId;
+			SamplerId = samplerId;
+		}
+
 
 	}
 
@@ -252,6 +280,12 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint ConstantId;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcSpecializationConstant(uint id = default, uint constantId = default)
+		{
+			Id = id;
+			ConstantId = constantId;
+		}
 
 
 	}
@@ -284,6 +318,13 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "size_t")]
 		public nuint Range;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcBufferRange(uint index = default, nuint offset = default, nuint range = default)
+		{
+			Index = index;
+			Offset = offset;
+			Range = range;
+		}
 
 
 	}
@@ -324,6 +365,14 @@ namespace Hexa.NET.SPIRVCross
 		public uint Space;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcHlslRootConstants(uint start = default, uint end = default, uint binding = default, uint space = default)
+		{
+			Start = start;
+			End = end;
+			Binding = binding;
+			Space = space;
+		}
+
 
 	}
 
@@ -348,6 +397,12 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "const char*")]
 		public unsafe byte* Semantic;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcHlslVertexAttributeRemap(uint location = default, byte* semantic = default)
+		{
+			Location = location;
+			Semantic = semantic;
+		}
 
 
 	}
@@ -409,6 +464,17 @@ namespace Hexa.NET.SPIRVCross
 		public SpvBuiltIn Builtin;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslVertexAttribute(uint location = default, uint mslBuffer = default, uint mslOffset = default, uint mslStride = default, byte perInstance = default, SpvcMslShaderVariableFormat format = default, SpvBuiltIn builtin = default)
+		{
+			Location = location;
+			MslBuffer = mslBuffer;
+			MslOffset = mslOffset;
+			MslStride = mslStride;
+			PerInstance = perInstance;
+			Format = format;
+			Builtin = builtin;
+		}
+
 
 	}
 
@@ -447,6 +513,14 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Vecsize;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslShaderInterfaceVar(uint location = default, SpvcMslShaderVariableFormat format = default, SpvBuiltIn builtin = default, uint vecsize = default)
+		{
+			Location = location;
+			Format = format;
+			Builtin = builtin;
+			Vecsize = vecsize;
+		}
 
 
 	}
@@ -493,6 +567,15 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "spvc_msl_shader_variable_rate")]
 		public SpvcMslShaderVariableRate Rate;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslShaderInterfaceVar2(uint location = default, SpvcMslShaderVariableFormat format = default, SpvBuiltIn builtin = default, uint vecsize = default, SpvcMslShaderVariableRate rate = default)
+		{
+			Location = location;
+			Format = format;
+			Builtin = builtin;
+			Vecsize = vecsize;
+			Rate = rate;
+		}
 
 
 	}
@@ -546,6 +629,16 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint MslSampler;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslResourceBinding(SpvExecutionModel stage = default, uint descSet = default, uint binding = default, uint mslBuffer = default, uint mslTexture = default, uint mslSampler = default)
+		{
+			Stage = stage;
+			DescSet = descSet;
+			Binding = binding;
+			MslBuffer = mslBuffer;
+			MslTexture = mslTexture;
+			MslSampler = mslSampler;
+		}
 
 
 	}
@@ -663,6 +756,25 @@ namespace Hexa.NET.SPIRVCross
 		public byte AnisotropyEnable;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslConstexprSampler(SpvcMslSamplerCoord coord = default, SpvcMslSamplerFilter minFilter = default, SpvcMslSamplerFilter magFilter = default, SpvcMslSamplerMipFilter mipFilter = default, SpvcMslSamplerAddress sAddress = default, SpvcMslSamplerAddress tAddress = default, SpvcMslSamplerAddress rAddress = default, SpvcMslSamplerCompareFunc compareFunc = default, SpvcMslSamplerBorderColor borderColor = default, float lodClampMin = default, float lodClampMax = default, int maxAnisotropy = default, byte compareEnable = default, byte lodClampEnable = default, byte anisotropyEnable = default)
+		{
+			Coord = coord;
+			MinFilter = minFilter;
+			MagFilter = magFilter;
+			MipFilter = mipFilter;
+			SAddress = sAddress;
+			TAddress = tAddress;
+			RAddress = rAddress;
+			CompareFunc = compareFunc;
+			BorderColor = borderColor;
+			LodClampMin = lodClampMin;
+			LodClampMax = lodClampMax;
+			MaxAnisotropy = maxAnisotropy;
+			CompareEnable = compareEnable;
+			LodClampEnable = lodClampEnable;
+			AnisotropyEnable = anisotropyEnable;
+		}
+
 
 	}
 
@@ -740,6 +852,44 @@ namespace Hexa.NET.SPIRVCross
 		public uint Bpc;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslSamplerYcbcrConversion(uint planes = default, SpvcMslFormatResolution resolution = default, SpvcMslSamplerFilter chromaFilter = default, SpvcMslChromaLocation xChromaOffset = default, SpvcMslChromaLocation yChromaOffset = default, SpvcMslComponentSwizzle* swizzle = default, SpvcMslSamplerYcbcrModelConversion ycbcrModel = default, SpvcMslSamplerYcbcrRange ycbcrRange = default, uint bpc = default)
+		{
+			Planes = planes;
+			Resolution = resolution;
+			ChromaFilter = chromaFilter;
+			XChromaOffset = xChromaOffset;
+			YChromaOffset = yChromaOffset;
+			if (swizzle != default)
+			{
+				Swizzle_0 = swizzle[0];
+				Swizzle_1 = swizzle[1];
+				Swizzle_2 = swizzle[2];
+				Swizzle_3 = swizzle[3];
+			}
+			YcbcrModel = ycbcrModel;
+			YcbcrRange = ycbcrRange;
+			Bpc = bpc;
+		}
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcMslSamplerYcbcrConversion(uint planes = default, SpvcMslFormatResolution resolution = default, SpvcMslSamplerFilter chromaFilter = default, SpvcMslChromaLocation xChromaOffset = default, SpvcMslChromaLocation yChromaOffset = default, Span<SpvcMslComponentSwizzle> swizzle = default, SpvcMslSamplerYcbcrModelConversion ycbcrModel = default, SpvcMslSamplerYcbcrRange ycbcrRange = default, uint bpc = default)
+		{
+			Planes = planes;
+			Resolution = resolution;
+			ChromaFilter = chromaFilter;
+			XChromaOffset = xChromaOffset;
+			YChromaOffset = yChromaOffset;
+			if (swizzle != default)
+			{
+				Swizzle_0 = swizzle[0];
+				Swizzle_1 = swizzle[1];
+				Swizzle_2 = swizzle[2];
+				Swizzle_3 = swizzle[3];
+			}
+			YcbcrModel = ycbcrModel;
+			YcbcrRange = ycbcrRange;
+			Bpc = bpc;
+		}
+
 
 		/// <summary>
 		/// To be documented.
@@ -778,6 +928,12 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint RegisterBinding;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcHlslResourceBindingMapping(uint registerSpace = default, uint registerBinding = default)
+		{
+			RegisterSpace = registerSpace;
+			RegisterBinding = registerBinding;
+		}
 
 
 	}
@@ -838,6 +994,17 @@ namespace Hexa.NET.SPIRVCross
 		[NativeName(NativeNameType.Type, "spvc_hlsl_resource_binding_mapping")]
 		public SpvcHlslResourceBindingMapping Sampler;
 
+
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe SpvcHlslResourceBinding(SpvExecutionModel stage = default, uint descSet = default, uint binding = default, SpvcHlslResourceBindingMapping cbv = default, SpvcHlslResourceBindingMapping uav = default, SpvcHlslResourceBindingMapping srv = default, SpvcHlslResourceBindingMapping sampler = default)
+		{
+			Stage = stage;
+			DescSet = descSet;
+			Binding = binding;
+			Cbv = cbv;
+			Uav = uav;
+			Srv = srv;
+			Sampler = sampler;
+		}
 
 
 	}

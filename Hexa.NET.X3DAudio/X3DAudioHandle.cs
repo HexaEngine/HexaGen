@@ -9,12 +9,6 @@
 
 namespace Hexa.NET.X3DAudio
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public unsafe struct X3DAudioHandle
     {
         public fixed byte Data[20];

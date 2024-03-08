@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -25,7 +25,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
+		<ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -84,16 +84,15 @@
 			<Pack>true</Pack>
 		</None>
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <None Update="LICENSE.txt">
-	    <PackagePath>\</PackagePath>
-	    <Pack>true</Pack>
-	  </None>
-	  <None Update="README.md">
-	    <PackagePath>\</PackagePath>
-	    <Pack>true</Pack>
-	  </None>
-	</ItemGroup>
 
+	<ItemGroup>
+		<None Update="LICENSE.txt">
+			<PackagePath>\</PackagePath>
+			<Pack>true</Pack>
+		</None>
+		<None Update="README.md">
+			<PackagePath>\</PackagePath>
+			<Pack>true</Pack>
+		</None>
+	</ItemGroup>
 </Project>

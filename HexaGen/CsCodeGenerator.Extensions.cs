@@ -73,7 +73,7 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe class Extensions"))
@@ -125,7 +125,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension);
+            string header = BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, settings.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, WriteFunctionFlags.Extension);
 
             if (FilterExtension(context, definedExtensions, id))
@@ -138,7 +138,10 @@
             LogInfo("defined extension " + header);
 
             writer.WriteLines(overload.Comment);
-            writer.WriteLines(overload.Attributes);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
 
             using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {

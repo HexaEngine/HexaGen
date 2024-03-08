@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using System.Diagnostics.CodeAnalysis;
@@ -60,7 +61,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupTypeUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings());
             GenContext context = new(compilation, filePath, writer);
 
             // Print All classes, structs
@@ -95,9 +96,10 @@
             {
                 commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
-
-            writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
-
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
+            }
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
 
             if (isUnion)
@@ -120,7 +122,7 @@
                     writer.WriteLine();
                 }
 
-                List<(CppType, string, string)> subClasses = new();
+                List<CsSubClass> subClasses = new();
                 for (int j = 0; j < cppClass.Classes.Count; j++)
                 {
                     var subClass = cppClass.Classes[j];
@@ -130,7 +132,7 @@
                     csSubName = subClassMapping?.FriendlyName ?? csSubName;
 
                     WriteClass(context, subClass, subClassMapping, csSubName);
-                    subClasses.Add((subClass, csSubName, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));
+                    subClasses.Add(new(subClass, csSubName, cppClass.Name, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));
                 }
 
                 for (int j = 0; j < cppClass.Fields.Count; j++)
@@ -144,18 +146,24 @@
                         {
                             fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
-                        writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
-                        writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
 
-                        var subClass = subClasses.FirstOrDefault(x => ReferenceEquals(x.Item1, cppClass1));
+                        if (settings.GenerateMetadata)
+                        {
+                            writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
+                            writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
+                        }
+
+                        var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+
+                        string csFieldName = settings.GetFieldName(cppField.Name);
                         if (isUnion)
                         {
                             writer.WriteLine("[FieldOffset(0)]");
                         }
-                        if (subClass == default)
+                        if (subClass == null)
                         {
-                            string csFieldName = settings.GetFieldName(cppField.Name);
                             string csFieldType = settings.GetCsCleanName(cppClass1.Name);
+                            subClasses.Add(new(cppField.Type, csFieldType, cppField.Name, csFieldName));
 
                             writer.WriteLine($"public {csFieldType} {csFieldName};");
                             if (fieldCommentWritten)
@@ -166,7 +174,7 @@
                             continue;
                         }
 
-                        writer.WriteLine($"public {subClass.Item2} {subClass.Item3};");
+                        writer.WriteLine($"public {subClass.Name} {csFieldName};");
 
                         if (fieldCommentWritten)
                             writer.WriteLine();
@@ -178,8 +186,12 @@
                         {
                             fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
-                        writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
-                        writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
+
+                        if (settings.GenerateMetadata)
+                        {
+                            writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
+                            writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
+                        }
 
                         string csFieldName = settings.GetFieldName(cppField.Name);
                         string returnCsName = settings.GetCsTypeName(cppFunctionType.ReturnType, false);
@@ -233,14 +245,14 @@
 
                         if (useThis || useThisRef)
                         {
-                            WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, "public unsafe");
+                            WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, subClasses, "public unsafe");
                         }
                     }
                 }
 
                 if (settings.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
                 {
-                    settings.WriteCsSummary(null, out string? comment);
+                    settings.WriteCsSummary((string?)null, out string? comment);
                     CsFunction function = new(csName, comment);
                     CsFunctionOverload overload = new(string.Empty, csName, comment, csName, true, true, false, new(string.Empty, CppPrimitiveKind.Void));
                     function.Overloads.Add(overload);
@@ -253,15 +265,23 @@
                         var direction = cppField.Type.GetDirection();
                         var kind = cppField.Type.GetPrimitiveKind();
 
+                        if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
+                        {
+                            var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+                            paramCsTypeName = subClass.Name;
+                            paramCsName = subClass.FieldName.ToLower();
+                            csFieldName = subClass.FieldName;
+                        }
+
                         CsType csType = new(paramCsTypeName, kind);
 
                         CsParameterInfo csParameter = new(paramCsName, csType, direction, "default", csFieldName);
-                        overload.DefaultValues.Add(paramCsName, "default");
+                        overload.DefaultValues.TryAdd(paramCsName, "default");
                         overload.Parameters.Add(csParameter);
                     }
 
-                    funcGen.GenerateConstructorVariations(cppClass.Fields, overload);
-                    WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, "public unsafe");
+                    funcGen.GenerateConstructorVariations(cppClass, subClasses, csName, overload);
+                    WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, subClasses, "public unsafe");
                 }
 
                 writer.WriteLine();
@@ -322,21 +342,21 @@
             return false;
         }
 
-        private void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, params string[] modifiers)
+        private void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteConstructor(context, definedFunctions, csFunction, overload, overload.Variations[j], fields, modifiers);
+                WriteConstructor(context, definedFunctions, csFunction, overload, overload.Variations[j], fields, subClasses, modifiers);
             }
         }
 
-        private void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, params string[] modifiers)
+        private void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType returnType = variation.ReturnType;
             PrepareArgs(variation, returnType);
 
-            string header = variation.BuildFullConstructorSignature();
+            string header = variation.BuildFullConstructorSignature(settings.GenerateMetadata);
             string id = variation.BuildConstructorSignatureIdentifier();
 
             if (FilterConstructor(context, definedFunctions, id))
@@ -344,38 +364,81 @@
                 return;
             }
 
-            ClassifyParameters(overload, variation, returnType, out bool _, out int offset, out bool _);
+            ClassifyParameters(overload, variation, returnType, out _, out _, out _);
 
             LogInfo("defined constructor " + header);
 
             writer.WriteLines(overload.Comment);
-            writer.WriteLines(overload.Attributes);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
 
             using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {
-                for (int i = 0; i < overload.Parameters.Count - offset; i++)
+                for (int i = 0; i < overload.Parameters.Count; i++)
                 {
-                    var cppParameter = overload.Parameters[i + offset];
+                    var cppParameter = overload.Parameters[i];
+                    var cppField = fields[i];
+                    ParameterFlags paramFlags = ParameterFlags.None;
 
                     if (variation.TryGetParameter(cppParameter.Name, out var param))
                     {
                         cppParameter = param;
+                        paramFlags = param.Flags;
                     }
 
                     var fieldName = cppParameter.FieldName;
+
+                    if (string.IsNullOrEmpty(fieldName))
+                    {
+                        var subClass = subClasses.Find(x => x.Type == cppField.Type && x.CppFieldName == cppField.Name);
+                        fieldName = subClass.Name;
+                    }
+
                     if (fieldName == cppParameter.Name)
                     {
                         fieldName = $"this.{fieldName}";
                     }
 
-                    writer.WriteLine($"{fieldName} = {cppParameter.Name};");
+                    // skip array field types.
+                    // TODO: Add support for array field types.
+                    if (cppField.Type is CppArrayType arrayType)
+                    {
+                        using (writer.PushBlock($"if ({cppParameter.Name} != default)"))
+                        {
+                            for (int j = 0; j < arrayType.Size; j++)
+                            {
+                                writer.WriteLine($"{fieldName}_{j} = {cppParameter.Name}[{j}];");
+                            }
+                        }
+                    }
+                    else if (cppField.Type.IsDelegate())
+                    {
+                        if (cppParameter.Type.Name.StartsWith("delegate*<"))
+                        {
+                            writer.WriteLine($"{fieldName} = (void*){cppParameter.Name};");
+                        }
+                        else
+                        {
+                            writer.WriteLine($"{fieldName} = (void*)Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
+                        }
+                    }
+                    else if (paramFlags.HasFlag(ParameterFlags.Bool))
+                    {
+                        writer.WriteLine($"{fieldName} = {cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0;");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"{fieldName} = {cppParameter.Name};");
+                    }
                 }
             }
 
             writer.WriteLine();
         }
 
-        private void WriteField(CodeWriter writer, CppField field, TypeFieldMapping? mapping, List<(CppType, string, string)> subClasses, bool isUnion = false, bool isReadOnly = false)
+        private void WriteField(ICodeWriter writer, CppField field, TypeFieldMapping? mapping, List<CsSubClass> subClasses, bool isUnion = false, bool isReadOnly = false)
         {
             string csFieldName = settings.GetFieldName(field.Name);
 
@@ -385,8 +448,11 @@
                 fieldCommentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
             }
 
-            writer.WriteLine($"[NativeName(NativeNameType.Field, \"{field.Name}\")]");
-            writer.WriteLine($"[NativeName(NativeNameType.Type, \"{field.Type.GetDisplayName()}\")]");
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Field, \"{field.Name}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.Type, \"{field.Type.GetDisplayName()}\")]");
+            }
 
             if (isUnion)
             {
@@ -423,8 +489,8 @@
                 string csFieldType = settings.GetCsTypeName(field.Type, false);
                 if (string.IsNullOrEmpty(csFieldType))
                 {
-                    var subClass = subClasses.Find(x => x.Item1 == field.Type);
-                    csFieldType = subClass.Item2;
+                    var subClass = subClasses.Find(x => x.Type == field.Type);
+                    csFieldType = subClass.Name;
                 }
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
@@ -475,7 +541,7 @@
                 writer.WriteLine();
         }
 
-        private void WriteProperty(CodeWriter writer, CppClass cppClass, string classCsName, CppField field, TypeFieldMapping? mapping, bool isUnion = false, bool isReadOnly = false)
+        private void WriteProperty(ICodeWriter writer, CppClass cppClass, string classCsName, CppField field, TypeFieldMapping? mapping, bool isUnion = false, bool isReadOnly = false)
         {
             string csFieldName = settings.GetFieldName(field.Name);
 
@@ -616,7 +682,7 @@
             }
         }
 
-        private void WriteProperty(CodeWriter writer, CppField field)
+        private void WriteProperty(ICodeWriter writer, CppField field)
         {
             string csFieldName = settings.GetFieldName(field.Name);
             settings.WriteCsSummary(field.Comment, writer);
@@ -665,7 +731,10 @@
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
             LogInfo("defined handle " + csName);
             settings.WriteCsSummary(cppClass.Comment, writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
+            }
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"public unsafe struct {csName} : IEquatable<{csName}>"))
             {

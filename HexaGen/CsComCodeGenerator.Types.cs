@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using System.Collections.Generic;
@@ -49,7 +50,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupTypeUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupTypeUsings());
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -125,7 +126,11 @@
             {
                 writer.WriteLine($"[Guid(\"{guid}\")]");
             }
-            writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
+
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
+            }
 
             StringBuilder sb = new($"IComObject, IComObject<{csName}>");
             {
@@ -234,7 +239,7 @@
             }
         }
 
-        private void WriteCOMConstructor(CodeWriter writer, string csName)
+        private void WriteCOMConstructor(ICodeWriter writer, string csName)
         {
             using (writer.PushBlock($"public unsafe {csName} (void** lpVtbl = null)"))
             {
@@ -243,7 +248,7 @@
             writer.WriteLine();
         }
 
-        private void WriteCOMBaseTypeCast(CodeWriter writer, string csName, CppClass baseClass)
+        private void WriteCOMBaseTypeCast(ICodeWriter writer, string csName, CppClass baseClass)
         {
             string csNameBaseClass = settings.GetCsCleanName(baseClass.Name);
             using (writer.PushBlock($"public unsafe static implicit operator {csNameBaseClass} ({csName} value)"))
@@ -278,7 +283,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = variation.BuildFullSignatureForCOM();
+            string header = variation.BuildFullSignatureForCOM(settings.GenerateMetadata);
             string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
 
             string identifier = variation.BuildSignatureIdentifierForCOM();
@@ -292,7 +297,10 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            writer.WriteLines(overload.Attributes);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
 
             using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {
@@ -413,7 +421,14 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {
-                        sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                        if (paramFlags.HasFlag(ParameterFlags.Ref))
+                        {
+                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                        }
+                        else
+                        {
+                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.Handle");
+                        }
                     }
                     else
                     {

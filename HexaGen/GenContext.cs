@@ -1,10 +1,11 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
 
     public class GenContext
     {
-        public GenContext(CppCompilation compilation, string filePath, CodeWriter codeWriter)
+        public GenContext(CppCompilation compilation, string filePath, ICodeWriter codeWriter)
         {
             Compilation = compilation;
             FilePath = filePath;
@@ -15,6 +16,6 @@
 
         public string FilePath { get; set; }
 
-        public CodeWriter Writer { get; set; }
+        public ICodeWriter Writer { get; set; }
     }
 }

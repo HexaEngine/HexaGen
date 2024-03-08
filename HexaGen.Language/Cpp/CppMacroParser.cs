@@ -13,5 +13,7 @@
             analyzers.Add(new ExpressionAnalyser());
             analyzers.Add(new FunctionCallAnalyser());
         }
+
+        public static readonly CppMacroParser Default = new();
     }
 }

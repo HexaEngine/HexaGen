@@ -2,6 +2,8 @@
   "Namespace": "Hexa.NET.SPIRVCross",
   "ApiName": "SPIRV",
   "LibName": "spirv-cross-c-shared",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "KnownConstantNames": {
   },

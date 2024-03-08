@@ -34,6 +34,18 @@
             };
         }
 
+        public static string GetCallingConventionLibrary(this CppCallingConvention convention)
+        {
+            return convention switch
+            {
+                CppCallingConvention.C => "System.Runtime.CompilerServices.CallConvCdecl",
+                CppCallingConvention.X86FastCall => "System.Runtime.CompilerServices.CallConvFastcall",
+                CppCallingConvention.X86StdCall => "System.Runtime.CompilerServices.CallConvStdcall",
+                CppCallingConvention.X86ThisCall => "System.Runtime.CompilerServices.CallConvThiscall",
+                _ => throw new NotSupportedException(),
+            };
+        }
+
         public static Direction GetDirection(this CppType type, bool isPointer = false)
         {
             if (type is CppPrimitiveType)
@@ -237,13 +249,22 @@
 
         public static unsafe string ToCamelCase(this string str)
         {
+            bool wasNumber = false;
             string output = new('\0', str.Length);
             fixed (char* p = output)
             {
                 p[0] = char.ToUpper(str[0]);
                 for (int i = 1; i < str.Length; i++)
                 {
-                    p[i] = char.ToLower(str[i]);
+                    if (wasNumber)
+                    {
+                        p[i] = char.ToUpper(str[i]);
+                    }
+                    else
+                    {
+                        p[i] = char.ToLower(str[i]);
+                    }
+                    wasNumber = char.IsDigit(str[i]);
                 }
             }
             return output;

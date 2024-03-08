@@ -59,7 +59,7 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe class Extensions"))
@@ -160,25 +160,22 @@
             PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
-            string header = variation.BuildFullExtensionSignatureForCOM(className);
+            string header = variation.BuildFullExtensionSignatureForCOM(className, settings.GenerateMetadata);
             string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
 
-            string identifier = variation.BuildExtensionSignatureIdentifierForCOM(className);
-            if (FilterExtension(context, definedExtensions, identifier))
+            string id = variation.BuildExtensionSignatureIdentifierForCOM(className);
+            if (FilterExtension(context, definedExtensions, id))
             {
                 return false;
             }
 
             LogInfo("defined extension " + header);
 
-            if (overload.Comment != null)
-            {
-                writer.WriteLines(overload.Comment);
-            }
+            writer.WriteLines(overload.Comment);
 
-            for (int i = 0; i < overload.Attributes.Count; i++)
+            if (settings.GenerateMetadata)
             {
-                writer.WriteLine(overload.Attributes[i]);
+                writer.WriteLines(overload.Attributes);
             }
 
             using (writer.PushBlock($"{modifierString} {header}"))
@@ -320,7 +317,14 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {
-                        sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                        if (paramFlags.HasFlag(ParameterFlags.Ref))
+                        {
+                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                        }
+                        else
+                        {
+                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.Handle");
+                        }
                     }
                     else
                     {

@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using System.Text.Json;
 
     public partial class CsCodeGenerator : BaseGenerator
     {
@@ -39,6 +40,11 @@
             for (int i = 0; i < settings.SystemIncludeFolders.Count; i++)
             {
                 options.SystemIncludeFolders.Add(settings.SystemIncludeFolders[i]);
+            }
+
+            for (int i = 0; i < settings.Defines.Count; i++)
+            {
+                options.Defines.Add(settings.Defines[i]);
             }
 
             options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
@@ -156,7 +162,7 @@
             DefinedDelegates.Clear();
         }
 
-        public virtual void CopyFrom(List<string> constants, List<string> enums, List<string> extensions, List<string> functions, List<string> typedefs, List<string> types, List<string> delegates)
+        public virtual void CopyFrom(List<CsConstantMetadata> constants, List<CsEnumMetadata> enums, List<string> extensions, List<string> functions, List<string> typedefs, List<string> types, List<string> delegates)
         {
             for (int i = 0; i < constants.Count; i++)
             {
@@ -186,6 +192,62 @@
             {
                 LibDefinedDelegates.Add(delegates[i]);
             }
+        }
+
+        public void CopyFrom(CsCodeGeneratorMetadata metadata)
+        {
+            var constants = metadata.DefinedConstants;
+            var enums = metadata.DefinedEnums;
+            var extensions = metadata.DefinedExtensions;
+            var functions = metadata.DefinedFunctions;
+            var typedefs = metadata.DefinedTypes;
+            var types = metadata.DefinedTypes;
+            var delegates = metadata.DefinedDelegates;
+            for (int i = 0; i < constants.Count; i++)
+            {
+                LibDefinedConstants.Add(constants[i]);
+            }
+            for (int i = 0; i < enums.Count; i++)
+            {
+                LibDefinedEnums.Add(enums[i]);
+            }
+            for (int i = 0; i < extensions.Count; i++)
+            {
+                LibDefinedExtensions.Add(extensions[i]);
+            }
+            for (int i = 0; i < functions.Count; i++)
+            {
+                LibDefinedFunctions.Add(functions[i]);
+            }
+            for (int i = 0; i < typedefs.Count; i++)
+            {
+                LibDefinedTypedefs.Add(typedefs[i]);
+            }
+            for (int i = 0; i < types.Count; i++)
+            {
+                LibDefinedTypes.Add(types[i]);
+            }
+            for (int i = 0; i < delegates.Count; i++)
+            {
+                LibDefinedDelegates.Add(delegates[i]);
+            }
+        }
+
+        public void SaveMetadata(string path)
+        {
+            CsCodeGeneratorMetadata metadata = new();
+            metadata.CopyFrom(this);
+            JsonSerializerOptions options = new(JsonSerializerDefaults.General);
+            options.WriteIndented = true;
+            var json = JsonSerializer.Serialize(metadata, options);
+            File.WriteAllText(path, json);
+        }
+
+        public void LoadMetadata(string path)
+        {
+            var json = File.ReadAllText(path);
+            var metadata = JsonSerializer.Deserialize<CsCodeGeneratorMetadata>(json) ?? new();
+            CopyFrom(metadata);
         }
 
         protected static CppFunction FindFunction(CppCompilation compilation, string name)

@@ -6,6 +6,22 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    public class CsSubClass
+    {
+        public CppType Type;
+        public string Name;
+        public string CppFieldName;
+        public string FieldName;
+
+        public CsSubClass(CppType type, string name, string cppFieldName, string fieldName)
+        {
+            Type = type;
+            Name = name;
+            CppFieldName = cppFieldName;
+            FieldName = fieldName;
+        }
+    }
+
     public class FunctionGenerator
     {
         private readonly CsCodeGeneratorSettings settings;
@@ -15,7 +31,7 @@
             this.settings = settings;
         }
 
-        public void GenerateConstructorVariations(IList<CppField> parameters, CsFunctionOverload function)
+        public void GenerateConstructorVariations(CppClass cppClass, List<CsSubClass> subClasses, string csName, CsFunctionOverload function)
         {
             settings.TryGetFunctionMapping(function.ExportedName, out var mapping);
 
@@ -24,22 +40,56 @@
                 function.Comment = mapping.Comment;
             }
 
-            CsParameterInfo[] parameterList = new CsParameterInfo[parameters.Count];
-            for (int i = 0; i < parameters.Count; i++)
+            var fields = cppClass.Fields;
+
+            CsParameterInfo[] parameterList = new CsParameterInfo[fields.Count];
+            CsParameterInfo[] spanParameterList = new CsParameterInfo[fields.Count];
+            for (int i = 0; i < fields.Count; i++)
             {
-                CppField cppField = parameters[i];
+                CppField cppField = fields[i];
                 CppPrimitiveKind kind = cppField.Type.GetPrimitiveKind();
 
                 var fieldCsName = settings.GetFieldName(cppField.Name);
+                var paramCsTypeName = settings.GetCsTypeName(cppField.Type, false);
                 var paramCsName = settings.GetParameterName(i, cppField.Name);
                 var direction = cppField.Type.GetDirection();
-                parameterList[i] = new(paramCsName, new(settings.GetCsTypeName(cppField.Type, false), kind), direction, "default", fieldCsName);
+
+                if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
+                {
+                    var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+                    paramCsTypeName = subClass.Name;
+                    paramCsName = subClass.FieldName.ToLower();
+                    fieldCsName = subClass.FieldName;
+                }
+
+                if (string.IsNullOrEmpty(paramCsTypeName))
+                {
+                    var subClass = subClasses.Find(x => x.Type == cppField.Type && x.CppFieldName == cppField.Name);
+                    paramCsTypeName = subClass.Name;
+                }
+
+                parameterList[i] = new(paramCsName, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+
+                if (cppField.Type is CppArrayType arrayType)
+                {
+                    var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType, false);
+                    spanParameterList[i] = new(paramCsName, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
+                }
+                else
+                {
+                    spanParameterList[i] = new(paramCsName, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+                }
             }
 
             CsFunctionVariation variation = function.CreateVariationWith();
             variation.Parameters.AddRange(parameterList);
 
+            CsFunctionVariation spanVariation = function.CreateVariationWith();
+            spanVariation.Parameters.AddRange(spanParameterList);
+
             function.TryAddVariation(variation);
+
+            function.TryAddVariation(spanVariation);
         }
 
         public void GenerateVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)

@@ -20,7 +20,7 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
@@ -41,18 +41,31 @@
 
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
+                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut, settings.GenerateMetadata);
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
+                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
 
-                    if (FilterNativeFunction(context, cppFunction, header))
+                    if (FilterNativeFunction(context, cppFunction, headerId))
                     {
                         continue;
                     }
 
                     settings.WriteCsSummary(cppFunction.Comment, writer);
-                    writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                    writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                    if (settings.GenerateMetadata)
+                    {
+                        writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                        writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
+                    }
+
+                    if (settings.UseLibraryImport)
+                    {
+                        writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
+                        writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                    }
 
                     if (boolReturn)
                     {
@@ -80,7 +93,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = variation.BuildFullSignatureForCOM();// BuildFunctionHeader(variation, csReturnType, flags);
+            string header = variation.BuildFullSignatureForCOM(settings.GenerateMetadata);// BuildFunctionHeader(variation, csReturnType, flags);
             string id = BuildFunctionHeaderId(variation, flags);
 
             if (FilterFunction(context, definedFunctions, id))
@@ -93,7 +106,10 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            writer.WriteLines(overload.Attributes);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
 
             using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {

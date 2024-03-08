@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.IO;
@@ -84,7 +85,7 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
@@ -105,27 +106,44 @@
 
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut);
+                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut, settings.GenerateMetadata);
+                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
-                    if (FilterNativeFunction(context, cppFunction, header))
+                    if (FilterNativeFunction(context, cppFunction, headerId))
                     {
                         continue;
                     }
 
                     settings.WriteCsSummary(cppFunction.Comment, writer);
-                    writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
-                    writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
-                    writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                    if (settings.GenerateMetadata)
+                    {
+                        writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
+                        writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
+                    }
+
+                    string modifiers;
+
+                    if (settings.UseLibraryImport)
+                    {
+                        writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
+                        writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
+                        modifiers = "internal static partial";
+                    }
+                    else
+                    {
+                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                        modifiers = "internal static extern";
+                    }
 
                     if (boolReturn)
                     {
-                        writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
+                        writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
                         writer.WriteLine();
                     }
                     else
                     {
-                        writer.WriteLine($"internal static extern {header};");
+                        writer.WriteLine($"{modifiers} {header};");
                         writer.WriteLine();
                     }
 
@@ -148,11 +166,11 @@
 
         protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
         {
-            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
+            int offset = flags == WriteFunctionFlags.None && useNames ? 0 : 1;
             StringBuilder sb = new();
             bool isFirst = true;
 
-            if (flags == WriteFunctionFlags.Extension)
+            if (flags == WriteFunctionFlags.Extension && useNames)
             {
                 isFirst = false;
                 var first = variation.Parameters[0];
@@ -182,9 +200,9 @@
             return $"{variation.Name}({signature})";
         }
 
-        protected virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags)
+        protected virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
-            string signature = BuildFunctionSignature(variation, true, true, flags);
+            string signature = BuildFunctionSignature(variation, generateMetadata, true, flags);
             return $"{csReturnType.Name} {variation.Name}({signature})";
         }
 
@@ -194,7 +212,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, flags);
+            string header = BuildFunctionHeader(variation, csReturnType, flags, settings.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, flags);
 
             if (FilterFunction(context, definedFunctions, id))
@@ -207,8 +225,10 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            writer.WriteLines(overload.Attributes);
-
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
             using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
             {
                 StringBuilder sb = new();
@@ -321,14 +341,14 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Ref))
                     {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = &{cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = &{cppParameter.Name})");
+                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
                         blockCounter++;
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = {cppParameter.Name})");
+                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
                         blockCounter++;
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
@@ -459,7 +479,7 @@
             }
         }
 
-        protected static void WriteStringConvertToManaged(CodeWriter writer, CppType type, string variable, string pointer)
+        protected static void WriteStringConvertToManaged(ICodeWriter writer, CppType type, string variable, string pointer)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -476,7 +496,7 @@
             }
         }
 
-        protected static void WriteStringConvertToManaged(CodeWriter writer, CsType type, string variable, string pointer)
+        protected static void WriteStringConvertToManaged(ICodeWriter writer, CsType type, string variable, string pointer)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -492,7 +512,7 @@
             }
         }
 
-        protected static void WriteStringConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
+        protected static void WriteStringConvertToUnmanaged(ICodeWriter writer, CppType type, string name, int i)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -541,7 +561,7 @@
             }
         }
 
-        protected static void WriteStringConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
+        protected static void WriteStringConvertToUnmanaged(ICodeWriter writer, CsType type, string name, int i)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -589,7 +609,7 @@
             }
         }
 
-        protected static void WriteFreeString(CodeWriter writer, int i)
+        protected static void WriteFreeString(ICodeWriter writer, int i)
         {
             using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))
             {
@@ -597,7 +617,7 @@
             }
         }
 
-        protected static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CppType type, string name, int i)
+        protected static void WriteStringArrayConvertToUnmanaged(ICodeWriter writer, CppType type, string name, int i)
         {
             CppPrimitiveKind primitiveKind = type.GetPrimitiveKind();
             if (primitiveKind == CppPrimitiveKind.Char)
@@ -648,7 +668,7 @@
             }
         }
 
-        protected static void WriteStringArrayConvertToUnmanaged(CodeWriter writer, CsType type, string name, int i)
+        protected static void WriteStringArrayConvertToUnmanaged(ICodeWriter writer, CsType type, string name, int i)
         {
             if (type.StringType == CsStringType.StringUTF8)
             {
@@ -698,7 +718,7 @@
             }
         }
 
-        protected static void WriteFreeUnmanagedStringArray(CodeWriter writer, string name, int i)
+        protected static void WriteFreeUnmanagedStringArray(ICodeWriter writer, string name, int i)
         {
             using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
             {

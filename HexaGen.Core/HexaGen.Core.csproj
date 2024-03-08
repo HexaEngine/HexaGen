@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CppAst" Version="0.11.0" />
-		<PackageReference Include="libclang.runtime.win-x64" Version="15.0.0" />
-		<PackageReference Include="libClangSharp.runtime.win-x64" Version="15.0.0" />
+		<PackageReference Include="CppAst" Version="0.15.0" />
+		<PackageReference Include="libclang.runtime.win-x64" Version="17.0.4" />
+		<PackageReference Include="libClangSharp.runtime.win-x64" Version="17.0.4" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="en_EN.txt">

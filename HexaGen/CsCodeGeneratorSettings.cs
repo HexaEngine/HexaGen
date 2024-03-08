@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using System;
@@ -264,6 +265,16 @@
         /// This causes the code generator to generate summary xml comments if it's missing with the text "To be documented." (Default: <see langword="true"/>)
         /// </summary>
         public bool GeneratePlaceholderComments { get; set; } = true;
+
+        /// <summary>
+        /// This causes the code generator to use <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/> instead of <see cref="System.Runtime.InteropServices.DllImportAttribute"/>
+        /// </summary>
+        public bool UseLibraryImport { get; set; } = true;
+
+        /// <summary>
+        /// The generator will generate [NativeName] attributes.
+        /// </summary>
+        public bool GenerateMetadata { get; set; } = false;
 
         /// <summary>
         /// Enables generation for constants (CPP: Macros) (Default: <see langword="true"/>)
@@ -541,6 +552,11 @@
         public List<string> SystemIncludeFolders { get; set; } = new();
 
         /// <summary>
+        /// List of macros passed to CppAst. (Default: Empty)
+        /// </summary>
+        public List<string> Defines { get; set; } = new();
+
+        /// <summary>
         /// List of the additional arguments passed directly to the C++ Clang compiler. (Default: Empty)
         /// </summary>
         public List<string> AdditionalArguments { get; set; } = new();
@@ -762,6 +778,19 @@
 
             if (type is CppTypedef typedef)
             {
+                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
+                {
+                    var csPrimitiveName = GetCsTypeNameInternal(cppPrimitive);
+                    if (!string.IsNullOrEmpty(csPrimitiveName))
+                    {
+                        if (isPointer)
+                        {
+                            return $"{csPrimitiveName}*";
+                        }
+                        return csPrimitiveName;
+                    }
+                }
+
                 var typeDefCsName = GetCsCleanName(typedef.Name);
                 if (typedef.IsDelegate(out var _))
                 {
@@ -836,7 +865,14 @@
 
             if (pointerType.ElementType is CppFunctionType functionType)
             {
-                return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}>";
+                if (functionType.Parameters.Count == 0)
+                {
+                    return $"delegate*<{GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
+                else
+                {
+                    return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
             }
 
             if (pointerType.ElementType is CppPointerType subPointer)
@@ -902,6 +938,12 @@
 
         private readonly ConcurrentDictionary<CppType, string> wrapperTypeNameCache = new();
 
+        /// <summary>
+        /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="isPointer"></param>
+        /// <returns></returns>
         public string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
         {
             if (type == null)
@@ -915,6 +957,11 @@
             return name;
         }
 
+        /// <summary>
+        /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public string GetCsWrapperTypeName(CppPointerType type)
         {
             if (type == null)
@@ -928,6 +975,12 @@
             return name;
         }
 
+        /// <summary>
+        /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="isPointer"></param>
+        /// <returns></returns>
         public string GetCsWrapperTypeName(CppPrimitiveType type, bool isPointer)
         {
             if (type == null)
@@ -969,6 +1022,19 @@
 
             if (type is CppTypedef typedef)
             {
+                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
+                {
+                    var csPrimitiveName = GetCsWrapperTypeNameInternal(cppPrimitive);
+                    if (!string.IsNullOrEmpty(csPrimitiveName))
+                    {
+                        if (isPointer)
+                        {
+                            return $"ref {csPrimitiveName}";
+                        }
+                        return csPrimitiveName;
+                    }
+                }
+
                 var typeDefCsName = GetCsCleanName(typedef.Name);
                 if (typedef.IsDelegate())
                 {
@@ -1099,7 +1165,14 @@
 
             if (pointerType.ElementType is CppFunctionType functionType)
             {
-                return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}>";
+                if (functionType.Parameters.Count == 0)
+                {
+                    return $"delegate*<{GetCsWrapperTypeNameInternal(functionType.ReturnType)}>";
+                }
+                else
+                {
+                    return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}, {GetCsWrapperTypeNameInternal(functionType.ReturnType)}>";
+                }
             }
 
             if (pointerType.ElementType is CppPointerType subPointer)
@@ -1110,7 +1183,255 @@
             return GetCsWrapperTypeNameInternal(pointerType.ElementType, true);
         }
 
-        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true)
+        private readonly ConcurrentDictionary<CppType, string> wrappedPointerTypeNameCache = new();
+
+        /// <summary>
+        /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="isPointer"></param>
+        /// <returns></returns>
+        public string GetCsWrappedPointerTypeName(CppType? type, bool isPointer = false)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrappedPointerTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrappedPointerTypeNameInternal(type, isPointer);
+            wrappedPointerTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        /// <summary>
+        /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public string GetCsWrappedPointerTypeName(CppPointerType type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrappedPointerTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrappedPointerTypeNameInternal(type);
+            wrappedPointerTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        /// <summary>
+        /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="isPointer"></param>
+        /// <returns></returns>
+        public string GetCsWrappedPointerTypeName(CppPrimitiveType type, bool isPointer)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (wrappedPointerTypeNameCache.TryGetValue(type, out var typeName))
+                return typeName;
+
+            var name = GetCsWrappedPointerTypeNameInternal(type, isPointer);
+            wrappedPointerTypeNameCache.TryAdd(type, name);
+            return name;
+        }
+
+        private string GetCsWrappedPointerTypeNameInternal(CppType? type, bool isPointer = false)
+        {
+            if (type is CppPrimitiveType primitiveType)
+            {
+                return GetCsWrappedPointerTypeNameInternal(primitiveType, isPointer);
+            }
+
+            if (type is CppQualifiedType qualifiedType)
+            {
+                return GetCsWrappedPointerTypeNameInternal(qualifiedType.ElementType, isPointer);
+            }
+
+            if (type is CppReferenceType referenceType)
+            {
+                return GetCsWrappedPointerTypeNameInternal(referenceType.ElementType, true);
+            }
+
+            if (type is CppEnum enumType)
+            {
+                var enumCsName = GetCsCleanName(enumType.Name);
+                if (isPointer)
+                    return $"Pointer<{enumCsName}>";
+
+                return enumCsName;
+            }
+
+            if (type is CppTypedef typedef)
+            {
+                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
+                {
+                    var csPrimitiveName = GetCsWrappedPointerTypeNameInternal(cppPrimitive);
+                    if (!string.IsNullOrEmpty(csPrimitiveName))
+                    {
+                        if (isPointer)
+                        {
+                            return $"Pointer<{csPrimitiveName}>";
+                        }
+
+                        return csPrimitiveName;
+                    }
+                }
+
+                var typeDefCsName = GetCsCleanName(typedef.Name);
+                if (typedef.IsDelegate())
+                {
+                    return typeDefCsName;
+                }
+                if (isPointer && typeDefCsName == "void")
+                    return "nint";
+                if (isPointer)
+                    return $"Pointer<{typeDefCsName}>";
+
+                return typeDefCsName;
+            }
+
+            if (type is CppClass @class)
+            {
+                var className = GetCsCleanName(@class.Name);
+                if (isPointer && className == "void")
+                    return "nint";
+                if (isPointer)
+                    return $"Pointer<{className}>";
+
+                return className;
+            }
+
+            if (type is CppPointerType pointerType)
+            {
+                return GetCsWrappedPointerTypeNameInternal(pointerType);
+            }
+
+            if (type is CppArrayType arrayType && arrayType.Size > 0)
+            {
+                if (TryGetArrayMapping(arrayType, out string? mapping))
+                {
+                    return mapping;
+                }
+
+                return GetCsWrappedPointerTypeNameInternal(arrayType.ElementType, true);
+            }
+            else if (type is CppArrayType arrayType1 && arrayType1.Size < 0)
+            {
+                var arrayName = GetCsTypeName(arrayType1.ElementType, false);
+                return $"Pointer<{arrayName}>";
+            }
+
+            return string.Empty;
+        }
+
+        private string GetCsWrappedPointerTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
+        {
+            switch (primitiveType.Kind)
+            {
+                case CppPrimitiveKind.Void:
+                    return isPointer ? "nint" : "nint";
+
+                case CppPrimitiveKind.Char:
+                    return isPointer ? "Pointer<byte>" : "byte";
+
+                case CppPrimitiveKind.Bool:
+                    return isPointer ? $"Pointer<{GetBoolType()}>" : "bool";
+
+                case CppPrimitiveKind.WChar:
+                    return isPointer ? "Pointer<char>" : "char";
+
+                case CppPrimitiveKind.Short:
+                    return isPointer ? "Pointer<short>" : "short";
+
+                case CppPrimitiveKind.Int:
+                    return isPointer ? "Pointer<int>" : "int";
+
+                case CppPrimitiveKind.LongLong:
+                    return isPointer ? "Pointer<long>" : "long";
+
+                case CppPrimitiveKind.UnsignedChar:
+                    return isPointer ? "Pointer<byte>" : "byte";
+
+                case CppPrimitiveKind.UnsignedShort:
+                    return isPointer ? "Pointer<ushort>" : "ushort";
+
+                case CppPrimitiveKind.UnsignedInt:
+                    return isPointer ? "Pointer<uint>" : "uint";
+
+                case CppPrimitiveKind.UnsignedLongLong:
+                    return isPointer ? "Pointer<ulong>" : "ulong";
+
+                case CppPrimitiveKind.Float:
+                    return isPointer ? "Pointer<float>" : "float";
+
+                case CppPrimitiveKind.Double:
+                    return isPointer ? "Pointer<double>" : "double";
+
+                case CppPrimitiveKind.LongDouble:
+                    break;
+
+                default:
+                    return string.Empty;
+            }
+
+            return string.Empty;
+        }
+
+        private string GetCsWrappedPointerTypeNameInternal(CppPointerType pointerType)
+        {
+            if (pointerType.ElementType is CppQualifiedType qualifiedType)
+            {
+                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
+                {
+                    return GetCsWrappedPointerTypeNameInternal(primitiveType, true);
+                }
+                else if (qualifiedType.ElementType is CppClass @classType)
+                {
+                    return GetCsWrappedPointerTypeNameInternal(@classType, true);
+                }
+                else if (qualifiedType.ElementType is CppPointerType subPointerType)
+                {
+                    return $"Pointer<{GetCsWrappedPointerTypeNameInternal(subPointerType, true)}>";
+                }
+                else if (qualifiedType.ElementType is CppTypedef typedef)
+                {
+                    return GetCsWrappedPointerTypeNameInternal(typedef, true);
+                }
+                else if (qualifiedType.ElementType is CppEnum @enum)
+                {
+                    return GetCsWrappedPointerTypeNameInternal(@enum, true);
+                }
+
+                return GetCsWrappedPointerTypeNameInternal(qualifiedType.ElementType, true);
+            }
+
+            if (pointerType.ElementType is CppFunctionType functionType)
+            {
+                if (functionType.Parameters.Count == 0)
+                {
+                    return $"delegate*<{GetCsWrapperTypeNameInternal(functionType.ReturnType)}>";
+                }
+                else
+                {
+                    return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}, {GetCsWrapperTypeNameInternal(functionType.ReturnType)}>";
+                }
+            }
+
+            if (pointerType.ElementType is CppPointerType subPointer)
+            {
+                return $"Pointer<{GetCsWrappedPointerTypeNameInternal(subPointer)}>";
+            }
+
+            return GetCsWrappedPointerTypeNameInternal(pointerType.ElementType, true);
+        }
+
+        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true)
         {
             StringBuilder argumentBuilder = new();
             int index = 0;
@@ -1138,7 +1459,12 @@
                     paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
                 }
 
-                argumentBuilder.Append(paramCsTypeName).Append(' ').Append(paramCsName);
+                argumentBuilder.Append(paramCsTypeName);
+
+                if (names)
+                {
+                    argumentBuilder.Append(' ').Append(paramCsName);
+                }
 
                 if (index < parameters.Count - 1)
                 {
@@ -1252,7 +1578,12 @@
 
             if (Keywords.Contains(newName))
             {
-                return "@" + newName;
+                newName = "@" + newName;
+            }
+
+            if (char.IsDigit(newName[0]))
+            {
+                newName = "_" + newName;
             }
 
             parameterNameCache.TryAdd(name, newName);
@@ -1417,6 +1748,81 @@
             return new(partList.ToArray());
         }
 
+        public string GetEnumNameEx(string value, EnumPrefix enumPrefix)
+        {
+            return GetEnumName(value, enumPrefix);
+
+            if (KnownEnumValueNames.TryGetValue(value, out string? knownName))
+            {
+                return knownName;
+            }
+
+            string[] parts = GetEnumNamePrefix(value).Parts;
+            string[] prefixParts = enumPrefix.Parts;
+
+            var name = GetCsCleanNameWithConvention(value, EnumNamingConvention, false);
+
+            int lastRemoved = -1;
+            for (int i = 0; i < prefixParts.Length; i++)
+            {
+                var part = prefixParts[i];
+                if (name.StartsWith(part, StringComparison.InvariantCultureIgnoreCase) && name.Length - part.Length != 0)
+                {
+                    name = name[part.Length..];
+                    lastRemoved = i;
+                }
+            }
+
+            bool capture = false;
+            var sb = new StringBuilder();
+            for (int i = 0; i < parts.Length; i++)
+            {
+                string part = parts[i];
+                if (IgnoredParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) || prefixParts.Contains(part, StringComparer.InvariantCultureIgnoreCase) && !capture)
+                {
+                    continue;
+                }
+
+                part = part.ToLower();
+
+                bool wasNum = false;
+                for (int j = 0; j < part.Length; j++)
+                {
+                    var c = part[j];
+                    if (j == 0 || wasNum)
+                    {
+                        sb.Append(char.ToUpper(c));
+                        wasNum = false;
+                    }
+                    else if (char.IsDigit(c))
+                    {
+                        sb.Append(c);
+                        wasNum = true;
+                    }
+                    else
+                    {
+                        sb.Append(c);
+                    }
+                }
+
+                capture = true;
+            }
+
+            if (sb.Length == 0)
+            {
+                sb.Append(parts[^1].ToCamelCase());
+            }
+
+            string prettyName = sb.ToString();
+
+            if (char.IsDigit(name[0]))
+            {
+                name = prefixParts[lastRemoved].ToCamelCase() + name;
+            }
+
+            return name; //char.IsNumber(prettyName[0]) ? parts[^1].ToCamelCase() + prettyName : prettyName;
+        }
+
         public string GetEnumName(string value, EnumPrefix enumPrefix)
         {
             if (KnownEnumValueNames.TryGetValue(value, out string? knownName))
@@ -1552,7 +1958,7 @@
             };
         }
 
-        public bool WriteCsSummary(string? comment, CodeWriter writer)
+        public bool WriteCsSummary(string? comment, ICodeWriter writer)
         {
             if (comment == null)
             {
@@ -1577,7 +1983,42 @@
             return true;
         }
 
-        public bool WriteCsSummary(CppComment? comment, CodeWriter writer)
+        public bool WriteCsSummary(string? comment, out string? com)
+        {
+            com = null;
+            StringBuilder sb = new();
+            if (comment == null)
+            {
+                if (GeneratePlaceholderComments)
+                {
+                    sb.AppendLine("/// <summary>");
+                    sb.AppendLine("/// To be documented.");
+                    sb.AppendLine("/// </summary>");
+                    com = sb.ToString();
+                    return true;
+                }
+                return false;
+            }
+
+            var lines = comment.Replace("/", string.Empty).Split("\n", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            sb.AppendLine("/// <summary>");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                sb.AppendLine($"/// {new XText(line)}<br/>");
+            }
+            sb.AppendLine($"/// </summary>");
+            com = sb.ToString();
+            return true;
+        }
+
+        public string? WriteCsSummary(string? comment)
+        {
+            WriteCsSummary(comment, out var result);
+            return result;
+        }
+
+        public bool WriteCsSummary(CppComment? comment, ICodeWriter writer)
         {
             bool result = false;
             if (comment is CppCommentFull full)
@@ -1722,6 +2163,12 @@
                 comment = sb.ToString();
                 return;
             }
+        }
+
+        public string? WriteCsSummary(CppComment? cppComment)
+        {
+            WriteCsSummary(cppComment, out var result);
+            return result;
         }
     }
 }

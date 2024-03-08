@@ -15,6 +15,7 @@
 
         public D3D11DeviceManager(DXGIAdapter adapter, bool debug)
         {
+            Console.WriteLine("D3D11 Init");
             D3DFeatureLevel[] levelsArr = new D3DFeatureLevel[]
             {
                 D3DFeatureLevel.Level111,
@@ -47,6 +48,8 @@
             {
                 device.QueryInterface(out this.debug);
             }
+
+            Console.WriteLine("D3D11 Init ... Done");
         }
 
         public D3DFeatureLevel Level { get; }

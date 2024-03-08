@@ -3,6 +3,8 @@
   "ApiName": "D3D11",
   "LibName": "d3d11",
   "Usings": [ "Hexa.NET.DXGI", "Hexa.NET.D3DCommon" ],
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "GenerateDelegates": false,
   "BoolType": 1,
@@ -29,6 +31,9 @@
     "object",
     "event"
   ],
+  "NameMappings": {
+    "d3d11": "D3D11"
+  },
   "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",
@@ -81,8 +86,8 @@
     "IID": "Guid",
     "APP_DEPRECATED_HRESULT": "HResult",
     "SECURITY_ATTRIBUTES": "SecurityAttributes",
-    "D3D11_TRACE_COMPONENT_MASK": "uint",
-    "D3D11_TRACE_MISC_OPERATIONS_MASK": "uint",
+    "D3D11_TRACE_COMPONENT_MASK": "byte",
+    "D3D11_TRACE_MISC_OPERATIONS_MASK": "ushort",
     "ID3DBlob": "ID3D10Blob"
   },
   "IgnoredEnums": [

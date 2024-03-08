@@ -2,6 +2,8 @@
   "Namespace": "Hexa.NET.SDL2",
   "ApiName": "SDL",
   "LibName": "SDL2",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "ConstantNamingConvention": "Unknown",
   "KnownConstantNames": {

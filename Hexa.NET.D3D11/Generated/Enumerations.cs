@@ -15,14972 +15,4813 @@ using HexaGen.Runtime.COM;
 
 namespace Hexa.NET.D3D11
 {
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_USAGE")]
-	public enum D3D11Usage
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11Usage
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_DEFAULT")]
-		Default = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_IMMUTABLE")]
-		Immutable = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_DYNAMIC")]
-		Dynamic = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_USAGE_STAGING")]
-		Staging = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		Default = unchecked(0),
 
+		/// <summary>		/// To be documented.		/// </summary>		Immutable = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Dynamic = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Staging = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ResourceDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Buffer = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1D = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3D = unchecked(4),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11UavDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Buffer = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1D = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1Darray = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Darray = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3D = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11RtvDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Buffer = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1D = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1Darray = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Darray = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Dms = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Dmsarray = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3D = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11DsvDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1D = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1Darray = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Darray = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Dms = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Dmsarray = unchecked(6),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11InputClassification
+	{
+		/// <summary>		/// To be documented.		/// </summary>		PerVertexData = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		PerInstanceData = unchecked(1),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0002 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11Blend
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Zero = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		One = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		SrcColor = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvSrcColor = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		SrcAlpha = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvSrcAlpha = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestAlpha = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvDestAlpha = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestColor = unchecked(9),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvDestColor = unchecked(10),
+
+		/// <summary>		/// To be documented.		/// </summary>		SrcAlphaSat = unchecked(11),
+
+		/// <summary>		/// To be documented.		/// </summary>		BlendFactor = unchecked(14),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvBlendFactor = unchecked(15),
+
+		/// <summary>		/// To be documented.		/// </summary>		SRC1Color = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvSRC1Color = unchecked(17),
+
+		/// <summary>		/// To be documented.		/// </summary>		SRC1Alpha = unchecked(18),
+
+		/// <summary>		/// To be documented.		/// </summary>		InvSRC1Alpha = unchecked(19),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11BlendOp
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Add = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Subtract = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		RevSubtract = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Min = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Max = unchecked(5),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11DepthWriteMask
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Zero = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		All = unchecked(1),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0001 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11ComparisonFunc
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Never = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Less = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Equal = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		LessEqual = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Greater = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		NotEqual = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		GreaterEqual = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		Always = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11StencilOp
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Keep = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Zero = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Replace = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		IncrSat = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecrSat = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		Invert = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		Incr = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		Decr = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11FillMode
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Wireframe = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Solid = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CullMode
+	{
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Front = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Back = unchecked(3),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0021 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11Filter
+	{
+		/// <summary>		/// To be documented.		/// </summary>		MinMagMipPoint = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinMagPointMipLinear = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinPointMagLinearMipPoint = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinPointMagMipLinear = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinLinearMagMipPoint = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinLinearMagPointMipLinear = unchecked(17),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinMagLinearMipPoint = unchecked(20),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinMagMipLinear = unchecked(21),
+
+		/// <summary>		/// To be documented.		/// </summary>		Anisotropic = unchecked(85),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinMagMipPoint = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinMagPointMipLinear = unchecked(129),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinPointMagLinearMipPoint = unchecked(132),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinPointMagMipLinear = unchecked(133),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinLinearMagMipPoint = unchecked(144),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinLinearMagPointMipLinear = unchecked(145),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinMagLinearMipPoint = unchecked(148),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonMinMagMipLinear = unchecked(149),
+
+		/// <summary>		/// To be documented.		/// </summary>		ComparisonAnisotropic = unchecked(213),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinMagMipPoint = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinMagPointMipLinear = unchecked(257),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinPointMagLinearMipPoint = unchecked(260),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinPointMagMipLinear = unchecked(261),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinLinearMagMipPoint = unchecked(272),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinLinearMagPointMipLinear = unchecked(273),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinMagLinearMipPoint = unchecked(276),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumMinMagMipLinear = unchecked(277),
+
+		/// <summary>		/// To be documented.		/// </summary>		MinimumAnisotropic = unchecked(341),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinMagMipPoint = unchecked(384),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinMagPointMipLinear = unchecked(385),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinPointMagLinearMipPoint = unchecked(388),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinPointMagMipLinear = unchecked(389),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinLinearMagMipPoint = unchecked(400),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinLinearMagPointMipLinear = unchecked(401),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinMagLinearMipPoint = unchecked(404),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumMinMagMipLinear = unchecked(405),
+
+		/// <summary>		/// To be documented.		/// </summary>		MaximumAnisotropic = unchecked(469),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TextureAddressMode
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Wrap = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Mirror = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Clamp = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Border = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		MirrorOnce = unchecked(5),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11Query
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Event = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Occlusion = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Timestamp = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		TimestampDisjoint = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		PipelineStatistics = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		OcclusionPredicate = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoStatistics = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoOverflowPredicate = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoStatisticsSTREAM0 = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoOverflowPredicateSTREAM0 = unchecked(9),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoStatisticsSTREAM1 = unchecked(10),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoOverflowPredicateSTREAM1 = unchecked(11),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoStatisticsSTREAM2 = unchecked(12),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoOverflowPredicateSTREAM2 = unchecked(13),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoStatisticsSTREAM3 = unchecked(14),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoOverflowPredicateSTREAM3 = unchecked(15),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11Counter
+	{
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDependent0 = unchecked(1073741824),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11Map
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Read = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Write = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		ReadWrite = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		WriteDiscard = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		WriteNoOverwrite = unchecked(5),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DPrimitiveTopology
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Pointlist = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Linelist = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Linestrip = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Trianglelist = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Trianglestrip = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		LinelistAdj = unchecked(10),
+
+		/// <summary>		/// To be documented.		/// </summary>		LinestripAdj = unchecked(11),
+
+		/// <summary>		/// To be documented.		/// </summary>		TrianglelistAdj = unchecked(12),
+
+		/// <summary>		/// To be documented.		/// </summary>		TrianglestripAdj = unchecked(13),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology1ControlPointPatchlist = unchecked(33),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology2ControlPointPatchlist = unchecked(34),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology3ControlPointPatchlist = unchecked(35),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology4ControlPointPatchlist = unchecked(36),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology5ControlPointPatchlist = unchecked(37),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology6ControlPointPatchlist = unchecked(38),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology7ControlPointPatchlist = unchecked(39),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology8ControlPointPatchlist = unchecked(40),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology9ControlPointPatchlist = unchecked(41),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology10ControlPointPatchlist = unchecked(42),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology11ControlPointPatchlist = unchecked(43),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology12ControlPointPatchlist = unchecked(44),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology13ControlPointPatchlist = unchecked(45),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology14ControlPointPatchlist = unchecked(46),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology15ControlPointPatchlist = unchecked(47),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology16ControlPointPatchlist = unchecked(48),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology17ControlPointPatchlist = unchecked(49),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology18ControlPointPatchlist = unchecked(50),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology19ControlPointPatchlist = unchecked(51),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology20ControlPointPatchlist = unchecked(52),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology21ControlPointPatchlist = unchecked(53),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology22ControlPointPatchlist = unchecked(54),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology23ControlPointPatchlist = unchecked(55),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology24ControlPointPatchlist = unchecked(56),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology25ControlPointPatchlist = unchecked(57),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology26ControlPointPatchlist = unchecked(58),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology27ControlPointPatchlist = unchecked(59),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology28ControlPointPatchlist = unchecked(60),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology29ControlPointPatchlist = unchecked(61),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology30ControlPointPatchlist = unchecked(62),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology31ControlPointPatchlist = unchecked(63),
+
+		/// <summary>		/// To be documented.		/// </summary>		Topology32ControlPointPatchlist = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyUndefined = Undefined,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyPointlist = Pointlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyLinelist = Linelist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyLinestrip = Linestrip,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyTrianglelist = Trianglelist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyTrianglestrip = Trianglestrip,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyLinelistAdj = LinelistAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyLinestripAdj = LinestripAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyUndefined = Undefined,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyPointlist = Pointlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyLinelist = Linelist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyLinestrip = Linestrip,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyTrianglelist = Trianglelist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyTrianglestrip = Trianglestrip,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyLinelistAdj = LinelistAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyLinestripAdj = LinestripAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology1ControlPointPatchlist = Topology1ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology2ControlPointPatchlist = Topology2ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology3ControlPointPatchlist = Topology3ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology4ControlPointPatchlist = Topology4ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology5ControlPointPatchlist = Topology5ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology6ControlPointPatchlist = Topology6ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology7ControlPointPatchlist = Topology7ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology8ControlPointPatchlist = Topology8ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology9ControlPointPatchlist = Topology9ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology10ControlPointPatchlist = Topology10ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology11ControlPointPatchlist = Topology11ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology12ControlPointPatchlist = Topology12ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology13ControlPointPatchlist = Topology13ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology14ControlPointPatchlist = Topology14ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology15ControlPointPatchlist = Topology15ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology16ControlPointPatchlist = Topology16ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology17ControlPointPatchlist = Topology17ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology18ControlPointPatchlist = Topology18ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology19ControlPointPatchlist = Topology19ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology20ControlPointPatchlist = Topology20ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology21ControlPointPatchlist = Topology21ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology22ControlPointPatchlist = Topology22ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology23ControlPointPatchlist = Topology23ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology24ControlPointPatchlist = Topology24ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology25ControlPointPatchlist = Topology25ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology26ControlPointPatchlist = Topology26ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology27ControlPointPatchlist = Topology27ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology28ControlPointPatchlist = Topology28ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology29ControlPointPatchlist = Topology29ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology30ControlPointPatchlist = Topology30ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology31ControlPointPatchlist = Topology31ControlPointPatchlist,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11PrimitiveTopology32ControlPointPatchlist = Topology32ControlPointPatchlist,
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11DeviceContextType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Immediate = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Deferred = unchecked(1),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CounterType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		FLOAT32 = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		UINT16 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		UINT32 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		UINT64 = unchecked(3),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0029 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11Feature
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Threading = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Doubles = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		FormatSupport = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		FormatSUPPORT2 = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10XHardwareOptions = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11Options = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		ArchitectureInfo = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D9Options = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderMinPrecisionSupport = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D9ShadowSupport = unchecked(9),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11OPTIONS1 = unchecked(10),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D9SimpleInstancingSupport = unchecked(11),
+
+		/// <summary>		/// To be documented.		/// </summary>		MarkerSupport = unchecked(12),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D9OPTIONS1 = unchecked(13),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11OPTIONS2 = unchecked(14),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11OPTIONS3 = unchecked(15),
+
+		/// <summary>		/// To be documented.		/// </summary>		GpuVirtualAddressSupport = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11OPTIONS4 = unchecked(17),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderCache = unchecked(18),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11OPTIONS5 = unchecked(19),
+
+		/// <summary>		/// To be documented.		/// </summary>		Displayable = unchecked(20),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoFrameFormat
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Progressive = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		InterlacedTopFieldFirst = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		InterlacedBottomFieldFirst = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoUsage
+	{
+		/// <summary>		/// To be documented.		/// </summary>		PlaybackNormal = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		OptimalSpeed = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		OptimalQuality = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorFilter
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Brightness = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Contrast = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Hue = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Saturation = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		NoiseReduction = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		EdgeEnhancement = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		AnamorphicScaling = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		StereoAdjustment = unchecked(7),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0035 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11VdovDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(1),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0036 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11VpivDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(1),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0037 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11VpovDimension
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2Darray = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoDecoderBufferType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		PictureParameters = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		MacroblockControl = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResidualDifference = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeblockingControl = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		InverseQuantizationMatrix = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		SliceControl = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		Bitstream = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		MotionVector = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		FilmGrain = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorAlphaFillMode
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Opaque = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Background = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Destination = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		SourceStream = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorOutputRate
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Normal = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Half = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Custom = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorStereoFormat
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Mono = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Horizontal = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Vertical = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Separate = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		MonoOffset = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		RowInterleaved = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		ColumnInterleaved = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		Checkerboard = unchecked(7),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorStereoFlipMode
+	{
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		FRAME0 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		FRAME1 = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorRotation
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Identity = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Rotation90 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Rotation180 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Rotation270 = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11AuthenticatedChannelType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		D3D11 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		DriverSoftware = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		DriverHardware = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11BindFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		VertexBuffer = unchecked((int)0x1L),
+
+		/// <summary>		/// To be documented.		/// </summary>		IndexBuffer = unchecked((int)0x2L),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConstantBuffer = unchecked((int)0x4L),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderResource = unchecked((int)0x8L),
+
+		/// <summary>		/// To be documented.		/// </summary>		StreamOutput = unchecked((int)0x10L),
+
+		/// <summary>		/// To be documented.		/// </summary>		RenderTarget = unchecked((int)0x20L),
+
+		/// <summary>		/// To be documented.		/// </summary>		DepthStencil = unchecked((int)0x40L),
+
+		/// <summary>		/// To be documented.		/// </summary>		UnorderedAccess = unchecked((int)0x80L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Decoder = unchecked((int)0x200L),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoEncoder = unchecked((int)0x400L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CpuAccessFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Write = unchecked((int)0x10000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Read = unchecked((int)0x20000L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ResourceMiscFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		GenerateMips = unchecked((int)0x1L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Shared = unchecked((int)0x2L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texturecube = unchecked((int)0x4L),
+
+		/// <summary>		/// To be documented.		/// </summary>		DrawindirectArgs = unchecked((int)0x10L),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferAllowRawViews = unchecked((int)0x20L),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferStructured = unchecked((int)0x40L),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceClamp = unchecked((int)0x80L),
+
+		/// <summary>		/// To be documented.		/// </summary>		SharedKeyedmutex = unchecked((int)0x100L),
+
+		/// <summary>		/// To be documented.		/// </summary>		GdiCompatible = unchecked((int)0x200L),
+
+		/// <summary>		/// To be documented.		/// </summary>		SharedNthandle = unchecked((int)0x800L),
+
+		/// <summary>		/// To be documented.		/// </summary>		RestrictedContent = unchecked((int)0x1000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		RestrictSharedResource = unchecked((int)0x2000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		RestrictSharedResourceDriver = unchecked((int)0x4000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Guarded = unchecked((int)0x8000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		TilePool = unchecked((int)0x20000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tiled = unchecked((int)0x40000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		HwProtected = unchecked((int)0x80000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		SharedDisplayable = unchecked((int)0x100000L),
+
+		/// <summary>		/// To be documented.		/// </summary>		SharedExclusiveWriter = unchecked((int)0x200000L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11MapFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		DoNotWait = unchecked((int)0x100000L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11RaiseFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		DriverInternalError = unchecked((int)0x1L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ClearFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Depth = unchecked((int)0x1L),
+
+		/// <summary>		/// To be documented.		/// </summary>		Stencil = unchecked((int)0x2L),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ColorWriteEnable
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Red = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Green = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Blue = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Alpha = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		All = unchecked(15),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0009 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11TexturecubeFace
+	{
+		/// <summary>		/// To be documented.		/// </summary>		PositiveX = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegativeX = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		PositiveY = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegativeY = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		PositiveZ = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegativeZ = unchecked(5),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11BufferexSrvFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Raw = unchecked(1),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11DsvFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		ReadOnlyDepth = unchecked((int)0x1L),
+
+		/// <summary>		/// To be documented.		/// </summary>		ReadOnlyStencil = unchecked((int)0x2L),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0013 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11BufferUavFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Raw = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Append = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Counter = unchecked(4),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11FilterType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Point = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Linear = unchecked(1),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11FilterReductionType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Standard = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Comparison = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Minimum = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Maximum = unchecked(3),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0022 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11FormatSupport
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Buffer = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		IaVertexBuffer = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		IaIndexBuffer = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		SoBuffer = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1D = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2D = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3D = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texturecube = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderLoad = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderSample = unchecked(512),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderSampleComparison = unchecked(1024),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderSampleMonoText = unchecked(2048),
+
+		/// <summary>		/// To be documented.		/// </summary>		Mip = unchecked(4096),
+
+		/// <summary>		/// To be documented.		/// </summary>		MipAutogen = unchecked(8192),
+
+		/// <summary>		/// To be documented.		/// </summary>		RenderTarget = unchecked(16384),
+
+		/// <summary>		/// To be documented.		/// </summary>		Blendable = unchecked(32768),
+
+		/// <summary>		/// To be documented.		/// </summary>		DepthStencil = unchecked(65536),
+
+		/// <summary>		/// To be documented.		/// </summary>		CpuLockable = unchecked(131072),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultisampleResolve = unchecked(262144),
+
+		/// <summary>		/// To be documented.		/// </summary>		Display = unchecked(524288),
+
+		/// <summary>		/// To be documented.		/// </summary>		CastWithinBitLayout = unchecked(1048576),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultisampleRendertarget = unchecked(2097152),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultisampleLoad = unchecked(4194304),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderGather = unchecked(8388608),
+
+		/// <summary>		/// To be documented.		/// </summary>		BackBufferCast = unchecked(16777216),
+
+		/// <summary>		/// To be documented.		/// </summary>		TypedUnorderedAccessView = unchecked(33554432),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderGatherComparison = unchecked(67108864),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderOutput = unchecked(134217728),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoProcessorOutput = unchecked(268435456),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoProcessorInput = unchecked(536870912),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoEncoder = unchecked(1073741824),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11FormatSupport2
+	{
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicAdd = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicBitwiseOps = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicCompareStoreOrCompareExchange = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicExchange = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicSignedMinOrMax = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavAtomicUnsignedMinOrMax = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavTypedLoad = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavTypedStore = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		OutputMergerLogicOp = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tiled = unchecked(512),
+
+		/// <summary>		/// To be documented.		/// </summary>		Shareable = unchecked(1024),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultiplaneOverlay = unchecked(16384),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0023 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11AsyncGetdataFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Donotflush = unchecked(1),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11QueryMiscFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Predicatehint = unchecked(1),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0026 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11StandardMultisampleQualityLevels
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Pattern = unchecked((int)0xffffffff),
+
+		/// <summary>		/// To be documented.		/// </summary>		CenterMultisamplePattern = unchecked((int)0xfffffffe),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ShaderMinPrecisionSupport
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Precision10Bit = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Precision16Bit = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TiledResourcesTier
+	{
+		/// <summary>		/// To be documented.		/// </summary>		NotSupported = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier1 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier2 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier3 = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ConservativeRasterizationTier
+	{
+		/// <summary>		/// To be documented.		/// </summary>		NotSupported = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier1 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier2 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier3 = unchecked(3),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ShaderCacheSupportFlags
+	{
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		AutomaticInprocCache = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		AutomaticDiskCache = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11SharedResourceTier
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Tier0 = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier1 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier2 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Tier3 = unchecked(3),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0031 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11VideoProcessorFormatSupport
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Input = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Output = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorDeviceCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		LinearSpace = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Xvycc = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		RgbRangeConversion = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		YcbcrMatrixConversion = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		NominalRange = unchecked(16),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorFeatureCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		AlphaFill = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Constriction = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		LumaKey = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		AlphaPalette = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		Legacy = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		Stereo = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		Rotation = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		AlphaStream = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		PixelAspectRatio = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		Mirror = unchecked(512),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderUsage = unchecked(1024),
+
+		/// <summary>		/// To be documented.		/// </summary>		MetadataHDR10 = unchecked(2048),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorFilterCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Brightness = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Contrast = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Hue = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Saturation = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		NoiseReduction = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		EdgeEnhancement = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		AnamorphicScaling = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		StereoAdjustment = unchecked(128),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorFormatCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		RgbInterlaced = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		RgbProcamp = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		RgbLumaKey = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		PaletteInterlaced = unchecked(8),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorAutoStreamCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Denoise = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Deringing = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		EdgeEnhancement = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		ColorCorrection = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		FleshToneMapping = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImageStabilization = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		SuperResolution = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		AnamorphicScaling = unchecked(128),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorStereoCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		MonoOffset = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		RowInterleaved = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		ColumnInterleaved = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Checkerboard = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		FlipMode = unchecked(16),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorProcessorCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		DeinterlaceBlend = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeinterlaceBob = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeinterlaceAdaptive = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeinterlaceMotionCompensation = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		InverseTelecine = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		FrameRateConversion = unchecked(32),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorItelecineCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Caps32 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps22 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps2224 = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps2332 = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps32322 = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps55 = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps64 = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps87 = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		Caps222222222223 = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		Other = unchecked((int)0x80000000),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ContentProtectionCaps
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Software = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Hardware = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		ProtectionAlwaysOn = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		PartialDecryption = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		ContentKey = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		FreshenSessionKey = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptedReadBack = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptedReadBackKey = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		SequentialCtrIv = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptSlicedataOnly = unchecked(512),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionBlt = unchecked(1024),
+
+		/// <summary>		/// To be documented.		/// </summary>		HardwareProtectUncompressed = unchecked(2048),
+
+		/// <summary>		/// To be documented.		/// </summary>		HardwareProtectedMemoryPageable = unchecked(4096),
+
+		/// <summary>		/// To be documented.		/// </summary>		HardwareTeardown = unchecked(8192),
+
+		/// <summary>		/// To be documented.		/// </summary>		HardwareDrmCommunication = unchecked(16384),
+
+		/// <summary>		/// To be documented.		/// </summary>		HardwareDrmCommunicationMultiThreaded = unchecked(32768),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorNominalRange
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Range16235 = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Range0255 = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11AuthenticatedProcessIdentifierType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		idtypeUnknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		idtypeDwm = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		idtypeHandle = unchecked(2),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11BusType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Other = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Pci = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Pcix = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Pciexpress = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Agp = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierInsideOfChipset = unchecked(65536),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierTracksOnMotherBoardToChip = unchecked(131072),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierTracksOnMotherBoardToSocket = unchecked(196608),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierDaughterBoardConnector = unchecked(262144),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierDaughterBoardConnectorInsideOfNuae = unchecked(327680),
+
+		/// <summary>		/// To be documented.		/// </summary>		ImplModifierNonStandard = unchecked((int)0x80000000),
+
+	}
+
+	/// <summary>	/// interface __MIDL_itf_d3d11_0000_0041 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11CreateDeviceFlag
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Singlethreaded = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Debug = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		SwitchToRef = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		PreventInternalThreadingOptimizations = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		BgraSupport = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		Debuggable = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		PreventAlteringLayerSettingsFromRegistry = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		DisableGpuTimeout = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoSupport = unchecked(2048),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11RldoFlags
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Summary = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Detail = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		IgnoreInternal = unchecked(4),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11MessageCategory
+	{
+		/// <summary>		/// To be documented.		/// </summary>		ApplicationDefined = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Miscellaneous = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Initialization = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Cleanup = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Compilation = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		StateCreation = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		StateSetting = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		StateGetting = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceManipulation = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		Execution = unchecked(9),
+
+		/// <summary>		/// To be documented.		/// </summary>		Shader = unchecked(10),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11MessageSeverity
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Corruption = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		Error = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		Warning = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		Info = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Message = unchecked(4),
+
+	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11MessageId
+	{
+		/// <summary>		/// To be documented.		/// </summary>		Unknown = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetvertexbuffersHazard = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetindexbufferHazard = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVssetshaderresourcesHazard = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVssetconstantbuffersHazard = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGssetshaderresourcesHazard = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGssetconstantbuffersHazard = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePssetshaderresourcesHazard = unchecked(7),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePssetconstantbuffersHazard = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsHazard = unchecked(9),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSosettargetsHazard = unchecked(10),
+
+		/// <summary>		/// To be documented.		/// </summary>		StringFromApplication = unchecked(11),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedThis = unchecked(12),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER1 = unchecked(13),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER2 = unchecked(14),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER3 = unchecked(15),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER4 = unchecked(16),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER5 = unchecked(17),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER6 = unchecked(18),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER7 = unchecked(19),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER8 = unchecked(20),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER9 = unchecked(21),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER10 = unchecked(22),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER11 = unchecked(23),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER12 = unchecked(24),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER13 = unchecked(25),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER14 = unchecked(26),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedPARAMETER15 = unchecked(27),
+
+		/// <summary>		/// To be documented.		/// </summary>		CorruptedMultithreading = unchecked(28),
+
+		/// <summary>		/// To be documented.		/// </summary>		MessageReportingOutofmemory = unchecked(29),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetinputlayoutUnbinddeletingobject = unchecked(30),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetvertexbuffersUnbinddeletingobject = unchecked(31),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetindexbufferUnbinddeletingobject = unchecked(32),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetshaderUnbinddeletingobject = unchecked(33),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetshaderresourcesUnbinddeletingobject = unchecked(34),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetconstantbuffersUnbinddeletingobject = unchecked(35),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetsamplersUnbinddeletingobject = unchecked(36),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetshaderUnbinddeletingobject = unchecked(37),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetshaderresourcesUnbinddeletingobject = unchecked(38),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetconstantbuffersUnbinddeletingobject = unchecked(39),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetsamplersUnbinddeletingobject = unchecked(40),
+
+		/// <summary>		/// To be documented.		/// </summary>		SosettargetsUnbinddeletingobject = unchecked(41),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetshaderUnbinddeletingobject = unchecked(42),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetshaderresourcesUnbinddeletingobject = unchecked(43),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetconstantbuffersUnbinddeletingobject = unchecked(44),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetsamplersUnbinddeletingobject = unchecked(45),
+
+		/// <summary>		/// To be documented.		/// </summary>		RssetstateUnbinddeletingobject = unchecked(46),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetblendstateUnbinddeletingobject = unchecked(47),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetdepthstencilstateUnbinddeletingobject = unchecked(48),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetrendertargetsUnbinddeletingobject = unchecked(49),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetpredicationUnbinddeletingobject = unchecked(50),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetprivatedataMoredata = unchecked(51),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetprivatedataInvalidfreedata = unchecked(52),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetprivatedataInvalidiunknown = unchecked(53),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetprivatedataInvalidflags = unchecked(54),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetprivatedataChangingparams = unchecked(55),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetprivatedataOutofmemory = unchecked(56),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferUnrecognizedformat = unchecked(57),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidsamples = unchecked(58),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferUnrecognizedusage = unchecked(59),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferUnrecognizedbindflags = unchecked(60),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferUnrecognizedcpuaccessflags = unchecked(61),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferUnrecognizedmiscflags = unchecked(62),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidcpuaccessflags = unchecked(63),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidbindflags = unchecked(64),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidinitialdata = unchecked(65),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvaliddimensions = unchecked(66),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidmiplevels = unchecked(67),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidmiscflags = unchecked(68),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidargReturn = unchecked(69),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferOutofmemoryReturn = unchecked(70),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferNulldesc = unchecked(71),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidconstantbufferbindings = unchecked(72),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferLargeallocation = unchecked(73),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnrecognizedformat = unchecked(74),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnsupportedformat = unchecked(75),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidsamples = unchecked(76),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnrecognizedusage = unchecked(77),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnrecognizedbindflags = unchecked(78),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnrecognizedcpuaccessflags = unchecked(79),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DUnrecognizedmiscflags = unchecked(80),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidcpuaccessflags = unchecked(81),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidbindflags = unchecked(82),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidinitialdata = unchecked(83),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvaliddimensions = unchecked(84),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidmiplevels = unchecked(85),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidmiscflags = unchecked(86),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidargReturn = unchecked(87),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DOutofmemoryReturn = unchecked(88),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DNulldesc = unchecked(89),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DLargeallocation = unchecked(90),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnrecognizedformat = unchecked(91),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnsupportedformat = unchecked(92),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidsamples = unchecked(93),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnrecognizedusage = unchecked(94),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnrecognizedbindflags = unchecked(95),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnrecognizedcpuaccessflags = unchecked(96),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DUnrecognizedmiscflags = unchecked(97),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidcpuaccessflags = unchecked(98),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidbindflags = unchecked(99),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidinitialdata = unchecked(100),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvaliddimensions = unchecked(101),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidmiplevels = unchecked(102),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidmiscflags = unchecked(103),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidargReturn = unchecked(104),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DOutofmemoryReturn = unchecked(105),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DNulldesc = unchecked(106),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DLargeallocation = unchecked(107),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnrecognizedformat = unchecked(108),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnsupportedformat = unchecked(109),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidsamples = unchecked(110),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnrecognizedusage = unchecked(111),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnrecognizedbindflags = unchecked(112),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnrecognizedcpuaccessflags = unchecked(113),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DUnrecognizedmiscflags = unchecked(114),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidcpuaccessflags = unchecked(115),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidbindflags = unchecked(116),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidinitialdata = unchecked(117),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvaliddimensions = unchecked(118),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidmiplevels = unchecked(119),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidmiscflags = unchecked(120),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DInvalidargReturn = unchecked(121),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DOutofmemoryReturn = unchecked(122),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DNulldesc = unchecked(123),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture3DLargeallocation = unchecked(124),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewUnrecognizedformat = unchecked(125),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvaliddesc = unchecked(126),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidformat = unchecked(127),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvaliddimensions = unchecked(128),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidresource = unchecked(129),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewToomanyobjects = unchecked(130),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidargReturn = unchecked(131),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewOutofmemoryReturn = unchecked(132),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewUnrecognizedformat = unchecked(133),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewUnsupportedformat = unchecked(134),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvaliddesc = unchecked(135),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvalidformat = unchecked(136),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvaliddimensions = unchecked(137),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvalidresource = unchecked(138),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewToomanyobjects = unchecked(139),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvalidargReturn = unchecked(140),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewOutofmemoryReturn = unchecked(141),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewUnrecognizedformat = unchecked(142),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvaliddesc = unchecked(143),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvalidformat = unchecked(144),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvaliddimensions = unchecked(145),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvalidresource = unchecked(146),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewToomanyobjects = unchecked(147),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvalidargReturn = unchecked(148),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewOutofmemoryReturn = unchecked(149),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutOutofmemory = unchecked(150),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutToomanyelements = unchecked(151),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidformat = unchecked(152),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutIncompatibleformat = unchecked(153),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidslot = unchecked(154),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidinputslotclass = unchecked(155),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutSteprateslotclassmismatch = unchecked(156),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidslotclasschange = unchecked(157),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidstepratechange = unchecked(158),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutInvalidalignment = unchecked(159),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutDuplicatesemantic = unchecked(160),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutUnparseableinputsignature = unchecked(161),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutNullsemantic = unchecked(162),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutMissingelement = unchecked(163),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutNulldesc = unchecked(164),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevertexshaderOutofmemory = unchecked(165),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevertexshaderInvalidshaderbytecode = unchecked(166),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevertexshaderInvalidshadertype = unchecked(167),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderOutofmemory = unchecked(168),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderInvalidshaderbytecode = unchecked(169),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderInvalidshadertype = unchecked(170),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputOutofmemory = unchecked(171),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidshaderbytecode = unchecked(172),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidshadertype = unchecked(173),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidnumentries = unchecked(174),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputOutputstreamstrideunused = unchecked(175),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputUnexpecteddecl = unchecked(176),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputExpecteddecl = unchecked(177),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputOutputslot0Expected = unchecked(178),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidoutputslot = unchecked(179),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputOnlyoneelementperslot = unchecked(180),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidcomponentcount = unchecked(181),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidstartcomponentandcomponentcount = unchecked(182),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidgapdefinition = unchecked(183),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputRepeatedoutput = unchecked(184),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidoutputstreamstride = unchecked(185),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputMissingsemantic = unchecked(186),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputMaskmismatch = unchecked(187),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputCanthaveonlygaps = unchecked(188),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputDecltoocomplex = unchecked(189),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputMissingoutputsignature = unchecked(190),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatepixelshaderOutofmemory = unchecked(191),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatepixelshaderInvalidshaderbytecode = unchecked(192),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatepixelshaderInvalidshadertype = unchecked(193),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvalidfillmode = unchecked(194),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvalidcullmode = unchecked(195),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvaliddepthbiasclamp = unchecked(196),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvalidslopescaleddepthbias = unchecked(197),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateToomanyobjects = unchecked(198),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateNulldesc = unchecked(199),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvaliddepthwritemask = unchecked(200),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvaliddepthfunc = unchecked(201),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidfrontfacestencilfailop = unchecked(202),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidfrontfacestencilzfailop = unchecked(203),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidfrontfacestencilpassop = unchecked(204),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidfrontfacestencilfunc = unchecked(205),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidbackfacestencilfailop = unchecked(206),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidbackfacestencilzfailop = unchecked(207),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidbackfacestencilpassop = unchecked(208),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateInvalidbackfacestencilfunc = unchecked(209),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateToomanyobjects = unchecked(210),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateNulldesc = unchecked(211),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidsrcblend = unchecked(212),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvaliddestblend = unchecked(213),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidblendop = unchecked(214),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidsrcblendalpha = unchecked(215),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvaliddestblendalpha = unchecked(216),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidblendopalpha = unchecked(217),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidrendertargetwritemask = unchecked(218),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateToomanyobjects = unchecked(219),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNulldesc = unchecked(220),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidfilter = unchecked(221),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidaddressu = unchecked(222),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidaddressv = unchecked(223),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidaddressw = unchecked(224),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidmiplodbias = unchecked(225),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidmaxanisotropy = unchecked(226),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidcomparisonfunc = unchecked(227),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidminlod = unchecked(228),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateInvalidmaxlod = unchecked(229),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateToomanyobjects = unchecked(230),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateNulldesc = unchecked(231),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateInvalidquery = unchecked(232),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateInvalidmiscflags = unchecked(233),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateUnexpectedmiscflag = unchecked(234),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateNulldesc = unchecked(235),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetprimitivetopologyTopologyUnrecognized = unchecked(236),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetprimitivetopologyTopologyUndefined = unchecked(237),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetvertexbuffersInvalidbuffer = unchecked(238),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetvertexbuffersOffsetTooLarge = unchecked(239),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetvertexbuffersBuffersEmpty = unchecked(240),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetindexbufferInvalidbuffer = unchecked(241),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetindexbufferFormatInvalid = unchecked(242),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetindexbufferOffsetTooLarge = unchecked(243),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetindexbufferOffsetUnaligned = unchecked(244),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVssetshaderresourcesViewsEmpty = unchecked(245),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetconstantbuffersInvalidbuffer = unchecked(246),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVssetconstantbuffersBuffersEmpty = unchecked(247),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVssetsamplersSamplersEmpty = unchecked(248),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGssetshaderresourcesViewsEmpty = unchecked(249),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetconstantbuffersInvalidbuffer = unchecked(250),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGssetconstantbuffersBuffersEmpty = unchecked(251),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGssetsamplersSamplersEmpty = unchecked(252),
+
+		/// <summary>		/// To be documented.		/// </summary>		SosettargetsInvalidbuffer = unchecked(253),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSosettargetsOffsetUnaligned = unchecked(254),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePssetshaderresourcesViewsEmpty = unchecked(255),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetconstantbuffersInvalidbuffer = unchecked(256),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePssetconstantbuffersBuffersEmpty = unchecked(257),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePssetsamplersSamplersEmpty = unchecked(258),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetviewportsInvalidviewport = unchecked(259),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetscissorrectsInvalidscissor = unchecked(260),
+
+		/// <summary>		/// To be documented.		/// </summary>		ClearrendertargetviewDenormflush = unchecked(261),
+
+		/// <summary>		/// To be documented.		/// </summary>		CleardepthstencilviewDenormflush = unchecked(262),
+
+		/// <summary>		/// To be documented.		/// </summary>		CleardepthstencilviewInvalid = unchecked(263),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIagetvertexbuffersBuffersEmpty = unchecked(264),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVsgetshaderresourcesViewsEmpty = unchecked(265),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVsgetconstantbuffersBuffersEmpty = unchecked(266),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceVsgetsamplersSamplersEmpty = unchecked(267),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGsgetshaderresourcesViewsEmpty = unchecked(268),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGsgetconstantbuffersBuffersEmpty = unchecked(269),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGsgetsamplersSamplersEmpty = unchecked(270),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSogettargetsBuffersEmpty = unchecked(271),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePsgetshaderresourcesViewsEmpty = unchecked(272),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePsgetconstantbuffersBuffersEmpty = unchecked(273),
+
+		/// <summary>		/// To be documented.		/// </summary>		DevicePsgetsamplersSamplersEmpty = unchecked(274),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRsgetviewportsViewportsEmpty = unchecked(275),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRsgetscissorrectsRectsEmpty = unchecked(276),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGeneratemipsResourceInvalid = unchecked(277),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvaliddestinationsubresource = unchecked(278),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvalidsourcesubresource = unchecked(279),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvalidsourcebox = unchecked(280),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvalidsource = unchecked(281),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvaliddestinationstate = unchecked(282),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionInvalidsourcestate = unchecked(283),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceInvalidsource = unchecked(284),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceInvaliddestinationstate = unchecked(285),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceInvalidsourcestate = unchecked(286),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatesubresourceInvaliddestinationsubresource = unchecked(287),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatesubresourceInvaliddestinationbox = unchecked(288),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatesubresourceInvaliddestinationstate = unchecked(289),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceResolvesubresourceDestinationInvalid = unchecked(290),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceResolvesubresourceDestinationSubresourceInvalid = unchecked(291),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceResolvesubresourceSourceInvalid = unchecked(292),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceResolvesubresourceSourceSubresourceInvalid = unchecked(293),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceResolvesubresourceFormatInvalid = unchecked(294),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferMapInvalidmaptype = unchecked(295),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferMapInvalidflags = unchecked(296),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferMapAlreadymapped = unchecked(297),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferMapDeviceremovedReturn = unchecked(298),
+
+		/// <summary>		/// To be documented.		/// </summary>		BufferUnmapNotmapped = unchecked(299),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DMapInvalidmaptype = unchecked(300),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DMapInvalidsubresource = unchecked(301),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DMapInvalidflags = unchecked(302),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DMapAlreadymapped = unchecked(303),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DMapDeviceremovedReturn = unchecked(304),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DUnmapInvalidsubresource = unchecked(305),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture1DUnmapNotmapped = unchecked(306),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DMapInvalidmaptype = unchecked(307),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DMapInvalidsubresource = unchecked(308),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DMapInvalidflags = unchecked(309),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DMapAlreadymapped = unchecked(310),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DMapDeviceremovedReturn = unchecked(311),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DUnmapInvalidsubresource = unchecked(312),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture2DUnmapNotmapped = unchecked(313),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DMapInvalidmaptype = unchecked(314),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DMapInvalidsubresource = unchecked(315),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DMapInvalidflags = unchecked(316),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DMapAlreadymapped = unchecked(317),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DMapDeviceremovedReturn = unchecked(318),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DUnmapInvalidsubresource = unchecked(319),
+
+		/// <summary>		/// To be documented.		/// </summary>		Texture3DUnmapNotmapped = unchecked(320),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckformatsupportFormatDeprecated = unchecked(321),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckmultisamplequalitylevelsFormatDeprecated = unchecked(322),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetexceptionmodeUnrecognizedflags = unchecked(323),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetexceptionmodeInvalidargReturn = unchecked(324),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetexceptionmodeDeviceremovedReturn = unchecked(325),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefSimulatingInfinitelyFastHardware = unchecked(326),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefThreadingMode = unchecked(327),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefUmdriverException = unchecked(328),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefKmdriverException = unchecked(329),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefHardwareException = unchecked(330),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefAccessingIndexableTempOutOfRange = unchecked(331),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefProblemParsingShader = unchecked(332),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefOutOfMemory = unchecked(333),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefInfo = unchecked(334),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexposOverflow = unchecked(335),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindexedIndexposOverflow = unchecked(336),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawinstancedVertexposOverflow = unchecked(337),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawinstancedInstanceposOverflow = unchecked(338),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindexedinstancedInstanceposOverflow = unchecked(339),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindexedinstancedIndexposOverflow = unchecked(340),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexShaderNotSet = unchecked(341),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageSemanticnameNotFound = unchecked(342),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageRegisterindex = unchecked(343),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageComponenttype = unchecked(344),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageRegistermask = unchecked(345),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageSystemvalue = unchecked(346),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageNeverwrittenAlwaysreads = unchecked(347),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexBufferNotSet = unchecked(348),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawInputlayoutNotSet = unchecked(349),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawConstantBufferNotSet = unchecked(350),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawConstantBufferTooSmall = unchecked(351),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawSamplerNotSet = unchecked(352),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawShaderresourceviewNotSet = unchecked(353),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawViewDimensionMismatch = unchecked(354),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexBufferStrideTooSmall = unchecked(355),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexBufferTooSmall = unchecked(356),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawIndexBufferNotSet = unchecked(357),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawIndexBufferFormatInvalid = unchecked(358),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawIndexBufferTooSmall = unchecked(359),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawGsInputPrimitiveMismatch = unchecked(360),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceReturnTypeMismatch = unchecked(361),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawPositionNotPresent = unchecked(362),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawOutputStreamNotSet = unchecked(363),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawBoundResourceMapped = unchecked(364),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawInvalidPrimitivetopology = unchecked(365),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexOffsetUnaligned = unchecked(366),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawVertexStrideUnaligned = unchecked(367),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawIndexOffsetUnaligned = unchecked(368),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawOutputStreamOffsetUnaligned = unchecked(369),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceFormatLdUnsupported = unchecked(370),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceFormatSampleUnsupported = unchecked(371),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceFormatSampleCUnsupported = unchecked(372),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceMultisampleUnsupported = unchecked(373),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawSoTargetsBoundWithoutSource = unchecked(374),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawSoStrideLargerThanBuffer = unchecked(375),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawOmRenderTargetDoesNotSupportBlending = unchecked(376),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawOmDualSourceBlendingCanOnlyHaveRenderTarget0 = unchecked(377),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRemovalProcessAtFault = unchecked(378),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRemovalProcessPossiblyAtFault = unchecked(379),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRemovalProcessNotAtFault = unchecked(380),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedResourceInvalidargReturn = unchecked(381),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedResourceOutofmemoryReturn = unchecked(382),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedResourceBadinterfaceReturn = unchecked(383),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawViewportNotSet = unchecked(384),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutTrailingDigitInSemantic = unchecked(385),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputTrailingDigitInSemantic = unchecked(386),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetviewportsDenormflush = unchecked(387),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetrendertargetsInvalidview = unchecked(388),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSettextfiltersizeInvaliddimensions = unchecked(389),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawSamplerMismatch = unchecked(390),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutTypeMismatch = unchecked(391),
+
+		/// <summary>		/// To be documented.		/// </summary>		BlendstateGetdescLegacy = unchecked(392),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderresourceviewGetdescLegacy = unchecked(393),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryOutofmemoryReturn = unchecked(394),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatepredicateOutofmemoryReturn = unchecked(395),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterOutofrangeCounter = unchecked(396),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterSimultaneousActiveCountersExhausted = unchecked(397),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterUnsupportedWellknownCounter = unchecked(398),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterOutofmemoryReturn = unchecked(399),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterNonexclusiveReturn = unchecked(400),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecounterNulldesc = unchecked(401),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckcounterOutofrangeCounter = unchecked(402),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckcounterUnsupportedWellknownCounter = unchecked(403),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetpredicationInvalidPredicateState = unchecked(404),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryBeginUnsupported = unchecked(405),
+
+		/// <summary>		/// To be documented.		/// </summary>		PredicateBeginDuringPredication = unchecked(406),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryBeginDuplicate = unchecked(407),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryBeginAbandoningPreviousResults = unchecked(408),
+
+		/// <summary>		/// To be documented.		/// </summary>		PredicateEndDuringPredication = unchecked(409),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryEndAbandoningPreviousResults = unchecked(410),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryEndWithoutBegin = unchecked(411),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryGetdataInvalidDatasize = unchecked(412),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryGetdataInvalidFlags = unchecked(413),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryGetdataInvalidCall = unchecked(414),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawPsOutputTypeMismatch = unchecked(415),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceFormatGatherUnsupported = unchecked(416),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawInvalidUseOfCenterMultisamplePattern = unchecked(417),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetvertexbuffersStrideTooLarge = unchecked(418),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetvertexbuffersInvalidrange = unchecked(419),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutEmptyLayout = unchecked(420),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawResourceSampleCountMismatch = unchecked(421),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveObjectSummary = unchecked(422),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveBuffer = unchecked(423),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture1D = unchecked(424),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture2D = unchecked(425),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture3D = unchecked(426),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveShaderresourceview = unchecked(427),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveRendertargetview = unchecked(428),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDepthstencilview = unchecked(429),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveVertexshader = unchecked(430),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveGeometryshader = unchecked(431),
+
+		/// <summary>		/// To be documented.		/// </summary>		LivePixelshader = unchecked(432),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveInputlayout = unchecked(433),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveSampler = unchecked(434),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveBlendstate = unchecked(435),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDepthstencilstate = unchecked(436),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveRasterizerstate = unchecked(437),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveQuery = unchecked(438),
+
+		/// <summary>		/// To be documented.		/// </summary>		LivePredicate = unchecked(439),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveCounter = unchecked(440),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDevice = unchecked(441),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveSwapchain = unchecked(442),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10MessagesEnd = unchecked(443),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10L9MessagesStart = unchecked(1048576),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilstateStencilNoTwoSided = unchecked(1048577),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateDepthbiasclampNotSupported = unchecked(1048578),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateNoComparisonSupport = unchecked(1048579),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateExcessiveAnisotropy = unchecked(1048580),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateBorderOutOfRange = unchecked(1048581),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetsamplersNotSupported = unchecked(1048582),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetsamplersTooManySamplers = unchecked(1048583),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetsamplersTooManySamplers = unchecked(1048584),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoArrays = unchecked(1048585),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoVbAndIbBind = unchecked(1048586),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoTexture1D = unchecked(1048587),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceDimensionOutOfRange = unchecked(1048588),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNotBindableAsShaderResource = unchecked(1048589),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetrendertargetsTooManyRenderTargets = unchecked(1048590),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetrendertargetsNoDifferingBitDepths = unchecked(1048591),
+
+		/// <summary>		/// To be documented.		/// </summary>		IasetvertexbuffersBadBufferIndex = unchecked(1048592),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetviewportsTooManyViewports = unchecked(1048593),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetprimitivetopologyAdjacencyUnsupported = unchecked(1048594),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetscissorrectsTooManyScissors = unchecked(1048595),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceOnlyTexture2DWithinGpuMemory = unchecked(1048596),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceNoTexture3DReadback = unchecked(1048597),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceNoTextureOnlyReadback = unchecked(1048598),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutUnsupportedFormat = unchecked(1048599),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNoAlphaToCoverage = unchecked(1048600),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateDepthclipenableMustBeTrue = unchecked(1048601),
+
+		/// <summary>		/// To be documented.		/// </summary>		DrawindexedStartindexlocationMustBePositive = unchecked(1048602),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewMustUseLowestLod = unchecked(1048603),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateMinlodMustNotBeFractional = unchecked(1048604),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateMaxlodMustBeFltMax = unchecked(1048605),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewFirstarraysliceMustBeZero = unchecked(1048606),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewCubesMustHave6Sides = unchecked(1048607),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNotBindableAsRenderTarget = unchecked(1048608),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoDwordIndexBuffer = unchecked(1048609),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceMsaaPrecludesShaderResource = unchecked(1048610),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourcePresentationPrecludesShaderResource = unchecked(1048611),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNoIndependentBlendEnable = unchecked(1048612),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNoIndependentWriteMasks = unchecked(1048613),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoStreamOut = unchecked(1048614),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceOnlyVbIbForBuffers = unchecked(1048615),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNoAutogenForVolumes = unchecked(1048616),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceDxgiFormatR8G8B8A8CannotBeShared = unchecked(1048617),
+
+		/// <summary>		/// To be documented.		/// </summary>		VsshaderresourcesNotSupported = unchecked(1048618),
+
+		/// <summary>		/// To be documented.		/// </summary>		GeometryShaderNotSupported = unchecked(1048619),
+
+		/// <summary>		/// To be documented.		/// </summary>		StreamOutNotSupported = unchecked(1048620),
+
+		/// <summary>		/// To be documented.		/// </summary>		TextFilterNotSupported = unchecked(1048621),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNoSeparateAlphaBlend = unchecked(1048622),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateNoMrtBlend = unchecked(1048623),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateOperationNotSupported = unchecked(1048624),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateNoMirroronce = unchecked(1048625),
+
+		/// <summary>		/// To be documented.		/// </summary>		DrawinstancedNotSupported = unchecked(1048626),
+
+		/// <summary>		/// To be documented.		/// </summary>		DrawindexedinstancedNotSupportedBelow93 = unchecked(1048627),
+
+		/// <summary>		/// To be documented.		/// </summary>		DrawindexedPointlistUnsupported = unchecked(1048628),
+
+		/// <summary>		/// To be documented.		/// </summary>		SetblendstateSampleMaskCannotBeZero = unchecked(1048629),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceDimensionExceedsFeatureLevelDefinition = unchecked(1048630),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceOnlySingleMipLevelDepthStencilSupported = unchecked(1048631),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceRssetscissorrectsNegativescissor = unchecked(1048632),
+
+		/// <summary>		/// To be documented.		/// </summary>		SlotZeroMustBeD3D10InputPerVertexData = unchecked(1048633),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateresourceNonPow2Mipmap = unchecked(1048634),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatesamplerstateBorderNotSupported = unchecked(1048635),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetrendertargetsNoSrgbMrt = unchecked(1048636),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopyresourceNo3DMismatchedUpdates = unchecked(1048637),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10L9MessagesEnd = unchecked(1048638),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11MessagesStart = unchecked(2097152),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedepthstencilviewInvalidflags = unchecked(2097153),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevertexshaderInvalidclasslinkage = unchecked(2097154),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderInvalidclasslinkage = unchecked(2097155),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidnumstreams = unchecked(2097156),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidstreamtorasterizer = unchecked(2097157),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputUnexpectedstreams = unchecked(2097158),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidclasslinkage = unchecked(2097159),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatepixelshaderInvalidclasslinkage = unchecked(2097160),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeferredcontextInvalidCommandlistflags = unchecked(2097161),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeferredcontextSinglethreaded = unchecked(2097162),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeferredcontextInvalidargReturn = unchecked(2097163),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeferredcontextInvalidCallReturn = unchecked(2097164),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeferredcontextOutofmemoryReturn = unchecked(2097165),
+
+		/// <summary>		/// To be documented.		/// </summary>		FinishdisplaylistOnimmediatecontext = unchecked(2097166),
+
+		/// <summary>		/// To be documented.		/// </summary>		FinishdisplaylistOutofmemoryReturn = unchecked(2097167),
+
+		/// <summary>		/// To be documented.		/// </summary>		FinishdisplaylistInvalidCallReturn = unchecked(2097168),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidstream = unchecked(2097169),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputUnexpectedentries = unchecked(2097170),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputUnexpectedstrides = unchecked(2097171),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreategeometryshaderwithstreamoutputInvalidnumstrides = unchecked(2097172),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHssetshaderresourcesHazard = unchecked(2097173),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHssetconstantbuffersHazard = unchecked(2097174),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetshaderresourcesUnbinddeletingobject = unchecked(2097175),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetconstantbuffersUnbinddeletingobject = unchecked(2097176),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatehullshaderInvalidcall = unchecked(2097177),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatehullshaderOutofmemory = unchecked(2097178),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatehullshaderInvalidshaderbytecode = unchecked(2097179),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatehullshaderInvalidshadertype = unchecked(2097180),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatehullshaderInvalidclasslinkage = unchecked(2097181),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHssetshaderresourcesViewsEmpty = unchecked(2097182),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetconstantbuffersInvalidbuffer = unchecked(2097183),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHssetconstantbuffersBuffersEmpty = unchecked(2097184),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHssetsamplersSamplersEmpty = unchecked(2097185),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHsgetshaderresourcesViewsEmpty = unchecked(2097186),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHsgetconstantbuffersBuffersEmpty = unchecked(2097187),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceHsgetsamplersSamplersEmpty = unchecked(2097188),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDssetshaderresourcesHazard = unchecked(2097189),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDssetconstantbuffersHazard = unchecked(2097190),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetshaderresourcesUnbinddeletingobject = unchecked(2097191),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetconstantbuffersUnbinddeletingobject = unchecked(2097192),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedomainshaderInvalidcall = unchecked(2097193),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedomainshaderOutofmemory = unchecked(2097194),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedomainshaderInvalidshaderbytecode = unchecked(2097195),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedomainshaderInvalidshadertype = unchecked(2097196),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedomainshaderInvalidclasslinkage = unchecked(2097197),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDssetshaderresourcesViewsEmpty = unchecked(2097198),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetconstantbuffersInvalidbuffer = unchecked(2097199),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDssetconstantbuffersBuffersEmpty = unchecked(2097200),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDssetsamplersSamplersEmpty = unchecked(2097201),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDsgetshaderresourcesViewsEmpty = unchecked(2097202),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDsgetconstantbuffersBuffersEmpty = unchecked(2097203),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDsgetsamplersSamplersEmpty = unchecked(2097204),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawHsXorDsMismatch = unchecked(2097205),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeferredContextRemovalProcessAtFault = unchecked(2097206),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindirectInvalidArgBuffer = unchecked(2097207),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindirectOffsetUnaligned = unchecked(2097208),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawindirectOffsetOverflow = unchecked(2097209),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapInvalidmaptype = unchecked(2097210),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapInvalidsubresource = unchecked(2097211),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapInvalidflags = unchecked(2097212),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapAlreadymapped = unchecked(2097213),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapDeviceremovedReturn = unchecked(2097214),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapOutofmemoryReturn = unchecked(2097215),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceMapWithoutInitialDiscard = unchecked(2097216),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceUnmapInvalidsubresource = unchecked(2097217),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResourceUnmapNotmapped = unchecked(2097218),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawRasterizingControlPoints = unchecked(2097219),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceIasetprimitivetopologyTopologyUnsupported = unchecked(2097220),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawHsDsSignatureMismatch = unchecked(2097221),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawHullShaderInputTopologyMismatch = unchecked(2097222),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawHsDsControlPointCountMismatch = unchecked(2097223),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawHsDsTessellatorDomainMismatch = unchecked(2097224),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateContext = unchecked(2097225),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveContext = unchecked(2097226),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyContext = unchecked(2097227),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateBuffer = unchecked(2097228),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveBufferWIN7 = unchecked(2097229),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyBuffer = unchecked(2097230),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTexture1D = unchecked(2097231),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture1DWIN7 = unchecked(2097232),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyTexture1D = unchecked(2097233),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTexture2D = unchecked(2097234),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture2DWIN7 = unchecked(2097235),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyTexture2D = unchecked(2097236),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTexture3D = unchecked(2097237),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTexture3DWIN7 = unchecked(2097238),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyTexture3D = unchecked(2097239),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateShaderresourceview = unchecked(2097240),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveShaderresourceviewWIN7 = unchecked(2097241),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyShaderresourceview = unchecked(2097242),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateRendertargetview = unchecked(2097243),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveRendertargetviewWIN7 = unchecked(2097244),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyRendertargetview = unchecked(2097245),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateDepthstencilview = unchecked(2097246),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDepthstencilviewWIN7 = unchecked(2097247),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyDepthstencilview = unchecked(2097248),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateVertexshader = unchecked(2097249),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveVertexshaderWIN7 = unchecked(2097250),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyVertexshader = unchecked(2097251),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateHullshader = unchecked(2097252),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveHullshader = unchecked(2097253),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyHullshader = unchecked(2097254),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateDomainshader = unchecked(2097255),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDomainshader = unchecked(2097256),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyDomainshader = unchecked(2097257),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateGeometryshader = unchecked(2097258),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveGeometryshaderWIN7 = unchecked(2097259),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyGeometryshader = unchecked(2097260),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatePixelshader = unchecked(2097261),
+
+		/// <summary>		/// To be documented.		/// </summary>		LivePixelshaderWIN7 = unchecked(2097262),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyPixelshader = unchecked(2097263),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateInputlayout = unchecked(2097264),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveInputlayoutWIN7 = unchecked(2097265),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyInputlayout = unchecked(2097266),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateSampler = unchecked(2097267),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveSamplerWIN7 = unchecked(2097268),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroySampler = unchecked(2097269),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateBlendstate = unchecked(2097270),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveBlendstateWIN7 = unchecked(2097271),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyBlendstate = unchecked(2097272),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateDepthstencilstate = unchecked(2097273),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDepthstencilstateWIN7 = unchecked(2097274),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyDepthstencilstate = unchecked(2097275),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateRasterizerstate = unchecked(2097276),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveRasterizerstateWIN7 = unchecked(2097277),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyRasterizerstate = unchecked(2097278),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateQuery = unchecked(2097279),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveQueryWIN7 = unchecked(2097280),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyQuery = unchecked(2097281),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatePredicate = unchecked(2097282),
+
+		/// <summary>		/// To be documented.		/// </summary>		LivePredicateWIN7 = unchecked(2097283),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyPredicate = unchecked(2097284),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateCounter = unchecked(2097285),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyCounter = unchecked(2097286),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateCommandlist = unchecked(2097287),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveCommandlist = unchecked(2097288),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyCommandlist = unchecked(2097289),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateClassinstance = unchecked(2097290),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveClassinstance = unchecked(2097291),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyClassinstance = unchecked(2097292),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateClasslinkage = unchecked(2097293),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveClasslinkage = unchecked(2097294),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyClasslinkage = unchecked(2097295),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDeviceWIN7 = unchecked(2097296),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveObjectSummaryWIN7 = unchecked(2097297),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateComputeshader = unchecked(2097298),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveComputeshader = unchecked(2097299),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyComputeshader = unchecked(2097300),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateUnorderedaccessview = unchecked(2097301),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveUnorderedaccessview = unchecked(2097302),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyUnorderedaccessview = unchecked(2097303),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInterfacesFeaturelevel = unchecked(2097304),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInterfaceCountMismatch = unchecked(2097305),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInvalidInstance = unchecked(2097306),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInvalidInstanceIndex = unchecked(2097307),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInvalidInstanceType = unchecked(2097308),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInvalidInstanceData = unchecked(2097309),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderUnboundInstanceData = unchecked(2097310),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetshaderInstanceDataBindings = unchecked(2097311),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreateshaderClasslinkageFull = unchecked(2097312),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCheckfeaturesupportUnrecognizedFeature = unchecked(2097313),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCheckfeaturesupportMismatchedDataSize = unchecked(2097314),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCheckfeaturesupportInvalidargReturn = unchecked(2097315),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetshaderresourcesHazard = unchecked(2097316),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetconstantbuffersHazard = unchecked(2097317),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetshaderresourcesUnbinddeletingobject = unchecked(2097318),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetconstantbuffersUnbinddeletingobject = unchecked(2097319),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecomputeshaderInvalidcall = unchecked(2097320),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecomputeshaderOutofmemory = unchecked(2097321),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecomputeshaderInvalidshaderbytecode = unchecked(2097322),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecomputeshaderInvalidshadertype = unchecked(2097323),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecomputeshaderInvalidclasslinkage = unchecked(2097324),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetshaderresourcesViewsEmpty = unchecked(2097325),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetconstantbuffersInvalidbuffer = unchecked(2097326),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetconstantbuffersBuffersEmpty = unchecked(2097327),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetsamplersSamplersEmpty = unchecked(2097328),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCsgetshaderresourcesViewsEmpty = unchecked(2097329),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCsgetconstantbuffersBuffersEmpty = unchecked(2097330),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCsgetsamplersSamplersEmpty = unchecked(2097331),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatevertexshaderDoublefloatopsnotsupported = unchecked(2097332),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatehullshaderDoublefloatopsnotsupported = unchecked(2097333),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatedomainshaderDoublefloatopsnotsupported = unchecked(2097334),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderDoublefloatopsnotsupported = unchecked(2097335),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderwithstreamoutputDoublefloatopsnotsupported = unchecked(2097336),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatepixelshaderDoublefloatopsnotsupported = unchecked(2097337),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatecomputeshaderDoublefloatopsnotsupported = unchecked(2097338),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidstructurestride = unchecked(2097339),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidflags = unchecked(2097340),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidresource = unchecked(2097341),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvaliddesc = unchecked(2097342),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidformat = unchecked(2097343),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvaliddimensions = unchecked(2097344),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewUnrecognizedformat = unchecked(2097345),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsHazard = unchecked(2097346),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsOverlappingOldSlots = unchecked(2097347),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsNoOp = unchecked(2097348),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097349),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097350),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidargReturn = unchecked(2097351),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewOutofmemoryReturn = unchecked(2097352),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewToomanyobjects = unchecked(2097353),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetunorderedaccessviewsHazard = unchecked(2097354),
+
+		/// <summary>		/// To be documented.		/// </summary>		ClearunorderedaccessviewDenormflush = unchecked(2097355),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetunorderedaccesssViewsEmpty = unchecked(2097356),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCsgetunorderedaccesssViewsEmpty = unchecked(2097357),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidflags = unchecked(2097358),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresesourceviewToomanyobjects = unchecked(2097359),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchindirectInvalidArgBuffer = unchecked(2097360),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchindirectOffsetUnaligned = unchecked(2097361),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchindirectOffsetOverflow = unchecked(2097362),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetresourceminlodInvalidcontext = unchecked(2097363),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetresourceminlodInvalidresource = unchecked(2097364),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSetresourceminlodInvalidminlod = unchecked(2097365),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGetresourceminlodInvalidcontext = unchecked(2097366),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceGetresourceminlodInvalidresource = unchecked(2097367),
+
+		/// <summary>		/// To be documented.		/// </summary>		OmsetdepthstencilUnbinddeletingobject = unchecked(2097368),
+
+		/// <summary>		/// To be documented.		/// </summary>		CleardepthstencilviewDepthReadonly = unchecked(2097369),
+
+		/// <summary>		/// To be documented.		/// </summary>		CleardepthstencilviewStencilReadonly = unchecked(2097370),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckfeaturesupportFormatDeprecated = unchecked(2097371),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewReturnTypeMismatch = unchecked(2097372),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewNotSet = unchecked(2097373),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawUnorderedaccessviewRendertargetviewOverlap = unchecked(2097374),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewDimensionMismatch = unchecked(2097375),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAppendUnsupported = unchecked(2097376),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicsUnsupported = unchecked(2097377),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewStructureStrideMismatch = unchecked(2097378),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewBufferTypeMismatch = unchecked(2097379),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewRawUnsupported = unchecked(2097380),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewFormatLdUnsupported = unchecked(2097381),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewFormatStoreUnsupported = unchecked(2097382),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicAddUnsupported = unchecked(2097383),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicBitwiseOpsUnsupported = unchecked(2097384),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicCmpstoreCmpexchangeUnsupported = unchecked(2097385),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicExchangeUnsupported = unchecked(2097386),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicSignedMinmaxUnsupported = unchecked(2097387),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewAtomicUnsignedMinmaxUnsupported = unchecked(2097388),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchBoundResourceMapped = unchecked(2097389),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchThreadgroupcountOverflow = unchecked(2097390),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchThreadgroupcountZero = unchecked(2097391),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderresourceviewStructureStrideMismatch = unchecked(2097392),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderresourceviewBufferTypeMismatch = unchecked(2097393),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderresourceviewRawUnsupported = unchecked(2097394),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchUnsupported = unchecked(2097395),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDispatchindirectUnsupported = unchecked(2097396),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopystructurecountInvalidoffset = unchecked(2097397),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopystructurecountLargeoffset = unchecked(2097398),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopystructurecountInvaliddestinationstate = unchecked(2097399),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopystructurecountInvalidsourcestate = unchecked(2097400),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckformatsupportFormatNotSupported = unchecked(2097401),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetunorderedaccessviewsInvalidview = unchecked(2097402),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetunorderedaccessviewsInvalidoffset = unchecked(2097403),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCssetunorderedaccessviewsToomanyviews = unchecked(2097404),
+
+		/// <summary>		/// To be documented.		/// </summary>		ClearunorderedaccessviewfloatInvalidformat = unchecked(2097405),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewCounterUnsupported = unchecked(2097406),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarning = unchecked(2097407),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawPixelShaderWithoutRtvOrDsv = unchecked(2097408),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderAbort = unchecked(2097409),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderMessage = unchecked(2097410),
+
+		/// <summary>		/// To be documented.		/// </summary>		ShaderError = unchecked(2097411),
+
+		/// <summary>		/// To be documented.		/// </summary>		OfferresourcesInvalidresource = unchecked(2097412),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetsamplersUnbinddeletingobject = unchecked(2097413),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetsamplersUnbinddeletingobject = unchecked(2097414),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetsamplersUnbinddeletingobject = unchecked(2097415),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetshaderUnbinddeletingobject = unchecked(2097416),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetshaderUnbinddeletingobject = unchecked(2097417),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetshaderUnbinddeletingobject = unchecked(2097418),
+
+		/// <summary>		/// To be documented.		/// </summary>		EnqueueseteventInvalidargReturn = unchecked(2097419),
+
+		/// <summary>		/// To be documented.		/// </summary>		EnqueueseteventOutofmemoryReturn = unchecked(2097420),
+
+		/// <summary>		/// To be documented.		/// </summary>		EnqueueseteventAccessdeniedReturn = unchecked(2097421),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsNumuavsInvalidrange = unchecked(2097422),
+
+		/// <summary>		/// To be documented.		/// </summary>		UseOfZeroRefcountObject = unchecked(2097423),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D11MessagesEnd = unchecked(2097424),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D111MessagesStart = unchecked(3145728),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateVideodecoder = unchecked(3145729),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateVideoprocessorenum = unchecked(3145730),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateVideoprocessor = unchecked(3145731),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateDecoderoutputview = unchecked(3145732),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateProcessorinputview = unchecked(3145733),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateProcessoroutputview = unchecked(3145734),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateDevicecontextstate = unchecked(3145735),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveVideodecoder = unchecked(3145736),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveVideoprocessorenum = unchecked(3145737),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveVideoprocessor = unchecked(3145738),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDecoderoutputview = unchecked(3145739),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveProcessorinputview = unchecked(3145740),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveProcessoroutputview = unchecked(3145741),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveDevicecontextstate = unchecked(3145742),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyVideodecoder = unchecked(3145743),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyVideoprocessorenum = unchecked(3145744),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyVideoprocessor = unchecked(3145745),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyDecoderoutputview = unchecked(3145746),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyProcessorinputview = unchecked(3145747),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyProcessoroutputview = unchecked(3145748),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyDevicecontextstate = unchecked(3145749),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedevicecontextstateInvalidflags = unchecked(3145750),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedevicecontextstateInvalidfeaturelevel = unchecked(3145751),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedevicecontextstateFeaturelevelsNotSupported = unchecked(3145752),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedevicecontextstateInvalidrefiid = unchecked(3145753),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDiscardviewInvalidview = unchecked(3145754),
+
+		/// <summary>		/// To be documented.		/// </summary>		COPYSUBRESOURCEREGION1Invalidcopyflags = unchecked(3145755),
+
+		/// <summary>		/// To be documented.		/// </summary>		UPDATESUBRESOURCE1Invalidcopyflags = unchecked(3145756),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvalidforcedsamplecount = unchecked(3145757),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderOutofmemoryReturn = unchecked(3145758),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderNullparam = unchecked(3145759),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderInvalidformat = unchecked(3145760),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderZerowidthheight = unchecked(3145761),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderDriverInvalidbuffersize = unchecked(3145762),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderDriverInvalidbufferusage = unchecked(3145763),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderprofilecountOutofmemory = unchecked(3145764),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderprofileNullparam = unchecked(3145765),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderprofileInvalidindex = unchecked(3145766),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderprofileOutofmemoryReturn = unchecked(3145767),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideodecoderformatNullparam = unchecked(3145768),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideodecoderformatOutofmemoryReturn = unchecked(3145769),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderconfigcountNullparam = unchecked(3145770),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderconfigcountOutofmemoryReturn = unchecked(3145771),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderconfigNullparam = unchecked(3145772),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderconfigInvalidindex = unchecked(3145773),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecoderconfigOutofmemoryReturn = unchecked(3145774),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecodercreationparamsNullparam = unchecked(3145775),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderdriverhandleNullparam = unchecked(3145776),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderbufferNullparam = unchecked(3145777),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderbufferInvalidbuffer = unchecked(3145778),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderbufferInvalidtype = unchecked(3145779),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderbufferLocked = unchecked(3145780),
+
+		/// <summary>		/// To be documented.		/// </summary>		ReleasedecoderbufferNullparam = unchecked(3145781),
+
+		/// <summary>		/// To be documented.		/// </summary>		ReleasedecoderbufferInvalidtype = unchecked(3145782),
+
+		/// <summary>		/// To be documented.		/// </summary>		ReleasedecoderbufferNotlocked = unchecked(3145783),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeNullparam = unchecked(3145784),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeHazard = unchecked(3145785),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderendframeNullparam = unchecked(3145786),
+
+		/// <summary>		/// To be documented.		/// </summary>		SubmitdecoderbuffersNullparam = unchecked(3145787),
+
+		/// <summary>		/// To be documented.		/// </summary>		SubmitdecoderbuffersInvalidtype = unchecked(3145788),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderextensionNullparam = unchecked(3145789),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderextensionInvalidresource = unchecked(3145790),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorOutofmemoryReturn = unchecked(3145791),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorNullparam = unchecked(3145792),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorInvalidframeformat = unchecked(3145793),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorInvalidusage = unchecked(3145794),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorInvalidinputframerate = unchecked(3145795),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorInvalidoutputframerate = unchecked(3145796),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorenumeratorInvalidwidthheight = unchecked(3145797),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorcontentdescNullparam = unchecked(3145798),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideoprocessorformatNullparam = unchecked(3145799),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorcapsNullparam = unchecked(3145800),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorrateconversioncapsNullparam = unchecked(3145801),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorrateconversioncapsInvalidindex = unchecked(3145802),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorcustomrateNullparam = unchecked(3145803),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorcustomrateInvalidindex = unchecked(3145804),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorfilterrangeNullparam = unchecked(3145805),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideoprocessorfilterrangeUnsupported = unchecked(3145806),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorOutofmemoryReturn = unchecked(3145807),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorNullparam = unchecked(3145808),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputtargetrectNullparam = unchecked(3145809),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputbackgroundcolorNullparam = unchecked(3145810),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputbackgroundcolorInvalidalpha = unchecked(3145811),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputcolorspaceNullparam = unchecked(3145812),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputalphafillmodeNullparam = unchecked(3145813),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputalphafillmodeUnsupported = unchecked(3145814),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputalphafillmodeInvalidstream = unchecked(3145815),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputalphafillmodeInvalidfillmode = unchecked(3145816),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputconstrictionNullparam = unchecked(3145817),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputstereomodeNullparam = unchecked(3145818),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputstereomodeUnsupported = unchecked(3145819),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputextensionNullparam = unchecked(3145820),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputtargetrectNullparam = unchecked(3145821),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputbackgroundcolorNullparam = unchecked(3145822),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputcolorspaceNullparam = unchecked(3145823),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputalphafillmodeNullparam = unchecked(3145824),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputconstrictionNullparam = unchecked(3145825),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputconstrictionUnsupported = unchecked(3145826),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputconstrictionInvalidsize = unchecked(3145827),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputstereomodeNullparam = unchecked(3145828),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputextensionNullparam = unchecked(3145829),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamframeformatNullparam = unchecked(3145830),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamframeformatInvalidformat = unchecked(3145831),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamframeformatInvalidstream = unchecked(3145832),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamcolorspaceNullparam = unchecked(3145833),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamcolorspaceInvalidstream = unchecked(3145834),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamoutputrateNullparam = unchecked(3145835),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamoutputrateInvalidrate = unchecked(3145836),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamoutputrateInvalidflag = unchecked(3145837),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamoutputrateInvalidstream = unchecked(3145838),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamsourcerectNullparam = unchecked(3145839),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamsourcerectInvalidstream = unchecked(3145840),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamsourcerectInvalidrect = unchecked(3145841),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamdestrectNullparam = unchecked(3145842),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamdestrectInvalidstream = unchecked(3145843),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamdestrectInvalidrect = unchecked(3145844),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamalphaNullparam = unchecked(3145845),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamalphaInvalidstream = unchecked(3145846),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamalphaInvalidalpha = unchecked(3145847),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampaletteNullparam = unchecked(3145848),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampaletteInvalidstream = unchecked(3145849),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampaletteInvalidcount = unchecked(3145850),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampaletteInvalidalpha = unchecked(3145851),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampixelaspectratioNullparam = unchecked(3145852),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampixelaspectratioInvalidstream = unchecked(3145853),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampixelaspectratioInvalidratio = unchecked(3145854),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamlumakeyNullparam = unchecked(3145855),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamlumakeyInvalidstream = unchecked(3145856),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamlumakeyInvalidrange = unchecked(3145857),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamlumakeyUnsupported = unchecked(3145858),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatNullparam = unchecked(3145859),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatInvalidstream = unchecked(3145860),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatUnsupported = unchecked(3145861),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatFlipunsupported = unchecked(3145862),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatMonooffsetunsupported = unchecked(3145863),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatFormatunsupported = unchecked(3145864),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamstereoformatInvalidformat = unchecked(3145865),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamautoprocessingmodeNullparam = unchecked(3145866),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamautoprocessingmodeInvalidstream = unchecked(3145867),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamfilterNullparam = unchecked(3145868),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamfilterInvalidstream = unchecked(3145869),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamfilterInvalidfilter = unchecked(3145870),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamfilterUnsupported = unchecked(3145871),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamfilterInvalidlevel = unchecked(3145872),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamextensionNullparam = unchecked(3145873),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamextensionInvalidstream = unchecked(3145874),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamframeformatNullparam = unchecked(3145875),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamcolorspaceNullparam = unchecked(3145876),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamoutputrateNullparam = unchecked(3145877),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamsourcerectNullparam = unchecked(3145878),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamdestrectNullparam = unchecked(3145879),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamalphaNullparam = unchecked(3145880),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreampaletteNullparam = unchecked(3145881),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreampixelaspectratioNullparam = unchecked(3145882),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamlumakeyNullparam = unchecked(3145883),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamstereoformatNullparam = unchecked(3145884),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamautoprocessingmodeNullparam = unchecked(3145885),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamfilterNullparam = unchecked(3145886),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamextensionNullparam = unchecked(3145887),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamextensionInvalidstream = unchecked(3145888),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltNullparam = unchecked(3145889),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidstreamcount = unchecked(3145890),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltTargetrect = unchecked(3145891),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidoutput = unchecked(3145892),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidpastframes = unchecked(3145893),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidfutureframes = unchecked(3145894),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidsourcerect = unchecked(3145895),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvaliddestrect = unchecked(3145896),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidinputresource = unchecked(3145897),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidarraysize = unchecked(3145898),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidarray = unchecked(3145899),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltRightexpected = unchecked(3145900),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltRightnotexpected = unchecked(3145901),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltStereonotenabled = unchecked(3145902),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInvalidrightresource = unchecked(3145903),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltNostereostreams = unchecked(3145904),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltInputhazard = unchecked(3145905),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorbltOutputhazard = unchecked(3145906),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewOutofmemoryReturn = unchecked(3145907),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewNullparam = unchecked(3145908),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvalidtype = unchecked(3145909),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvalidbind = unchecked(3145910),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewUnsupportedformat = unchecked(3145911),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvalidmip = unchecked(3145912),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewUnsupportemip = unchecked(3145913),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvalidarraysize = unchecked(3145914),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvalidarray = unchecked(3145915),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideodecoderoutputviewInvaliddimension = unchecked(3145916),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewOutofmemoryReturn = unchecked(3145917),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewNullparam = unchecked(3145918),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidtype = unchecked(3145919),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidbind = unchecked(3145920),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidmisc = unchecked(3145921),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidusage = unchecked(3145922),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidformat = unchecked(3145923),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidfourcc = unchecked(3145924),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidmip = unchecked(3145925),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewUnsupportedmip = unchecked(3145926),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidarraysize = unchecked(3145927),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidarray = unchecked(3145928),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvaliddimension = unchecked(3145929),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewOutofmemoryReturn = unchecked(3145930),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewNullparam = unchecked(3145931),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidtype = unchecked(3145932),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidbind = unchecked(3145933),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidformat = unchecked(3145934),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidmip = unchecked(3145935),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewUnsupportedmip = unchecked(3145936),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewUnsupportedarray = unchecked(3145937),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidarray = unchecked(3145938),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvaliddimension = unchecked(3145939),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawInvalidUseOfForcedSampleCount = unchecked(3145940),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateblendstateInvalidlogicops = unchecked(3145941),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvaliddarraywithdecoder = unchecked(3145942),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvaliddarraywithdecoder = unchecked(3145943),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvaliddarraywithdecoder = unchecked(3145944),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceLockedoutInterface = unchecked(3145945),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarningAtomicInconsistent = unchecked(3145946),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarningReadingUninitializedResource = unchecked(3145947),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarningRawHazard = unchecked(3145948),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarningWarHazard = unchecked(3145949),
+
+		/// <summary>		/// To be documented.		/// </summary>		RefWarningWawHazard = unchecked(3145950),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecryptosessionNullparam = unchecked(3145951),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatecryptosessionOutofmemoryReturn = unchecked(3145952),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptotypeNullparam = unchecked(3145953),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdecoderprofileNullparam = unchecked(3145954),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessioncertificatesizeNullparam = unchecked(3145955),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessioncertificateNullparam = unchecked(3145956),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessioncertificateWrongsize = unchecked(3145957),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessionhandleWrongsize = unchecked(3145958),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiatecrpytosessionkeyexchangeNullparam = unchecked(3145959),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltUnsupported = unchecked(3145960),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltNullparam = unchecked(3145961),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSrcWrongdevice = unchecked(3145962),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltDstWrongdevice = unchecked(3145963),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltFormatMismatch = unchecked(3145964),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSizeMismatch = unchecked(3145965),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSrcMultisampled = unchecked(3145966),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltDstNotStaging = unchecked(3145967),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSrcMapped = unchecked(3145968),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltDstMapped = unchecked(3145969),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSrcOffered = unchecked(3145970),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltDstOffered = unchecked(3145971),
+
+		/// <summary>		/// To be documented.		/// </summary>		EncryptionbltSrcContentUndefined = unchecked(3145972),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltUnsupported = unchecked(3145973),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltNullparam = unchecked(3145974),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSrcWrongdevice = unchecked(3145975),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltDstWrongdevice = unchecked(3145976),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltFormatMismatch = unchecked(3145977),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSizeMismatch = unchecked(3145978),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltDstMultisampled = unchecked(3145979),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSrcNotStaging = unchecked(3145980),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltDstNotRenderTarget = unchecked(3145981),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSrcMapped = unchecked(3145982),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltDstMapped = unchecked(3145983),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSrcOffered = unchecked(3145984),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltDstOffered = unchecked(3145985),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecryptionbltSrcContentUndefined = unchecked(3145986),
+
+		/// <summary>		/// To be documented.		/// </summary>		StartsessionkeyrefreshNullparam = unchecked(3145987),
+
+		/// <summary>		/// To be documented.		/// </summary>		StartsessionkeyrefreshInvalidsize = unchecked(3145988),
+
+		/// <summary>		/// To be documented.		/// </summary>		FinishsessionkeyrefreshNullparam = unchecked(3145989),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetencryptionbltkeyNullparam = unchecked(3145990),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetencryptionbltkeyInvalidsize = unchecked(3145991),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcontentprotectioncapsNullparam = unchecked(3145992),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckcryptokeyexchangeNullparam = unchecked(3145993),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckcryptokeyexchangeInvalidindex = unchecked(3145994),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateauthenticatedchannelNullparam = unchecked(3145995),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateauthenticatedchannelUnsupported = unchecked(3145996),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateauthenticatedchannelInvalidtype = unchecked(3145997),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateauthenticatedchannelOutofmemoryReturn = unchecked(3145998),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetauthenticatedchannelcertificatesizeInvalidchannel = unchecked(3145999),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetauthenticatedchannelcertificatesizeNullparam = unchecked(3146000),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetauthenticatedchannelcertificateInvalidchannel = unchecked(3146001),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetauthenticatedchannelcertificateNullparam = unchecked(3146002),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetauthenticatedchannelcertificateWrongsize = unchecked(3146003),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiateauthenticatedchannelkeyexchangeInvalidchannel = unchecked(3146004),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiateauthenticatedchannelkeyexchangeNullparam = unchecked(3146005),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryauthenticatedchannelNullparam = unchecked(3146006),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryauthenticatedchannelWrongchannel = unchecked(3146007),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryauthenticatedchannelUnsupportedquery = unchecked(3146008),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryauthenticatedchannelWrongsize = unchecked(3146009),
+
+		/// <summary>		/// To be documented.		/// </summary>		QueryauthenticatedchannelInvalidprocessindex = unchecked(3146010),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConfigureauthenticatedchannelNullparam = unchecked(3146011),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConfigureauthenticatedchannelWrongchannel = unchecked(3146012),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConfigureauthenticatedchannelUnsupportedconfigure = unchecked(3146013),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConfigureauthenticatedchannelWrongsize = unchecked(3146014),
+
+		/// <summary>		/// To be documented.		/// </summary>		ConfigureauthenticatedchannelInvalidprocessidtype = unchecked(3146015),
+
+		/// <summary>		/// To be documented.		/// </summary>		VssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146016),
+
+		/// <summary>		/// To be documented.		/// </summary>		DssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146017),
+
+		/// <summary>		/// To be documented.		/// </summary>		HssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146018),
+
+		/// <summary>		/// To be documented.		/// </summary>		GssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146019),
+
+		/// <summary>		/// To be documented.		/// </summary>		PssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146020),
+
+		/// <summary>		/// To be documented.		/// </summary>		CssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146021),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiatecrpytosessionkeyexchangeInvalidsize = unchecked(3146022),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiateauthenticatedchannelkeyexchangeInvalidsize = unchecked(3146023),
+
+		/// <summary>		/// To be documented.		/// </summary>		OfferresourcesInvalidpriority = unchecked(3146024),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessionhandleOutofmemory = unchecked(3146025),
+
+		/// <summary>		/// To be documented.		/// </summary>		AcquirehandleforcaptureNullparam = unchecked(3146026),
+
+		/// <summary>		/// To be documented.		/// </summary>		AcquirehandleforcaptureInvalidtype = unchecked(3146027),
+
+		/// <summary>		/// To be documented.		/// </summary>		AcquirehandleforcaptureInvalidbind = unchecked(3146028),
+
+		/// <summary>		/// To be documented.		/// </summary>		AcquirehandleforcaptureInvalidarray = unchecked(3146029),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamrotationNullparam = unchecked(3146030),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamrotationInvalidstream = unchecked(3146031),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamrotationInvalid = unchecked(3146032),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamrotationUnsupported = unchecked(3146033),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamrotationNullparam = unchecked(3146034),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceClearviewInvalidview = unchecked(3146035),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatevertexshaderDoubleextensionsnotsupported = unchecked(3146036),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatevertexshaderShaderextensionsnotsupported = unchecked(3146037),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatehullshaderDoubleextensionsnotsupported = unchecked(3146038),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatehullshaderShaderextensionsnotsupported = unchecked(3146039),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatedomainshaderDoubleextensionsnotsupported = unchecked(3146040),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatedomainshaderShaderextensionsnotsupported = unchecked(3146041),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderDoubleextensionsnotsupported = unchecked(3146042),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderShaderextensionsnotsupported = unchecked(3146043),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderwithstreamoutputDoubleextensionsnotsupported = unchecked(3146044),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderwithstreamoutputShaderextensionsnotsupported = unchecked(3146045),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatepixelshaderDoubleextensionsnotsupported = unchecked(3146046),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatepixelshaderShaderextensionsnotsupported = unchecked(3146047),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatecomputeshaderDoubleextensionsnotsupported = unchecked(3146048),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatecomputeshaderShaderextensionsnotsupported = unchecked(3146049),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceShaderLinkageMinprecision = unchecked(3146050),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamalphaUnsupported = unchecked(3146051),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreampixelaspectratioUnsupported = unchecked(3146052),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatevertexshaderUavsnotsupported = unchecked(3146053),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatehullshaderUavsnotsupported = unchecked(3146054),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatedomainshaderUavsnotsupported = unchecked(3146055),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderUavsnotsupported = unchecked(3146056),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreategeometryshaderwithstreamoutputUavsnotsupported = unchecked(3146057),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatepixelshaderUavsnotsupported = unchecked(3146058),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceCreatecomputeshaderUavsnotsupported = unchecked(3146059),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsInvalidoffset = unchecked(3146060),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOmsetrendertargetsandunorderedaccessviewsToomanyviews = unchecked(3146061),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceClearviewNotsupported = unchecked(3146062),
+
+		/// <summary>		/// To be documented.		/// </summary>		SwapdevicecontextstateNotsupported = unchecked(3146063),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatesubresourcePREFERUPDATESUBRESOURCE1 = unchecked(3146064),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdcInaccessible = unchecked(3146065),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceClearviewInvalidrect = unchecked(3146066),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawSampleMaskIgnoredOnFL9 = unchecked(3146067),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedRESOURCE1NotSupported = unchecked(3146068),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedResourceByNameNotSupported = unchecked(3146069),
+
+		/// <summary>		/// To be documented.		/// </summary>		EnqueueseteventNotSupported = unchecked(3146070),
+
+		/// <summary>		/// To be documented.		/// </summary>		OfferreleaseNotSupported = unchecked(3146071),
+
+		/// <summary>		/// To be documented.		/// </summary>		OfferresourcesInaccessible = unchecked(3146072),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessorinputviewInvalidmsaa = unchecked(3146073),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatevideoprocessoroutputviewInvalidmsaa = unchecked(3146074),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceClearviewInvalidsourcerect = unchecked(3146075),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceClearviewEmptyrect = unchecked(3146076),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatesubresourceEmptydestbox = unchecked(3146077),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopysubresourceregionEmptysourcebox = unchecked(3146078),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawOmRenderTargetDoesNotSupportLogicOps = unchecked(3146079),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawDepthstencilviewNotSet = unchecked(3146080),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawRendertargetviewNotSet = unchecked(3146081),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawRendertargetviewNotSetDueToFlipPresent = unchecked(3146082),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceUnorderedaccessviewNotSetDueToFlipPresent = unchecked(3146083),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetdatafornewhardwarekeyNullparam = unchecked(3146084),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckcryptosessionstatusNullparam = unchecked(3146085),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessionprivatedatasizeNullparam = unchecked(3146086),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecodercapsNullparam = unchecked(3146087),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetvideodecodercapsZerowidthheight = unchecked(3146088),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideodecoderdownsamplingNullparam = unchecked(3146089),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideodecoderdownsamplingInvalidcolorspace = unchecked(3146090),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideodecoderdownsamplingZerowidthheight = unchecked(3146091),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideodecoderenabledownsamplingNullparam = unchecked(3146092),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideodecoderenabledownsamplingUnsupported = unchecked(3146093),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideodecoderupdatedownsamplingNullparam = unchecked(3146094),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideodecoderupdatedownsamplingUnsupported = unchecked(3146095),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckvideoprocessorformatconversionNullparam = unchecked(3146096),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORSETOUTPUTCOLORSPACE1Nullparam = unchecked(3146097),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORGETOUTPUTCOLORSPACE1Nullparam = unchecked(3146098),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORSETSTREAMCOLORSPACE1Nullparam = unchecked(3146099),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORSETSTREAMCOLORSPACE1Invalidstream = unchecked(3146100),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreammirrorNullparam = unchecked(3146101),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreammirrorInvalidstream = unchecked(3146102),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreammirrorUnsupported = unchecked(3146103),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORGETSTREAMCOLORSPACE1Nullparam = unchecked(3146104),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreammirrorNullparam = unchecked(3146105),
+
+		/// <summary>		/// To be documented.		/// </summary>		RecommendvideodecoderdownsamplingNullparam = unchecked(3146106),
+
+		/// <summary>		/// To be documented.		/// </summary>		RecommendvideodecoderdownsamplingInvalidcolorspace = unchecked(3146107),
+
+		/// <summary>		/// To be documented.		/// </summary>		RecommendvideodecoderdownsamplingZerowidthheight = unchecked(3146108),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputshaderusageNullparam = unchecked(3146109),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputshaderusageNullparam = unchecked(3146110),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetbehaviorhintsNullparam = unchecked(3146111),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetbehaviorhintsInvalidstreamcount = unchecked(3146112),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetbehaviorhintsTargetrect = unchecked(3146113),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetbehaviorhintsInvalidsourcerect = unchecked(3146114),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetbehaviorhintsInvaliddestrect = unchecked(3146115),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetcryptosessionprivatedatasizeInvalidKeyExchangeType = unchecked(3146116),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceOpenSharedRESOURCE1AccessDenied = unchecked(3146117),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D111MessagesEnd = unchecked(3146118),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D112MessagesStart = unchecked(3146119),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatebufferInvalidusage = unchecked(3146120),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture1DInvalidusage = unchecked(3146121),
+
+		/// <summary>		/// To be documented.		/// </summary>		Createtexture2DInvalidusage = unchecked(3146122),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutLEVEL9SteprateNot1 = unchecked(3146123),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateinputlayoutLEVEL9InstancingNotSupported = unchecked(3146124),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatetilemappingsInvalidParameter = unchecked(3146125),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopytilemappingsInvalidParameter = unchecked(3146126),
+
+		/// <summary>		/// To be documented.		/// </summary>		CopytilesInvalidParameter = unchecked(3146127),
+
+		/// <summary>		/// To be documented.		/// </summary>		UpdatetilesInvalidParameter = unchecked(3146128),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResizetilepoolInvalidParameter = unchecked(3146129),
+
+		/// <summary>		/// To be documented.		/// </summary>		TiledresourcebarrierInvalidParameter = unchecked(3146130),
+
+		/// <summary>		/// To be documented.		/// </summary>		NullTileMappingAccessWarning = unchecked(3146131),
+
+		/// <summary>		/// To be documented.		/// </summary>		NullTileMappingAccessError = unchecked(3146132),
+
+		/// <summary>		/// To be documented.		/// </summary>		DirtyTileMappingAccess = unchecked(3146133),
+
+		/// <summary>		/// To be documented.		/// </summary>		DuplicateTileMappingsInCoveredArea = unchecked(3146134),
+
+		/// <summary>		/// To be documented.		/// </summary>		TileMappingsInCoveredAreaDuplicatedOutside = unchecked(3146135),
+
+		/// <summary>		/// To be documented.		/// </summary>		TileMappingsSharedBetweenIncompatibleResources = unchecked(3146136),
+
+		/// <summary>		/// To be documented.		/// </summary>		TileMappingsSharedBetweenInputAndOutput = unchecked(3146137),
+
+		/// <summary>		/// To be documented.		/// </summary>		CheckmultisamplequalitylevelsInvalidflags = unchecked(3146138),
+
+		/// <summary>		/// To be documented.		/// </summary>		GetresourcetilingNontiledResource = unchecked(3146139),
+
+		/// <summary>		/// To be documented.		/// </summary>		ResizetilepoolShrinkWithMappingsStillDefinedPastEnd = unchecked(3146140),
+
+		/// <summary>		/// To be documented.		/// </summary>		NeedToCallTiledresourcebarrier = unchecked(3146141),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeviceInvalidargs = unchecked(3146142),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatedeviceWarning = unchecked(3146143),
+
+		/// <summary>		/// To be documented.		/// </summary>		ClearunorderedaccessviewuintHazard = unchecked(3146144),
+
+		/// <summary>		/// To be documented.		/// </summary>		ClearunorderedaccessviewfloatHazard = unchecked(3146145),
+
+		/// <summary>		/// To be documented.		/// </summary>		TiledResourceTier1BufferTextureMismatch = unchecked(3146146),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateCryptosession = unchecked(3146147),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateAuthenticatedchannel = unchecked(3146148),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveCryptosession = unchecked(3146149),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveAuthenticatedchannel = unchecked(3146150),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyCryptosession = unchecked(3146151),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyAuthenticatedchannel = unchecked(3146152),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D112MessagesEnd = unchecked(3146153),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D113MessagesStart = unchecked(3146154),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterasterizerstateInvalidConservativerastermode = unchecked(3146155),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceDrawInvalidSystemvalue = unchecked(3146156),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateInvalidcontexttype = unchecked(3146157),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateDecodenotsupported = unchecked(3146158),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateEncodenotsupported = unchecked(3146159),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidplaneindex = unchecked(3146160),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewInvalidvideoplaneindex = unchecked(3146161),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateshaderresourceviewAmbiguousvideoplaneindex = unchecked(3146162),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvalidplaneindex = unchecked(3146163),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewInvalidvideoplaneindex = unchecked(3146164),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreaterendertargetviewAmbiguousvideoplaneindex = unchecked(3146165),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidplaneindex = unchecked(3146166),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewInvalidvideoplaneindex = unchecked(3146167),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateunorderedaccessviewAmbiguousvideoplaneindex = unchecked(3146168),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidscandataoffset = unchecked(3146169),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeNotsupported = unchecked(3146170),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeDimensionstoolarge = unchecked(3146171),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidcomponents = unchecked(3146172),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeDestinationnot2D = unchecked(3146173),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeTiledresourcesunsupported = unchecked(3146174),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeGuardrectsunsupported = unchecked(3146175),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeFormatunsupported = unchecked(3146176),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidsubresource = unchecked(3146177),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidmiplevel = unchecked(3146178),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeEmptydestbox = unchecked(3146179),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeDestboxnot2D = unchecked(3146180),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeDestboxnotsub = unchecked(3146181),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeDestboxesintersect = unchecked(3146182),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeXsubsamplemismatch = unchecked(3146183),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeYsubsamplemismatch = unchecked(3146184),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeXsubsampleodd = unchecked(3146185),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeYsubsampleodd = unchecked(3146186),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeOutputdimensionstoolarge = unchecked(3146187),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeNonpow2Scaleunsupported = unchecked(3146188),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeFractionaldownscaletolarge = unchecked(3146189),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeChromasizemismatch = unchecked(3146190),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeLumachromasizemismatch = unchecked(3146191),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidnumdestinations = unchecked(3146192),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeSubboxunsupported = unchecked(3146193),
+
+		/// <summary>		/// To be documented.		/// </summary>		Jpegdecode1DESTUNSUPPORTEDFORMAT = unchecked(3146194),
+
+		/// <summary>		/// To be documented.		/// </summary>		Jpegdecode3DESTUNSUPPORTEDFORMAT = unchecked(3146195),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeScaleunsupported = unchecked(3146196),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidsourcesize = unchecked(3146197),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeInvalidcopyflags = unchecked(3146198),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeHazard = unchecked(3146199),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeUnsupportedsrcbufferusage = unchecked(3146200),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeUnsupportedsrcbuffermiscflags = unchecked(3146201),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeUnsupporteddsttextureusage = unchecked(3146202),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeBackbuffernotsupported = unchecked(3146203),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegdecodeUnsupprtedcopyflags = unchecked(3146204),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeNotsupported = unchecked(3146205),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeInvalidscandataoffset = unchecked(3146206),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeInvalidcomponents = unchecked(3146207),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeSourcenot2D = unchecked(3146208),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeTiledresourcesunsupported = unchecked(3146209),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeGuardrectsunsupported = unchecked(3146210),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeXsubsamplemismatch = unchecked(3146211),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeYsubsamplemismatch = unchecked(3146212),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeFormatunsupported = unchecked(3146213),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeInvalidsubresource = unchecked(3146214),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeInvalidmiplevel = unchecked(3146215),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeDimensionstoolarge = unchecked(3146216),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeHazard = unchecked(3146217),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeUnsupporteddstbufferusage = unchecked(3146218),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeUnsupporteddstbuffermiscflags = unchecked(3146219),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeUnsupportedsrctextureusage = unchecked(3146220),
+
+		/// <summary>		/// To be documented.		/// </summary>		JpegencodeBackbuffernotsupported = unchecked(3146221),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatequeryorpredicateUnsupportedcontextttypeforquery = unchecked(3146222),
+
+		/// <summary>		/// To be documented.		/// </summary>		FLUSH1Invalidcontexttype = unchecked(3146223),
+
+		/// <summary>		/// To be documented.		/// </summary>		DeviceSethardwareprotectionInvalidcontext = unchecked(3146224),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputhdrmetadataNullparam = unchecked(3146225),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetoutputhdrmetadataInvalidsize = unchecked(3146226),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputhdrmetadataNullparam = unchecked(3146227),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetoutputhdrmetadataInvalidsize = unchecked(3146228),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamhdrmetadataNullparam = unchecked(3146229),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamhdrmetadataInvalidstream = unchecked(3146230),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorsetstreamhdrmetadataInvalidsize = unchecked(3146231),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamhdrmetadataNullparam = unchecked(3146232),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamhdrmetadataInvalidstream = unchecked(3146233),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamhdrmetadataInvalidsize = unchecked(3146234),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamframeformatInvalidstream = unchecked(3146235),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamcolorspaceInvalidstream = unchecked(3146236),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamoutputrateInvalidstream = unchecked(3146237),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamsourcerectInvalidstream = unchecked(3146238),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamdestrectInvalidstream = unchecked(3146239),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamalphaInvalidstream = unchecked(3146240),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreampaletteInvalidstream = unchecked(3146241),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreampixelaspectratioInvalidstream = unchecked(3146242),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamlumakeyInvalidstream = unchecked(3146243),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamstereoformatInvalidstream = unchecked(3146244),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamautoprocessingmodeInvalidstream = unchecked(3146245),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamfilterInvalidstream = unchecked(3146246),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreamrotationInvalidstream = unchecked(3146247),
+
+		/// <summary>		/// To be documented.		/// </summary>		VIDEOPROCESSORGETSTREAMCOLORSPACE1Invalidstream = unchecked(3146248),
+
+		/// <summary>		/// To be documented.		/// </summary>		VideoprocessorgetstreammirrorInvalidstream = unchecked(3146249),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateFence = unchecked(3146250),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveFence = unchecked(3146251),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyFence = unchecked(3146252),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateSynchronizedchannel = unchecked(3146253),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveSynchronizedchannel = unchecked(3146254),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroySynchronizedchannel = unchecked(3146255),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreatefenceInvalidflags = unchecked(3146256),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D113MessagesEnd = unchecked(3146257),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D115MessagesStart = unchecked(3146258),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiatecryptosessionkeyexchangemtInvalidkeyexchangetype = unchecked(3146259),
+
+		/// <summary>		/// To be documented.		/// </summary>		NegotiatecryptosessionkeyexchangemtNotSupported = unchecked(3146260),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramComponentCount = unchecked(3146261),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramComponent = unchecked(3146262),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramBufferSize = unchecked(3146263),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramBufferUsage = unchecked(3146264),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramBufferMiscFlags = unchecked(3146265),
+
+		/// <summary>		/// To be documented.		/// </summary>		DecoderbeginframeInvalidHistogramBufferOffset = unchecked(3146266),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTrackedworkload = unchecked(3146267),
+
+		/// <summary>		/// To be documented.		/// </summary>		LiveTrackedworkload = unchecked(3146268),
+
+		/// <summary>		/// To be documented.		/// </summary>		DestroyTrackedworkload = unchecked(3146269),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTrackedWorkloadNullparam = unchecked(3146270),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTrackedWorkloadInvalidMaxInstances = unchecked(3146271),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTrackedWorkloadInvalidDeadlineType = unchecked(3146272),
+
+		/// <summary>		/// To be documented.		/// </summary>		CreateTrackedWorkloadInvalidEngineType = unchecked(3146273),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultipleTrackedWorkloads = unchecked(3146274),
+
+		/// <summary>		/// To be documented.		/// </summary>		MultipleTrackedWorkloadPairs = unchecked(3146275),
+
+		/// <summary>		/// To be documented.		/// </summary>		IncompleteTrackedWorkloadPair = unchecked(3146276),
+
+		/// <summary>		/// To be documented.		/// </summary>		OutOfOrderTrackedWorkloadPair = unchecked(3146277),
+
+		/// <summary>		/// To be documented.		/// </summary>		CannotAddTrackedWorkload = unchecked(3146278),
+
+		/// <summary>		/// To be documented.		/// </summary>		TrackedWorkloadNotSupported = unchecked(3146279),
+
+		/// <summary>		/// To be documented.		/// </summary>		TrackedWorkloadEngineTypeNotFound = unchecked(3146280),
+
+		/// <summary>		/// To be documented.		/// </summary>		NoTrackedWorkloadSlotAvailable = unchecked(3146281),
+
+		/// <summary>		/// To be documented.		/// </summary>		EndTrackedWorkloadInvalidArg = unchecked(3146282),
+
+		/// <summary>		/// To be documented.		/// </summary>		TrackedWorkloadDisjointFailure = unchecked(3146283),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D115MessagesEnd = unchecked(3146284),
+
 	}
+
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ShaderTrackingResourceType
+	{
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		UavDevicememory = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		NonUavDevicememory = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		AllDevicememory = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		GroupsharedMemory = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		AllSharedMemory = unchecked(5),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_DIMENSION")]
-	public enum D3D11ResourceDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_BUFFER")]
-		Buffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE1D")]
-		Texture1D = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_DIMENSION_TEXTURE3D")]
-		Texture3D = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		GroupsharedNonUav = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		All = unchecked(7),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_UAV_DIMENSION")]
-	public enum D3D11UavDimension
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ShaderTrackingOption
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_BUFFER")]
-		Buffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE1D")]
-		Texture1D = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE1DARRAY")]
-		Texture1Darray = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE2DARRAY")]
-		Texture2Darray = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_UAV_DIMENSION_TEXTURE3D")]
-		Texture3D = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		Ignore = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		TrackUninitialized = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_RTV_DIMENSION")]
-	public enum D3D11RtvDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_BUFFER")]
-		Buffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE1D")]
-		Texture1D = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE1DARRAY")]
-		Texture1Darray = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DARRAY")]
-		Texture2Darray = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DMS")]
-		Texture2Dms = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE2DMSARRAY")]
-		Texture2Dmsarray = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RTV_DIMENSION_TEXTURE3D")]
-		Texture3D = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		TrackRaw = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		TrackWar = unchecked(4),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_DSV_DIMENSION")]
-	public enum D3D11DsvDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE1D")]
-		Texture1D = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE1DARRAY")]
-		Texture1Darray = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DARRAY")]
-		Texture2Darray = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DMS")]
-		Texture2Dms = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_DIMENSION_TEXTURE2DMSARRAY")]
-		Texture2Dmsarray = unchecked(6),
+		/// <summary>		/// To be documented.		/// </summary>		TrackWaw = unchecked(8),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		AllowSame = unchecked(16),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_INPUT_CLASSIFICATION")]
-	public enum D3D11InputClassification
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_INPUT_PER_VERTEX_DATA")]
-		PerVertexData = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_INPUT_PER_INSTANCE_DATA")]
-		PerInstanceData = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		TrackAtomicConsistency = unchecked(32),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		TrackRawAcrossThreadgroups = unchecked(64),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0002 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BLEND")]
-	public enum D3D11Blend
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_ZERO")]
-		Zero = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_ONE")]
-		One = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_COLOR")]
-		SrcColor = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC_COLOR")]
-		InvSrcColor = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_ALPHA")]
-		SrcAlpha = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC_ALPHA")]
-		InvSrcAlpha = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_DEST_ALPHA")]
-		DestAlpha = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_DEST_ALPHA")]
-		InvDestAlpha = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_DEST_COLOR")]
-		DestColor = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_DEST_COLOR")]
-		InvDestColor = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC_ALPHA_SAT")]
-		SrcAlphaSat = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_BLEND_FACTOR")]
-		Factor = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_BLEND_FACTOR")]
-		InvBlendFactor = unchecked(15),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC1_COLOR")]
-		Src1Color = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC1_COLOR")]
-		InvSrc1Color = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_SRC1_ALPHA")]
-		Src1Alpha = unchecked(18),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_INV_SRC1_ALPHA")]
-		InvSrc1Alpha = unchecked(19),
+		/// <summary>		/// To be documented.		/// </summary>		TrackWarAcrossThreadgroups = unchecked(128),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		TrackWawAcrossThreadgroups = unchecked(256),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BLEND_OP")]
-	public enum D3D11BlendOp
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_ADD")]
-		Add = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_SUBTRACT")]
-		Subtract = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_REV_SUBTRACT")]
-		RevSubtract = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_MIN")]
-		Min = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BLEND_OP_MAX")]
-		Max = unchecked(5),
+		/// <summary>		/// To be documented.		/// </summary>		TrackAtomicConsistencyAcrossThreadgroups = unchecked(512),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		UavSpecificFlags = unchecked(960),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_DEPTH_WRITE_MASK")]
-	public enum D3D11DepthWriteMask
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DEPTH_WRITE_MASK_ZERO")]
-		Zero = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DEPTH_WRITE_MASK_ALL")]
-		All = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		AllHazards = unchecked(1006),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		AllHazardsAllowingSame = unchecked(1022),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0001 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_COMPARISON_FUNC")]
-	public enum D3D11ComparisonFunc
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_NEVER")]
-		Never = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_LESS")]
-		Less = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_EQUAL")]
-		Equal = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_LESS_EQUAL")]
-		LessEqual = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_GREATER")]
-		Greater = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_NOT_EQUAL")]
-		NotEqual = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_GREATER_EQUAL")]
-		GreaterEqual = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPARISON_ALWAYS")]
-		Always = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		AllOptions = unchecked(1023),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_STENCIL_OP")]
-	public enum D3D11StencilOp
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ShaderVersionType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_KEEP")]
-		Keep = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_ZERO")]
-		Zero = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_REPLACE")]
-		Replace = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INCR_SAT")]
-		IncrSat = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_DECR_SAT")]
-		DecrSat = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INVERT")]
-		Invert = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_INCR")]
-		Incr = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STENCIL_OP_DECR")]
-		Decr = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		ShverPixelShader = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		ShverVertexShader = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FILL_MODE")]
-	public enum D3D11FillMode
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILL_WIREFRAME")]
-		Wireframe = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILL_SOLID")]
-		Solid = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		ShverGeometryShader = unchecked(2),
 
-	}
+		/// <summary>		/// D3D11 Shaders<br/>		/// </summary>		ShverHullShader = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CULL_MODE")]
-	public enum D3D11CullMode
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_NONE")]
-		None = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_FRONT")]
-		Front = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CULL_BACK")]
-		Back = unchecked(3),
+		/// <summary>		/// D3D11 Shaders<br/>		/// </summary>		ShverDomainShader = unchecked(4),
 
-	}
+		/// <summary>		/// D3D11 Shaders<br/>		/// </summary>		ShverComputeShader = unchecked(5),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0021 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FILTER")]
-	public enum D3D11Filter
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_MIP_POINT")]
-		MinMagMipPoint = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_POINT_MIP_LINEAR")]
-		MinMagPointMipLinear = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT")]
-		MinPointMagLinearMipPoint = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR")]
-		MinPointMagMipLinear = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT")]
-		MinLinearMagMipPoint = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
-		MinLinearMagPointMipLinear = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT")]
-		MinMagLinearMipPoint = unchecked(20),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MIN_MAG_MIP_LINEAR")]
-		MinMagMipLinear = unchecked(21),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_ANISOTROPIC")]
-		Anisotropic = unchecked(85),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT")]
-		ComparisonMinMagMipPoint = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR")]
-		ComparisonMinMagPointMipLinear = unchecked(129),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT")]
-		ComparisonMinPointMagLinearMipPoint = unchecked(132),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR")]
-		ComparisonMinPointMagMipLinear = unchecked(133),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT")]
-		ComparisonMinLinearMagMipPoint = unchecked(144),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
-		ComparisonMinLinearMagPointMipLinear = unchecked(145),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT")]
-		ComparisonMinMagLinearMipPoint = unchecked(148),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR")]
-		ComparisonMinMagMipLinear = unchecked(149),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_COMPARISON_ANISOTROPIC")]
-		ComparisonAnisotropic = unchecked(213),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_MIP_POINT")]
-		MinimumMinMagMipPoint = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_POINT_MIP_LINEAR")]
-		MinimumMinMagPointMipLinear = unchecked(257),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
-		MinimumMinPointMagLinearMipPoint = unchecked(260),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_POINT_MAG_MIP_LINEAR")]
-		MinimumMinPointMagMipLinear = unchecked(261),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_MIP_POINT")]
-		MinimumMinLinearMagMipPoint = unchecked(272),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
-		MinimumMinLinearMagPointMipLinear = unchecked(273),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_LINEAR_MIP_POINT")]
-		MinimumMinMagLinearMipPoint = unchecked(276),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_MIN_MAG_MIP_LINEAR")]
-		MinimumMinMagMipLinear = unchecked(277),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MINIMUM_ANISOTROPIC")]
-		MinimumAnisotropic = unchecked(341),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_POINT")]
-		MaximumMinMagMipPoint = unchecked(384),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_POINT_MIP_LINEAR")]
-		MaximumMinMagPointMipLinear = unchecked(385),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT")]
-		MaximumMinPointMagLinearMipPoint = unchecked(388),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_MIP_LINEAR")]
-		MaximumMinPointMagMipLinear = unchecked(389),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_MIP_POINT")]
-		MaximumMinLinearMagMipPoint = unchecked(400),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR")]
-		MaximumMinLinearMagPointMipLinear = unchecked(401),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_LINEAR_MIP_POINT")]
-		MaximumMinMagLinearMipPoint = unchecked(404),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_LINEAR")]
-		MaximumMinMagMipLinear = unchecked(405),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_MAXIMUM_ANISOTROPIC")]
-		MaximumAnisotropic = unchecked(469),
+		/// <summary>		/// D3D11 Shaders<br/>		/// </summary>		ShverRESERVED0 = unchecked(65520),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_ADDRESS_MODE")]
-	public enum D3D11TextureAddressMode
+	/// <summary>	/// interface __MIDL_itf_d3d11ShaderTracing_0000_0000 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11ShaderType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_WRAP")]
-		Wrap = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_MIRROR")]
-		Mirror = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_CLAMP")]
-		Clamp = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_BORDER")]
-		Border = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_ADDRESS_MIRROR_ONCE")]
-		MirrorOnce = unchecked(5),
+		/// <summary>		/// To be documented.		/// </summary>		VertexShader = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		HullShader = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_QUERY")]
-	public enum D3D11Query
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_EVENT")]
-		Event = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_OCCLUSION")]
-		Occlusion = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_TIMESTAMP")]
-		Timestamp = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_TIMESTAMP_DISJOINT")]
-		TimestampDisjoint = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_PIPELINE_STATISTICS")]
-		PipelineStatistics = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_OCCLUSION_PREDICATE")]
-		OcclusionPredicate = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS")]
-		SoStatistics = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE")]
-		SoOverflowPredicate = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM0")]
-		SoStatisticsStream0 = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM0")]
-		SoOverflowPredicateStream0 = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM1")]
-		SoStatisticsStream1 = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM1")]
-		SoOverflowPredicateStream1 = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM2")]
-		SoStatisticsStream2 = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM2")]
-		SoOverflowPredicateStream2 = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_STATISTICS_STREAM3")]
-		SoStatisticsStream3 = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM3")]
-		SoOverflowPredicateStream3 = unchecked(15),
+		/// <summary>		/// To be documented.		/// </summary>		DomainShader = unchecked(3),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		GeometryShader = unchecked(4),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_COUNTER")]
-	public enum D3D11Counter
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_DEVICE_DEPENDENT_0")]
-		DeviceDependent0 = unchecked(1073741824),
+		/// <summary>		/// To be documented.		/// </summary>		PixelShader = unchecked(5),
 
+		/// <summary>		/// To be documented.		/// </summary>		ComputeShader = unchecked(6),
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_MAP")]
-	public enum D3D11Map
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TraceGsInputPrimitive
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_READ")]
-		Read = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE")]
-		Write = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_READ_WRITE")]
-		ReadWrite = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE_DISCARD")]
-		WriteDiscard = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_WRITE_NO_OVERWRITE")]
-		WriteNoOverwrite = unchecked(5),
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Point = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3DPrimitiveTopology
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		Undefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		Pointlist = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
-		Linelist = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		Linestrip = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		Trianglelist = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		Trianglestrip = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		LinelistAdj = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		LinestripAdj = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		TrianglelistAdj = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		TrianglestripAdj = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
-		Topology1ControlPointPatchlist = unchecked(33),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
-		Topology2ControlPointPatchlist = unchecked(34),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
-		Topology3ControlPointPatchlist = unchecked(35),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
-		Topology4ControlPointPatchlist = unchecked(36),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
-		Topology5ControlPointPatchlist = unchecked(37),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
-		Topology6ControlPointPatchlist = unchecked(38),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
-		Topology7ControlPointPatchlist = unchecked(39),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
-		Topology8ControlPointPatchlist = unchecked(40),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
-		Topology9ControlPointPatchlist = unchecked(41),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
-		Topology10ControlPointPatchlist = unchecked(42),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
-		Topology11ControlPointPatchlist = unchecked(43),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
-		Topology12ControlPointPatchlist = unchecked(44),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
-		Topology13ControlPointPatchlist = unchecked(45),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
-		Topology14ControlPointPatchlist = unchecked(46),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
-		Topology15ControlPointPatchlist = unchecked(47),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
-		Topology16ControlPointPatchlist = unchecked(48),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
-		Topology17ControlPointPatchlist = unchecked(49),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
-		Topology18ControlPointPatchlist = unchecked(50),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
-		Topology19ControlPointPatchlist = unchecked(51),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
-		Topology20ControlPointPatchlist = unchecked(52),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
-		Topology21ControlPointPatchlist = unchecked(53),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
-		Topology22ControlPointPatchlist = unchecked(54),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
-		Topology23ControlPointPatchlist = unchecked(55),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
-		Topology24ControlPointPatchlist = unchecked(56),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
-		Topology25ControlPointPatchlist = unchecked(57),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
-		Topology26ControlPointPatchlist = unchecked(58),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
-		Topology27ControlPointPatchlist = unchecked(59),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
-		Topology28ControlPointPatchlist = unchecked(60),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
-		Topology29ControlPointPatchlist = unchecked(61),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
-		Topology30ControlPointPatchlist = unchecked(62),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
-		Topology31ControlPointPatchlist = unchecked(63),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
-		Topology32ControlPointPatchlist = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		D3D10PrimitiveTopologyUndefined = Undefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		D3D10PrimitiveTopologyPointlist = Pointlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
-		D3D10PrimitiveTopologyLinelist = Linelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		D3D10PrimitiveTopologyLinestrip = Linestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		D3D10PrimitiveTopologyTrianglelist = Trianglelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		D3D10PrimitiveTopologyTrianglestrip = Trianglestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		D3D10PrimitiveTopologyLinelistAdj = LinelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		D3D10PrimitiveTopologyLinestripAdj = LinestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		D3D10PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		D3D10PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		D3D11PrimitiveTopologyUndefined = Undefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		D3D11PrimitiveTopologyPointlist = Pointlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
-		D3D11PrimitiveTopologyLinelist = Linelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		D3D11PrimitiveTopologyLinestrip = Linestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		D3D11PrimitiveTopologyTrianglelist = Trianglelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		D3D11PrimitiveTopologyTrianglestrip = Trianglestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		D3D11PrimitiveTopologyLinelistAdj = LinelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		D3D11PrimitiveTopologyLinestripAdj = LinestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		D3D11PrimitiveTopologyTrianglelistAdj = TrianglelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		D3D11PrimitiveTopologyTrianglestripAdj = TrianglestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology1ControlPointPatchlist = Topology1ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology2ControlPointPatchlist = Topology2ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology3ControlPointPatchlist = Topology3ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology4ControlPointPatchlist = Topology4ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology5ControlPointPatchlist = Topology5ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology6ControlPointPatchlist = Topology6ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology7ControlPointPatchlist = Topology7ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology8ControlPointPatchlist = Topology8ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology9ControlPointPatchlist = Topology9ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology10ControlPointPatchlist = Topology10ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology11ControlPointPatchlist = Topology11ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology12ControlPointPatchlist = Topology12ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology13ControlPointPatchlist = Topology13ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology14ControlPointPatchlist = Topology14ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology15ControlPointPatchlist = Topology15ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology16ControlPointPatchlist = Topology16ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology17ControlPointPatchlist = Topology17ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology18ControlPointPatchlist = Topology18ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology19ControlPointPatchlist = Topology19ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology20ControlPointPatchlist = Topology20ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology21ControlPointPatchlist = Topology21ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology22ControlPointPatchlist = Topology22ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology23ControlPointPatchlist = Topology23ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology24ControlPointPatchlist = Topology24ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology25ControlPointPatchlist = Topology25ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology26ControlPointPatchlist = Topology26ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology27ControlPointPatchlist = Topology27ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology28ControlPointPatchlist = Topology28ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology29ControlPointPatchlist = Topology29ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology30ControlPointPatchlist = Topology30ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology31ControlPointPatchlist = Topology31ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
-		D3D11PrimitiveTopology32ControlPointPatchlist = Topology32ControlPointPatchlist,
+		/// <summary>		/// To be documented.		/// </summary>		Line = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Triangle = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_DEVICE_CONTEXT_TYPE")]
-	public enum D3D11DeviceContextType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DEVICE_CONTEXT_IMMEDIATE")]
-		Immediate = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DEVICE_CONTEXT_DEFERRED")]
-		Deferred = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		LineAdj = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		TriangleAdj = unchecked(7),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_COUNTER_TYPE")]
-	public enum D3D11CounterType
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TraceRegisterType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_FLOAT32")]
-		Float32 = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT16")]
-		Uint16 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT32")]
-		Uint32 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COUNTER_TYPE_UINT64")]
-		Uint64 = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		OutputNullRegister = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputRegister = unchecked(1),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0029 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FEATURE")]
-	public enum D3D11Feature
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_THREADING")]
-		Threading = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_DOUBLES")]
-		Doubles = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_FORMAT_SUPPORT")]
-		FormatSupport = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_FORMAT_SUPPORT2")]
-		FormatSupport2 = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D10_X_HARDWARE_OPTIONS")]
-		Featured3D10xHardwareOptions = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS")]
-		Featured3D11Options = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_ARCHITECTURE_INFO")]
-		ArchitectureInfo = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_OPTIONS")]
-		Featured3D9Options = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_SHADER_MIN_PRECISION_SUPPORT")]
-		ShaderMinPrecisionSupport = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_SHADOW_SUPPORT")]
-		Featured3D9ShadowSupport = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS1")]
-		Featured3D11Options1 = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_SIMPLE_INSTANCING_SUPPORT")]
-		Featured3D9SimpleInstancingSupport = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_MARKER_SUPPORT")]
-		MarkerSupport = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D9_OPTIONS1")]
-		Featured3D9Options1 = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS2")]
-		Featured3D11Options2 = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS3")]
-		Featured3D11Options3 = unchecked(15),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_GPU_VIRTUAL_ADDRESS_SUPPORT")]
-		GpuVirtualAddressSupport = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS4")]
-		Featured3D11Options4 = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_SHADER_CACHE")]
-		ShaderCache = unchecked(18),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_D3D11_OPTIONS5")]
-		Featured3D11Options5 = unchecked(19),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_DISPLAYABLE")]
-		Displayable = unchecked(20),
+		/// <summary>		/// To be documented.		/// </summary>		InputPrimitiveIdRegister = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		ImmediateConstantBuffer = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_FRAME_FORMAT")]
-	public enum D3D11VideoFrameFormat
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_PROGRESSIVE")]
-		Progressive = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_INTERLACED_TOP_FIELD_FIRST")]
-		InterlacedTopFieldFirst = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_FRAME_FORMAT_INTERLACED_BOTTOM_FIELD_FIRST")]
-		InterlacedBottomFieldFirst = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		TempRegister = unchecked(4),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		IndexableTempRegister = unchecked(5),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_USAGE")]
-	public enum D3D11VideoUsage
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_PLAYBACK_NORMAL")]
-		PlaybackNormal = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_OPTIMAL_SPEED")]
-		OptimalSpeed = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_USAGE_OPTIMAL_QUALITY")]
-		OptimalQuality = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		OutputRegister = unchecked(6),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		OutputDepthRegister = unchecked(7),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER")]
-	public enum D3D11VideoProcessorFilter
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_BRIGHTNESS")]
-		Brightness = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CONTRAST")]
-		Contrast = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_HUE")]
-		Hue = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_SATURATION")]
-		Saturation = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_NOISE_REDUCTION")]
-		NoiseReduction = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_EDGE_ENHANCEMENT")]
-		EdgeEnhancement = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_ANAMORPHIC_SCALING")]
-		AnamorphicScaling = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_STEREO_ADJUSTMENT")]
-		StereoAdjustment = unchecked(7),
+		/// <summary>		/// To be documented.		/// </summary>		ConstantBuffer = unchecked(8),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		IMMEDIATE32 = unchecked(9),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0035 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VDOV_DIMENSION")]
-	public enum D3D11VdovDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VDOV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VDOV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		Sampler = unchecked(10),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Resource = unchecked(11),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0036 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VPIV_DIMENSION")]
-	public enum D3D11VpivDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VPIV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VPIV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		Rasterizer = unchecked(12),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		OutputCoverageMask = unchecked(13),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0037 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VPOV_DIMENSION")]
-	public enum D3D11VpovDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_TEXTURE2D")]
-		Texture2D = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VPOV_DIMENSION_TEXTURE2DARRAY")]
-		Texture2Darray = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		Stream = unchecked(14),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		ThisPointer = unchecked(15),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_BUFFER_TYPE")]
-	public enum D3D11VideoDecoderBufferType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_PICTURE_PARAMETERS")]
-		PictureParameters = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_MACROBLOCK_CONTROL")]
-		MacroblockControl = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_RESIDUAL_DIFFERENCE")]
-		ResidualDifference = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_DEBLOCKING_CONTROL")]
-		DeblockingControl = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_INVERSE_QUANTIZATION_MATRIX")]
-		InverseQuantizationMatrix = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_SLICE_CONTROL")]
-		SliceControl = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_BITSTREAM")]
-		Bitstream = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_MOTION_VECTOR")]
-		MotionVector = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_BUFFER_FILM_GRAIN")]
-		FilmGrain = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		OutputControlPointIdRegister = unchecked(16),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputForkInstanceIdRegister = unchecked(17),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE")]
-	public enum D3D11VideoProcessorAlphaFillMode
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_OPAQUE")]
-		Opaque = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_BACKGROUND")]
-		Background = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_DESTINATION")]
-		Destination = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ALPHA_FILL_MODE_SOURCE_STREAM")]
-		SourceStream = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		InputJoinInstanceIdRegister = unchecked(18),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputControlPointRegister = unchecked(19),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE")]
-	public enum D3D11VideoProcessorOutputRate
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_NORMAL")]
-		Normal = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_HALF")]
-		Half = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_OUTPUT_RATE_CUSTOM")]
-		Custom = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		OutputControlPointRegister = unchecked(20),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputPatchConstantRegister = unchecked(21),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT")]
-	public enum D3D11VideoProcessorStereoFormat
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO")]
-		Mono = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_HORIZONTAL")]
-		Horizontal = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_VERTICAL")]
-		Vertical = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_SEPARATE")]
-		Separate = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_MONO_OFFSET")]
-		MonoOffset = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_ROW_INTERLEAVED")]
-		RowInterleaved = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_COLUMN_INTERLEAVED")]
-		ColumnInterleaved = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FORMAT_CHECKERBOARD")]
-		Checkerboard = unchecked(7),
+		/// <summary>		/// To be documented.		/// </summary>		InputDomainPointRegister = unchecked(22),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		UnorderedAccessView = unchecked(23),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_MODE")]
-	public enum D3D11VideoProcessorStereoFlipMode
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_NONE")]
-		None = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME0")]
-		Frame0 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_FLIP_FRAME1")]
-		Frame1 = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		ThreadGroupSharedMemory = unchecked(24),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputThreadIdRegister = unchecked(25),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ROTATION")]
-	public enum D3D11VideoProcessorRotation
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_IDENTITY")]
-		Identity = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_90")]
-		Rotation90 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_180")]
-		Rotation180 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ROTATION_270")]
-		Rotation270 = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		InputThreadGroupIdRegister = unchecked(26),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputThreadIdInGroupRegister = unchecked(27),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_CHANNEL_TYPE")]
-	public enum D3D11AuthenticatedChannelType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_D3D11")]
-		Channeld3D11 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_DRIVER_SOFTWARE")]
-		DriverSoftware = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_AUTHENTICATED_CHANNEL_DRIVER_HARDWARE")]
-		DriverHardware = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		InputCoverageMaskRegister = unchecked(28),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		InputThreadIdInGroupFlattenedRegister = unchecked(29),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BIND_FLAG")]
-	public enum D3D11BindFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_VERTEX_BUFFER")]
-		VertexBuffer = unchecked((int)0x1L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_INDEX_BUFFER")]
-		IndexBuffer = unchecked((int)0x2L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_CONSTANT_BUFFER")]
-		ConstantBuffer = unchecked((int)0x4L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_SHADER_RESOURCE")]
-		ShaderResource = unchecked((int)0x8L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_STREAM_OUTPUT")]
-		StreamOutput = unchecked((int)0x10L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_RENDER_TARGET")]
-		RenderTarget = unchecked((int)0x20L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_DEPTH_STENCIL")]
-		DepthStencil = unchecked((int)0x40L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_UNORDERED_ACCESS")]
-		UnorderedAccess = unchecked((int)0x80L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_DECODER")]
-		Decoder = unchecked((int)0x200L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BIND_VIDEO_ENCODER")]
-		VideoEncoder = unchecked((int)0x400L),
+		/// <summary>		/// To be documented.		/// </summary>		InputGsInstanceIdRegister = unchecked(30),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		OutputDepthGreaterEqualRegister = unchecked(31),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CPU_ACCESS_FLAG")]
-	public enum D3D11CpuAccessFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CPU_ACCESS_WRITE")]
-		Write = unchecked((int)0x10000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CPU_ACCESS_READ")]
-		Read = unchecked((int)0x20000L),
+		/// <summary>		/// To be documented.		/// </summary>		OutputDepthLessEqualRegister = unchecked(32),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		IMMEDIATE64 = unchecked(33),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_RESOURCE_MISC_FLAG")]
-	public enum D3D11ResourceMiscFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GENERATE_MIPS")]
-		GenerateMips = unchecked((int)0x1L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED")]
-		Shared = unchecked((int)0x2L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TEXTURECUBE")]
-		Texturecube = unchecked((int)0x4L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_DRAWINDIRECT_ARGS")]
-		DrawindirectArgs = unchecked((int)0x10L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS")]
-		BufferAllowRawViews = unchecked((int)0x20L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_BUFFER_STRUCTURED")]
-		BufferStructured = unchecked((int)0x40L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESOURCE_CLAMP")]
-		Clamp = unchecked((int)0x80L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_KEYEDMUTEX")]
-		SharedKeyedmutex = unchecked((int)0x100L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GDI_COMPATIBLE")]
-		GdiCompatible = unchecked((int)0x200L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_NTHANDLE")]
-		SharedNthandle = unchecked((int)0x800L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICTED_CONTENT")]
-		RestrictedContent = unchecked((int)0x1000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE")]
-		RestrictSharedResource = unchecked((int)0x2000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER")]
-		RestrictSharedResourceDriver = unchecked((int)0x4000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_GUARDED")]
-		Guarded = unchecked((int)0x8000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TILE_POOL")]
-		TilePool = unchecked((int)0x20000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_TILED")]
-		Tiled = unchecked((int)0x40000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_HW_PROTECTED")]
-		HwProtected = unchecked((int)0x80000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_DISPLAYABLE")]
-		SharedDisplayable = unchecked((int)0x100000L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RESOURCE_MISC_SHARED_EXCLUSIVE_WRITER")]
-		SharedExclusiveWriter = unchecked((int)0x200000L),
+		/// <summary>		/// To be documented.		/// </summary>		InputCycleCounterRegister = unchecked(34),
 
+		/// <summary>		/// To be documented.		/// </summary>		InterfacePointer = unchecked(35),
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_MAP_FLAG")]
-	public enum D3D11MapFlag
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11LogicOp
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MAP_FLAG_DO_NOT_WAIT")]
-		DoNotWait = unchecked((int)0x100000L),
+		/// <summary>		/// To be documented.		/// </summary>		Clear = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Set = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_RAISE_FLAG")]
-	public enum D3D11RaiseFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR")]
-		DriverInternalError = unchecked((int)0x1L),
+		/// <summary>		/// To be documented.		/// </summary>		Copy = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		CopyInverted = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CLEAR_FLAG")]
-	public enum D3D11ClearFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CLEAR_DEPTH")]
-		Depth = unchecked((int)0x1L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CLEAR_STENCIL")]
-		Stencil = unchecked((int)0x2L),
+		/// <summary>		/// To be documented.		/// </summary>		Noop = unchecked(4),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Invert = unchecked(5),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_COLOR_WRITE_ENABLE")]
-	public enum D3D11ColorWriteEnable
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_RED")]
-		Red = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_GREEN")]
-		Green = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_BLUE")]
-		Blue = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_ALPHA")]
-		Alpha = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COLOR_WRITE_ENABLE_ALL")]
-		All = unchecked(15),
+		/// <summary>		/// To be documented.		/// </summary>		And = unchecked(6),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Nand = unchecked(7),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0009 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TEXTURECUBE_FACE")]
-	public enum D3D11TexturecubeFace
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_X")]
-		Positivex = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_X")]
-		Negativex = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_Y")]
-		Positivey = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_Y")]
-		Negativey = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_POSITIVE_Z")]
-		Positivez = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURECUBE_FACE_NEGATIVE_Z")]
-		Negativez = unchecked(5),
+		/// <summary>		/// To be documented.		/// </summary>		Or = unchecked(8),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Nor = unchecked(9),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BUFFEREX_SRV_FLAG")]
-	public enum D3D11BufferexSrvFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFEREX_SRV_FLAG_RAW")]
-		Raw = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		Xor = unchecked(10),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Equiv = unchecked(11),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_DSV_FLAG")]
-	public enum D3D11DsvFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_READ_ONLY_DEPTH")]
-		ReadOnlyDepth = unchecked((int)0x1L),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DSV_READ_ONLY_STENCIL")]
-		ReadOnlyStencil = unchecked((int)0x2L),
+		/// <summary>		/// To be documented.		/// </summary>		AndReverse = unchecked(12),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		AndInverted = unchecked(13),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0013 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BUFFER_UAV_FLAG")]
-	public enum D3D11BufferUavFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_RAW")]
-		Raw = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_APPEND")]
-		Append = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUFFER_UAV_FLAG_COUNTER")]
-		Counter = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		OrReverse = unchecked(14),
+
+		/// <summary>		/// To be documented.		/// </summary>		OrInverted = unchecked(15),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FILTER_TYPE")]
-	public enum D3D11FilterType
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CryptoSessionStatus
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_TYPE_POINT")]
-		Point = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_TYPE_LINEAR")]
-		Linear = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		Ok = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		KeyLost = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FILTER_REDUCTION_TYPE")]
-	public enum D3D11FilterReductionType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_STANDARD")]
-		Standard = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_COMPARISON")]
-		Comparison = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_MINIMUM")]
-		Minimum = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FILTER_REDUCTION_TYPE_MAXIMUM")]
-		Maximum = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		KeyAndContentLost = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0022 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT")]
-	public enum D3D11FormatSupport
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CopyFlags
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BUFFER")]
-		Buffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER")]
-		IaVertexBuffer = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER")]
-		IaIndexBuffer = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SO_BUFFER")]
-		SoBuffer = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE1D")]
-		Texture1D = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE2D")]
-		Texture2D = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURE3D")]
-		Texture3D = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TEXTURECUBE")]
-		Texturecube = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_LOAD")]
-		ShaderLoad = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE")]
-		ShaderSample = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON")]
-		ShaderSampleComparison = unchecked(1024),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT")]
-		ShaderSampleMonoText = unchecked(2048),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MIP")]
-		Mip = unchecked(4096),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MIP_AUTOGEN")]
-		MipAutogen = unchecked(8192),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_RENDER_TARGET")]
-		RenderTarget = unchecked(16384),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BLENDABLE")]
-		Blendable = unchecked(32768),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DEPTH_STENCIL")]
-		DepthStencil = unchecked(65536),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_CPU_LOCKABLE")]
-		CpuLockable = unchecked(131072),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE")]
-		MultisampleResolve = unchecked(262144),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DISPLAY")]
-		Display = unchecked(524288),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT")]
-		CastWithinLayout = unchecked(1048576),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET")]
-		MultisampleRendertarget = unchecked(2097152),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD")]
-		MultisampleLoad = unchecked(4194304),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_GATHER")]
-		ShaderGather = unchecked(8388608),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST")]
-		BackBufferCast = unchecked(16777216),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW")]
-		TypedUnorderedAccessView = unchecked(33554432),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON")]
-		ShaderGatherComparison = unchecked(67108864),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_DECODER_OUTPUT")]
-		DecoderOutput = unchecked(134217728),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT")]
-		VideoProcessorOutput = unchecked(268435456),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT")]
-		VideoProcessorInput = unchecked(536870912),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT_VIDEO_ENCODER")]
-		VideoEncoder = unchecked(1073741824),
+		/// <summary>		/// To be documented.		/// </summary>		NoOverwrite = unchecked(1),
 
+		/// <summary>		/// To be documented.		/// </summary>		Discard = unchecked(2),
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FORMAT_SUPPORT2")]
-	public enum D3D11FormatSupport2
+	/// <summary>	/// interface __MIDL_itf_d3d11_1_0000_0002 <br/>	/// [local] <br/>	/// </summary>	public enum D3D111CreateDeviceContextStateFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD")]
-		UavAtomicAdd = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS")]
-		UavAtomicBitwiseOps = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE")]
-		UavAtomicCompareStoreOrCompareExchange = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE")]
-		UavAtomicExchange = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX")]
-		UavAtomicSignedMinOrMax = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX")]
-		UavAtomicUnsignedMinOrMax = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD")]
-		UavTypedLoad = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE")]
-		UavTypedStore = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP")]
-		OutputMergerLogicOp = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_TILED")]
-		Tiled = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_SHAREABLE")]
-		Shareable = unchecked(1024),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FORMAT_SUPPORT2_MULTIPLANE_OVERLAY")]
-		MultiplaneOverlay = unchecked(16384),
+		/// <summary>		/// To be documented.		/// </summary>		Singlethreaded = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0023 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_ASYNC_GETDATA_FLAG")]
-	public enum D3D11AsyncGetdataFlag
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoDecoderCaps
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_ASYNC_GETDATA_DONOTFLUSH")]
-		Donotflush = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		Downsample = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		NonRealTime = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_QUERY_MISC_FLAG")]
-	public enum D3D11QueryMiscFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_QUERY_MISC_PREDICATEHINT")]
-		Predicatehint = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		DownsampleDynamic = unchecked(4),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		DownsampleRequired = unchecked(8),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0026 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS")]
-	public enum D3D11StandardMultisampleQualityLevels
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_STANDARD_MULTISAMPLE_PATTERN")]
-		Pattern = unchecked((int)0xffffffff),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CENTER_MULTISAMPLE_PATTERN")]
-		CenterMultisamplePattern = unchecked((int)0xfffffffe),
+		/// <summary>		/// To be documented.		/// </summary>		Unsupported = unchecked(16),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_MIN_PRECISION_SUPPORT")]
-	public enum D3D11ShaderMinPrecisionSupport
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoProcessorBehaviorHints
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_MIN_PRECISION_10_BIT")]
-		Precision10 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_MIN_PRECISION_16_BIT")]
-		Precision16 = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		HintMultiplaneOverlayRotation = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		HintMultiplaneOverlayResize = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TILED_RESOURCES_TIER")]
-	public enum D3D11TiledResourcesTier
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_NOT_SUPPORTED")]
-		NotSupported = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_1")]
-		Tier1 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_2")]
-		Tier2 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILED_RESOURCES_TIER_3")]
-		Tier3 = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		HintMultiplaneOverlayColorSpaceConversion = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		HintTripleBufferOutput = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_TIER")]
-	public enum D3D11ConservativeRasterizationTier
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TileMappingFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_NOT_SUPPORTED")]
-		NotSupported = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_1")]
-		Tier1 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_2")]
-		Tier2 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_TIER_3")]
-		Tier3 = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		NoOverwrite = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_CACHE_SUPPORT_FLAGS")]
-	public enum D3D11ShaderCacheSupportFlags
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TileRangeFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_NONE")]
-		None = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_INPROC_CACHE")]
-		AutomaticInprocCache = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_CACHE_SUPPORT_AUTOMATIC_DISK_CACHE")]
-		AutomaticDiskCache = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		Null = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Skip = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHARED_RESOURCE_TIER")]
-	public enum D3D11SharedResourceTier
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_0")]
-		Tier0 = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_1")]
-		Tier1 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_2")]
-		Tier2 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHARED_RESOURCE_TIER_3")]
-		Tier3 = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		ReuseSingleTile = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0031 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT")]
-	public enum D3D11VideoProcessorFormatSupport
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CheckMultisampleQualityLevelsFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT")]
-		Input = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT")]
-		Output = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		TiledResource = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS")]
-	public enum D3D11VideoProcessorDeviceCaps
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TileCopyFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE")]
-		LinearSpace = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_xvYCC")]
-		XvYcc = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_RGB_RANGE_CONVERSION")]
-		RgbRangeConversion = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_YCbCr_MATRIX_CONVERSION")]
-		CapsyCbCrMatrixConversion = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_DEVICE_CAPS_NOMINAL_RANGE")]
-		NominalRange = unchecked(16),
+		/// <summary>		/// To be documented.		/// </summary>		NoOverwrite = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		LinearBufferToSwizzledTiledResource = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS")]
-	public enum D3D11VideoProcessorFeatureCaps
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL")]
-		AlphaFill = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_CONSTRICTION")]
-		Constriction = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LUMA_KEY")]
-		LumaKey = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_PALETTE")]
-		AlphaPalette = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_LEGACY")]
-		Legacy = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_STEREO")]
-		Stereo = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ROTATION")]
-		Rotation = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_STREAM")]
-		AlphaStream = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_PIXEL_ASPECT_RATIO")]
-		PixelAspectRatio = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_MIRROR")]
-		Mirror = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_SHADER_USAGE")]
-		ShaderUsage = unchecked(1024),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FEATURE_CAPS_METADATA_HDR10")]
-		MetadataHdr10 = unchecked(2048),
+		/// <summary>		/// To be documented.		/// </summary>		SwizzledTiledResourceToLinearBuffer = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS")]
-	public enum D3D11VideoProcessorFilterCaps
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11TextureLayout
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS")]
-		Brightness = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_CONTRAST")]
-		Contrast = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_HUE")]
-		Hue = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_SATURATION")]
-		Saturation = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_NOISE_REDUCTION")]
-		NoiseReduction = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_EDGE_ENHANCEMENT")]
-		EdgeEnhancement = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_ANAMORPHIC_SCALING")]
-		AnamorphicScaling = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FILTER_CAPS_STEREO_ADJUSTMENT")]
-		StereoAdjustment = unchecked(128),
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		RowMajor = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS")]
-	public enum D3D11VideoProcessorFormatCaps
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED")]
-		RgbInterlaced = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_PROCAMP")]
-		RgbProcamp = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_RGB_LUMA_KEY")]
-		RgbLumaKey = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_FORMAT_CAPS_PALETTE_INTERLACED")]
-		PaletteInterlaced = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		Layout64KStandardSwizzle = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS")]
-	public enum D3D11VideoProcessorAutoStreamCaps
+	/// <summary>	/// interface __MIDL_itf_d3d11_3_0000_0002 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11ConservativeRasterizationMode
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE")]
-		Denoise = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DERINGING")]
-		Deringing = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_EDGE_ENHANCEMENT")]
-		EdgeEnhancement = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_COLOR_CORRECTION")]
-		ColorCorrection = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_FLESH_TONE_MAPPING")]
-		FleshToneMapping = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_IMAGE_STABILIZATION")]
-		ImageStabilization = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_SUPER_RESOLUTION")]
-		SuperResolution = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_AUTO_STREAM_CAPS_ANAMORPHIC_SCALING")]
-		AnamorphicScaling = unchecked(128),
+		/// <summary>		/// To be documented.		/// </summary>		Off = unchecked(0),
 
+		/// <summary>		/// To be documented.		/// </summary>		On = unchecked(1),
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS")]
-	public enum D3D11VideoProcessorStereoCaps
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11ContextType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET")]
-		MonoOffset = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_ROW_INTERLEAVED")]
-		RowInterleaved = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_COLUMN_INTERLEAVED")]
-		ColumnInterleaved = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_CHECKERBOARD")]
-		Checkerboard = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_STEREO_CAPS_FLIP_MODE")]
-		FlipMode = unchecked(16),
+		/// <summary>		/// To be documented.		/// </summary>		All = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Type3D = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS")]
-	public enum D3D11VideoProcessorProcessorCaps
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BLEND")]
-		DeinterlaceBlend = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_BOB")]
-		DeinterlaceBob = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_ADAPTIVE")]
-		DeinterlaceAdaptive = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_DEINTERLACE_MOTION_COMPENSATION")]
-		DeinterlaceMotionCompensation = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_INVERSE_TELECINE")]
-		InverseTelecine = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_PROCESSOR_CAPS_FRAME_RATE_CONVERSION")]
-		FrameRateConversion = unchecked(32),
+		/// <summary>		/// To be documented.		/// </summary>		Compute = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Copy = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS")]
-	public enum D3D11VideoProcessorItelecineCaps
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32")]
-		Caps32 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_22")]
-		Caps22 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2224")]
-		Caps2224 = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_2332")]
-		Caps2332 = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_32322")]
-		Caps32322 = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_55")]
-		Caps55 = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_64")]
-		Caps64 = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_87")]
-		Caps87 = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_222222222223")]
-		Caps222222222223 = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER")]
-		Other = unchecked((int)0x80000000),
+		/// <summary>		/// To be documented.		/// </summary>		Video = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CONTENT_PROTECTION_CAPS")]
-	public enum D3D11ContentProtectionCaps
+	/// <summary>	/// interface __MIDL_itf_d3d11_3_0000_0007 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11FenceFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_SOFTWARE")]
-		Software = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE")]
-		Hardware = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON")]
-		AlwaysOn = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_PARTIAL_DECRYPTION")]
-		PartialDecryption = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_CONTENT_KEY")]
-		Key = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_FRESHEN_SESSION_KEY")]
-		FreshenSessionKey = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK")]
-		EncryptedReadBack = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK_KEY")]
-		EncryptedReadBackKey = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_SEQUENTIAL_CTR_IV")]
-		SequentialCtrIv = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_ENCRYPT_SLICEDATA_ONLY")]
-		EncryptSlicedataOnly = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_DECRYPTION_BLT")]
-		DecryptionBlt = unchecked(1024),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECT_UNCOMPRESSED")]
-		HardwareProtectUncompressed = unchecked(2048),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_PROTECTED_MEMORY_PAGEABLE")]
-		HardwareProtectedMemoryPageable = unchecked(4096),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_TEARDOWN")]
-		HardwareTeardown = unchecked(8192),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION")]
-		HardwareDrmCommunication = unchecked(16384),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION_MULTI_THREADED")]
-		HardwareDrmCommunicationMultiThreaded = unchecked(32768),
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Shared = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE")]
-	public enum D3D11VideoProcessorNominalRange
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_UNDEFINED")]
-		Undefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235")]
-		Range16235 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_0_255")]
-		Range0255 = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		SharedCrossAdapter = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		NonMonitored = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE")]
-	public enum D3D11AuthenticatedProcessIdentifierType
+	/// <summary>	/// To be documented.	/// </summary>	public enum DxgiHdrMetadataType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_UNKNOWN")]
-		ProcessidtypeUnknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_DWM")]
-		ProcessidtypeDwm = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PROCESSIDTYPE_HANDLE")]
-		ProcessidtypeHandle = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		None = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		HDR10 = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_BUS_TYPE")]
-	public enum D3D11BusType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_OTHER")]
-		Other = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCI")]
-		Pci = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCIX")]
-		Pcix = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_PCIEXPRESS")]
-		Pciexpress = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_TYPE_AGP")]
-		Agp = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_INSIDE_OF_CHIPSET")]
-		ImplModifierInsideOfChipset = unchecked(65536),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP")]
-		ImplModifierTracksOnMotherBoardToChip = unchecked(131072),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET")]
-		ImplModifierTracksOnMotherBoardToSocket = unchecked(196608),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR")]
-		ImplModifierDaughterBoardConnector = unchecked(262144),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE")]
-		ImplModifierDaughterBoardConnectorInsideOfNuae = unchecked(327680),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_BUS_IMPL_MODIFIER_NON_STANDARD")]
-		ImplModifierNonStandard = unchecked((int)0x80000000),
+		/// <summary>		/// To be documented.		/// </summary>		Hdr10Plus = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_0000_0041 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CREATE_DEVICE_FLAG")]
-	public enum D3D11CreateDeviceFlag
+	/// <summary>	/// interface __MIDL_itf_d3d11_4_0000_0004 <br/>	/// [local] <br/>	/// </summary>	public enum D3D11FeatureVideo
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_SINGLETHREADED")]
-		Singlethreaded = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DEBUG")]
-		Debug = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_SWITCH_TO_REF")]
-		SwitchToRef = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS")]
-		PreventInternalThreadingOptimizations = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_BGRA_SUPPORT")]
-		BgraSupport = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DEBUGGABLE")]
-		Debuggable = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY")]
-		PreventAlteringLayerSettingsFromRegistry = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_DISABLE_GPU_TIMEOUT")]
-		DisableGpuTimeout = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CREATE_DEVICE_VIDEO_SUPPORT")]
-		VideoSupport = unchecked(2048),
+		/// <summary>		/// To be documented.		/// </summary>		DecoderHistogram = unchecked(0),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_RLDO_FLAGS")]
-	public enum D3D11RldoFlags
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11CryptoSessionKeyExchangeFlags
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_SUMMARY")]
-		Summary = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_DETAIL")]
-		Detail = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RLDO_IGNORE_INTERNAL")]
-		IgnoreInternal = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		FlagNone = unchecked(0),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_CATEGORY")]
-	public enum D3D11MessageCategory
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoDecoderHistogramComponent
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_APPLICATION_DEFINED")]
-		ApplicationDefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_MISCELLANEOUS")]
-		Miscellaneous = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_INITIALIZATION")]
-		Initialization = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_CLEANUP")]
-		Cleanup = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_COMPILATION")]
-		Compilation = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_CREATION")]
-		StateCreation = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_SETTING")]
-		StateSetting = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_STATE_GETTING")]
-		StateGetting = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_RESOURCE_MANIPULATION")]
-		ResourceManipulation = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_EXECUTION")]
-		Execution = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_CATEGORY_SHADER")]
-		Shader = unchecked(10),
+		/// <summary>		/// To be documented.		/// </summary>		Y = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		U = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_SEVERITY")]
-	public enum D3D11MessageSeverity
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_CORRUPTION")]
-		Corruption = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_ERROR")]
-		Error = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_WARNING")]
-		Warning = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_INFO")]
-		Info = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_SEVERITY_MESSAGE")]
-		Message = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		V = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		R = unchecked(0),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_MESSAGE_ID")]
-	public enum D3D11MessageId
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UNKNOWN")]
-		Unknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_HAZARD")]
-		DeviceIasetvertexbuffersHazard = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_HAZARD")]
-		DeviceIasetindexbufferHazard = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_HAZARD")]
-		DeviceVssetshaderresourcesHazard = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_HAZARD")]
-		DeviceVssetconstantbuffersHazard = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_HAZARD")]
-		DeviceGssetshaderresourcesHazard = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_HAZARD")]
-		DeviceGssetconstantbuffersHazard = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_HAZARD")]
-		DevicePssetshaderresourcesHazard = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_HAZARD")]
-		DevicePssetconstantbuffersHazard = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETS_HAZARD")]
-		DeviceOmsetrendertargetsHazard = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_HAZARD")]
-		DeviceSosettargetsHazard = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STRING_FROM_APPLICATION")]
-		StringFromApplication = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_THIS")]
-		CorruptedThis = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER1")]
-		CorruptedParameter1 = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER2")]
-		CorruptedParameter2 = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER3")]
-		CorruptedParameter3 = unchecked(15),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER4")]
-		CorruptedParameter4 = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER5")]
-		CorruptedParameter5 = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER6")]
-		CorruptedParameter6 = unchecked(18),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER7")]
-		CorruptedParameter7 = unchecked(19),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER8")]
-		CorruptedParameter8 = unchecked(20),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER9")]
-		CorruptedParameter9 = unchecked(21),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER10")]
-		CorruptedParameter10 = unchecked(22),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER11")]
-		CorruptedParameter11 = unchecked(23),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER12")]
-		CorruptedParameter12 = unchecked(24),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER13")]
-		CorruptedParameter13 = unchecked(25),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER14")]
-		CorruptedParameter14 = unchecked(26),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_PARAMETER15")]
-		CorruptedParameter15 = unchecked(27),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CORRUPTED_MULTITHREADING")]
-		CorruptedMultithreading = unchecked(28),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MESSAGE_REPORTING_OUTOFMEMORY")]
-		ReportingOutofmemory = unchecked(29),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINPUTLAYOUT_UNBINDDELETINGOBJECT")]
-		IasetinputlayoutUnbinddeletingobject = unchecked(30),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_UNBINDDELETINGOBJECT")]
-		IasetvertexbuffersUnbinddeletingobject = unchecked(31),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINDEXBUFFER_UNBINDDELETINGOBJECT")]
-		IasetindexbufferUnbinddeletingobject = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSHADER_UNBINDDELETINGOBJECT")]
-		VssetshaderUnbinddeletingobject = unchecked(33),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		VssetshaderresourcesUnbinddeletingobject = unchecked(34),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		VssetconstantbuffersUnbinddeletingobject = unchecked(35),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		VssetsamplersUnbinddeletingobject = unchecked(36),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSHADER_UNBINDDELETINGOBJECT")]
-		GssetshaderUnbinddeletingobject = unchecked(37),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		GssetshaderresourcesUnbinddeletingobject = unchecked(38),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		GssetconstantbuffersUnbinddeletingobject = unchecked(39),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		GssetsamplersUnbinddeletingobject = unchecked(40),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SOSETTARGETS_UNBINDDELETINGOBJECT")]
-		SosettargetsUnbinddeletingobject = unchecked(41),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSHADER_UNBINDDELETINGOBJECT")]
-		PssetshaderUnbinddeletingobject = unchecked(42),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		PssetshaderresourcesUnbinddeletingobject = unchecked(43),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		PssetconstantbuffersUnbinddeletingobject = unchecked(44),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		PssetsamplersUnbinddeletingobject = unchecked(45),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RSSETSTATE_UNBINDDELETINGOBJECT")]
-		RssetstateUnbinddeletingobject = unchecked(46),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETBLENDSTATE_UNBINDDELETINGOBJECT")]
-		OmsetblendstateUnbinddeletingobject = unchecked(47),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETDEPTHSTENCILSTATE_UNBINDDELETINGOBJECT")]
-		OmsetdepthstencilstateUnbinddeletingobject = unchecked(48),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_UNBINDDELETINGOBJECT")]
-		OmsetrendertargetsUnbinddeletingobject = unchecked(49),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPREDICATION_UNBINDDELETINGOBJECT")]
-		SetpredicationUnbinddeletingobject = unchecked(50),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETPRIVATEDATA_MOREDATA")]
-		GetprivatedataMoredata = unchecked(51),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFREEDATA")]
-		SetprivatedataInvalidfreedata = unchecked(52),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDIUNKNOWN")]
-		SetprivatedataInvalidiunknown = unchecked(53),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_INVALIDFLAGS")]
-		SetprivatedataInvalidflags = unchecked(54),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_CHANGINGPARAMS")]
-		SetprivatedataChangingparams = unchecked(55),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPRIVATEDATA_OUTOFMEMORY")]
-		SetprivatedataOutofmemory = unchecked(56),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDFORMAT")]
-		CreatebufferUnrecognizedformat = unchecked(57),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSAMPLES")]
-		CreatebufferInvalidsamples = unchecked(58),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDUSAGE")]
-		CreatebufferUnrecognizedusage = unchecked(59),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDBINDFLAGS")]
-		CreatebufferUnrecognizedbindflags = unchecked(60),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDCPUACCESSFLAGS")]
-		CreatebufferUnrecognizedcpuaccessflags = unchecked(61),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_UNRECOGNIZEDMISCFLAGS")]
-		CreatebufferUnrecognizedmiscflags = unchecked(62),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCPUACCESSFLAGS")]
-		CreatebufferInvalidcpuaccessflags = unchecked(63),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDBINDFLAGS")]
-		CreatebufferInvalidbindflags = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDINITIALDATA")]
-		CreatebufferInvalidinitialdata = unchecked(65),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDDIMENSIONS")]
-		CreatebufferInvaliddimensions = unchecked(66),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMIPLEVELS")]
-		CreatebufferInvalidmiplevels = unchecked(67),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDMISCFLAGS")]
-		CreatebufferInvalidmiscflags = unchecked(68),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDARG_RETURN")]
-		CreatebufferInvalidargReturn = unchecked(69),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_OUTOFMEMORY_RETURN")]
-		CreatebufferOutofmemoryReturn = unchecked(70),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_NULLDESC")]
-		CreatebufferNulldesc = unchecked(71),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDCONSTANTBUFFERBINDINGS")]
-		CreatebufferInvalidconstantbufferbindings = unchecked(72),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_LARGEALLOCATION")]
-		CreatebufferLargeallocation = unchecked(73),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDFORMAT")]
-		Createtexture1DUnrecognizedformat = unchecked(74),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNSUPPORTEDFORMAT")]
-		Createtexture1DUnsupportedformat = unchecked(75),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDSAMPLES")]
-		Createtexture1DInvalidsamples = unchecked(76),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDUSAGE")]
-		Createtexture1DUnrecognizedusage = unchecked(77),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDBINDFLAGS")]
-		Createtexture1DUnrecognizedbindflags = unchecked(78),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDCPUACCESSFLAGS")]
-		Createtexture1DUnrecognizedcpuaccessflags = unchecked(79),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_UNRECOGNIZEDMISCFLAGS")]
-		Createtexture1DUnrecognizedmiscflags = unchecked(80),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDCPUACCESSFLAGS")]
-		Createtexture1DInvalidcpuaccessflags = unchecked(81),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDBINDFLAGS")]
-		Createtexture1DInvalidbindflags = unchecked(82),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDINITIALDATA")]
-		Createtexture1DInvalidinitialdata = unchecked(83),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDDIMENSIONS")]
-		Createtexture1DInvaliddimensions = unchecked(84),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMIPLEVELS")]
-		Createtexture1DInvalidmiplevels = unchecked(85),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDMISCFLAGS")]
-		Createtexture1DInvalidmiscflags = unchecked(86),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDARG_RETURN")]
-		Createtexture1DInvalidargReturn = unchecked(87),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_OUTOFMEMORY_RETURN")]
-		Createtexture1DOutofmemoryReturn = unchecked(88),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_NULLDESC")]
-		Createtexture1DNulldesc = unchecked(89),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_LARGEALLOCATION")]
-		Createtexture1DLargeallocation = unchecked(90),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDFORMAT")]
-		Createtexture2DUnrecognizedformat = unchecked(91),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNSUPPORTEDFORMAT")]
-		Createtexture2DUnsupportedformat = unchecked(92),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDSAMPLES")]
-		Createtexture2DInvalidsamples = unchecked(93),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDUSAGE")]
-		Createtexture2DUnrecognizedusage = unchecked(94),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDBINDFLAGS")]
-		Createtexture2DUnrecognizedbindflags = unchecked(95),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDCPUACCESSFLAGS")]
-		Createtexture2DUnrecognizedcpuaccessflags = unchecked(96),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_UNRECOGNIZEDMISCFLAGS")]
-		Createtexture2DUnrecognizedmiscflags = unchecked(97),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDCPUACCESSFLAGS")]
-		Createtexture2DInvalidcpuaccessflags = unchecked(98),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDBINDFLAGS")]
-		Createtexture2DInvalidbindflags = unchecked(99),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDINITIALDATA")]
-		Createtexture2DInvalidinitialdata = unchecked(100),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDDIMENSIONS")]
-		Createtexture2DInvaliddimensions = unchecked(101),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMIPLEVELS")]
-		Createtexture2DInvalidmiplevels = unchecked(102),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDMISCFLAGS")]
-		Createtexture2DInvalidmiscflags = unchecked(103),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDARG_RETURN")]
-		Createtexture2DInvalidargReturn = unchecked(104),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_OUTOFMEMORY_RETURN")]
-		Createtexture2DOutofmemoryReturn = unchecked(105),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_NULLDESC")]
-		Createtexture2DNulldesc = unchecked(106),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_LARGEALLOCATION")]
-		Createtexture2DLargeallocation = unchecked(107),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDFORMAT")]
-		Createtexture3DUnrecognizedformat = unchecked(108),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNSUPPORTEDFORMAT")]
-		Createtexture3DUnsupportedformat = unchecked(109),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDSAMPLES")]
-		Createtexture3DInvalidsamples = unchecked(110),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDUSAGE")]
-		Createtexture3DUnrecognizedusage = unchecked(111),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDBINDFLAGS")]
-		Createtexture3DUnrecognizedbindflags = unchecked(112),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDCPUACCESSFLAGS")]
-		Createtexture3DUnrecognizedcpuaccessflags = unchecked(113),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_UNRECOGNIZEDMISCFLAGS")]
-		Createtexture3DUnrecognizedmiscflags = unchecked(114),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDCPUACCESSFLAGS")]
-		Createtexture3DInvalidcpuaccessflags = unchecked(115),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDBINDFLAGS")]
-		Createtexture3DInvalidbindflags = unchecked(116),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDINITIALDATA")]
-		Createtexture3DInvalidinitialdata = unchecked(117),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDDIMENSIONS")]
-		Createtexture3DInvaliddimensions = unchecked(118),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMIPLEVELS")]
-		Createtexture3DInvalidmiplevels = unchecked(119),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDMISCFLAGS")]
-		Createtexture3DInvalidmiscflags = unchecked(120),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_INVALIDARG_RETURN")]
-		Createtexture3DInvalidargReturn = unchecked(121),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_OUTOFMEMORY_RETURN")]
-		Createtexture3DOutofmemoryReturn = unchecked(122),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_NULLDESC")]
-		Createtexture3DNulldesc = unchecked(123),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE3D_LARGEALLOCATION")]
-		Createtexture3DLargeallocation = unchecked(124),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_UNRECOGNIZEDFORMAT")]
-		CreateshaderresourceviewUnrecognizedformat = unchecked(125),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDESC")]
-		CreateshaderresourceviewInvaliddesc = unchecked(126),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFORMAT")]
-		CreateshaderresourceviewInvalidformat = unchecked(127),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDIMENSIONS")]
-		CreateshaderresourceviewInvaliddimensions = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDRESOURCE")]
-		CreateshaderresourceviewInvalidresource = unchecked(129),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_TOOMANYOBJECTS")]
-		CreateshaderresourceviewToomanyobjects = unchecked(130),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDARG_RETURN")]
-		CreateshaderresourceviewInvalidargReturn = unchecked(131),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_OUTOFMEMORY_RETURN")]
-		CreateshaderresourceviewOutofmemoryReturn = unchecked(132),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNRECOGNIZEDFORMAT")]
-		CreaterendertargetviewUnrecognizedformat = unchecked(133),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_UNSUPPORTEDFORMAT")]
-		CreaterendertargetviewUnsupportedformat = unchecked(134),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDESC")]
-		CreaterendertargetviewInvaliddesc = unchecked(135),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDFORMAT")]
-		CreaterendertargetviewInvalidformat = unchecked(136),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDIMENSIONS")]
-		CreaterendertargetviewInvaliddimensions = unchecked(137),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDRESOURCE")]
-		CreaterendertargetviewInvalidresource = unchecked(138),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_TOOMANYOBJECTS")]
-		CreaterendertargetviewToomanyobjects = unchecked(139),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDARG_RETURN")]
-		CreaterendertargetviewInvalidargReturn = unchecked(140),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_OUTOFMEMORY_RETURN")]
-		CreaterendertargetviewOutofmemoryReturn = unchecked(141),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_UNRECOGNIZEDFORMAT")]
-		CreatedepthstencilviewUnrecognizedformat = unchecked(142),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDESC")]
-		CreatedepthstencilviewInvaliddesc = unchecked(143),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFORMAT")]
-		CreatedepthstencilviewInvalidformat = unchecked(144),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDDIMENSIONS")]
-		CreatedepthstencilviewInvaliddimensions = unchecked(145),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDRESOURCE")]
-		CreatedepthstencilviewInvalidresource = unchecked(146),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_TOOMANYOBJECTS")]
-		CreatedepthstencilviewToomanyobjects = unchecked(147),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDARG_RETURN")]
-		CreatedepthstencilviewInvalidargReturn = unchecked(148),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_OUTOFMEMORY_RETURN")]
-		CreatedepthstencilviewOutofmemoryReturn = unchecked(149),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_OUTOFMEMORY")]
-		CreateinputlayoutOutofmemory = unchecked(150),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TOOMANYELEMENTS")]
-		CreateinputlayoutToomanyelements = unchecked(151),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDFORMAT")]
-		CreateinputlayoutInvalidformat = unchecked(152),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INCOMPATIBLEFORMAT")]
-		CreateinputlayoutIncompatibleformat = unchecked(153),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOT")]
-		CreateinputlayoutInvalidslot = unchecked(154),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDINPUTSLOTCLASS")]
-		CreateinputlayoutInvalidinputslotclass = unchecked(155),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_STEPRATESLOTCLASSMISMATCH")]
-		CreateinputlayoutSteprateslotclassmismatch = unchecked(156),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSLOTCLASSCHANGE")]
-		CreateinputlayoutInvalidslotclasschange = unchecked(157),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDSTEPRATECHANGE")]
-		CreateinputlayoutInvalidstepratechange = unchecked(158),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_INVALIDALIGNMENT")]
-		CreateinputlayoutInvalidalignment = unchecked(159),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_DUPLICATESEMANTIC")]
-		CreateinputlayoutDuplicatesemantic = unchecked(160),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNPARSEABLEINPUTSIGNATURE")]
-		CreateinputlayoutUnparseableinputsignature = unchecked(161),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLSEMANTIC")]
-		CreateinputlayoutNullsemantic = unchecked(162),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_MISSINGELEMENT")]
-		CreateinputlayoutMissingelement = unchecked(163),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_NULLDESC")]
-		CreateinputlayoutNulldesc = unchecked(164),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_OUTOFMEMORY")]
-		CreatevertexshaderOutofmemory = unchecked(165),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERBYTECODE")]
-		CreatevertexshaderInvalidshaderbytecode = unchecked(166),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDSHADERTYPE")]
-		CreatevertexshaderInvalidshadertype = unchecked(167),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_OUTOFMEMORY")]
-		CreategeometryshaderOutofmemory = unchecked(168),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERBYTECODE")]
-		CreategeometryshaderInvalidshaderbytecode = unchecked(169),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDSHADERTYPE")]
-		CreategeometryshaderInvalidshadertype = unchecked(170),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTOFMEMORY")]
-		CreategeometryshaderwithstreamoutputOutofmemory = unchecked(171),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERBYTECODE")]
-		CreategeometryshaderwithstreamoutputInvalidshaderbytecode = unchecked(172),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSHADERTYPE")]
-		CreategeometryshaderwithstreamoutputInvalidshadertype = unchecked(173),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMENTRIES")]
-		CreategeometryshaderwithstreamoutputInvalidnumentries = unchecked(174),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSTREAMSTRIDEUNUSED")]
-		CreategeometryshaderwithstreamoutputOutputstreamstrideunused = unchecked(175),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDDECL")]
-		CreategeometryshaderwithstreamoutputUnexpecteddecl = unchecked(176),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_EXPECTEDDECL")]
-		CreategeometryshaderwithstreamoutputExpecteddecl = unchecked(177),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_OUTPUTSLOT0EXPECTED")]
-		CreategeometryshaderwithstreamoutputOutputslot0Expected = unchecked(178),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSLOT")]
-		CreategeometryshaderwithstreamoutputInvalidoutputslot = unchecked(179),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_ONLYONEELEMENTPERSLOT")]
-		CreategeometryshaderwithstreamoutputOnlyoneelementperslot = unchecked(180),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCOMPONENTCOUNT")]
-		CreategeometryshaderwithstreamoutputInvalidcomponentcount = unchecked(181),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTARTCOMPONENTANDCOMPONENTCOUNT")]
-		CreategeometryshaderwithstreamoutputInvalidstartcomponentandcomponentcount = unchecked(182),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDGAPDEFINITION")]
-		CreategeometryshaderwithstreamoutputInvalidgapdefinition = unchecked(183),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_REPEATEDOUTPUT")]
-		CreategeometryshaderwithstreamoutputRepeatedoutput = unchecked(184),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDOUTPUTSTREAMSTRIDE")]
-		CreategeometryshaderwithstreamoutputInvalidoutputstreamstride = unchecked(185),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGSEMANTIC")]
-		CreategeometryshaderwithstreamoutputMissingsemantic = unchecked(186),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MASKMISMATCH")]
-		CreategeometryshaderwithstreamoutputMaskmismatch = unchecked(187),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_CANTHAVEONLYGAPS")]
-		CreategeometryshaderwithstreamoutputCanthaveonlygaps = unchecked(188),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DECLTOOCOMPLEX")]
-		CreategeometryshaderwithstreamoutputDecltoocomplex = unchecked(189),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_MISSINGOUTPUTSIGNATURE")]
-		CreategeometryshaderwithstreamoutputMissingoutputsignature = unchecked(190),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_OUTOFMEMORY")]
-		CreatepixelshaderOutofmemory = unchecked(191),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERBYTECODE")]
-		CreatepixelshaderInvalidshaderbytecode = unchecked(192),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDSHADERTYPE")]
-		CreatepixelshaderInvalidshadertype = unchecked(193),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFILLMODE")]
-		CreaterasterizerstateInvalidfillmode = unchecked(194),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDCULLMODE")]
-		CreaterasterizerstateInvalidcullmode = unchecked(195),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDDEPTHBIASCLAMP")]
-		CreaterasterizerstateInvaliddepthbiasclamp = unchecked(196),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDSLOPESCALEDDEPTHBIAS")]
-		CreaterasterizerstateInvalidslopescaleddepthbias = unchecked(197),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_TOOMANYOBJECTS")]
-		CreaterasterizerstateToomanyobjects = unchecked(198),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_NULLDESC")]
-		CreaterasterizerstateNulldesc = unchecked(199),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHWRITEMASK")]
-		CreatedepthstencilstateInvaliddepthwritemask = unchecked(200),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDDEPTHFUNC")]
-		CreatedepthstencilstateInvaliddepthfunc = unchecked(201),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFAILOP")]
-		CreatedepthstencilstateInvalidfrontfacestencilfailop = unchecked(202),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILZFAILOP")]
-		CreatedepthstencilstateInvalidfrontfacestencilzfailop = unchecked(203),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILPASSOP")]
-		CreatedepthstencilstateInvalidfrontfacestencilpassop = unchecked(204),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDFRONTFACESTENCILFUNC")]
-		CreatedepthstencilstateInvalidfrontfacestencilfunc = unchecked(205),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFAILOP")]
-		CreatedepthstencilstateInvalidbackfacestencilfailop = unchecked(206),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILZFAILOP")]
-		CreatedepthstencilstateInvalidbackfacestencilzfailop = unchecked(207),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILPASSOP")]
-		CreatedepthstencilstateInvalidbackfacestencilpassop = unchecked(208),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_INVALIDBACKFACESTENCILFUNC")]
-		CreatedepthstencilstateInvalidbackfacestencilfunc = unchecked(209),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_TOOMANYOBJECTS")]
-		CreatedepthstencilstateToomanyobjects = unchecked(210),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_NULLDESC")]
-		CreatedepthstencilstateNulldesc = unchecked(211),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLEND")]
-		CreateblendstateInvalidsrcblend = unchecked(212),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLEND")]
-		CreateblendstateInvaliddestblend = unchecked(213),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOP")]
-		CreateblendstateInvalidblendop = unchecked(214),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDSRCBLENDALPHA")]
-		CreateblendstateInvalidsrcblendalpha = unchecked(215),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDDESTBLENDALPHA")]
-		CreateblendstateInvaliddestblendalpha = unchecked(216),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDBLENDOPALPHA")]
-		CreateblendstateInvalidblendopalpha = unchecked(217),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDRENDERTARGETWRITEMASK")]
-		CreateblendstateInvalidrendertargetwritemask = unchecked(218),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_TOOMANYOBJECTS")]
-		CreateblendstateToomanyobjects = unchecked(219),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NULLDESC")]
-		CreateblendstateNulldesc = unchecked(220),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDFILTER")]
-		CreatesamplerstateInvalidfilter = unchecked(221),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSU")]
-		CreatesamplerstateInvalidaddressu = unchecked(222),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSV")]
-		CreatesamplerstateInvalidaddressv = unchecked(223),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDADDRESSW")]
-		CreatesamplerstateInvalidaddressw = unchecked(224),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMIPLODBIAS")]
-		CreatesamplerstateInvalidmiplodbias = unchecked(225),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXANISOTROPY")]
-		CreatesamplerstateInvalidmaxanisotropy = unchecked(226),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDCOMPARISONFUNC")]
-		CreatesamplerstateInvalidcomparisonfunc = unchecked(227),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMINLOD")]
-		CreatesamplerstateInvalidminlod = unchecked(228),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_INVALIDMAXLOD")]
-		CreatesamplerstateInvalidmaxlod = unchecked(229),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_TOOMANYOBJECTS")]
-		CreatesamplerstateToomanyobjects = unchecked(230),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NULLDESC")]
-		CreatesamplerstateNulldesc = unchecked(231),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDQUERY")]
-		CreatequeryorpredicateInvalidquery = unchecked(232),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDMISCFLAGS")]
-		CreatequeryorpredicateInvalidmiscflags = unchecked(233),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNEXPECTEDMISCFLAG")]
-		CreatequeryorpredicateUnexpectedmiscflag = unchecked(234),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_NULLDESC")]
-		CreatequeryorpredicateNulldesc = unchecked(235),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNRECOGNIZED")]
-		DeviceIasetprimitivetopologyTopologyUnrecognized = unchecked(236),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNDEFINED")]
-		DeviceIasetprimitivetopologyTopologyUndefined = unchecked(237),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_INVALIDBUFFER")]
-		IasetvertexbuffersInvalidbuffer = unchecked(238),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_OFFSET_TOO_LARGE")]
-		DeviceIasetvertexbuffersOffsetTooLarge = unchecked(239),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_BUFFERS_EMPTY")]
-		DeviceIasetvertexbuffersBuffersEmpty = unchecked(240),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETINDEXBUFFER_INVALIDBUFFER")]
-		IasetindexbufferInvalidbuffer = unchecked(241),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_FORMAT_INVALID")]
-		DeviceIasetindexbufferFormatInvalid = unchecked(242),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_TOO_LARGE")]
-		DeviceIasetindexbufferOffsetTooLarge = unchecked(243),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETINDEXBUFFER_OFFSET_UNALIGNED")]
-		DeviceIasetindexbufferOffsetUnaligned = unchecked(244),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceVssetshaderresourcesViewsEmpty = unchecked(245),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		VssetconstantbuffersInvalidbuffer = unchecked(246),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceVssetconstantbuffersBuffersEmpty = unchecked(247),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceVssetsamplersSamplersEmpty = unchecked(248),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceGssetshaderresourcesViewsEmpty = unchecked(249),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		GssetconstantbuffersInvalidbuffer = unchecked(250),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceGssetconstantbuffersBuffersEmpty = unchecked(251),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceGssetsamplersSamplersEmpty = unchecked(252),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SOSETTARGETS_INVALIDBUFFER")]
-		SosettargetsInvalidbuffer = unchecked(253),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOSETTARGETS_OFFSET_UNALIGNED")]
-		DeviceSosettargetsOffsetUnaligned = unchecked(254),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DevicePssetshaderresourcesViewsEmpty = unchecked(255),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		PssetconstantbuffersInvalidbuffer = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DevicePssetconstantbuffersBuffersEmpty = unchecked(257),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DevicePssetsamplersSamplersEmpty = unchecked(258),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_INVALIDVIEWPORT")]
-		DeviceRssetviewportsInvalidviewport = unchecked(259),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_INVALIDSCISSOR")]
-		DeviceRssetscissorrectsInvalidscissor = unchecked(260),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARRENDERTARGETVIEW_DENORMFLUSH")]
-		ClearrendertargetviewDenormflush = unchecked(261),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DENORMFLUSH")]
-		CleardepthstencilviewDenormflush = unchecked(262),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_INVALID")]
-		CleardepthstencilviewInvalid = unchecked(263),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IAGETVERTEXBUFFERS_BUFFERS_EMPTY")]
-		DeviceIagetvertexbuffersBuffersEmpty = unchecked(264),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceVsgetshaderresourcesViewsEmpty = unchecked(265),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceVsgetconstantbuffersBuffersEmpty = unchecked(266),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_VSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceVsgetsamplersSamplersEmpty = unchecked(267),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceGsgetshaderresourcesViewsEmpty = unchecked(268),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceGsgetconstantbuffersBuffersEmpty = unchecked(269),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceGsgetsamplersSamplersEmpty = unchecked(270),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SOGETTARGETS_BUFFERS_EMPTY")]
-		DeviceSogettargetsBuffersEmpty = unchecked(271),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DevicePsgetshaderresourcesViewsEmpty = unchecked(272),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DevicePsgetconstantbuffersBuffersEmpty = unchecked(273),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_PSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DevicePsgetsamplersSamplersEmpty = unchecked(274),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSGETVIEWPORTS_VIEWPORTS_EMPTY")]
-		DeviceRsgetviewportsViewportsEmpty = unchecked(275),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSGETSCISSORRECTS_RECTS_EMPTY")]
-		DeviceRsgetscissorrectsRectsEmpty = unchecked(276),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GENERATEMIPS_RESOURCE_INVALID")]
-		DeviceGeneratemipsResourceInvalid = unchecked(277),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSUBRESOURCE")]
-		CopysubresourceregionInvaliddestinationsubresource = unchecked(278),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESUBRESOURCE")]
-		CopysubresourceregionInvalidsourcesubresource = unchecked(279),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCEBOX")]
-		CopysubresourceregionInvalidsourcebox = unchecked(280),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCE")]
-		CopysubresourceregionInvalidsource = unchecked(281),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDDESTINATIONSTATE")]
-		CopysubresourceregionInvaliddestinationstate = unchecked(282),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_INVALIDSOURCESTATE")]
-		CopysubresourceregionInvalidsourcestate = unchecked(283),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCE")]
-		CopyresourceInvalidsource = unchecked(284),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDDESTINATIONSTATE")]
-		CopyresourceInvaliddestinationstate = unchecked(285),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_INVALIDSOURCESTATE")]
-		CopyresourceInvalidsourcestate = unchecked(286),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSUBRESOURCE")]
-		UpdatesubresourceInvaliddestinationsubresource = unchecked(287),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONBOX")]
-		UpdatesubresourceInvaliddestinationbox = unchecked(288),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_INVALIDDESTINATIONSTATE")]
-		UpdatesubresourceInvaliddestinationstate = unchecked(289),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_INVALID")]
-		DeviceResolvesubresourceDestinationInvalid = unchecked(290),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_DESTINATION_SUBRESOURCE_INVALID")]
-		DeviceResolvesubresourceDestinationSubresourceInvalid = unchecked(291),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_INVALID")]
-		DeviceResolvesubresourceSourceInvalid = unchecked(292),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_SOURCE_SUBRESOURCE_INVALID")]
-		DeviceResolvesubresourceSourceSubresourceInvalid = unchecked(293),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RESOLVESUBRESOURCE_FORMAT_INVALID")]
-		DeviceResolvesubresourceFormatInvalid = unchecked(294),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDMAPTYPE")]
-		BufferMapInvalidmaptype = unchecked(295),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_INVALIDFLAGS")]
-		BufferMapInvalidflags = unchecked(296),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_ALREADYMAPPED")]
-		BufferMapAlreadymapped = unchecked(297),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_MAP_DEVICEREMOVED_RETURN")]
-		BufferMapDeviceremovedReturn = unchecked(298),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BUFFER_UNMAP_NOTMAPPED")]
-		BufferUnmapNotmapped = unchecked(299),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDMAPTYPE")]
-		Texture1DMapInvalidmaptype = unchecked(300),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDSUBRESOURCE")]
-		Texture1DMapInvalidsubresource = unchecked(301),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_INVALIDFLAGS")]
-		Texture1DMapInvalidflags = unchecked(302),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_ALREADYMAPPED")]
-		Texture1DMapAlreadymapped = unchecked(303),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_MAP_DEVICEREMOVED_RETURN")]
-		Texture1DMapDeviceremovedReturn = unchecked(304),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_INVALIDSUBRESOURCE")]
-		Texture1DUnmapInvalidsubresource = unchecked(305),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE1D_UNMAP_NOTMAPPED")]
-		Texture1DUnmapNotmapped = unchecked(306),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDMAPTYPE")]
-		Texture2DMapInvalidmaptype = unchecked(307),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDSUBRESOURCE")]
-		Texture2DMapInvalidsubresource = unchecked(308),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_INVALIDFLAGS")]
-		Texture2DMapInvalidflags = unchecked(309),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_ALREADYMAPPED")]
-		Texture2DMapAlreadymapped = unchecked(310),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_MAP_DEVICEREMOVED_RETURN")]
-		Texture2DMapDeviceremovedReturn = unchecked(311),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_INVALIDSUBRESOURCE")]
-		Texture2DUnmapInvalidsubresource = unchecked(312),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE2D_UNMAP_NOTMAPPED")]
-		Texture2DUnmapNotmapped = unchecked(313),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDMAPTYPE")]
-		Texture3DMapInvalidmaptype = unchecked(314),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDSUBRESOURCE")]
-		Texture3DMapInvalidsubresource = unchecked(315),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_INVALIDFLAGS")]
-		Texture3DMapInvalidflags = unchecked(316),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_ALREADYMAPPED")]
-		Texture3DMapAlreadymapped = unchecked(317),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_MAP_DEVICEREMOVED_RETURN")]
-		Texture3DMapDeviceremovedReturn = unchecked(318),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_INVALIDSUBRESOURCE")]
-		Texture3DUnmapInvalidsubresource = unchecked(319),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXTURE3D_UNMAP_NOTMAPPED")]
-		Texture3DUnmapNotmapped = unchecked(320),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_DEPRECATED")]
-		CheckformatsupportFormatDeprecated = unchecked(321),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_FORMAT_DEPRECATED")]
-		CheckmultisamplequalitylevelsFormatDeprecated = unchecked(322),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_UNRECOGNIZEDFLAGS")]
-		SetexceptionmodeUnrecognizedflags = unchecked(323),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_INVALIDARG_RETURN")]
-		SetexceptionmodeInvalidargReturn = unchecked(324),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETEXCEPTIONMODE_DEVICEREMOVED_RETURN")]
-		SetexceptionmodeDeviceremovedReturn = unchecked(325),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_SIMULATING_INFINITELY_FAST_HARDWARE")]
-		RefSimulatingInfinitelyFastHardware = unchecked(326),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_THREADING_MODE")]
-		RefThreadingMode = unchecked(327),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_UMDRIVER_EXCEPTION")]
-		RefUmdriverException = unchecked(328),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_KMDRIVER_EXCEPTION")]
-		RefKmdriverException = unchecked(329),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_HARDWARE_EXCEPTION")]
-		RefHardwareException = unchecked(330),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_ACCESSING_INDEXABLE_TEMP_OUT_OF_RANGE")]
-		RefAccessingIndexableTempOutOfRange = unchecked(331),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_PROBLEM_PARSING_SHADER")]
-		RefProblemParsingShader = unchecked(332),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_OUT_OF_MEMORY")]
-		RefOutOfMemory = unchecked(333),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_INFO")]
-		RefInfo = unchecked(334),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEXPOS_OVERFLOW")]
-		DeviceDrawVertexposOverflow = unchecked(335),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXED_INDEXPOS_OVERFLOW")]
-		DeviceDrawindexedIndexposOverflow = unchecked(336),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_VERTEXPOS_OVERFLOW")]
-		DeviceDrawinstancedVertexposOverflow = unchecked(337),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINSTANCED_INSTANCEPOS_OVERFLOW")]
-		DeviceDrawinstancedInstanceposOverflow = unchecked(338),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INSTANCEPOS_OVERFLOW")]
-		DeviceDrawindexedinstancedInstanceposOverflow = unchecked(339),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDEXEDINSTANCED_INDEXPOS_OVERFLOW")]
-		DeviceDrawindexedinstancedIndexposOverflow = unchecked(340),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_SHADER_NOT_SET")]
-		DeviceDrawVertexShaderNotSet = unchecked(341),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SEMANTICNAME_NOT_FOUND")]
-		DeviceShaderLinkageSemanticnameNotFound = unchecked(342),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERINDEX")]
-		DeviceShaderLinkageRegisterindex = unchecked(343),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_COMPONENTTYPE")]
-		DeviceShaderLinkageComponenttype = unchecked(344),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_REGISTERMASK")]
-		DeviceShaderLinkageRegistermask = unchecked(345),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_SYSTEMVALUE")]
-		DeviceShaderLinkageSystemvalue = unchecked(346),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_NEVERWRITTEN_ALWAYSREADS")]
-		DeviceShaderLinkageNeverwrittenAlwaysreads = unchecked(347),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_NOT_SET")]
-		DeviceDrawVertexBufferNotSet = unchecked(348),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INPUTLAYOUT_NOT_SET")]
-		DeviceDrawInputlayoutNotSet = unchecked(349),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_NOT_SET")]
-		DeviceDrawConstantBufferNotSet = unchecked(350),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_CONSTANT_BUFFER_TOO_SMALL")]
-		DeviceDrawConstantBufferTooSmall = unchecked(351),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_NOT_SET")]
-		DeviceDrawSamplerNotSet = unchecked(352),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SHADERRESOURCEVIEW_NOT_SET")]
-		DeviceDrawShaderresourceviewNotSet = unchecked(353),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VIEW_DIMENSION_MISMATCH")]
-		DeviceDrawViewDimensionMismatch = unchecked(354),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_STRIDE_TOO_SMALL")]
-		DeviceDrawVertexBufferStrideTooSmall = unchecked(355),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_BUFFER_TOO_SMALL")]
-		DeviceDrawVertexBufferTooSmall = unchecked(356),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_NOT_SET")]
-		DeviceDrawIndexBufferNotSet = unchecked(357),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_FORMAT_INVALID")]
-		DeviceDrawIndexBufferFormatInvalid = unchecked(358),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_BUFFER_TOO_SMALL")]
-		DeviceDrawIndexBufferTooSmall = unchecked(359),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_GS_INPUT_PRIMITIVE_MISMATCH")]
-		DeviceDrawGsInputPrimitiveMismatch = unchecked(360),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_RETURN_TYPE_MISMATCH")]
-		DeviceDrawResourceReturnTypeMismatch = unchecked(361),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_POSITION_NOT_PRESENT")]
-		DeviceDrawPositionNotPresent = unchecked(362),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_NOT_SET")]
-		DeviceDrawOutputStreamNotSet = unchecked(363),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_BOUND_RESOURCE_MAPPED")]
-		DeviceDrawBoundResourceMapped = unchecked(364),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_PRIMITIVETOPOLOGY")]
-		DeviceDrawInvalidPrimitivetopology = unchecked(365),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_OFFSET_UNALIGNED")]
-		DeviceDrawVertexOffsetUnaligned = unchecked(366),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VERTEX_STRIDE_UNALIGNED")]
-		DeviceDrawVertexStrideUnaligned = unchecked(367),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INDEX_OFFSET_UNALIGNED")]
-		DeviceDrawIndexOffsetUnaligned = unchecked(368),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OUTPUT_STREAM_OFFSET_UNALIGNED")]
-		DeviceDrawOutputStreamOffsetUnaligned = unchecked(369),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_LD_UNSUPPORTED")]
-		DeviceDrawResourceFormatLdUnsupported = unchecked(370),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_UNSUPPORTED")]
-		DeviceDrawResourceFormatSampleUnsupported = unchecked(371),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_SAMPLE_C_UNSUPPORTED")]
-		DeviceDrawResourceFormatSamplecUnsupported = unchecked(372),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_MULTISAMPLE_UNSUPPORTED")]
-		DeviceDrawResourceMultisampleUnsupported = unchecked(373),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SO_TARGETS_BOUND_WITHOUT_SOURCE")]
-		DeviceDrawSoTargetsBoundWithoutSource = unchecked(374),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SO_STRIDE_LARGER_THAN_BUFFER")]
-		DeviceDrawSoStrideLargerThanBuffer = unchecked(375),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_BLENDING")]
-		DeviceDrawOmRenderTargetDoesNotSupportBlending = unchecked(376),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_DUAL_SOURCE_BLENDING_CAN_ONLY_HAVE_RENDER_TARGET_0")]
-		DeviceDrawOmDualSourceBlendingCanOnlyHaveRenderTarget0 = unchecked(377),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_AT_FAULT")]
-		DeviceRemovalProcessAtFault = unchecked(378),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_POSSIBLY_AT_FAULT")]
-		DeviceRemovalProcessPossiblyAtFault = unchecked(379),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_REMOVAL_PROCESS_NOT_AT_FAULT")]
-		DeviceRemovalProcessNotAtFault = unchecked(380),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_INVALIDARG_RETURN")]
-		DeviceOpenSharedResourceInvalidargReturn = unchecked(381),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_OUTOFMEMORY_RETURN")]
-		DeviceOpenSharedResourceOutofmemoryReturn = unchecked(382),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BADINTERFACE_RETURN")]
-		DeviceOpenSharedResourceBadinterfaceReturn = unchecked(383),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_VIEWPORT_NOT_SET")]
-		DeviceDrawViewportNotSet = unchecked(384),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TRAILING_DIGIT_IN_SEMANTIC")]
-		CreateinputlayoutTrailingDigitInSemantic = unchecked(385),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_TRAILING_DIGIT_IN_SEMANTIC")]
-		CreategeometryshaderwithstreamoutputTrailingDigitInSemantic = unchecked(386),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_DENORMFLUSH")]
-		DeviceRssetviewportsDenormflush = unchecked(387),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_INVALIDVIEW")]
-		OmsetrendertargetsInvalidview = unchecked(388),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETTEXTFILTERSIZE_INVALIDDIMENSIONS")]
-		DeviceSettextfiltersizeInvaliddimensions = unchecked(389),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLER_MISMATCH")]
-		DeviceDrawSamplerMismatch = unchecked(390),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_TYPE_MISMATCH")]
-		CreateinputlayoutTypeMismatch = unchecked(391),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_BLENDSTATE_GETDESC_LEGACY")]
-		BlendstateGetdescLegacy = unchecked(392),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADERRESOURCEVIEW_GETDESC_LEGACY")]
-		ShaderresourceviewGetdescLegacy = unchecked(393),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERY_OUTOFMEMORY_RETURN")]
-		CreatequeryOutofmemoryReturn = unchecked(394),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPREDICATE_OUTOFMEMORY_RETURN")]
-		CreatepredicateOutofmemoryReturn = unchecked(395),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFRANGE_COUNTER")]
-		CreatecounterOutofrangeCounter = unchecked(396),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_SIMULTANEOUS_ACTIVE_COUNTERS_EXHAUSTED")]
-		CreatecounterSimultaneousActiveCountersExhausted = unchecked(397),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
-		CreatecounterUnsupportedWellknownCounter = unchecked(398),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_OUTOFMEMORY_RETURN")]
-		CreatecounterOutofmemoryReturn = unchecked(399),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_NONEXCLUSIVE_RETURN")]
-		CreatecounterNonexclusiveReturn = unchecked(400),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOUNTER_NULLDESC")]
-		CreatecounterNulldesc = unchecked(401),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCOUNTER_OUTOFRANGE_COUNTER")]
-		CheckcounterOutofrangeCounter = unchecked(402),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCOUNTER_UNSUPPORTED_WELLKNOWN_COUNTER")]
-		CheckcounterUnsupportedWellknownCounter = unchecked(403),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETPREDICATION_INVALID_PREDICATE_STATE")]
-		SetpredicationInvalidPredicateState = unchecked(404),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_UNSUPPORTED")]
-		QueryBeginUnsupported = unchecked(405),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PREDICATE_BEGIN_DURING_PREDICATION")]
-		PredicateBeginDuringPredication = unchecked(406),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_DUPLICATE")]
-		QueryBeginDuplicate = unchecked(407),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_BEGIN_ABANDONING_PREVIOUS_RESULTS")]
-		QueryBeginAbandoningPreviousResults = unchecked(408),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PREDICATE_END_DURING_PREDICATION")]
-		PredicateEndDuringPredication = unchecked(409),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_END_ABANDONING_PREVIOUS_RESULTS")]
-		QueryEndAbandoningPreviousResults = unchecked(410),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_END_WITHOUT_BEGIN")]
-		QueryEndWithoutBegin = unchecked(411),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_DATASIZE")]
-		QueryGetdataInvalidDatasize = unchecked(412),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_FLAGS")]
-		QueryGetdataInvalidFlags = unchecked(413),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERY_GETDATA_INVALID_CALL")]
-		QueryGetdataInvalidCall = unchecked(414),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_PS_OUTPUT_TYPE_MISMATCH")]
-		DeviceDrawPsOutputTypeMismatch = unchecked(415),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_FORMAT_GATHER_UNSUPPORTED")]
-		DeviceDrawResourceFormatGatherUnsupported = unchecked(416),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_CENTER_MULTISAMPLE_PATTERN")]
-		DeviceDrawInvalidUseOfCenterMultisamplePattern = unchecked(417),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_STRIDE_TOO_LARGE")]
-		DeviceIasetvertexbuffersStrideTooLarge = unchecked(418),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETVERTEXBUFFERS_INVALIDRANGE")]
-		DeviceIasetvertexbuffersInvalidrange = unchecked(419),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_EMPTY_LAYOUT")]
-		CreateinputlayoutEmptyLayout = unchecked(420),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RESOURCE_SAMPLE_COUNT_MISMATCH")]
-		DeviceDrawResourceSampleCountMismatch = unchecked(421),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY")]
-		LiveObjectSummary = unchecked(422),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BUFFER")]
-		LiveBuffer = unchecked(423),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE1D")]
-		LiveTexture1D = unchecked(424),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE2D")]
-		LiveTexture2D = unchecked(425),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE3D")]
-		LiveTexture3D = unchecked(426),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW")]
-		LiveShaderresourceview = unchecked(427),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW")]
-		LiveRendertargetview = unchecked(428),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW")]
-		LiveDepthstencilview = unchecked(429),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VERTEXSHADER")]
-		LiveVertexshader = unchecked(430),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER")]
-		LiveGeometryshader = unchecked(431),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PIXELSHADER")]
-		LivePixelshader = unchecked(432),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT")]
-		LiveInputlayout = unchecked(433),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SAMPLER")]
-		LiveSampler = unchecked(434),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BLENDSTATE")]
-		LiveBlendstate = unchecked(435),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE")]
-		LiveDepthstencilstate = unchecked(436),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE")]
-		LiveRasterizerstate = unchecked(437),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_QUERY")]
-		LiveQuery = unchecked(438),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PREDICATE")]
-		LivePredicate = unchecked(439),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COUNTER")]
-		LiveCounter = unchecked(440),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICE")]
-		LiveDevice = unchecked(441),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SWAPCHAIN")]
-		LiveSwapchain = unchecked(442),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10_MESSAGES_END")]
-		Idd3D10MessagesEnd = unchecked(443),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10L9_MESSAGES_START")]
-		Idd3D10l9MessagesStart = unchecked(1048576),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILSTATE_STENCIL_NO_TWO_SIDED")]
-		CreatedepthstencilstateStencilNoTwoSided = unchecked(1048577),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthBiasClamp_NOT_SUPPORTED")]
-		CreaterasterizerstateDepthBiasClampNotSupported = unchecked(1048578),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_COMPARISON_SUPPORT")]
-		CreatesamplerstateNoComparisonSupport = unchecked(1048579),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_EXCESSIVE_ANISOTROPY")]
-		CreatesamplerstateExcessiveAnisotropy = unchecked(1048580),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_OUT_OF_RANGE")]
-		CreatesamplerstateBorderOutOfRange = unchecked(1048581),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_NOT_SUPPORTED")]
-		VssetsamplersNotSupported = unchecked(1048582),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETSAMPLERS_TOO_MANY_SAMPLERS")]
-		VssetsamplersTooManySamplers = unchecked(1048583),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETSAMPLERS_TOO_MANY_SAMPLERS")]
-		PssetsamplersTooManySamplers = unchecked(1048584),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_ARRAYS")]
-		CreateresourceNoArrays = unchecked(1048585),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_VB_AND_IB_BIND")]
-		CreateresourceNoVbAndIbBind = unchecked(1048586),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_TEXTURE_1D")]
-		CreateresourceNoTexture1D = unchecked(1048587),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_OUT_OF_RANGE")]
-		CreateresourceDimensionOutOfRange = unchecked(1048588),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_SHADER_RESOURCE")]
-		CreateresourceNotBindableAsShaderResource = unchecked(1048589),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_TOO_MANY_RENDER_TARGETS")]
-		OmsetrendertargetsTooManyRenderTargets = unchecked(1048590),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_DIFFERING_BIT_DEPTHS")]
-		OmsetrendertargetsNoDifferingDepths = unchecked(1048591),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_IASETVERTEXBUFFERS_BAD_BUFFER_INDEX")]
-		IasetvertexbuffersBadBufferIndex = unchecked(1048592),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETVIEWPORTS_TOO_MANY_VIEWPORTS")]
-		DeviceRssetviewportsTooManyViewports = unchecked(1048593),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_ADJACENCY_UNSUPPORTED")]
-		DeviceIasetprimitivetopologyAdjacencyUnsupported = unchecked(1048594),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_TOO_MANY_SCISSORS")]
-		DeviceRssetscissorrectsTooManyScissors = unchecked(1048595),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_ONLY_TEXTURE_2D_WITHIN_GPU_MEMORY")]
-		CopyresourceOnlyTexture2DWithinGpuMemory = unchecked(1048596),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_3D_READBACK")]
-		CopyresourceNoTexture3DReadback = unchecked(1048597),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_TEXTURE_ONLY_READBACK")]
-		CopyresourceNoTextureOnlyReadback = unchecked(1048598),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_UNSUPPORTED_FORMAT")]
-		CreateinputlayoutUnsupportedFormat = unchecked(1048599),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_ALPHA_TO_COVERAGE")]
-		CreateblendstateNoAlphaToCoverage = unchecked(1048600),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_DepthClipEnable_MUST_BE_TRUE")]
-		CreaterasterizerstateDepthClipEnableMustBeTrue = unchecked(1048601),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXED_STARTINDEXLOCATION_MUST_BE_POSITIVE")]
-		DrawindexedStartindexlocationMustBePositive = unchecked(1048602),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_MUST_USE_LOWEST_LOD")]
-		CreateshaderresourceviewMustUseLowestLod = unchecked(1048603),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MINLOD_MUST_NOT_BE_FRACTIONAL")]
-		CreatesamplerstateMinlodMustNotBeFractional = unchecked(1048604),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_MAXLOD_MUST_BE_FLT_MAX")]
-		CreatesamplerstateMaxlodMustBeFltMax = unchecked(1048605),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_FIRSTARRAYSLICE_MUST_BE_ZERO")]
-		CreateshaderresourceviewFirstarraysliceMustBeZero = unchecked(1048606),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_CUBES_MUST_HAVE_6_SIDES")]
-		CreateshaderresourceviewCubesMustHave6Sides = unchecked(1048607),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NOT_BINDABLE_AS_RENDER_TARGET")]
-		CreateresourceNotBindableAsRenderTarget = unchecked(1048608),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_DWORD_INDEX_BUFFER")]
-		CreateresourceNoDwordIndexBuffer = unchecked(1048609),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_MSAA_PRECLUDES_SHADER_RESOURCE")]
-		CreateresourceMsaaPrecludesShaderResource = unchecked(1048610),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_PRESENTATION_PRECLUDES_SHADER_RESOURCE")]
-		CreateresourcePresentationPrecludesShaderResource = unchecked(1048611),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_BLEND_ENABLE")]
-		CreateblendstateNoIndependentBlendEnable = unchecked(1048612),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_INDEPENDENT_WRITE_MASKS")]
-		CreateblendstateNoIndependentWriteMasks = unchecked(1048613),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_STREAM_OUT")]
-		CreateresourceNoStreamOut = unchecked(1048614),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_VB_IB_FOR_BUFFERS")]
-		CreateresourceOnlyVbIbForBuffers = unchecked(1048615),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NO_AUTOGEN_FOR_VOLUMES")]
-		CreateresourceNoAutogenForVolumes = unchecked(1048616),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DXGI_FORMAT_R8G8B8A8_CANNOT_BE_SHARED")]
-		CreateresourceDxgiFormatr8G8B8A8CannotBeShared = unchecked(1048617),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSHADERRESOURCES_NOT_SUPPORTED")]
-		VsshaderresourcesNotSupported = unchecked(1048618),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GEOMETRY_SHADER_NOT_SUPPORTED")]
-		GeometryShaderNotSupported = unchecked(1048619),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STREAM_OUT_NOT_SUPPORTED")]
-		StreamOutNotSupported = unchecked(1048620),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TEXT_FILTER_NOT_SUPPORTED")]
-		TextFilterNotSupported = unchecked(1048621),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_SEPARATE_ALPHA_BLEND")]
-		CreateblendstateNoSeparateAlphaBlend = unchecked(1048622),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_NO_MRT_BLEND")]
-		CreateblendstateNoMrtBlend = unchecked(1048623),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_OPERATION_NOT_SUPPORTED")]
-		CreateblendstateOperationNotSupported = unchecked(1048624),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_NO_MIRRORONCE")]
-		CreatesamplerstateNoMirroronce = unchecked(1048625),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINSTANCED_NOT_SUPPORTED")]
-		DrawinstancedNotSupported = unchecked(1048626),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXEDINSTANCED_NOT_SUPPORTED_BELOW_9_3")]
-		DrawindexedinstancedNotSupportedBelow93 = unchecked(1048627),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DRAWINDEXED_POINTLIST_UNSUPPORTED")]
-		DrawindexedPointlistUnsupported = unchecked(1048628),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SETBLENDSTATE_SAMPLE_MASK_CANNOT_BE_ZERO")]
-		SetblendstateSampleMaskCannotBeZero = unchecked(1048629),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_DIMENSION_EXCEEDS_FEATURE_LEVEL_DEFINITION")]
-		CreateresourceDimensionExceedsFeatureLevelDefinition = unchecked(1048630),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_ONLY_SINGLE_MIP_LEVEL_DEPTH_STENCIL_SUPPORTED")]
-		CreateresourceOnlySingleMipLevelDepthStencilSupported = unchecked(1048631),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_RSSETSCISSORRECTS_NEGATIVESCISSOR")]
-		DeviceRssetscissorrectsNegativescissor = unchecked(1048632),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SLOT_ZERO_MUST_BE_D3D10_INPUT_PER_VERTEX_DATA")]
-		SlotZeroMustBed3D10InputPerVertexData = unchecked(1048633),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERESOURCE_NON_POW_2_MIPMAP")]
-		CreateresourceNonPow2Mipmap = unchecked(1048634),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESAMPLERSTATE_BORDER_NOT_SUPPORTED")]
-		CreatesamplerstateBorderNotSupported = unchecked(1048635),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETRENDERTARGETS_NO_SRGB_MRT")]
-		OmsetrendertargetsNoSrgbMrt = unchecked(1048636),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYRESOURCE_NO_3D_MISMATCHED_UPDATES")]
-		CopyresourceNo3DMismatchedUpdates = unchecked(1048637),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D10L9_MESSAGES_END")]
-		Idd3D10l9MessagesEnd = unchecked(1048638),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_MESSAGES_START")]
-		Idd3D11MessagesStart = unchecked(2097152),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEPTHSTENCILVIEW_INVALIDFLAGS")]
-		CreatedepthstencilviewInvalidflags = unchecked(2097153),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVERTEXSHADER_INVALIDCLASSLINKAGE")]
-		CreatevertexshaderInvalidclasslinkage = unchecked(2097154),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADER_INVALIDCLASSLINKAGE")]
-		CreategeometryshaderInvalidclasslinkage = unchecked(2097155),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTREAMS")]
-		CreategeometryshaderwithstreamoutputInvalidnumstreams = unchecked(2097156),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAMTORASTERIZER")]
-		CreategeometryshaderwithstreamoutputInvalidstreamtorasterizer = unchecked(2097157),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTREAMS")]
-		CreategeometryshaderwithstreamoutputUnexpectedstreams = unchecked(2097158),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDCLASSLINKAGE")]
-		CreategeometryshaderwithstreamoutputInvalidclasslinkage = unchecked(2097159),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEPIXELSHADER_INVALIDCLASSLINKAGE")]
-		CreatepixelshaderInvalidclasslinkage = unchecked(2097160),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_COMMANDLISTFLAGS")]
-		CreatedeferredcontextInvalidCommandlistflags = unchecked(2097161),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_SINGLETHREADED")]
-		CreatedeferredcontextSinglethreaded = unchecked(2097162),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALIDARG_RETURN")]
-		CreatedeferredcontextInvalidargReturn = unchecked(2097163),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_INVALID_CALL_RETURN")]
-		CreatedeferredcontextInvalidCallReturn = unchecked(2097164),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEFERREDCONTEXT_OUTOFMEMORY_RETURN")]
-		CreatedeferredcontextOutofmemoryReturn = unchecked(2097165),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_ONIMMEDIATECONTEXT")]
-		FinishdisplaylistOnimmediatecontext = unchecked(2097166),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_OUTOFMEMORY_RETURN")]
-		FinishdisplaylistOutofmemoryReturn = unchecked(2097167),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHDISPLAYLIST_INVALID_CALL_RETURN")]
-		FinishdisplaylistInvalidCallReturn = unchecked(2097168),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDSTREAM")]
-		CreategeometryshaderwithstreamoutputInvalidstream = unchecked(2097169),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDENTRIES")]
-		CreategeometryshaderwithstreamoutputUnexpectedentries = unchecked(2097170),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UNEXPECTEDSTRIDES")]
-		CreategeometryshaderwithstreamoutputUnexpectedstrides = unchecked(2097171),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_INVALIDNUMSTRIDES")]
-		CreategeometryshaderwithstreamoutputInvalidnumstrides = unchecked(2097172),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_HAZARD")]
-		DeviceHssetshaderresourcesHazard = unchecked(2097173),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_HAZARD")]
-		DeviceHssetconstantbuffersHazard = unchecked(2097174),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		HssetshaderresourcesUnbinddeletingobject = unchecked(2097175),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		HssetconstantbuffersUnbinddeletingobject = unchecked(2097176),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCALL")]
-		CreatehullshaderInvalidcall = unchecked(2097177),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_OUTOFMEMORY")]
-		CreatehullshaderOutofmemory = unchecked(2097178),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERBYTECODE")]
-		CreatehullshaderInvalidshaderbytecode = unchecked(2097179),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDSHADERTYPE")]
-		CreatehullshaderInvalidshadertype = unchecked(2097180),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEHULLSHADER_INVALIDCLASSLINKAGE")]
-		CreatehullshaderInvalidclasslinkage = unchecked(2097181),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceHssetshaderresourcesViewsEmpty = unchecked(2097182),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		HssetconstantbuffersInvalidbuffer = unchecked(2097183),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceHssetconstantbuffersBuffersEmpty = unchecked(2097184),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceHssetsamplersSamplersEmpty = unchecked(2097185),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceHsgetshaderresourcesViewsEmpty = unchecked(2097186),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceHsgetconstantbuffersBuffersEmpty = unchecked(2097187),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_HSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceHsgetsamplersSamplersEmpty = unchecked(2097188),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_HAZARD")]
-		DeviceDssetshaderresourcesHazard = unchecked(2097189),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_HAZARD")]
-		DeviceDssetconstantbuffersHazard = unchecked(2097190),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		DssetshaderresourcesUnbinddeletingobject = unchecked(2097191),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		DssetconstantbuffersUnbinddeletingobject = unchecked(2097192),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCALL")]
-		CreatedomainshaderInvalidcall = unchecked(2097193),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_OUTOFMEMORY")]
-		CreatedomainshaderOutofmemory = unchecked(2097194),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERBYTECODE")]
-		CreatedomainshaderInvalidshaderbytecode = unchecked(2097195),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDSHADERTYPE")]
-		CreatedomainshaderInvalidshadertype = unchecked(2097196),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDOMAINSHADER_INVALIDCLASSLINKAGE")]
-		CreatedomainshaderInvalidclasslinkage = unchecked(2097197),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceDssetshaderresourcesViewsEmpty = unchecked(2097198),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		DssetconstantbuffersInvalidbuffer = unchecked(2097199),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceDssetconstantbuffersBuffersEmpty = unchecked(2097200),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceDssetsamplersSamplersEmpty = unchecked(2097201),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceDsgetshaderresourcesViewsEmpty = unchecked(2097202),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceDsgetconstantbuffersBuffersEmpty = unchecked(2097203),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceDsgetsamplersSamplersEmpty = unchecked(2097204),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_XOR_DS_MISMATCH")]
-		DeviceDrawHsXorDsMismatch = unchecked(2097205),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEFERRED_CONTEXT_REMOVAL_PROCESS_AT_FAULT")]
-		DeferredContextRemovalProcessAtFault = unchecked(2097206),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_INVALID_ARG_BUFFER")]
-		DeviceDrawindirectInvalidArgBuffer = unchecked(2097207),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_UNALIGNED")]
-		DeviceDrawindirectOffsetUnaligned = unchecked(2097208),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAWINDIRECT_OFFSET_OVERFLOW")]
-		DeviceDrawindirectOffsetOverflow = unchecked(2097209),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDMAPTYPE")]
-		ResourceMapInvalidmaptype = unchecked(2097210),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDSUBRESOURCE")]
-		ResourceMapInvalidsubresource = unchecked(2097211),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_INVALIDFLAGS")]
-		ResourceMapInvalidflags = unchecked(2097212),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_ALREADYMAPPED")]
-		ResourceMapAlreadymapped = unchecked(2097213),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_DEVICEREMOVED_RETURN")]
-		ResourceMapDeviceremovedReturn = unchecked(2097214),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_OUTOFMEMORY_RETURN")]
-		ResourceMapOutofmemoryReturn = unchecked(2097215),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_MAP_WITHOUT_INITIAL_DISCARD")]
-		ResourceMapWithoutInitialDiscard = unchecked(2097216),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_UNMAP_INVALIDSUBRESOURCE")]
-		ResourceUnmapInvalidsubresource = unchecked(2097217),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESOURCE_UNMAP_NOTMAPPED")]
-		ResourceUnmapNotmapped = unchecked(2097218),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RASTERIZING_CONTROL_POINTS")]
-		DeviceDrawRasterizingControlPoints = unchecked(2097219),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_IASETPRIMITIVETOPOLOGY_TOPOLOGY_UNSUPPORTED")]
-		DeviceIasetprimitivetopologyTopologyUnsupported = unchecked(2097220),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_SIGNATURE_MISMATCH")]
-		DeviceDrawHsDsSignatureMismatch = unchecked(2097221),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HULL_SHADER_INPUT_TOPOLOGY_MISMATCH")]
-		DeviceDrawHullShaderInputTopologyMismatch = unchecked(2097222),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_CONTROL_POINT_COUNT_MISMATCH")]
-		DeviceDrawHsDsControlPointCountMismatch = unchecked(2097223),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_HS_DS_TESSELLATOR_DOMAIN_MISMATCH")]
-		DeviceDrawHsDsTessellatorDomainMismatch = unchecked(2097224),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CONTEXT")]
-		CreateContext = unchecked(2097225),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CONTEXT")]
-		LiveContext = unchecked(2097226),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CONTEXT")]
-		DestroyContext = unchecked(2097227),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_BUFFER")]
-		CreateBuffer = unchecked(2097228),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BUFFER_WIN7")]
-		LiveBufferWin7 = unchecked(2097229),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_BUFFER")]
-		DestroyBuffer = unchecked(2097230),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE1D")]
-		CreateTexture1D = unchecked(2097231),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE1D_WIN7")]
-		LiveTexture1DWin7 = unchecked(2097232),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE1D")]
-		DestroyTexture1D = unchecked(2097233),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE2D")]
-		CreateTexture2D = unchecked(2097234),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE2D_WIN7")]
-		LiveTexture2DWin7 = unchecked(2097235),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE2D")]
-		DestroyTexture2D = unchecked(2097236),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TEXTURE3D")]
-		CreateTexture3D = unchecked(2097237),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TEXTURE3D_WIN7")]
-		LiveTexture3DWin7 = unchecked(2097238),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TEXTURE3D")]
-		DestroyTexture3D = unchecked(2097239),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SHADERRESOURCEVIEW")]
-		CreateShaderresourceview = unchecked(2097240),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SHADERRESOURCEVIEW_WIN7")]
-		LiveShaderresourceviewWin7 = unchecked(2097241),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SHADERRESOURCEVIEW")]
-		DestroyShaderresourceview = unchecked(2097242),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_RENDERTARGETVIEW")]
-		CreateRendertargetview = unchecked(2097243),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RENDERTARGETVIEW_WIN7")]
-		LiveRendertargetviewWin7 = unchecked(2097244),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_RENDERTARGETVIEW")]
-		DestroyRendertargetview = unchecked(2097245),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILVIEW")]
-		CreateDepthstencilview = unchecked(2097246),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILVIEW_WIN7")]
-		LiveDepthstencilviewWin7 = unchecked(2097247),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILVIEW")]
-		DestroyDepthstencilview = unchecked(2097248),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VERTEXSHADER")]
-		CreateVertexshader = unchecked(2097249),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VERTEXSHADER_WIN7")]
-		LiveVertexshaderWin7 = unchecked(2097250),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VERTEXSHADER")]
-		DestroyVertexshader = unchecked(2097251),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_HULLSHADER")]
-		CreateHullshader = unchecked(2097252),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_HULLSHADER")]
-		LiveHullshader = unchecked(2097253),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_HULLSHADER")]
-		DestroyHullshader = unchecked(2097254),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DOMAINSHADER")]
-		CreateDomainshader = unchecked(2097255),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DOMAINSHADER")]
-		LiveDomainshader = unchecked(2097256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DOMAINSHADER")]
-		DestroyDomainshader = unchecked(2097257),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_GEOMETRYSHADER")]
-		CreateGeometryshader = unchecked(2097258),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_GEOMETRYSHADER_WIN7")]
-		LiveGeometryshaderWin7 = unchecked(2097259),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_GEOMETRYSHADER")]
-		DestroyGeometryshader = unchecked(2097260),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PIXELSHADER")]
-		CreatePixelshader = unchecked(2097261),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PIXELSHADER_WIN7")]
-		LivePixelshaderWin7 = unchecked(2097262),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PIXELSHADER")]
-		DestroyPixelshader = unchecked(2097263),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_INPUTLAYOUT")]
-		CreateInputlayout = unchecked(2097264),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_INPUTLAYOUT_WIN7")]
-		LiveInputlayoutWin7 = unchecked(2097265),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_INPUTLAYOUT")]
-		DestroyInputlayout = unchecked(2097266),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SAMPLER")]
-		CreateSampler = unchecked(2097267),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SAMPLER_WIN7")]
-		LiveSamplerWin7 = unchecked(2097268),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SAMPLER")]
-		DestroySampler = unchecked(2097269),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_BLENDSTATE")]
-		CreateBlendstate = unchecked(2097270),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_BLENDSTATE_WIN7")]
-		LiveBlendstateWin7 = unchecked(2097271),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_BLENDSTATE")]
-		DestroyBlendstate = unchecked(2097272),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEPTHSTENCILSTATE")]
-		CreateDepthstencilstate = unchecked(2097273),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEPTHSTENCILSTATE_WIN7")]
-		LiveDepthstencilstateWin7 = unchecked(2097274),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEPTHSTENCILSTATE")]
-		DestroyDepthstencilstate = unchecked(2097275),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_RASTERIZERSTATE")]
-		CreateRasterizerstate = unchecked(2097276),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_RASTERIZERSTATE_WIN7")]
-		LiveRasterizerstateWin7 = unchecked(2097277),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_RASTERIZERSTATE")]
-		DestroyRasterizerstate = unchecked(2097278),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_QUERY")]
-		CreateQuery = unchecked(2097279),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_QUERY_WIN7")]
-		LiveQueryWin7 = unchecked(2097280),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_QUERY")]
-		DestroyQuery = unchecked(2097281),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PREDICATE")]
-		CreatePredicate = unchecked(2097282),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PREDICATE_WIN7")]
-		LivePredicateWin7 = unchecked(2097283),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PREDICATE")]
-		DestroyPredicate = unchecked(2097284),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COUNTER")]
-		CreateCounter = unchecked(2097285),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COUNTER")]
-		DestroyCounter = unchecked(2097286),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COMMANDLIST")]
-		CreateCommandlist = unchecked(2097287),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COMMANDLIST")]
-		LiveCommandlist = unchecked(2097288),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COMMANDLIST")]
-		DestroyCommandlist = unchecked(2097289),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CLASSINSTANCE")]
-		CreateClassinstance = unchecked(2097290),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CLASSINSTANCE")]
-		LiveClassinstance = unchecked(2097291),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CLASSINSTANCE")]
-		DestroyClassinstance = unchecked(2097292),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CLASSLINKAGE")]
-		CreateClasslinkage = unchecked(2097293),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CLASSLINKAGE")]
-		LiveClasslinkage = unchecked(2097294),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CLASSLINKAGE")]
-		DestroyClasslinkage = unchecked(2097295),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICE_WIN7")]
-		LiveDeviceWin7 = unchecked(2097296),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_OBJECT_SUMMARY_WIN7")]
-		LiveObjectSummaryWin7 = unchecked(2097297),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_COMPUTESHADER")]
-		CreateComputeshader = unchecked(2097298),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_COMPUTESHADER")]
-		LiveComputeshader = unchecked(2097299),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_COMPUTESHADER")]
-		DestroyComputeshader = unchecked(2097300),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_UNORDEREDACCESSVIEW")]
-		CreateUnorderedaccessview = unchecked(2097301),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_UNORDEREDACCESSVIEW")]
-		LiveUnorderedaccessview = unchecked(2097302),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_UNORDEREDACCESSVIEW")]
-		DestroyUnorderedaccessview = unchecked(2097303),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACES_FEATURELEVEL")]
-		DeviceSetshaderInterfacesFeaturelevel = unchecked(2097304),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INTERFACE_COUNT_MISMATCH")]
-		DeviceSetshaderInterfaceCountMismatch = unchecked(2097305),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE")]
-		DeviceSetshaderInvalidInstance = unchecked(2097306),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_INDEX")]
-		DeviceSetshaderInvalidInstanceIndex = unchecked(2097307),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_TYPE")]
-		DeviceSetshaderInvalidInstanceType = unchecked(2097308),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INVALID_INSTANCE_DATA")]
-		DeviceSetshaderInvalidInstanceData = unchecked(2097309),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_UNBOUND_INSTANCE_DATA")]
-		DeviceSetshaderUnboundInstanceData = unchecked(2097310),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETSHADER_INSTANCE_DATA_BINDINGS")]
-		DeviceSetshaderInstanceDataBindings = unchecked(2097311),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATESHADER_CLASSLINKAGE_FULL")]
-		DeviceCreateshaderClasslinkageFull = unchecked(2097312),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_UNRECOGNIZED_FEATURE")]
-		DeviceCheckfeaturesupportUnrecognizedFeature = unchecked(2097313),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_MISMATCHED_DATA_SIZE")]
-		DeviceCheckfeaturesupportMismatchedDataSize = unchecked(2097314),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CHECKFEATURESUPPORT_INVALIDARG_RETURN")]
-		DeviceCheckfeaturesupportInvalidargReturn = unchecked(2097315),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_HAZARD")]
-		DeviceCssetshaderresourcesHazard = unchecked(2097316),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_HAZARD")]
-		DeviceCssetconstantbuffersHazard = unchecked(2097317),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSHADERRESOURCES_UNBINDDELETINGOBJECT")]
-		CssetshaderresourcesUnbinddeletingobject = unchecked(2097318),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_UNBINDDELETINGOBJECT")]
-		CssetconstantbuffersUnbinddeletingobject = unchecked(2097319),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCALL")]
-		CreatecomputeshaderInvalidcall = unchecked(2097320),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_OUTOFMEMORY")]
-		CreatecomputeshaderOutofmemory = unchecked(2097321),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERBYTECODE")]
-		CreatecomputeshaderInvalidshaderbytecode = unchecked(2097322),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDSHADERTYPE")]
-		CreatecomputeshaderInvalidshadertype = unchecked(2097323),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECOMPUTESHADER_INVALIDCLASSLINKAGE")]
-		CreatecomputeshaderInvalidclasslinkage = unchecked(2097324),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceCssetshaderresourcesViewsEmpty = unchecked(2097325),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFER")]
-		CssetconstantbuffersInvalidbuffer = unchecked(2097326),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceCssetconstantbuffersBuffersEmpty = unchecked(2097327),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceCssetsamplersSamplersEmpty = unchecked(2097328),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETSHADERRESOURCES_VIEWS_EMPTY")]
-		DeviceCsgetshaderresourcesViewsEmpty = unchecked(2097329),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETCONSTANTBUFFERS_BUFFERS_EMPTY")]
-		DeviceCsgetconstantbuffersBuffersEmpty = unchecked(2097330),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETSAMPLERS_SAMPLERS_EMPTY")]
-		DeviceCsgetsamplersSamplersEmpty = unchecked(2097331),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreatevertexshaderDoublefloatopsnotsupported = unchecked(2097332),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreatehullshaderDoublefloatopsnotsupported = unchecked(2097333),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreatedomainshaderDoublefloatopsnotsupported = unchecked(2097334),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreategeometryshaderDoublefloatopsnotsupported = unchecked(2097335),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreategeometryshaderwithstreamoutputDoublefloatopsnotsupported = unchecked(2097336),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreatepixelshaderDoublefloatopsnotsupported = unchecked(2097337),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEFLOATOPSNOTSUPPORTED")]
-		DeviceCreatecomputeshaderDoublefloatopsnotsupported = unchecked(2097338),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDSTRUCTURESTRIDE")]
-		CreatebufferInvalidstructurestride = unchecked(2097339),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDFLAGS")]
-		CreateshaderresourceviewInvalidflags = unchecked(2097340),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDRESOURCE")]
-		CreateunorderedaccessviewInvalidresource = unchecked(2097341),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDESC")]
-		CreateunorderedaccessviewInvaliddesc = unchecked(2097342),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFORMAT")]
-		CreateunorderedaccessviewInvalidformat = unchecked(2097343),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDIMENSIONS")]
-		CreateunorderedaccessviewInvaliddimensions = unchecked(2097344),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_UNRECOGNIZEDFORMAT")]
-		CreateunorderedaccessviewUnrecognizedformat = unchecked(2097345),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_HAZARD")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsHazard = unchecked(2097346),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_OVERLAPPING_OLD_SLOTS")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsOverlappingOldSlots = unchecked(2097347),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NO_OP")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsNoOp = unchecked(2097348),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
-		CssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097349),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETUNORDEREDACCESSVIEWS_UNBINDDELETINGOBJECT")]
-		PssetunorderedaccessviewsUnbinddeletingobject = unchecked(2097350),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDARG_RETURN")]
-		CreateunorderedaccessviewInvalidargReturn = unchecked(2097351),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_OUTOFMEMORY_RETURN")]
-		CreateunorderedaccessviewOutofmemoryReturn = unchecked(2097352),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_TOOMANYOBJECTS")]
-		CreateunorderedaccessviewToomanyobjects = unchecked(2097353),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_HAZARD")]
-		DeviceCssetunorderedaccessviewsHazard = unchecked(2097354),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEW_DENORMFLUSH")]
-		ClearunorderedaccessviewDenormflush = unchecked(2097355),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSS_VIEWS_EMPTY")]
-		DeviceCssetunorderedaccesssViewsEmpty = unchecked(2097356),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSGETUNORDEREDACCESSS_VIEWS_EMPTY")]
-		DeviceCsgetunorderedaccesssViewsEmpty = unchecked(2097357),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDFLAGS")]
-		CreateunorderedaccessviewInvalidflags = unchecked(2097358),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESESOURCEVIEW_TOOMANYOBJECTS")]
-		CreateshaderresesourceviewToomanyobjects = unchecked(2097359),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_INVALID_ARG_BUFFER")]
-		DeviceDispatchindirectInvalidArgBuffer = unchecked(2097360),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_UNALIGNED")]
-		DeviceDispatchindirectOffsetUnaligned = unchecked(2097361),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_OFFSET_OVERFLOW")]
-		DeviceDispatchindirectOffsetOverflow = unchecked(2097362),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDCONTEXT")]
-		DeviceSetresourceminlodInvalidcontext = unchecked(2097363),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDRESOURCE")]
-		DeviceSetresourceminlodInvalidresource = unchecked(2097364),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETRESOURCEMINLOD_INVALIDMINLOD")]
-		DeviceSetresourceminlodInvalidminlod = unchecked(2097365),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDCONTEXT")]
-		DeviceGetresourceminlodInvalidcontext = unchecked(2097366),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_GETRESOURCEMINLOD_INVALIDRESOURCE")]
-		DeviceGetresourceminlodInvalidresource = unchecked(2097367),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OMSETDEPTHSTENCIL_UNBINDDELETINGOBJECT")]
-		OmsetdepthstencilUnbinddeletingobject = unchecked(2097368),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_DEPTH_READONLY")]
-		CleardepthstencilviewDepthReadonly = unchecked(2097369),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARDEPTHSTENCILVIEW_STENCIL_READONLY")]
-		CleardepthstencilviewStencilReadonly = unchecked(2097370),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFEATURESUPPORT_FORMAT_DEPRECATED")]
-		CheckfeaturesupportFormatDeprecated = unchecked(2097371),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RETURN_TYPE_MISMATCH")]
-		DeviceUnorderedaccessviewReturnTypeMismatch = unchecked(2097372),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET")]
-		DeviceUnorderedaccessviewNotSet = unchecked(2097373),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_UNORDEREDACCESSVIEW_RENDERTARGETVIEW_OVERLAP")]
-		DeviceDrawUnorderedaccessviewRendertargetviewOverlap = unchecked(2097374),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_DIMENSION_MISMATCH")]
-		DeviceUnorderedaccessviewDimensionMismatch = unchecked(2097375),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_APPEND_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAppendUnsupported = unchecked(2097376),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMICS_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicsUnsupported = unchecked(2097377),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_STRUCTURE_STRIDE_MISMATCH")]
-		DeviceUnorderedaccessviewStructureStrideMismatch = unchecked(2097378),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_BUFFER_TYPE_MISMATCH")]
-		DeviceUnorderedaccessviewBufferTypeMismatch = unchecked(2097379),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_RAW_UNSUPPORTED")]
-		DeviceUnorderedaccessviewRawUnsupported = unchecked(2097380),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_LD_UNSUPPORTED")]
-		DeviceUnorderedaccessviewFormatLdUnsupported = unchecked(2097381),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_FORMAT_STORE_UNSUPPORTED")]
-		DeviceUnorderedaccessviewFormatStoreUnsupported = unchecked(2097382),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_ADD_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicAddUnsupported = unchecked(2097383),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_BITWISE_OPS_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicBitwiseOpsUnsupported = unchecked(2097384),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_CMPSTORE_CMPEXCHANGE_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicCmpstoreCmpexchangeUnsupported = unchecked(2097385),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_EXCHANGE_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicExchangeUnsupported = unchecked(2097386),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_SIGNED_MINMAX_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicSignedMinmaxUnsupported = unchecked(2097387),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_ATOMIC_UNSIGNED_MINMAX_UNSUPPORTED")]
-		DeviceUnorderedaccessviewAtomicUnsignedMinmaxUnsupported = unchecked(2097388),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_BOUND_RESOURCE_MAPPED")]
-		DeviceDispatchBoundResourceMapped = unchecked(2097389),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_OVERFLOW")]
-		DeviceDispatchThreadgroupcountOverflow = unchecked(2097390),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_THREADGROUPCOUNT_ZERO")]
-		DeviceDispatchThreadgroupcountZero = unchecked(2097391),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_STRUCTURE_STRIDE_MISMATCH")]
-		DeviceShaderresourceviewStructureStrideMismatch = unchecked(2097392),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_BUFFER_TYPE_MISMATCH")]
-		DeviceShaderresourceviewBufferTypeMismatch = unchecked(2097393),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADERRESOURCEVIEW_RAW_UNSUPPORTED")]
-		DeviceShaderresourceviewRawUnsupported = unchecked(2097394),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCH_UNSUPPORTED")]
-		DeviceDispatchUnsupported = unchecked(2097395),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISPATCHINDIRECT_UNSUPPORTED")]
-		DeviceDispatchindirectUnsupported = unchecked(2097396),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDOFFSET")]
-		CopystructurecountInvalidoffset = unchecked(2097397),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_LARGEOFFSET")]
-		CopystructurecountLargeoffset = unchecked(2097398),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDDESTINATIONSTATE")]
-		CopystructurecountInvaliddestinationstate = unchecked(2097399),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSTRUCTURECOUNT_INVALIDSOURCESTATE")]
-		CopystructurecountInvalidsourcestate = unchecked(2097400),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKFORMATSUPPORT_FORMAT_NOT_SUPPORTED")]
-		CheckformatsupportFormatNotSupported = unchecked(2097401),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDVIEW")]
-		DeviceCssetunorderedaccessviewsInvalidview = unchecked(2097402),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
-		DeviceCssetunorderedaccessviewsInvalidoffset = unchecked(2097403),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CSSETUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
-		DeviceCssetunorderedaccessviewsToomanyviews = unchecked(2097404),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_INVALIDFORMAT")]
-		ClearunorderedaccessviewfloatInvalidformat = unchecked(2097405),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_COUNTER_UNSUPPORTED")]
-		DeviceUnorderedaccessviewCounterUnsupported = unchecked(2097406),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING")]
-		RefWarning = unchecked(2097407),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_PIXEL_SHADER_WITHOUT_RTV_OR_DSV")]
-		DeviceDrawPixelShaderWithoutRtvOrDsv = unchecked(2097408),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_ABORT")]
-		ShaderAbort = unchecked(2097409),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_MESSAGE")]
-		ShaderMessage = unchecked(2097410),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SHADER_ERROR")]
-		ShaderError = unchecked(2097411),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDRESOURCE")]
-		OfferresourcesInvalidresource = unchecked(2097412),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		HssetsamplersUnbinddeletingobject = unchecked(2097413),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		DssetsamplersUnbinddeletingobject = unchecked(2097414),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSAMPLERS_UNBINDDELETINGOBJECT")]
-		CssetsamplersUnbinddeletingobject = unchecked(2097415),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETSHADER_UNBINDDELETINGOBJECT")]
-		HssetshaderUnbinddeletingobject = unchecked(2097416),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETSHADER_UNBINDDELETINGOBJECT")]
-		DssetshaderUnbinddeletingobject = unchecked(2097417),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETSHADER_UNBINDDELETINGOBJECT")]
-		CssetshaderUnbinddeletingobject = unchecked(2097418),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_INVALIDARG_RETURN")]
-		EnqueueseteventInvalidargReturn = unchecked(2097419),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_OUTOFMEMORY_RETURN")]
-		EnqueueseteventOutofmemoryReturn = unchecked(2097420),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_ACCESSDENIED_RETURN")]
-		EnqueueseteventAccessdeniedReturn = unchecked(2097421),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_NUMUAVS_INVALIDRANGE")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsNumuavsInvalidrange = unchecked(2097422),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_USE_OF_ZERO_REFCOUNT_OBJECT")]
-		UseOfZeroRefcountObject = unchecked(2097423),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_MESSAGES_END")]
-		Idd3D11MessagesEnd = unchecked(2097424),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_1_MESSAGES_START")]
-		Idd3D111MessagesStart = unchecked(3145728),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEODECODER")]
-		CreateVideodecoder = unchecked(3145729),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSORENUM")]
-		CreateVideoprocessorenum = unchecked(3145730),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_VIDEOPROCESSOR")]
-		CreateVideoprocessor = unchecked(3145731),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DECODEROUTPUTVIEW")]
-		CreateDecoderoutputview = unchecked(3145732),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PROCESSORINPUTVIEW")]
-		CreateProcessorinputview = unchecked(3145733),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_PROCESSOROUTPUTVIEW")]
-		CreateProcessoroutputview = unchecked(3145734),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_DEVICECONTEXTSTATE")]
-		CreateDevicecontextstate = unchecked(3145735),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEODECODER")]
-		LiveVideodecoder = unchecked(3145736),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSORENUM")]
-		LiveVideoprocessorenum = unchecked(3145737),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_VIDEOPROCESSOR")]
-		LiveVideoprocessor = unchecked(3145738),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DECODEROUTPUTVIEW")]
-		LiveDecoderoutputview = unchecked(3145739),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PROCESSORINPUTVIEW")]
-		LiveProcessorinputview = unchecked(3145740),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_PROCESSOROUTPUTVIEW")]
-		LiveProcessoroutputview = unchecked(3145741),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_DEVICECONTEXTSTATE")]
-		LiveDevicecontextstate = unchecked(3145742),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEODECODER")]
-		DestroyVideodecoder = unchecked(3145743),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSORENUM")]
-		DestroyVideoprocessorenum = unchecked(3145744),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_VIDEOPROCESSOR")]
-		DestroyVideoprocessor = unchecked(3145745),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DECODEROUTPUTVIEW")]
-		DestroyDecoderoutputview = unchecked(3145746),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PROCESSORINPUTVIEW")]
-		DestroyProcessorinputview = unchecked(3145747),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_PROCESSOROUTPUTVIEW")]
-		DestroyProcessoroutputview = unchecked(3145748),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_DEVICECONTEXTSTATE")]
-		DestroyDevicecontextstate = unchecked(3145749),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFLAGS")]
-		CreatedevicecontextstateInvalidflags = unchecked(3145750),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDFEATURELEVEL")]
-		CreatedevicecontextstateInvalidfeaturelevel = unchecked(3145751),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_FEATURELEVELS_NOT_SUPPORTED")]
-		CreatedevicecontextstateFeaturelevelsNotSupported = unchecked(3145752),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICECONTEXTSTATE_INVALIDREFIID")]
-		CreatedevicecontextstateInvalidrefiid = unchecked(3145753),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DISCARDVIEW_INVALIDVIEW")]
-		DeviceDiscardviewInvalidview = unchecked(3145754),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION1_INVALIDCOPYFLAGS")]
-		Copysubresourceregion1Invalidcopyflags = unchecked(3145755),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE1_INVALIDCOPYFLAGS")]
-		Updatesubresource1Invalidcopyflags = unchecked(3145756),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALIDFORCEDSAMPLECOUNT")]
-		CreaterasterizerstateInvalidforcedsamplecount = unchecked(3145757),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_OUTOFMEMORY_RETURN")]
-		CreatevideodecoderOutofmemoryReturn = unchecked(3145758),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_NULLPARAM")]
-		CreatevideodecoderNullparam = unchecked(3145759),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_INVALIDFORMAT")]
-		CreatevideodecoderInvalidformat = unchecked(3145760),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_ZEROWIDTHHEIGHT")]
-		CreatevideodecoderZerowidthheight = unchecked(3145761),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERSIZE")]
-		CreatevideodecoderDriverInvalidbuffersize = unchecked(3145762),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODER_DRIVER_INVALIDBUFFERUSAGE")]
-		CreatevideodecoderDriverInvalidbufferusage = unchecked(3145763),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILECOUNT_OUTOFMEMORY")]
-		GetvideodecoderprofilecountOutofmemory = unchecked(3145764),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_NULLPARAM")]
-		GetvideodecoderprofileNullparam = unchecked(3145765),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_INVALIDINDEX")]
-		GetvideodecoderprofileInvalidindex = unchecked(3145766),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERPROFILE_OUTOFMEMORY_RETURN")]
-		GetvideodecoderprofileOutofmemoryReturn = unchecked(3145767),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_NULLPARAM")]
-		CheckvideodecoderformatNullparam = unchecked(3145768),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERFORMAT_OUTOFMEMORY_RETURN")]
-		CheckvideodecoderformatOutofmemoryReturn = unchecked(3145769),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_NULLPARAM")]
-		GetvideodecoderconfigcountNullparam = unchecked(3145770),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIGCOUNT_OUTOFMEMORY_RETURN")]
-		GetvideodecoderconfigcountOutofmemoryReturn = unchecked(3145771),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_NULLPARAM")]
-		GetvideodecoderconfigNullparam = unchecked(3145772),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_INVALIDINDEX")]
-		GetvideodecoderconfigInvalidindex = unchecked(3145773),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCONFIG_OUTOFMEMORY_RETURN")]
-		GetvideodecoderconfigOutofmemoryReturn = unchecked(3145774),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERCREATIONPARAMS_NULLPARAM")]
-		GetdecodercreationparamsNullparam = unchecked(3145775),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERDRIVERHANDLE_NULLPARAM")]
-		GetdecoderdriverhandleNullparam = unchecked(3145776),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_NULLPARAM")]
-		GetdecoderbufferNullparam = unchecked(3145777),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDBUFFER")]
-		GetdecoderbufferInvalidbuffer = unchecked(3145778),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_INVALIDTYPE")]
-		GetdecoderbufferInvalidtype = unchecked(3145779),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERBUFFER_LOCKED")]
-		GetdecoderbufferLocked = unchecked(3145780),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NULLPARAM")]
-		ReleasedecoderbufferNullparam = unchecked(3145781),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_INVALIDTYPE")]
-		ReleasedecoderbufferInvalidtype = unchecked(3145782),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RELEASEDECODERBUFFER_NOTLOCKED")]
-		ReleasedecoderbufferNotlocked = unchecked(3145783),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_NULLPARAM")]
-		DecoderbeginframeNullparam = unchecked(3145784),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_HAZARD")]
-		DecoderbeginframeHazard = unchecked(3145785),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERENDFRAME_NULLPARAM")]
-		DecoderendframeNullparam = unchecked(3145786),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_NULLPARAM")]
-		SubmitdecoderbuffersNullparam = unchecked(3145787),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SUBMITDECODERBUFFERS_INVALIDTYPE")]
-		SubmitdecoderbuffersInvalidtype = unchecked(3145788),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODEREXTENSION_NULLPARAM")]
-		DecoderextensionNullparam = unchecked(3145789),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODEREXTENSION_INVALIDRESOURCE")]
-		DecoderextensionInvalidresource = unchecked(3145790),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_OUTOFMEMORY_RETURN")]
-		CreatevideoprocessorenumeratorOutofmemoryReturn = unchecked(3145791),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_NULLPARAM")]
-		CreatevideoprocessorenumeratorNullparam = unchecked(3145792),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDFRAMEFORMAT")]
-		CreatevideoprocessorenumeratorInvalidframeformat = unchecked(3145793),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDUSAGE")]
-		CreatevideoprocessorenumeratorInvalidusage = unchecked(3145794),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDINPUTFRAMERATE")]
-		CreatevideoprocessorenumeratorInvalidinputframerate = unchecked(3145795),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDOUTPUTFRAMERATE")]
-		CreatevideoprocessorenumeratorInvalidoutputframerate = unchecked(3145796),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORENUMERATOR_INVALIDWIDTHHEIGHT")]
-		CreatevideoprocessorenumeratorInvalidwidthheight = unchecked(3145797),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCONTENTDESC_NULLPARAM")]
-		GetvideoprocessorcontentdescNullparam = unchecked(3145798),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMAT_NULLPARAM")]
-		CheckvideoprocessorformatNullparam = unchecked(3145799),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCAPS_NULLPARAM")]
-		GetvideoprocessorcapsNullparam = unchecked(3145800),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_NULLPARAM")]
-		GetvideoprocessorrateconversioncapsNullparam = unchecked(3145801),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORRATECONVERSIONCAPS_INVALIDINDEX")]
-		GetvideoprocessorrateconversioncapsInvalidindex = unchecked(3145802),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_NULLPARAM")]
-		GetvideoprocessorcustomrateNullparam = unchecked(3145803),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORCUSTOMRATE_INVALIDINDEX")]
-		GetvideoprocessorcustomrateInvalidindex = unchecked(3145804),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_NULLPARAM")]
-		GetvideoprocessorfilterrangeNullparam = unchecked(3145805),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEOPROCESSORFILTERRANGE_UNSUPPORTED")]
-		GetvideoprocessorfilterrangeUnsupported = unchecked(3145806),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_OUTOFMEMORY_RETURN")]
-		CreatevideoprocessorOutofmemoryReturn = unchecked(3145807),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOR_NULLPARAM")]
-		CreatevideoprocessorNullparam = unchecked(3145808),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTTARGETRECT_NULLPARAM")]
-		VideoprocessorsetoutputtargetrectNullparam = unchecked(3145809),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
-		VideoprocessorsetoutputbackgroundcolorNullparam = unchecked(3145810),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTBACKGROUNDCOLOR_INVALIDALPHA")]
-		VideoprocessorsetoutputbackgroundcolorInvalidalpha = unchecked(3145811),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE_NULLPARAM")]
-		VideoprocessorsetoutputcolorspaceNullparam = unchecked(3145812),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_NULLPARAM")]
-		VideoprocessorsetoutputalphafillmodeNullparam = unchecked(3145813),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_UNSUPPORTED")]
-		VideoprocessorsetoutputalphafillmodeUnsupported = unchecked(3145814),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDSTREAM")]
-		VideoprocessorsetoutputalphafillmodeInvalidstream = unchecked(3145815),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTALPHAFILLMODE_INVALIDFILLMODE")]
-		VideoprocessorsetoutputalphafillmodeInvalidfillmode = unchecked(3145816),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_NULLPARAM")]
-		VideoprocessorsetoutputconstrictionNullparam = unchecked(3145817),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_NULLPARAM")]
-		VideoprocessorsetoutputstereomodeNullparam = unchecked(3145818),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSTEREOMODE_UNSUPPORTED")]
-		VideoprocessorsetoutputstereomodeUnsupported = unchecked(3145819),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTEXTENSION_NULLPARAM")]
-		VideoprocessorsetoutputextensionNullparam = unchecked(3145820),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTTARGETRECT_NULLPARAM")]
-		VideoprocessorgetoutputtargetrectNullparam = unchecked(3145821),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTBACKGROUNDCOLOR_NULLPARAM")]
-		VideoprocessorgetoutputbackgroundcolorNullparam = unchecked(3145822),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE_NULLPARAM")]
-		VideoprocessorgetoutputcolorspaceNullparam = unchecked(3145823),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTALPHAFILLMODE_NULLPARAM")]
-		VideoprocessorgetoutputalphafillmodeNullparam = unchecked(3145824),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCONSTRICTION_NULLPARAM")]
-		VideoprocessorgetoutputconstrictionNullparam = unchecked(3145825),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_UNSUPPORTED")]
-		VideoprocessorsetoutputconstrictionUnsupported = unchecked(3145826),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCONSTRICTION_INVALIDSIZE")]
-		VideoprocessorsetoutputconstrictionInvalidsize = unchecked(3145827),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSTEREOMODE_NULLPARAM")]
-		VideoprocessorgetoutputstereomodeNullparam = unchecked(3145828),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTEXTENSION_NULLPARAM")]
-		VideoprocessorgetoutputextensionNullparam = unchecked(3145829),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_NULLPARAM")]
-		VideoprocessorsetstreamframeformatNullparam = unchecked(3145830),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDFORMAT")]
-		VideoprocessorsetstreamframeformatInvalidformat = unchecked(3145831),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
-		VideoprocessorsetstreamframeformatInvalidstream = unchecked(3145832),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_NULLPARAM")]
-		VideoprocessorsetstreamcolorspaceNullparam = unchecked(3145833),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE_INVALIDSTREAM")]
-		VideoprocessorsetstreamcolorspaceInvalidstream = unchecked(3145834),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_NULLPARAM")]
-		VideoprocessorsetstreamoutputrateNullparam = unchecked(3145835),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDRATE")]
-		VideoprocessorsetstreamoutputrateInvalidrate = unchecked(3145836),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDFLAG")]
-		VideoprocessorsetstreamoutputrateInvalidflag = unchecked(3145837),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMOUTPUTRATE_INVALIDSTREAM")]
-		VideoprocessorsetstreamoutputrateInvalidstream = unchecked(3145838),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_NULLPARAM")]
-		VideoprocessorsetstreamsourcerectNullparam = unchecked(3145839),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDSTREAM")]
-		VideoprocessorsetstreamsourcerectInvalidstream = unchecked(3145840),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSOURCERECT_INVALIDRECT")]
-		VideoprocessorsetstreamsourcerectInvalidrect = unchecked(3145841),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_NULLPARAM")]
-		VideoprocessorsetstreamdestrectNullparam = unchecked(3145842),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDSTREAM")]
-		VideoprocessorsetstreamdestrectInvalidstream = unchecked(3145843),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMDESTRECT_INVALIDRECT")]
-		VideoprocessorsetstreamdestrectInvalidrect = unchecked(3145844),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_NULLPARAM")]
-		VideoprocessorsetstreamalphaNullparam = unchecked(3145845),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDSTREAM")]
-		VideoprocessorsetstreamalphaInvalidstream = unchecked(3145846),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_INVALIDALPHA")]
-		VideoprocessorsetstreamalphaInvalidalpha = unchecked(3145847),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_NULLPARAM")]
-		VideoprocessorsetstreampaletteNullparam = unchecked(3145848),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDSTREAM")]
-		VideoprocessorsetstreampaletteInvalidstream = unchecked(3145849),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDCOUNT")]
-		VideoprocessorsetstreampaletteInvalidcount = unchecked(3145850),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPALETTE_INVALIDALPHA")]
-		VideoprocessorsetstreampaletteInvalidalpha = unchecked(3145851),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_NULLPARAM")]
-		VideoprocessorsetstreampixelaspectratioNullparam = unchecked(3145852),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
-		VideoprocessorsetstreampixelaspectratioInvalidstream = unchecked(3145853),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_INVALIDRATIO")]
-		VideoprocessorsetstreampixelaspectratioInvalidratio = unchecked(3145854),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_NULLPARAM")]
-		VideoprocessorsetstreamlumakeyNullparam = unchecked(3145855),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDSTREAM")]
-		VideoprocessorsetstreamlumakeyInvalidstream = unchecked(3145856),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_INVALIDRANGE")]
-		VideoprocessorsetstreamlumakeyInvalidrange = unchecked(3145857),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMLUMAKEY_UNSUPPORTED")]
-		VideoprocessorsetstreamlumakeyUnsupported = unchecked(3145858),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_NULLPARAM")]
-		VideoprocessorsetstreamstereoformatNullparam = unchecked(3145859),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
-		VideoprocessorsetstreamstereoformatInvalidstream = unchecked(3145860),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_UNSUPPORTED")]
-		VideoprocessorsetstreamstereoformatUnsupported = unchecked(3145861),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FLIPUNSUPPORTED")]
-		VideoprocessorsetstreamstereoformatFlipunsupported = unchecked(3145862),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_MONOOFFSETUNSUPPORTED")]
-		VideoprocessorsetstreamstereoformatMonooffsetunsupported = unchecked(3145863),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_FORMATUNSUPPORTED")]
-		VideoprocessorsetstreamstereoformatFormatunsupported = unchecked(3145864),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMSTEREOFORMAT_INVALIDFORMAT")]
-		VideoprocessorsetstreamstereoformatInvalidformat = unchecked(3145865),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
-		VideoprocessorsetstreamautoprocessingmodeNullparam = unchecked(3145866),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
-		VideoprocessorsetstreamautoprocessingmodeInvalidstream = unchecked(3145867),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_NULLPARAM")]
-		VideoprocessorsetstreamfilterNullparam = unchecked(3145868),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDSTREAM")]
-		VideoprocessorsetstreamfilterInvalidstream = unchecked(3145869),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDFILTER")]
-		VideoprocessorsetstreamfilterInvalidfilter = unchecked(3145870),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_UNSUPPORTED")]
-		VideoprocessorsetstreamfilterUnsupported = unchecked(3145871),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMFILTER_INVALIDLEVEL")]
-		VideoprocessorsetstreamfilterInvalidlevel = unchecked(3145872),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_NULLPARAM")]
-		VideoprocessorsetstreamextensionNullparam = unchecked(3145873),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMEXTENSION_INVALIDSTREAM")]
-		VideoprocessorsetstreamextensionInvalidstream = unchecked(3145874),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_NULLPARAM")]
-		VideoprocessorgetstreamframeformatNullparam = unchecked(3145875),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_NULLPARAM")]
-		VideoprocessorgetstreamcolorspaceNullparam = unchecked(3145876),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_NULLPARAM")]
-		VideoprocessorgetstreamoutputrateNullparam = unchecked(3145877),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_NULLPARAM")]
-		VideoprocessorgetstreamsourcerectNullparam = unchecked(3145878),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_NULLPARAM")]
-		VideoprocessorgetstreamdestrectNullparam = unchecked(3145879),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_NULLPARAM")]
-		VideoprocessorgetstreamalphaNullparam = unchecked(3145880),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_NULLPARAM")]
-		VideoprocessorgetstreampaletteNullparam = unchecked(3145881),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_NULLPARAM")]
-		VideoprocessorgetstreampixelaspectratioNullparam = unchecked(3145882),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_NULLPARAM")]
-		VideoprocessorgetstreamlumakeyNullparam = unchecked(3145883),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_NULLPARAM")]
-		VideoprocessorgetstreamstereoformatNullparam = unchecked(3145884),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_NULLPARAM")]
-		VideoprocessorgetstreamautoprocessingmodeNullparam = unchecked(3145885),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_NULLPARAM")]
-		VideoprocessorgetstreamfilterNullparam = unchecked(3145886),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_NULLPARAM")]
-		VideoprocessorgetstreamextensionNullparam = unchecked(3145887),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMEXTENSION_INVALIDSTREAM")]
-		VideoprocessorgetstreamextensionInvalidstream = unchecked(3145888),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NULLPARAM")]
-		VideoprocessorbltNullparam = unchecked(3145889),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSTREAMCOUNT")]
-		VideoprocessorbltInvalidstreamcount = unchecked(3145890),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_TARGETRECT")]
-		VideoprocessorbltTargetrect = unchecked(3145891),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDOUTPUT")]
-		VideoprocessorbltInvalidoutput = unchecked(3145892),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDPASTFRAMES")]
-		VideoprocessorbltInvalidpastframes = unchecked(3145893),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDFUTUREFRAMES")]
-		VideoprocessorbltInvalidfutureframes = unchecked(3145894),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDSOURCERECT")]
-		VideoprocessorbltInvalidsourcerect = unchecked(3145895),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDDESTRECT")]
-		VideoprocessorbltInvaliddestrect = unchecked(3145896),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDINPUTRESOURCE")]
-		VideoprocessorbltInvalidinputresource = unchecked(3145897),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAYSIZE")]
-		VideoprocessorbltInvalidarraysize = unchecked(3145898),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDARRAY")]
-		VideoprocessorbltInvalidarray = unchecked(3145899),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTEXPECTED")]
-		VideoprocessorbltRightexpected = unchecked(3145900),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_RIGHTNOTEXPECTED")]
-		VideoprocessorbltRightnotexpected = unchecked(3145901),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_STEREONOTENABLED")]
-		VideoprocessorbltStereonotenabled = unchecked(3145902),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INVALIDRIGHTRESOURCE")]
-		VideoprocessorbltInvalidrightresource = unchecked(3145903),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_NOSTEREOSTREAMS")]
-		VideoprocessorbltNostereostreams = unchecked(3145904),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_INPUTHAZARD")]
-		VideoprocessorbltInputhazard = unchecked(3145905),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORBLT_OUTPUTHAZARD")]
-		VideoprocessorbltOutputhazard = unchecked(3145906),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_OUTOFMEMORY_RETURN")]
-		CreatevideodecoderoutputviewOutofmemoryReturn = unchecked(3145907),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_NULLPARAM")]
-		CreatevideodecoderoutputviewNullparam = unchecked(3145908),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDTYPE")]
-		CreatevideodecoderoutputviewInvalidtype = unchecked(3145909),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDBIND")]
-		CreatevideodecoderoutputviewInvalidbind = unchecked(3145910),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEDFORMAT")]
-		CreatevideodecoderoutputviewUnsupportedformat = unchecked(3145911),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDMIP")]
-		CreatevideodecoderoutputviewInvalidmip = unchecked(3145912),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_UNSUPPORTEMIP")]
-		CreatevideodecoderoutputviewUnsupportemip = unchecked(3145913),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAYSIZE")]
-		CreatevideodecoderoutputviewInvalidarraysize = unchecked(3145914),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDARRAY")]
-		CreatevideodecoderoutputviewInvalidarray = unchecked(3145915),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEODECODEROUTPUTVIEW_INVALIDDIMENSION")]
-		CreatevideodecoderoutputviewInvaliddimension = unchecked(3145916),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_OUTOFMEMORY_RETURN")]
-		CreatevideoprocessorinputviewOutofmemoryReturn = unchecked(3145917),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_NULLPARAM")]
-		CreatevideoprocessorinputviewNullparam = unchecked(3145918),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDTYPE")]
-		CreatevideoprocessorinputviewInvalidtype = unchecked(3145919),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDBIND")]
-		CreatevideoprocessorinputviewInvalidbind = unchecked(3145920),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMISC")]
-		CreatevideoprocessorinputviewInvalidmisc = unchecked(3145921),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDUSAGE")]
-		CreatevideoprocessorinputviewInvalidusage = unchecked(3145922),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFORMAT")]
-		CreatevideoprocessorinputviewInvalidformat = unchecked(3145923),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDFOURCC")]
-		CreatevideoprocessorinputviewInvalidfourcc = unchecked(3145924),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMIP")]
-		CreatevideoprocessorinputviewInvalidmip = unchecked(3145925),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_UNSUPPORTEDMIP")]
-		CreatevideoprocessorinputviewUnsupportedmip = unchecked(3145926),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAYSIZE")]
-		CreatevideoprocessorinputviewInvalidarraysize = unchecked(3145927),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDARRAY")]
-		CreatevideoprocessorinputviewInvalidarray = unchecked(3145928),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDDIMENSION")]
-		CreatevideoprocessorinputviewInvaliddimension = unchecked(3145929),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_OUTOFMEMORY_RETURN")]
-		CreatevideoprocessoroutputviewOutofmemoryReturn = unchecked(3145930),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_NULLPARAM")]
-		CreatevideoprocessoroutputviewNullparam = unchecked(3145931),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDTYPE")]
-		CreatevideoprocessoroutputviewInvalidtype = unchecked(3145932),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDBIND")]
-		CreatevideoprocessoroutputviewInvalidbind = unchecked(3145933),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDFORMAT")]
-		CreatevideoprocessoroutputviewInvalidformat = unchecked(3145934),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMIP")]
-		CreatevideoprocessoroutputviewInvalidmip = unchecked(3145935),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDMIP")]
-		CreatevideoprocessoroutputviewUnsupportedmip = unchecked(3145936),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_UNSUPPORTEDARRAY")]
-		CreatevideoprocessoroutputviewUnsupportedarray = unchecked(3145937),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDARRAY")]
-		CreatevideoprocessoroutputviewInvalidarray = unchecked(3145938),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDDIMENSION")]
-		CreatevideoprocessoroutputviewInvaliddimension = unchecked(3145939),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_USE_OF_FORCED_SAMPLE_COUNT")]
-		DeviceDrawInvalidUseOfForcedSampleCount = unchecked(3145940),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBLENDSTATE_INVALIDLOGICOPS")]
-		CreateblendstateInvalidlogicops = unchecked(3145941),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDDARRAYWITHDECODER")]
-		CreateshaderresourceviewInvaliddarraywithdecoder = unchecked(3145942),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDDARRAYWITHDECODER")]
-		CreateunorderedaccessviewInvaliddarraywithdecoder = unchecked(3145943),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDDARRAYWITHDECODER")]
-		CreaterendertargetviewInvaliddarraywithdecoder = unchecked(3145944),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_LOCKEDOUT_INTERFACE")]
-		DeviceLockedoutInterface = unchecked(3145945),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_ATOMIC_INCONSISTENT")]
-		RefWarningAtomicInconsistent = unchecked(3145946),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_READING_UNINITIALIZED_RESOURCE")]
-		RefWarningReadingUninitializedResource = unchecked(3145947),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_RAW_HAZARD")]
-		RefWarningRawHazard = unchecked(3145948),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_WAR_HAZARD")]
-		RefWarningWarHazard = unchecked(3145949),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_REF_WARNING_WAW_HAZARD")]
-		RefWarningWawHazard = unchecked(3145950),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECRYPTOSESSION_NULLPARAM")]
-		CreatecryptosessionNullparam = unchecked(3145951),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATECRYPTOSESSION_OUTOFMEMORY_RETURN")]
-		CreatecryptosessionOutofmemoryReturn = unchecked(3145952),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOTYPE_NULLPARAM")]
-		GetcryptotypeNullparam = unchecked(3145953),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDECODERPROFILE_NULLPARAM")]
-		GetdecoderprofileNullparam = unchecked(3145954),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATESIZE_NULLPARAM")]
-		GetcryptosessioncertificatesizeNullparam = unchecked(3145955),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_NULLPARAM")]
-		GetcryptosessioncertificateNullparam = unchecked(3145956),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONCERTIFICATE_WRONGSIZE")]
-		GetcryptosessioncertificateWrongsize = unchecked(3145957),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_WRONGSIZE")]
-		GetcryptosessionhandleWrongsize = unchecked(3145958),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_NULLPARAM")]
-		NegotiatecrpytosessionkeyexchangeNullparam = unchecked(3145959),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_UNSUPPORTED")]
-		EncryptionbltUnsupported = unchecked(3145960),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_NULLPARAM")]
-		EncryptionbltNullparam = unchecked(3145961),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_WRONGDEVICE")]
-		EncryptionbltSrcWrongdevice = unchecked(3145962),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_WRONGDEVICE")]
-		EncryptionbltDstWrongdevice = unchecked(3145963),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_FORMAT_MISMATCH")]
-		EncryptionbltFormatMismatch = unchecked(3145964),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SIZE_MISMATCH")]
-		EncryptionbltSizeMismatch = unchecked(3145965),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MULTISAMPLED")]
-		EncryptionbltSrcMultisampled = unchecked(3145966),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_NOT_STAGING")]
-		EncryptionbltDstNotStaging = unchecked(3145967),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_MAPPED")]
-		EncryptionbltSrcMapped = unchecked(3145968),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_MAPPED")]
-		EncryptionbltDstMapped = unchecked(3145969),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_OFFERED")]
-		EncryptionbltSrcOffered = unchecked(3145970),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_DST_OFFERED")]
-		EncryptionbltDstOffered = unchecked(3145971),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENCRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
-		EncryptionbltSrcContentUndefined = unchecked(3145972),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_UNSUPPORTED")]
-		DecryptionbltUnsupported = unchecked(3145973),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_NULLPARAM")]
-		DecryptionbltNullparam = unchecked(3145974),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_WRONGDEVICE")]
-		DecryptionbltSrcWrongdevice = unchecked(3145975),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_WRONGDEVICE")]
-		DecryptionbltDstWrongdevice = unchecked(3145976),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_FORMAT_MISMATCH")]
-		DecryptionbltFormatMismatch = unchecked(3145977),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SIZE_MISMATCH")]
-		DecryptionbltSizeMismatch = unchecked(3145978),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MULTISAMPLED")]
-		DecryptionbltDstMultisampled = unchecked(3145979),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_NOT_STAGING")]
-		DecryptionbltSrcNotStaging = unchecked(3145980),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_NOT_RENDER_TARGET")]
-		DecryptionbltDstNotRenderTarget = unchecked(3145981),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_MAPPED")]
-		DecryptionbltSrcMapped = unchecked(3145982),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_MAPPED")]
-		DecryptionbltDstMapped = unchecked(3145983),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_OFFERED")]
-		DecryptionbltSrcOffered = unchecked(3145984),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_DST_OFFERED")]
-		DecryptionbltDstOffered = unchecked(3145985),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECRYPTIONBLT_SRC_CONTENT_UNDEFINED")]
-		DecryptionbltSrcContentUndefined = unchecked(3145986),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_NULLPARAM")]
-		StartsessionkeyrefreshNullparam = unchecked(3145987),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_STARTSESSIONKEYREFRESH_INVALIDSIZE")]
-		StartsessionkeyrefreshInvalidsize = unchecked(3145988),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FINISHSESSIONKEYREFRESH_NULLPARAM")]
-		FinishsessionkeyrefreshNullparam = unchecked(3145989),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_NULLPARAM")]
-		GetencryptionbltkeyNullparam = unchecked(3145990),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETENCRYPTIONBLTKEY_INVALIDSIZE")]
-		GetencryptionbltkeyInvalidsize = unchecked(3145991),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCONTENTPROTECTIONCAPS_NULLPARAM")]
-		GetcontentprotectioncapsNullparam = unchecked(3145992),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_NULLPARAM")]
-		CheckcryptokeyexchangeNullparam = unchecked(3145993),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOKEYEXCHANGE_INVALIDINDEX")]
-		CheckcryptokeyexchangeInvalidindex = unchecked(3145994),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_NULLPARAM")]
-		CreateauthenticatedchannelNullparam = unchecked(3145995),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_UNSUPPORTED")]
-		CreateauthenticatedchannelUnsupported = unchecked(3145996),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_INVALIDTYPE")]
-		CreateauthenticatedchannelInvalidtype = unchecked(3145997),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEAUTHENTICATEDCHANNEL_OUTOFMEMORY_RETURN")]
-		CreateauthenticatedchannelOutofmemoryReturn = unchecked(3145998),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_INVALIDCHANNEL")]
-		GetauthenticatedchannelcertificatesizeInvalidchannel = unchecked(3145999),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATESIZE_NULLPARAM")]
-		GetauthenticatedchannelcertificatesizeNullparam = unchecked(3146000),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_INVALIDCHANNEL")]
-		GetauthenticatedchannelcertificateInvalidchannel = unchecked(3146001),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_NULLPARAM")]
-		GetauthenticatedchannelcertificateNullparam = unchecked(3146002),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETAUTHENTICATEDCHANNELCERTIFICATE_WRONGSIZE")]
-		GetauthenticatedchannelcertificateWrongsize = unchecked(3146003),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDCHANNEL")]
-		NegotiateauthenticatedchannelkeyexchangeInvalidchannel = unchecked(3146004),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_NULLPARAM")]
-		NegotiateauthenticatedchannelkeyexchangeNullparam = unchecked(3146005),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_NULLPARAM")]
-		QueryauthenticatedchannelNullparam = unchecked(3146006),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
-		QueryauthenticatedchannelWrongchannel = unchecked(3146007),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_UNSUPPORTEDQUERY")]
-		QueryauthenticatedchannelUnsupportedquery = unchecked(3146008),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_WRONGSIZE")]
-		QueryauthenticatedchannelWrongsize = unchecked(3146009),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_QUERYAUTHENTICATEDCHANNEL_INVALIDPROCESSINDEX")]
-		QueryauthenticatedchannelInvalidprocessindex = unchecked(3146010),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_NULLPARAM")]
-		ConfigureauthenticatedchannelNullparam = unchecked(3146011),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGCHANNEL")]
-		ConfigureauthenticatedchannelWrongchannel = unchecked(3146012),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_UNSUPPORTEDCONFIGURE")]
-		ConfigureauthenticatedchannelUnsupportedconfigure = unchecked(3146013),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_WRONGSIZE")]
-		ConfigureauthenticatedchannelWrongsize = unchecked(3146014),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CONFIGUREAUTHENTICATEDCHANNEL_INVALIDPROCESSIDTYPE")]
-		ConfigureauthenticatedchannelInvalidprocessidtype = unchecked(3146015),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		VssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146016),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		DssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146017),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_HSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		HssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146018),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		GssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146019),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_PSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		PssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146020),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CSSETCONSTANTBUFFERS_INVALIDBUFFEROFFSETORCOUNT")]
-		CssetconstantbuffersInvalidbufferoffsetorcount = unchecked(3146021),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRPYTOSESSIONKEYEXCHANGE_INVALIDSIZE")]
-		NegotiatecrpytosessionkeyexchangeInvalidsize = unchecked(3146022),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATEAUTHENTICATEDCHANNELKEYEXCHANGE_INVALIDSIZE")]
-		NegotiateauthenticatedchannelkeyexchangeInvalidsize = unchecked(3146023),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INVALIDPRIORITY")]
-		OfferresourcesInvalidpriority = unchecked(3146024),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONHANDLE_OUTOFMEMORY")]
-		GetcryptosessionhandleOutofmemory = unchecked(3146025),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_NULLPARAM")]
-		AcquirehandleforcaptureNullparam = unchecked(3146026),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDTYPE")]
-		AcquirehandleforcaptureInvalidtype = unchecked(3146027),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDBIND")]
-		AcquirehandleforcaptureInvalidbind = unchecked(3146028),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ACQUIREHANDLEFORCAPTURE_INVALIDARRAY")]
-		AcquirehandleforcaptureInvalidarray = unchecked(3146029),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_NULLPARAM")]
-		VideoprocessorsetstreamrotationNullparam = unchecked(3146030),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALIDSTREAM")]
-		VideoprocessorsetstreamrotationInvalidstream = unchecked(3146031),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_INVALID")]
-		VideoprocessorsetstreamrotationInvalid = unchecked(3146032),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMROTATION_UNSUPPORTED")]
-		VideoprocessorsetstreamrotationUnsupported = unchecked(3146033),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_NULLPARAM")]
-		VideoprocessorgetstreamrotationNullparam = unchecked(3146034),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDVIEW")]
-		DeviceClearviewInvalidview = unchecked(3146035),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreatevertexshaderDoubleextensionsnotsupported = unchecked(3146036),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreatevertexshaderShaderextensionsnotsupported = unchecked(3146037),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreatehullshaderDoubleextensionsnotsupported = unchecked(3146038),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreatehullshaderShaderextensionsnotsupported = unchecked(3146039),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreatedomainshaderDoubleextensionsnotsupported = unchecked(3146040),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreatedomainshaderShaderextensionsnotsupported = unchecked(3146041),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreategeometryshaderDoubleextensionsnotsupported = unchecked(3146042),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreategeometryshaderShaderextensionsnotsupported = unchecked(3146043),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreategeometryshaderwithstreamoutputDoubleextensionsnotsupported = unchecked(3146044),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreategeometryshaderwithstreamoutputShaderextensionsnotsupported = unchecked(3146045),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreatepixelshaderDoubleextensionsnotsupported = unchecked(3146046),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreatepixelshaderShaderextensionsnotsupported = unchecked(3146047),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_DOUBLEEXTENSIONSNOTSUPPORTED")]
-		DeviceCreatecomputeshaderDoubleextensionsnotsupported = unchecked(3146048),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_SHADEREXTENSIONSNOTSUPPORTED")]
-		DeviceCreatecomputeshaderShaderextensionsnotsupported = unchecked(3146049),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SHADER_LINKAGE_MINPRECISION")]
-		DeviceShaderLinkageMinprecision = unchecked(3146050),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMALPHA_UNSUPPORTED")]
-		VideoprocessorsetstreamalphaUnsupported = unchecked(3146051),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMPIXELASPECTRATIO_UNSUPPORTED")]
-		VideoprocessorsetstreampixelaspectratioUnsupported = unchecked(3146052),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEVERTEXSHADER_UAVSNOTSUPPORTED")]
-		DeviceCreatevertexshaderUavsnotsupported = unchecked(3146053),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEHULLSHADER_UAVSNOTSUPPORTED")]
-		DeviceCreatehullshaderUavsnotsupported = unchecked(3146054),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEDOMAINSHADER_UAVSNOTSUPPORTED")]
-		DeviceCreatedomainshaderUavsnotsupported = unchecked(3146055),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADER_UAVSNOTSUPPORTED")]
-		DeviceCreategeometryshaderUavsnotsupported = unchecked(3146056),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEGEOMETRYSHADERWITHSTREAMOUTPUT_UAVSNOTSUPPORTED")]
-		DeviceCreategeometryshaderwithstreamoutputUavsnotsupported = unchecked(3146057),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATEPIXELSHADER_UAVSNOTSUPPORTED")]
-		DeviceCreatepixelshaderUavsnotsupported = unchecked(3146058),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CREATECOMPUTESHADER_UAVSNOTSUPPORTED")]
-		DeviceCreatecomputeshaderUavsnotsupported = unchecked(3146059),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_INVALIDOFFSET")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsInvalidoffset = unchecked(3146060),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OMSETRENDERTARGETSANDUNORDEREDACCESSVIEWS_TOOMANYVIEWS")]
-		DeviceOmsetrendertargetsandunorderedaccessviewsToomanyviews = unchecked(3146061),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_NOTSUPPORTED")]
-		DeviceClearviewNotsupported = unchecked(3146062),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_SWAPDEVICECONTEXTSTATE_NOTSUPPORTED")]
-		SwapdevicecontextstateNotsupported = unchecked(3146063),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_PREFERUPDATESUBRESOURCE1")]
-		UpdatesubresourcePreferupdatesubresource1 = unchecked(3146064),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDC_INACCESSIBLE")]
-		GetdcInaccessible = unchecked(3146065),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDRECT")]
-		DeviceClearviewInvalidrect = unchecked(3146066),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_SAMPLE_MASK_IGNORED_ON_FL9")]
-		DeviceDrawSampleMaskIgnoredOnFl9 = unchecked(3146067),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_NOT_SUPPORTED")]
-		DeviceOpenSharedResource1NotSupported = unchecked(3146068),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE_BY_NAME_NOT_SUPPORTED")]
-		DeviceOpenSharedResourceByNameNotSupported = unchecked(3146069),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_ENQUEUESETEVENT_NOT_SUPPORTED")]
-		EnqueueseteventNotSupported = unchecked(3146070),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRELEASE_NOT_SUPPORTED")]
-		OfferreleaseNotSupported = unchecked(3146071),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OFFERRESOURCES_INACCESSIBLE")]
-		OfferresourcesInaccessible = unchecked(3146072),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSORINPUTVIEW_INVALIDMSAA")]
-		CreatevideoprocessorinputviewInvalidmsaa = unchecked(3146073),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEVIDEOPROCESSOROUTPUTVIEW_INVALIDMSAA")]
-		CreatevideoprocessoroutputviewInvalidmsaa = unchecked(3146074),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_INVALIDSOURCERECT")]
-		DeviceClearviewInvalidsourcerect = unchecked(3146075),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_CLEARVIEW_EMPTYRECT")]
-		DeviceClearviewEmptyrect = unchecked(3146076),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATESUBRESOURCE_EMPTYDESTBOX")]
-		UpdatesubresourceEmptydestbox = unchecked(3146077),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYSUBRESOURCEREGION_EMPTYSOURCEBOX")]
-		CopysubresourceregionEmptysourcebox = unchecked(3146078),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_OM_RENDER_TARGET_DOES_NOT_SUPPORT_LOGIC_OPS")]
-		DeviceDrawOmRenderTargetDoesNotSupportLogicOps = unchecked(3146079),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_DEPTHSTENCILVIEW_NOT_SET")]
-		DeviceDrawDepthstencilviewNotSet = unchecked(3146080),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET")]
-		DeviceDrawRendertargetviewNotSet = unchecked(3146081),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_RENDERTARGETVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
-		DeviceDrawRendertargetviewNotSetDueToFlipPresent = unchecked(3146082),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_UNORDEREDACCESSVIEW_NOT_SET_DUE_TO_FLIP_PRESENT")]
-		DeviceUnorderedaccessviewNotSetDueToFlipPresent = unchecked(3146083),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETDATAFORNEWHARDWAREKEY_NULLPARAM")]
-		GetdatafornewhardwarekeyNullparam = unchecked(3146084),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKCRYPTOSESSIONSTATUS_NULLPARAM")]
-		CheckcryptosessionstatusNullparam = unchecked(3146085),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_NULLPARAM")]
-		GetcryptosessionprivatedatasizeNullparam = unchecked(3146086),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_NULLPARAM")]
-		GetvideodecodercapsNullparam = unchecked(3146087),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETVIDEODECODERCAPS_ZEROWIDTHHEIGHT")]
-		GetvideodecodercapsZerowidthheight = unchecked(3146088),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_NULLPARAM")]
-		CheckvideodecoderdownsamplingNullparam = unchecked(3146089),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
-		CheckvideodecoderdownsamplingInvalidcolorspace = unchecked(3146090),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
-		CheckvideodecoderdownsamplingZerowidthheight = unchecked(3146091),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_NULLPARAM")]
-		VideodecoderenabledownsamplingNullparam = unchecked(3146092),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERENABLEDOWNSAMPLING_UNSUPPORTED")]
-		VideodecoderenabledownsamplingUnsupported = unchecked(3146093),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_NULLPARAM")]
-		VideodecoderupdatedownsamplingNullparam = unchecked(3146094),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEODECODERUPDATEDOWNSAMPLING_UNSUPPORTED")]
-		VideodecoderupdatedownsamplingUnsupported = unchecked(3146095),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKVIDEOPROCESSORFORMATCONVERSION_NULLPARAM")]
-		CheckvideoprocessorformatconversionNullparam = unchecked(3146096),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTCOLORSPACE1_NULLPARAM")]
-		Videoprocessorsetoutputcolorspace1Nullparam = unchecked(3146097),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTCOLORSPACE1_NULLPARAM")]
-		Videoprocessorgetoutputcolorspace1Nullparam = unchecked(3146098),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_NULLPARAM")]
-		Videoprocessorsetstreamcolorspace1Nullparam = unchecked(3146099),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMCOLORSPACE1_INVALIDSTREAM")]
-		Videoprocessorsetstreamcolorspace1Invalidstream = unchecked(3146100),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_NULLPARAM")]
-		VideoprocessorsetstreammirrorNullparam = unchecked(3146101),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_INVALIDSTREAM")]
-		VideoprocessorsetstreammirrorInvalidstream = unchecked(3146102),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMMIRROR_UNSUPPORTED")]
-		VideoprocessorsetstreammirrorUnsupported = unchecked(3146103),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_NULLPARAM")]
-		Videoprocessorgetstreamcolorspace1Nullparam = unchecked(3146104),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_NULLPARAM")]
-		VideoprocessorgetstreammirrorNullparam = unchecked(3146105),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_NULLPARAM")]
-		RecommendvideodecoderdownsamplingNullparam = unchecked(3146106),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_INVALIDCOLORSPACE")]
-		RecommendvideodecoderdownsamplingInvalidcolorspace = unchecked(3146107),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RECOMMENDVIDEODECODERDOWNSAMPLING_ZEROWIDTHHEIGHT")]
-		RecommendvideodecoderdownsamplingZerowidthheight = unchecked(3146108),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTSHADERUSAGE_NULLPARAM")]
-		VideoprocessorsetoutputshaderusageNullparam = unchecked(3146109),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTSHADERUSAGE_NULLPARAM")]
-		VideoprocessorgetoutputshaderusageNullparam = unchecked(3146110),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_NULLPARAM")]
-		VideoprocessorgetbehaviorhintsNullparam = unchecked(3146111),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSTREAMCOUNT")]
-		VideoprocessorgetbehaviorhintsInvalidstreamcount = unchecked(3146112),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_TARGETRECT")]
-		VideoprocessorgetbehaviorhintsTargetrect = unchecked(3146113),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDSOURCERECT")]
-		VideoprocessorgetbehaviorhintsInvalidsourcerect = unchecked(3146114),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETBEHAVIORHINTS_INVALIDDESTRECT")]
-		VideoprocessorgetbehaviorhintsInvaliddestrect = unchecked(3146115),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETCRYPTOSESSIONPRIVATEDATASIZE_INVALID_KEY_EXCHANGE_TYPE")]
-		GetcryptosessionprivatedatasizeInvalidKeyExchangeType = unchecked(3146116),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_OPEN_SHARED_RESOURCE1_ACCESS_DENIED")]
-		DeviceOpenSharedResource1AccessDenied = unchecked(3146117),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_1_MESSAGES_END")]
-		Idd3D111MessagesEnd = unchecked(3146118),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_2_MESSAGES_START")]
-		Idd3D112MessagesStart = unchecked(3146119),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEBUFFER_INVALIDUSAGE")]
-		CreatebufferInvalidusage = unchecked(3146120),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE1D_INVALIDUSAGE")]
-		Createtexture1DInvalidusage = unchecked(3146121),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATETEXTURE2D_INVALIDUSAGE")]
-		Createtexture2DInvalidusage = unchecked(3146122),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_STEPRATE_NOT_1")]
-		CreateinputlayoutLevel9SteprateNot1 = unchecked(3146123),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEINPUTLAYOUT_LEVEL9_INSTANCING_NOT_SUPPORTED")]
-		CreateinputlayoutLevel9InstancingNotSupported = unchecked(3146124),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATETILEMAPPINGS_INVALID_PARAMETER")]
-		UpdatetilemappingsInvalidParameter = unchecked(3146125),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYTILEMAPPINGS_INVALID_PARAMETER")]
-		CopytilemappingsInvalidParameter = unchecked(3146126),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_COPYTILES_INVALID_PARAMETER")]
-		CopytilesInvalidParameter = unchecked(3146127),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_UPDATETILES_INVALID_PARAMETER")]
-		UpdatetilesInvalidParameter = unchecked(3146128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESIZETILEPOOL_INVALID_PARAMETER")]
-		ResizetilepoolInvalidParameter = unchecked(3146129),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILEDRESOURCEBARRIER_INVALID_PARAMETER")]
-		TiledresourcebarrierInvalidParameter = unchecked(3146130),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_WARNING")]
-		NullTileMappingAccessWarning = unchecked(3146131),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NULL_TILE_MAPPING_ACCESS_ERROR")]
-		NullTileMappingAccessError = unchecked(3146132),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DIRTY_TILE_MAPPING_ACCESS")]
-		DirtyTileMappingAccess = unchecked(3146133),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DUPLICATE_TILE_MAPPINGS_IN_COVERED_AREA")]
-		DuplicateTileMappingsInCoveredArea = unchecked(3146134),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_IN_COVERED_AREA_DUPLICATED_OUTSIDE")]
-		TileMappingsInCoveredAreaDuplicatedOutside = unchecked(3146135),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INCOMPATIBLE_RESOURCES")]
-		TileMappingsSharedBetweenIncompatibleResources = unchecked(3146136),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILE_MAPPINGS_SHARED_BETWEEN_INPUT_AND_OUTPUT")]
-		TileMappingsSharedBetweenInputAndOutput = unchecked(3146137),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CHECKMULTISAMPLEQUALITYLEVELS_INVALIDFLAGS")]
-		CheckmultisamplequalitylevelsInvalidflags = unchecked(3146138),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_GETRESOURCETILING_NONTILED_RESOURCE")]
-		GetresourcetilingNontiledResource = unchecked(3146139),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_RESIZETILEPOOL_SHRINK_WITH_MAPPINGS_STILL_DEFINED_PAST_END")]
-		ResizetilepoolShrinkWithMappingsStillDefinedPastEnd = unchecked(3146140),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEED_TO_CALL_TILEDRESOURCEBARRIER")]
-		NeedToCallTiledresourcebarrier = unchecked(3146141),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICE_INVALIDARGS")]
-		CreatedeviceInvalidargs = unchecked(3146142),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEDEVICE_WARNING")]
-		CreatedeviceWarning = unchecked(3146143),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWUINT_HAZARD")]
-		ClearunorderedaccessviewuintHazard = unchecked(3146144),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CLEARUNORDEREDACCESSVIEWFLOAT_HAZARD")]
-		ClearunorderedaccessviewfloatHazard = unchecked(3146145),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TILED_RESOURCE_TIER_1_BUFFER_TEXTURE_MISMATCH")]
-		TiledResourceTier1BufferTextureMismatch = unchecked(3146146),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_CRYPTOSESSION")]
-		CreateCryptosession = unchecked(3146147),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_AUTHENTICATEDCHANNEL")]
-		CreateAuthenticatedchannel = unchecked(3146148),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_CRYPTOSESSION")]
-		LiveCryptosession = unchecked(3146149),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_AUTHENTICATEDCHANNEL")]
-		LiveAuthenticatedchannel = unchecked(3146150),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_CRYPTOSESSION")]
-		DestroyCryptosession = unchecked(3146151),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_AUTHENTICATEDCHANNEL")]
-		DestroyAuthenticatedchannel = unchecked(3146152),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_2_MESSAGES_END")]
-		Idd3D112MessagesEnd = unchecked(3146153),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_3_MESSAGES_START")]
-		Idd3D113MessagesStart = unchecked(3146154),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERASTERIZERSTATE_INVALID_CONSERVATIVERASTERMODE")]
-		CreaterasterizerstateInvalidConservativerastermode = unchecked(3146155),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_DRAW_INVALID_SYSTEMVALUE")]
-		DeviceDrawInvalidSystemvalue = unchecked(3146156),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_INVALIDCONTEXTTYPE")]
-		CreatequeryorpredicateInvalidcontexttype = unchecked(3146157),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_DECODENOTSUPPORTED")]
-		CreatequeryorpredicateDecodenotsupported = unchecked(3146158),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_ENCODENOTSUPPORTED")]
-		CreatequeryorpredicateEncodenotsupported = unchecked(3146159),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDPLANEINDEX")]
-		CreateshaderresourceviewInvalidplaneindex = unchecked(3146160),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_INVALIDVIDEOPLANEINDEX")]
-		CreateshaderresourceviewInvalidvideoplaneindex = unchecked(3146161),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATESHADERRESOURCEVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
-		CreateshaderresourceviewAmbiguousvideoplaneindex = unchecked(3146162),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDPLANEINDEX")]
-		CreaterendertargetviewInvalidplaneindex = unchecked(3146163),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_INVALIDVIDEOPLANEINDEX")]
-		CreaterendertargetviewInvalidvideoplaneindex = unchecked(3146164),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATERENDERTARGETVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
-		CreaterendertargetviewAmbiguousvideoplaneindex = unchecked(3146165),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDPLANEINDEX")]
-		CreateunorderedaccessviewInvalidplaneindex = unchecked(3146166),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_INVALIDVIDEOPLANEINDEX")]
-		CreateunorderedaccessviewInvalidvideoplaneindex = unchecked(3146167),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEUNORDEREDACCESSVIEW_AMBIGUOUSVIDEOPLANEINDEX")]
-		CreateunorderedaccessviewAmbiguousvideoplaneindex = unchecked(3146168),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSCANDATAOFFSET")]
-		JpegdecodeInvalidscandataoffset = unchecked(3146169),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_NOTSUPPORTED")]
-		JpegdecodeNotsupported = unchecked(3146170),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DIMENSIONSTOOLARGE")]
-		JpegdecodeDimensionstoolarge = unchecked(3146171),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOMPONENTS")]
-		JpegdecodeInvalidcomponents = unchecked(3146172),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTINATIONNOT2D")]
-		JpegdecodeDestinationnot2D = unchecked(3146173),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_TILEDRESOURCESUNSUPPORTED")]
-		JpegdecodeTiledresourcesunsupported = unchecked(3146174),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_GUARDRECTSUNSUPPORTED")]
-		JpegdecodeGuardrectsunsupported = unchecked(3146175),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_FORMATUNSUPPORTED")]
-		JpegdecodeFormatunsupported = unchecked(3146176),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSUBRESOURCE")]
-		JpegdecodeInvalidsubresource = unchecked(3146177),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDMIPLEVEL")]
-		JpegdecodeInvalidmiplevel = unchecked(3146178),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_EMPTYDESTBOX")]
-		JpegdecodeEmptydestbox = unchecked(3146179),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOT2D")]
-		JpegdecodeDestboxnot2D = unchecked(3146180),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXNOTSUB")]
-		JpegdecodeDestboxnotsub = unchecked(3146181),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_DESTBOXESINTERSECT")]
-		JpegdecodeDestboxesintersect = unchecked(3146182),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEMISMATCH")]
-		JpegdecodeXsubsamplemismatch = unchecked(3146183),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEMISMATCH")]
-		JpegdecodeYsubsamplemismatch = unchecked(3146184),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_XSUBSAMPLEODD")]
-		JpegdecodeXsubsampleodd = unchecked(3146185),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_YSUBSAMPLEODD")]
-		JpegdecodeYsubsampleodd = unchecked(3146186),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_OUTPUTDIMENSIONSTOOLARGE")]
-		JpegdecodeOutputdimensionstoolarge = unchecked(3146187),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_NONPOW2SCALEUNSUPPORTED")]
-		JpegdecodeNonpow2Scaleunsupported = unchecked(3146188),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_FRACTIONALDOWNSCALETOLARGE")]
-		JpegdecodeFractionaldownscaletolarge = unchecked(3146189),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_CHROMASIZEMISMATCH")]
-		JpegdecodeChromasizemismatch = unchecked(3146190),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_LUMACHROMASIZEMISMATCH")]
-		JpegdecodeLumachromasizemismatch = unchecked(3146191),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDNUMDESTINATIONS")]
-		JpegdecodeInvalidnumdestinations = unchecked(3146192),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_SUBBOXUNSUPPORTED")]
-		JpegdecodeSubboxunsupported = unchecked(3146193),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_1DESTUNSUPPORTEDFORMAT")]
-		Jpegdecode1Destunsupportedformat = unchecked(3146194),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_3DESTUNSUPPORTEDFORMAT")]
-		Jpegdecode3Destunsupportedformat = unchecked(3146195),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_SCALEUNSUPPORTED")]
-		JpegdecodeScaleunsupported = unchecked(3146196),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDSOURCESIZE")]
-		JpegdecodeInvalidsourcesize = unchecked(3146197),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_INVALIDCOPYFLAGS")]
-		JpegdecodeInvalidcopyflags = unchecked(3146198),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_HAZARD")]
-		JpegdecodeHazard = unchecked(3146199),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERUSAGE")]
-		JpegdecodeUnsupportedsrcbufferusage = unchecked(3146200),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDSRCBUFFERMISCFLAGS")]
-		JpegdecodeUnsupportedsrcbuffermiscflags = unchecked(3146201),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPORTEDDSTTEXTUREUSAGE")]
-		JpegdecodeUnsupporteddsttextureusage = unchecked(3146202),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_BACKBUFFERNOTSUPPORTED")]
-		JpegdecodeBackbuffernotsupported = unchecked(3146203),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGDECODE_UNSUPPRTEDCOPYFLAGS")]
-		JpegdecodeUnsupprtedcopyflags = unchecked(3146204),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_NOTSUPPORTED")]
-		JpegencodeNotsupported = unchecked(3146205),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSCANDATAOFFSET")]
-		JpegencodeInvalidscandataoffset = unchecked(3146206),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDCOMPONENTS")]
-		JpegencodeInvalidcomponents = unchecked(3146207),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_SOURCENOT2D")]
-		JpegencodeSourcenot2D = unchecked(3146208),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_TILEDRESOURCESUNSUPPORTED")]
-		JpegencodeTiledresourcesunsupported = unchecked(3146209),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_GUARDRECTSUNSUPPORTED")]
-		JpegencodeGuardrectsunsupported = unchecked(3146210),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_XSUBSAMPLEMISMATCH")]
-		JpegencodeXsubsamplemismatch = unchecked(3146211),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_YSUBSAMPLEMISMATCH")]
-		JpegencodeYsubsamplemismatch = unchecked(3146212),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_FORMATUNSUPPORTED")]
-		JpegencodeFormatunsupported = unchecked(3146213),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDSUBRESOURCE")]
-		JpegencodeInvalidsubresource = unchecked(3146214),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_INVALIDMIPLEVEL")]
-		JpegencodeInvalidmiplevel = unchecked(3146215),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_DIMENSIONSTOOLARGE")]
-		JpegencodeDimensionstoolarge = unchecked(3146216),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_HAZARD")]
-		JpegencodeHazard = unchecked(3146217),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERUSAGE")]
-		JpegencodeUnsupporteddstbufferusage = unchecked(3146218),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDDSTBUFFERMISCFLAGS")]
-		JpegencodeUnsupporteddstbuffermiscflags = unchecked(3146219),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_UNSUPPORTEDSRCTEXTUREUSAGE")]
-		JpegencodeUnsupportedsrctextureusage = unchecked(3146220),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_JPEGENCODE_BACKBUFFERNOTSUPPORTED")]
-		JpegencodeBackbuffernotsupported = unchecked(3146221),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEQUERYORPREDICATE_UNSUPPORTEDCONTEXTTTYPEFORQUERY")]
-		CreatequeryorpredicateUnsupportedcontextttypeforquery = unchecked(3146222),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_FLUSH1_INVALIDCONTEXTTYPE")]
-		Flush1Invalidcontexttype = unchecked(3146223),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DEVICE_SETHARDWAREPROTECTION_INVALIDCONTEXT")]
-		DeviceSethardwareprotectionInvalidcontext = unchecked(3146224),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_NULLPARAM")]
-		VideoprocessorsetoutputhdrmetadataNullparam = unchecked(3146225),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETOUTPUTHDRMETADATA_INVALIDSIZE")]
-		VideoprocessorsetoutputhdrmetadataInvalidsize = unchecked(3146226),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_NULLPARAM")]
-		VideoprocessorgetoutputhdrmetadataNullparam = unchecked(3146227),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETOUTPUTHDRMETADATA_INVALIDSIZE")]
-		VideoprocessorgetoutputhdrmetadataInvalidsize = unchecked(3146228),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_NULLPARAM")]
-		VideoprocessorsetstreamhdrmetadataNullparam = unchecked(3146229),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSTREAM")]
-		VideoprocessorsetstreamhdrmetadataInvalidstream = unchecked(3146230),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORSETSTREAMHDRMETADATA_INVALIDSIZE")]
-		VideoprocessorsetstreamhdrmetadataInvalidsize = unchecked(3146231),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_NULLPARAM")]
-		VideoprocessorgetstreamhdrmetadataNullparam = unchecked(3146232),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSTREAM")]
-		VideoprocessorgetstreamhdrmetadataInvalidstream = unchecked(3146233),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMHDRMETADATA_INVALIDSIZE")]
-		VideoprocessorgetstreamhdrmetadataInvalidsize = unchecked(3146234),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFRAMEFORMAT_INVALIDSTREAM")]
-		VideoprocessorgetstreamframeformatInvalidstream = unchecked(3146235),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE_INVALIDSTREAM")]
-		VideoprocessorgetstreamcolorspaceInvalidstream = unchecked(3146236),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMOUTPUTRATE_INVALIDSTREAM")]
-		VideoprocessorgetstreamoutputrateInvalidstream = unchecked(3146237),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSOURCERECT_INVALIDSTREAM")]
-		VideoprocessorgetstreamsourcerectInvalidstream = unchecked(3146238),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMDESTRECT_INVALIDSTREAM")]
-		VideoprocessorgetstreamdestrectInvalidstream = unchecked(3146239),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMALPHA_INVALIDSTREAM")]
-		VideoprocessorgetstreamalphaInvalidstream = unchecked(3146240),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPALETTE_INVALIDSTREAM")]
-		VideoprocessorgetstreampaletteInvalidstream = unchecked(3146241),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMPIXELASPECTRATIO_INVALIDSTREAM")]
-		VideoprocessorgetstreampixelaspectratioInvalidstream = unchecked(3146242),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMLUMAKEY_INVALIDSTREAM")]
-		VideoprocessorgetstreamlumakeyInvalidstream = unchecked(3146243),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMSTEREOFORMAT_INVALIDSTREAM")]
-		VideoprocessorgetstreamstereoformatInvalidstream = unchecked(3146244),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMAUTOPROCESSINGMODE_INVALIDSTREAM")]
-		VideoprocessorgetstreamautoprocessingmodeInvalidstream = unchecked(3146245),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMFILTER_INVALIDSTREAM")]
-		VideoprocessorgetstreamfilterInvalidstream = unchecked(3146246),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMROTATION_INVALIDSTREAM")]
-		VideoprocessorgetstreamrotationInvalidstream = unchecked(3146247),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMCOLORSPACE1_INVALIDSTREAM")]
-		Videoprocessorgetstreamcolorspace1Invalidstream = unchecked(3146248),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_VIDEOPROCESSORGETSTREAMMIRROR_INVALIDSTREAM")]
-		VideoprocessorgetstreammirrorInvalidstream = unchecked(3146249),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_FENCE")]
-		CreateFence = unchecked(3146250),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_FENCE")]
-		LiveFence = unchecked(3146251),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_FENCE")]
-		DestroyFence = unchecked(3146252),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_SYNCHRONIZEDCHANNEL")]
-		CreateSynchronizedchannel = unchecked(3146253),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_SYNCHRONIZEDCHANNEL")]
-		LiveSynchronizedchannel = unchecked(3146254),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_SYNCHRONIZEDCHANNEL")]
-		DestroySynchronizedchannel = unchecked(3146255),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATEFENCE_INVALIDFLAGS")]
-		CreatefenceInvalidflags = unchecked(3146256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_3_MESSAGES_END")]
-		Idd3D113MessagesEnd = unchecked(3146257),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_5_MESSAGES_START")]
-		Idd3D115MessagesStart = unchecked(3146258),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_INVALIDKEYEXCHANGETYPE")]
-		NegotiatecryptosessionkeyexchangemtInvalidkeyexchangetype = unchecked(3146259),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NEGOTIATECRYPTOSESSIONKEYEXCHANGEMT_NOT_SUPPORTED")]
-		NegotiatecryptosessionkeyexchangemtNotSupported = unchecked(3146260),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT_COUNT")]
-		DecoderbeginframeInvalidHistogramComponentCount = unchecked(3146261),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_COMPONENT")]
-		DecoderbeginframeInvalidHistogramComponent = unchecked(3146262),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_SIZE")]
-		DecoderbeginframeInvalidHistogramBufferSize = unchecked(3146263),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_USAGE")]
-		DecoderbeginframeInvalidHistogramBufferUsage = unchecked(3146264),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_MISC_FLAGS")]
-		DecoderbeginframeInvalidHistogramBufferMiscFlags = unchecked(3146265),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DECODERBEGINFRAME_INVALID_HISTOGRAM_BUFFER_OFFSET")]
-		DecoderbeginframeInvalidHistogramBufferOffset = unchecked(3146266),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKEDWORKLOAD")]
-		CreateTrackedworkload = unchecked(3146267),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_LIVE_TRACKEDWORKLOAD")]
-		LiveTrackedworkload = unchecked(3146268),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_DESTROY_TRACKEDWORKLOAD")]
-		DestroyTrackedworkload = unchecked(3146269),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_NULLPARAM")]
-		CreateTrackedWorkloadNullparam = unchecked(3146270),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_MAX_INSTANCES")]
-		CreateTrackedWorkloadInvalidMaxInstances = unchecked(3146271),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_DEADLINE_TYPE")]
-		CreateTrackedWorkloadInvalidDeadlineType = unchecked(3146272),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CREATE_TRACKED_WORKLOAD_INVALID_ENGINE_TYPE")]
-		CreateTrackedWorkloadInvalidEngineType = unchecked(3146273),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOADS")]
-		MultipleTrackedWorkloads = unchecked(3146274),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_MULTIPLE_TRACKED_WORKLOAD_PAIRS")]
-		MultipleTrackedWorkloadPairs = unchecked(3146275),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_INCOMPLETE_TRACKED_WORKLOAD_PAIR")]
-		IncompleteTrackedWorkloadPair = unchecked(3146276),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_OUT_OF_ORDER_TRACKED_WORKLOAD_PAIR")]
-		OutOfOrderTrackedWorkloadPair = unchecked(3146277),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_CANNOT_ADD_TRACKED_WORKLOAD")]
-		CannotAddTrackedWorkload = unchecked(3146278),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_NOT_SUPPORTED")]
-		TrackedWorkloadNotSupported = unchecked(3146279),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_ENGINE_TYPE_NOT_FOUND")]
-		TrackedWorkloadEngineTypeNotFound = unchecked(3146280),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_NO_TRACKED_WORKLOAD_SLOT_AVAILABLE")]
-		NoTrackedWorkloadSlotAvailable = unchecked(3146281),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_END_TRACKED_WORKLOAD_INVALID_ARG")]
-		EndTrackedWorkloadInvalidArg = unchecked(3146282),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_TRACKED_WORKLOAD_DISJOINT_FAILURE")]
-		TrackedWorkloadDisjointFailure = unchecked(3146283),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_MESSAGE_ID_D3D11_5_MESSAGES_END")]
-		Idd3D115MessagesEnd = unchecked(3146284),
+		/// <summary>		/// To be documented.		/// </summary>		G = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		B = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_RESOURCE_TYPE")]
-	public enum D3D11ShaderTrackingResourceType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_NONE")]
-		None = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_UAV_DEVICEMEMORY")]
-		UavDevicememory = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_NON_UAV_DEVICEMEMORY")]
-		NonUavDevicememory = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_DEVICEMEMORY")]
-		AllDevicememory = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_MEMORY")]
-		GroupsharedMemory = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL_SHARED_MEMORY")]
-		AllSharedMemory = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_GROUPSHARED_NON_UAV")]
-		GroupsharedNonUav = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_RESOURCE_TYPE_ALL")]
-		All = unchecked(7),
+		/// <summary>		/// To be documented.		/// </summary>		A = unchecked(3),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
-	public enum D3D11ShaderTrackingOption
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3D11VideoDecoderHistogramComponentFlags
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
-		Ignore = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
-		TrackUninitialized = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
-		TrackRaw = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
-		TrackWar = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
-		TrackWaw = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
-		AllowSame = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
-		TrackAtomicConsistency = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
-		TrackRawAcrossThreadgroups = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
-		TrackWarAcrossThreadgroups = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
-		TrackWawAcrossThreadgroups = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
-		TrackAtomicConsistencyAcrossThreadgroups = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
-		UavSpecificFlags = unchecked(960),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
-		AllHazards = unchecked(1006),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
-		AllHazardsAllowingSame = unchecked(1022),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
-		AllOptions = unchecked(1023),
+		/// <summary>		/// To be documented.		/// </summary>		FlagNone = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		FlagY = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_VERSION_TYPE")]
-	public enum D3D11ShaderVersionType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_PIXEL_SHADER")]
-		ShverPixelShader = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_VERTEX_SHADER")]
-		ShverVertexShader = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_GEOMETRY_SHADER")]
-		ShverGeometryShader = unchecked(2),
-
-		/// <summary>
-		/// D3D11 Shaders<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_HULL_SHADER")]
-		ShverHullShader = unchecked(3),
-
-		/// <summary>
-		/// D3D11 Shaders<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_DOMAIN_SHADER")]
-		ShverDomainShader = unchecked(4),
-
-		/// <summary>
-		/// D3D11 Shaders<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_COMPUTE_SHADER")]
-		ShverComputeShader = unchecked(5),
-
-		/// <summary>
-		/// D3D11 Shaders<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHVER_RESERVED0")]
-		ShverReserved0 = unchecked(65520),
+		/// <summary>		/// To be documented.		/// </summary>		FlagU = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		FlagV = unchecked(4),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11ShaderTracing_0000_0000 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TYPE")]
-	public enum D3D11ShaderType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VERTEX_SHADER")]
-		VertexShader = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_HULL_SHADER")]
-		HullShader = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_DOMAIN_SHADER")]
-		DomainShader = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_GEOMETRY_SHADER")]
-		GeometryShader = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PIXEL_SHADER")]
-		PixelShader = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COMPUTE_SHADER")]
-		ComputeShader = unchecked(6),
+		/// <summary>		/// To be documented.		/// </summary>		FlagR = unchecked(1),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		FlagG = unchecked(2),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TRACE_GS_INPUT_PRIMITIVE")]
-	public enum D3D11TraceGsInputPrimitive
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_UNDEFINED")]
-		Undefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_POINT")]
-		Point = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE")]
-		Line = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE")]
-		Triangle = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_LINE_ADJ")]
-		LineAdj = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_GS_INPUT_PRIMITIVE_TRIANGLE_ADJ")]
-		TriangleAdj = unchecked(7),
+		/// <summary>		/// To be documented.		/// </summary>		FlagB = unchecked(4),
 
+		/// <summary>		/// To be documented.		/// </summary>		FlagA = unchecked(8),
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TRACE_REGISTER_TYPE")]
-	public enum D3D11TraceRegisterType
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DPrimitive
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_NULL_REGISTER")]
-		OutputNullRegister = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_REGISTER")]
-		InputRegister = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_PRIMITIVE_ID_REGISTER")]
-		InputPrimitiveIdRegister = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE_CONSTANT_BUFFER")]
-		ImmediateConstantBuffer = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_TEMP_REGISTER")]
-		TempRegister = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INDEXABLE_TEMP_REGISTER")]
-		IndexableTempRegister = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_REGISTER")]
-		OutputRegister = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_REGISTER")]
-		OutputDepthRegister = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_CONSTANT_BUFFER")]
-		ConstantBuffer = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE32")]
-		Immediate32 = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_SAMPLER")]
-		Sampler = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_RESOURCE")]
-		Resource = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_RASTERIZER")]
-		Rasterizer = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_COVERAGE_MASK")]
-		OutputCoverageMask = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_STREAM")]
-		Stream = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_THIS_POINTER")]
-		ThisPointer = unchecked(15),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_CONTROL_POINT_ID_REGISTER")]
-		OutputControlPointIdRegister = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_FORK_INSTANCE_ID_REGISTER")]
-		InputForkInstanceIdRegister = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_JOIN_INSTANCE_ID_REGISTER")]
-		InputJoinInstanceIdRegister = unchecked(18),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_CONTROL_POINT_REGISTER")]
-		InputControlPointRegister = unchecked(19),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_CONTROL_POINT_REGISTER")]
-		OutputControlPointRegister = unchecked(20),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_PATCH_CONSTANT_REGISTER")]
-		InputPatchConstantRegister = unchecked(21),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_DOMAIN_POINT_REGISTER")]
-		InputDomainPointRegister = unchecked(22),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_UNORDERED_ACCESS_VIEW")]
-		UnorderedAccessView = unchecked(23),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_THREAD_GROUP_SHARED_MEMORY")]
-		ThreadGroupSharedMemory = unchecked(24),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_REGISTER")]
-		InputThreadIdRegister = unchecked(25),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_GROUP_ID_REGISTER")]
-		InputThreadGroupIdRegister = unchecked(26),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_REGISTER")]
-		InputThreadIdInGroupRegister = unchecked(27),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_COVERAGE_MASK_REGISTER")]
-		InputCoverageMaskRegister = unchecked(28),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_THREAD_ID_IN_GROUP_FLATTENED_REGISTER")]
-		InputThreadIdInGroupFlattenedRegister = unchecked(29),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_GS_INSTANCE_ID_REGISTER")]
-		InputGsInstanceIdRegister = unchecked(30),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_GREATER_EQUAL_REGISTER")]
-		OutputDepthGreaterEqualRegister = unchecked(31),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_OUTPUT_DEPTH_LESS_EQUAL_REGISTER")]
-		OutputDepthLessEqualRegister = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_IMMEDIATE64")]
-		Immediate64 = unchecked(33),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INPUT_CYCLE_COUNTER_REGISTER")]
-		InputCycleCounterRegister = unchecked(34),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TRACE_INTERFACE_POINTER")]
-		InterfacePointer = unchecked(35),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitiveUndefined = unchecked(0),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitivePoint = unchecked(1),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_LOGIC_OP")]
-	public enum D3D11LogicOp
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_CLEAR")]
-		Clear = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_SET")]
-		Set = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_COPY")]
-		Copy = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_COPY_INVERTED")]
-		CopyInverted = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NOOP")]
-		Noop = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_INVERT")]
-		Invert = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND")]
-		And = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NAND")]
-		Nand = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR")]
-		Or = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_NOR")]
-		Nor = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_XOR")]
-		Xor = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_EQUIV")]
-		Equiv = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND_REVERSE")]
-		AndReverse = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_AND_INVERTED")]
-		AndInverted = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR_REVERSE")]
-		OrReverse = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_LOGIC_OP_OR_INVERTED")]
-		OrInverted = unchecked(15),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitiveLine = unchecked(2),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitiveTriangle = unchecked(3),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_STATUS")]
-	public enum D3D11CryptoSessionStatus
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_OK")]
-		Ok = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_KEY_LOST")]
-		KeyLost = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_STATUS_KEY_AND_CONTENT_LOST")]
-		KeyAndContentLost = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitiveLineAdj = unchecked(6),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitiveTriangleAdj = unchecked(7),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_COPY_FLAGS")]
-	public enum D3D11CopyFlags
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COPY_NO_OVERWRITE")]
-		NoOverwrite = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_COPY_DISCARD")]
-		Discard = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive1ControlPointPatch = unchecked(8),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive2ControlPointPatch = unchecked(9),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_1_0000_0002 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG")]
-	public enum D3D111CreateDeviceContextStateFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_1_CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED")]
-		Singlethreaded = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive3ControlPointPatch = unchecked(10),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive4ControlPointPatch = unchecked(11),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_CAPS")]
-	public enum D3D11VideoDecoderCaps
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE")]
-		Downsample = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_NON_REAL_TIME")]
-		NonRealTime = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC")]
-		DownsampleDynamic = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_REQUIRED")]
-		DownsampleRequired = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_CAPS_UNSUPPORTED")]
-		Unsupported = unchecked(16),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive5ControlPointPatch = unchecked(12),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive6ControlPointPatch = unchecked(13),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS")]
-	public enum D3D11VideoProcessorBehaviorHints
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION")]
-		HintMultiplaneOverlayRotation = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE")]
-		HintMultiplaneOverlayResize = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_COLOR_SPACE_CONVERSION")]
-		HintMultiplaneOverlayColorSpaceConversion = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_TRIPLE_BUFFER_OUTPUT")]
-		HintTripleBufferOutput = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive7ControlPointPatch = unchecked(14),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive8ControlPointPatch = unchecked(15),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TILE_MAPPING_FLAG")]
-	public enum D3D11TileMappingFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_MAPPING_NO_OVERWRITE")]
-		NoOverwrite = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive9ControlPointPatch = unchecked(16),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive10ControlPointPatch = unchecked(17),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TILE_RANGE_FLAG")]
-	public enum D3D11TileRangeFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_NULL")]
-		Null = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_SKIP")]
-		Skip = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_RANGE_REUSE_SINGLE_TILE")]
-		ReuseSingleTile = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive11ControlPointPatch = unchecked(18),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive12ControlPointPatch = unchecked(19),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG")]
-	public enum D3D11CheckMultisampleQualityLevelsFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_TILED_RESOURCE")]
-		TiledResource = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive13ControlPointPatch = unchecked(20),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive14ControlPointPatch = unchecked(21),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TILE_COPY_FLAG")]
-	public enum D3D11TileCopyFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_NO_OVERWRITE")]
-		NoOverwrite = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_LINEAR_BUFFER_TO_SWIZZLED_TILED_RESOURCE")]
-		LinearBufferToSwizzledTiledResource = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TILE_COPY_SWIZZLED_TILED_RESOURCE_TO_LINEAR_BUFFER")]
-		SwizzledTiledResourceToLinearBuffer = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive15ControlPointPatch = unchecked(22),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive16ControlPointPatch = unchecked(23),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_TEXTURE_LAYOUT")]
-	public enum D3D11TextureLayout
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_UNDEFINED")]
-		Undefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_ROW_MAJOR")]
-		RowMajor = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TEXTURE_LAYOUT_64K_STANDARD_SWIZZLE")]
-		Layout64kStandardSwizzle = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive17ControlPointPatch = unchecked(24),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive18ControlPointPatch = unchecked(25),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_3_0000_0002 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CONSERVATIVE_RASTERIZATION_MODE")]
-	public enum D3D11ConservativeRasterizationMode
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_MODE_OFF")]
-		Off = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONSERVATIVE_RASTERIZATION_MODE_ON")]
-		On = unchecked(1),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive19ControlPointPatch = unchecked(26),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive20ControlPointPatch = unchecked(27),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CONTEXT_TYPE")]
-	public enum D3D11ContextType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_ALL")]
-		All = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_3D")]
-		Type3D = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_COMPUTE")]
-		Compute = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_COPY")]
-		Copy = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CONTEXT_TYPE_VIDEO")]
-		Video = unchecked(4),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive21ControlPointPatch = unchecked(28),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive22ControlPointPatch = unchecked(29),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_3_0000_0007 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FENCE_FLAG")]
-	public enum D3D11FenceFlag
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_NONE")]
-		None = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_SHARED")]
-		Shared = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER")]
-		SharedCrossAdapter = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FENCE_FLAG_NON_MONITORED")]
-		NonMonitored = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive23ControlPointPatch = unchecked(30),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive24ControlPointPatch = unchecked(31),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "DXGI_HDR_METADATA_TYPE")]
-	public enum DxgiHdrMetadataType
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_NONE")]
-		None = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10")]
-		Hdr10 = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "DXGI_HDR_METADATA_TYPE_HDR10PLUS")]
-		Hdr10Plus = unchecked(2),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive25ControlPointPatch = unchecked(32),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive26ControlPointPatch = unchecked(33),
 
-	/// <summary>
-	/// interface __MIDL_itf_d3d11_4_0000_0004 <br/>
-	/// [local] <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_FEATURE_VIDEO")]
-	public enum D3D11FeatureVideo
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_FEATURE_VIDEO_DECODER_HISTOGRAM")]
-		DecoderHistogram = unchecked(0),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive27ControlPointPatch = unchecked(34),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive28ControlPointPatch = unchecked(35),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAGS")]
-	public enum D3D11CryptoSessionKeyExchangeFlags
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CRYPTO_SESSION_KEY_EXCHANGE_FLAG_NONE")]
-		FlagNone = unchecked(0),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive29ControlPointPatch = unchecked(36),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive30ControlPointPatch = unchecked(37),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT")]
-	public enum D3D11VideoDecoderHistogramComponent
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_Y")]
-		Componenty = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_U")]
-		Componentu = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_V")]
-		Componentv = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_R")]
-		Componentr = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_G")]
-		Componentg = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_B")]
-		Componentb = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_A")]
-		Componenta = unchecked(3),
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive31ControlPointPatch = unchecked(38),
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3DPrimitive32ControlPointPatch = unchecked(39),
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAGS")]
-	public enum D3D11VideoDecoderHistogramComponentFlags
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_NONE")]
-		FlagNone = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_Y")]
-		Flagy = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_U")]
-		Flagu = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_V")]
-		Flagv = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_R")]
-		Flagr = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_G")]
-		Flagg = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_B")]
-		Flagb = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_VIDEO_DECODER_HISTOGRAM_COMPONENT_FLAG_A")]
-		Flaga = unchecked(8),
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveUndefined = D3DPrimitiveUndefined,
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitivePoint = D3DPrimitivePoint,
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_SRV_DIMENSION")]
-	public enum D3D11SrvDimension
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_UNKNOWN")]
-		D3DSrvDimensionUnknown = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_BUFFER")]
-		D3DSrvDimensionBuffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE1D")]
-		D3DSrvDimensionTexture1D = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE1DARRAY")]
-		D3DSrvDimensionTexture1Darray = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2D")]
-		D3DSrvDimensionTexture2D = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DARRAY")]
-		D3DSrvDimensionTexture2Darray = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DMS")]
-		D3DSrvDimensionTexture2Dms = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE2DMSARRAY")]
-		D3DSrvDimensionTexture2Dmsarray = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURE3D")]
-		D3DSrvDimensionTexture3D = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURECUBE")]
-		D3DSrvDimensionTexturecube = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_TEXTURECUBEARRAY")]
-		D3DSrvDimensionTexturecubearray = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_SRV_DIMENSION_BUFFEREX")]
-		D3DSrvDimensionBufferex = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_UNKNOWN")]
-		D3D10SrvDimensionUnknown = D3DSrvDimensionUnknown,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_BUFFER")]
-		D3D10SrvDimensionBuffer = D3DSrvDimensionBuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE1D")]
-		D3D10SrvDimensionTexture1D = D3DSrvDimensionTexture1D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE1DARRAY")]
-		D3D10SrvDimensionTexture1Darray = D3DSrvDimensionTexture1Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2D")]
-		D3D10SrvDimensionTexture2D = D3DSrvDimensionTexture2D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DARRAY")]
-		D3D10SrvDimensionTexture2Darray = D3DSrvDimensionTexture2Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DMS")]
-		D3D10SrvDimensionTexture2Dms = D3DSrvDimensionTexture2Dms,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE2DMSARRAY")]
-		D3D10SrvDimensionTexture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURE3D")]
-		D3D10SrvDimensionTexture3D = D3DSrvDimensionTexture3D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_SRV_DIMENSION_TEXTURECUBE")]
-		D3D10SrvDimensionTexturecube = D3DSrvDimensionTexturecube,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_UNKNOWN")]
-		D3D101SrvDimensionUnknown = D3DSrvDimensionUnknown,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_BUFFER")]
-		D3D101SrvDimensionBuffer = D3DSrvDimensionBuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE1D")]
-		D3D101SrvDimensionTexture1D = D3DSrvDimensionTexture1D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE1DARRAY")]
-		D3D101SrvDimensionTexture1Darray = D3DSrvDimensionTexture1Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2D")]
-		D3D101SrvDimensionTexture2D = D3DSrvDimensionTexture2D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DARRAY")]
-		D3D101SrvDimensionTexture2Darray = D3DSrvDimensionTexture2Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DMS")]
-		D3D101SrvDimensionTexture2Dms = D3DSrvDimensionTexture2Dms,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE2DMSARRAY")]
-		D3D101SrvDimensionTexture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURE3D")]
-		D3D101SrvDimensionTexture3D = D3DSrvDimensionTexture3D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURECUBE")]
-		D3D101SrvDimensionTexturecube = D3DSrvDimensionTexturecube,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_1_SRV_DIMENSION_TEXTURECUBEARRAY")]
-		D3D101SrvDimensionTexturecubearray = D3DSrvDimensionTexturecubearray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_UNKNOWN")]
-		Unknown = D3DSrvDimensionUnknown,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_BUFFER")]
-		Buffer = D3DSrvDimensionBuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE1D")]
-		Texture1D = D3DSrvDimensionTexture1D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE1DARRAY")]
-		Texture1Darray = D3DSrvDimensionTexture1Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2D")]
-		Texture2D = D3DSrvDimensionTexture2D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DARRAY")]
-		Texture2Darray = D3DSrvDimensionTexture2Darray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DMS")]
-		Texture2Dms = D3DSrvDimensionTexture2Dms,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE2DMSARRAY")]
-		Texture2Dmsarray = D3DSrvDimensionTexture2Dmsarray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURE3D")]
-		Texture3D = D3DSrvDimensionTexture3D,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURECUBE")]
-		Texturecube = D3DSrvDimensionTexturecube,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_TEXTURECUBEARRAY")]
-		Texturecubearray = D3DSrvDimensionTexturecubearray,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SRV_DIMENSION_BUFFEREX")]
-		Bufferex = D3DSrvDimensionBufferex,
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveLine = D3DPrimitiveLine,
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTriangle = D3DPrimitiveTriangle,
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE_TOPOLOGY")]
-	public enum D3D11PrimitiveTopology
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		D3DPrimitiveTopologyUndefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		D3DPrimitiveTopologyPointlist = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST")]
-		D3DPrimitiveTopologyLinelist = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		D3DPrimitiveTopologyLinestrip = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		D3DPrimitiveTopologyTrianglelist = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		D3DPrimitiveTopologyTrianglestrip = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		D3DPrimitiveTopologyLinelistAdj = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		D3DPrimitiveTopologyLinestripAdj = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		D3DPrimitiveTopologyTrianglelistAdj = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		D3DPrimitiveTopologyTrianglestripAdj = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology1ControlPointPatchlist = unchecked(33),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology2ControlPointPatchlist = unchecked(34),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology3ControlPointPatchlist = unchecked(35),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology4ControlPointPatchlist = unchecked(36),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology5ControlPointPatchlist = unchecked(37),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology6ControlPointPatchlist = unchecked(38),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology7ControlPointPatchlist = unchecked(39),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology8ControlPointPatchlist = unchecked(40),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology9ControlPointPatchlist = unchecked(41),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology10ControlPointPatchlist = unchecked(42),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology11ControlPointPatchlist = unchecked(43),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology12ControlPointPatchlist = unchecked(44),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology13ControlPointPatchlist = unchecked(45),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology14ControlPointPatchlist = unchecked(46),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology15ControlPointPatchlist = unchecked(47),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology16ControlPointPatchlist = unchecked(48),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology17ControlPointPatchlist = unchecked(49),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology18ControlPointPatchlist = unchecked(50),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology19ControlPointPatchlist = unchecked(51),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology20ControlPointPatchlist = unchecked(52),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology21ControlPointPatchlist = unchecked(53),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology22ControlPointPatchlist = unchecked(54),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology23ControlPointPatchlist = unchecked(55),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology24ControlPointPatchlist = unchecked(56),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology25ControlPointPatchlist = unchecked(57),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology26ControlPointPatchlist = unchecked(58),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology27ControlPointPatchlist = unchecked(59),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology28ControlPointPatchlist = unchecked(60),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology29ControlPointPatchlist = unchecked(61),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology30ControlPointPatchlist = unchecked(62),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology31ControlPointPatchlist = unchecked(63),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
-		D3DPrimitiveTopology32ControlPointPatchlist = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		D3D10PrimitiveTopologyUndefined = D3DPrimitiveTopologyUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		D3D10PrimitiveTopologyPointlist = D3DPrimitiveTopologyPointlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST")]
-		D3D10PrimitiveTopologyLinelist = D3DPrimitiveTopologyLinelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		D3D10PrimitiveTopologyLinestrip = D3DPrimitiveTopologyLinestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		D3D10PrimitiveTopologyTrianglelist = D3DPrimitiveTopologyTrianglelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		D3D10PrimitiveTopologyTrianglestrip = D3DPrimitiveTopologyTrianglestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		D3D10PrimitiveTopologyLinelistAdj = D3DPrimitiveTopologyLinelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		D3D10PrimitiveTopologyLinestripAdj = D3DPrimitiveTopologyLinestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		D3D10PrimitiveTopologyTrianglelistAdj = D3DPrimitiveTopologyTrianglelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		D3D10PrimitiveTopologyTrianglestripAdj = D3DPrimitiveTopologyTrianglestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED")]
-		Undefined = D3DPrimitiveTopologyUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_POINTLIST")]
-		Pointlist = D3DPrimitiveTopologyPointlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST")]
-		Linelist = D3DPrimitiveTopologyLinelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP")]
-		Linestrip = D3DPrimitiveTopologyLinestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST")]
-		Trianglelist = D3DPrimitiveTopologyTrianglelist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP")]
-		Trianglestrip = D3DPrimitiveTopologyTrianglestrip,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ")]
-		LinelistAdj = D3DPrimitiveTopologyLinelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ")]
-		LinestripAdj = D3DPrimitiveTopologyLinestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ")]
-		TrianglelistAdj = D3DPrimitiveTopologyTrianglelistAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ")]
-		TrianglestripAdj = D3DPrimitiveTopologyTrianglestripAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST")]
-		Topology1ControlPointPatchlist = D3DPrimitiveTopology1ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST")]
-		Topology2ControlPointPatchlist = D3DPrimitiveTopology2ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST")]
-		Topology3ControlPointPatchlist = D3DPrimitiveTopology3ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST")]
-		Topology4ControlPointPatchlist = D3DPrimitiveTopology4ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST")]
-		Topology5ControlPointPatchlist = D3DPrimitiveTopology5ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST")]
-		Topology6ControlPointPatchlist = D3DPrimitiveTopology6ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST")]
-		Topology7ControlPointPatchlist = D3DPrimitiveTopology7ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST")]
-		Topology8ControlPointPatchlist = D3DPrimitiveTopology8ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST")]
-		Topology9ControlPointPatchlist = D3DPrimitiveTopology9ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST")]
-		Topology10ControlPointPatchlist = D3DPrimitiveTopology10ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST")]
-		Topology11ControlPointPatchlist = D3DPrimitiveTopology11ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST")]
-		Topology12ControlPointPatchlist = D3DPrimitiveTopology12ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST")]
-		Topology13ControlPointPatchlist = D3DPrimitiveTopology13ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST")]
-		Topology14ControlPointPatchlist = D3DPrimitiveTopology14ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST")]
-		Topology15ControlPointPatchlist = D3DPrimitiveTopology15ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST")]
-		Topology16ControlPointPatchlist = D3DPrimitiveTopology16ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST")]
-		Topology17ControlPointPatchlist = D3DPrimitiveTopology17ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST")]
-		Topology18ControlPointPatchlist = D3DPrimitiveTopology18ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST")]
-		Topology19ControlPointPatchlist = D3DPrimitiveTopology19ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST")]
-		Topology20ControlPointPatchlist = D3DPrimitiveTopology20ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST")]
-		Topology21ControlPointPatchlist = D3DPrimitiveTopology21ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST")]
-		Topology22ControlPointPatchlist = D3DPrimitiveTopology22ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST")]
-		Topology23ControlPointPatchlist = D3DPrimitiveTopology23ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST")]
-		Topology24ControlPointPatchlist = D3DPrimitiveTopology24ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST")]
-		Topology25ControlPointPatchlist = D3DPrimitiveTopology25ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST")]
-		Topology26ControlPointPatchlist = D3DPrimitiveTopology26ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST")]
-		Topology27ControlPointPatchlist = D3DPrimitiveTopology27ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST")]
-		Topology28ControlPointPatchlist = D3DPrimitiveTopology28ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST")]
-		Topology29ControlPointPatchlist = D3DPrimitiveTopology29ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST")]
-		Topology30ControlPointPatchlist = D3DPrimitiveTopology30ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST")]
-		Topology31ControlPointPatchlist = D3DPrimitiveTopology31ControlPointPatchlist,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST")]
-		Topology32ControlPointPatchlist = D3DPrimitiveTopology32ControlPointPatchlist,
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveLineAdj = D3DPrimitiveLineAdj,
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		D3D10PrimitiveTriangleAdj = D3DPrimitiveTriangleAdj,
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_PRIMITIVE")]
-	public enum D3D11Primitive
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_UNDEFINED")]
-		D3DPrimitiveUndefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_POINT")]
-		D3DPrimitivePoint = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_LINE")]
-		D3DPrimitiveLine = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TRIANGLE")]
-		D3DPrimitiveTriangle = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_LINE_ADJ")]
-		D3DPrimitiveLineAdj = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_TRIANGLE_ADJ")]
-		D3DPrimitiveTriangleAdj = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_1_CONTROL_POINT_PATCH")]
-		D3DPrimitive1ControlPointPatch = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_2_CONTROL_POINT_PATCH")]
-		D3DPrimitive2ControlPointPatch = unchecked(9),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_3_CONTROL_POINT_PATCH")]
-		D3DPrimitive3ControlPointPatch = unchecked(10),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_4_CONTROL_POINT_PATCH")]
-		D3DPrimitive4ControlPointPatch = unchecked(11),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_5_CONTROL_POINT_PATCH")]
-		D3DPrimitive5ControlPointPatch = unchecked(12),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_6_CONTROL_POINT_PATCH")]
-		D3DPrimitive6ControlPointPatch = unchecked(13),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_7_CONTROL_POINT_PATCH")]
-		D3DPrimitive7ControlPointPatch = unchecked(14),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_8_CONTROL_POINT_PATCH")]
-		D3DPrimitive8ControlPointPatch = unchecked(15),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_9_CONTROL_POINT_PATCH")]
-		D3DPrimitive9ControlPointPatch = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_10_CONTROL_POINT_PATCH")]
-		D3DPrimitive10ControlPointPatch = unchecked(17),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_11_CONTROL_POINT_PATCH")]
-		D3DPrimitive11ControlPointPatch = unchecked(18),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_12_CONTROL_POINT_PATCH")]
-		D3DPrimitive12ControlPointPatch = unchecked(19),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_13_CONTROL_POINT_PATCH")]
-		D3DPrimitive13ControlPointPatch = unchecked(20),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_14_CONTROL_POINT_PATCH")]
-		D3DPrimitive14ControlPointPatch = unchecked(21),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_15_CONTROL_POINT_PATCH")]
-		D3DPrimitive15ControlPointPatch = unchecked(22),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_16_CONTROL_POINT_PATCH")]
-		D3DPrimitive16ControlPointPatch = unchecked(23),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_17_CONTROL_POINT_PATCH")]
-		D3DPrimitive17ControlPointPatch = unchecked(24),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_18_CONTROL_POINT_PATCH")]
-		D3DPrimitive18ControlPointPatch = unchecked(25),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_19_CONTROL_POINT_PATCH")]
-		D3DPrimitive19ControlPointPatch = unchecked(26),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_20_CONTROL_POINT_PATCH")]
-		D3DPrimitive20ControlPointPatch = unchecked(27),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_21_CONTROL_POINT_PATCH")]
-		D3DPrimitive21ControlPointPatch = unchecked(28),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_22_CONTROL_POINT_PATCH")]
-		D3DPrimitive22ControlPointPatch = unchecked(29),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_23_CONTROL_POINT_PATCH")]
-		D3DPrimitive23ControlPointPatch = unchecked(30),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_24_CONTROL_POINT_PATCH")]
-		D3DPrimitive24ControlPointPatch = unchecked(31),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_25_CONTROL_POINT_PATCH")]
-		D3DPrimitive25ControlPointPatch = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_26_CONTROL_POINT_PATCH")]
-		D3DPrimitive26ControlPointPatch = unchecked(33),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_27_CONTROL_POINT_PATCH")]
-		D3DPrimitive27ControlPointPatch = unchecked(34),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_28_CONTROL_POINT_PATCH")]
-		D3DPrimitive28ControlPointPatch = unchecked(35),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_29_CONTROL_POINT_PATCH")]
-		D3DPrimitive29ControlPointPatch = unchecked(36),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_30_CONTROL_POINT_PATCH")]
-		D3DPrimitive30ControlPointPatch = unchecked(37),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_31_CONTROL_POINT_PATCH")]
-		D3DPrimitive31ControlPointPatch = unchecked(38),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_PRIMITIVE_32_CONTROL_POINT_PATCH")]
-		D3DPrimitive32ControlPointPatch = unchecked(39),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_UNDEFINED")]
-		D3D10PrimitiveUndefined = D3DPrimitiveUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_POINT")]
-		D3D10PrimitivePoint = D3DPrimitivePoint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_LINE")]
-		D3D10PrimitiveLine = D3DPrimitiveLine,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TRIANGLE")]
-		D3D10PrimitiveTriangle = D3DPrimitiveTriangle,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_LINE_ADJ")]
-		D3D10PrimitiveLineAdj = D3DPrimitiveLineAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_PRIMITIVE_TRIANGLE_ADJ")]
-		D3D10PrimitiveTriangleAdj = D3DPrimitiveTriangleAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_UNDEFINED")]
-		Undefined = D3DPrimitiveUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_POINT")]
-		Point = D3DPrimitivePoint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_LINE")]
-		Line = D3DPrimitiveLine,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TRIANGLE")]
-		Triangle = D3DPrimitiveTriangle,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_LINE_ADJ")]
-		LineAdj = D3DPrimitiveLineAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_TRIANGLE_ADJ")]
-		TriangleAdj = D3DPrimitiveTriangleAdj,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_1_CONTROL_POINT_PATCH")]
-		Primitive1ControlPointPatch = D3DPrimitive1ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_2_CONTROL_POINT_PATCH")]
-		Primitive2ControlPointPatch = D3DPrimitive2ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_3_CONTROL_POINT_PATCH")]
-		Primitive3ControlPointPatch = D3DPrimitive3ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_4_CONTROL_POINT_PATCH")]
-		Primitive4ControlPointPatch = D3DPrimitive4ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_5_CONTROL_POINT_PATCH")]
-		Primitive5ControlPointPatch = D3DPrimitive5ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_6_CONTROL_POINT_PATCH")]
-		Primitive6ControlPointPatch = D3DPrimitive6ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_7_CONTROL_POINT_PATCH")]
-		Primitive7ControlPointPatch = D3DPrimitive7ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_8_CONTROL_POINT_PATCH")]
-		Primitive8ControlPointPatch = D3DPrimitive8ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_9_CONTROL_POINT_PATCH")]
-		Primitive9ControlPointPatch = D3DPrimitive9ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_10_CONTROL_POINT_PATCH")]
-		Primitive10ControlPointPatch = D3DPrimitive10ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_11_CONTROL_POINT_PATCH")]
-		Primitive11ControlPointPatch = D3DPrimitive11ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_12_CONTROL_POINT_PATCH")]
-		Primitive12ControlPointPatch = D3DPrimitive12ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_13_CONTROL_POINT_PATCH")]
-		Primitive13ControlPointPatch = D3DPrimitive13ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_14_CONTROL_POINT_PATCH")]
-		Primitive14ControlPointPatch = D3DPrimitive14ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_15_CONTROL_POINT_PATCH")]
-		Primitive15ControlPointPatch = D3DPrimitive15ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_16_CONTROL_POINT_PATCH")]
-		Primitive16ControlPointPatch = D3DPrimitive16ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_17_CONTROL_POINT_PATCH")]
-		Primitive17ControlPointPatch = D3DPrimitive17ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_18_CONTROL_POINT_PATCH")]
-		Primitive18ControlPointPatch = D3DPrimitive18ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_19_CONTROL_POINT_PATCH")]
-		Primitive19ControlPointPatch = D3DPrimitive19ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_20_CONTROL_POINT_PATCH")]
-		Primitive20ControlPointPatch = D3DPrimitive20ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_21_CONTROL_POINT_PATCH")]
-		Primitive21ControlPointPatch = D3DPrimitive21ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_22_CONTROL_POINT_PATCH")]
-		Primitive22ControlPointPatch = D3DPrimitive22ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_23_CONTROL_POINT_PATCH")]
-		Primitive23ControlPointPatch = D3DPrimitive23ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_24_CONTROL_POINT_PATCH")]
-		Primitive24ControlPointPatch = D3DPrimitive24ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_25_CONTROL_POINT_PATCH")]
-		Primitive25ControlPointPatch = D3DPrimitive25ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_26_CONTROL_POINT_PATCH")]
-		Primitive26ControlPointPatch = D3DPrimitive26ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_27_CONTROL_POINT_PATCH")]
-		Primitive27ControlPointPatch = D3DPrimitive27ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_28_CONTROL_POINT_PATCH")]
-		Primitive28ControlPointPatch = D3DPrimitive28ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_29_CONTROL_POINT_PATCH")]
-		Primitive29ControlPointPatch = D3DPrimitive29ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_30_CONTROL_POINT_PATCH")]
-		Primitive30ControlPointPatch = D3DPrimitive30ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_31_CONTROL_POINT_PATCH")]
-		Primitive31ControlPointPatch = D3DPrimitive31ControlPointPatch,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_PRIMITIVE_32_CONTROL_POINT_PATCH")]
-		Primitive32ControlPointPatch = D3DPrimitive32ControlPointPatch,
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = D3DPrimitiveUndefined,
 
-	}
+		/// <summary>		/// To be documented.		/// </summary>		Point = D3DPrimitivePoint,
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D11_SHADER_TRACKING_OPTION")]
-	public enum D3D11ShaderTrackingOptions
-	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_IGNORE")]
-		OptionIgnore = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_UNINITIALIZED")]
-		OptionTrackUninitialized = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW")]
-		OptionTrackRaw = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR")]
-		OptionTrackWar = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW")]
-		OptionTrackWaw = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALLOW_SAME")]
-		OptionAllowSame = unchecked(16),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY")]
-		OptionTrackAtomicConsistency = unchecked(32),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_RAW_ACROSS_THREADGROUPS")]
-		OptionTrackRawAcrossThreadgroups = unchecked(64),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAR_ACROSS_THREADGROUPS")]
-		OptionTrackWarAcrossThreadgroups = unchecked(128),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_WAW_ACROSS_THREADGROUPS")]
-		OptionTrackWawAcrossThreadgroups = unchecked(256),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_TRACK_ATOMIC_CONSISTENCY_ACROSS_THREADGROUPS")]
-		OptionTrackAtomicConsistencyAcrossThreadgroups = unchecked(512),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_UAV_SPECIFIC_FLAGS")]
-		OptionUavSpecificFlags = unchecked(960),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS")]
-		OptionAllHazards = unchecked(1006),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_HAZARDS_ALLOWING_SAME")]
-		OptionAllHazardsAllowingSame = unchecked(1022),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_SHADER_TRACKING_OPTION_ALL_OPTIONS")]
-		OptionAllOptions = unchecked(1023),
+		/// <summary>		/// To be documented.		/// </summary>		Line = D3DPrimitiveLine,
+
+		/// <summary>		/// To be documented.		/// </summary>		Triangle = D3DPrimitiveTriangle,
+
+		/// <summary>		/// To be documented.		/// </summary>		LineAdj = D3DPrimitiveLineAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		TriangleAdj = D3DPrimitiveTriangleAdj,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive1ControlPointPatch = D3DPrimitive1ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive2ControlPointPatch = D3DPrimitive2ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive3ControlPointPatch = D3DPrimitive3ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive4ControlPointPatch = D3DPrimitive4ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive5ControlPointPatch = D3DPrimitive5ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive6ControlPointPatch = D3DPrimitive6ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive7ControlPointPatch = D3DPrimitive7ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive8ControlPointPatch = D3DPrimitive8ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive9ControlPointPatch = D3DPrimitive9ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive10ControlPointPatch = D3DPrimitive10ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive11ControlPointPatch = D3DPrimitive11ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive12ControlPointPatch = D3DPrimitive12ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive13ControlPointPatch = D3DPrimitive13ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive14ControlPointPatch = D3DPrimitive14ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive15ControlPointPatch = D3DPrimitive15ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive16ControlPointPatch = D3DPrimitive16ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive17ControlPointPatch = D3DPrimitive17ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive18ControlPointPatch = D3DPrimitive18ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive19ControlPointPatch = D3DPrimitive19ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive20ControlPointPatch = D3DPrimitive20ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive21ControlPointPatch = D3DPrimitive21ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive22ControlPointPatch = D3DPrimitive22ControlPointPatch,
 
+		/// <summary>		/// To be documented.		/// </summary>		Primitive23ControlPointPatch = D3DPrimitive23ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive24ControlPointPatch = D3DPrimitive24ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive25ControlPointPatch = D3DPrimitive25ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive26ControlPointPatch = D3DPrimitive26ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive27ControlPointPatch = D3DPrimitive27ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive28ControlPointPatch = D3DPrimitive28ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive29ControlPointPatch = D3DPrimitive29ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive30ControlPointPatch = D3DPrimitive30ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive31ControlPointPatch = D3DPrimitive31ControlPointPatch,
+
+		/// <summary>		/// To be documented.		/// </summary>		Primitive32ControlPointPatch = D3DPrimitive32ControlPointPatch,
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_RESOURCE_RETURN_TYPE")]
-	public enum D3D11ResourceReturnType
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DResourceReturnType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UNORM")]
-		D3DReturnTypeUnorm = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_SNORM")]
-		D3DReturnTypeSnorm = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_SINT")]
-		D3DReturnTypeSint = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_UINT")]
-		D3DReturnTypeUint = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_FLOAT")]
-		D3DReturnTypeFloat = unchecked(5),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_MIXED")]
-		D3DReturnTypeMixed = unchecked(6),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_DOUBLE")]
-		D3DReturnTypeDouble = unchecked(7),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_RETURN_TYPE_CONTINUED")]
-		D3DReturnTypeContinued = unchecked(8),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_UNORM")]
-		D3D10ReturnTypeUnorm = D3DReturnTypeUnorm,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_SNORM")]
-		D3D10ReturnTypeSnorm = D3DReturnTypeSnorm,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_SINT")]
-		D3D10ReturnTypeSint = D3DReturnTypeSint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_UINT")]
-		D3D10ReturnTypeUint = D3DReturnTypeUint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_FLOAT")]
-		D3D10ReturnTypeFloat = D3DReturnTypeFloat,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_RETURN_TYPE_MIXED")]
-		D3D10ReturnTypeMixed = D3DReturnTypeMixed,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_UNORM")]
-		Unorm = D3DReturnTypeUnorm,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_SNORM")]
-		Snorm = D3DReturnTypeSnorm,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_SINT")]
-		Sint = D3DReturnTypeSint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_UINT")]
-		Uint = D3DReturnTypeUint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_FLOAT")]
-		Float = D3DReturnTypeFloat,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_MIXED")]
-		Mixed = D3DReturnTypeMixed,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_DOUBLE")]
-		Double = D3DReturnTypeDouble,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_RETURN_TYPE_CONTINUED")]
-		Continued = D3DReturnTypeContinued,
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeUnorm = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeSnorm = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeSint = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeUint = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeFloat = unchecked(5),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeMixed = unchecked(6),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeDouble = unchecked(7),
 
+		/// <summary>		/// To be documented.		/// </summary>		D3DReturnTypeContinued = unchecked(8),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeUnorm = D3DReturnTypeUnorm,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeSnorm = D3DReturnTypeSnorm,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeSint = D3DReturnTypeSint,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeUint = D3DReturnTypeUint,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeFloat = D3DReturnTypeFloat,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10ReturnTypeMixed = D3DReturnTypeMixed,
+
+		/// <summary>		/// To be documented.		/// </summary>		Unorm = D3DReturnTypeUnorm,
+
+		/// <summary>		/// To be documented.		/// </summary>		Snorm = D3DReturnTypeSnorm,
+
+		/// <summary>		/// To be documented.		/// </summary>		Sint = D3DReturnTypeSint,
+
+		/// <summary>		/// To be documented.		/// </summary>		Uint = D3DReturnTypeUint,
+
+		/// <summary>		/// To be documented.		/// </summary>		Float = D3DReturnTypeFloat,
+
+		/// <summary>		/// To be documented.		/// </summary>		Mixed = D3DReturnTypeMixed,
+
+		/// <summary>		/// To be documented.		/// </summary>		Double = D3DReturnTypeDouble,
+
+		/// <summary>		/// To be documented.		/// </summary>		Continued = D3DReturnTypeContinued,
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "_D3D_CBUFFER_TYPE")]
-	public enum D3D11CbufferType
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DCbufferType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_CT_CBUFFER")]
-		D3DCtCbuffer = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_CT_TBUFFER")]
-		D3DCtTbuffer = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_CT_INTERFACE_POINTERS")]
-		D3DCtInterfacePointers = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_CT_RESOURCE_BIND_INFO")]
-		D3DCtResourceBindInfo = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_CT_CBUFFER")]
-		D3D10CtCbuffer = D3DCtCbuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D10_CT_TBUFFER")]
-		D3D10CtTbuffer = D3DCtTbuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CT_CBUFFER")]
-		CtCbuffer = D3DCtCbuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CT_TBUFFER")]
-		CtTbuffer = D3DCtTbuffer,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CT_INTERFACE_POINTERS")]
-		CtInterfacePointers = D3DCtInterfacePointers,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_CT_RESOURCE_BIND_INFO")]
-		CtResourceBindInfo = D3DCtResourceBindInfo,
+		/// <summary>		/// To be documented.		/// </summary>		D3DCtCbuffer = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DCtTbuffer = unchecked(1),
 
+		/// <summary>		/// To be documented.		/// </summary>		D3DCtInterfacePointers = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DCtResourceBindInfo = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10CtCbuffer = D3DCtCbuffer,
+
+		/// <summary>		/// To be documented.		/// </summary>		D3D10CtTbuffer = D3DCtTbuffer,
+
+		/// <summary>		/// To be documented.		/// </summary>		CtCbuffer = D3DCtCbuffer,
+
+		/// <summary>		/// To be documented.		/// </summary>		CtTbuffer = D3DCtTbuffer,
+
+		/// <summary>		/// To be documented.		/// </summary>		CtInterfacePointers = D3DCtInterfacePointers,
+
+		/// <summary>		/// To be documented.		/// </summary>		CtResourceBindInfo = D3DCtResourceBindInfo,
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_DOMAIN")]
-	public enum D3D11TessellatorDomain
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DTessellatorDomain
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_UNDEFINED")]
-		D3DTessellatorDomainUndefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_ISOLINE")]
-		D3DTessellatorDomainIsoline = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_TRI")]
-		D3DTessellatorDomainTri = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_DOMAIN_QUAD")]
-		D3DTessellatorDomainQuad = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_UNDEFINED")]
-		Undefined = D3DTessellatorDomainUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_ISOLINE")]
-		Isoline = D3DTessellatorDomainIsoline,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_TRI")]
-		Tri = D3DTessellatorDomainTri,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_DOMAIN_QUAD")]
-		Quad = D3DTessellatorDomainQuad,
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorDomainUndefined = unchecked(0),
 
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorDomainIsoline = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorDomainTri = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorDomainQuad = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = D3DTessellatorDomainUndefined,
+
+		/// <summary>		/// To be documented.		/// </summary>		Isoline = D3DTessellatorDomainIsoline,
+
+		/// <summary>		/// To be documented.		/// </summary>		Tri = D3DTessellatorDomainTri,
+
+		/// <summary>		/// To be documented.		/// </summary>		Quad = D3DTessellatorDomainQuad,
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_PARTITIONING")]
-	public enum D3D11TessellatorPartitioning
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DTessellatorPartitioning
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_UNDEFINED")]
-		D3DTessellatorPartitioningUndefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_INTEGER")]
-		D3DTessellatorPartitioningInteger = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_POW2")]
-		D3DTessellatorPartitioningPow2 = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
-		D3DTessellatorPartitioningFractionalOdd = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
-		D3DTessellatorPartitioningFractionalEven = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_UNDEFINED")]
-		Undefined = D3DTessellatorPartitioningUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_INTEGER")]
-		Integer = D3DTessellatorPartitioningInteger,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_POW2")]
-		Pow2 = D3DTessellatorPartitioningPow2,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD")]
-		FractionalOdd = D3DTessellatorPartitioningFractionalOdd,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN")]
-		FractionalEven = D3DTessellatorPartitioningFractionalEven,
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorPartitioningUndefined = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorPartitioningInteger = unchecked(1),
 
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorPartitioningPOW2 = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorPartitioningFractionalOdd = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorPartitioningFractionalEven = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = D3DTessellatorPartitioningUndefined,
+
+		/// <summary>		/// To be documented.		/// </summary>		Integer = D3DTessellatorPartitioningInteger,
+
+		/// <summary>		/// To be documented.		/// </summary>		POW2 = D3DTessellatorPartitioningPow2,
+
+		/// <summary>		/// To be documented.		/// </summary>		FractionalOdd = D3DTessellatorPartitioningFractionalOdd,
+
+		/// <summary>		/// To be documented.		/// </summary>		FractionalEven = D3DTessellatorPartitioningFractionalEven,
+
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "D3D_TESSELLATOR_OUTPUT_PRIMITIVE")]
-	public enum D3D11TessellatorOutputPrimitive
+	/// <summary>	/// To be documented.	/// </summary>	public enum D3DTessellatorOutputPrimitive
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_UNDEFINED")]
-		D3DTessellatorOutputUndefined = unchecked(0),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_POINT")]
-		D3DTessellatorOutputPoint = unchecked(1),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_LINE")]
-		D3DTessellatorOutputLine = unchecked(2),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
-		D3DTessellatorOutputTriangleCw = unchecked(3),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
-		D3DTessellatorOutputTriangleCcw = unchecked(4),
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_UNDEFINED")]
-		Undefined = D3DTessellatorOutputUndefined,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_POINT")]
-		Point = D3DTessellatorOutputPoint,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_LINE")]
-		Line = D3DTessellatorOutputLine,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CW")]
-		TriangleCw = D3DTessellatorOutputTriangleCw,
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "D3D11_TESSELLATOR_OUTPUT_TRIANGLE_CCW")]
-		TriangleCcw = D3DTessellatorOutputTriangleCcw,
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorOutputUndefined = unchecked(0),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorOutputPoint = unchecked(1),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorOutputLine = unchecked(2),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorOutputTriangleCw = unchecked(3),
+
+		/// <summary>		/// To be documented.		/// </summary>		D3DTessellatorOutputTriangleCcw = unchecked(4),
+
+		/// <summary>		/// To be documented.		/// </summary>		Undefined = D3DTessellatorOutputUndefined,
+
+		/// <summary>		/// To be documented.		/// </summary>		Point = D3DTessellatorOutputPoint,
+
+		/// <summary>		/// To be documented.		/// </summary>		Line = D3DTessellatorOutputLine,
+
+		/// <summary>		/// To be documented.		/// </summary>		TriangleCw = D3DTessellatorOutputTriangleCw,
+
+		/// <summary>		/// To be documented.		/// </summary>		TriangleCcw = D3DTessellatorOutputTriangleCcw,
 
 	}
 

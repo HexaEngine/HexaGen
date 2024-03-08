@@ -53,7 +53,7 @@
             string filePath = Path.Combine(outputPath, "Delegates.cs");
 
             // Generate Delegates
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupDelegateUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupDelegateUsings());
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -128,7 +128,7 @@
             var writer = context.Writer;
             string csFieldName = settings.GetDelegateName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-            string signature = settings.GetParameterSignature(functionType.Parameters, false);
+            string signature = settings.GetParameterSignature(functionType.Parameters, false, settings.GenerateMetadata);
             string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
             returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
 
@@ -141,8 +141,11 @@
             string header = $"{returnCsName} {csFieldName}({signature})";
             LogInfo("defined delegate " + header);
             settings.WriteCsSummary(field.Comment, writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
-            writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
+                writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
+            }
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
             writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
             writer.WriteLine();

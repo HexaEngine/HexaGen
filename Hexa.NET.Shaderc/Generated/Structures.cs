@@ -85,6 +85,15 @@ namespace Hexa.NET.Shaderc
 		public unsafe void* UserData;
 
 
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe ShadercIncludeResult(byte* sourceName = default, nuint sourceNameLength = default, byte* content = default, nuint contentLength = default, void* userData = default)
+		{
+			SourceName = sourceName;
+			SourceNameLength = sourceNameLength;
+			Content = content;
+			ContentLength = contentLength;
+			UserData = userData;
+		}
+
 
 	}
 

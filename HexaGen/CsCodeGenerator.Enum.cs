@@ -3,14 +3,14 @@
     using CppAst;
     using HexaGen.Core.Mapping;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Text.RegularExpressions;
 
     public partial class CsCodeGenerator
     {
-        protected readonly HashSet<string> LibDefinedEnums = new();
-        public readonly HashSet<string> DefinedEnums = new();
-        protected readonly Dictionary<string, CppEnum> DefinedCppEnums = new();
+        protected readonly HashSet<CsEnumMetadata> LibDefinedEnums = new(IdentifierComparer<CsEnumMetadata>.Default);
+        public readonly HashSet<CsEnumMetadata> DefinedEnums = new(IdentifierComparer<CsEnumMetadata>.Default);
+        protected readonly Dictionary<string, CsEnumMetadata> DefinedCppEnums = new();
 
         protected virtual List<string> SetupEnumUsings()
         {
@@ -19,39 +19,30 @@
             return usings;
         }
 
-        protected virtual bool FilterEnumIgnored(GenContext context, ICppMember cppEnum, [NotNullWhen(false)] out string? csName)
+        protected virtual bool FilterEnum(GenContext context, CsEnumMetadata metadata)
         {
-            csName = null;
-
-            if (settings.AllowedEnums.Count != 0 && !settings.AllowedEnums.Contains(cppEnum.Name))
+            if (settings.AllowedEnums.Count != 0 && !settings.AllowedEnums.Contains(metadata.Identifier))
                 return true;
 
-            if (settings.IgnoredEnums.Contains(cppEnum.Name))
+            if (settings.IgnoredEnums.Contains(metadata.Identifier))
                 return true;
 
-            if (LibDefinedEnums.Contains(cppEnum.Name))
+            if (LibDefinedEnums.Contains(metadata))
                 return true;
 
-            csName = settings.GetCsCleanName(cppEnum.Name);
-
-            return false;
-        }
-
-        protected virtual bool FilterEnum(GenContext context, CppEnum cppEnum, string csName)
-        {
-            if (DefinedEnums.Contains(csName))
+            if (DefinedEnums.Contains(metadata))
             {
-                var e = DefinedCppEnums[csName];
-                if (e.Name == cppEnum.Name)
+                var e = DefinedCppEnums[metadata.Identifier];
+                if (e.Name == metadata.CppName)
                 {
-                    if (e.Items.Count == cppEnum.Items.Count)
+                    if (e.Items.Count == metadata.Items.Count)
                     {
                         bool failed = false;
-                        for (int j = 0; j < cppEnum.Items.Count; j++)
+                        for (int j = 0; j < metadata.Items.Count; j++)
                         {
-                            var a = cppEnum.Items[j];
+                            var a = metadata.Items[j];
                             var b = e.Items[j];
-                            if (a.Name != b.Name || a.Value != b.Value)
+                            if (a.CppName != b.CppName || a.CppValue != b.CppValue)
                             {
                                 failed = true;
                                 break;
@@ -63,12 +54,12 @@
                     }
                 }
 
-                LogWarn($"{context.FilePath}: {cppEnum}, C#: {csName} is already defined!");
+                LogWarn($"{context.FilePath}: {metadata} is already defined!");
                 return true;
             }
 
-            DefinedCppEnums.Add(csName, cppEnum);
-            DefinedEnums.Add(csName);
+            DefinedCppEnums.Add(metadata.Identifier, metadata);
+            DefinedEnums.Add(metadata);
 
             return false;
         }
@@ -77,13 +68,14 @@
         {
             string filePath = Path.Combine(outputPath, "Enumerations.cs");
 
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupEnumUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupEnumUsings());
             GenContext context = new(compilation, filePath, writer);
 
             for (int i = 0; i < compilation.Enums.Count; i++)
             {
                 CppEnum cppEnum = compilation.Enums[i];
-                WriteEnum(context, cppEnum, cppEnum);
+                var csEnum = ParseEnum(cppEnum, cppEnum);
+                WriteEnum(context, csEnum);
             }
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -93,20 +85,26 @@
                 {
                     continue;
                 }
-                WriteEnum(context, cppEnum, typeDef);
+                var csEnum = ParseEnum(cppEnum, typeDef);
+                WriteEnum(context, csEnum);
             }
         }
 
-        protected virtual void WriteEnum(GenContext context, CppEnum cppEnum, ICppMember cppMember)
-        {
-            if (FilterEnumIgnored(context, cppMember, out string? csName))
-                return;
+        private int unknownEnumCounter = 0;
 
-            if (FilterEnum(context, cppEnum, csName))
-                return;
+        protected virtual CsEnumMetadata ParseEnum(CppEnum cppEnum, ICppMember cppMember)
+        {
+            CsEnumMetadata csEnum = new(cppEnum.Name);
+
+            string csName = settings.GetCsCleanName(cppEnum.Name);
+
+            if (csName.StartsWith("(unnamed enum at ") && csName.EndsWith(')'))
+            {
+                LogWarn($"Unnamed enum, {cppMember.Name}");
+                csName = $"UnknownEnum{unknownEnumCounter++}";
+            }
 
             EnumPrefix enumNamePrefix = settings.GetEnumNamePrefix(cppMember.Name);
-            var writer = context.Writer;
 
             if (csName.EndsWith("_"))
             {
@@ -114,94 +112,120 @@
             }
 
             var mapping = settings.GetEnumMapping(cppEnum.Name);
-
             csName = mapping?.FriendlyName ?? csName;
 
-            LogInfo("defined enum " + csName);
-
-            // Remove extension suffix from enum item values
-            string extensionPrefix = "";
+            csEnum.Name = csName;
+            csEnum.Comment = settings.WriteCsSummary(cppEnum.Comment);
 
             bool noneAdded = false;
-            settings.WriteCsSummary(cppEnum.Comment, writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{cppEnum.Name}\")]");
-            using (writer.PushBlock($"public enum {csName}"))
+            for (int j = 0; j < cppEnum.Items.Count; j++)
             {
-                for (int j = 0; j < cppEnum.Items.Count; j++)
+                var item = ParseEnumItem(mapping, cppEnum.Items[j], j, enumNamePrefix, ref noneAdded);
+                if (item != null)
+                    csEnum.Items.Add(item);
+            }
+
+            return csEnum;
+        }
+
+        protected virtual CsEnumItemMetadata? ParseEnumItem(EnumMapping? mapping, CppEnumItem enumItem, int enumIndex, EnumPrefix enumNamePrefix, ref bool noneAdded)
+        {
+            var itemMapping = mapping?.GetItemMapping(enumItem.Name);
+            var enumItemName = settings.GetEnumNameEx(enumItem.Name, enumNamePrefix);
+
+            enumItemName = itemMapping?.FriendlyName ?? enumItemName;
+
+            if (enumItemName == "None" && noneAdded)
+            {
+                return null;
+            }
+
+            var commentWritten = settings.WriteCsSummary(enumItem.Comment);
+            if (itemMapping?.Comment != null)
+            {
+                commentWritten = settings.WriteCsSummary(itemMapping?.Comment);
+            }
+
+            string cppValue;
+            string csValue;
+            if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
+            {
+                cppValue = rawExpression.Text;
+                string enumValueName = settings.GetEnumNameEx(rawExpression.Text, enumNamePrefix);
+
+                if (enumItem.Name == rawExpression.Text)
                 {
-                    CppEnumItem? enumItem = cppEnum.Items[j];
-                    WriteEnumItem(context, mapping, enumItem, j, enumNamePrefix, extensionPrefix, ref noneAdded);
+                    csValue = $"{enumIndex}";
+                }
+                else if (rawExpression.Text == "'_'")
+                {
+                    csValue = $"unchecked((int){rawExpression.Text})";
+                }
+                else if (rawExpression.Kind == CppExpressionKind.Unexposed)
+                {
+                    csValue = $"unchecked((int){enumValueName.Replace("_", "")})";
+                }
+                else
+                {
+                    csValue = $"{enumValueName}";
+                }
+            }
+            else
+            {
+                cppValue = enumItem.Value.ToString();
+                csValue = $"unchecked({enumItem.Value})";
+            }
+
+            if (itemMapping?.Value != null)
+            {
+                csValue = itemMapping.Value;
+            }
+
+            return new CsEnumItemMetadata(enumItem.Name, cppValue, enumItemName, csValue, commentWritten);
+        }
+
+        protected virtual void WriteEnum(GenContext context, CsEnumMetadata csEnum)
+        {
+            if (FilterEnum(context, csEnum))
+            {
+                return;
+            }
+
+            var writer = context.Writer;
+
+            LogInfo("defined enum " + csEnum.Name);
+
+            writer.WriteLines(csEnum.Comment);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{csEnum.CppName.Replace("\\", "\\\\")}\")]");
+            }
+
+            using (writer.PushBlock($"public enum {csEnum.Name}"))
+            {
+                for (int j = 0; j < csEnum.Items.Count; j++)
+                {
+                    WriteEnumItem(context, csEnum.Items[j]);
                 }
             }
 
             writer.WriteLine();
         }
 
-        protected virtual void WriteEnumItem(GenContext context, EnumMapping? mapping, CppEnumItem enumItem, int enumIndex, EnumPrefix enumNamePrefix, string extensionPrefix, ref bool noneAdded)
+        protected virtual void WriteEnumItem(GenContext context, CsEnumItemMetadata csEnumItem)
         {
             var writer = context.Writer;
-            var itemMapping = mapping?.GetItemMapping(enumItem.Name);
-            var enumItemName = settings.GetEnumName(enumItem.Name, enumNamePrefix);
-
-            if (!string.IsNullOrEmpty(extensionPrefix) && enumItemName.EndsWith(extensionPrefix))
+            writer.WriteLines(csEnumItem.Comment);
+            if (settings.GenerateMetadata)
             {
-                enumItemName = enumItemName.Remove(enumItemName.Length - extensionPrefix.Length);
+                writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{csEnumItem.CppName}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csEnumItem.EscapedCppValue}\")]");
             }
-
-            enumItemName = itemMapping?.FriendlyName ?? enumItemName;
-
-            if (enumItemName == "None" && noneAdded)
+            writer.WriteLine($"{csEnumItem.Name} = {csEnumItem.Value},");
+            if (csEnumItem.Comment != null)
             {
-                return;
-            }
-
-            var commentWritten = settings.WriteCsSummary(enumItem.Comment, writer);
-            if (!commentWritten)
-            {
-                commentWritten = settings.WriteCsSummary(itemMapping?.Comment, writer);
-            }
-            writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]");
-
-            if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
-            {
-                string enumValueName = settings.GetEnumName(rawExpression.Text, enumNamePrefix);
-
-                if (enumItem.Name == rawExpression.Text)
-                {
-                    writer.WriteLine($"{enumItemName} = {enumIndex},");
-                    return;
-                }
-
-                if (!string.IsNullOrEmpty(extensionPrefix) && enumValueName.EndsWith(extensionPrefix))
-                {
-                    enumValueName = enumValueName.Remove(enumValueName.Length - extensionPrefix.Length);
-
-                    if (enumItemName == enumValueName)
-                        return;
-                }
-
-                if (rawExpression.Text == "'_'")
-                {
-                    writer.WriteLine($"{enumItemName} = unchecked((int){rawExpression.Text}),");
-                    return;
-                }
-
-                if (rawExpression.Kind == CppExpressionKind.Unexposed)
-                {
-                    writer.WriteLine($"{enumItemName} = unchecked((int){enumValueName.Replace("_", "")}),");
-                }
-                else
-                {
-                    writer.WriteLine($"{enumItemName} = {enumValueName},");
-                }
-            }
-            else
-            {
-                writer.WriteLine($"{enumItemName} = unchecked({enumItem.Value}),");
-            }
-
-            if (commentWritten)
                 writer.WriteLine();
+            }
         }
     }
 }

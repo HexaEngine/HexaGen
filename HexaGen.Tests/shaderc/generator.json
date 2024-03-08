@@ -2,6 +2,8 @@
   "Namespace": "Hexa.NET.Shaderc",
   "ApiName": "Shaderc",
   "LibName": "shaderc_shared",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "KnownConstantNames": {
   },

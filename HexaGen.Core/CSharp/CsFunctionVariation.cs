@@ -90,9 +90,9 @@
 
         #endregion IDs
 
-        public string BuildFullConstructorSignature()
+        public string BuildFullConstructorSignature(bool generateMetadata)
         {
-            return $"{StructName}({BuildConstructorSignature()})";
+            return $"{StructName}({BuildConstructorSignature(generateMetadata)})";
         }
 
         public string BuildFullSignature()
@@ -105,14 +105,14 @@
             return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignature(type, name)}) {BuildGenericConstraint()}";
         }
 
-        public string BuildFullSignatureForCOM()
+        public string BuildFullSignatureForCOM(bool generateMetadata)
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature()}) {BuildGenericConstraint()}";
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(generateMetadata)}) {BuildGenericConstraint()}";
         }
 
-        public string BuildFullExtensionSignatureForCOM(string comObject)
+        public string BuildFullExtensionSignatureForCOM(string comObject, bool generateMetadata)
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject)}) {BuildGenericConstraint()}";
+            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, generateMetadata)}) {BuildGenericConstraint()}";
         }
 
         public string BuildSignature(bool useAttributes = true, bool useNames = true)

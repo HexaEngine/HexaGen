@@ -1,0 +1,1 @@
+﻿A .NET Wrapper for FreeType (2.13.2)

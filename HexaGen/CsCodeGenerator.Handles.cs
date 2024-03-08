@@ -48,7 +48,7 @@
             string filePath = Path.Combine(outputPath, "Handles.cs");
 
             // Generate Functions
-            using var writer = new CodeWriter(filePath, settings.Namespace, SetupHandleUsings());
+            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupHandleUsings());
             GenContext context = new(compilation, filePath, writer);
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -67,7 +67,10 @@
 
             LogInfo("defined handle " + csName);
             settings.WriteCsSummary(typedef.Comment, writer);
-            writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");
+            }
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
             using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))
             {

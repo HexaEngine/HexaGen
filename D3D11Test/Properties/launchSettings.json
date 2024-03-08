@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "D3D11Test": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

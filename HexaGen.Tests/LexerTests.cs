@@ -31,7 +31,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -57,7 +60,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -83,7 +89,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -109,7 +118,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -135,7 +147,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -161,7 +176,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -187,7 +205,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -205,7 +226,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -223,7 +247,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -243,7 +270,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -270,7 +300,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -297,7 +330,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]
@@ -324,7 +360,10 @@
             if (result.Diagnostics.HasErrors)
                 Assert.Fail(result.Diagnostics.ToString());
 
-            CollectionAssert.AreEqual(expected, result.Tokens);
+            if (!expected.SequenceEqual(result.Tokens))
+            {
+                Assert.Fail();
+            }
         }
 
         [Test]

@@ -139,7 +139,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIObject> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIObject* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -165,7 +165,7 @@ namespace Hexa.NET.DXGI
 			IDXGIObject* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -223,7 +223,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIObject> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIObject* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -234,7 +234,7 @@ namespace Hexa.NET.DXGI
 			IDXGIObject* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -246,7 +246,7 @@ namespace Hexa.NET.DXGI
 			IDXGIObject* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -260,7 +260,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -431,7 +431,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDeviceSubObject> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDeviceSubObject* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -457,7 +457,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDeviceSubObject* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -515,7 +515,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDeviceSubObject> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDeviceSubObject* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -526,7 +526,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDeviceSubObject* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -538,7 +538,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDeviceSubObject* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -552,7 +552,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDeviceSubObject*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -767,7 +767,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIResource> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIResource* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -793,7 +793,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -851,7 +851,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIResource> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIResource* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -862,7 +862,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -874,7 +874,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -888,7 +888,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -1175,7 +1175,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIKeyedMutex> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIKeyedMutex* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -1201,7 +1201,7 @@ namespace Hexa.NET.DXGI
 			IDXGIKeyedMutex* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -1259,7 +1259,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIKeyedMutex> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIKeyedMutex* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -1270,7 +1270,7 @@ namespace Hexa.NET.DXGI
 			IDXGIKeyedMutex* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -1282,7 +1282,7 @@ namespace Hexa.NET.DXGI
 			IDXGIKeyedMutex* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -1296,7 +1296,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIKeyedMutex*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -1529,7 +1529,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISurface> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISurface* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -1555,7 +1555,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -1613,7 +1613,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISurface> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISurface* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -1624,7 +1624,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -1636,7 +1636,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -1650,7 +1650,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -1916,7 +1916,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISurface1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISurface1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -1942,7 +1942,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -2000,7 +2000,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISurface1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISurface1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -2011,7 +2011,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2023,7 +2023,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2037,7 +2037,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -2345,7 +2345,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIAdapter> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIAdapter* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -2371,7 +2371,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -2429,7 +2429,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIAdapter> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIAdapter* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -2440,7 +2440,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2452,7 +2452,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2466,7 +2466,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -2737,7 +2737,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -2763,7 +2763,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -2821,7 +2821,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -2832,7 +2832,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2844,7 +2844,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -2858,7 +2858,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -3042,7 +3042,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -3068,7 +3068,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -3095,7 +3095,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -3127,7 +3127,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -3168,7 +3168,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -3269,7 +3269,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -3299,7 +3299,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -3445,7 +3445,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISwapChain> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISwapChain* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -3471,7 +3471,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -3529,7 +3529,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISwapChain> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -3540,7 +3540,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -3552,7 +3552,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -3566,7 +3566,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -3739,7 +3739,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetFullscreenState(this ComPtr<IDXGISwapChain> comObj, [NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pTarget) 
 		{
 			IDXGISwapChain* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.Handle);
 			return ret;
 		}
 
@@ -4059,7 +4059,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -4085,7 +4085,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -4143,7 +4143,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -4154,7 +4154,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -4166,7 +4166,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -4180,7 +4180,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -4317,7 +4317,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -4355,7 +4355,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -4403,7 +4403,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -4461,7 +4461,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -4618,7 +4618,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDevice> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDevice* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -4644,7 +4644,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -4702,7 +4702,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDevice> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDevice* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -4713,7 +4713,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -4725,7 +4725,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -4739,7 +4739,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -5006,7 +5006,7 @@ namespace Hexa.NET.DXGI
 		public static HResult QueryResourceResidency(this ComPtr<IDXGIDevice> comObj, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources) 
 		{
 			IDXGIDevice* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, pResidencyStatus, numResources);
 			return ret;
 		}
 
@@ -5044,7 +5044,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice* handle = comObj.Handle;
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
@@ -5200,7 +5200,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -5226,7 +5226,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -5284,7 +5284,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -5295,7 +5295,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -5307,7 +5307,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -5321,7 +5321,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -5458,7 +5458,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory1> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -5496,7 +5496,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory1* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -5544,7 +5544,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory1* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -5602,7 +5602,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory1*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -5799,7 +5799,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIAdapter1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIAdapter1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -5825,7 +5825,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -5883,7 +5883,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIAdapter1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIAdapter1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -5894,7 +5894,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -5906,7 +5906,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -5920,7 +5920,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -6212,7 +6212,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDevice1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDevice1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -6238,7 +6238,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -6296,7 +6296,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDevice1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDevice1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -6307,7 +6307,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -6319,7 +6319,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -6333,7 +6333,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -6600,7 +6600,7 @@ namespace Hexa.NET.DXGI
 		public static HResult QueryResourceResidency(this ComPtr<IDXGIDevice1> comObj, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources) 
 		{
 			IDXGIDevice1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, pResidencyStatus, numResources);
 			return ret;
 		}
 
@@ -6638,7 +6638,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice1* handle = comObj.Handle;
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice1*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
@@ -6903,7 +6903,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutputDuplication> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutputDuplication* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -6929,7 +6929,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutputDuplication* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -6987,7 +6987,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutputDuplication> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutputDuplication* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -6998,7 +6998,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutputDuplication* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -7010,7 +7010,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutputDuplication* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -7024,7 +7024,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -7274,7 +7274,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetFramePointerShape<T>(this ComPtr<IDXGIOutputDuplication> comObj, [NativeName(NativeNameType.Param, "PointerShapeBufferSize")] [NativeName(NativeNameType.Type, "UINT")] uint pointerShapeBufferSize, [NativeName(NativeNameType.Param, "pPointerShapeBuffer")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pPointerShapeBuffer, [NativeName(NativeNameType.Param, "pPointerShapeBufferSizeRequired")] [NativeName(NativeNameType.Type, "UINT*")] uint* pPointerShapeBufferSizeRequired, [NativeName(NativeNameType.Param, "pPointerShapeInfo")] [NativeName(NativeNameType.Type, "DXGI_OUTDUPL_POINTER_SHAPE_INFO*")] DxgiOutduplPointerShapeInfo* pPointerShapeInfo) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutputDuplication* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.GetAddressOf(), pPointerShapeBufferSizeRequired, pPointerShapeInfo);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.Handle, pPointerShapeBufferSizeRequired, pPointerShapeInfo);
 			return ret;
 		}
 
@@ -7297,7 +7297,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutputDuplication* handle = comObj.Handle;
 			fixed (uint* ppPointerShapeBufferSizeRequired = &pPointerShapeBufferSizeRequired)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.GetAddressOf(), (uint*)ppPointerShapeBufferSizeRequired, pPointerShapeInfo);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.Handle, (uint*)ppPointerShapeBufferSizeRequired, pPointerShapeInfo);
 				return ret;
 			}
 		}
@@ -7321,7 +7321,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutputDuplication* handle = comObj.Handle;
 			fixed (DxgiOutduplPointerShapeInfo* ppPointerShapeInfo = &pPointerShapeInfo)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.GetAddressOf(), pPointerShapeBufferSizeRequired, (DxgiOutduplPointerShapeInfo*)ppPointerShapeInfo);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.Handle, pPointerShapeBufferSizeRequired, (DxgiOutduplPointerShapeInfo*)ppPointerShapeInfo);
 				return ret;
 			}
 		}
@@ -7350,7 +7350,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiOutduplPointerShapeInfo* ppPointerShapeInfo = &pPointerShapeInfo)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.GetAddressOf(), (uint*)ppPointerShapeBufferSizeRequired, (DxgiOutduplPointerShapeInfo*)ppPointerShapeInfo);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutputDuplication*, uint, void*, uint*, DxgiOutduplPointerShapeInfo*, HResult>)(handle->LpVtbl[11]))(handle, pointerShapeBufferSize, (void*)pPointerShapeBuffer.Handle, (uint*)ppPointerShapeBufferSizeRequired, (DxgiOutduplPointerShapeInfo*)ppPointerShapeInfo);
 					return ret;
 				}
 			}
@@ -7516,7 +7516,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISurface2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISurface2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -7542,7 +7542,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -7600,7 +7600,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISurface2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISurface2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -7611,7 +7611,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -7623,7 +7623,7 @@ namespace Hexa.NET.DXGI
 			IDXGISurface2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -7637,7 +7637,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISurface2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -8053,7 +8053,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIResource1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIResource1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -8079,7 +8079,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -8137,7 +8137,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIResource1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIResource1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -8148,7 +8148,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -8160,7 +8160,7 @@ namespace Hexa.NET.DXGI
 			IDXGIResource1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -8174,7 +8174,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIResource1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -8540,7 +8540,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDevice2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDevice2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -8566,7 +8566,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -8624,7 +8624,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDevice2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDevice2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -8635,7 +8635,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -8647,7 +8647,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -8661,7 +8661,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -8928,7 +8928,7 @@ namespace Hexa.NET.DXGI
 		public static HResult QueryResourceResidency(this ComPtr<IDXGIDevice2> comObj, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources) 
 		{
 			IDXGIDevice2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, pResidencyStatus, numResources);
 			return ret;
 		}
 
@@ -8966,7 +8966,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice2* handle = comObj.Handle;
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
@@ -9057,7 +9057,7 @@ namespace Hexa.NET.DXGI
 		public static HResult OfferResources(this ComPtr<IDXGIDevice2> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority) 
 		{
 			IDXGIDevice2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), priority);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.Handle, priority);
 			return ret;
 		}
 
@@ -9087,7 +9087,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ReclaimResources(this ComPtr<IDXGIDevice2> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pDiscarded) 
 		{
 			IDXGIDevice2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), pDiscarded);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, pDiscarded);
 			return ret;
 		}
 
@@ -9125,7 +9125,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice2* handle = comObj.Handle;
 			fixed (Bool32* ppDiscarded = &pDiscarded)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), (Bool32*)ppDiscarded);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice2*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, (Bool32*)ppDiscarded);
 				return ret;
 			}
 		}
@@ -9260,7 +9260,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISwapChain1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISwapChain1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -9286,7 +9286,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -9344,7 +9344,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISwapChain1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -9355,7 +9355,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -9367,7 +9367,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -9381,7 +9381,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -9554,7 +9554,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetFullscreenState(this ComPtr<IDXGISwapChain1> comObj, [NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pTarget) 
 		{
 			IDXGISwapChain1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain1*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.Handle);
 			return ret;
 		}
 
@@ -10114,7 +10114,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -10140,7 +10140,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -10198,7 +10198,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -10209,7 +10209,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -10221,7 +10221,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -10235,7 +10235,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -10372,7 +10372,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -10410,7 +10410,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10458,7 +10458,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -10516,7 +10516,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -10627,7 +10627,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -10665,7 +10665,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10704,7 +10704,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10751,7 +10751,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -10774,7 +10774,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -10798,7 +10798,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -10824,7 +10824,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10854,7 +10854,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10881,7 +10881,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10911,7 +10911,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -10943,7 +10943,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -10979,7 +10979,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -11028,7 +11028,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -11086,7 +11086,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11145,7 +11145,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11215,7 +11215,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -11242,7 +11242,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -11270,7 +11270,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -11300,7 +11300,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11334,7 +11334,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11365,7 +11365,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11399,7 +11399,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -11435,7 +11435,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -11475,7 +11475,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -11507,7 +11507,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -11528,7 +11528,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -11552,7 +11552,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -11590,7 +11590,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11617,7 +11617,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11647,7 +11647,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11669,7 +11669,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -11693,7 +11693,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -11717,7 +11717,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -11744,7 +11744,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -11770,7 +11770,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11800,7 +11800,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11830,7 +11830,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11863,7 +11863,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -11911,7 +11911,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -11936,7 +11936,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -11964,7 +11964,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12022,7 +12022,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12053,7 +12053,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12087,7 +12087,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12113,7 +12113,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12141,7 +12141,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12169,7 +12169,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12200,7 +12200,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12230,7 +12230,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12264,7 +12264,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12298,7 +12298,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12335,7 +12335,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12487,7 +12487,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -12525,7 +12525,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -12547,7 +12547,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -12571,7 +12571,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -12597,7 +12597,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -12627,7 +12627,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory2* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -12675,7 +12675,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12733,7 +12733,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12759,7 +12759,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12787,7 +12787,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory2* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -12817,7 +12817,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12851,7 +12851,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory2*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -12977,7 +12977,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIAdapter2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIAdapter2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -13003,7 +13003,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -13061,7 +13061,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIAdapter2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIAdapter2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -13072,7 +13072,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -13084,7 +13084,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -13098,7 +13098,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -13411,7 +13411,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -13437,7 +13437,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -13495,7 +13495,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -13506,7 +13506,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -13518,7 +13518,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -13532,7 +13532,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -13716,7 +13716,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -13742,7 +13742,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -13769,7 +13769,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -13801,7 +13801,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -13842,7 +13842,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -13943,7 +13943,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -13973,7 +13973,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -14111,7 +14111,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -14137,7 +14137,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -14164,7 +14164,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput1* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -14196,7 +14196,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -14228,7 +14228,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -14258,7 +14258,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput1> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput1* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -14305,7 +14305,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput1* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput1*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -14430,7 +14430,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDevice3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDevice3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -14456,7 +14456,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -14514,7 +14514,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDevice3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDevice3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -14525,7 +14525,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -14537,7 +14537,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice3* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -14551,7 +14551,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -14818,7 +14818,7 @@ namespace Hexa.NET.DXGI
 		public static HResult QueryResourceResidency(this ComPtr<IDXGIDevice3> comObj, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources) 
 		{
 			IDXGIDevice3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, pResidencyStatus, numResources);
 			return ret;
 		}
 
@@ -14856,7 +14856,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice3* handle = comObj.Handle;
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
@@ -14947,7 +14947,7 @@ namespace Hexa.NET.DXGI
 		public static HResult OfferResources(this ComPtr<IDXGIDevice3> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority) 
 		{
 			IDXGIDevice3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), priority);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.Handle, priority);
 			return ret;
 		}
 
@@ -14977,7 +14977,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ReclaimResources(this ComPtr<IDXGIDevice3> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pDiscarded) 
 		{
 			IDXGIDevice3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), pDiscarded);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, pDiscarded);
 			return ret;
 		}
 
@@ -15015,7 +15015,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice3* handle = comObj.Handle;
 			fixed (Bool32* ppDiscarded = &pDiscarded)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), (Bool32*)ppDiscarded);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice3*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, (Bool32*)ppDiscarded);
 				return ret;
 			}
 		}
@@ -15158,7 +15158,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISwapChain2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISwapChain2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -15184,7 +15184,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -15242,7 +15242,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISwapChain2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -15253,7 +15253,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -15265,7 +15265,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -15279,7 +15279,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -15452,7 +15452,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetFullscreenState(this ComPtr<IDXGISwapChain2> comObj, [NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pTarget) 
 		{
 			IDXGISwapChain2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain2*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.Handle);
 			return ret;
 		}
 
@@ -16150,7 +16150,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -16176,7 +16176,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -16234,7 +16234,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -16245,7 +16245,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -16257,7 +16257,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -16271,7 +16271,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -16455,7 +16455,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -16481,7 +16481,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -16508,7 +16508,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -16540,7 +16540,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -16581,7 +16581,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -16682,7 +16682,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -16712,7 +16712,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -16850,7 +16850,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -16876,7 +16876,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -16903,7 +16903,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput2* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -16935,7 +16935,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -16967,7 +16967,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -16997,7 +16997,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput2> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput2* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -17044,7 +17044,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput2* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput2*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -17178,7 +17178,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -17204,7 +17204,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -17262,7 +17262,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -17273,7 +17273,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -17285,7 +17285,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -17299,7 +17299,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -17436,7 +17436,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -17474,7 +17474,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17522,7 +17522,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -17580,7 +17580,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -17691,7 +17691,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -17729,7 +17729,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17768,7 +17768,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17815,7 +17815,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -17838,7 +17838,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -17862,7 +17862,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -17888,7 +17888,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17918,7 +17918,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17945,7 +17945,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -17975,7 +17975,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18007,7 +18007,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -18043,7 +18043,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -18092,7 +18092,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -18150,7 +18150,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18209,7 +18209,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18279,7 +18279,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -18306,7 +18306,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -18334,7 +18334,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -18364,7 +18364,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18398,7 +18398,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18429,7 +18429,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18463,7 +18463,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -18499,7 +18499,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -18539,7 +18539,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -18571,7 +18571,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -18592,7 +18592,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -18616,7 +18616,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -18654,7 +18654,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18681,7 +18681,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18711,7 +18711,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18733,7 +18733,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -18757,7 +18757,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -18781,7 +18781,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -18808,7 +18808,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -18834,7 +18834,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18864,7 +18864,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18894,7 +18894,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18927,7 +18927,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -18975,7 +18975,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19000,7 +19000,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19028,7 +19028,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19086,7 +19086,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19117,7 +19117,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19151,7 +19151,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19177,7 +19177,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19205,7 +19205,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19233,7 +19233,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19264,7 +19264,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19294,7 +19294,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19328,7 +19328,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19362,7 +19362,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19399,7 +19399,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19551,7 +19551,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -19589,7 +19589,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -19611,7 +19611,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -19635,7 +19635,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -19661,7 +19661,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -19691,7 +19691,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory3* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -19739,7 +19739,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19797,7 +19797,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19823,7 +19823,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19851,7 +19851,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory3* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -19881,7 +19881,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -19915,7 +19915,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory3*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -20247,7 +20247,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -20285,7 +20285,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20307,7 +20307,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20331,7 +20331,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20357,7 +20357,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20387,7 +20387,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20435,7 +20435,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -20493,7 +20493,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -20519,7 +20519,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -20547,7 +20547,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -20577,7 +20577,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, pDevice, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -20611,7 +20611,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[3]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -20642,7 +20642,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pYuvDecodeBuffers, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pYuvDecodeBuffers, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -20680,7 +20680,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20702,7 +20702,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -20726,7 +20726,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -20752,7 +20752,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20782,7 +20782,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20804,7 +20804,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20828,7 +20828,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] IDXGIResource* pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20854,7 +20854,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20884,7 +20884,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20909,7 +20909,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20936,7 +20936,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateDecodeSwapChainForCompositionSurfaceHandle(this ComPtr<IDXGIFactoryMedia> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hSurface")] [NativeName(NativeNameType.Type, "HANDLE")] nint hSurface, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_DECODE_SWAP_CHAIN_DESC*")] DxgiDecodeSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "pYuvDecodeBuffers")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pYuvDecodeBuffers, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGIDecodeSwapChain**")] IDXGIDecodeSwapChain** ppSwapChain) 
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -20965,7 +20965,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -20998,7 +20998,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -21046,7 +21046,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pYuvDecodeBuffers, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pYuvDecodeBuffers, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21104,7 +21104,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21130,7 +21130,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21158,7 +21158,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21188,7 +21188,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21222,7 +21222,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, pRestrictToOutput, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21248,7 +21248,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21276,7 +21276,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21306,7 +21306,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21340,7 +21340,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, pYuvDecodeBuffers, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21369,7 +21369,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21400,7 +21400,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactoryMedia* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, pDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -21433,7 +21433,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, pDevice, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21470,7 +21470,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiDecodeSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.GetAddressOf(), hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.GetAddressOf(), (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactoryMedia*, IUnknown*, nint, DxgiDecodeSwapChainDesc*, IDXGIResource*, IDXGIOutput*, IDXGIDecodeSwapChain**, HResult>)(handle->LpVtbl[4]))(handle, (IUnknown*)pDevice.Handle, hSurface, (DxgiDecodeSwapChainDesc*)ppDesc, (IDXGIResource*)pYuvDecodeBuffers.Handle, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGIDecodeSwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -21736,7 +21736,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -21762,7 +21762,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -21820,7 +21820,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -21831,7 +21831,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -21843,7 +21843,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -21857,7 +21857,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -22041,7 +22041,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -22067,7 +22067,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -22094,7 +22094,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -22126,7 +22126,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -22167,7 +22167,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -22268,7 +22268,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -22298,7 +22298,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -22436,7 +22436,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -22462,7 +22462,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -22489,7 +22489,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -22521,7 +22521,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -22553,7 +22553,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -22583,7 +22583,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -22630,7 +22630,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput3* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -22669,7 +22669,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlaySupport(this ComPtr<IDXGIOutput3> comObj, [NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -22707,7 +22707,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput3* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput3*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -22833,7 +22833,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISwapChain3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISwapChain3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -22859,7 +22859,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -22917,7 +22917,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISwapChain3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -22928,7 +22928,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -22940,7 +22940,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain3* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -22954,7 +22954,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -23127,7 +23127,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetFullscreenState(this ComPtr<IDXGISwapChain3> comObj, [NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pTarget) 
 		{
 			IDXGISwapChain3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.Handle);
 			return ret;
 		}
 
@@ -23781,7 +23781,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ResizeBuffers1(this ComPtr<IDXGISwapChain3> comObj, [NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] uint* pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppPresentQueue) 
 		{
 			IDXGISwapChain3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown**)ppPresentQueue.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown**)ppPresentQueue.Handle);
 			return ret;
 		}
 
@@ -23807,7 +23807,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain3* handle = comObj.Handle;
 			fixed (uint* ppCreationNodeMask = &pCreationNodeMask)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown**)ppPresentQueue.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain3*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown**)ppPresentQueue.Handle);
 				return ret;
 			}
 		}
@@ -23933,7 +23933,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -23959,7 +23959,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -24017,7 +24017,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -24028,7 +24028,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -24040,7 +24040,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -24054,7 +24054,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -24238,7 +24238,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -24264,7 +24264,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -24291,7 +24291,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -24323,7 +24323,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -24364,7 +24364,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -24465,7 +24465,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -24495,7 +24495,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -24633,7 +24633,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -24659,7 +24659,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -24686,7 +24686,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -24718,7 +24718,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -24750,7 +24750,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -24780,7 +24780,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -24827,7 +24827,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput4* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -24866,7 +24866,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlaySupport(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -24904,7 +24904,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -24935,7 +24935,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlayColorSpaceSupport(this ComPtr<IDXGIOutput4> comObj, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -24973,7 +24973,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput4* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput4*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -25099,7 +25099,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -25125,7 +25125,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -25183,7 +25183,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -25194,7 +25194,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -25206,7 +25206,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -25220,7 +25220,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -25357,7 +25357,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -25395,7 +25395,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25443,7 +25443,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -25501,7 +25501,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -25612,7 +25612,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -25650,7 +25650,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25689,7 +25689,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25736,7 +25736,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -25759,7 +25759,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -25783,7 +25783,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -25809,7 +25809,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25839,7 +25839,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25866,7 +25866,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25896,7 +25896,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -25928,7 +25928,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -25964,7 +25964,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -26013,7 +26013,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -26071,7 +26071,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26130,7 +26130,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26200,7 +26200,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -26227,7 +26227,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -26255,7 +26255,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -26285,7 +26285,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26319,7 +26319,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26350,7 +26350,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26384,7 +26384,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -26420,7 +26420,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -26460,7 +26460,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -26492,7 +26492,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -26513,7 +26513,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -26537,7 +26537,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -26575,7 +26575,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26602,7 +26602,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26632,7 +26632,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26654,7 +26654,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -26678,7 +26678,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -26702,7 +26702,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -26729,7 +26729,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -26755,7 +26755,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26785,7 +26785,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26815,7 +26815,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26848,7 +26848,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -26896,7 +26896,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -26921,7 +26921,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -26949,7 +26949,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27007,7 +27007,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27038,7 +27038,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27072,7 +27072,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27098,7 +27098,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27126,7 +27126,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27154,7 +27154,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27185,7 +27185,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27215,7 +27215,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27249,7 +27249,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27283,7 +27283,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27320,7 +27320,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27472,7 +27472,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -27510,7 +27510,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -27532,7 +27532,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -27556,7 +27556,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory4> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -27582,7 +27582,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -27612,7 +27612,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory4* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -27660,7 +27660,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27718,7 +27718,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27744,7 +27744,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27772,7 +27772,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory4* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -27802,7 +27802,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -27836,7 +27836,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory4*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -28059,7 +28059,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIAdapter3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIAdapter3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -28085,7 +28085,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -28143,7 +28143,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIAdapter3> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIAdapter3* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -28154,7 +28154,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter3* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -28166,7 +28166,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter3* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -28180,7 +28180,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter3*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -28581,7 +28581,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -28607,7 +28607,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -28665,7 +28665,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -28676,7 +28676,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -28688,7 +28688,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -28702,7 +28702,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -28886,7 +28886,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -28912,7 +28912,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -28939,7 +28939,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -28971,7 +28971,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -29012,7 +29012,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -29113,7 +29113,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -29143,7 +29143,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -29281,7 +29281,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -29307,7 +29307,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -29334,7 +29334,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -29366,7 +29366,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -29398,7 +29398,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -29428,7 +29428,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -29475,7 +29475,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput5* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -29514,7 +29514,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlaySupport(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -29552,7 +29552,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -29583,7 +29583,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlayColorSpaceSupport(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -29621,7 +29621,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -29652,7 +29652,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput1(this ComPtr<IDXGIOutput5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, pSupportedFormats, ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, pSupportedFormats, ppOutputDuplication);
 			return ret;
 		}
 
@@ -29690,7 +29690,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput5* handle = comObj.Handle;
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, ppOutputDuplication);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, ppOutputDuplication);
 				return ret;
 			}
 		}
@@ -29738,7 +29738,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput5* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, pSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, pSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -29796,7 +29796,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
 			{
 				ppOutputDuplication = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput5*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 				return ret;
 			}
 		}
@@ -29922,7 +29922,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGISwapChain4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGISwapChain4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -29948,7 +29948,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -30006,7 +30006,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGISwapChain4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -30017,7 +30017,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -30029,7 +30029,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain4* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -30043,7 +30043,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -30216,7 +30216,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetFullscreenState(this ComPtr<IDXGISwapChain4> comObj, [NativeName(NativeNameType.Param, "Fullscreen")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 fullscreen, [NativeName(NativeNameType.Param, "pTarget")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pTarget) 
 		{
 			IDXGISwapChain4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, Bool32, IDXGIOutput*, HResult>)(handle->LpVtbl[10]))(handle, fullscreen, (IDXGIOutput*)pTarget.Handle);
 			return ret;
 		}
 
@@ -30870,7 +30870,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ResizeBuffers1(this ComPtr<IDXGISwapChain4> comObj, [NativeName(NativeNameType.Param, "BufferCount")] [NativeName(NativeNameType.Type, "UINT")] uint bufferCount, [NativeName(NativeNameType.Param, "Width")] [NativeName(NativeNameType.Type, "UINT")] uint width, [NativeName(NativeNameType.Param, "Height")] [NativeName(NativeNameType.Type, "UINT")] uint height, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "SwapChainFlags")] [NativeName(NativeNameType.Type, "UINT")] uint swapChainFlags, [NativeName(NativeNameType.Param, "pCreationNodeMask")] [NativeName(NativeNameType.Type, "const UINT*")] uint* pCreationNodeMask, [NativeName(NativeNameType.Param, "ppPresentQueue")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppPresentQueue) 
 		{
 			IDXGISwapChain4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown**)ppPresentQueue.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, pCreationNodeMask, (IUnknown**)ppPresentQueue.Handle);
 			return ret;
 		}
 
@@ -30896,7 +30896,7 @@ namespace Hexa.NET.DXGI
 			IDXGISwapChain4* handle = comObj.Handle;
 			fixed (uint* ppCreationNodeMask = &pCreationNodeMask)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown**)ppPresentQueue.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, uint, uint, uint, DxgiFormat, uint, uint*, IUnknown**, HResult>)(handle->LpVtbl[39]))(handle, bufferCount, width, height, format, swapChainFlags, (uint*)ppCreationNodeMask, (IUnknown**)ppPresentQueue.Handle);
 				return ret;
 			}
 		}
@@ -30915,7 +30915,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetHdrMetaData<T>(this ComPtr<IDXGISwapChain4> comObj, [NativeName(NativeNameType.Param, "Type")] [NativeName(NativeNameType.Type, "DXGI_HDR_METADATA_TYPE")] DxgiHdrMetadataType type, [NativeName(NativeNameType.Param, "Size")] [NativeName(NativeNameType.Type, "UINT")] uint size, [NativeName(NativeNameType.Param, "pMetaData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pMetaData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGISwapChain4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, DxgiHdrMetadataType, uint, void*, HResult>)(handle->LpVtbl[40]))(handle, type, size, (void*)pMetaData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGISwapChain4*, DxgiHdrMetadataType, uint, void*, HResult>)(handle->LpVtbl[40]))(handle, type, size, (void*)pMetaData.Handle);
 			return ret;
 		}
 
@@ -31040,7 +31040,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -31066,7 +31066,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -31124,7 +31124,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -31135,7 +31135,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -31147,7 +31147,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -31161,7 +31161,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -31428,7 +31428,7 @@ namespace Hexa.NET.DXGI
 		public static HResult QueryResourceResidency(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IUnknown**")] ComPtr<IUnknown> ppResources, [NativeName(NativeNameType.Param, "pResidencyStatus")] [NativeName(NativeNameType.Type, "DXGI_RESIDENCY*")] DxgiResidency* pResidencyStatus, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), pResidencyStatus, numResources);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, pResidencyStatus, numResources);
 			return ret;
 		}
 
@@ -31466,7 +31466,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (DxgiResidency* ppResidencyStatus = &pResidencyStatus)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.GetAddressOf(), (DxgiResidency*)ppResidencyStatus, numResources);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, IUnknown**, DxgiResidency*, uint, HResult>)(handle->LpVtbl[9]))(handle, (IUnknown**)ppResources.Handle, (DxgiResidency*)ppResidencyStatus, numResources);
 				return ret;
 			}
 		}
@@ -31557,7 +31557,7 @@ namespace Hexa.NET.DXGI
 		public static HResult OfferResources(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), priority);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, HResult>)(handle->LpVtbl[14]))(handle, numResources, (IDXGIResource**)ppResources.Handle, priority);
 			return ret;
 		}
 
@@ -31587,7 +31587,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ReclaimResources(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "pDiscarded")] [NativeName(NativeNameType.Type, "BOOL*")] Bool32* pDiscarded) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), pDiscarded);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, pDiscarded);
 			return ret;
 		}
 
@@ -31625,7 +31625,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (Bool32* ppDiscarded = &pDiscarded)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), (Bool32*)ppDiscarded);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, Bool32*, HResult>)(handle->LpVtbl[15]))(handle, numResources, (IDXGIResource**)ppResources.Handle, (Bool32*)ppDiscarded);
 				return ret;
 			}
 		}
@@ -31673,7 +31673,7 @@ namespace Hexa.NET.DXGI
 		public static HResult OfferResources1(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "Priority")] [NativeName(NativeNameType.Type, "DXGI_OFFER_RESOURCE_PRIORITY")] DxgiOfferResourcePriority priority, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, uint, HResult>)(handle->LpVtbl[18]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), priority, flags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiOfferResourcePriority, uint, HResult>)(handle->LpVtbl[18]))(handle, numResources, (IDXGIResource**)ppResources.Handle, priority, flags);
 			return ret;
 		}
 
@@ -31703,7 +31703,7 @@ namespace Hexa.NET.DXGI
 		public static HResult ReclaimResources1(this ComPtr<IDXGIDevice4> comObj, [NativeName(NativeNameType.Param, "NumResources")] [NativeName(NativeNameType.Type, "UINT")] uint numResources, [NativeName(NativeNameType.Param, "ppResources")] [NativeName(NativeNameType.Type, "const IDXGIResource**")] ComPtr<IDXGIResource> ppResources, [NativeName(NativeNameType.Param, "pResults")] [NativeName(NativeNameType.Type, "DXGI_RECLAIM_RESOURCE_RESULTS*")] DxgiReclaimResourceResults* pResults) 
 		{
 			IDXGIDevice4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(handle->LpVtbl[19]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), pResults);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(handle->LpVtbl[19]))(handle, numResources, (IDXGIResource**)ppResources.Handle, pResults);
 			return ret;
 		}
 
@@ -31741,7 +31741,7 @@ namespace Hexa.NET.DXGI
 			IDXGIDevice4* handle = comObj.Handle;
 			fixed (DxgiReclaimResourceResults* ppResults = &pResults)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(handle->LpVtbl[19]))(handle, numResources, (IDXGIResource**)ppResources.GetAddressOf(), (DxgiReclaimResourceResults*)ppResults);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIDevice4*, uint, IDXGIResource**, DxgiReclaimResourceResults*, HResult>)(handle->LpVtbl[19]))(handle, numResources, (IDXGIResource**)ppResources.Handle, (DxgiReclaimResourceResults*)ppResults);
 				return ret;
 			}
 		}
@@ -31867,7 +31867,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -31893,7 +31893,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -31951,7 +31951,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -31962,7 +31962,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -31974,7 +31974,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -31988,7 +31988,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -32125,7 +32125,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -32163,7 +32163,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32211,7 +32211,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -32269,7 +32269,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -32380,7 +32380,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -32418,7 +32418,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32457,7 +32457,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32504,7 +32504,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -32527,7 +32527,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -32551,7 +32551,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -32577,7 +32577,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32607,7 +32607,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32634,7 +32634,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32664,7 +32664,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -32696,7 +32696,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -32732,7 +32732,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -32781,7 +32781,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -32839,7 +32839,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -32898,7 +32898,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -32968,7 +32968,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -32995,7 +32995,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33023,7 +33023,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33053,7 +33053,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33087,7 +33087,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33118,7 +33118,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33152,7 +33152,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33188,7 +33188,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -33228,7 +33228,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -33260,7 +33260,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -33281,7 +33281,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -33305,7 +33305,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -33343,7 +33343,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33370,7 +33370,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33400,7 +33400,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33422,7 +33422,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -33446,7 +33446,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -33470,7 +33470,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -33497,7 +33497,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -33523,7 +33523,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33553,7 +33553,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33583,7 +33583,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33616,7 +33616,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -33664,7 +33664,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33689,7 +33689,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33717,7 +33717,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33775,7 +33775,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33806,7 +33806,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33840,7 +33840,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -33866,7 +33866,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33894,7 +33894,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33922,7 +33922,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33953,7 +33953,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -33983,7 +33983,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34017,7 +34017,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34051,7 +34051,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34088,7 +34088,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34240,7 +34240,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -34278,7 +34278,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -34300,7 +34300,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -34324,7 +34324,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -34350,7 +34350,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -34380,7 +34380,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory5* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -34428,7 +34428,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -34486,7 +34486,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34512,7 +34512,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -34540,7 +34540,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory5* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -34570,7 +34570,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34604,7 +34604,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -34720,7 +34720,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckFeatureSupport<T>(this ComPtr<IDXGIFactory5> comObj, [NativeName(NativeNameType.Param, "Feature")] [NativeName(NativeNameType.Type, "DXGI_FEATURE")] DxgiFeature feature, [NativeName(NativeNameType.Param, "pFeatureSupportData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pFeatureSupportData, [NativeName(NativeNameType.Param, "FeatureSupportDataSize")] [NativeName(NativeNameType.Type, "UINT")] uint featureSupportDataSize) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory5* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.GetAddressOf(), featureSupportDataSize);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory5*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.Handle, featureSupportDataSize);
 			return ret;
 		}
 
@@ -34845,7 +34845,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIAdapter4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIAdapter4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -34871,7 +34871,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -34929,7 +34929,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIAdapter4> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIAdapter4* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -34940,7 +34940,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter4* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -34952,7 +34952,7 @@ namespace Hexa.NET.DXGI
 			IDXGIAdapter4* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -34966,7 +34966,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIAdapter4*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -35388,7 +35388,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -35414,7 +35414,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -35472,7 +35472,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -35483,7 +35483,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -35495,7 +35495,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -35509,7 +35509,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -35693,7 +35693,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC*")] DxgiModeDesc* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC*")] DxgiModeDesc* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -35719,7 +35719,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -35746,7 +35746,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, pModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -35778,7 +35778,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc*, DxgiModeDesc*, IUnknown*, HResult>)(handle->LpVtbl[9]))(handle, (DxgiModeDesc*)ppModeToMatch, (DxgiModeDesc*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -35819,7 +35819,7 @@ namespace Hexa.NET.DXGI
 		public static HResult TakeOwnership(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Exclusive")] [NativeName(NativeNameType.Type, "BOOL")] Bool32 exclusive) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.GetAddressOf(), exclusive);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, Bool32, HResult>)(handle->LpVtbl[11]))(handle, (IUnknown*)pDevice.Handle, exclusive);
 			return ret;
 		}
 
@@ -35920,7 +35920,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetDisplaySurface(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pScanoutSurface")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pScanoutSurface) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGISurface*, HResult>)(handle->LpVtbl[16]))(handle, (IDXGISurface*)pScanoutSurface.Handle);
 			return ret;
 		}
 
@@ -35950,7 +35950,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGISurface*")] ComPtr<IDXGISurface> pDestination) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGISurface*, HResult>)(handle->LpVtbl[17]))(handle, (IDXGISurface*)pDestination.Handle);
 			return ret;
 		}
 
@@ -36088,7 +36088,7 @@ namespace Hexa.NET.DXGI
 		public static HResult FindClosestMatchingMode1(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pModeToMatch")] [NativeName(NativeNameType.Type, "const DXGI_MODE_DESC1*")] DxgiModeDesc1* pModeToMatch, [NativeName(NativeNameType.Param, "pClosestMatch")] [NativeName(NativeNameType.Type, "DXGI_MODE_DESC1*")] DxgiModeDesc1* pClosestMatch, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 			return ret;
 		}
 
@@ -36114,7 +36114,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppModeToMatch = &pModeToMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, pClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -36141,7 +36141,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, pModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 				return ret;
 			}
 		}
@@ -36173,7 +36173,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiModeDesc1* ppClosestMatch = &pClosestMatch)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiModeDesc1*, DxgiModeDesc1*, IUnknown*, HResult>)(handle->LpVtbl[20]))(handle, (DxgiModeDesc1*)ppModeToMatch, (DxgiModeDesc1*)ppClosestMatch, (IUnknown*)pConcernedDevice.Handle);
 					return ret;
 				}
 			}
@@ -36205,7 +36205,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetDisplaySurfaceData1(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pDestination")] [NativeName(NativeNameType.Type, "IDXGIResource*")] ComPtr<IDXGIResource> pDestination) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IDXGIResource*, HResult>)(handle->LpVtbl[21]))(handle, (IDXGIResource*)pDestination.Handle);
 			return ret;
 		}
 
@@ -36235,7 +36235,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, ppOutputDuplication);
 			return ret;
 		}
 
@@ -36282,7 +36282,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput6* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[22]))(handle, (IUnknown*)pDevice.Handle, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -36321,7 +36321,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlaySupport(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "EnumFormat")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat enumFormat, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -36359,7 +36359,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, IUnknown*, uint*, HResult>)(handle->LpVtbl[24]))(handle, enumFormat, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -36390,7 +36390,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckOverlayColorSpaceSupport(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "Format")] [NativeName(NativeNameType.Type, "DXGI_FORMAT")] DxgiFormat format, [NativeName(NativeNameType.Param, "ColorSpace")] [NativeName(NativeNameType.Type, "DXGI_COLOR_SPACE_TYPE")] DxgiColorSpaceType colorSpace, [NativeName(NativeNameType.Param, "pConcernedDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pConcernedDevice, [NativeName(NativeNameType.Param, "pFlags")] [NativeName(NativeNameType.Type, "UINT*")] uint* pFlags) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), pFlags);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, pFlags);
 			return ret;
 		}
 
@@ -36428,7 +36428,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (uint* ppFlags = &pFlags)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.GetAddressOf(), (uint*)ppFlags);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, DxgiFormat, DxgiColorSpaceType, IUnknown*, uint*, HResult>)(handle->LpVtbl[25]))(handle, format, colorSpace, (IUnknown*)pConcernedDevice.Handle, (uint*)ppFlags);
 				return ret;
 			}
 		}
@@ -36459,7 +36459,7 @@ namespace Hexa.NET.DXGI
 		public static HResult DuplicateOutput1(this ComPtr<IDXGIOutput6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT")] uint flags, [NativeName(NativeNameType.Param, "SupportedFormatsCount")] [NativeName(NativeNameType.Type, "UINT")] uint supportedFormatsCount, [NativeName(NativeNameType.Param, "pSupportedFormats")] [NativeName(NativeNameType.Type, "const DXGI_FORMAT*")] DxgiFormat* pSupportedFormats, [NativeName(NativeNameType.Param, "ppOutputDuplication")] [NativeName(NativeNameType.Type, "IDXGIOutputDuplication**")] IDXGIOutputDuplication** ppOutputDuplication) 
 		{
 			IDXGIOutput6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, pSupportedFormats, ppOutputDuplication);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, pSupportedFormats, ppOutputDuplication);
 			return ret;
 		}
 
@@ -36497,7 +36497,7 @@ namespace Hexa.NET.DXGI
 			IDXGIOutput6* handle = comObj.Handle;
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, ppOutputDuplication);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, ppOutputDuplication);
 				return ret;
 			}
 		}
@@ -36545,7 +36545,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIOutput6* handle = comObj.Handle;
 			ppOutputDuplication = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, pSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, pSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 			return ret;
 		}
 
@@ -36603,7 +36603,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiFormat* ppSupportedFormats = &pSupportedFormats)
 			{
 				ppOutputDuplication = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.GetAddressOf(), flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIOutput6*, IUnknown*, uint, uint, DxgiFormat*, IDXGIOutputDuplication**, HResult>)(handle->LpVtbl[26]))(handle, (IUnknown*)pDevice.Handle, flags, supportedFormatsCount, (DxgiFormat*)ppSupportedFormats, (IDXGIOutputDuplication**)ppOutputDuplication.GetAddressOf());
 				return ret;
 			}
 		}
@@ -36771,7 +36771,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -36797,7 +36797,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -36855,7 +36855,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -36866,7 +36866,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -36878,7 +36878,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -36892,7 +36892,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -37029,7 +37029,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -37067,7 +37067,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37115,7 +37115,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -37173,7 +37173,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -37284,7 +37284,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -37322,7 +37322,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37361,7 +37361,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37408,7 +37408,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -37431,7 +37431,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -37455,7 +37455,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -37481,7 +37481,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37511,7 +37511,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37538,7 +37538,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37568,7 +37568,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -37600,7 +37600,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -37636,7 +37636,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -37685,7 +37685,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -37743,7 +37743,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -37802,7 +37802,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -37872,7 +37872,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -37899,7 +37899,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -37927,7 +37927,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -37957,7 +37957,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -37991,7 +37991,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38022,7 +38022,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38056,7 +38056,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38092,7 +38092,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -38132,7 +38132,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -38164,7 +38164,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -38185,7 +38185,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -38209,7 +38209,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -38247,7 +38247,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38274,7 +38274,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38304,7 +38304,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38326,7 +38326,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -38350,7 +38350,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -38374,7 +38374,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -38401,7 +38401,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -38427,7 +38427,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38457,7 +38457,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38487,7 +38487,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38520,7 +38520,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -38568,7 +38568,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38593,7 +38593,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38621,7 +38621,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38679,7 +38679,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38710,7 +38710,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38744,7 +38744,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38770,7 +38770,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38798,7 +38798,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38826,7 +38826,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38857,7 +38857,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -38887,7 +38887,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38921,7 +38921,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38955,7 +38955,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -38992,7 +38992,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -39144,7 +39144,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -39182,7 +39182,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -39204,7 +39204,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -39228,7 +39228,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -39254,7 +39254,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -39284,7 +39284,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory6* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -39332,7 +39332,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -39390,7 +39390,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -39416,7 +39416,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -39444,7 +39444,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory6* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -39474,7 +39474,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -39508,7 +39508,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -39624,7 +39624,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckFeatureSupport<T>(this ComPtr<IDXGIFactory6> comObj, [NativeName(NativeNameType.Param, "Feature")] [NativeName(NativeNameType.Type, "DXGI_FEATURE")] DxgiFeature feature, [NativeName(NativeNameType.Param, "pFeatureSupportData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pFeatureSupportData, [NativeName(NativeNameType.Param, "FeatureSupportDataSize")] [NativeName(NativeNameType.Type, "UINT")] uint featureSupportDataSize) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory6* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.GetAddressOf(), featureSupportDataSize);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory6*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.Handle, featureSupportDataSize);
 			return ret;
 		}
 
@@ -39793,7 +39793,7 @@ namespace Hexa.NET.DXGI
 		public static HResult SetPrivateDataInterface(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pUnknown")] [NativeName(NativeNameType.Type, "const IUnknown*")] ComPtr<IUnknown> pUnknown) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, name, (IUnknown*)pUnknown.Handle);
 			return ret;
 		}
 
@@ -39819,7 +39819,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, IUnknown*, HResult>)(handle->LpVtbl[4]))(handle, (Guid*)pname, (IUnknown*)pUnknown.Handle);
 				return ret;
 			}
 		}
@@ -39877,7 +39877,7 @@ namespace Hexa.NET.DXGI
 		public static HResult GetPrivateData<T>(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "Name")] [NativeName(NativeNameType.Type, "const GUID&")] Guid* name, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "UINT*")] uint* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pData) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, pDataSize, (void*)pData.Handle);
 			return ret;
 		}
 
@@ -39888,7 +39888,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (Guid* pname = &name)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, pDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -39900,7 +39900,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (uint* ppDataSize = &pDataSize)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, name, (uint*)ppDataSize, (void*)pData.Handle);
 				return ret;
 			}
 		}
@@ -39914,7 +39914,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (uint* ppDataSize = &pDataSize)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, Guid*, uint*, void*, HResult>)(handle->LpVtbl[5]))(handle, (Guid*)pname, (uint*)ppDataSize, (void*)pData.Handle);
 					return ret;
 				}
 			}
@@ -40051,7 +40051,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChain(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "DXGI_SWAP_CHAIN_DESC*")] DxgiSwapChainDesc* pDesc, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain**")] IDXGISwapChain** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, ppSwapChain);
 			return ret;
 		}
 
@@ -40089,7 +40089,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40137,7 +40137,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -40195,7 +40195,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc*, IDXGISwapChain**, HResult>)(handle->LpVtbl[10]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc*)ppDesc, (IDXGISwapChain**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -40306,7 +40306,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -40344,7 +40344,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40383,7 +40383,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40430,7 +40430,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, ppSwapChain);
 					return ret;
 				}
 			}
@@ -40453,7 +40453,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -40477,7 +40477,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForHwnd(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "hWnd")] [NativeName(NativeNameType.Type, "HWND")] nint hWnd, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pFullscreenDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_FULLSCREEN_DESC*")] DxgiSwapChainFullscreenDesc* pFullscreenDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -40503,7 +40503,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40533,7 +40533,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40560,7 +40560,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40590,7 +40590,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -40622,7 +40622,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -40658,7 +40658,7 @@ namespace Hexa.NET.DXGI
 			{
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 					return ret;
 				}
 			}
@@ -40707,7 +40707,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -40765,7 +40765,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -40824,7 +40824,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -40894,7 +40894,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -40921,7 +40921,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -40949,7 +40949,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -40979,7 +40979,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41013,7 +41013,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, pFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41044,7 +41044,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41078,7 +41078,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, pDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41114,7 +41114,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, pDevice, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -41154,7 +41154,7 @@ namespace Hexa.NET.DXGI
 				fixed (DxgiSwapChainFullscreenDesc* ppFullscreenDesc = &pFullscreenDesc)
 				{
 					ppSwapChain = default;
-					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.GetAddressOf(), hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+					HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, nint, DxgiSwapChainDesc1*, DxgiSwapChainFullscreenDesc*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[15]))(handle, (IUnknown*)pDevice.Handle, hWnd, (DxgiSwapChainDesc1*)ppDesc, (DxgiSwapChainFullscreenDesc*)ppFullscreenDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 					return ret;
 				}
 			}
@@ -41186,7 +41186,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -41207,7 +41207,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -41231,7 +41231,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -41269,7 +41269,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41296,7 +41296,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41326,7 +41326,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41348,7 +41348,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -41372,7 +41372,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -41396,7 +41396,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -41423,7 +41423,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForCoreWindow(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pWindow")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pWindow, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -41449,7 +41449,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41479,7 +41479,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41509,7 +41509,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41542,7 +41542,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -41590,7 +41590,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41615,7 +41615,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41643,7 +41643,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41701,7 +41701,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41732,7 +41732,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41766,7 +41766,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41792,7 +41792,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41820,7 +41820,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41848,7 +41848,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41879,7 +41879,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -41909,7 +41909,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41943,7 +41943,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, pWindow, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -41977,7 +41977,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, pDevice, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -42014,7 +42014,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.GetAddressOf(), (IUnknown*)pWindow.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[16]))(handle, (IUnknown*)pDevice.Handle, (IUnknown*)pWindow.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -42166,7 +42166,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] IDXGIOutput* pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, ppSwapChain);
 			return ret;
 		}
 
@@ -42204,7 +42204,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, ppSwapChain);
 				return ret;
 			}
 		}
@@ -42226,7 +42226,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] IUnknown* pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -42250,7 +42250,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CreateSwapChainForComposition(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "pDevice")] [NativeName(NativeNameType.Type, "IUnknown*")] ComPtr<IUnknown> pDevice, [NativeName(NativeNameType.Param, "pDesc")] [NativeName(NativeNameType.Type, "const DXGI_SWAP_CHAIN_DESC1*")] DxgiSwapChainDesc1* pDesc, [NativeName(NativeNameType.Param, "pRestrictToOutput")] [NativeName(NativeNameType.Type, "IDXGIOutput*")] ComPtr<IDXGIOutput> pRestrictToOutput, [NativeName(NativeNameType.Param, "ppSwapChain")] [NativeName(NativeNameType.Type, "IDXGISwapChain1**")] IDXGISwapChain1** ppSwapChain) 
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 			return ret;
 		}
 
@@ -42276,7 +42276,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -42306,7 +42306,7 @@ namespace Hexa.NET.DXGI
 			IDXGIFactory7* handle = comObj.Handle;
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), ppSwapChain);
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, ppSwapChain);
 				return ret;
 			}
 		}
@@ -42354,7 +42354,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -42412,7 +42412,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, pRestrictToOutput, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -42438,7 +42438,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -42466,7 +42466,7 @@ namespace Hexa.NET.DXGI
 		{
 			IDXGIFactory7* handle = comObj.Handle;
 			ppSwapChain = default;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), pDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, pDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 			return ret;
 		}
 
@@ -42496,7 +42496,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, pDevice, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -42530,7 +42530,7 @@ namespace Hexa.NET.DXGI
 			fixed (DxgiSwapChainDesc1* ppDesc = &pDesc)
 			{
 				ppSwapChain = default;
-				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.GetAddressOf(), (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.GetAddressOf(), (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
+				HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, IUnknown*, DxgiSwapChainDesc1*, IDXGIOutput*, IDXGISwapChain1**, HResult>)(handle->LpVtbl[24]))(handle, (IUnknown*)pDevice.Handle, (DxgiSwapChainDesc1*)ppDesc, (IDXGIOutput*)pRestrictToOutput.Handle, (IDXGISwapChain1**)ppSwapChain.GetAddressOf());
 				return ret;
 			}
 		}
@@ -42646,7 +42646,7 @@ namespace Hexa.NET.DXGI
 		public static HResult CheckFeatureSupport<T>(this ComPtr<IDXGIFactory7> comObj, [NativeName(NativeNameType.Param, "Feature")] [NativeName(NativeNameType.Type, "DXGI_FEATURE")] DxgiFeature feature, [NativeName(NativeNameType.Param, "pFeatureSupportData")] [NativeName(NativeNameType.Type, "void*")] ComPtr<T> pFeatureSupportData, [NativeName(NativeNameType.Param, "FeatureSupportDataSize")] [NativeName(NativeNameType.Type, "UINT")] uint featureSupportDataSize) where T : unmanaged, IComObject, IComObject<T>
 		{
 			IDXGIFactory7* handle = comObj.Handle;
-			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.GetAddressOf(), featureSupportDataSize);
+			HResult ret = ((delegate* unmanaged[Stdcall]<IDXGIFactory7*, DxgiFeature, void*, uint, HResult>)(handle->LpVtbl[28]))(handle, feature, (void*)pFeatureSupportData.Handle, featureSupportDataSize);
 			return ret;
 		}
 
