@@ -11,26 +11,20 @@ using System;
 using HexaGen.Runtime;
 using System.Numerics;
 
-namespace Hexa.NET.ImGuiNET
+namespace Hexa.NET.ImGui
 {
 	public unsafe partial class ImGui
 	{
-		[NativeName(NativeNameType.Const, "_MSC_VER")]
 		public const int _MSC_VER = 1930;
 
-		[NativeName(NativeNameType.Const, "_WIN32")]
 		public const int _WIN32 = 1;
 
-		[NativeName(NativeNameType.Const, "_M_AMD64")]
 		public const int _M_AMD64 = 100;
 
-		[NativeName(NativeNameType.Const, "_M_X64")]
 		public const int _M_X64 = 100;
 
-		[NativeName(NativeNameType.Const, "_WIN64")]
 		public const int _WIN64 = 1;
 
-		[NativeName(NativeNameType.Const, "IMGUI_HAS_DOCK")]
 		public const int IMGUI_HAS_DOCK = 1;
 
 	}

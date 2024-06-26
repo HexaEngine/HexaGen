@@ -14,358 +14,270 @@ using System.Runtime.InteropServices;
 using HexaGen.Runtime;
 using System.Numerics;
 
-namespace Hexa.NET.ImGuiNET
+namespace Hexa.NET.ImGui
 {
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "UserCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void UserCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] ImDrawList* parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] ImDrawCmd* cmd);
+	public unsafe delegate void UserCallback();
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "FontBuilder_Build")]
-	[return: NativeName(NativeNameType.Type, "bool")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate byte FontbuilderBuild([NativeName(NativeNameType.Param, "atlas")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* atlas);
+	public unsafe delegate byte FontbuilderBuild(ImFontAtlas* atlas);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "DockNodeWindowMenuHandler")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void DockNodeWindowMenuHandler([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] ImGuiDockNode* node, [NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar);
+	public unsafe delegate void DockNodeWindowMenuHandler(ImGuiContext* ctx, ImGuiDockNode* node, ImGuiTabBar* tabBar);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "GetClipboardTextFn")]
-	[return: NativeName(NativeNameType.Type, "const char*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate byte* GetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
+	public unsafe delegate byte* GetClipboardTextFn(void* userData);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "SetClipboardTextFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
+	public unsafe delegate void SetClipboardTextFn(void* userData, byte* text);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "SetPlatformImeDataFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SetPlatformImeDataFn([NativeName(NativeNameType.Param, "viewport")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* viewport, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiPlatformImeData*")] ImGuiPlatformImeData* data);
+	public unsafe delegate void SetPlatformImeDataFn(ImGuiViewport* viewport, ImGuiPlatformImeData* data);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_CreateWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformCreatewindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformCreatewindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_DestroyWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformDestroywindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformDestroywindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_ShowWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformShowwindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformShowwindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SetWindowPos")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSetwindowpos([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos);
+	public unsafe delegate void PlatformSetwindowpos(ImGuiViewport* vp, Vector2 pos);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_GetWindowPos")]
-	[return: NativeName(NativeNameType.Type, "ImVec2")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate Vector2 PlatformGetwindowpos([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate Vector2 PlatformGetwindowpos(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SetWindowSize")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSetwindowsize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
+	public unsafe delegate void PlatformSetwindowsize(ImGuiViewport* vp, Vector2 size);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_GetWindowSize")]
-	[return: NativeName(NativeNameType.Type, "ImVec2")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate Vector2 PlatformGetwindowsize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate Vector2 PlatformGetwindowsize(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SetWindowFocus")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSetwindowfocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformSetwindowfocus(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_GetWindowFocus")]
-	[return: NativeName(NativeNameType.Type, "bool")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate byte PlatformGetwindowfocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate byte PlatformGetwindowfocus(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_GetWindowMinimized")]
-	[return: NativeName(NativeNameType.Type, "bool")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate byte PlatformGetwindowminimized([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate byte PlatformGetwindowminimized(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SetWindowTitle")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSetwindowtitle([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
+	public unsafe delegate void PlatformSetwindowtitle(ImGuiViewport* vp, byte* str);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SetWindowAlpha")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSetwindowalpha([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "float")] float alpha);
+	public unsafe delegate void PlatformSetwindowalpha(ImGuiViewport* vp, float alpha);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_UpdateWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformUpdatewindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformUpdatewindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_RenderWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformRenderwindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
+	public unsafe delegate void PlatformRenderwindow(ImGuiViewport* vp, void* renderArg);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_SwapBuffers")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformSwapbuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
+	public unsafe delegate void PlatformSwapbuffers(ImGuiViewport* vp, void* renderArg);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_GetWindowDpiScale")]
-	[return: NativeName(NativeNameType.Type, "float")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate float PlatformGetwindowdpiscale([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate float PlatformGetwindowdpiscale(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_OnChangedViewport")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void PlatformOnchangedviewport([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void PlatformOnchangedviewport(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Platform_CreateVkSurface")]
-	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int PlatformCreatevksurface([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "vk_inst")] [NativeName(NativeNameType.Type, "ImU64")] ulong vkInst, [NativeName(NativeNameType.Param, "vk_allocators")] [NativeName(NativeNameType.Type, "const void*")] void* vkAllocators, [NativeName(NativeNameType.Param, "out_vk_surface")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* outVkSurface);
+	public unsafe delegate int PlatformCreatevksurface(ImGuiViewport* vp, ulong vkInst, void* vkAllocators, ulong* outVkSurface);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Renderer_CreateWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void RendererCreatewindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void RendererCreatewindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Renderer_DestroyWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void RendererDestroywindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
+	public unsafe delegate void RendererDestroywindow(ImGuiViewport* vp);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Renderer_SetWindowSize")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void RendererSetwindowsize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
+	public unsafe delegate void RendererSetwindowsize(ImGuiViewport* vp, Vector2 size);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Renderer_RenderWindow")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void RendererRenderwindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
+	public unsafe delegate void RendererRenderwindow(ImGuiViewport* vp, void* renderArg);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Renderer_SwapBuffers")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void RendererSwapbuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
+	public unsafe delegate void RendererSwapbuffers(ImGuiViewport* vp, void* renderArg);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "SizeCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void SizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] ImGuiSizeCallbackData* data);
+	public unsafe delegate void SizeCallback();
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ClearAllFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ClearAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
+	public unsafe delegate void ClearAllFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ReadInitFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ReadInitFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
+	public unsafe delegate void ReadInitFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ReadOpenFn")]
-	[return: NativeName(NativeNameType.Type, "void*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* ReadOpenFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
+	public unsafe delegate void* ReadOpenFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler, byte* name);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ReadLineFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ReadLineFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "entry")] [NativeName(NativeNameType.Type, "void*")] void* entry, [NativeName(NativeNameType.Param, "line")] [NativeName(NativeNameType.Type, "const char*")] byte* line);
+	public unsafe delegate void ReadLineFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler, void* entry, byte* line);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ApplyAllFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ApplyAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
+	public unsafe delegate void ApplyAllFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "WriteAllFn")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void WriteAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* outBuf);
+	public unsafe delegate void WriteAllFn(ImGuiContext* ctx, ImGuiSettingsHandler* handler, ImGuiTextBuffer* outBuf);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "Callback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void Callback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] ImGuiContextHook* hook);
+	public unsafe delegate void Callback();
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImDrawCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ImDrawCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] ImDrawList* parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] ImDrawCmd* cmd);
+	public unsafe delegate int ImGuiInputTextCallback(ImGuiInputTextCallbackData* data);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiSizeCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ImGuiSizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] ImGuiSizeCallbackData* data);
+	public unsafe delegate void ImGuiSizeCallback(ImGuiSizeCallbackData* data);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiContextHookCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ImGuiContextHookCallback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] ImGuiContextHook* hook);
+	public unsafe delegate void* ImGuiMemAllocFunc(ulong sz, void* userData);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiInputTextCallback")]
-	[return: NativeName(NativeNameType.Type, "int")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate int ImGuiInputTextCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiInputTextCallbackData*")] ImGuiInputTextCallbackData* data);
+	public unsafe delegate void ImGuiMemFreeFunc(void* ptr, void* userData);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiMemAllocFunc")]
-	[return: NativeName(NativeNameType.Type, "void*")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* ImGuiMemAllocFunc([NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] nuint sz, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
+	public unsafe delegate void ImDrawCallback(ImDrawList* parentList, ImDrawCmd* cmd);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiMemFreeFunc")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ImGuiMemFreeFunc([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
+	public unsafe delegate void ImGuiErrorLogCallback(void* userData, byte* fmt);
 
 	/// <summary>
 	/// To be documented.
 	/// </summary>
-	[NativeName(NativeNameType.Delegate, "ImGuiErrorLogCallback")]
-	[return: NativeName(NativeNameType.Type, "void")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void ImGuiErrorLogCallback([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
+	public unsafe delegate void ImGuiContextHookCallback(ImGuiContext* ctx, ImGuiContextHook* hook);
 
 }

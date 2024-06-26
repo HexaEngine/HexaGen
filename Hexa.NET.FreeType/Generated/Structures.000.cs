@@ -2284,4 +2284,2765 @@ namespace Hexa.NET.FreeType
 
 	}
 
+	[NativeName(NativeNameType.StructOrClass, "FT_Glyph_Class_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTGlyphClass
+	{
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_GlyphRec<br/>
+	/// <br/>
+	/// :<br/>
+	/// The root glyph structure contains a given glyph image plus its advance<br/>
+	/// width in 16.16 fixed-point format.<br/>
+	/// <br/>
+	/// :<br/>
+	/// library ::<br/>
+	/// A handle to the FreeType library object.<br/>
+	/// clazz ::<br/>
+	/// A pointer to the glyph's class.  Private.<br/>
+	/// format ::<br/>
+	/// The format of the glyph's image.<br/>
+	/// advance ::<br/>
+	/// A 16.16 vector that gives the glyph's advance width.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_GlyphRec_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTGlyphRec
+	{
+		[NativeName(NativeNameType.Field, "library")]
+		[NativeName(NativeNameType.Type, "FT_Library")]
+		public FTLibrary Library;
+		[NativeName(NativeNameType.Field, "clazz")]
+		[NativeName(NativeNameType.Type, "const FT_Glyph_Class*")]
+		public unsafe FTGlyphClass* Clazz;
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "FT_Glyph_Format")]
+		public FTGlyphFormat Format;
+		[NativeName(NativeNameType.Field, "advance")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector Advance;
+
+		public unsafe FTGlyphRec(FTLibrary library = default, FTGlyphClass* clazz = default, FTGlyphFormat format = default, FTVector advance = default)
+		{
+			Library = library;
+			Clazz = clazz;
+			Format = format;
+			Advance = advance;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_BitmapGlyphRec<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure used for bitmap glyph images.  This really is a<br/>
+	/// 'sub-class' of <br/>
+	/// _GlyphRec.<br/>
+	/// <br/>
+	/// :<br/>
+	/// root ::<br/>
+	/// The root fields of <br/>
+	/// _Glyph.<br/>
+	/// left ::<br/>
+	/// The left-side bearing, i.e., the horizontal distance from the<br/>
+	/// current pen position to the left border of the glyph bitmap.<br/>
+	/// top ::<br/>
+	/// The top-side bearing, i.e., the vertical distance from the current<br/>
+	/// pen position to the top border of the glyph bitmap.  This distance<br/>
+	/// is positive for upwards~y!<br/>
+	/// bitmap ::<br/>
+	/// A descriptor for the bitmap.<br/>
+	/// <br/>
+	/// The corresponding pixel buffer is always owned by <br/>
+	/// _BitmapGlyph and<br/>
+	/// is thus created and destroyed with it.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_BitmapGlyphRec_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTBitmapGlyphRec
+	{
+		[NativeName(NativeNameType.Field, "root")]
+		[NativeName(NativeNameType.Type, "FT_GlyphRec")]
+		public FTGlyphRec Root;
+		[NativeName(NativeNameType.Field, "left")]
+		[NativeName(NativeNameType.Type, "FT_Int")]
+		public int Left;
+		[NativeName(NativeNameType.Field, "top")]
+		[NativeName(NativeNameType.Type, "FT_Int")]
+		public int Top;
+		[NativeName(NativeNameType.Field, "bitmap")]
+		[NativeName(NativeNameType.Type, "FT_Bitmap")]
+		public FTBitmap Bitmap;
+
+		public unsafe FTBitmapGlyphRec(FTGlyphRec root = default, int left = default, int top = default, FTBitmap bitmap = default)
+		{
+			Root = root;
+			Left = left;
+			Top = top;
+			Bitmap = bitmap;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_OutlineGlyphRec<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure used for outline (vectorial) glyph images.  This really is<br/>
+	/// a 'sub-class' of <br/>
+	/// _GlyphRec.<br/>
+	/// <br/>
+	/// :<br/>
+	/// root ::<br/>
+	/// The root <br/>
+	/// _Glyph fields.<br/>
+	/// outline ::<br/>
+	/// A descriptor for the outline.<br/>
+	/// <br/>
+	/// As the outline is extracted from a glyph slot, its coordinates are<br/>
+	/// expressed normally in 26.6 pixels, unless the flag <br/>
+	/// _LOAD_NO_SCALE<br/>
+	/// was used in <br/>
+	/// _Load_Glyph or <br/>
+	/// _Load_Char.<br/>
+	/// The outline's tables are always owned by the object and are destroyed<br/>
+	/// with it.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_OutlineGlyphRec_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTOutlineGlyphRec
+	{
+		[NativeName(NativeNameType.Field, "root")]
+		[NativeName(NativeNameType.Type, "FT_GlyphRec")]
+		public FTGlyphRec Root;
+		[NativeName(NativeNameType.Field, "outline")]
+		[NativeName(NativeNameType.Type, "FT_Outline")]
+		public FTOutline Outline;
+
+		public unsafe FTOutlineGlyphRec(FTGlyphRec root = default, FTOutline outline = default)
+		{
+			Root = root;
+			Outline = outline;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_SvgGlyphRec<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure used for OT-SVG glyphs.  This is a 'sub-class' of<br/>
+	/// <br/>
+	/// _GlyphRec.<br/>
+	/// <br/>
+	/// :<br/>
+	/// root ::<br/>
+	/// The root <br/>
+	/// _GlyphRec fields.<br/>
+	/// svg_document ::<br/>
+	/// A pointer to the SVG document.<br/>
+	/// svg_document_length ::<br/>
+	/// The length of `svg_document`.<br/>
+	/// glyph_index ::<br/>
+	/// The index of the glyph to be rendered.<br/>
+	/// metrics ::<br/>
+	/// A metrics object storing the size information.<br/>
+	/// units_per_EM ::<br/>
+	/// The size of the EM square.<br/>
+	/// start_glyph_id ::<br/>
+	/// The first glyph ID in the glyph range covered by this document.<br/>
+	/// end_glyph_id ::<br/>
+	/// The last glyph ID in the glyph range covered by this document.<br/>
+	/// transform ::<br/>
+	/// A 2x2 transformation matrix to apply to the glyph while rendering<br/>
+	/// it.<br/>
+	/// delta ::<br/>
+	/// Translation to apply to the glyph while rendering.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_SvgGlyphRec_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTSvgGlyphRec
+	{
+		[NativeName(NativeNameType.Field, "root")]
+		[NativeName(NativeNameType.Type, "FT_GlyphRec")]
+		public FTGlyphRec Root;
+		[NativeName(NativeNameType.Field, "svg_document")]
+		[NativeName(NativeNameType.Type, "FT_Byte*")]
+		public unsafe byte* SvgDocument;
+		[NativeName(NativeNameType.Field, "svg_document_length")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint SvgDocumentLength;
+		[NativeName(NativeNameType.Field, "glyph_index")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint GlyphIndex;
+		[NativeName(NativeNameType.Field, "metrics")]
+		[NativeName(NativeNameType.Type, "FT_Size_Metrics")]
+		public FTSizeMetrics Metrics;
+		[NativeName(NativeNameType.Field, "units_per_EM")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UnitsPerEM;
+		[NativeName(NativeNameType.Field, "start_glyph_id")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort StartGlyphId;
+		[NativeName(NativeNameType.Field, "end_glyph_id")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort EndGlyphId;
+		[NativeName(NativeNameType.Field, "transform")]
+		[NativeName(NativeNameType.Type, "FT_Matrix")]
+		public FTMatrix Transform;
+		[NativeName(NativeNameType.Field, "delta")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector Delta;
+
+		public unsafe FTSvgGlyphRec(FTGlyphRec root = default, byte* svgDocument = default, uint svgDocumentLength = default, uint glyphIndex = default, FTSizeMetrics metrics = default, ushort unitsPerEm = default, ushort startGlyphId = default, ushort endGlyphId = default, FTMatrix transform = default, FTVector delta = default)
+		{
+			Root = root;
+			SvgDocument = svgDocument;
+			SvgDocumentLength = svgDocumentLength;
+			GlyphIndex = glyphIndex;
+			Metrics = metrics;
+			UnitsPerEM = unitsPerEm;
+			StartGlyphId = startGlyphId;
+			EndGlyphId = endGlyphId;
+			Transform = transform;
+			Delta = delta;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_Color<br/>
+	/// <br/>
+	/// :<br/>
+	/// This structure models a BGRA color value of a 'CPAL' palette entry.<br/>
+	/// The used color space is sRGB; the colors are not pre-multiplied, and<br/>
+	/// alpha values must be explicitly set.<br/>
+	/// <br/>
+	/// :<br/>
+	/// blue ::<br/>
+	/// Blue value.<br/>
+	/// green ::<br/>
+	/// Green value.<br/>
+	/// red ::<br/>
+	/// Red value.<br/>
+	/// alpha ::<br/>
+	/// Alpha value, giving the red, green, and blue color's opacity.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_Color_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTColor
+	{
+		[NativeName(NativeNameType.Field, "blue")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte Blue;
+		[NativeName(NativeNameType.Field, "green")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte Green;
+		[NativeName(NativeNameType.Field, "red")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte Red;
+		[NativeName(NativeNameType.Field, "alpha")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte Alpha;
+
+		public unsafe FTColor(byte blue = default, byte green = default, byte red = default, byte alpha = default)
+		{
+			Blue = blue;
+			Green = green;
+			Red = red;
+			Alpha = alpha;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_Palette_Data<br/>
+	/// <br/>
+	/// :<br/>
+	/// This structure holds the data of the 'CPAL' table.<br/>
+	/// <br/>
+	/// :<br/>
+	/// num_palettes ::<br/>
+	/// The number of palettes.<br/>
+	/// palette_name_ids ::<br/>
+	/// An optional read-only array of palette name IDs with `num_palettes`<br/>
+	/// elements, corresponding to entries like 'dark' or 'light' in the<br/>
+	/// font's 'name' table.<br/>
+	/// An empty name ID in the 'CPAL' table gets represented as value<br/>
+	/// 0xFFFF.<br/>
+	/// `NULL` if the font's 'CPAL' table doesn't contain appropriate data.<br/>
+	/// palette_flags ::<br/>
+	/// An optional read-only array of palette flags with `num_palettes`<br/>
+	/// elements.  Possible values are an ORed combination of<br/>
+	/// <br/>
+	/// _PALETTE_FOR_LIGHT_BACKGROUND and<br/>
+	/// <br/>
+	/// _PALETTE_FOR_DARK_BACKGROUND.<br/>
+	/// `NULL` if the font's 'CPAL' table doesn't contain appropriate data.<br/>
+	/// num_palette_entries ::<br/>
+	/// The number of entries in a single palette.  All palettes have the<br/>
+	/// same size.<br/>
+	/// palette_entry_name_ids ::<br/>
+	/// An optional read-only array of palette entry name IDs with<br/>
+	/// `num_palette_entries`.  In each palette, entries with the same index<br/>
+	/// have the same function.  For example, index~0 might correspond to<br/>
+	/// string 'outline' in the font's 'name' table to indicate that this<br/>
+	/// palette entry is used for outlines, index~1 might correspond to<br/>
+	/// 'fill' to indicate the filling color palette entry, etc.<br/>
+	/// An empty entry name ID in the 'CPAL' table gets represented as value<br/>
+	/// 0xFFFF.<br/>
+	/// `NULL` if the font's 'CPAL' table doesn't contain appropriate data.<br/>
+	/// <br/>
+	/// Use function <br/>
+	/// _Palette_Select to get the colors associated with a<br/>
+	/// palette entry.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_Palette_Data_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaletteData
+	{
+		[NativeName(NativeNameType.Field, "num_palettes")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort NumPalettes;
+		[NativeName(NativeNameType.Field, "palette_name_ids")]
+		[NativeName(NativeNameType.Type, "const FT_UShort*")]
+		public unsafe ushort* PaletteNameIds;
+		[NativeName(NativeNameType.Field, "palette_flags")]
+		[NativeName(NativeNameType.Type, "const FT_UShort*")]
+		public unsafe ushort* PaletteFlags;
+		[NativeName(NativeNameType.Field, "num_palette_entries")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort NumPaletteEntries;
+		[NativeName(NativeNameType.Field, "palette_entry_name_ids")]
+		[NativeName(NativeNameType.Type, "const FT_UShort*")]
+		public unsafe ushort* PaletteEntryNameIds;
+
+		public unsafe FTPaletteData(ushort numPalettes = default, ushort* paletteNameIds = default, ushort* paletteFlags = default, ushort numPaletteEntries = default, ushort* paletteEntryNameIds = default)
+		{
+			NumPalettes = numPalettes;
+			PaletteNameIds = paletteNameIds;
+			PaletteFlags = paletteFlags;
+			NumPaletteEntries = numPaletteEntries;
+			PaletteEntryNameIds = paletteEntryNameIds;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_LayerIterator<br/>
+	/// <br/>
+	/// :<br/>
+	/// This iterator object is needed for <br/>
+	/// _Get_Color_Glyph_Layer.<br/>
+	/// <br/>
+	/// :<br/>
+	/// num_layers ::<br/>
+	/// The number of glyph layers for the requested glyph index.  Will be<br/>
+	/// set by <br/>
+	/// _Get_Color_Glyph_Layer.<br/>
+	/// layer ::<br/>
+	/// The current layer.  Will be set by <br/>
+	/// _Get_Color_Glyph_Layer.<br/>
+	/// p ::<br/>
+	/// An opaque pointer into 'COLR' table data.  The caller must set this<br/>
+	/// to `NULL` before the first call of <br/>
+	/// _Get_Color_Glyph_Layer.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_LayerIterator_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTLayerIterator
+	{
+		[NativeName(NativeNameType.Field, "num_layers")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint NumLayers;
+		[NativeName(NativeNameType.Field, "layer")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint Layer;
+		[NativeName(NativeNameType.Field, "p")]
+		[NativeName(NativeNameType.Type, "FT_Byte*")]
+		public unsafe byte* P;
+
+		public unsafe FTLayerIterator(uint numLayers = default, uint layer = default, byte* p = default)
+		{
+			NumLayers = numLayers;
+			Layer = layer;
+			P = p;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_ColorStopIterator<br/>
+	/// <br/>
+	/// :<br/>
+	/// This iterator object is needed for <br/>
+	/// _Get_Colorline_Stops.  It keeps<br/>
+	/// state while iterating over the stops of an <br/>
+	/// _ColorLine, representing<br/>
+	/// the `ColorLine` struct of the v1 extensions to 'COLR', see<br/>
+	/// 'https://github.com/googlefonts/colr-gradients-spec'.  Do not manually<br/>
+	/// modify fields of this iterator.<br/>
+	/// <br/>
+	/// :<br/>
+	/// num_color_stops ::<br/>
+	/// The number of color stops for the requested glyph index.  Set by<br/>
+	/// <br/>
+	/// _Get_Paint.<br/>
+	/// current_color_stop ::<br/>
+	/// The current color stop.  Set by <br/>
+	/// _Get_Colorline_Stops.<br/>
+	/// p ::<br/>
+	/// An opaque pointer into 'COLR' table data.  Set by <br/>
+	/// _Get_Paint.<br/>
+	/// Updated by <br/>
+	/// _Get_Colorline_Stops.<br/>
+	/// read_variable ::<br/>
+	/// A boolean keeping track of whether variable color lines are to be<br/>
+	/// read.  Set by <br/>
+	/// _Get_Paint.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_ColorStopIterator_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTColorStopIterator
+	{
+		[NativeName(NativeNameType.Field, "num_color_stops")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint NumColorStops;
+		[NativeName(NativeNameType.Field, "current_color_stop")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint CurrentColorStop;
+		[NativeName(NativeNameType.Field, "p")]
+		[NativeName(NativeNameType.Type, "FT_Byte*")]
+		public unsafe byte* P;
+		[NativeName(NativeNameType.Field, "read_variable")]
+		[NativeName(NativeNameType.Type, "FT_Bool")]
+		public byte ReadVariable;
+
+		public unsafe FTColorStopIterator(uint numColorStops = default, uint currentColorStop = default, byte* p = default, byte readVariable = default)
+		{
+			NumColorStops = numColorStops;
+			CurrentColorStop = currentColorStop;
+			P = p;
+			ReadVariable = readVariable;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_ColorIndex<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `ColorIndex` value of the 'COLR' v1<br/>
+	/// extensions, see 'https://github.com/googlefonts/colr-gradients-spec'.<br/>
+	/// <br/>
+	/// :<br/>
+	/// palette_index ::<br/>
+	/// The palette index into a 'CPAL' palette.<br/>
+	/// alpha ::<br/>
+	/// Alpha transparency value multiplied with the value from 'CPAL'.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_ColorIndex_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTColorIndex
+	{
+		[NativeName(NativeNameType.Field, "palette_index")]
+		[NativeName(NativeNameType.Type, "FT_UInt16")]
+		public ushort PaletteIndex;
+		[NativeName(NativeNameType.Field, "alpha")]
+		[NativeName(NativeNameType.Type, "FT_F2Dot14")]
+		public short Alpha;
+
+		public unsafe FTColorIndex(ushort paletteIndex = default, short alpha = default)
+		{
+			PaletteIndex = paletteIndex;
+			Alpha = alpha;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_ColorStop<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `ColorStop` value of the 'COLR' v1<br/>
+	/// extensions, see 'https://github.com/googlefonts/colr-gradients-spec'.<br/>
+	/// <br/>
+	/// :<br/>
+	/// stop_offset ::<br/>
+	/// The stop offset along the gradient, expressed as a 16.16 fixed-point<br/>
+	/// coordinate.<br/>
+	/// color ::<br/>
+	/// The color information for this stop, see <br/>
+	/// _ColorIndex.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_ColorStop_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTColorStop
+	{
+		[NativeName(NativeNameType.Field, "stop_offset")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int StopOffset;
+		[NativeName(NativeNameType.Field, "color")]
+		[NativeName(NativeNameType.Type, "FT_ColorIndex")]
+		public FTColorIndex Color;
+
+		public unsafe FTColorStop(int stopOffset = default, FTColorIndex color = default)
+		{
+			StopOffset = stopOffset;
+			Color = color;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_ColorLine<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `ColorLine` value of the 'COLR' v1<br/>
+	/// extensions, see 'https://github.com/googlefonts/colr-gradients-spec'.<br/>
+	/// It describes a list of color stops along the defined gradient.<br/>
+	/// <br/>
+	/// :<br/>
+	/// extend ::<br/>
+	/// The extend mode at the outer boundaries, see <br/>
+	/// _PaintExtend.<br/>
+	/// color_stop_iterator ::<br/>
+	/// The <br/>
+	/// _ColorStopIterator used to enumerate and retrieve the<br/>
+	/// actual <br/>
+	/// _ColorStop's.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_ColorLine_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTColorLine
+	{
+		[NativeName(NativeNameType.Field, "extend")]
+		[NativeName(NativeNameType.Type, "FT_PaintExtend")]
+		public FTPaintExtend Extend;
+		[NativeName(NativeNameType.Field, "color_stop_iterator")]
+		[NativeName(NativeNameType.Type, "FT_ColorStopIterator")]
+		public FTColorStopIterator ColorStopIterator;
+
+		public unsafe FTColorLine(FTPaintExtend extend = default, FTColorStopIterator colorStopIterator = default)
+		{
+			Extend = extend;
+			ColorStopIterator = colorStopIterator;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_Affine23<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure used to store a 2x3 matrix.  Coefficients are in<br/>
+	/// 16.16 fixed-point format.  The computation performed is<br/>
+	/// ```<br/>
+	/// x' = x*xx + y*xy + dx<br/>
+	/// y' = x*yx + y*yy + dy<br/>
+	/// ```<br/>
+	/// <br/>
+	/// :<br/>
+	/// xx ::<br/>
+	/// Matrix coefficient.<br/>
+	/// xy ::<br/>
+	/// Matrix coefficient.<br/>
+	/// dx ::<br/>
+	/// x translation.<br/>
+	/// yx ::<br/>
+	/// Matrix coefficient.<br/>
+	/// yy ::<br/>
+	/// Matrix coefficient.<br/>
+	/// dy ::<br/>
+	/// y translation.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_Affine_23_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTAffine23
+	{
+		[NativeName(NativeNameType.Field, "xx")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Xx;
+		[NativeName(NativeNameType.Field, "xy")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Xy;
+		[NativeName(NativeNameType.Field, "dx")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Dx;
+		[NativeName(NativeNameType.Field, "yx")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Yx;
+		[NativeName(NativeNameType.Field, "yy")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Yy;
+		[NativeName(NativeNameType.Field, "dy")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Dy;
+
+		public unsafe FTAffine23(int xx = default, int xy = default, int dx = default, int yx = default, int yy = default, int dy = default)
+		{
+			Xx = xx;
+			Xy = xy;
+			Dx = dx;
+			Yx = yx;
+			Yy = yy;
+			Dy = dy;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_OpaquePaint<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing an offset to a `Paint` value stored in any<br/>
+	/// of the paint tables of a 'COLR' v1 font.  Compare Offset<br/>
+	/// <<br/>
+	/// 24> there.<br/>
+	/// When 'COLR' v1 paint tables represented by FreeType objects such as<br/>
+	/// <br/>
+	/// _PaintColrLayers, <br/>
+	/// _PaintComposite, or <br/>
+	/// _PaintTransform<br/>
+	/// reference downstream nested paint tables, we do not immediately<br/>
+	/// retrieve them but encapsulate their location in this type.  Use<br/>
+	/// <br/>
+	/// _Get_Paint to retrieve the actual <br/>
+	/// _COLR_Paint object that<br/>
+	/// describes the details of the respective paint table.<br/>
+	/// <br/>
+	/// :<br/>
+	/// p ::<br/>
+	/// An internal offset to a Paint table, needs to be set to NULL before<br/>
+	/// passing this struct as an argument to <br/>
+	/// _Get_Paint.<br/>
+	/// insert_root_transform ::<br/>
+	/// An internal boolean to track whether an initial root transform is<br/>
+	/// to be provided.  Do not set this value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_Opaque_Paint_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTOpaquePaint
+	{
+		[NativeName(NativeNameType.Field, "p")]
+		[NativeName(NativeNameType.Type, "FT_Byte*")]
+		public unsafe byte* P;
+		[NativeName(NativeNameType.Field, "insert_root_transform")]
+		[NativeName(NativeNameType.Type, "FT_Bool")]
+		public byte InsertRootTransform;
+
+		public unsafe FTOpaquePaint(byte* p = default, byte insertRootTransform = default)
+		{
+			P = p;
+			InsertRootTransform = insertRootTransform;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintColrLayers<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `PaintColrLayers` table of a 'COLR' v1<br/>
+	/// font.  This table describes a set of layers that are to be composited<br/>
+	/// with composite mode `FT_COLR_COMPOSITE_SRC_OVER`.  The return value<br/>
+	/// of this function is an <br/>
+	/// _LayerIterator initialized so that it can<br/>
+	/// be used with <br/>
+	/// _Get_Paint_Layers to retrieve the <br/>
+	/// _OpaquePaint<br/>
+	/// objects as references to each layer.<br/>
+	/// <br/>
+	/// :<br/>
+	/// layer_iterator ::<br/>
+	/// The layer iterator that describes the layers of this paint.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintColrLayers_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintColrLayers
+	{
+		[NativeName(NativeNameType.Field, "layer_iterator")]
+		[NativeName(NativeNameType.Type, "FT_LayerIterator")]
+		public FTLayerIterator LayerIterator;
+
+		public unsafe FTPaintColrLayers(FTLayerIterator layerIterator = default)
+		{
+			LayerIterator = layerIterator;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintSolid<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `PaintSolid` value of the 'COLR' v1<br/>
+	/// extensions, see 'https://github.com/googlefonts/colr-gradients-spec'.<br/>
+	/// Using a `PaintSolid` value means that the glyph layer filled with<br/>
+	/// this paint is solid-colored and does not contain a gradient.<br/>
+	/// <br/>
+	/// :<br/>
+	/// color ::<br/>
+	/// The color information for this solid paint, see <br/>
+	/// _ColorIndex.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintSolid_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintSolid
+	{
+		[NativeName(NativeNameType.Field, "color")]
+		[NativeName(NativeNameType.Type, "FT_ColorIndex")]
+		public FTColorIndex Color;
+
+		public unsafe FTPaintSolid(FTColorIndex color = default)
+		{
+			Color = color;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintLinearGradient<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `PaintLinearGradient` value of the 'COLR'<br/>
+	/// v1 extensions, see<br/>
+	/// 'https://github.com/googlefonts/colr-gradients-spec'.  The glyph<br/>
+	/// layer filled with this paint is drawn filled with a linear gradient.<br/>
+	/// <br/>
+	/// :<br/>
+	/// colorline ::<br/>
+	/// The <br/>
+	/// _ColorLine information for this paint, i.e., the list of<br/>
+	/// color stops along the gradient.<br/>
+	/// p0 ::<br/>
+	/// The starting point of the gradient definition in font units<br/>
+	/// represented as a 16.16 fixed-point `FT_Vector`.<br/>
+	/// p1 ::<br/>
+	/// The end point of the gradient definition in font units<br/>
+	/// represented as a 16.16 fixed-point `FT_Vector`.<br/>
+	/// p2 ::<br/>
+	/// Optional point~p2 to rotate the gradient in font units<br/>
+	/// represented as a 16.16 fixed-point `FT_Vector`.<br/>
+	/// Otherwise equal to~p0.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintLinearGradient_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintLinearGradient
+	{
+		[NativeName(NativeNameType.Field, "colorline")]
+		[NativeName(NativeNameType.Type, "FT_ColorLine")]
+		public FTColorLine Colorline;
+		/// <summary>
+		/// TODO: Potentially expose those as x0, y0 etc. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "p0")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector P0;
+
+		[NativeName(NativeNameType.Field, "p1")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector P1;
+		[NativeName(NativeNameType.Field, "p2")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector P2;
+
+		public unsafe FTPaintLinearGradient(FTColorLine colorline = default, FTVector p0 = default, FTVector p1 = default, FTVector p2 = default)
+		{
+			Colorline = colorline;
+			P0 = p0;
+			P1 = p1;
+			P2 = p2;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintRadialGradient<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `PaintRadialGradient` value of the 'COLR'<br/>
+	/// v1 extensions, see<br/>
+	/// 'https://github.com/googlefonts/colr-gradients-spec'.  The glyph<br/>
+	/// layer filled with this paint is drawn filled with a radial gradient.<br/>
+	/// <br/>
+	/// :<br/>
+	/// colorline ::<br/>
+	/// The <br/>
+	/// _ColorLine information for this paint, i.e., the list of<br/>
+	/// color stops along the gradient.<br/>
+	/// c0 ::<br/>
+	/// The center of the starting point of the radial gradient in font<br/>
+	/// units represented as a 16.16 fixed-point `FT_Vector`.<br/>
+	/// r0 ::<br/>
+	/// The radius of the starting circle of the radial gradient in font<br/>
+	/// units represented as a 16.16 fixed-point value.<br/>
+	/// c1 ::<br/>
+	/// The center of the end point of the radial gradient in font units<br/>
+	/// represented as a 16.16 fixed-point `FT_Vector`.<br/>
+	/// r1 ::<br/>
+	/// The radius of the end circle of the radial gradient in font<br/>
+	/// units represented as a 16.16 fixed-point value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintRadialGradient_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintRadialGradient
+	{
+		[NativeName(NativeNameType.Field, "colorline")]
+		[NativeName(NativeNameType.Type, "FT_ColorLine")]
+		public FTColorLine Colorline;
+		[NativeName(NativeNameType.Field, "c0")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector C0;
+		[NativeName(NativeNameType.Field, "r0")]
+		[NativeName(NativeNameType.Type, "FT_Pos")]
+		public int R0;
+		[NativeName(NativeNameType.Field, "c1")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector C1;
+		[NativeName(NativeNameType.Field, "r1")]
+		[NativeName(NativeNameType.Type, "FT_Pos")]
+		public int R1;
+
+		public unsafe FTPaintRadialGradient(FTColorLine colorline = default, FTVector c0 = default, int r0 = default, FTVector c1 = default, int r1 = default)
+		{
+			Colorline = colorline;
+			C0 = c0;
+			R0 = r0;
+			C1 = c1;
+			R1 = r1;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintSweepGradient<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a `PaintSweepGradient` value of the 'COLR'<br/>
+	/// v1 extensions, see<br/>
+	/// 'https://github.com/googlefonts/colr-gradients-spec'.  The glyph<br/>
+	/// layer filled with this paint is drawn filled with a sweep gradient<br/>
+	/// from `start_angle` to `end_angle`.<br/>
+	/// <br/>
+	/// :<br/>
+	/// colorline ::<br/>
+	/// The <br/>
+	/// _ColorLine information for this paint, i.e., the list of<br/>
+	/// color stops along the gradient.<br/>
+	/// center ::<br/>
+	/// The center of the sweep gradient in font units represented as a<br/>
+	/// vector of 16.16 fixed-point values.<br/>
+	/// start_angle ::<br/>
+	/// The start angle of the sweep gradient in 16.16 fixed-point<br/>
+	/// format specifying degrees divided by 180.0 (as in the<br/>
+	/// spec).  Multiply by 180.0f to receive degrees value.  Values are<br/>
+	/// given counter-clockwise, starting from the (positive) y~axis.<br/>
+	/// end_angle ::<br/>
+	/// The end angle of the sweep gradient in 16.16 fixed-point<br/>
+	/// format specifying degrees divided by 180.0 (as in the<br/>
+	/// spec).  Multiply by 180.0f to receive degrees value.  Values are<br/>
+	/// given counter-clockwise, starting from the (positive) y~axis.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintSweepGradient_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintSweepGradient
+	{
+		[NativeName(NativeNameType.Field, "colorline")]
+		[NativeName(NativeNameType.Type, "FT_ColorLine")]
+		public FTColorLine Colorline;
+		[NativeName(NativeNameType.Field, "center")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector Center;
+		[NativeName(NativeNameType.Field, "start_angle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int StartAngle;
+		[NativeName(NativeNameType.Field, "end_angle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int EndAngle;
+
+		public unsafe FTPaintSweepGradient(FTColorLine colorline = default, FTVector center = default, int startAngle = default, int endAngle = default)
+		{
+			Colorline = colorline;
+			Center = center;
+			StartAngle = startAngle;
+			EndAngle = endAngle;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintGlyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintGlyph` paint table.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An opaque paint object pointing to a `Paint` table that serves as<br/>
+	/// the fill for the glyph ID.<br/>
+	/// glyphID ::<br/>
+	/// The glyph ID from the 'glyf' table, which serves as the contour<br/>
+	/// information that is filled with paint.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintGlyph_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintGlyph
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "glyphID")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint GlyphID;
+
+		public unsafe FTPaintGlyph(FTOpaquePaint paint = default, uint glyphID = default)
+		{
+			Paint = paint;
+			GlyphID = glyphID;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintColrGlyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintColorGlyph` paint table.<br/>
+	/// <br/>
+	/// :<br/>
+	/// glyphID ::<br/>
+	/// The glyph ID from the `BaseGlyphV1List` table that is drawn for<br/>
+	/// this paint.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintColrGlyph_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintColrGlyph
+	{
+		[NativeName(NativeNameType.Field, "glyphID")]
+		[NativeName(NativeNameType.Type, "FT_UInt")]
+		public uint GlyphID;
+
+		public unsafe FTPaintColrGlyph(uint glyphID = default)
+		{
+			GlyphID = glyphID;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintTransform<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintTransform` paint table.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An opaque paint that is subject to being transformed.<br/>
+	/// affine ::<br/>
+	/// A 2x3 transformation matrix in <br/>
+	/// _Affine23 format containing<br/>
+	/// 16.16 fixed-point values.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintTransform_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintTransform
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "affine")]
+		[NativeName(NativeNameType.Type, "FT_Affine23")]
+		public FTAffine23 Affine;
+
+		public unsafe FTPaintTransform(FTOpaquePaint paint = default, FTAffine23 affine = default)
+		{
+			Paint = paint;
+			Affine = affine;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintTranslate<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintTranslate` paint table.<br/>
+	/// Used for translating downstream paints by a given x and y~delta.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the paint that is to be<br/>
+	/// rotated.<br/>
+	/// dx ::<br/>
+	/// Translation in x~direction in font units represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// dy ::<br/>
+	/// Translation in y~direction in font units represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintTranslate_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintTranslate
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "dx")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Dx;
+		[NativeName(NativeNameType.Field, "dy")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Dy;
+
+		public unsafe FTPaintTranslate(FTOpaquePaint paint = default, int dx = default, int dy = default)
+		{
+			Paint = paint;
+			Dx = dx;
+			Dy = dy;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintScale<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing all of the 'COLR' v1 'PaintScale*' paint<br/>
+	/// tables.  Used for scaling downstream paints by a given x and y~scale,<br/>
+	/// with a given center.  This structure is used for all 'PaintScale*'<br/>
+	/// types that are part of specification; fields of this structure are<br/>
+	/// filled accordingly.  If there is a center, the center values are set,<br/>
+	/// otherwise they are set to the zero coordinate.  If the source font<br/>
+	/// file has 'PaintScaleUniform*' set, the scale values are set<br/>
+	/// accordingly to the same value.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the paint that is to be<br/>
+	/// scaled.<br/>
+	/// scale_x ::<br/>
+	/// Scale factor in x~direction represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// scale_y ::<br/>
+	/// Scale factor in y~direction represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// center_x ::<br/>
+	/// x~coordinate of center point to scale from represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// center_y ::<br/>
+	/// y~coordinate of center point to scale from represented as a<br/>
+	/// 16.16 fixed-point value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintScale_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintScale
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "scale_x")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int ScaleX;
+		[NativeName(NativeNameType.Field, "scale_y")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int ScaleY;
+		[NativeName(NativeNameType.Field, "center_x")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterX;
+		[NativeName(NativeNameType.Field, "center_y")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterY;
+
+		public unsafe FTPaintScale(FTOpaquePaint paint = default, int scaleX = default, int scaleY = default, int centerX = default, int centerY = default)
+		{
+			Paint = paint;
+			ScaleX = scaleX;
+			ScaleY = scaleY;
+			CenterX = centerX;
+			CenterY = centerY;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintRotate<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintRotate` paint table.  Used<br/>
+	/// for rotating downstream paints with a given center and angle.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the paint that is to be<br/>
+	/// rotated.<br/>
+	/// angle ::<br/>
+	/// The rotation angle that is to be applied in degrees divided by<br/>
+	/// 180.0 (as in the spec) represented as a 16.16 fixed-point<br/>
+	/// value.  Multiply by 180.0f to receive degrees value.<br/>
+	/// center_x ::<br/>
+	/// The x~coordinate of the pivot point of the rotation in font<br/>
+	/// units represented as a 16.16 fixed-point value.<br/>
+	/// center_y ::<br/>
+	/// The y~coordinate of the pivot point of the rotation in font<br/>
+	/// units represented as a 16.16 fixed-point value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintRotate_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintRotate
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "angle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Angle;
+		[NativeName(NativeNameType.Field, "center_x")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterX;
+		[NativeName(NativeNameType.Field, "center_y")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterY;
+
+		public unsafe FTPaintRotate(FTOpaquePaint paint = default, int angle = default, int centerX = default, int centerY = default)
+		{
+			Paint = paint;
+			Angle = angle;
+			CenterX = centerX;
+			CenterY = centerY;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintSkew<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintSkew` paint table.  Used<br/>
+	/// for skewing or shearing downstream paints by a given center and<br/>
+	/// angle.<br/>
+	/// <br/>
+	/// :<br/>
+	/// paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the paint that is to be<br/>
+	/// skewed.<br/>
+	/// x_skew_angle ::<br/>
+	/// The skewing angle in x~direction in degrees divided by 180.0<br/>
+	/// (as in the spec) represented as a 16.16 fixed-point<br/>
+	/// value. Multiply by 180.0f to receive degrees.<br/>
+	/// y_skew_angle ::<br/>
+	/// The skewing angle in y~direction in degrees divided by 180.0<br/>
+	/// (as in the spec) represented as a 16.16 fixed-point<br/>
+	/// value.  Multiply by 180.0f to receive degrees.<br/>
+	/// center_x ::<br/>
+	/// The x~coordinate of the pivot point of the skew in font units<br/>
+	/// represented as a 16.16 fixed-point value.<br/>
+	/// center_y ::<br/>
+	/// The y~coordinate of the pivot point of the skew in font units<br/>
+	/// represented as a 16.16 fixed-point value.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintSkew_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintSkew
+	{
+		[NativeName(NativeNameType.Field, "paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint Paint;
+		[NativeName(NativeNameType.Field, "x_skew_angle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int XSkewAngle;
+		[NativeName(NativeNameType.Field, "y_skew_angle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int YSkewAngle;
+		[NativeName(NativeNameType.Field, "center_x")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterX;
+		[NativeName(NativeNameType.Field, "center_y")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int CenterY;
+
+		public unsafe FTPaintSkew(FTOpaquePaint paint = default, int xSkewAngle = default, int ySkewAngle = default, int centerX = default, int centerY = default)
+		{
+			Paint = paint;
+			XSkewAngle = xSkewAngle;
+			YSkewAngle = ySkewAngle;
+			CenterX = centerX;
+			CenterY = centerY;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_PaintComposite<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 `PaintComposite` paint table.<br/>
+	/// Used for compositing two paints in a 'COLR' v1 directed acyclic graph.<br/>
+	/// <br/>
+	/// :<br/>
+	/// source_paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the source that is to be<br/>
+	/// composited.<br/>
+	/// composite_mode ::<br/>
+	/// An <br/>
+	/// _Composite_Mode enum value determining the composition<br/>
+	/// operation.<br/>
+	/// backdrop_paint ::<br/>
+	/// An <br/>
+	/// _OpaquePaint object referencing the backdrop paint that<br/>
+	/// `source_paint` is composited onto.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_PaintComposite_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTPaintComposite
+	{
+		[NativeName(NativeNameType.Field, "source_paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint SourcePaint;
+		[NativeName(NativeNameType.Field, "composite_mode")]
+		[NativeName(NativeNameType.Type, "FT_Composite_Mode")]
+		public FTCompositeMode CompositeMode;
+		[NativeName(NativeNameType.Field, "backdrop_paint")]
+		[NativeName(NativeNameType.Type, "FT_OpaquePaint")]
+		public FTOpaquePaint BackdropPaint;
+
+		public unsafe FTPaintComposite(FTOpaquePaint sourcePaint = default, FTCompositeMode compositeMode = default, FTOpaquePaint backdropPaint = default)
+		{
+			SourcePaint = sourcePaint;
+			CompositeMode = compositeMode;
+			BackdropPaint = backdropPaint;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_COLR_Paint<br/>
+	/// <br/>
+	/// :<br/>
+	/// A union object representing format and details of a paint table of a<br/>
+	/// 'COLR' v1 font, see<br/>
+	/// 'https://github.com/googlefonts/colr-gradients-spec'.  Use<br/>
+	/// <br/>
+	/// _Get_Paint to retrieve a <br/>
+	/// _COLR_Paint for an <br/>
+	/// _OpaquePaint<br/>
+	/// object.<br/>
+	/// <br/>
+	/// :<br/>
+	/// format ::<br/>
+	/// The gradient format for this Paint structure.<br/>
+	/// u ::<br/>
+	/// Union of all paint table types:<br/>
+	/// * <br/>
+	/// _PaintColrLayers<br/>
+	/// * <br/>
+	/// _PaintGlyph<br/>
+	/// * <br/>
+	/// _PaintSolid<br/>
+	/// * <br/>
+	/// _PaintLinearGradient<br/>
+	/// * <br/>
+	/// _PaintRadialGradient<br/>
+	/// * <br/>
+	/// _PaintSweepGradient<br/>
+	/// * <br/>
+	/// _PaintTransform<br/>
+	/// * <br/>
+	/// _PaintTranslate<br/>
+	/// * <br/>
+	/// _PaintRotate<br/>
+	/// * <br/>
+	/// _PaintSkew<br/>
+	/// * <br/>
+	/// _PaintComposite<br/>
+	/// * <br/>
+	/// _PaintColrGlyph<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_COLR_Paint_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTCOLRPaint
+	{
+		[NativeName(NativeNameType.StructOrClass, "")]
+		[StructLayout(LayoutKind.Explicit)]
+		public partial struct UUnion
+		{
+			[NativeName(NativeNameType.Field, "colr_layers")]
+			[NativeName(NativeNameType.Type, "FT_PaintColrLayers")]
+			[FieldOffset(0)]
+			public FTPaintColrLayers ColrLayers;
+			[NativeName(NativeNameType.Field, "glyph")]
+			[NativeName(NativeNameType.Type, "FT_PaintGlyph")]
+			[FieldOffset(0)]
+			public FTPaintGlyph Glyph;
+			[NativeName(NativeNameType.Field, "solid")]
+			[NativeName(NativeNameType.Type, "FT_PaintSolid")]
+			[FieldOffset(0)]
+			public FTPaintSolid Solid;
+			[NativeName(NativeNameType.Field, "linear_gradient")]
+			[NativeName(NativeNameType.Type, "FT_PaintLinearGradient")]
+			[FieldOffset(0)]
+			public FTPaintLinearGradient LinearGradient;
+			[NativeName(NativeNameType.Field, "radial_gradient")]
+			[NativeName(NativeNameType.Type, "FT_PaintRadialGradient")]
+			[FieldOffset(0)]
+			public FTPaintRadialGradient RadialGradient;
+			[NativeName(NativeNameType.Field, "sweep_gradient")]
+			[NativeName(NativeNameType.Type, "FT_PaintSweepGradient")]
+			[FieldOffset(0)]
+			public FTPaintSweepGradient SweepGradient;
+			[NativeName(NativeNameType.Field, "transform")]
+			[NativeName(NativeNameType.Type, "FT_PaintTransform")]
+			[FieldOffset(0)]
+			public FTPaintTransform Transform;
+			[NativeName(NativeNameType.Field, "translate")]
+			[NativeName(NativeNameType.Type, "FT_PaintTranslate")]
+			[FieldOffset(0)]
+			public FTPaintTranslate Translate;
+			[NativeName(NativeNameType.Field, "scale")]
+			[NativeName(NativeNameType.Type, "FT_PaintScale")]
+			[FieldOffset(0)]
+			public FTPaintScale Scale;
+			[NativeName(NativeNameType.Field, "rotate")]
+			[NativeName(NativeNameType.Type, "FT_PaintRotate")]
+			[FieldOffset(0)]
+			public FTPaintRotate Rotate;
+			[NativeName(NativeNameType.Field, "skew")]
+			[NativeName(NativeNameType.Type, "FT_PaintSkew")]
+			[FieldOffset(0)]
+			public FTPaintSkew Skew;
+			[NativeName(NativeNameType.Field, "composite")]
+			[NativeName(NativeNameType.Type, "FT_PaintComposite")]
+			[FieldOffset(0)]
+			public FTPaintComposite Composite;
+			[NativeName(NativeNameType.Field, "colr_glyph")]
+			[NativeName(NativeNameType.Type, "FT_PaintColrGlyph")]
+			[FieldOffset(0)]
+			public FTPaintColrGlyph ColrGlyph;
+
+			public unsafe UUnion(FTPaintColrLayers colrLayers = default, FTPaintGlyph glyph = default, FTPaintSolid solid = default, FTPaintLinearGradient linearGradient = default, FTPaintRadialGradient radialGradient = default, FTPaintSweepGradient sweepGradient = default, FTPaintTransform transform = default, FTPaintTranslate translate = default, FTPaintScale scale = default, FTPaintRotate rotate = default, FTPaintSkew skew = default, FTPaintComposite composite = default, FTPaintColrGlyph colrGlyph = default)
+			{
+				ColrLayers = colrLayers;
+				Glyph = glyph;
+				Solid = solid;
+				LinearGradient = linearGradient;
+				RadialGradient = radialGradient;
+				SweepGradient = sweepGradient;
+				Transform = transform;
+				Translate = translate;
+				Scale = scale;
+				Rotate = rotate;
+				Skew = skew;
+				Composite = composite;
+				ColrGlyph = colrGlyph;
+			}
+
+
+		}
+
+		[NativeName(NativeNameType.Field, "format")]
+		[NativeName(NativeNameType.Type, "FT_PaintFormat")]
+		public FTPaintFormat Format;
+		[NativeName(NativeNameType.Field, "u")]
+		[NativeName(NativeNameType.Type, "")]
+		public UUnion U;
+
+		public unsafe FTCOLRPaint(FTPaintFormat format = default, UUnion u = default)
+		{
+			Format = format;
+			U = u;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// FT_ClipBox<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure representing a 'COLR' v1 'ClipBox' table.  'COLR' v1<br/>
+	/// glyphs may optionally define a clip box for aiding allocation or<br/>
+	/// defining a maximum drawable region.  Use <br/>
+	/// _Get_Color_Glyph_ClipBox<br/>
+	/// to retrieve it.<br/>
+	/// <br/>
+	/// :<br/>
+	/// bottom_left ::<br/>
+	/// The bottom left corner of the clip box as an <br/>
+	/// _Vector with<br/>
+	/// fixed-point coordinates in 26.6 format.<br/>
+	/// top_left ::<br/>
+	/// The top left corner of the clip box as an <br/>
+	/// _Vector with<br/>
+	/// fixed-point coordinates in 26.6 format.<br/>
+	/// top_right ::<br/>
+	/// The top right corner of the clip box as an <br/>
+	/// _Vector with<br/>
+	/// fixed-point coordinates in 26.6 format.<br/>
+	/// bottom_right ::<br/>
+	/// The bottom right corner of the clip box as an <br/>
+	/// _Vector with<br/>
+	/// fixed-point coordinates in 26.6 format.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "FT_ClipBox_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct FTClipBox
+	{
+		[NativeName(NativeNameType.Field, "bottom_left")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector BottomLeft;
+		[NativeName(NativeNameType.Field, "top_left")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector TopLeft;
+		[NativeName(NativeNameType.Field, "top_right")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector TopRight;
+		[NativeName(NativeNameType.Field, "bottom_right")]
+		[NativeName(NativeNameType.Type, "FT_Vector")]
+		public FTVector BottomRight;
+
+		public unsafe FTClipBox(FTVector bottomLeft = default, FTVector topLeft = default, FTVector topRight = default, FTVector bottomRight = default)
+		{
+			BottomLeft = bottomLeft;
+			TopLeft = topLeft;
+			TopRight = topRight;
+			BottomRight = bottomRight;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_Header<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure to model a TrueType font header table.  All fields follow<br/>
+	/// the OpenType specification.  The 64-bit timestamps are stored in<br/>
+	/// two-element arrays `Created` and `Modified`, first the upper then<br/>
+	/// the lower 32~bits.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_Header_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TTHeader
+	{
+		[NativeName(NativeNameType.Field, "Table_Version")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int TableVersion;
+		[NativeName(NativeNameType.Field, "Font_Revision")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int FontRevision;
+		[NativeName(NativeNameType.Field, "CheckSum_Adjust")]
+		[NativeName(NativeNameType.Type, "FT_Long")]
+		public int CheckSumAdjust;
+		[NativeName(NativeNameType.Field, "Magic_Number")]
+		[NativeName(NativeNameType.Type, "FT_Long")]
+		public int MagicNumber;
+		[NativeName(NativeNameType.Field, "Flags")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort Flags;
+		[NativeName(NativeNameType.Field, "Units_Per_EM")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UnitsPerEM;
+		[NativeName(NativeNameType.Field, "Created")]
+		[NativeName(NativeNameType.Type, "FT_ULong[2]")]
+		public uint Created_0;
+		public uint Created_1;
+		[NativeName(NativeNameType.Field, "Modified")]
+		[NativeName(NativeNameType.Type, "FT_ULong[2]")]
+		public uint Modified_0;
+		public uint Modified_1;
+		[NativeName(NativeNameType.Field, "xMin")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short XMin;
+		[NativeName(NativeNameType.Field, "yMin")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YMin;
+		[NativeName(NativeNameType.Field, "xMax")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short XMax;
+		[NativeName(NativeNameType.Field, "yMax")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YMax;
+		[NativeName(NativeNameType.Field, "Mac_Style")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MacStyle;
+		[NativeName(NativeNameType.Field, "Lowest_Rec_PPEM")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort LowestRecPPEM;
+		[NativeName(NativeNameType.Field, "Font_Direction")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short FontDirection;
+		[NativeName(NativeNameType.Field, "Index_To_Loc_Format")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short IndexToLocFormat;
+		[NativeName(NativeNameType.Field, "Glyph_Data_Format")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short GlyphDataFormat;
+
+		public unsafe TTHeader(int tableVersion = default, int fontRevision = default, int checksumAdjust = default, int magicNumber = default, ushort flags = default, ushort unitsPerEm = default, uint* created = default, uint* modified = default, short xMin = default, short yMin = default, short xMax = default, short yMax = default, ushort macStyle = default, ushort lowestRecPpem = default, short fontDirection = default, short indexToLocFormat = default, short glyphDataFormat = default)
+		{
+			TableVersion = tableVersion;
+			FontRevision = fontRevision;
+			CheckSumAdjust = checksumAdjust;
+			MagicNumber = magicNumber;
+			Flags = flags;
+			UnitsPerEM = unitsPerEm;
+			if (created != default)
+			{
+				Created_0 = created[0];
+				Created_1 = created[1];
+			}
+			if (modified != default)
+			{
+				Modified_0 = modified[0];
+				Modified_1 = modified[1];
+			}
+			XMin = xMin;
+			YMin = yMin;
+			XMax = xMax;
+			YMax = yMax;
+			MacStyle = macStyle;
+			LowestRecPPEM = lowestRecPpem;
+			FontDirection = fontDirection;
+			IndexToLocFormat = indexToLocFormat;
+			GlyphDataFormat = glyphDataFormat;
+		}
+
+		public unsafe TTHeader(int tableVersion = default, int fontRevision = default, int checksumAdjust = default, int magicNumber = default, ushort flags = default, ushort unitsPerEm = default, Span<uint> created = default, Span<uint> modified = default, short xMin = default, short yMin = default, short xMax = default, short yMax = default, ushort macStyle = default, ushort lowestRecPpem = default, short fontDirection = default, short indexToLocFormat = default, short glyphDataFormat = default)
+		{
+			TableVersion = tableVersion;
+			FontRevision = fontRevision;
+			CheckSumAdjust = checksumAdjust;
+			MagicNumber = magicNumber;
+			Flags = flags;
+			UnitsPerEM = unitsPerEm;
+			if (created != default)
+			{
+				Created_0 = created[0];
+				Created_1 = created[1];
+			}
+			if (modified != default)
+			{
+				Modified_0 = modified[0];
+				Modified_1 = modified[1];
+			}
+			XMin = xMin;
+			YMin = yMin;
+			XMax = xMax;
+			YMax = yMax;
+			MacStyle = macStyle;
+			LowestRecPPEM = lowestRecPpem;
+			FontDirection = fontDirection;
+			IndexToLocFormat = indexToLocFormat;
+			GlyphDataFormat = glyphDataFormat;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_HoriHeader<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure to model a TrueType horizontal header, the 'hhea' table,<br/>
+	/// as well as the corresponding horizontal metrics table, 'hmtx'.<br/>
+	/// <br/>
+	/// :<br/>
+	/// Version ::<br/>
+	/// The table version.<br/>
+	/// Ascender ::<br/>
+	/// The font's ascender, i.e., the distance from the baseline to the<br/>
+	/// top-most of all glyph points found in the font.<br/>
+	/// This value is invalid in many fonts, as it is usually set by the<br/>
+	/// font designer, and often reflects only a portion of the glyphs found<br/>
+	/// in the font (maybe ASCII).<br/>
+	/// You should use the `sTypoAscender` field of the 'OS/2' table instead<br/>
+	/// if you want the correct one.<br/>
+	/// Descender ::<br/>
+	/// The font's descender, i.e., the distance from the baseline to the<br/>
+	/// bottom-most of all glyph points found in the font.  It is negative.<br/>
+	/// This value is invalid in many fonts, as it is usually set by the<br/>
+	/// font designer, and often reflects only a portion of the glyphs found<br/>
+	/// in the font (maybe ASCII).<br/>
+	/// You should use the `sTypoDescender` field of the 'OS/2' table<br/>
+	/// instead if you want the correct one.<br/>
+	/// Line_Gap ::<br/>
+	/// The font's line gap, i.e., the distance to add to the ascender and<br/>
+	/// descender to get the BTB, i.e., the baseline-to-baseline distance<br/>
+	/// for the font.<br/>
+	/// advance_Width_Max ::<br/>
+	/// This field is the maximum of all advance widths found in the font.<br/>
+	/// It can be used to compute the maximum width of an arbitrary string<br/>
+	/// of text.<br/>
+	/// min_Left_Side_Bearing ::<br/>
+	/// The minimum left side bearing of all glyphs within the font.<br/>
+	/// min_Right_Side_Bearing ::<br/>
+	/// The minimum right side bearing of all glyphs within the font.<br/>
+	/// xMax_Extent ::<br/>
+	/// The maximum horizontal extent (i.e., the 'width' of a glyph's<br/>
+	/// bounding box) for all glyphs in the font.<br/>
+	/// caret_Slope_Rise ::<br/>
+	/// The rise coefficient of the cursor's slope of the cursor<br/>
+	/// (slope=rise/run).<br/>
+	/// caret_Slope_Run ::<br/>
+	/// The run coefficient of the cursor's slope.<br/>
+	/// caret_Offset ::<br/>
+	/// The cursor's offset for slanted fonts.<br/>
+	/// Reserved ::<br/>
+	/// 8~reserved bytes.<br/>
+	/// metric_Data_Format ::<br/>
+	/// Always~0.<br/>
+	/// number_Of_HMetrics ::<br/>
+	/// Number of HMetrics entries in the 'hmtx' table -- this value can be<br/>
+	/// smaller than the total number of glyphs in the font.<br/>
+	/// long_metrics ::<br/>
+	/// A pointer into the 'hmtx' table.<br/>
+	/// short_metrics ::<br/>
+	/// A pointer into the 'hmtx' table.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_HoriHeader_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TTHoriHeader
+	{
+		[NativeName(NativeNameType.Field, "Version")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Version;
+		[NativeName(NativeNameType.Field, "Ascender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short Ascender;
+		[NativeName(NativeNameType.Field, "Descender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short Descender;
+		[NativeName(NativeNameType.Field, "Line_Gap")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short LineGap;
+		/// <summary>
+		/// advance width maximum <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "advance_Width_Max")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort AdvanceWidthMax;
+
+		/// <summary>
+		/// minimum left-sb       <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "min_Left_Side_Bearing")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MinLeftSideBearing;
+
+		/// <summary>
+		/// minimum right-sb      <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "min_Right_Side_Bearing")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MinRightSideBearing;
+
+		/// <summary>
+		/// xmax extents          <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "xMax_Extent")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short XMaxExtent;
+
+		[NativeName(NativeNameType.Field, "caret_Slope_Rise")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretSlopeRise;
+		[NativeName(NativeNameType.Field, "caret_Slope_Run")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretSlopeRun;
+		[NativeName(NativeNameType.Field, "caret_Offset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretOffset;
+		[NativeName(NativeNameType.Field, "Reserved")]
+		[NativeName(NativeNameType.Type, "FT_Short[4]")]
+		public short Reserved_0;
+		public short Reserved_1;
+		public short Reserved_2;
+		public short Reserved_3;
+		[NativeName(NativeNameType.Field, "metric_Data_Format")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MetricDataFormat;
+		[NativeName(NativeNameType.Field, "number_Of_HMetrics")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort NumberOfHMetrics;
+		/// <summary>
+		/// The following fields are not defined by the OpenType specification <br/>
+		/// but they are used to connect the metrics header to the relevant    <br/>
+		/// 'hmtx' table.                                                      <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "long_metrics")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* LongMetrics;
+
+		[NativeName(NativeNameType.Field, "short_metrics")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* ShortMetrics;
+
+		public unsafe TTHoriHeader(int version = default, short ascender = default, short descender = default, short lineGap = default, ushort advanceWidthMax = default, short minLeftSideBearing = default, short minRightSideBearing = default, short xmaxExtent = default, short caretSlopeRise = default, short caretSlopeRun = default, short caretOffset = default, short* reserved = default, short metricDataFormat = default, ushort numberOfHmetrics = default, void* longMetrics = default, void* shortMetrics = default)
+		{
+			Version = version;
+			Ascender = ascender;
+			Descender = descender;
+			LineGap = lineGap;
+			AdvanceWidthMax = advanceWidthMax;
+			MinLeftSideBearing = minLeftSideBearing;
+			MinRightSideBearing = minRightSideBearing;
+			XMaxExtent = xmaxExtent;
+			CaretSlopeRise = caretSlopeRise;
+			CaretSlopeRun = caretSlopeRun;
+			CaretOffset = caretOffset;
+			if (reserved != default)
+			{
+				Reserved_0 = reserved[0];
+				Reserved_1 = reserved[1];
+				Reserved_2 = reserved[2];
+				Reserved_3 = reserved[3];
+			}
+			MetricDataFormat = metricDataFormat;
+			NumberOfHMetrics = numberOfHmetrics;
+			LongMetrics = longMetrics;
+			ShortMetrics = shortMetrics;
+		}
+
+		public unsafe TTHoriHeader(int version = default, short ascender = default, short descender = default, short lineGap = default, ushort advanceWidthMax = default, short minLeftSideBearing = default, short minRightSideBearing = default, short xmaxExtent = default, short caretSlopeRise = default, short caretSlopeRun = default, short caretOffset = default, Span<short> reserved = default, short metricDataFormat = default, ushort numberOfHmetrics = default, void* longMetrics = default, void* shortMetrics = default)
+		{
+			Version = version;
+			Ascender = ascender;
+			Descender = descender;
+			LineGap = lineGap;
+			AdvanceWidthMax = advanceWidthMax;
+			MinLeftSideBearing = minLeftSideBearing;
+			MinRightSideBearing = minRightSideBearing;
+			XMaxExtent = xmaxExtent;
+			CaretSlopeRise = caretSlopeRise;
+			CaretSlopeRun = caretSlopeRun;
+			CaretOffset = caretOffset;
+			if (reserved != default)
+			{
+				Reserved_0 = reserved[0];
+				Reserved_1 = reserved[1];
+				Reserved_2 = reserved[2];
+				Reserved_3 = reserved[3];
+			}
+			MetricDataFormat = metricDataFormat;
+			NumberOfHMetrics = numberOfHmetrics;
+			LongMetrics = longMetrics;
+			ShortMetrics = shortMetrics;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_VertHeader<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure used to model a TrueType vertical header, the 'vhea'<br/>
+	/// table, as well as the corresponding vertical metrics table, 'vmtx'.<br/>
+	/// <br/>
+	/// :<br/>
+	/// Version ::<br/>
+	/// The table version.<br/>
+	/// Ascender ::<br/>
+	/// The font's ascender, i.e., the distance from the baseline to the<br/>
+	/// top-most of all glyph points found in the font.<br/>
+	/// This value is invalid in many fonts, as it is usually set by the<br/>
+	/// font designer, and often reflects only a portion of the glyphs found<br/>
+	/// in the font (maybe ASCII).<br/>
+	/// You should use the `sTypoAscender` field of the 'OS/2' table instead<br/>
+	/// if you want the correct one.<br/>
+	/// Descender ::<br/>
+	/// The font's descender, i.e., the distance from the baseline to the<br/>
+	/// bottom-most of all glyph points found in the font.  It is negative.<br/>
+	/// This value is invalid in many fonts, as it is usually set by the<br/>
+	/// font designer, and often reflects only a portion of the glyphs found<br/>
+	/// in the font (maybe ASCII).<br/>
+	/// You should use the `sTypoDescender` field of the 'OS/2' table<br/>
+	/// instead if you want the correct one.<br/>
+	/// Line_Gap ::<br/>
+	/// The font's line gap, i.e., the distance to add to the ascender and<br/>
+	/// descender to get the BTB, i.e., the baseline-to-baseline distance<br/>
+	/// for the font.<br/>
+	/// advance_Height_Max ::<br/>
+	/// This field is the maximum of all advance heights found in the font.<br/>
+	/// It can be used to compute the maximum height of an arbitrary string<br/>
+	/// of text.<br/>
+	/// min_Top_Side_Bearing ::<br/>
+	/// The minimum top side bearing of all glyphs within the font.<br/>
+	/// min_Bottom_Side_Bearing ::<br/>
+	/// The minimum bottom side bearing of all glyphs within the font.<br/>
+	/// yMax_Extent ::<br/>
+	/// The maximum vertical extent (i.e., the 'height' of a glyph's<br/>
+	/// bounding box) for all glyphs in the font.<br/>
+	/// caret_Slope_Rise ::<br/>
+	/// The rise coefficient of the cursor's slope of the cursor<br/>
+	/// (slope=rise/run).<br/>
+	/// caret_Slope_Run ::<br/>
+	/// The run coefficient of the cursor's slope.<br/>
+	/// caret_Offset ::<br/>
+	/// The cursor's offset for slanted fonts.<br/>
+	/// Reserved ::<br/>
+	/// 8~reserved bytes.<br/>
+	/// metric_Data_Format ::<br/>
+	/// Always~0.<br/>
+	/// number_Of_VMetrics ::<br/>
+	/// Number of VMetrics entries in the 'vmtx' table -- this value can be<br/>
+	/// smaller than the total number of glyphs in the font.<br/>
+	/// long_metrics ::<br/>
+	/// A pointer into the 'vmtx' table.<br/>
+	/// short_metrics ::<br/>
+	/// A pointer into the 'vmtx' table.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_VertHeader_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TTVertHeader
+	{
+		[NativeName(NativeNameType.Field, "Version")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Version;
+		[NativeName(NativeNameType.Field, "Ascender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short Ascender;
+		[NativeName(NativeNameType.Field, "Descender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short Descender;
+		[NativeName(NativeNameType.Field, "Line_Gap")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short LineGap;
+		/// <summary>
+		/// advance height maximum <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "advance_Height_Max")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort AdvanceHeightMax;
+
+		/// <summary>
+		/// minimum top-sb          <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "min_Top_Side_Bearing")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MinTopSideBearing;
+
+		/// <summary>
+		/// minimum bottom-sb       <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "min_Bottom_Side_Bearing")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MinBottomSideBearing;
+
+		/// <summary>
+		/// ymax extents            <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "yMax_Extent")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YMaxExtent;
+
+		[NativeName(NativeNameType.Field, "caret_Slope_Rise")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretSlopeRise;
+		[NativeName(NativeNameType.Field, "caret_Slope_Run")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretSlopeRun;
+		[NativeName(NativeNameType.Field, "caret_Offset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short CaretOffset;
+		[NativeName(NativeNameType.Field, "Reserved")]
+		[NativeName(NativeNameType.Type, "FT_Short[4]")]
+		public short Reserved_0;
+		public short Reserved_1;
+		public short Reserved_2;
+		public short Reserved_3;
+		[NativeName(NativeNameType.Field, "metric_Data_Format")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short MetricDataFormat;
+		[NativeName(NativeNameType.Field, "number_Of_VMetrics")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort NumberOfVMetrics;
+		/// <summary>
+		/// The following fields are not defined by the OpenType specification <br/>
+		/// but they are used to connect the metrics header to the relevant    <br/>
+		/// 'vmtx' table.                                                      <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "long_metrics")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* LongMetrics;
+
+		[NativeName(NativeNameType.Field, "short_metrics")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* ShortMetrics;
+
+		public unsafe TTVertHeader(int version = default, short ascender = default, short descender = default, short lineGap = default, ushort advanceHeightMax = default, short minTopSideBearing = default, short minBottomSideBearing = default, short ymaxExtent = default, short caretSlopeRise = default, short caretSlopeRun = default, short caretOffset = default, short* reserved = default, short metricDataFormat = default, ushort numberOfVmetrics = default, void* longMetrics = default, void* shortMetrics = default)
+		{
+			Version = version;
+			Ascender = ascender;
+			Descender = descender;
+			LineGap = lineGap;
+			AdvanceHeightMax = advanceHeightMax;
+			MinTopSideBearing = minTopSideBearing;
+			MinBottomSideBearing = minBottomSideBearing;
+			YMaxExtent = ymaxExtent;
+			CaretSlopeRise = caretSlopeRise;
+			CaretSlopeRun = caretSlopeRun;
+			CaretOffset = caretOffset;
+			if (reserved != default)
+			{
+				Reserved_0 = reserved[0];
+				Reserved_1 = reserved[1];
+				Reserved_2 = reserved[2];
+				Reserved_3 = reserved[3];
+			}
+			MetricDataFormat = metricDataFormat;
+			NumberOfVMetrics = numberOfVmetrics;
+			LongMetrics = longMetrics;
+			ShortMetrics = shortMetrics;
+		}
+
+		public unsafe TTVertHeader(int version = default, short ascender = default, short descender = default, short lineGap = default, ushort advanceHeightMax = default, short minTopSideBearing = default, short minBottomSideBearing = default, short ymaxExtent = default, short caretSlopeRise = default, short caretSlopeRun = default, short caretOffset = default, Span<short> reserved = default, short metricDataFormat = default, ushort numberOfVmetrics = default, void* longMetrics = default, void* shortMetrics = default)
+		{
+			Version = version;
+			Ascender = ascender;
+			Descender = descender;
+			LineGap = lineGap;
+			AdvanceHeightMax = advanceHeightMax;
+			MinTopSideBearing = minTopSideBearing;
+			MinBottomSideBearing = minBottomSideBearing;
+			YMaxExtent = ymaxExtent;
+			CaretSlopeRise = caretSlopeRise;
+			CaretSlopeRun = caretSlopeRun;
+			CaretOffset = caretOffset;
+			if (reserved != default)
+			{
+				Reserved_0 = reserved[0];
+				Reserved_1 = reserved[1];
+				Reserved_2 = reserved[2];
+				Reserved_3 = reserved[3];
+			}
+			MetricDataFormat = metricDataFormat;
+			NumberOfVMetrics = numberOfVmetrics;
+			LongMetrics = longMetrics;
+			ShortMetrics = shortMetrics;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_OS2<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure to model a TrueType 'OS/2' table.  All fields comply to<br/>
+	/// the OpenType specification.<br/>
+	/// Note that we now support old Mac fonts that do not include an 'OS/2'<br/>
+	/// table.  In this case, the `version` field is always set to 0xFFFF.<br/>
+	/// <br/>
+	/// Possible values for bits in the `ulUnicodeRangeX` fields are given by<br/>
+	/// the <br/>
+	/// _UCR_XXX macros.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_OS2_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TtOs2
+	{
+		/// <summary>
+		/// 0x0001 - more or 0xFFFF <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "version")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort Version;
+
+		[NativeName(NativeNameType.Field, "xAvgCharWidth")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short XAvgCharWidth;
+		[NativeName(NativeNameType.Field, "usWeightClass")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsWeightClass;
+		[NativeName(NativeNameType.Field, "usWidthClass")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsWidthClass;
+		[NativeName(NativeNameType.Field, "fsType")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort FsType;
+		[NativeName(NativeNameType.Field, "ySubscriptXSize")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSubscriptXSize;
+		[NativeName(NativeNameType.Field, "ySubscriptYSize")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSubscriptYSize;
+		[NativeName(NativeNameType.Field, "ySubscriptXOffset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSubscriptXOffset;
+		[NativeName(NativeNameType.Field, "ySubscriptYOffset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSubscriptYOffset;
+		[NativeName(NativeNameType.Field, "ySuperscriptXSize")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSuperscriptXSize;
+		[NativeName(NativeNameType.Field, "ySuperscriptYSize")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSuperscriptYSize;
+		[NativeName(NativeNameType.Field, "ySuperscriptXOffset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSuperscriptXOffset;
+		[NativeName(NativeNameType.Field, "ySuperscriptYOffset")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YSuperscriptYOffset;
+		[NativeName(NativeNameType.Field, "yStrikeoutSize")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YStrikeoutSize;
+		[NativeName(NativeNameType.Field, "yStrikeoutPosition")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short YStrikeoutPosition;
+		[NativeName(NativeNameType.Field, "sFamilyClass")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short SFamilyClass;
+		[NativeName(NativeNameType.Field, "panose")]
+		[NativeName(NativeNameType.Type, "FT_Byte[10]")]
+		public byte Panose_0;
+		public byte Panose_1;
+		public byte Panose_2;
+		public byte Panose_3;
+		public byte Panose_4;
+		public byte Panose_5;
+		public byte Panose_6;
+		public byte Panose_7;
+		public byte Panose_8;
+		public byte Panose_9;
+		/// <summary>
+		/// Bits 0-31   <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulUnicodeRange1")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlUnicodeRange1;
+
+		/// <summary>
+		/// Bits 32-63  <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulUnicodeRange2")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlUnicodeRange2;
+
+		/// <summary>
+		/// Bits 64-95  <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulUnicodeRange3")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlUnicodeRange3;
+
+		/// <summary>
+		/// Bits 96-127 <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulUnicodeRange4")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlUnicodeRange4;
+
+		[NativeName(NativeNameType.Field, "achVendID")]
+		[NativeName(NativeNameType.Type, "FT_Char[4]")]
+		public byte AchVendID_0;
+		public byte AchVendID_1;
+		public byte AchVendID_2;
+		public byte AchVendID_3;
+		[NativeName(NativeNameType.Field, "fsSelection")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort FsSelection;
+		[NativeName(NativeNameType.Field, "usFirstCharIndex")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsFirstCharIndex;
+		[NativeName(NativeNameType.Field, "usLastCharIndex")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsLastCharIndex;
+		[NativeName(NativeNameType.Field, "sTypoAscender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short STypoAscender;
+		[NativeName(NativeNameType.Field, "sTypoDescender")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short STypoDescender;
+		[NativeName(NativeNameType.Field, "sTypoLineGap")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short STypoLineGap;
+		[NativeName(NativeNameType.Field, "usWinAscent")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsWinAscent;
+		[NativeName(NativeNameType.Field, "usWinDescent")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsWinDescent;
+		/// <summary>
+		/// Bits 0-31   <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulCodePageRange1")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlCodePageRange1;
+
+		/// <summary>
+		/// Bits 32-63  <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "ulCodePageRange2")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint UlCodePageRange2;
+
+		/// <summary>
+		/// only version 2 and higher: <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "sxHeight")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short SxHeight;
+
+		[NativeName(NativeNameType.Field, "sCapHeight")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short SCapHeight;
+		[NativeName(NativeNameType.Field, "usDefaultChar")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsDefaultChar;
+		[NativeName(NativeNameType.Field, "usBreakChar")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsBreakChar;
+		[NativeName(NativeNameType.Field, "usMaxContext")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsMaxContext;
+		/// <summary>
+		/// in twips (1/20 points) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "usLowerOpticalPointSize")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsLowerOpticalPointSize;
+
+		/// <summary>
+		/// in twips (1/20 points) <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "usUpperOpticalPointSize")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort UsUpperOpticalPointSize;
+
+
+		public unsafe TtOs2(ushort version = default, short xAvgCharWidth = default, ushort usWeightClass = default, ushort usWidthClass = default, ushort fsType = default, short ySubscriptXSize = default, short ySubscriptYSize = default, short ySubscriptXOffset = default, short ySubscriptYOffset = default, short ySuperscriptXSize = default, short ySuperscriptYSize = default, short ySuperscriptXOffset = default, short ySuperscriptYOffset = default, short yStrikeoutSize = default, short yStrikeoutPosition = default, short sFamilyClass = default, byte* panose = default, uint ulUnicodeRange1 = default, uint ulUnicodeRange2 = default, uint ulUnicodeRange3 = default, uint ulUnicodeRange4 = default, byte* achVendID = default, ushort fsSelection = default, ushort usFirstCharIndex = default, ushort usLastCharIndex = default, short sTypoAscender = default, short sTypoDescender = default, short sTypoLineGap = default, ushort usWinAscent = default, ushort usWinDescent = default, uint ulCodePageRange1 = default, uint ulCodePageRange2 = default, short sxHeight = default, short sCapHeight = default, ushort usDefaultChar = default, ushort usBreakChar = default, ushort usMaxContext = default, ushort usLowerOpticalPointSize = default, ushort usUpperOpticalPointSize = default)
+		{
+			Version = version;
+			XAvgCharWidth = xAvgCharWidth;
+			UsWeightClass = usWeightClass;
+			UsWidthClass = usWidthClass;
+			FsType = fsType;
+			YSubscriptXSize = ySubscriptXSize;
+			YSubscriptYSize = ySubscriptYSize;
+			YSubscriptXOffset = ySubscriptXOffset;
+			YSubscriptYOffset = ySubscriptYOffset;
+			YSuperscriptXSize = ySuperscriptXSize;
+			YSuperscriptYSize = ySuperscriptYSize;
+			YSuperscriptXOffset = ySuperscriptXOffset;
+			YSuperscriptYOffset = ySuperscriptYOffset;
+			YStrikeoutSize = yStrikeoutSize;
+			YStrikeoutPosition = yStrikeoutPosition;
+			SFamilyClass = sFamilyClass;
+			if (panose != default)
+			{
+				Panose_0 = panose[0];
+				Panose_1 = panose[1];
+				Panose_2 = panose[2];
+				Panose_3 = panose[3];
+				Panose_4 = panose[4];
+				Panose_5 = panose[5];
+				Panose_6 = panose[6];
+				Panose_7 = panose[7];
+				Panose_8 = panose[8];
+				Panose_9 = panose[9];
+			}
+			UlUnicodeRange1 = ulUnicodeRange1;
+			UlUnicodeRange2 = ulUnicodeRange2;
+			UlUnicodeRange3 = ulUnicodeRange3;
+			UlUnicodeRange4 = ulUnicodeRange4;
+			if (achVendID != default)
+			{
+				AchVendID_0 = achVendID[0];
+				AchVendID_1 = achVendID[1];
+				AchVendID_2 = achVendID[2];
+				AchVendID_3 = achVendID[3];
+			}
+			FsSelection = fsSelection;
+			UsFirstCharIndex = usFirstCharIndex;
+			UsLastCharIndex = usLastCharIndex;
+			STypoAscender = sTypoAscender;
+			STypoDescender = sTypoDescender;
+			STypoLineGap = sTypoLineGap;
+			UsWinAscent = usWinAscent;
+			UsWinDescent = usWinDescent;
+			UlCodePageRange1 = ulCodePageRange1;
+			UlCodePageRange2 = ulCodePageRange2;
+			SxHeight = sxHeight;
+			SCapHeight = sCapHeight;
+			UsDefaultChar = usDefaultChar;
+			UsBreakChar = usBreakChar;
+			UsMaxContext = usMaxContext;
+			UsLowerOpticalPointSize = usLowerOpticalPointSize;
+			UsUpperOpticalPointSize = usUpperOpticalPointSize;
+		}
+
+		public unsafe TtOs2(ushort version = default, short xAvgCharWidth = default, ushort usWeightClass = default, ushort usWidthClass = default, ushort fsType = default, short ySubscriptXSize = default, short ySubscriptYSize = default, short ySubscriptXOffset = default, short ySubscriptYOffset = default, short ySuperscriptXSize = default, short ySuperscriptYSize = default, short ySuperscriptXOffset = default, short ySuperscriptYOffset = default, short yStrikeoutSize = default, short yStrikeoutPosition = default, short sFamilyClass = default, Span<byte> panose = default, uint ulUnicodeRange1 = default, uint ulUnicodeRange2 = default, uint ulUnicodeRange3 = default, uint ulUnicodeRange4 = default, Span<byte> achVendID = default, ushort fsSelection = default, ushort usFirstCharIndex = default, ushort usLastCharIndex = default, short sTypoAscender = default, short sTypoDescender = default, short sTypoLineGap = default, ushort usWinAscent = default, ushort usWinDescent = default, uint ulCodePageRange1 = default, uint ulCodePageRange2 = default, short sxHeight = default, short sCapHeight = default, ushort usDefaultChar = default, ushort usBreakChar = default, ushort usMaxContext = default, ushort usLowerOpticalPointSize = default, ushort usUpperOpticalPointSize = default)
+		{
+			Version = version;
+			XAvgCharWidth = xAvgCharWidth;
+			UsWeightClass = usWeightClass;
+			UsWidthClass = usWidthClass;
+			FsType = fsType;
+			YSubscriptXSize = ySubscriptXSize;
+			YSubscriptYSize = ySubscriptYSize;
+			YSubscriptXOffset = ySubscriptXOffset;
+			YSubscriptYOffset = ySubscriptYOffset;
+			YSuperscriptXSize = ySuperscriptXSize;
+			YSuperscriptYSize = ySuperscriptYSize;
+			YSuperscriptXOffset = ySuperscriptXOffset;
+			YSuperscriptYOffset = ySuperscriptYOffset;
+			YStrikeoutSize = yStrikeoutSize;
+			YStrikeoutPosition = yStrikeoutPosition;
+			SFamilyClass = sFamilyClass;
+			if (panose != default)
+			{
+				Panose_0 = panose[0];
+				Panose_1 = panose[1];
+				Panose_2 = panose[2];
+				Panose_3 = panose[3];
+				Panose_4 = panose[4];
+				Panose_5 = panose[5];
+				Panose_6 = panose[6];
+				Panose_7 = panose[7];
+				Panose_8 = panose[8];
+				Panose_9 = panose[9];
+			}
+			UlUnicodeRange1 = ulUnicodeRange1;
+			UlUnicodeRange2 = ulUnicodeRange2;
+			UlUnicodeRange3 = ulUnicodeRange3;
+			UlUnicodeRange4 = ulUnicodeRange4;
+			if (achVendID != default)
+			{
+				AchVendID_0 = achVendID[0];
+				AchVendID_1 = achVendID[1];
+				AchVendID_2 = achVendID[2];
+				AchVendID_3 = achVendID[3];
+			}
+			FsSelection = fsSelection;
+			UsFirstCharIndex = usFirstCharIndex;
+			UsLastCharIndex = usLastCharIndex;
+			STypoAscender = sTypoAscender;
+			STypoDescender = sTypoDescender;
+			STypoLineGap = sTypoLineGap;
+			UsWinAscent = usWinAscent;
+			UsWinDescent = usWinDescent;
+			UlCodePageRange1 = ulCodePageRange1;
+			UlCodePageRange2 = ulCodePageRange2;
+			SxHeight = sxHeight;
+			SCapHeight = sCapHeight;
+			UsDefaultChar = usDefaultChar;
+			UsBreakChar = usBreakChar;
+			UsMaxContext = usMaxContext;
+			UsLowerOpticalPointSize = usLowerOpticalPointSize;
+			UsUpperOpticalPointSize = usUpperOpticalPointSize;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_Postscript<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure to model a TrueType 'post' table.  All fields comply to<br/>
+	/// the OpenType specification.  This structure does not reference a<br/>
+	/// font's PostScript glyph names; use <br/>
+	/// _Get_Glyph_Name to retrieve<br/>
+	/// them.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_Postscript_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TTPostscript
+	{
+		[NativeName(NativeNameType.Field, "FormatType")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int FormatType;
+		[NativeName(NativeNameType.Field, "italicAngle")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int ItalicAngle;
+		[NativeName(NativeNameType.Field, "underlinePosition")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short UnderlinePosition;
+		[NativeName(NativeNameType.Field, "underlineThickness")]
+		[NativeName(NativeNameType.Type, "FT_Short")]
+		public short UnderlineThickness;
+		[NativeName(NativeNameType.Field, "isFixedPitch")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint IsFixedPitch;
+		[NativeName(NativeNameType.Field, "minMemType42")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint MinMemType42;
+		[NativeName(NativeNameType.Field, "maxMemType42")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint MaxMemType42;
+		[NativeName(NativeNameType.Field, "minMemType1")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint MinMemType1;
+		[NativeName(NativeNameType.Field, "maxMemType1")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint MaxMemType1;
+
+		public unsafe TTPostscript(int formatType = default, int italicAngle = default, short underlinePosition = default, short underlineThickness = default, uint isFixedPitch = default, uint minMemType42 = default, uint maxMemType42 = default, uint minMemType1 = default, uint maxMemType1 = default)
+		{
+			FormatType = formatType;
+			ItalicAngle = italicAngle;
+			UnderlinePosition = underlinePosition;
+			UnderlineThickness = underlineThickness;
+			IsFixedPitch = isFixedPitch;
+			MinMemType42 = minMemType42;
+			MaxMemType42 = maxMemType42;
+			MinMemType1 = minMemType1;
+			MaxMemType1 = maxMemType1;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_PCLT<br/>
+	/// <br/>
+	/// :<br/>
+	/// A structure to model a TrueType 'PCLT' table.  All fields comply to<br/>
+	/// the OpenType specification.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_PCLT_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TtPclt
+	{
+		[NativeName(NativeNameType.Field, "Version")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Version;
+		[NativeName(NativeNameType.Field, "FontNumber")]
+		[NativeName(NativeNameType.Type, "FT_ULong")]
+		public uint FontNumber;
+		[NativeName(NativeNameType.Field, "Pitch")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort Pitch;
+		[NativeName(NativeNameType.Field, "xHeight")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort XHeight;
+		[NativeName(NativeNameType.Field, "Style")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort Style;
+		[NativeName(NativeNameType.Field, "TypeFamily")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort TypeFamily;
+		[NativeName(NativeNameType.Field, "CapHeight")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort CapHeight;
+		[NativeName(NativeNameType.Field, "SymbolSet")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort SymbolSet;
+		[NativeName(NativeNameType.Field, "TypeFace")]
+		[NativeName(NativeNameType.Type, "FT_Char[16]")]
+		public byte TypeFace_0;
+		public byte TypeFace_1;
+		public byte TypeFace_2;
+		public byte TypeFace_3;
+		public byte TypeFace_4;
+		public byte TypeFace_5;
+		public byte TypeFace_6;
+		public byte TypeFace_7;
+		public byte TypeFace_8;
+		public byte TypeFace_9;
+		public byte TypeFace_10;
+		public byte TypeFace_11;
+		public byte TypeFace_12;
+		public byte TypeFace_13;
+		public byte TypeFace_14;
+		public byte TypeFace_15;
+		[NativeName(NativeNameType.Field, "CharacterComplement")]
+		[NativeName(NativeNameType.Type, "FT_Char[8]")]
+		public byte CharacterComplement_0;
+		public byte CharacterComplement_1;
+		public byte CharacterComplement_2;
+		public byte CharacterComplement_3;
+		public byte CharacterComplement_4;
+		public byte CharacterComplement_5;
+		public byte CharacterComplement_6;
+		public byte CharacterComplement_7;
+		[NativeName(NativeNameType.Field, "FileName")]
+		[NativeName(NativeNameType.Type, "FT_Char[6]")]
+		public byte FileName_0;
+		public byte FileName_1;
+		public byte FileName_2;
+		public byte FileName_3;
+		public byte FileName_4;
+		public byte FileName_5;
+		[NativeName(NativeNameType.Field, "StrokeWeight")]
+		[NativeName(NativeNameType.Type, "FT_Char")]
+		public byte StrokeWeight;
+		[NativeName(NativeNameType.Field, "WidthType")]
+		[NativeName(NativeNameType.Type, "FT_Char")]
+		public byte WidthType;
+		[NativeName(NativeNameType.Field, "SerifStyle")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte SerifStyle;
+		[NativeName(NativeNameType.Field, "Reserved")]
+		[NativeName(NativeNameType.Type, "FT_Byte")]
+		public byte Reserved;
+
+		public unsafe TtPclt(int version = default, uint fontNumber = default, ushort pitch = default, ushort xHeight = default, ushort style = default, ushort typeFamily = default, ushort capHeight = default, ushort symbolSet = default, byte* typeFace = default, byte* characterComplement = default, byte* fileName = default, byte strokeWeight = default, byte widthType = default, byte serifStyle = default, byte reserved = default)
+		{
+			Version = version;
+			FontNumber = fontNumber;
+			Pitch = pitch;
+			XHeight = xHeight;
+			Style = style;
+			TypeFamily = typeFamily;
+			CapHeight = capHeight;
+			SymbolSet = symbolSet;
+			if (typeFace != default)
+			{
+				TypeFace_0 = typeFace[0];
+				TypeFace_1 = typeFace[1];
+				TypeFace_2 = typeFace[2];
+				TypeFace_3 = typeFace[3];
+				TypeFace_4 = typeFace[4];
+				TypeFace_5 = typeFace[5];
+				TypeFace_6 = typeFace[6];
+				TypeFace_7 = typeFace[7];
+				TypeFace_8 = typeFace[8];
+				TypeFace_9 = typeFace[9];
+				TypeFace_10 = typeFace[10];
+				TypeFace_11 = typeFace[11];
+				TypeFace_12 = typeFace[12];
+				TypeFace_13 = typeFace[13];
+				TypeFace_14 = typeFace[14];
+				TypeFace_15 = typeFace[15];
+			}
+			if (characterComplement != default)
+			{
+				CharacterComplement_0 = characterComplement[0];
+				CharacterComplement_1 = characterComplement[1];
+				CharacterComplement_2 = characterComplement[2];
+				CharacterComplement_3 = characterComplement[3];
+				CharacterComplement_4 = characterComplement[4];
+				CharacterComplement_5 = characterComplement[5];
+				CharacterComplement_6 = characterComplement[6];
+				CharacterComplement_7 = characterComplement[7];
+			}
+			if (fileName != default)
+			{
+				FileName_0 = fileName[0];
+				FileName_1 = fileName[1];
+				FileName_2 = fileName[2];
+				FileName_3 = fileName[3];
+				FileName_4 = fileName[4];
+				FileName_5 = fileName[5];
+			}
+			StrokeWeight = strokeWeight;
+			WidthType = widthType;
+			SerifStyle = serifStyle;
+			Reserved = reserved;
+		}
+
+		public unsafe TtPclt(int version = default, uint fontNumber = default, ushort pitch = default, ushort xHeight = default, ushort style = default, ushort typeFamily = default, ushort capHeight = default, ushort symbolSet = default, Span<byte> typeFace = default, Span<byte> characterComplement = default, Span<byte> fileName = default, byte strokeWeight = default, byte widthType = default, byte serifStyle = default, byte reserved = default)
+		{
+			Version = version;
+			FontNumber = fontNumber;
+			Pitch = pitch;
+			XHeight = xHeight;
+			Style = style;
+			TypeFamily = typeFamily;
+			CapHeight = capHeight;
+			SymbolSet = symbolSet;
+			if (typeFace != default)
+			{
+				TypeFace_0 = typeFace[0];
+				TypeFace_1 = typeFace[1];
+				TypeFace_2 = typeFace[2];
+				TypeFace_3 = typeFace[3];
+				TypeFace_4 = typeFace[4];
+				TypeFace_5 = typeFace[5];
+				TypeFace_6 = typeFace[6];
+				TypeFace_7 = typeFace[7];
+				TypeFace_8 = typeFace[8];
+				TypeFace_9 = typeFace[9];
+				TypeFace_10 = typeFace[10];
+				TypeFace_11 = typeFace[11];
+				TypeFace_12 = typeFace[12];
+				TypeFace_13 = typeFace[13];
+				TypeFace_14 = typeFace[14];
+				TypeFace_15 = typeFace[15];
+			}
+			if (characterComplement != default)
+			{
+				CharacterComplement_0 = characterComplement[0];
+				CharacterComplement_1 = characterComplement[1];
+				CharacterComplement_2 = characterComplement[2];
+				CharacterComplement_3 = characterComplement[3];
+				CharacterComplement_4 = characterComplement[4];
+				CharacterComplement_5 = characterComplement[5];
+				CharacterComplement_6 = characterComplement[6];
+				CharacterComplement_7 = characterComplement[7];
+			}
+			if (fileName != default)
+			{
+				FileName_0 = fileName[0];
+				FileName_1 = fileName[1];
+				FileName_2 = fileName[2];
+				FileName_3 = fileName[3];
+				FileName_4 = fileName[4];
+				FileName_5 = fileName[5];
+			}
+			StrokeWeight = strokeWeight;
+			WidthType = widthType;
+			SerifStyle = serifStyle;
+			Reserved = reserved;
+		}
+
+
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// TT_MaxProfile<br/>
+	/// <br/>
+	/// :<br/>
+	/// The maximum profile ('maxp') table contains many max values, which can<br/>
+	/// be used to pre-allocate arrays for speeding up glyph loading and<br/>
+	/// hinting.<br/>
+	/// <br/>
+	/// :<br/>
+	/// version ::<br/>
+	/// The version number.<br/>
+	/// numGlyphs ::<br/>
+	/// The number of glyphs in this TrueType font.<br/>
+	/// maxPoints ::<br/>
+	/// The maximum number of points in a non-composite TrueType glyph.  See<br/>
+	/// also `maxCompositePoints`.<br/>
+	/// maxContours ::<br/>
+	/// The maximum number of contours in a non-composite TrueType glyph.<br/>
+	/// See also `maxCompositeContours`.<br/>
+	/// maxCompositePoints ::<br/>
+	/// The maximum number of points in a composite TrueType glyph.  See<br/>
+	/// also `maxPoints`.<br/>
+	/// maxCompositeContours ::<br/>
+	/// The maximum number of contours in a composite TrueType glyph.  See<br/>
+	/// also `maxContours`.<br/>
+	/// maxZones ::<br/>
+	/// The maximum number of zones used for glyph hinting.<br/>
+	/// maxTwilightPoints ::<br/>
+	/// The maximum number of points in the twilight zone used for glyph<br/>
+	/// hinting.<br/>
+	/// maxStorage ::<br/>
+	/// The maximum number of elements in the storage area used for glyph<br/>
+	/// hinting.<br/>
+	/// maxFunctionDefs ::<br/>
+	/// The maximum number of function definitions in the TrueType bytecode<br/>
+	/// for this font.<br/>
+	/// maxInstructionDefs ::<br/>
+	/// The maximum number of instruction definitions in the TrueType<br/>
+	/// bytecode for this font.<br/>
+	/// maxStackElements ::<br/>
+	/// The maximum number of stack elements used during bytecode<br/>
+	/// interpretation.<br/>
+	/// maxSizeOfInstructions ::<br/>
+	/// The maximum number of TrueType opcodes used for glyph hinting.<br/>
+	/// maxComponentElements ::<br/>
+	/// The maximum number of simple (i.e., non-composite) glyphs in a<br/>
+	/// composite glyph.<br/>
+	/// maxComponentDepth ::<br/>
+	/// The maximum nesting depth of composite glyphs.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "TT_MaxProfile_")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct TTMaxProfile
+	{
+		[NativeName(NativeNameType.Field, "version")]
+		[NativeName(NativeNameType.Type, "FT_Fixed")]
+		public int Version;
+		[NativeName(NativeNameType.Field, "numGlyphs")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort NumGlyphs;
+		[NativeName(NativeNameType.Field, "maxPoints")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxPoints;
+		[NativeName(NativeNameType.Field, "maxContours")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxContours;
+		[NativeName(NativeNameType.Field, "maxCompositePoints")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxCompositePoints;
+		[NativeName(NativeNameType.Field, "maxCompositeContours")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxCompositeContours;
+		[NativeName(NativeNameType.Field, "maxZones")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxZones;
+		[NativeName(NativeNameType.Field, "maxTwilightPoints")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxTwilightPoints;
+		[NativeName(NativeNameType.Field, "maxStorage")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxStorage;
+		[NativeName(NativeNameType.Field, "maxFunctionDefs")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxFunctionDefs;
+		[NativeName(NativeNameType.Field, "maxInstructionDefs")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxInstructionDefs;
+		[NativeName(NativeNameType.Field, "maxStackElements")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxStackElements;
+		[NativeName(NativeNameType.Field, "maxSizeOfInstructions")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxSizeOfInstructions;
+		[NativeName(NativeNameType.Field, "maxComponentElements")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxComponentElements;
+		[NativeName(NativeNameType.Field, "maxComponentDepth")]
+		[NativeName(NativeNameType.Type, "FT_UShort")]
+		public ushort MaxComponentDepth;
+
+		public unsafe TTMaxProfile(int version = default, ushort numGlyphs = default, ushort maxPoints = default, ushort maxContours = default, ushort maxCompositePoints = default, ushort maxCompositeContours = default, ushort maxZones = default, ushort maxTwilightPoints = default, ushort maxStorage = default, ushort maxFunctionDefs = default, ushort maxInstructionDefs = default, ushort maxStackElements = default, ushort maxSizeOfInstructions = default, ushort maxComponentElements = default, ushort maxComponentDepth = default)
+		{
+			Version = version;
+			NumGlyphs = numGlyphs;
+			MaxPoints = maxPoints;
+			MaxContours = maxContours;
+			MaxCompositePoints = maxCompositePoints;
+			MaxCompositeContours = maxCompositeContours;
+			MaxZones = maxZones;
+			MaxTwilightPoints = maxTwilightPoints;
+			MaxStorage = maxStorage;
+			MaxFunctionDefs = maxFunctionDefs;
+			MaxInstructionDefs = maxInstructionDefs;
+			MaxStackElements = maxStackElements;
+			MaxSizeOfInstructions = maxSizeOfInstructions;
+			MaxComponentElements = maxComponentElements;
+			MaxComponentDepth = maxComponentDepth;
+		}
+	}
 }

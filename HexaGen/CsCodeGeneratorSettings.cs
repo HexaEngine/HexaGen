@@ -244,6 +244,7 @@
         /// <summary>
         /// This option generates the sizes of the structs. (Default: <see langword="false"/>)
         /// </summary>
+        ///
         public bool GenerateSizeOfStructs { get; set; } = false;
 
         /// <summary>
@@ -1573,6 +1574,8 @@
             {
                 return newName;
             }
+
+            name = name.Trim('_');
 
             newName = NamingHelper.ConvertTo(name, ParameterNamingConvention);
 

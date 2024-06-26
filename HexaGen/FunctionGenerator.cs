@@ -8,14 +8,20 @@
 
     public class CsSubClass
     {
-        public CppType Type;
-        public string Name;
-        public string CppFieldName;
-        public string FieldName;
+        public CppType CppType { get; set; }
+
+        public CsType Type { get; set; }
+
+        public string Name { get; set; }
+
+        public string CppFieldName { get; set; }
+
+        public string FieldName { get; set; }
 
         public CsSubClass(CppType type, string name, string cppFieldName, string fieldName)
         {
-            Type = type;
+            Type = new(name, name, false, false, false, false, false, false, false, false, false, CsStringType.None, CsPrimitiveType.Unknown);
+            CppType = type;
             Name = name;
             CppFieldName = cppFieldName;
             FieldName = fieldName;
@@ -54,30 +60,37 @@
                 var paramCsName = settings.GetParameterName(i, cppField.Name);
                 var direction = cppField.Type.GetDirection();
 
-                if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
+                var subClass = subClasses.Find(x => x.CppType == cppField.Type);
+                if (subClass != null && cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                 {
-                    var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+                    subClass = subClasses.First(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
                     paramCsTypeName = subClass.Name;
                     paramCsName = subClass.FieldName.ToLower();
                     fieldCsName = subClass.FieldName;
                 }
 
-                if (string.IsNullOrEmpty(paramCsTypeName))
+                if (subClass != null)
                 {
-                    var subClass = subClasses.Find(x => x.Type == cppField.Type && x.CppFieldName == cppField.Name);
                     paramCsTypeName = subClass.Name;
                 }
 
-                parameterList[i] = new(paramCsName, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+                int depth = 0;
+                var subClass1 = subClasses.FirstOrDefault(x => x.CppType.IsPointerOf(cppField.Type, ref depth));
+                if (subClass1 != null)
+                {
+                    paramCsTypeName = subClass1.Name + new string('*', depth);
+                }
+
+                parameterList[i] = new(paramCsName, cppField.Type, new(paramCsTypeName, kind), direction, "default", fieldCsName);
 
                 if (cppField.Type is CppArrayType arrayType)
                 {
                     var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType, false);
-                    spanParameterList[i] = new(paramCsName, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
+                    spanParameterList[i] = new(paramCsName, cppField.Type, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
                 }
                 else
                 {
-                    spanParameterList[i] = new(paramCsName, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+                    spanParameterList[i] = new(paramCsName, cppField.Type, new(paramCsTypeName, kind), direction, "default", fieldCsName);
                 }
             }
 
@@ -127,33 +140,33 @@
                             {
                                 if (arrayType.Size > 0)
                                 {
-                                    refParameterList[j] = new(paramCsName, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
+                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
                                 }
                                 else
                                 {
-                                    refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
 
                                 if (arrayType.ElementType.IsString())
                                 {
-                                    stringParameterList[j] = new(paramCsName, new("string[]", kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new("string[]", kind), direction);
                                 }
                                 else
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
                             else
                             {
-                                refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
 
                                 if (cppParameter.Type.IsString())
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
                                 }
                                 else
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
 
@@ -163,24 +176,24 @@
                                 {
                                     if (mapping.CustomVariations[i].TryGetValue(paramCsName, out var paramType))
                                     {
-                                        customParameterList[i][j] = new(paramCsName, new(paramType, kind), direction);
+                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(paramType, kind), direction);
                                     }
                                     else
                                     {
-                                        customParameterList[i][j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            refParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            stringParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                            refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                            stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
                             if (mapping != null)
                             {
                                 for (int i = 0; i < mapping.CustomVariations.Count; i++)
                                 {
-                                    customParameterList[i][j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                                    customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
                         }
@@ -272,34 +285,34 @@
                             {
                                 if (arrayType.Size > 0)
                                 {
-                                    refParameterList[j] = new(paramCsName, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
+                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
                                 }
                                 else
                                 {
-                                    refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
 
                                 if (arrayType.Size > 0)
                                 {
-                                    comPtrParameterList[j] = new(paramCsName, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
+                                    comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
                                 }
                                 else
                                 {
-                                    comPtrParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
 
                                 if (arrayType.ElementType.IsString())
                                 {
-                                    stringParameterList[j] = new(paramCsName, new("string[]", kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new("string[]", kind), direction);
                                 }
                                 else
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
                             else
                             {
-                                refParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
 
                                 int pointerDepth = 0;
                                 var name = settings.GetCsTypeName(cppParameter.Type, false).Replace("*", string.Empty);
@@ -322,27 +335,27 @@
                                     }
                                     if (pointerDepth == 1)
                                     {
-                                        comPtrParameterList[j] = new(paramCsName, new($"ComPtr<{name}>", kind), direction);
+                                        comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new($"ComPtr<{name}>", kind), direction);
                                     }
                                     else if (pointerDepth == 2)
                                     {
                                         if (j == parameters.Count - 1)
                                         {
-                                            comPtrParameterList[j] = new(paramCsName, new($"out ComPtr<{name}>", kind), direction);
+                                            comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new($"out ComPtr<{name}>", kind), direction);
                                         }
                                         else
                                         {
-                                            comPtrParameterList[j] = new(paramCsName, new($"ref ComPtr<{name}>", kind), direction);
+                                            comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new($"ref ComPtr<{name}>", kind), direction);
                                         }
                                     }
                                     else
                                     {
-                                        comPtrParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                        comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                     }
                                 }
                                 else
                                 {
-                                    comPtrParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
 
                                 if (name == "Guid"
@@ -388,11 +401,11 @@
 
                                 if (cppParameter.Type.IsString())
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
                                 }
                                 else
                                 {
-                                    stringParameterList[j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
 
@@ -402,25 +415,25 @@
                                 {
                                     if (mapping.CustomVariations[i].TryGetValue(paramCsName, out var paramType))
                                     {
-                                        customParameterList[i][j] = new(paramCsName, new(paramType, kind), direction);
+                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(paramType, kind), direction);
                                     }
                                     else
                                     {
-                                        customParameterList[i][j] = new(paramCsName, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            refParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            stringParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            comPtrParameterList[j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                            refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                            stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                            comPtrParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
                             if (mapping != null)
                             {
                                 for (int i = 0; i < mapping.CustomVariations.Count; i++)
                                 {
-                                    customParameterList[i][j] = new(paramCsName, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+                                    customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
                                 }
                             }
                         }

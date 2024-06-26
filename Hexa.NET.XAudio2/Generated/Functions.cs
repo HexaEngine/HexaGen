@@ -24,37 +24,16 @@ namespace Hexa.NET.XAudio2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "XAudio2CreateWithVersionInfo")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "XAudio2CreateWithVersionInfo")]
-		internal static extern HResult XAudio2CreateWithVersionInfoNative([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] IXAudio2** ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion);
+		[LibraryImport(LibName, EntryPoint = "XAudio2CreateWithVersionInfo")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int XAudio2CreateWithVersionInfoNative([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] IXAudio2** ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion);
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "XAudio2CreateWithVersionInfo")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult XAudio2CreateWithVersionInfo([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] IXAudio2** ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion) 
+		public static int XAudio2CreateWithVersionInfo([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] IXAudio2** ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion) 
 		{
-			HResult ret = XAudio2CreateWithVersionInfoNative(ppXAudio2, flags, xAudio2Processor, ntddiVersion);
+			int ret = XAudio2CreateWithVersionInfoNative(ppXAudio2, flags, xAudio2Processor, ntddiVersion);
 			return ret;
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "XAudio2CreateWithVersionInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult XAudio2CreateWithVersionInfo([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] ref IXAudio2* ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion) 
-		{
-			fixed (IXAudio2** pppXAudio2 = &ppXAudio2)
-			{
-				HResult ret = XAudio2CreateWithVersionInfoNative((IXAudio2**)pppXAudio2, flags, xAudio2Processor, ntddiVersion);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "XAudio2CreateWithVersionInfo")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult XAudio2CreateWithVersionInfo([NativeName(NativeNameType.Param, "ppXAudio2")] [NativeName(NativeNameType.Type, "IXAudio2**")] ref ComPtr<IXAudio2> ppXAudio2, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "XAudio2Processor")] [NativeName(NativeNameType.Type, "XAUDIO2_PROCESSOR")] uint xAudio2Processor, [NativeName(NativeNameType.Param, "ntddiVersion")] [NativeName(NativeNameType.Type, "DWORD")] uint ntddiVersion) 
-		{
-			fixed (ComPtr<IXAudio2>* pppXAudio2 = &ppXAudio2)
-			{
-				HResult ret = XAudio2CreateWithVersionInfoNative((IXAudio2**)pppXAudio2, flags, xAudio2Processor, ntddiVersion);
-				return ret;
-			}
 		}
 
 		/// <summary>
@@ -62,34 +41,15 @@ namespace Hexa.NET.XAudio2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "CreateAudioVolumeMeter")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CreateAudioVolumeMeter")]
-		internal static extern HResult CreateAudioVolumeMeterNative([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo);
+		[LibraryImport(LibName, EntryPoint = "CreateAudioVolumeMeter")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int CreateAudioVolumeMeterNative([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo);
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioVolumeMeter")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioVolumeMeter([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo) 
+		public static int CreateAudioVolumeMeter([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo) 
 		{
-			HResult ret = CreateAudioVolumeMeterNative(ppApo);
-			return ret;
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioVolumeMeter")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioVolumeMeter([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] ref IUnknown* ppApo) 
-		{
-			fixed (IUnknown** pppApo = &ppApo)
-			{
-				HResult ret = CreateAudioVolumeMeterNative((IUnknown**)pppApo);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioVolumeMeter")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioVolumeMeter([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] out ComPtr<IUnknown> ppApo) 
-		{
-			ppApo = default;
-			HResult ret = CreateAudioVolumeMeterNative((IUnknown**)ppApo.GetAddressOf());
+			int ret = CreateAudioVolumeMeterNative(ppApo);
 			return ret;
 		}
 
@@ -98,34 +58,15 @@ namespace Hexa.NET.XAudio2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "CreateAudioReverb")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "CreateAudioReverb")]
-		internal static extern HResult CreateAudioReverbNative([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo);
+		[LibraryImport(LibName, EntryPoint = "CreateAudioReverb")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int CreateAudioReverbNative([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo);
 
 		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioReverb")]
 		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioReverb([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo) 
+		public static int CreateAudioReverb([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] IUnknown** ppApo) 
 		{
-			HResult ret = CreateAudioReverbNative(ppApo);
-			return ret;
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioReverb")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioReverb([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] ref IUnknown* ppApo) 
-		{
-			fixed (IUnknown** pppApo = &ppApo)
-			{
-				HResult ret = CreateAudioReverbNative((IUnknown**)pppApo);
-				return ret;
-			}
-		}
-
-		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.Func, "CreateAudioReverb")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult CreateAudioReverb([NativeName(NativeNameType.Param, "ppApo")] [NativeName(NativeNameType.Type, "IUnknown**")] out ComPtr<IUnknown> ppApo) 
-		{
-			ppApo = default;
-			HResult ret = CreateAudioReverbNative((IUnknown**)ppApo.GetAddressOf());
+			int ret = CreateAudioReverbNative(ppApo);
 			return ret;
 		}
 

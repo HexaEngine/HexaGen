@@ -2,6 +2,7 @@
 {
     public enum CsPrimitiveType
     {
+        Unknown,
         Void,
         Bool,
         Byte,

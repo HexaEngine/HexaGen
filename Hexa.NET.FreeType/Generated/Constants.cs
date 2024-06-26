@@ -470,5 +470,13 @@ namespace Hexa.NET.FreeType
 		[NativeName(NativeNameType.Value, "2")]
 		public const int FREETYPE_PATCH = 2;
 
+		[NativeName(NativeNameType.Const, "FT_PALETTE_FOR_LIGHT_BACKGROUND")]
+		[NativeName(NativeNameType.Value, "0x01")]
+		public const int FT_PALETTE_FOR_LIGHT_BACKGROUND = 0x01;
+
+		[NativeName(NativeNameType.Const, "FT_PALETTE_FOR_DARK_BACKGROUND")]
+		[NativeName(NativeNameType.Value, "0x02")]
+		public const int FT_PALETTE_FOR_DARK_BACKGROUND = 0x02;
+
 	}
 }

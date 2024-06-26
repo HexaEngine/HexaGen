@@ -5,6 +5,8 @@
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
+  "GeneratePlaceholderComments": false,
+  "GenerateMetadata": true,
   "KnownConstantNames": {
   },
   "KnownEnumValueNames": {

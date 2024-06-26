@@ -98,7 +98,7 @@
             }
             if (settings.GenerateMetadata)
             {
-                writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.FullName}\")]");
             }
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
 
@@ -127,7 +127,7 @@
                 {
                     var subClass = cppClass.Classes[j];
                     var csSubName = settings.GetCsSubTypeName(cppClass, csName, subClass, j);
-                    var subClassMapping = settings.GetTypeMapping(subClass.Name);
+                    var subClassMapping = settings.GetTypeMapping(subClass.FullName);
 
                     csSubName = subClassMapping?.FriendlyName ?? csSubName;
 
@@ -153,7 +153,7 @@
                             writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
                         }
 
-                        var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+                        var subClass = subClasses.FirstOrDefault(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
 
                         string csFieldName = settings.GetFieldName(cppField.Name);
                         if (isUnion)
@@ -228,6 +228,21 @@
                         var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
 
                         CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
+
+                        for (int j = 0; j < overload.Parameters.Count; j++)
+                        {
+                            var param = overload.Parameters[j];
+                            var subClass = subClasses.First(x => x.CppType == param.CppType);
+                            param.Type = subClass.Type;
+
+                            int depth = 0;
+                            var subClass1 = subClasses.FirstOrDefault(x => x.CppType.IsPointerOf(param.CppType, ref depth));
+                            if (subClass1 != null)
+                            {
+                                param.Type = new CsType(subClass1.Name + new string('*', depth), CppPrimitiveKind.Void);
+                            }
+                        }
+
                         overload.StructName = csName;
                         funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
 
@@ -265,17 +280,31 @@
                         var direction = cppField.Type.GetDirection();
                         var kind = cppField.Type.GetPrimitiveKind();
 
-                        if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
+                        var subClass = subClasses.FirstOrDefault(x => x.CppType == cppField.Type);
+
+                        if (subClass != null && cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                         {
-                            var subClass = subClasses.FirstOrDefault(x => x.Type == cppClass1 && x.CppFieldName == cppField.Name);
+                            subClass = subClasses.First(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
                             paramCsTypeName = subClass.Name;
                             paramCsName = subClass.FieldName.ToLower();
                             csFieldName = subClass.FieldName;
                         }
 
+                        if (subClass != null)
+                        {
+                            paramCsTypeName = subClass.Name;
+                        }
+
+                        int depth = 0;
+                        var subClass1 = subClasses.FirstOrDefault(x => x.CppType.IsPointerOf(cppField.Type, ref depth));
+                        if (subClass1 != null)
+                        {
+                            paramCsTypeName = subClass1.Name + new string('*', depth);
+                        }
+
                         CsType csType = new(paramCsTypeName, kind);
 
-                        CsParameterInfo csParameter = new(paramCsName, csType, direction, "default", csFieldName);
+                        CsParameterInfo csParameter = new(paramCsName, cppField.Type, csType, direction, "default", csFieldName);
                         overload.DefaultValues.TryAdd(paramCsName, "default");
                         overload.Parameters.Add(csParameter);
                     }
@@ -392,8 +421,7 @@
 
                     if (string.IsNullOrEmpty(fieldName))
                     {
-                        var subClass = subClasses.Find(x => x.Type == cppField.Type && x.CppFieldName == cppField.Name);
-                        fieldName = subClass.Name;
+                        fieldName = subClasses.First(x => x.CppType == cppField.Type).Name;
                     }
 
                     if (fieldName == cppParameter.Name)
@@ -487,11 +515,20 @@
             else
             {
                 string csFieldType = settings.GetCsTypeName(field.Type, false);
-                if (string.IsNullOrEmpty(csFieldType))
+
+                var subClass = subClasses.Find(x => x.CppType == field.Type);
+                if (subClass != null)
                 {
-                    var subClass = subClasses.Find(x => x.Type == field.Type);
                     csFieldType = subClass.Name;
                 }
+
+                int depth = 0;
+                var subClass1 = subClasses.FirstOrDefault(x => x.CppType.IsPointerOf(field.Type, ref depth));
+                if (subClass1 != null)
+                {
+                    csFieldType = subClass1.Name + new string('*', depth);
+                }
+
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
                 if (csFieldType == "bool")

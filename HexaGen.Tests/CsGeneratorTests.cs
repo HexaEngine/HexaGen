@@ -228,6 +228,19 @@ namespace HexaGen.Tests
         }
 
         [Test]
+        public void SPIRVReflect()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("spirvreflect/generator.json");
+            string headerFile = "spirvreflect/spirv_reflect.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.SPIRVReflect/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
+
+        [Test]
         public void SDL2()
         {
             CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("sdl2/generator.json");

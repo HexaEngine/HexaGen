@@ -581,4 +581,288 @@ namespace Hexa.NET.FreeType
 		Unscaled = unchecked(2),
 	}
 
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Glyph_BBox_Mode<br/>	/// <br/>	/// :<br/>	/// The mode how the values of <br/>	/// _Glyph_Get_CBox are returned.<br/>	/// <br/>	/// :<br/>	/// FT_GLYPH_BBOX_UNSCALED ::<br/>	/// Return unscaled font units.<br/>	/// FT_GLYPH_BBOX_SUBPIXELS ::<br/>	/// Return unfitted 26.6 coordinates.<br/>	/// FT_GLYPH_BBOX_GRIDFIT ::<br/>	/// Return grid-fitted 26.6 coordinates.<br/>	/// FT_GLYPH_BBOX_TRUNCATE ::<br/>	/// Return coordinates in integer pixels.<br/>	/// FT_GLYPH_BBOX_PIXELS ::<br/>	/// Return grid-fitted pixel coordinates.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Glyph_BBox_Mode_")]
+	public enum FTGlyphBBoxMode
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_GLYPH_BBOX_UNSCALED")]
+		[NativeName(NativeNameType.Value, "0")]
+		GlyphBboxUnscaled = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_GLYPH_BBOX_SUBPIXELS")]
+		[NativeName(NativeNameType.Value, "0")]
+		GlyphBboxSubpixels = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_GLYPH_BBOX_GRIDFIT")]
+		[NativeName(NativeNameType.Value, "1")]
+		GlyphBboxGridfit = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_GLYPH_BBOX_TRUNCATE")]
+		[NativeName(NativeNameType.Value, "2")]
+		GlyphBboxTruncate = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "FT_GLYPH_BBOX_PIXELS")]
+		[NativeName(NativeNameType.Value, "3")]
+		GlyphBboxPixels = unchecked(3),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Orientation<br/>	/// <br/>	/// :<br/>	/// A list of values used to describe an outline's contour orientation.<br/>	/// The TrueType and PostScript specifications use different conventions<br/>	/// to determine whether outline contours should be filled or unfilled.<br/>	/// <br/>	/// :<br/>	/// FT_ORIENTATION_TRUETYPE ::<br/>	/// According to the TrueType specification, clockwise contours must be<br/>	/// filled, and counter-clockwise ones must be unfilled.<br/>	/// FT_ORIENTATION_POSTSCRIPT ::<br/>	/// According to the PostScript specification, counter-clockwise<br/>	/// contours must be filled, and clockwise ones must be unfilled.<br/>	/// FT_ORIENTATION_FILL_RIGHT ::<br/>	/// This is identical to <br/>	/// _ORIENTATION_TRUETYPE, but is used to<br/>	/// remember that in TrueType, everything that is to the right of the<br/>	/// drawing direction of a contour must be filled.<br/>	/// FT_ORIENTATION_FILL_LEFT ::<br/>	/// This is identical to <br/>	/// _ORIENTATION_POSTSCRIPT, but is used to<br/>	/// remember that in PostScript, everything that is to the left of the<br/>	/// drawing direction of a contour must be filled.<br/>	/// FT_ORIENTATION_NONE ::<br/>	/// The orientation cannot be determined.  That is, different parts of<br/>	/// the glyph have different orientation.<br/>	/// <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Orientation_")]
+	public enum FTOrientation
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_ORIENTATION_TRUETYPE")]
+		[NativeName(NativeNameType.Value, "0")]
+		Truetype = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_ORIENTATION_POSTSCRIPT")]
+		[NativeName(NativeNameType.Value, "1")]
+		Postscript = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_ORIENTATION_FILL_RIGHT")]
+		[NativeName(NativeNameType.Value, "FT_ORIENTATION_TRUETYPE")]
+		FillRight = Truetype,
+		[NativeName(NativeNameType.EnumItem, "FT_ORIENTATION_FILL_LEFT")]
+		[NativeName(NativeNameType.Value, "FT_ORIENTATION_POSTSCRIPT")]
+		FillLeft = Postscript,
+		[NativeName(NativeNameType.EnumItem, "FT_ORIENTATION_NONE")]
+		[NativeName(NativeNameType.Value, "2")]
+		None = unchecked(2),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_PaintFormat<br/>	/// <br/>	/// :<br/>	/// Enumeration describing the different paint format types of the v1<br/>	/// extensions to the 'COLR' table, see<br/>	/// 'https://github.com/googlefonts/colr-gradients-spec'.<br/>	/// The enumeration values loosely correspond with the format numbers of<br/>	/// the specification: FreeType always returns a fully specified 'Paint'<br/>	/// structure for the 'Transform', 'Translate', 'Scale', 'Rotate', and<br/>	/// 'Skew' table types even though the specification has different formats<br/>	/// depending on whether or not a center is specified, whether the scale<br/>	/// is uniform in x and y~direction or not, etc.  Also, only non-variable<br/>	/// format identifiers are listed in this enumeration; as soon as support<br/>	/// for variable 'COLR' v1 fonts is implemented, interpolation is<br/>	/// performed dependent on axis coordinates, which are configured on the<br/>	/// <br/>	/// _Face through <br/>	/// _Set_Var_Design_Coordinates.  This implies that<br/>	/// always static, readily interpolated values are returned in the 'Paint'<br/>	/// structures.<br/>	/// <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_PaintFormat_")]
+	public enum FTPaintFormat
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_COLR_LAYERS")]
+		[NativeName(NativeNameType.Value, "1")]
+		ColrPaintformatColrLayers = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_SOLID")]
+		[NativeName(NativeNameType.Value, "2")]
+		ColrPaintformatSolid = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_LINEAR_GRADIENT")]
+		[NativeName(NativeNameType.Value, "4")]
+		ColrPaintformatLinearGradient = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_RADIAL_GRADIENT")]
+		[NativeName(NativeNameType.Value, "6")]
+		ColrPaintformatRadialGradient = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_SWEEP_GRADIENT")]
+		[NativeName(NativeNameType.Value, "8")]
+		ColrPaintformatSweepGradient = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_GLYPH")]
+		[NativeName(NativeNameType.Value, "10")]
+		ColrPaintformatGlyph = unchecked(10),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_COLR_GLYPH")]
+		[NativeName(NativeNameType.Value, "11")]
+		ColrPaintformatColrGlyph = unchecked(11),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_TRANSFORM")]
+		[NativeName(NativeNameType.Value, "12")]
+		ColrPaintformatTransform = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_TRANSLATE")]
+		[NativeName(NativeNameType.Value, "14")]
+		ColrPaintformatTranslate = unchecked(14),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_SCALE")]
+		[NativeName(NativeNameType.Value, "16")]
+		ColrPaintformatScale = unchecked(16),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_ROTATE")]
+		[NativeName(NativeNameType.Value, "24")]
+		ColrPaintformatRotate = unchecked(24),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_SKEW")]
+		[NativeName(NativeNameType.Value, "28")]
+		ColrPaintformatSkew = unchecked(28),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_COMPOSITE")]
+		[NativeName(NativeNameType.Value, "32")]
+		ColrPaintformatComposite = unchecked(32),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINT_FORMAT_MAX")]
+		[NativeName(NativeNameType.Value, "33")]
+		ColrPaintFormatMax = unchecked(33),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINTFORMAT_UNSUPPORTED")]
+		[NativeName(NativeNameType.Value, "255")]
+		ColrPaintformatUnsupported = unchecked(255),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_PaintExtend<br/>	/// <br/>	/// :<br/>	/// An enumeration representing the 'Extend' mode of the 'COLR' v1<br/>	/// extensions, see 'https://github.com/googlefonts/colr-gradients-spec'.<br/>	/// It describes how the gradient fill continues at the other boundaries.<br/>	/// <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_PaintExtend_")]
+	public enum FTPaintExtend
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINT_EXTEND_PAD")]
+		[NativeName(NativeNameType.Value, "0")]
+		ColrPaintExtendPad = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINT_EXTEND_REPEAT")]
+		[NativeName(NativeNameType.Value, "1")]
+		ColrPaintExtendRepeat = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_PAINT_EXTEND_REFLECT")]
+		[NativeName(NativeNameType.Value, "2")]
+		ColrPaintExtendReflect = unchecked(2),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Composite_Mode<br/>	/// <br/>	/// :<br/>	/// An enumeration listing the 'COLR' v1 composite modes used in<br/>	/// <br/>	/// _PaintComposite.  For more details on each paint mode, see<br/>	/// 'https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators'.<br/>	/// <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Composite_Mode_")]
+	public enum FTCompositeMode
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_CLEAR")]
+		[NativeName(NativeNameType.Value, "0")]
+		ColrCompositeClear = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SRC")]
+		[NativeName(NativeNameType.Value, "1")]
+		ColrCompositeSrc = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DEST")]
+		[NativeName(NativeNameType.Value, "2")]
+		ColrCompositeDest = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SRC_OVER")]
+		[NativeName(NativeNameType.Value, "3")]
+		ColrCompositeSrcOver = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DEST_OVER")]
+		[NativeName(NativeNameType.Value, "4")]
+		ColrCompositeDestOver = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SRC_IN")]
+		[NativeName(NativeNameType.Value, "5")]
+		ColrCompositeSrcIn = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DEST_IN")]
+		[NativeName(NativeNameType.Value, "6")]
+		ColrCompositeDestIn = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SRC_OUT")]
+		[NativeName(NativeNameType.Value, "7")]
+		ColrCompositeSrcOut = unchecked(7),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DEST_OUT")]
+		[NativeName(NativeNameType.Value, "8")]
+		ColrCompositeDestOut = unchecked(8),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SRC_ATOP")]
+		[NativeName(NativeNameType.Value, "9")]
+		ColrCompositeSrcAtop = unchecked(9),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DEST_ATOP")]
+		[NativeName(NativeNameType.Value, "10")]
+		ColrCompositeDestAtop = unchecked(10),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_XOR")]
+		[NativeName(NativeNameType.Value, "11")]
+		ColrCompositeXor = unchecked(11),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_PLUS")]
+		[NativeName(NativeNameType.Value, "12")]
+		ColrCompositePlus = unchecked(12),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SCREEN")]
+		[NativeName(NativeNameType.Value, "13")]
+		ColrCompositeScreen = unchecked(13),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_OVERLAY")]
+		[NativeName(NativeNameType.Value, "14")]
+		ColrCompositeOverlay = unchecked(14),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DARKEN")]
+		[NativeName(NativeNameType.Value, "15")]
+		ColrCompositeDarken = unchecked(15),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_LIGHTEN")]
+		[NativeName(NativeNameType.Value, "16")]
+		ColrCompositeLighten = unchecked(16),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_COLOR_DODGE")]
+		[NativeName(NativeNameType.Value, "17")]
+		ColrCompositeColorDodge = unchecked(17),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_COLOR_BURN")]
+		[NativeName(NativeNameType.Value, "18")]
+		ColrCompositeColorBurn = unchecked(18),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_HARD_LIGHT")]
+		[NativeName(NativeNameType.Value, "19")]
+		ColrCompositeHardLight = unchecked(19),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_SOFT_LIGHT")]
+		[NativeName(NativeNameType.Value, "20")]
+		ColrCompositeSoftLight = unchecked(20),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_DIFFERENCE")]
+		[NativeName(NativeNameType.Value, "21")]
+		ColrCompositeDifference = unchecked(21),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_EXCLUSION")]
+		[NativeName(NativeNameType.Value, "22")]
+		ColrCompositeExclusion = unchecked(22),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_MULTIPLY")]
+		[NativeName(NativeNameType.Value, "23")]
+		ColrCompositeMultiply = unchecked(23),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_HSL_HUE")]
+		[NativeName(NativeNameType.Value, "24")]
+		ColrCompositeHslHue = unchecked(24),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_HSL_SATURATION")]
+		[NativeName(NativeNameType.Value, "25")]
+		ColrCompositeHslSaturation = unchecked(25),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_HSL_COLOR")]
+		[NativeName(NativeNameType.Value, "26")]
+		ColrCompositeHslColor = unchecked(26),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_HSL_LUMINOSITY")]
+		[NativeName(NativeNameType.Value, "27")]
+		ColrCompositeHslLuminosity = unchecked(27),
+		[NativeName(NativeNameType.EnumItem, "FT_COLR_COMPOSITE_MAX")]
+		[NativeName(NativeNameType.Value, "28")]
+		ColrCompositeMax = unchecked(28),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Color_Root_Transform<br/>	/// <br/>	/// :<br/>	/// An enumeration to specify whether <br/>	/// _Get_Color_Glyph_Paint is to<br/>	/// return a root transform to configure the client's graphics context<br/>	/// matrix.<br/>	/// <br/>	/// :<br/>	/// FT_COLOR_INCLUDE_ROOT_TRANSFORM ::<br/>	/// Do include the root transform as the initial <br/>	/// _COLR_Paint object.<br/>	/// FT_COLOR_NO_ROOT_TRANSFORM ::<br/>	/// Do not output an initial root transform.<br/>	/// <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Color_Root_Transform_")]
+	public enum FTColorRootTransform
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_COLOR_INCLUDE_ROOT_TRANSFORM")]
+		[NativeName(NativeNameType.Value, "0")]
+		IncludeRootTransform = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_COLOR_NO_ROOT_TRANSFORM")]
+		[NativeName(NativeNameType.Value, "1")]
+		NoRootTransform = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_COLOR_ROOT_TRANSFORM_MAX")]
+		[NativeName(NativeNameType.Value, "2")]
+		Max = unchecked(2),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Sfnt_Tag<br/>	/// <br/>	/// :<br/>	/// An enumeration to specify indices of SFNT tables loaded and parsed by<br/>	/// FreeType during initialization of an SFNT font.  Used in the<br/>	/// <br/>	/// _Get_Sfnt_Table API function.<br/>	/// <br/>	/// :<br/>	/// FT_SFNT_HEAD ::<br/>	/// To access the font's <br/>	/// _Header structure.<br/>	/// FT_SFNT_MAXP ::<br/>	/// To access the font's <br/>	/// _MaxProfile structure.<br/>	/// FT_SFNT_OS2 ::<br/>	/// To access the font's <br/>	/// _OS2 structure.<br/>	/// FT_SFNT_HHEA ::<br/>	/// To access the font's <br/>	/// _HoriHeader structure.<br/>	/// FT_SFNT_VHEA ::<br/>	/// To access the font's <br/>	/// _VertHeader structure.<br/>	/// FT_SFNT_POST ::<br/>	/// To access the font's <br/>	/// _Postscript structure.<br/>	/// FT_SFNT_PCLT ::<br/>	/// To access the font's <br/>	/// _PCLT structure.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Sfnt_Tag_")]
+	public enum FTSfntTag
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_HEAD")]
+		[NativeName(NativeNameType.Value, "0")]
+		Head = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_MAXP")]
+		[NativeName(NativeNameType.Value, "1")]
+		Maxp = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_OS2")]
+		[NativeName(NativeNameType.Value, "2")]
+		Os2 = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_HHEA")]
+		[NativeName(NativeNameType.Value, "3")]
+		Hhea = unchecked(3),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_VHEA")]
+		[NativeName(NativeNameType.Value, "4")]
+		Vhea = unchecked(4),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_POST")]
+		[NativeName(NativeNameType.Value, "5")]
+		Post = unchecked(5),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_PCLT")]
+		[NativeName(NativeNameType.Value, "6")]
+		Pclt = unchecked(6),
+		[NativeName(NativeNameType.EnumItem, "FT_SFNT_MAX")]
+		[NativeName(NativeNameType.Value, "7")]
+		Max = unchecked(7),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Stroker_LineJoin<br/>	/// <br/>	/// :<br/>	/// These values determine how two joining lines are rendered in a<br/>	/// stroker.<br/>	/// <br/>	/// :<br/>	/// FT_STROKER_LINEJOIN_ROUND ::<br/>	/// Used to render rounded line joins.  Circular arcs are used to join<br/>	/// two lines smoothly.<br/>	/// FT_STROKER_LINEJOIN_BEVEL ::<br/>	/// Used to render beveled line joins.  The outer corner of the joined<br/>	/// lines is filled by enclosing the triangular region of the corner<br/>	/// with a straight line between the outer corners of each stroke.<br/>	/// FT_STROKER_LINEJOIN_MITER_FIXED ::<br/>	/// Used to render mitered line joins, with fixed bevels if the miter<br/>	/// limit is exceeded.  The outer edges of the strokes for the two<br/>	/// segments are extended until they meet at an angle.  A bevel join<br/>	/// (see above) is used if the segments meet at too sharp an angle and<br/>	/// the outer edges meet beyond a distance corresponding to the meter<br/>	/// limit.  This prevents long spikes being created.<br/>	/// `FT_STROKER_LINEJOIN_MITER_FIXED` generates a miter line join as<br/>	/// used in PostScript and PDF.<br/>	/// FT_STROKER_LINEJOIN_MITER_VARIABLE ::<br/>	/// FT_STROKER_LINEJOIN_MITER ::<br/>	/// Used to render mitered line joins, with variable bevels if the miter<br/>	/// limit is exceeded.  The intersection of the strokes is clipped<br/>	/// perpendicularly to the bisector, at a distance corresponding to<br/>	/// the miter limit. This prevents long spikes being created.<br/>	/// `FT_STROKER_LINEJOIN_MITER_VARIABLE` generates a mitered line join<br/>	/// as used in XPS.  `FT_STROKER_LINEJOIN_MITER` is an alias for<br/>	/// `FT_STROKER_LINEJOIN_MITER_VARIABLE`, retained for backward<br/>	/// compatibility.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Stroker_LineJoin_")]
+	public enum FTStrokerLineJoin
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINEJOIN_ROUND")]
+		[NativeName(NativeNameType.Value, "0")]
+		LinejoinRound = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINEJOIN_BEVEL")]
+		[NativeName(NativeNameType.Value, "1")]
+		LinejoinBevel = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINEJOIN_MITER_VARIABLE")]
+		[NativeName(NativeNameType.Value, "2")]
+		LinejoinMiterVariable = unchecked(2),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINEJOIN_MITER")]
+		[NativeName(NativeNameType.Value, "FT_STROKER_LINEJOIN_MITER_VARIABLE")]
+		LinejoinMiter = LinejoinMiterVariable,
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINEJOIN_MITER_FIXED")]
+		[NativeName(NativeNameType.Value, "3")]
+		LinejoinMiterFixed = unchecked(3),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_Stroker_LineCap<br/>	/// <br/>	/// :<br/>	/// These values determine how the end of opened sub-paths are rendered in<br/>	/// a stroke.<br/>	/// <br/>	/// :<br/>	/// FT_STROKER_LINECAP_BUTT ::<br/>	/// The end of lines is rendered as a full stop on the last point<br/>	/// itself.<br/>	/// FT_STROKER_LINECAP_ROUND ::<br/>	/// The end of lines is rendered as a half-circle around the last point.<br/>	/// FT_STROKER_LINECAP_SQUARE ::<br/>	/// The end of lines is rendered as a square around the last point.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_Stroker_LineCap_")]
+	public enum FTStrokerLineCap
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINECAP_BUTT")]
+		[NativeName(NativeNameType.Value, "0")]
+		LinecapButt = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINECAP_ROUND")]
+		[NativeName(NativeNameType.Value, "1")]
+		LinecapRound = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_LINECAP_SQUARE")]
+		[NativeName(NativeNameType.Value, "2")]
+		LinecapSquare = unchecked(2),
+	}
+
+	/// <summary>	/// ************************************************************************<br/>	/// <br/>	/// FT_StrokerBorder<br/>	/// <br/>	/// :<br/>	/// These values are used to select a given stroke border in<br/>	/// <br/>	/// _Stroker_GetBorderCounts and <br/>	/// _Stroker_ExportBorder.<br/>	/// <br/>	/// :<br/>	/// FT_STROKER_BORDER_LEFT ::<br/>	/// Select the left border, relative to the drawing direction.<br/>	/// FT_STROKER_BORDER_RIGHT ::<br/>	/// Select the right border, relative to the drawing direction.<br/>	/// <br/>	/// You can however use <br/>	/// _Outline_GetInsideBorder and<br/>	/// <br/>	/// _Outline_GetOutsideBorder to get these.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "FT_StrokerBorder_")]
+	public enum FTStrokerBorder
+	{
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_BORDER_LEFT")]
+		[NativeName(NativeNameType.Value, "0")]
+		Left = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "FT_STROKER_BORDER_RIGHT")]
+		[NativeName(NativeNameType.Value, "1")]
+		Right = unchecked(1),
+	}
+
 }

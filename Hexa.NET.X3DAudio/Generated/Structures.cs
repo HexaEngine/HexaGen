@@ -196,28 +196,28 @@ namespace Hexa.NET.X3DAudio
 		/// </summary>
 		[NativeName(NativeNameType.Field, "OrientFront")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 OrientFront;
+		public Vector3 OrientFront;
 
 		/// <summary>
 		/// orientation of top direction, used only for matrix and delay calculations, must be orthonormal with OrientFront when used<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "OrientTop")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 OrientTop;
+		public Vector3 OrientTop;
 
 		/// <summary>
 		/// position in user-defined world units, does not affect Velocity<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "Position")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 Position;
+		public Vector3 Position;
 
 		/// <summary>
 		/// velocity vector in user-defined world units/second, used only for doppler calculations, does not affect Position<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "Velocity")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 Velocity;
+		public Vector3 Velocity;
 
 		/// <summary>
 		/// sound cone, used only for matrix, LPF (both direct and reverb paths), and reverb calculations, NULL specifies omnidirectionality<br/>
@@ -227,7 +227,7 @@ namespace Hexa.NET.X3DAudio
 		public unsafe X3DAudioCone* PCone;
 
 
-		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioListener(Vector4 orientFront = default, Vector4 orientTop = default, Vector4 position = default, Vector4 velocity = default, X3DAudioCone* pCone = default)
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioListener(Vector3 orientFront = default, Vector3 orientTop = default, Vector3 position = default, Vector3 velocity = default, X3DAudioCone* pCone = default)
 		{
 			OrientFront = orientFront;
 			OrientTop = orientTop;
@@ -282,28 +282,28 @@ namespace Hexa.NET.X3DAudio
 		/// </summary>
 		[NativeName(NativeNameType.Field, "OrientFront")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 OrientFront;
+		public Vector3 OrientFront;
 
 		/// <summary>
 		/// orientation of top direction, used only with multi-channel emitters for matrix calculations, must be orthonormal with OrientFront when used<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "OrientTop")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 OrientTop;
+		public Vector3 OrientTop;
 
 		/// <summary>
 		/// position in user-defined world units, does not affect Velocity<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "Position")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 Position;
+		public Vector3 Position;
 
 		/// <summary>
 		/// velocity vector in user-defined world units/second, used only for doppler calculations, does not affect Position<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Field, "Velocity")]
 		[NativeName(NativeNameType.Type, "X3DAUDIO_VECTOR")]
-		public Vector4 Velocity;
+		public Vector3 Velocity;
 
 		/// <summary>
 		/// inner radius, must be within [0.0f, FLT_MAX]<br/>
@@ -394,7 +394,7 @@ namespace Hexa.NET.X3DAudio
 		public float DopplerScaler;
 
 
-		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioEmitter(X3DAudioCone* pCone = default, Vector4 orientFront = default, Vector4 orientTop = default, Vector4 position = default, Vector4 velocity = default, float innerRadius = default, float innerRadiusAngle = default, uint channelCount = default, float channelRadius = default, float* pChannelAzimuths = default, X3DAudioDistanceCurve* pVolumeCurve = default, X3DAudioDistanceCurve* pLFECurve = default, X3DAudioDistanceCurve* pLPFDirectCurve = default, X3DAudioDistanceCurve* pLPFReverbCurve = default, X3DAudioDistanceCurve* pReverbCurve = default, float curveDistanceScaler = default, float dopplerScaler = default)
+		/// <summary>		/// To be documented.		/// </summary>		public unsafe X3DAudioEmitter(X3DAudioCone* pCone = default, Vector3 orientFront = default, Vector3 orientTop = default, Vector3 position = default, Vector3 velocity = default, float innerRadius = default, float innerRadiusAngle = default, uint channelCount = default, float channelRadius = default, float* pChannelAzimuths = default, X3DAudioDistanceCurve* pVolumeCurve = default, X3DAudioDistanceCurve* pLFECurve = default, X3DAudioDistanceCurve* pLPFDirectCurve = default, X3DAudioDistanceCurve* pLPFReverbCurve = default, X3DAudioDistanceCurve* pReverbCurve = default, float curveDistanceScaler = default, float dopplerScaler = default)
 		{
 			PCone = pCone;
 			OrientFront = orientFront;

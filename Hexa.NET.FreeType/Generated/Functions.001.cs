@@ -812,5 +812,1440 @@ namespace Hexa.NET.FreeType
 			return ret;
 		}
 
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_New_Glyph<br/>
+		/// <br/>
+		/// :<br/>
+		/// A function used to create a new empty glyph image.  Note that the<br/>
+		/// created <br/>
+		/// _Glyph object must be released with <br/>
+		/// _Done_Glyph.<br/>
+		/// <br/>
+		/// :<br/>
+		/// library ::<br/>
+		/// A handle to the FreeType library object.<br/>
+		/// format ::<br/>
+		/// The format of the glyph's image.<br/>
+		/// <br/>
+		/// :<br/>
+		/// aglyph ::<br/>
+		/// A handle to the glyph object.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_New_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_New_Glyph")]
+		internal static extern int FTNewGlyphNative([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "FT_Glyph_Format")] FTGlyphFormat format, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* aglyph);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_New_Glyph<br/>/// <br/>/// :<br/>/// A function used to create a new empty glyph image.  Note that the<br/>/// created <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to the FreeType library object.<br/>/// format ::<br/>/// The format of the glyph's image.<br/>/// <br/>/// :<br/>/// aglyph ::<br/>/// A handle to the glyph object.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_New_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTNewGlyph([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "FT_Glyph_Format")] FTGlyphFormat format, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* aglyph)
+		{
+			int ret = FTNewGlyphNative(library, format, aglyph);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_New_Glyph<br/>/// <br/>/// :<br/>/// A function used to create a new empty glyph image.  Note that the<br/>/// created <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to the FreeType library object.<br/>/// format ::<br/>/// The format of the glyph's image.<br/>/// <br/>/// :<br/>/// aglyph ::<br/>/// A handle to the glyph object.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_New_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTNewGlyph([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "FT_Glyph_Format")] FTGlyphFormat format, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] ref FTGlyph aglyph)
+		{
+			fixed (FTGlyph* paglyph = &aglyph)
+			{
+				int ret = FTNewGlyphNative(library, format, (FTGlyph*)paglyph);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Get_Glyph<br/>
+		/// <br/>
+		/// :<br/>
+		/// A function used to extract a glyph image from a slot.  Note that the<br/>
+		/// created <br/>
+		/// _Glyph object must be released with <br/>
+		/// _Done_Glyph.<br/>
+		/// <br/>
+		/// :<br/>
+		/// slot ::<br/>
+		/// A handle to the source glyph slot.<br/>
+		/// <br/>
+		/// :<br/>
+		/// aglyph ::<br/>
+		/// A handle to the glyph object.  `NULL` in case of error.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Get_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Get_Glyph")]
+		internal static extern int FTGetGlyphNative([NativeName(NativeNameType.Param, "slot")] [NativeName(NativeNameType.Type, "FT_GlyphSlot")] FTGlyphSlot slot, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* aglyph);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Glyph<br/>/// <br/>/// :<br/>/// A function used to extract a glyph image from a slot.  Note that the<br/>/// created <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// slot ::<br/>/// A handle to the source glyph slot.<br/>/// <br/>/// :<br/>/// aglyph ::<br/>/// A handle to the glyph object.  `NULL` in case of error.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGetGlyph([NativeName(NativeNameType.Param, "slot")] [NativeName(NativeNameType.Type, "FT_GlyphSlot")] FTGlyphSlot slot, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* aglyph)
+		{
+			int ret = FTGetGlyphNative(slot, aglyph);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Glyph<br/>/// <br/>/// :<br/>/// A function used to extract a glyph image from a slot.  Note that the<br/>/// created <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// slot ::<br/>/// A handle to the source glyph slot.<br/>/// <br/>/// :<br/>/// aglyph ::<br/>/// A handle to the glyph object.  `NULL` in case of error.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Glyph")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGetGlyph([NativeName(NativeNameType.Param, "slot")] [NativeName(NativeNameType.Type, "FT_GlyphSlot")] FTGlyphSlot slot, [NativeName(NativeNameType.Param, "aglyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] ref FTGlyph aglyph)
+		{
+			fixed (FTGlyph* paglyph = &aglyph)
+			{
+				int ret = FTGetGlyphNative(slot, (FTGlyph*)paglyph);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Glyph_Copy<br/>
+		/// <br/>
+		/// :<br/>
+		/// A function used to copy a glyph image.  Note that the created<br/>
+		/// <br/>
+		/// _Glyph object must be released with <br/>
+		/// _Done_Glyph.<br/>
+		/// <br/>
+		/// :<br/>
+		/// source ::<br/>
+		/// A handle to the source glyph object.<br/>
+		/// <br/>
+		/// :<br/>
+		/// target ::<br/>
+		/// A handle to the target glyph object.  `NULL` in case of error.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Glyph_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Glyph_Copy")]
+		internal static extern int FTGlyphCopyNative([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* target);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Copy<br/>/// <br/>/// :<br/>/// A function used to copy a glyph image.  Note that the created<br/>/// <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// source ::<br/>/// A handle to the source glyph object.<br/>/// <br/>/// :<br/>/// target ::<br/>/// A handle to the target glyph object.  `NULL` in case of error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphCopy([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* target)
+		{
+			int ret = FTGlyphCopyNative(source, target);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Copy<br/>/// <br/>/// :<br/>/// A function used to copy a glyph image.  Note that the created<br/>/// <br/>/// _Glyph object must be released with <br/>/// _Done_Glyph.<br/>/// <br/>/// :<br/>/// source ::<br/>/// A handle to the source glyph object.<br/>/// <br/>/// :<br/>/// target ::<br/>/// A handle to the target glyph object.  `NULL` in case of error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphCopy([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Glyph*")] ref FTGlyph target)
+		{
+			fixed (FTGlyph* ptarget = &target)
+			{
+				int ret = FTGlyphCopyNative(source, (FTGlyph*)ptarget);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Glyph_Transform<br/>
+		/// <br/>
+		/// :<br/>
+		/// Transform a glyph image if its format is scalable.<br/>
+		/// <br/>
+		/// :<br/>
+		/// glyph ::<br/>
+		/// A handle to the target glyph object.<br/>
+		/// <br/>
+		/// :<br/>
+		/// matrix ::<br/>
+		/// A pointer to a 2x2 matrix to apply.<br/>
+		/// delta ::<br/>
+		/// A pointer to a 2d vector to apply.  Coordinates are expressed in<br/>
+		/// 1/64 of a pixel.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Glyph_Transform")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Glyph_Transform")]
+		internal static extern int FTGlyphTransformNative([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* matrix, [NativeName(NativeNameType.Param, "delta")] [NativeName(NativeNameType.Type, "const FT_Vector*")] FTVector* delta);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Transform<br/>/// <br/>/// :<br/>/// Transform a glyph image if its format is scalable.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the target glyph object.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to a 2x2 matrix to apply.<br/>/// delta ::<br/>/// A pointer to a 2d vector to apply.  Coordinates are expressed in<br/>/// 1/64 of a pixel.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Transform")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphTransform([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* matrix, [NativeName(NativeNameType.Param, "delta")] [NativeName(NativeNameType.Type, "const FT_Vector*")] FTVector* delta)
+		{
+			int ret = FTGlyphTransformNative(glyph, matrix, delta);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Transform<br/>/// <br/>/// :<br/>/// Transform a glyph image if its format is scalable.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the target glyph object.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to a 2x2 matrix to apply.<br/>/// delta ::<br/>/// A pointer to a 2d vector to apply.  Coordinates are expressed in<br/>/// 1/64 of a pixel.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Transform")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphTransform([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] ref FTMatrix matrix, [NativeName(NativeNameType.Param, "delta")] [NativeName(NativeNameType.Type, "const FT_Vector*")] FTVector* delta)
+		{
+			fixed (FTMatrix* pmatrix = &matrix)
+			{
+				int ret = FTGlyphTransformNative(glyph, (FTMatrix*)pmatrix, delta);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Transform<br/>/// <br/>/// :<br/>/// Transform a glyph image if its format is scalable.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the target glyph object.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to a 2x2 matrix to apply.<br/>/// delta ::<br/>/// A pointer to a 2d vector to apply.  Coordinates are expressed in<br/>/// 1/64 of a pixel.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Transform")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphTransform([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* matrix, [NativeName(NativeNameType.Param, "delta")] [NativeName(NativeNameType.Type, "const FT_Vector*")] ref FTVector delta)
+		{
+			fixed (FTVector* pdelta = &delta)
+			{
+				int ret = FTGlyphTransformNative(glyph, matrix, (FTVector*)pdelta);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Transform<br/>/// <br/>/// :<br/>/// Transform a glyph image if its format is scalable.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the target glyph object.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to a 2x2 matrix to apply.<br/>/// delta ::<br/>/// A pointer to a 2d vector to apply.  Coordinates are expressed in<br/>/// 1/64 of a pixel.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Transform")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphTransform([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] ref FTMatrix matrix, [NativeName(NativeNameType.Param, "delta")] [NativeName(NativeNameType.Type, "const FT_Vector*")] ref FTVector delta)
+		{
+			fixed (FTMatrix* pmatrix = &matrix)
+			{
+				fixed (FTVector* pdelta = &delta)
+				{
+					int ret = FTGlyphTransformNative(glyph, (FTMatrix*)pmatrix, (FTVector*)pdelta);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Glyph_Get_CBox<br/>
+		/// <br/>
+		/// :<br/>
+		/// Return a glyph's 'control box'.  The control box encloses all the<br/>
+		/// outline's points, including Bezier control points.  Though it<br/>
+		/// coincides with the exact bounding box for most glyphs, it can be<br/>
+		/// slightly larger in some situations (like when rotating an outline that<br/>
+		/// contains Bezier outside arcs).<br/>
+		/// Computing the control box is very fast, while getting the bounding box<br/>
+		/// can take much more time as it needs to walk over all segments and arcs<br/>
+		/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>
+		/// component, which is dedicated to this single task.<br/>
+		/// <br/>
+		/// :<br/>
+		/// glyph ::<br/>
+		/// A handle to the source glyph object.<br/>
+		/// mode ::<br/>
+		/// The mode that indicates how to interpret the returned bounding box<br/>
+		/// values.<br/>
+		/// <br/>
+		/// :<br/>
+		/// acbox ::<br/>
+		/// The glyph coordinate bounding box.  Coordinates are expressed in<br/>
+		/// 1/64 of pixels if it is grid-fitted.<br/>
+		/// <br/>
+		/// If the glyph has been loaded with <br/>
+		/// _LOAD_NO_SCALE, `bbox_mode` must<br/>
+		/// be set to <br/>
+		/// _GLYPH_BBOX_UNSCALED to get unscaled font units in 26.6<br/>
+		/// pixel format.  The value <br/>
+		/// _GLYPH_BBOX_SUBPIXELS is another name for<br/>
+		/// this constant.<br/>
+		/// If the font is tricky and the glyph has been loaded with<br/>
+		/// <br/>
+		/// _LOAD_NO_SCALE, the resulting CBox is meaningless.  To get<br/>
+		/// reasonable values for the CBox it is necessary to load the glyph at a<br/>
+		/// large ppem value (so that the hinting instructions can properly shift<br/>
+		/// and scale the subglyphs), then extracting the CBox, which can be<br/>
+		/// eventually converted back to font units.<br/>
+		/// Note that the maximum coordinates are exclusive, which means that one<br/>
+		/// can compute the width and height of the glyph image (be it in integer<br/>
+		/// or 26.6 pixels) as:<br/>
+		/// ```<br/>
+		/// width  = bbox.xMax - bbox.xMin;<br/>
+		/// height = bbox.yMax - bbox.yMin;<br/>
+		/// ```<br/>
+		/// Note also that for 26.6 coordinates, if `bbox_mode` is set to<br/>
+		/// <br/>
+		/// _GLYPH_BBOX_GRIDFIT, the coordinates will also be grid-fitted,<br/>
+		/// which corresponds to:<br/>
+		/// ```<br/>
+		/// bbox.xMin = FLOOR(bbox.xMin);<br/>
+		/// bbox.yMin = FLOOR(bbox.yMin);<br/>
+		/// bbox.xMax = CEILING(bbox.xMax);<br/>
+		/// bbox.yMax = CEILING(bbox.yMax);<br/>
+		/// ```<br/>
+		/// To get the bbox in pixel coordinates, set `bbox_mode` to<br/>
+		/// <br/>
+		/// _GLYPH_BBOX_TRUNCATE.<br/>
+		/// To get the bbox in grid-fitted pixel coordinates, set `bbox_mode` to<br/>
+		/// <br/>
+		/// _GLYPH_BBOX_PIXELS.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Glyph_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Glyph_Get_CBox")]
+		internal static extern void FTGlyphGetCBoxNative([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "bbox_mode")] [NativeName(NativeNameType.Type, "FT_UInt")] uint bboxMode, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] FTBBox* acbox);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Get_CBox<br/>/// <br/>/// :<br/>/// Return a glyph's 'control box'.  The control box encloses all the<br/>/// outline's points, including Bezier control points.  Though it<br/>/// coincides with the exact bounding box for most glyphs, it can be<br/>/// slightly larger in some situations (like when rotating an outline that<br/>/// contains Bezier outside arcs).<br/>/// Computing the control box is very fast, while getting the bounding box<br/>/// can take much more time as it needs to walk over all segments and arcs<br/>/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>/// component, which is dedicated to this single task.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the source glyph object.<br/>/// mode ::<br/>/// The mode that indicates how to interpret the returned bounding box<br/>/// values.<br/>/// <br/>/// :<br/>/// acbox ::<br/>/// The glyph coordinate bounding box.  Coordinates are expressed in<br/>/// 1/64 of pixels if it is grid-fitted.<br/>/// <br/>/// If the glyph has been loaded with <br/>/// _LOAD_NO_SCALE, `bbox_mode` must<br/>/// be set to <br/>/// _GLYPH_BBOX_UNSCALED to get unscaled font units in 26.6<br/>/// pixel format.  The value <br/>/// _GLYPH_BBOX_SUBPIXELS is another name for<br/>/// this constant.<br/>/// If the font is tricky and the glyph has been loaded with<br/>/// <br/>/// _LOAD_NO_SCALE, the resulting CBox is meaningless.  To get<br/>/// reasonable values for the CBox it is necessary to load the glyph at a<br/>/// large ppem value (so that the hinting instructions can properly shift<br/>/// and scale the subglyphs), then extracting the CBox, which can be<br/>/// eventually converted back to font units.<br/>/// Note that the maximum coordinates are exclusive, which means that one<br/>/// can compute the width and height of the glyph image (be it in integer<br/>/// or 26.6 pixels) as:<br/>/// ```<br/>/// width  = bbox.xMax - bbox.xMin;<br/>/// height = bbox.yMax - bbox.yMin;<br/>/// ```<br/>/// Note also that for 26.6 coordinates, if `bbox_mode` is set to<br/>/// <br/>/// _GLYPH_BBOX_GRIDFIT, the coordinates will also be grid-fitted,<br/>/// which corresponds to:<br/>/// ```<br/>/// bbox.xMin = FLOOR(bbox.xMin);<br/>/// bbox.yMin = FLOOR(bbox.yMin);<br/>/// bbox.xMax = CEILING(bbox.xMax);<br/>/// bbox.yMax = CEILING(bbox.yMax);<br/>/// ```<br/>/// To get the bbox in pixel coordinates, set `bbox_mode` to<br/>/// <br/>/// _GLYPH_BBOX_TRUNCATE.<br/>/// To get the bbox in grid-fitted pixel coordinates, set `bbox_mode` to<br/>/// <br/>/// _GLYPH_BBOX_PIXELS.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTGlyphGetCBox([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "bbox_mode")] [NativeName(NativeNameType.Type, "FT_UInt")] uint bboxMode, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] FTBBox* acbox)
+		{
+			FTGlyphGetCBoxNative(glyph, bboxMode, acbox);
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_Get_CBox<br/>/// <br/>/// :<br/>/// Return a glyph's 'control box'.  The control box encloses all the<br/>/// outline's points, including Bezier control points.  Though it<br/>/// coincides with the exact bounding box for most glyphs, it can be<br/>/// slightly larger in some situations (like when rotating an outline that<br/>/// contains Bezier outside arcs).<br/>/// Computing the control box is very fast, while getting the bounding box<br/>/// can take much more time as it needs to walk over all segments and arcs<br/>/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>/// component, which is dedicated to this single task.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the source glyph object.<br/>/// mode ::<br/>/// The mode that indicates how to interpret the returned bounding box<br/>/// values.<br/>/// <br/>/// :<br/>/// acbox ::<br/>/// The glyph coordinate bounding box.  Coordinates are expressed in<br/>/// 1/64 of pixels if it is grid-fitted.<br/>/// <br/>/// If the glyph has been loaded with <br/>/// _LOAD_NO_SCALE, `bbox_mode` must<br/>/// be set to <br/>/// _GLYPH_BBOX_UNSCALED to get unscaled font units in 26.6<br/>/// pixel format.  The value <br/>/// _GLYPH_BBOX_SUBPIXELS is another name for<br/>/// this constant.<br/>/// If the font is tricky and the glyph has been loaded with<br/>/// <br/>/// _LOAD_NO_SCALE, the resulting CBox is meaningless.  To get<br/>/// reasonable values for the CBox it is necessary to load the glyph at a<br/>/// large ppem value (so that the hinting instructions can properly shift<br/>/// and scale the subglyphs), then extracting the CBox, which can be<br/>/// eventually converted back to font units.<br/>/// Note that the maximum coordinates are exclusive, which means that one<br/>/// can compute the width and height of the glyph image (be it in integer<br/>/// or 26.6 pixels) as:<br/>/// ```<br/>/// width  = bbox.xMax - bbox.xMin;<br/>/// height = bbox.yMax - bbox.yMin;<br/>/// ```<br/>/// Note also that for 26.6 coordinates, if `bbox_mode` is set to<br/>/// <br/>/// _GLYPH_BBOX_GRIDFIT, the coordinates will also be grid-fitted,<br/>/// which corresponds to:<br/>/// ```<br/>/// bbox.xMin = FLOOR(bbox.xMin);<br/>/// bbox.yMin = FLOOR(bbox.yMin);<br/>/// bbox.xMax = CEILING(bbox.xMax);<br/>/// bbox.yMax = CEILING(bbox.yMax);<br/>/// ```<br/>/// To get the bbox in pixel coordinates, set `bbox_mode` to<br/>/// <br/>/// _GLYPH_BBOX_TRUNCATE.<br/>/// To get the bbox in grid-fitted pixel coordinates, set `bbox_mode` to<br/>/// <br/>/// _GLYPH_BBOX_PIXELS.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTGlyphGetCBox([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph, [NativeName(NativeNameType.Param, "bbox_mode")] [NativeName(NativeNameType.Type, "FT_UInt")] uint bboxMode, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] ref FTBBox acbox)
+		{
+			fixed (FTBBox* pacbox = &acbox)
+			{
+				FTGlyphGetCBoxNative(glyph, bboxMode, (FTBBox*)pacbox);
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Glyph_To_Bitmap<br/>
+		/// <br/>
+		/// :<br/>
+		/// Convert a given glyph object to a bitmap glyph object.<br/>
+		/// <br/>
+		/// :<br/>
+		/// the_glyph ::<br/>
+		/// A pointer to a handle to the target glyph.<br/>
+		/// <br/>
+		/// :<br/>
+		/// render_mode ::<br/>
+		/// An enumeration that describes how the data is rendered.<br/>
+		/// origin ::<br/>
+		/// A pointer to a vector used to translate the glyph image before<br/>
+		/// rendering.  Can be~0 (if no translation).  The origin is expressed<br/>
+		/// in 26.6 pixels.<br/>
+		/// destroy ::<br/>
+		/// A boolean that indicates that the original glyph image should be<br/>
+		/// destroyed by this function.  It is never destroyed in case of error.<br/>
+		/// <br/>
+		/// <br/>
+		/// The glyph image is translated with the `origin` vector before<br/>
+		/// rendering.<br/>
+		/// The first parameter is a pointer to an <br/>
+		/// _Glyph handle that will be<br/>
+		/// _replaced_ by this function (with newly allocated data).  Typically,<br/>
+		/// you would do something like the following (omitting error handling).<br/>
+		/// ```<br/>
+		/// FT_Glyph        glyph;<br/>
+		/// FT_BitmapGlyph  glyph_bitmap;<br/>
+		/// // load glyph<br/>
+		/// error = FT_Load_Char( face, glyph_index, FT_LOAD_DEFAULT );<br/>
+		/// // extract glyph image<br/>
+		/// error = FT_Get_Glyph( face->glyph, <br/>
+		/// &glyph<br/>
+		/// );<br/>
+		/// // convert to a bitmap (default render mode + destroying old)<br/>
+		/// if ( glyph->format != FT_GLYPH_FORMAT_BITMAP )<br/>
+		/// {<br/>
+		/// error = FT_Glyph_To_Bitmap( <br/>
+		/// &glyph<br/>
+		/// , FT_RENDER_MODE_NORMAL,<br/>
+		/// 0, 1 );<br/>
+		/// if ( error ) // `glyph' unchanged<br/>
+		/// ...<br/>
+		/// }<br/>
+		/// // access bitmap content by typecasting<br/>
+		/// glyph_bitmap = (FT_BitmapGlyph)glyph;<br/>
+		/// // do funny stuff with it, like blitting/drawing<br/>
+		/// ...<br/>
+		/// // discard glyph image (bitmap or not)<br/>
+		/// FT_Done_Glyph( glyph );<br/>
+		/// ```<br/>
+		/// Here is another example, again without error handling.<br/>
+		/// ```<br/>
+		/// FT_Glyph  glyphs[MAX_GLYPHS]<br/>
+		/// ...<br/>
+		/// for ( idx = 0; i <br/>
+		/// <<br/>
+		/// MAX_GLYPHS; i++ )<br/>
+		/// error = FT_Load_Glyph( face, idx, FT_LOAD_DEFAULT ) ||<br/>
+		/// FT_Get_Glyph ( face->glyph, <br/>
+		/// &glyphs<br/>
+		/// [idx] );<br/>
+		/// ...<br/>
+		/// for ( idx = 0; i <br/>
+		/// <<br/>
+		/// MAX_GLYPHS; i++ )<br/>
+		/// {<br/>
+		/// FT_Glyph  bitmap = glyphs[idx];<br/>
+		/// ...<br/>
+		/// // after this call, `bitmap' no longer points into<br/>
+		/// // the `glyphs' array (and the old value isn't destroyed)<br/>
+		/// FT_Glyph_To_Bitmap( <br/>
+		/// &bitmap<br/>
+		/// , FT_RENDER_MODE_MONO, 0, 0 );<br/>
+		/// ...<br/>
+		/// FT_Done_Glyph( bitmap );<br/>
+		/// }<br/>
+		/// ...<br/>
+		/// for ( idx = 0; i <br/>
+		/// <<br/>
+		/// MAX_GLYPHS; i++ )<br/>
+		/// FT_Done_Glyph( glyphs[idx] );<br/>
+		/// ```<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Glyph_To_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Glyph_To_Bitmap")]
+		internal static extern int FTGlyphToBitmapNative([NativeName(NativeNameType.Param, "the_glyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* theGlyph, [NativeName(NativeNameType.Param, "render_mode")] [NativeName(NativeNameType.Type, "FT_Render_Mode")] FTRenderMode renderMode, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "const FT_Vector*")] FTVector* origin, [NativeName(NativeNameType.Param, "destroy")] [NativeName(NativeNameType.Type, "FT_Bool")] byte destroy);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_To_Bitmap<br/>/// <br/>/// :<br/>/// Convert a given glyph object to a bitmap glyph object.<br/>/// <br/>/// :<br/>/// the_glyph ::<br/>/// A pointer to a handle to the target glyph.<br/>/// <br/>/// :<br/>/// render_mode ::<br/>/// An enumeration that describes how the data is rendered.<br/>/// origin ::<br/>/// A pointer to a vector used to translate the glyph image before<br/>/// rendering.  Can be~0 (if no translation).  The origin is expressed<br/>/// in 26.6 pixels.<br/>/// destroy ::<br/>/// A boolean that indicates that the original glyph image should be<br/>/// destroyed by this function.  It is never destroyed in case of error.<br/>/// <br/>/// <br/>/// The glyph image is translated with the `origin` vector before<br/>/// rendering.<br/>/// The first parameter is a pointer to an <br/>/// _Glyph handle that will be<br/>/// _replaced_ by this function (with newly allocated data).  Typically,<br/>/// you would do something like the following (omitting error handling).<br/>/// ```<br/>/// FT_Glyph        glyph;<br/>/// FT_BitmapGlyph  glyph_bitmap;<br/>/// // load glyph<br/>/// error = FT_Load_Char( face, glyph_index, FT_LOAD_DEFAULT );<br/>/// // extract glyph image<br/>/// error = FT_Get_Glyph( face->glyph, <br/>/// &glyph<br/>/// );<br/>/// // convert to a bitmap (default render mode + destroying old)<br/>/// if ( glyph->format != FT_GLYPH_FORMAT_BITMAP )<br/>/// {<br/>/// error = FT_Glyph_To_Bitmap( <br/>/// &glyph<br/>/// , FT_RENDER_MODE_NORMAL,<br/>/// 0, 1 );<br/>/// if ( error ) // `glyph' unchanged<br/>/// ...<br/>/// }<br/>/// // access bitmap content by typecasting<br/>/// glyph_bitmap = (FT_BitmapGlyph)glyph;<br/>/// // do funny stuff with it, like blitting/drawing<br/>/// ...<br/>/// // discard glyph image (bitmap or not)<br/>/// FT_Done_Glyph( glyph );<br/>/// ```<br/>/// Here is another example, again without error handling.<br/>/// ```<br/>/// FT_Glyph  glyphs[MAX_GLYPHS]<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// error = FT_Load_Glyph( face, idx, FT_LOAD_DEFAULT ) ||<br/>/// FT_Get_Glyph ( face->glyph, <br/>/// &glyphs<br/>/// [idx] );<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// {<br/>/// FT_Glyph  bitmap = glyphs[idx];<br/>/// ...<br/>/// // after this call, `bitmap' no longer points into<br/>/// // the `glyphs' array (and the old value isn't destroyed)<br/>/// FT_Glyph_To_Bitmap( <br/>/// &bitmap<br/>/// , FT_RENDER_MODE_MONO, 0, 0 );<br/>/// ...<br/>/// FT_Done_Glyph( bitmap );<br/>/// }<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// FT_Done_Glyph( glyphs[idx] );<br/>/// ```<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_To_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphToBitmap([NativeName(NativeNameType.Param, "the_glyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* theGlyph, [NativeName(NativeNameType.Param, "render_mode")] [NativeName(NativeNameType.Type, "FT_Render_Mode")] FTRenderMode renderMode, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "const FT_Vector*")] FTVector* origin, [NativeName(NativeNameType.Param, "destroy")] [NativeName(NativeNameType.Type, "FT_Bool")] byte destroy)
+		{
+			int ret = FTGlyphToBitmapNative(theGlyph, renderMode, origin, destroy);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Glyph_To_Bitmap<br/>/// <br/>/// :<br/>/// Convert a given glyph object to a bitmap glyph object.<br/>/// <br/>/// :<br/>/// the_glyph ::<br/>/// A pointer to a handle to the target glyph.<br/>/// <br/>/// :<br/>/// render_mode ::<br/>/// An enumeration that describes how the data is rendered.<br/>/// origin ::<br/>/// A pointer to a vector used to translate the glyph image before<br/>/// rendering.  Can be~0 (if no translation).  The origin is expressed<br/>/// in 26.6 pixels.<br/>/// destroy ::<br/>/// A boolean that indicates that the original glyph image should be<br/>/// destroyed by this function.  It is never destroyed in case of error.<br/>/// <br/>/// <br/>/// The glyph image is translated with the `origin` vector before<br/>/// rendering.<br/>/// The first parameter is a pointer to an <br/>/// _Glyph handle that will be<br/>/// _replaced_ by this function (with newly allocated data).  Typically,<br/>/// you would do something like the following (omitting error handling).<br/>/// ```<br/>/// FT_Glyph        glyph;<br/>/// FT_BitmapGlyph  glyph_bitmap;<br/>/// // load glyph<br/>/// error = FT_Load_Char( face, glyph_index, FT_LOAD_DEFAULT );<br/>/// // extract glyph image<br/>/// error = FT_Get_Glyph( face->glyph, <br/>/// &glyph<br/>/// );<br/>/// // convert to a bitmap (default render mode + destroying old)<br/>/// if ( glyph->format != FT_GLYPH_FORMAT_BITMAP )<br/>/// {<br/>/// error = FT_Glyph_To_Bitmap( <br/>/// &glyph<br/>/// , FT_RENDER_MODE_NORMAL,<br/>/// 0, 1 );<br/>/// if ( error ) // `glyph' unchanged<br/>/// ...<br/>/// }<br/>/// // access bitmap content by typecasting<br/>/// glyph_bitmap = (FT_BitmapGlyph)glyph;<br/>/// // do funny stuff with it, like blitting/drawing<br/>/// ...<br/>/// // discard glyph image (bitmap or not)<br/>/// FT_Done_Glyph( glyph );<br/>/// ```<br/>/// Here is another example, again without error handling.<br/>/// ```<br/>/// FT_Glyph  glyphs[MAX_GLYPHS]<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// error = FT_Load_Glyph( face, idx, FT_LOAD_DEFAULT ) ||<br/>/// FT_Get_Glyph ( face->glyph, <br/>/// &glyphs<br/>/// [idx] );<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// {<br/>/// FT_Glyph  bitmap = glyphs[idx];<br/>/// ...<br/>/// // after this call, `bitmap' no longer points into<br/>/// // the `glyphs' array (and the old value isn't destroyed)<br/>/// FT_Glyph_To_Bitmap( <br/>/// &bitmap<br/>/// , FT_RENDER_MODE_MONO, 0, 0 );<br/>/// ...<br/>/// FT_Done_Glyph( bitmap );<br/>/// }<br/>/// ...<br/>/// for ( idx = 0; i <br/>/// <<br/>/// MAX_GLYPHS; i++ )<br/>/// FT_Done_Glyph( glyphs[idx] );<br/>/// ```<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Glyph_To_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTGlyphToBitmap([NativeName(NativeNameType.Param, "the_glyph")] [NativeName(NativeNameType.Type, "FT_Glyph*")] FTGlyph* theGlyph, [NativeName(NativeNameType.Param, "render_mode")] [NativeName(NativeNameType.Type, "FT_Render_Mode")] FTRenderMode renderMode, [NativeName(NativeNameType.Param, "origin")] [NativeName(NativeNameType.Type, "const FT_Vector*")] ref FTVector origin, [NativeName(NativeNameType.Param, "destroy")] [NativeName(NativeNameType.Type, "FT_Bool")] byte destroy)
+		{
+			fixed (FTVector* porigin = &origin)
+			{
+				int ret = FTGlyphToBitmapNative(theGlyph, renderMode, (FTVector*)porigin, destroy);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Done_Glyph<br/>
+		/// <br/>
+		/// :<br/>
+		/// Destroy a given glyph.<br/>
+		/// <br/>
+		/// :<br/>
+		/// glyph ::<br/>
+		/// A handle to the target glyph object.  Can be `NULL`.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Done_Glyph")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Done_Glyph")]
+		internal static extern void FTDoneGlyphNative([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Done_Glyph<br/>/// <br/>/// :<br/>/// Destroy a given glyph.<br/>/// <br/>/// :<br/>/// glyph ::<br/>/// A handle to the target glyph object.  Can be `NULL`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Done_Glyph")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTDoneGlyph([NativeName(NativeNameType.Param, "glyph")] [NativeName(NativeNameType.Type, "FT_Glyph")] FTGlyph glyph)
+		{
+			FTDoneGlyphNative(glyph);
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Matrix_Multiply<br/>
+		/// <br/>
+		/// :<br/>
+		/// Perform the matrix operation `b = a*b`.<br/>
+		/// <br/>
+		/// :<br/>
+		/// a ::<br/>
+		/// A pointer to matrix `a`.<br/>
+		/// <br/>
+		/// :<br/>
+		/// b ::<br/>
+		/// A pointer to matrix `b`.<br/>
+		/// <br/>
+		/// Since the function uses wrap-around arithmetic, results become<br/>
+		/// meaningless if the arguments are very large.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Matrix_Multiply")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Matrix_Multiply")]
+		internal static extern void FTMatrixMultiplyNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "FT_Matrix*")] FTMatrix* b);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Matrix_Multiply<br/>/// <br/>/// :<br/>/// Perform the matrix operation `b = a*b`.<br/>/// <br/>/// :<br/>/// a ::<br/>/// A pointer to matrix `a`.<br/>/// <br/>/// :<br/>/// b ::<br/>/// A pointer to matrix `b`.<br/>/// <br/>/// Since the function uses wrap-around arithmetic, results become<br/>/// meaningless if the arguments are very large.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Matrix_Multiply")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTMatrixMultiply([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "FT_Matrix*")] FTMatrix* b)
+		{
+			FTMatrixMultiplyNative(a, b);
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Matrix_Multiply<br/>/// <br/>/// :<br/>/// Perform the matrix operation `b = a*b`.<br/>/// <br/>/// :<br/>/// a ::<br/>/// A pointer to matrix `a`.<br/>/// <br/>/// :<br/>/// b ::<br/>/// A pointer to matrix `b`.<br/>/// <br/>/// Since the function uses wrap-around arithmetic, results become<br/>/// meaningless if the arguments are very large.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Matrix_Multiply")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTMatrixMultiply([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* a, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "FT_Matrix*")] ref FTMatrix b)
+		{
+			fixed (FTMatrix* pb = &b)
+			{
+				FTMatrixMultiplyNative(a, (FTMatrix*)pb);
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Matrix_Invert<br/>
+		/// <br/>
+		/// :<br/>
+		/// Invert a 2x2 matrix.  Return an error if it can't be inverted.<br/>
+		/// <br/>
+		/// :<br/>
+		/// matrix ::<br/>
+		/// A pointer to the target matrix.  Remains untouched in case of error.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Matrix_Invert")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Matrix_Invert")]
+		internal static extern int FTMatrixInvertNative([NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "FT_Matrix*")] FTMatrix* matrix);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Matrix_Invert<br/>/// <br/>/// :<br/>/// Invert a 2x2 matrix.  Return an error if it can't be inverted.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to the target matrix.  Remains untouched in case of error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Matrix_Invert")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTMatrixInvert([NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "FT_Matrix*")] FTMatrix* matrix)
+		{
+			int ret = FTMatrixInvertNative(matrix);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Decompose<br/>
+		/// <br/>
+		/// :<br/>
+		/// Walk over an outline's structure to decompose it into individual<br/>
+		/// segments and Bezier arcs.  This function also emits 'move to'<br/>
+		/// operations to indicate the start of new contours in the outline.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A pointer to the source target.<br/>
+		/// func_interface ::<br/>
+		/// A table of 'emitters', i.e., function pointers called during<br/>
+		/// decomposition to indicate path operations.<br/>
+		/// <br/>
+		/// :<br/>
+		/// user ::<br/>
+		/// A typeless pointer that is passed to each emitter during the<br/>
+		/// decomposition.  It can be used to store the state during the<br/>
+		/// decomposition.<br/>
+		/// <br/>
+		/// <br/>
+		/// Similarly, the function returns success for an empty outline also<br/>
+		/// (doing nothing, that is, not calling any emitter); if necessary, you<br/>
+		/// should filter this out, too.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Decompose")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Decompose")]
+		internal static extern int FTOutlineDecomposeNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "func_interface")] [NativeName(NativeNameType.Type, "const FT_Outline_Funcs*")] FTOutlineFuncs* funcInterface, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Decompose<br/>/// <br/>/// :<br/>/// Walk over an outline's structure to decompose it into individual<br/>/// segments and Bezier arcs.  This function also emits 'move to'<br/>/// operations to indicate the start of new contours in the outline.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the source target.<br/>/// func_interface ::<br/>/// A table of 'emitters', i.e., function pointers called during<br/>/// decomposition to indicate path operations.<br/>/// <br/>/// :<br/>/// user ::<br/>/// A typeless pointer that is passed to each emitter during the<br/>/// decomposition.  It can be used to store the state during the<br/>/// decomposition.<br/>/// <br/>/// <br/>/// Similarly, the function returns success for an empty outline also<br/>/// (doing nothing, that is, not calling any emitter); if necessary, you<br/>/// should filter this out, too.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Decompose")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineDecompose([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "func_interface")] [NativeName(NativeNameType.Type, "const FT_Outline_Funcs*")] FTOutlineFuncs* funcInterface, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user)
+		{
+			int ret = FTOutlineDecomposeNative(outline, funcInterface, user);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Decompose<br/>/// <br/>/// :<br/>/// Walk over an outline's structure to decompose it into individual<br/>/// segments and Bezier arcs.  This function also emits 'move to'<br/>/// operations to indicate the start of new contours in the outline.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the source target.<br/>/// func_interface ::<br/>/// A table of 'emitters', i.e., function pointers called during<br/>/// decomposition to indicate path operations.<br/>/// <br/>/// :<br/>/// user ::<br/>/// A typeless pointer that is passed to each emitter during the<br/>/// decomposition.  It can be used to store the state during the<br/>/// decomposition.<br/>/// <br/>/// <br/>/// Similarly, the function returns success for an empty outline also<br/>/// (doing nothing, that is, not calling any emitter); if necessary, you<br/>/// should filter this out, too.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Decompose")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineDecompose([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "func_interface")] [NativeName(NativeNameType.Type, "const FT_Outline_Funcs*")] ref FTOutlineFuncs funcInterface, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user)
+		{
+			fixed (FTOutlineFuncs* pfuncInterface = &funcInterface)
+			{
+				int ret = FTOutlineDecomposeNative(outline, (FTOutlineFuncs*)pfuncInterface, user);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_New<br/>
+		/// <br/>
+		/// :<br/>
+		/// Create a new outline of a given size.<br/>
+		/// <br/>
+		/// :<br/>
+		/// library ::<br/>
+		/// A handle to the library object from where the outline is allocated.<br/>
+		/// Note however that the new outline will **not** necessarily be<br/>
+		/// **freed**, when destroying the library, by <br/>
+		/// _Done_FreeType.<br/>
+		/// numPoints ::<br/>
+		/// The maximum number of points within the outline.  Must be smaller<br/>
+		/// than or equal to 0xFFFF (65535).<br/>
+		/// numContours ::<br/>
+		/// The maximum number of contours within the outline.  This value must<br/>
+		/// be in the range 0 to `numPoints`.<br/>
+		/// <br/>
+		/// :<br/>
+		/// anoutline ::<br/>
+		/// A handle to the new outline.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_New")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_New")]
+		internal static extern int FTOutlineNewNative([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "numPoints")] [NativeName(NativeNameType.Type, "FT_UInt")] uint numPoints, [NativeName(NativeNameType.Param, "numContours")] [NativeName(NativeNameType.Type, "FT_Int")] int numContours, [NativeName(NativeNameType.Param, "anoutline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* anoutline);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_New<br/>/// <br/>/// :<br/>/// Create a new outline of a given size.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to the library object from where the outline is allocated.<br/>/// Note however that the new outline will **not** necessarily be<br/>/// **freed**, when destroying the library, by <br/>/// _Done_FreeType.<br/>/// numPoints ::<br/>/// The maximum number of points within the outline.  Must be smaller<br/>/// than or equal to 0xFFFF (65535).<br/>/// numContours ::<br/>/// The maximum number of contours within the outline.  This value must<br/>/// be in the range 0 to `numPoints`.<br/>/// <br/>/// :<br/>/// anoutline ::<br/>/// A handle to the new outline.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_New")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineNew([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "numPoints")] [NativeName(NativeNameType.Type, "FT_UInt")] uint numPoints, [NativeName(NativeNameType.Param, "numContours")] [NativeName(NativeNameType.Type, "FT_Int")] int numContours, [NativeName(NativeNameType.Param, "anoutline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* anoutline)
+		{
+			int ret = FTOutlineNewNative(library, numPoints, numContours, anoutline);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_New<br/>/// <br/>/// :<br/>/// Create a new outline of a given size.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to the library object from where the outline is allocated.<br/>/// Note however that the new outline will **not** necessarily be<br/>/// **freed**, when destroying the library, by <br/>/// _Done_FreeType.<br/>/// numPoints ::<br/>/// The maximum number of points within the outline.  Must be smaller<br/>/// than or equal to 0xFFFF (65535).<br/>/// numContours ::<br/>/// The maximum number of contours within the outline.  This value must<br/>/// be in the range 0 to `numPoints`.<br/>/// <br/>/// :<br/>/// anoutline ::<br/>/// A handle to the new outline.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_New")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineNew([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "numPoints")] [NativeName(NativeNameType.Type, "FT_UInt")] uint numPoints, [NativeName(NativeNameType.Param, "numContours")] [NativeName(NativeNameType.Type, "FT_Int")] int numContours, [NativeName(NativeNameType.Param, "anoutline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline anoutline)
+		{
+			fixed (FTOutline* panoutline = &anoutline)
+			{
+				int ret = FTOutlineNewNative(library, numPoints, numContours, (FTOutline*)panoutline);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Done<br/>
+		/// <br/>
+		/// :<br/>
+		/// Destroy an outline created with <br/>
+		/// _Outline_New.<br/>
+		/// <br/>
+		/// :<br/>
+		/// library ::<br/>
+		/// A handle of the library object used to allocate the outline.<br/>
+		/// outline ::<br/>
+		/// A pointer to the outline object to be discarded.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Done")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Done")]
+		internal static extern int FTOutlineDoneNative([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Done<br/>/// <br/>/// :<br/>/// Destroy an outline created with <br/>/// _Outline_New.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle of the library object used to allocate the outline.<br/>/// outline ::<br/>/// A pointer to the outline object to be discarded.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Done")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineDone([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline)
+		{
+			int ret = FTOutlineDoneNative(library, outline);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Done<br/>/// <br/>/// :<br/>/// Destroy an outline created with <br/>/// _Outline_New.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle of the library object used to allocate the outline.<br/>/// outline ::<br/>/// A pointer to the outline object to be discarded.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Done")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineDone([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline outline)
+		{
+			fixed (FTOutline* poutline = &outline)
+			{
+				int ret = FTOutlineDoneNative(library, (FTOutline*)poutline);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Check<br/>
+		/// <br/>
+		/// :<br/>
+		/// Check the contents of an outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A handle to a source outline.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Check")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Check")]
+		internal static extern int FTOutlineCheckNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Check<br/>/// <br/>/// :<br/>/// Check the contents of an outline descriptor.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A handle to a source outline.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Check")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineCheck([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline)
+		{
+			int ret = FTOutlineCheckNative(outline);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Get_CBox<br/>
+		/// <br/>
+		/// :<br/>
+		/// Return an outline's 'control box'.  The control box encloses all the<br/>
+		/// outline's points, including Bezier control points.  Though it<br/>
+		/// coincides with the exact bounding box for most glyphs, it can be<br/>
+		/// slightly larger in some situations (like when rotating an outline that<br/>
+		/// contains Bezier outside arcs).<br/>
+		/// Computing the control box is very fast, while getting the bounding box<br/>
+		/// can take much more time as it needs to walk over all segments and arcs<br/>
+		/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>
+		/// component, which is dedicated to this single task.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A pointer to the source outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// acbox ::<br/>
+		/// The outline's control box.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Get_CBox")]
+		internal static extern void FTOutlineGetCBoxNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] FTBBox* acbox);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_CBox<br/>/// <br/>/// :<br/>/// Return an outline's 'control box'.  The control box encloses all the<br/>/// outline's points, including Bezier control points.  Though it<br/>/// coincides with the exact bounding box for most glyphs, it can be<br/>/// slightly larger in some situations (like when rotating an outline that<br/>/// contains Bezier outside arcs).<br/>/// Computing the control box is very fast, while getting the bounding box<br/>/// can take much more time as it needs to walk over all segments and arcs<br/>/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>/// component, which is dedicated to this single task.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// acbox ::<br/>/// The outline's control box.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineGetCBox([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] FTBBox* acbox)
+		{
+			FTOutlineGetCBoxNative(outline, acbox);
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_CBox<br/>/// <br/>/// :<br/>/// Return an outline's 'control box'.  The control box encloses all the<br/>/// outline's points, including Bezier control points.  Though it<br/>/// coincides with the exact bounding box for most glyphs, it can be<br/>/// slightly larger in some situations (like when rotating an outline that<br/>/// contains Bezier outside arcs).<br/>/// Computing the control box is very fast, while getting the bounding box<br/>/// can take much more time as it needs to walk over all segments and arcs<br/>/// in the outline.  To get the latter, you can use the 'ftbbox'<br/>/// component, which is dedicated to this single task.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// acbox ::<br/>/// The outline's control box.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_CBox")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineGetCBox([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "acbox")] [NativeName(NativeNameType.Type, "FT_BBox*")] ref FTBBox acbox)
+		{
+			fixed (FTBBox* pacbox = &acbox)
+			{
+				FTOutlineGetCBoxNative(outline, (FTBBox*)pacbox);
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Translate<br/>
+		/// <br/>
+		/// :<br/>
+		/// Apply a simple translation to the points of an outline.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A pointer to the target outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// xOffset ::<br/>
+		/// The horizontal offset.<br/>
+		/// yOffset ::<br/>
+		/// The vertical offset.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Translate")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Translate")]
+		internal static extern void FTOutlineTranslateNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "xOffset")] [NativeName(NativeNameType.Type, "FT_Pos")] int xOffset, [NativeName(NativeNameType.Param, "yOffset")] [NativeName(NativeNameType.Type, "FT_Pos")] int yOffset);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Translate<br/>/// <br/>/// :<br/>/// Apply a simple translation to the points of an outline.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the target outline descriptor.<br/>/// <br/>/// :<br/>/// xOffset ::<br/>/// The horizontal offset.<br/>/// yOffset ::<br/>/// The vertical offset.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Translate")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineTranslate([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "xOffset")] [NativeName(NativeNameType.Type, "FT_Pos")] int xOffset, [NativeName(NativeNameType.Param, "yOffset")] [NativeName(NativeNameType.Type, "FT_Pos")] int yOffset)
+		{
+			FTOutlineTranslateNative(outline, xOffset, yOffset);
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Copy<br/>
+		/// <br/>
+		/// :<br/>
+		/// Copy an outline into another one.  Both objects must have the same<br/>
+		/// sizes (number of points <br/>
+		/// &<br/>
+		/// number of contours) when this function is<br/>
+		/// called.<br/>
+		/// <br/>
+		/// :<br/>
+		/// source ::<br/>
+		/// A handle to the source outline.<br/>
+		/// <br/>
+		/// :<br/>
+		/// target ::<br/>
+		/// A handle to the target outline.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Copy")]
+		internal static extern int FTOutlineCopyNative([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* target);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Copy<br/>/// <br/>/// :<br/>/// Copy an outline into another one.  Both objects must have the same<br/>/// sizes (number of points <br/>/// &<br/>/// number of contours) when this function is<br/>/// called.<br/>/// <br/>/// :<br/>/// source ::<br/>/// A handle to the source outline.<br/>/// <br/>/// :<br/>/// target ::<br/>/// A handle to the target outline.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineCopy([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* target)
+		{
+			int ret = FTOutlineCopyNative(source, target);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Copy<br/>/// <br/>/// :<br/>/// Copy an outline into another one.  Both objects must have the same<br/>/// sizes (number of points <br/>/// &<br/>/// number of contours) when this function is<br/>/// called.<br/>/// <br/>/// :<br/>/// source ::<br/>/// A handle to the source outline.<br/>/// <br/>/// :<br/>/// target ::<br/>/// A handle to the target outline.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Copy")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineCopy([NativeName(NativeNameType.Param, "source")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* source, [NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline target)
+		{
+			fixed (FTOutline* ptarget = &target)
+			{
+				int ret = FTOutlineCopyNative(source, (FTOutline*)ptarget);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Transform<br/>
+		/// <br/>
+		/// :<br/>
+		/// Apply a simple 2x2 matrix to all of an outline's points.  Useful for<br/>
+		/// applying rotations, slanting, flipping, etc.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A pointer to the target outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// matrix ::<br/>
+		/// A pointer to the transformation matrix.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Transform")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Transform")]
+		internal static extern void FTOutlineTransformNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* matrix);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Transform<br/>/// <br/>/// :<br/>/// Apply a simple 2x2 matrix to all of an outline's points.  Useful for<br/>/// applying rotations, slanting, flipping, etc.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the target outline descriptor.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to the transformation matrix.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Transform")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineTransform([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] FTMatrix* matrix)
+		{
+			FTOutlineTransformNative(outline, matrix);
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Transform<br/>/// <br/>/// :<br/>/// Apply a simple 2x2 matrix to all of an outline's points.  Useful for<br/>/// applying rotations, slanting, flipping, etc.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the target outline descriptor.<br/>/// <br/>/// :<br/>/// matrix ::<br/>/// A pointer to the transformation matrix.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Transform")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineTransform([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "const FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "matrix")] [NativeName(NativeNameType.Type, "const FT_Matrix*")] ref FTMatrix matrix)
+		{
+			fixed (FTMatrix* pmatrix = &matrix)
+			{
+				FTOutlineTransformNative(outline, (FTMatrix*)pmatrix);
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Embolden<br/>
+		/// <br/>
+		/// :<br/>
+		/// Embolden an outline.  The new outline will be at most 4~times<br/>
+		/// `strength` pixels wider and higher.  You may think of the left and<br/>
+		/// bottom borders as unchanged.<br/>
+		/// Negative `strength` values to reduce the outline thickness are<br/>
+		/// possible also.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A handle to the target outline.<br/>
+		/// <br/>
+		/// :<br/>
+		/// strength ::<br/>
+		/// How strong the glyph is emboldened.  Expressed in 26.6 pixel format.<br/>
+		/// <br/>
+		/// <br/>
+		/// If you need 'better' metrics values you should call<br/>
+		/// <br/>
+		/// _Outline_Get_CBox or <br/>
+		/// _Outline_Get_BBox.<br/>
+		/// To get meaningful results, font scaling values must be set with<br/>
+		/// functions like <br/>
+		/// _Set_Char_Size before calling FT_Render_Glyph.<br/>
+		/// <br/>
+		/// ```<br/>
+		/// FT_Load_Glyph( face, index, FT_LOAD_DEFAULT );<br/>
+		/// if ( face->glyph->format == FT_GLYPH_FORMAT_OUTLINE )<br/>
+		/// FT_Outline_Embolden( <br/>
+		/// &face<br/>
+		/// ->glyph->outline, strength );<br/>
+		/// ```<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Embolden")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Embolden")]
+		internal static extern int FTOutlineEmboldenNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "FT_Pos")] int strength);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Embolden<br/>/// <br/>/// :<br/>/// Embolden an outline.  The new outline will be at most 4~times<br/>/// `strength` pixels wider and higher.  You may think of the left and<br/>/// bottom borders as unchanged.<br/>/// Negative `strength` values to reduce the outline thickness are<br/>/// possible also.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A handle to the target outline.<br/>/// <br/>/// :<br/>/// strength ::<br/>/// How strong the glyph is emboldened.  Expressed in 26.6 pixel format.<br/>/// <br/>/// <br/>/// If you need 'better' metrics values you should call<br/>/// <br/>/// _Outline_Get_CBox or <br/>/// _Outline_Get_BBox.<br/>/// To get meaningful results, font scaling values must be set with<br/>/// functions like <br/>/// _Set_Char_Size before calling FT_Render_Glyph.<br/>/// <br/>/// ```<br/>/// FT_Load_Glyph( face, index, FT_LOAD_DEFAULT );<br/>/// if ( face->glyph->format == FT_GLYPH_FORMAT_OUTLINE )<br/>/// FT_Outline_Embolden( <br/>/// &face<br/>/// ->glyph->outline, strength );<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Embolden")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineEmbolden([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "FT_Pos")] int strength)
+		{
+			int ret = FTOutlineEmboldenNative(outline, strength);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_EmboldenXY<br/>
+		/// <br/>
+		/// :<br/>
+		/// Embolden an outline.  The new outline will be `xstrength` pixels wider<br/>
+		/// and `ystrength` pixels higher.  Otherwise, it is similar to<br/>
+		/// <br/>
+		/// _Outline_Embolden, which uses the same strength in both directions.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_EmboldenXY")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_EmboldenXY")]
+		internal static extern int FTOutlineEmboldenXYNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "xstrength")] [NativeName(NativeNameType.Type, "FT_Pos")] int xstrength, [NativeName(NativeNameType.Param, "ystrength")] [NativeName(NativeNameType.Type, "FT_Pos")] int ystrength);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_EmboldenXY<br/>/// <br/>/// :<br/>/// Embolden an outline.  The new outline will be `xstrength` pixels wider<br/>/// and `ystrength` pixels higher.  Otherwise, it is similar to<br/>/// <br/>/// _Outline_Embolden, which uses the same strength in both directions.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_EmboldenXY")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineEmboldenXY([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "xstrength")] [NativeName(NativeNameType.Type, "FT_Pos")] int xstrength, [NativeName(NativeNameType.Param, "ystrength")] [NativeName(NativeNameType.Type, "FT_Pos")] int ystrength)
+		{
+			int ret = FTOutlineEmboldenXYNative(outline, xstrength, ystrength);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Reverse<br/>
+		/// <br/>
+		/// :<br/>
+		/// Reverse the drawing direction of an outline.  This is used to ensure<br/>
+		/// consistent fill conventions for mirrored glyphs.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A pointer to the target outline descriptor.<br/>
+		/// <br/>
+		/// It shouldn't be used by a normal client application, unless it knows<br/>
+		/// what it is doing.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Reverse")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Reverse")]
+		internal static extern void FTOutlineReverseNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Reverse<br/>/// <br/>/// :<br/>/// Reverse the drawing direction of an outline.  This is used to ensure<br/>/// consistent fill conventions for mirrored glyphs.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A pointer to the target outline descriptor.<br/>/// <br/>/// It shouldn't be used by a normal client application, unless it knows<br/>/// what it is doing.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Reverse")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void FTOutlineReverse([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline)
+		{
+			FTOutlineReverseNative(outline);
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Get_Bitmap<br/>
+		/// <br/>
+		/// :<br/>
+		/// Render an outline within a bitmap.  The outline's image is simply<br/>
+		/// OR-ed to the target bitmap.<br/>
+		/// <br/>
+		/// :<br/>
+		/// library ::<br/>
+		/// A handle to a FreeType library object.<br/>
+		/// outline ::<br/>
+		/// A pointer to the source outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// abitmap ::<br/>
+		/// A pointer to the target bitmap descriptor.<br/>
+		/// <br/>
+		/// <br/>
+		/// It will use the raster corresponding to the default glyph format.<br/>
+		/// The value of the `num_grays` field in `abitmap` is ignored.  If you<br/>
+		/// select the gray-level rasterizer, and you want less than 256 gray<br/>
+		/// levels, you have to use <br/>
+		/// _Outline_Render directly.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Get_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Get_Bitmap")]
+		internal static extern int FTOutlineGetBitmapNative([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "abitmap")] [NativeName(NativeNameType.Type, "const FT_Bitmap*")] FTBitmap* abitmap);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_Bitmap<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap.  The outline's image is simply<br/>/// OR-ed to the target bitmap.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// abitmap ::<br/>/// A pointer to the target bitmap descriptor.<br/>/// <br/>/// <br/>/// It will use the raster corresponding to the default glyph format.<br/>/// The value of the `num_grays` field in `abitmap` is ignored.  If you<br/>/// select the gray-level rasterizer, and you want less than 256 gray<br/>/// levels, you have to use <br/>/// _Outline_Render directly.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineGetBitmap([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "abitmap")] [NativeName(NativeNameType.Type, "const FT_Bitmap*")] FTBitmap* abitmap)
+		{
+			int ret = FTOutlineGetBitmapNative(library, outline, abitmap);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_Bitmap<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap.  The outline's image is simply<br/>/// OR-ed to the target bitmap.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// abitmap ::<br/>/// A pointer to the target bitmap descriptor.<br/>/// <br/>/// <br/>/// It will use the raster corresponding to the default glyph format.<br/>/// The value of the `num_grays` field in `abitmap` is ignored.  If you<br/>/// select the gray-level rasterizer, and you want less than 256 gray<br/>/// levels, you have to use <br/>/// _Outline_Render directly.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineGetBitmap([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline outline, [NativeName(NativeNameType.Param, "abitmap")] [NativeName(NativeNameType.Type, "const FT_Bitmap*")] FTBitmap* abitmap)
+		{
+			fixed (FTOutline* poutline = &outline)
+			{
+				int ret = FTOutlineGetBitmapNative(library, (FTOutline*)poutline, abitmap);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_Bitmap<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap.  The outline's image is simply<br/>/// OR-ed to the target bitmap.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// abitmap ::<br/>/// A pointer to the target bitmap descriptor.<br/>/// <br/>/// <br/>/// It will use the raster corresponding to the default glyph format.<br/>/// The value of the `num_grays` field in `abitmap` is ignored.  If you<br/>/// select the gray-level rasterizer, and you want less than 256 gray<br/>/// levels, you have to use <br/>/// _Outline_Render directly.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineGetBitmap([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "abitmap")] [NativeName(NativeNameType.Type, "const FT_Bitmap*")] ref FTBitmap abitmap)
+		{
+			fixed (FTBitmap* pabitmap = &abitmap)
+			{
+				int ret = FTOutlineGetBitmapNative(library, outline, (FTBitmap*)pabitmap);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_Bitmap<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap.  The outline's image is simply<br/>/// OR-ed to the target bitmap.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// abitmap ::<br/>/// A pointer to the target bitmap descriptor.<br/>/// <br/>/// <br/>/// It will use the raster corresponding to the default glyph format.<br/>/// The value of the `num_grays` field in `abitmap` is ignored.  If you<br/>/// select the gray-level rasterizer, and you want less than 256 gray<br/>/// levels, you have to use <br/>/// _Outline_Render directly.<br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_Bitmap")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineGetBitmap([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline outline, [NativeName(NativeNameType.Param, "abitmap")] [NativeName(NativeNameType.Type, "const FT_Bitmap*")] ref FTBitmap abitmap)
+		{
+			fixed (FTOutline* poutline = &outline)
+			{
+				fixed (FTBitmap* pabitmap = &abitmap)
+				{
+					int ret = FTOutlineGetBitmapNative(library, (FTOutline*)poutline, (FTBitmap*)pabitmap);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Render<br/>
+		/// <br/>
+		/// :<br/>
+		/// Render an outline within a bitmap using the current scan-convert.<br/>
+		/// <br/>
+		/// :<br/>
+		/// library ::<br/>
+		/// A handle to a FreeType library object.<br/>
+		/// outline ::<br/>
+		/// A pointer to the source outline descriptor.<br/>
+		/// <br/>
+		/// :<br/>
+		/// params ::<br/>
+		/// A pointer to an <br/>
+		/// _Raster_Params structure used to describe the<br/>
+		/// rendering operation.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Render")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Render")]
+		internal static extern int FTOutlineRenderNative([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "FT_Raster_Params*")] FTRasterParams* @params);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Render<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap using the current scan-convert.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// params ::<br/>/// A pointer to an <br/>/// _Raster_Params structure used to describe the<br/>/// rendering operation.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Render")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineRender([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "FT_Raster_Params*")] FTRasterParams* @params)
+		{
+			int ret = FTOutlineRenderNative(library, outline, @params);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Render<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap using the current scan-convert.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// params ::<br/>/// A pointer to an <br/>/// _Raster_Params structure used to describe the<br/>/// rendering operation.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Render")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineRender([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline outline, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "FT_Raster_Params*")] FTRasterParams* @params)
+		{
+			fixed (FTOutline* poutline = &outline)
+			{
+				int ret = FTOutlineRenderNative(library, (FTOutline*)poutline, @params);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Render<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap using the current scan-convert.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// params ::<br/>/// A pointer to an <br/>/// _Raster_Params structure used to describe the<br/>/// rendering operation.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Render")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineRender([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "FT_Raster_Params*")] ref FTRasterParams @params)
+		{
+			fixed (FTRasterParams* pparams = &@params)
+			{
+				int ret = FTOutlineRenderNative(library, outline, (FTRasterParams*)pparams);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Render<br/>/// <br/>/// :<br/>/// Render an outline within a bitmap using the current scan-convert.<br/>/// <br/>/// :<br/>/// library ::<br/>/// A handle to a FreeType library object.<br/>/// outline ::<br/>/// A pointer to the source outline descriptor.<br/>/// <br/>/// :<br/>/// params ::<br/>/// A pointer to an <br/>/// _Raster_Params structure used to describe the<br/>/// rendering operation.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Render")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTOutlineRender([NativeName(NativeNameType.Param, "library")] [NativeName(NativeNameType.Type, "FT_Library")] FTLibrary library, [NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] ref FTOutline outline, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "FT_Raster_Params*")] ref FTRasterParams @params)
+		{
+			fixed (FTOutline* poutline = &outline)
+			{
+				fixed (FTRasterParams* pparams = &@params)
+				{
+					int ret = FTOutlineRenderNative(library, (FTOutline*)poutline, (FTRasterParams*)pparams);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Outline_Get_Orientation<br/>
+		/// <br/>
+		/// :<br/>
+		/// This function analyzes a glyph outline and tries to compute its fill<br/>
+		/// orientation (see <br/>
+		/// _Orientation).  This is done by integrating the<br/>
+		/// total area covered by the outline. The positive integral corresponds<br/>
+		/// to the clockwise orientation and <br/>
+		/// _ORIENTATION_POSTSCRIPT is<br/>
+		/// returned. The negative integral corresponds to the counter-clockwise<br/>
+		/// orientation and <br/>
+		/// _ORIENTATION_TRUETYPE is returned.<br/>
+		/// Note that this will return <br/>
+		/// _ORIENTATION_TRUETYPE for empty<br/>
+		/// outlines.<br/>
+		/// <br/>
+		/// :<br/>
+		/// outline ::<br/>
+		/// A handle to the source outline.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Outline_Get_Orientation")]
+		[return: NativeName(NativeNameType.Type, "FT_Orientation")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Outline_Get_Orientation")]
+		internal static extern FTOrientation FTOutlineGetOrientationNative([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Outline_Get_Orientation<br/>/// <br/>/// :<br/>/// This function analyzes a glyph outline and tries to compute its fill<br/>/// orientation (see <br/>/// _Orientation).  This is done by integrating the<br/>/// total area covered by the outline. The positive integral corresponds<br/>/// to the clockwise orientation and <br/>/// _ORIENTATION_POSTSCRIPT is<br/>/// returned. The negative integral corresponds to the counter-clockwise<br/>/// orientation and <br/>/// _ORIENTATION_TRUETYPE is returned.<br/>/// Note that this will return <br/>/// _ORIENTATION_TRUETYPE for empty<br/>/// outlines.<br/>/// <br/>/// :<br/>/// outline ::<br/>/// A handle to the source outline.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Outline_Get_Orientation")]
+		[return: NativeName(NativeNameType.Type, "FT_Orientation")]
+		public static FTOrientation FTOutlineGetOrientation([NativeName(NativeNameType.Param, "outline")] [NativeName(NativeNameType.Type, "FT_Outline*")] FTOutline* outline)
+		{
+			FTOrientation ret = FTOutlineGetOrientationNative(outline);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Palette_Data_Get<br/>
+		/// <br/>
+		/// :<br/>
+		/// Retrieve the face's color palette data.<br/>
+		/// <br/>
+		/// :<br/>
+		/// face ::<br/>
+		/// The source face handle.<br/>
+		/// <br/>
+		/// :<br/>
+		/// apalette ::<br/>
+		/// A pointer to an <br/>
+		/// _Palette_Data structure.<br/>
+		/// <br/>
+		/// <br/>
+		/// This function always returns an error if the config macro<br/>
+		/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Palette_Data_Get")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Palette_Data_Get")]
+		internal static extern int FTPaletteDataGetNative([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Palette_Data*")] FTPaletteData* apalette);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Palette_Data_Get<br/>/// <br/>/// :<br/>/// Retrieve the face's color palette data.<br/>/// <br/>/// :<br/>/// face ::<br/>/// The source face handle.<br/>/// <br/>/// :<br/>/// apalette ::<br/>/// A pointer to an <br/>/// _Palette_Data structure.<br/>/// <br/>/// <br/>/// This function always returns an error if the config macro<br/>/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Palette_Data_Get")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTPaletteDataGet([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Palette_Data*")] FTPaletteData* apalette)
+		{
+			int ret = FTPaletteDataGetNative(face, apalette);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Palette_Data_Get<br/>/// <br/>/// :<br/>/// Retrieve the face's color palette data.<br/>/// <br/>/// :<br/>/// face ::<br/>/// The source face handle.<br/>/// <br/>/// :<br/>/// apalette ::<br/>/// A pointer to an <br/>/// _Palette_Data structure.<br/>/// <br/>/// <br/>/// This function always returns an error if the config macro<br/>/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Palette_Data_Get")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTPaletteDataGet([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Palette_Data*")] ref FTPaletteData apalette)
+		{
+			fixed (FTPaletteData* papalette = &apalette)
+			{
+				int ret = FTPaletteDataGetNative(face, (FTPaletteData*)papalette);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Palette_Select<br/>
+		/// <br/>
+		/// :<br/>
+		/// This function has two purposes.<br/>
+		/// (1) It activates a palette for rendering color glyphs, and<br/>
+		/// (2) it retrieves all (unmodified) color entries of this palette.  This<br/>
+		/// function returns a read-write array, which means that a calling<br/>
+		/// application can modify the palette entries on demand.<br/>
+		/// A corollary of (2) is that calling the function, then modifying some<br/>
+		/// values, then calling the function again with the same arguments resets<br/>
+		/// all color entries to the original 'CPAL' values; all user modifications<br/>
+		/// are lost.<br/>
+		/// <br/>
+		/// :<br/>
+		/// face ::<br/>
+		/// The source face handle.<br/>
+		/// palette_index ::<br/>
+		/// The palette index.<br/>
+		/// <br/>
+		/// :<br/>
+		/// apalette ::<br/>
+		/// An array of color entries for a palette with index `palette_index`,<br/>
+		/// having `num_palette_entries` elements (as found in the<br/>
+		/// `FT_Palette_Data` structure).  If `apalette` is set to `NULL`, no<br/>
+		/// array gets returned (and no color entries can be modified).<br/>
+		/// In case the font doesn't support color palettes, `NULL` is returned.<br/>
+		/// <br/>
+		/// <br/>
+		/// This function always returns an error if the config macro<br/>
+		/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Palette_Select")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Palette_Select")]
+		internal static extern int FTPaletteSelectNative([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "palette_index")] [NativeName(NativeNameType.Type, "FT_UShort")] ushort paletteIndex, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Color**")] FTColor** apalette);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Palette_Select<br/>/// <br/>/// :<br/>/// This function has two purposes.<br/>/// (1) It activates a palette for rendering color glyphs, and<br/>/// (2) it retrieves all (unmodified) color entries of this palette.  This<br/>/// function returns a read-write array, which means that a calling<br/>/// application can modify the palette entries on demand.<br/>/// A corollary of (2) is that calling the function, then modifying some<br/>/// values, then calling the function again with the same arguments resets<br/>/// all color entries to the original 'CPAL' values; all user modifications<br/>/// are lost.<br/>/// <br/>/// :<br/>/// face ::<br/>/// The source face handle.<br/>/// palette_index ::<br/>/// The palette index.<br/>/// <br/>/// :<br/>/// apalette ::<br/>/// An array of color entries for a palette with index `palette_index`,<br/>/// having `num_palette_entries` elements (as found in the<br/>/// `FT_Palette_Data` structure).  If `apalette` is set to `NULL`, no<br/>/// array gets returned (and no color entries can be modified).<br/>/// In case the font doesn't support color palettes, `NULL` is returned.<br/>/// <br/>/// <br/>/// This function always returns an error if the config macro<br/>/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Palette_Select")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTPaletteSelect([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "palette_index")] [NativeName(NativeNameType.Type, "FT_UShort")] ushort paletteIndex, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Color**")] FTColor** apalette)
+		{
+			int ret = FTPaletteSelectNative(face, paletteIndex, apalette);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Palette_Select<br/>/// <br/>/// :<br/>/// This function has two purposes.<br/>/// (1) It activates a palette for rendering color glyphs, and<br/>/// (2) it retrieves all (unmodified) color entries of this palette.  This<br/>/// function returns a read-write array, which means that a calling<br/>/// application can modify the palette entries on demand.<br/>/// A corollary of (2) is that calling the function, then modifying some<br/>/// values, then calling the function again with the same arguments resets<br/>/// all color entries to the original 'CPAL' values; all user modifications<br/>/// are lost.<br/>/// <br/>/// :<br/>/// face ::<br/>/// The source face handle.<br/>/// palette_index ::<br/>/// The palette index.<br/>/// <br/>/// :<br/>/// apalette ::<br/>/// An array of color entries for a palette with index `palette_index`,<br/>/// having `num_palette_entries` elements (as found in the<br/>/// `FT_Palette_Data` structure).  If `apalette` is set to `NULL`, no<br/>/// array gets returned (and no color entries can be modified).<br/>/// In case the font doesn't support color palettes, `NULL` is returned.<br/>/// <br/>/// <br/>/// This function always returns an error if the config macro<br/>/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Palette_Select")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTPaletteSelect([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "palette_index")] [NativeName(NativeNameType.Type, "FT_UShort")] ushort paletteIndex, [NativeName(NativeNameType.Param, "apalette")] [NativeName(NativeNameType.Type, "FT_Color**")] ref FTColor* apalette)
+		{
+			fixed (FTColor** papalette = &apalette)
+			{
+				int ret = FTPaletteSelectNative(face, paletteIndex, (FTColor**)papalette);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Palette_Set_Foreground_Color<br/>
+		/// <br/>
+		/// :<br/>
+		/// 'COLR' uses palette index 0xFFFF to indicate a 'text foreground<br/>
+		/// color'.  This function sets this value.<br/>
+		/// <br/>
+		/// :<br/>
+		/// face ::<br/>
+		/// The source face handle.<br/>
+		/// foreground_color ::<br/>
+		/// An `FT_Color` structure to define the text foreground color.<br/>
+		/// <br/>
+		/// <br/>
+		/// This function always returns an error if the config macro<br/>
+		/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Palette_Set_Foreground_Color")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Palette_Set_Foreground_Color")]
+		internal static extern int FTPaletteSetForegroundColorNative([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "foreground_color")] [NativeName(NativeNameType.Type, "FT_Color")] FTColor foregroundColor);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Palette_Set_Foreground_Color<br/>/// <br/>/// :<br/>/// 'COLR' uses palette index 0xFFFF to indicate a 'text foreground<br/>/// color'.  This function sets this value.<br/>/// <br/>/// :<br/>/// face ::<br/>/// The source face handle.<br/>/// foreground_color ::<br/>/// An `FT_Color` structure to define the text foreground color.<br/>/// <br/>/// <br/>/// This function always returns an error if the config macro<br/>/// `TT_CONFIG_OPTION_COLOR_LAYERS` is not defined in `ftoption.h`.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Palette_Set_Foreground_Color")]
+		[return: NativeName(NativeNameType.Type, "FT_Error")]
+		public static int FTPaletteSetForegroundColor([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "foreground_color")] [NativeName(NativeNameType.Type, "FT_Color")] FTColor foregroundColor)
+		{
+			int ret = FTPaletteSetForegroundColorNative(face, foregroundColor);
+			return ret;
+		}
+
+		/// <summary>
+		/// ************************************************************************<br/>
+		/// <br/>
+		/// FT_Get_Color_Glyph_Layer<br/>
+		/// <br/>
+		/// :<br/>
+		/// This is an interface to the 'COLR' table in OpenType fonts to<br/>
+		/// iteratively retrieve the colored glyph layers associated with the<br/>
+		/// current glyph slot.<br/>
+		/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>
+		/// The glyph layer data for a given glyph index, if present, provides an<br/>
+		/// alternative, multi-color glyph representation: Instead of rendering<br/>
+		/// the outline or bitmap with the given glyph index, glyphs with the<br/>
+		/// indices and colors returned by this function are rendered layer by<br/>
+		/// layer.<br/>
+		/// The returned elements are ordered in the z~direction from bottom to<br/>
+		/// top; the 'n'th element should be rendered with the associated palette<br/>
+		/// color and blended on top of the already rendered layers (elements 0,<br/>
+		/// 1, ..., n-1).<br/>
+		/// <br/>
+		/// :<br/>
+		/// face ::<br/>
+		/// A handle to the parent face object.<br/>
+		/// base_glyph ::<br/>
+		/// The glyph index the colored glyph layers are associated with.<br/>
+		/// <br/>
+		/// :<br/>
+		/// iterator ::<br/>
+		/// An <br/>
+		/// _LayerIterator object.  For the first call you should set<br/>
+		/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>
+		/// same object again.<br/>
+		/// <br/>
+		/// :<br/>
+		/// aglyph_index ::<br/>
+		/// The glyph index of the current layer.<br/>
+		/// acolor_index ::<br/>
+		/// The color index into the font face's color palette of the current<br/>
+		/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>
+		/// entry but indicates that the text foreground color should be used<br/>
+		/// instead (to be set up by the application outside of FreeType).<br/>
+		/// The color palette can be retrieved with <br/>
+		/// _Palette_Select.<br/>
+		/// <br/>
+		/// <br/>
+		/// Note that <br/>
+		/// _Render_Glyph is able to handle colored glyph layers<br/>
+		/// automatically if the <br/>
+		/// _LOAD_COLOR flag is passed to a previous call<br/>
+		/// to <br/>
+		/// _Load_Glyph.  [This is an experimental feature.]<br/>
+		/// <br/>
+		/// ```<br/>
+		/// FT_Color*         palette;<br/>
+		/// FT_LayerIterator  iterator;<br/>
+		/// FT_Bool  have_layers;<br/>
+		/// FT_UInt  layer_glyph_index;<br/>
+		/// FT_UInt  layer_color_index;<br/>
+		/// error = FT_Palette_Select( face, palette_index, <br/>
+		/// &palette<br/>
+		/// );<br/>
+		/// if ( error )<br/>
+		/// palette = NULL;<br/>
+		/// iterator.p  = NULL;<br/>
+		/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>
+		/// glyph_index,<br/>
+		/// <br/>
+		/// &layer<br/>
+		/// _glyph_index,<br/>
+		/// <br/>
+		/// &layer<br/>
+		/// _color_index,<br/>
+		/// <br/>
+		/// &iterator<br/>
+		/// );<br/>
+		/// if ( palette <br/>
+		/// &<br/>
+		/// &<br/>
+		/// have_layers )<br/>
+		/// {<br/>
+		/// do<br/>
+		/// {<br/>
+		/// FT_Color  layer_color;<br/>
+		/// if ( layer_color_index == 0xFFFF )<br/>
+		/// layer_color = text_foreground_color;<br/>
+		/// else<br/>
+		/// layer_color = palette[layer_color_index];<br/>
+		/// // Load and render glyph `layer_glyph_index', then<br/>
+		/// // blend resulting pixmap (using color `layer_color')<br/>
+		/// // with previously created pixmaps.<br/>
+		/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>
+		/// glyph_index,<br/>
+		/// <br/>
+		/// &layer<br/>
+		/// _glyph_index,<br/>
+		/// <br/>
+		/// &layer<br/>
+		/// _color_index,<br/>
+		/// <br/>
+		/// &iterator<br/>
+		/// ) );<br/>
+		/// }<br/>
+		/// ```<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "FT_Get_Color_Glyph_Layer")]
+		internal static extern byte FTGetColorGlyphLayerNative([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] FTLayerIterator* iterator);
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] FTLayerIterator* iterator)
+		{
+			byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, aglyphIndex, acolorIndex, iterator);
+			return ret;
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] ref uint aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] FTLayerIterator* iterator)
+		{
+			fixed (uint* paglyphIndex = &aglyphIndex)
+			{
+				byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, (uint*)paglyphIndex, acolorIndex, iterator);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] ref uint acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] FTLayerIterator* iterator)
+		{
+			fixed (uint* pacolorIndex = &acolorIndex)
+			{
+				byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, aglyphIndex, (uint*)pacolorIndex, iterator);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] ref uint aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] ref uint acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] FTLayerIterator* iterator)
+		{
+			fixed (uint* paglyphIndex = &aglyphIndex)
+			{
+				fixed (uint* pacolorIndex = &acolorIndex)
+				{
+					byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, (uint*)paglyphIndex, (uint*)pacolorIndex, iterator);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] ref FTLayerIterator iterator)
+		{
+			fixed (FTLayerIterator* piterator = &iterator)
+			{
+				byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, aglyphIndex, acolorIndex, (FTLayerIterator*)piterator);
+				return ret;
+			}
+		}
+
+		/// <summary>/// ************************************************************************<br/>/// <br/>/// FT_Get_Color_Glyph_Layer<br/>/// <br/>/// :<br/>/// This is an interface to the 'COLR' table in OpenType fonts to<br/>/// iteratively retrieve the colored glyph layers associated with the<br/>/// current glyph slot.<br/>/// https://docs.microsoft.com/en-us/typography/opentype/spec/colr<br/>/// The glyph layer data for a given glyph index, if present, provides an<br/>/// alternative, multi-color glyph representation: Instead of rendering<br/>/// the outline or bitmap with the given glyph index, glyphs with the<br/>/// indices and colors returned by this function are rendered layer by<br/>/// layer.<br/>/// The returned elements are ordered in the z~direction from bottom to<br/>/// top; the 'n'th element should be rendered with the associated palette<br/>/// color and blended on top of the already rendered layers (elements 0,<br/>/// 1, ..., n-1).<br/>/// <br/>/// :<br/>/// face ::<br/>/// A handle to the parent face object.<br/>/// base_glyph ::<br/>/// The glyph index the colored glyph layers are associated with.<br/>/// <br/>/// :<br/>/// iterator ::<br/>/// An <br/>/// _LayerIterator object.  For the first call you should set<br/>/// `iterator->p` to `NULL`.  For all following calls, simply use the<br/>/// same object again.<br/>/// <br/>/// :<br/>/// aglyph_index ::<br/>/// The glyph index of the current layer.<br/>/// acolor_index ::<br/>/// The color index into the font face's color palette of the current<br/>/// layer.  The value 0xFFFF is special; it doesn't reference a palette<br/>/// entry but indicates that the text foreground color should be used<br/>/// instead (to be set up by the application outside of FreeType).<br/>/// The color palette can be retrieved with <br/>/// _Palette_Select.<br/>/// <br/>/// <br/>/// Note that <br/>/// _Render_Glyph is able to handle colored glyph layers<br/>/// automatically if the <br/>/// _LOAD_COLOR flag is passed to a previous call<br/>/// to <br/>/// _Load_Glyph.  [This is an experimental feature.]<br/>/// <br/>/// ```<br/>/// FT_Color*         palette;<br/>/// FT_LayerIterator  iterator;<br/>/// FT_Bool  have_layers;<br/>/// FT_UInt  layer_glyph_index;<br/>/// FT_UInt  layer_color_index;<br/>/// error = FT_Palette_Select( face, palette_index, <br/>/// &palette<br/>/// );<br/>/// if ( error )<br/>/// palette = NULL;<br/>/// iterator.p  = NULL;<br/>/// have_layers = FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// );<br/>/// if ( palette <br/>/// &<br/>/// &<br/>/// have_layers )<br/>/// {<br/>/// do<br/>/// {<br/>/// FT_Color  layer_color;<br/>/// if ( layer_color_index == 0xFFFF )<br/>/// layer_color = text_foreground_color;<br/>/// else<br/>/// layer_color = palette[layer_color_index];<br/>/// // Load and render glyph `layer_glyph_index', then<br/>/// // blend resulting pixmap (using color `layer_color')<br/>/// // with previously created pixmaps.<br/>/// } while ( FT_Get_Color_Glyph_Layer( face,<br/>/// glyph_index,<br/>/// <br/>/// &layer<br/>/// _glyph_index,<br/>/// <br/>/// &layer<br/>/// _color_index,<br/>/// <br/>/// &iterator<br/>/// ) );<br/>/// }<br/>/// ```<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "FT_Get_Color_Glyph_Layer")]
+		[return: NativeName(NativeNameType.Type, "FT_Bool")]
+		public static byte FTGetColorGlyphLayer([NativeName(NativeNameType.Param, "face")] [NativeName(NativeNameType.Type, "FT_Face")] FTFace face, [NativeName(NativeNameType.Param, "base_glyph")] [NativeName(NativeNameType.Type, "FT_UInt")] uint baseGlyph, [NativeName(NativeNameType.Param, "aglyph_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] ref uint aglyphIndex, [NativeName(NativeNameType.Param, "acolor_index")] [NativeName(NativeNameType.Type, "FT_UInt*")] uint* acolorIndex, [NativeName(NativeNameType.Param, "iterator")] [NativeName(NativeNameType.Type, "FT_LayerIterator*")] ref FTLayerIterator iterator)
+		{
+			fixed (uint* paglyphIndex = &aglyphIndex)
+			{
+				fixed (FTLayerIterator* piterator = &iterator)
+				{
+					byte ret = FTGetColorGlyphLayerNative(face, baseGlyph, (uint*)paglyphIndex, acolorIndex, (FTLayerIterator*)piterator);
+					return ret;
+				}
+			}
+		}
 	}
 }

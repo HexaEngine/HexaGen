@@ -12,7013 +12,4238 @@ using HexaGen.Runtime;
 
 namespace Hexa.NET.SDL2
 {
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_bool")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_bool")]
 	public enum SDLBool
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FALSE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FALSE")]
+		[NativeName(NativeNameType.Value, "0")]
 		False = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TRUE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TRUE")]
+		[NativeName(NativeNameType.Value, "1")]
 		True = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// TODO: include/SDL_stdinc.h:174: error: size of array 'SDL_dummy_enum' is negative <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_DUMMY_ENUM")]
+	/// <summary>	/// TODO: include/SDL_stdinc.h:174: error: size of array 'SDL_dummy_enum' is negative <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_DUMMY_ENUM")]
 	public enum SdlDummyEnum
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "DUMMY_ENUM_VALUE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "DUMMY_ENUM_VALUE")]
+		[NativeName(NativeNameType.Value, "0")]
 		Value = unchecked(0),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_AssertState")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_AssertState")]
 	public enum SDLAssertState
 	{
-		/// <summary>
-		/// Retry the assert immediately. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_RETRY")]
+		/// <summary>		/// Retry the assert immediately. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_RETRY")]
+		[NativeName(NativeNameType.Value, "0")]
 		AssertionRetry = unchecked(0),
 
-		/// <summary>
-		/// Make the debugger trigger a breakpoint. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_BREAK")]
+		/// <summary>		/// Make the debugger trigger a breakpoint. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_BREAK")]
+		[NativeName(NativeNameType.Value, "1")]
 		AssertionBreak = unchecked(1),
 
-		/// <summary>
-		/// Terminate the program. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_ABORT")]
+		/// <summary>		/// Terminate the program. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_ABORT")]
+		[NativeName(NativeNameType.Value, "2")]
 		AssertionAbort = unchecked(2),
 
-		/// <summary>
-		/// Ignore the assert. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_IGNORE")]
+		/// <summary>		/// Ignore the assert. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_IGNORE")]
+		[NativeName(NativeNameType.Value, "3")]
 		AssertionIgnore = unchecked(3),
 
-		/// <summary>
-		/// Ignore the assert from now on. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_ALWAYS_IGNORE")]
+		/// <summary>		/// Ignore the assert from now on. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ASSERTION_ALWAYS_IGNORE")]
+		[NativeName(NativeNameType.Value, "4")]
 		AssertionAlwaysIgnore = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_errorcode")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_errorcode")]
 	public enum SDLErrorcode
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ENOMEM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ENOMEM")]
+		[NativeName(NativeNameType.Value, "0")]
 		Enomem = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_EFREAD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_EFREAD")]
+		[NativeName(NativeNameType.Value, "1")]
 		Efread = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_EFWRITE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_EFWRITE")]
+		[NativeName(NativeNameType.Value, "2")]
 		Efwrite = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_EFSEEK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_EFSEEK")]
+		[NativeName(NativeNameType.Value, "3")]
 		Efseek = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_UNSUPPORTED")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_UNSUPPORTED")]
+		[NativeName(NativeNameType.Value, "4")]
 		Unsupported = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LASTERROR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LASTERROR")]
+		[NativeName(NativeNameType.Value, "5")]
 		Lasterror = unchecked(5),
 
 	}
 
-	/// <summary>
-	/// The SDL thread priority.<br/>
-	/// SDL will make system changes as necessary in order to apply the thread priority.<br/>
-	/// Code which attempts to control thread state related to priority should be aware<br/>
-	/// that calling SDL_SetThreadPriority may alter such state.<br/>
-	/// SDL_HINT_THREAD_PRIORITY_POLICY can be used to control aspects of this behavior.<br/>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_ThreadPriority")]
+	/// <summary>	/// The SDL thread priority.<br/>	/// SDL will make system changes as necessary in order to apply the thread priority.<br/>	/// Code which attempts to control thread state related to priority should be aware<br/>	/// that calling SDL_SetThreadPriority may alter such state.<br/>	/// SDL_HINT_THREAD_PRIORITY_POLICY can be used to control aspects of this behavior.<br/>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_ThreadPriority")]
 	public enum SDLThreadPriority
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_LOW")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_LOW")]
+		[NativeName(NativeNameType.Value, "0")]
 		Low = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_NORMAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_NORMAL")]
+		[NativeName(NativeNameType.Value, "1")]
 		Normal = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_HIGH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_HIGH")]
+		[NativeName(NativeNameType.Value, "2")]
 		High = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_TIME_CRITICAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_THREAD_PRIORITY_TIME_CRITICAL")]
+		[NativeName(NativeNameType.Value, "3")]
 		TimeCritical = unchecked(3),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// Get the current audio state.<br/>
-	/// <br/>
-	/// @<br/>
-	/// { <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_AudioStatus")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// Get the current audio state.<br/>	/// <br/>	/// @<br/>	/// { <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_AudioStatus")]
 	public enum SDLAudioStatus
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_STOPPED")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_STOPPED")]
+		[NativeName(NativeNameType.Value, "0")]
 		Stopped = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_PLAYING")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_PLAYING")]
+		[NativeName(NativeNameType.Value, "1")]
 		Playing = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_PAUSED")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_AUDIO_PAUSED")]
+		[NativeName(NativeNameType.Value, "2")]
 		Paused = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// Pixel type. <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_PixelType")]
+	/// <summary>	/// Pixel type. <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PixelType")]
 	public enum SDLPixelType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		PixeltypeUnknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX1")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX1")]
+		[NativeName(NativeNameType.Value, "1")]
 		PixeltypeIndex1 = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX4")]
+		[NativeName(NativeNameType.Value, "2")]
 		PixeltypeIndex4 = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX8")]
+		[NativeName(NativeNameType.Value, "3")]
 		PixeltypeIndex8 = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED8")]
+		[NativeName(NativeNameType.Value, "4")]
 		PixeltypePacked8 = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED16")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED16")]
+		[NativeName(NativeNameType.Value, "5")]
 		PixeltypePacked16 = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED32")]
+		[NativeName(NativeNameType.Value, "6")]
 		PixeltypePacked32 = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU8")]
+		[NativeName(NativeNameType.Value, "7")]
 		PixeltypeArrayu8 = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU16")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU16")]
+		[NativeName(NativeNameType.Value, "8")]
 		PixeltypeArrayu16 = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU32")]
+		[NativeName(NativeNameType.Value, "9")]
 		PixeltypeArrayu32 = unchecked(9),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF16")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF16")]
+		[NativeName(NativeNameType.Value, "10")]
 		PixeltypeArrayf16 = unchecked(10),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF32")]
+		[NativeName(NativeNameType.Value, "11")]
 		PixeltypeArrayf32 = unchecked(11),
 
 	}
 
-	/// <summary>
-	/// Bitmap pixel order, high bit -> low bit. <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_BitmapOrder")]
+	/// <summary>	/// Bitmap pixel order, high bit -> low bit. <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_BitmapOrder")]
 	public enum SDLBitmapOrder
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		BitmaporderNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_4321")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_4321")]
+		[NativeName(NativeNameType.Value, "1")]
 		Bitmaporder4321 = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_1234")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_1234")]
+		[NativeName(NativeNameType.Value, "2")]
 		Bitmaporder1234 = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// Packed component order, high bit -> low bit. <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_PackedOrder")]
+	/// <summary>	/// Packed component order, high bit -> low bit. <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PackedOrder")]
 	public enum SDLPackedOrder
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		PackedorderNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XRGB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XRGB")]
+		[NativeName(NativeNameType.Value, "1")]
 		PackedorderXrgb = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBX")]
+		[NativeName(NativeNameType.Value, "2")]
 		PackedorderRgbx = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ARGB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ARGB")]
+		[NativeName(NativeNameType.Value, "3")]
 		PackedorderArgb = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBA")]
+		[NativeName(NativeNameType.Value, "4")]
 		PackedorderRgba = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XBGR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XBGR")]
+		[NativeName(NativeNameType.Value, "5")]
 		PackedorderXbgr = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRX")]
+		[NativeName(NativeNameType.Value, "6")]
 		PackedorderBgrx = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ABGR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ABGR")]
+		[NativeName(NativeNameType.Value, "7")]
 		PackedorderAbgr = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRA")]
+		[NativeName(NativeNameType.Value, "8")]
 		PackedorderBgra = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// Array component order, low byte -> high byte. <br/>
-	/// !!! FIXME: in 2.1, make these not overlap differently with<br/>
-	/// !!! FIXME:  SDL_PACKEDORDER_*, so we can simplify SDL_ISPIXELFORMAT_ALPHA <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_ArrayOrder")]
+	/// <summary>	/// Array component order, low byte -> high byte. <br/>	/// !!! FIXME: in 2.1, make these not overlap differently with<br/>	/// !!! FIXME:  SDL_PACKEDORDER_*, so we can simplify SDL_ISPIXELFORMAT_ALPHA <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_ArrayOrder")]
 	public enum SDLArrayOrder
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		ArrayorderNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGB")]
+		[NativeName(NativeNameType.Value, "1")]
 		ArrayorderRgb = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGBA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGBA")]
+		[NativeName(NativeNameType.Value, "2")]
 		ArrayorderRgba = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ARGB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ARGB")]
+		[NativeName(NativeNameType.Value, "3")]
 		ArrayorderArgb = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGR")]
+		[NativeName(NativeNameType.Value, "4")]
 		ArrayorderBgr = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGRA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGRA")]
+		[NativeName(NativeNameType.Value, "5")]
 		ArrayorderBgra = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ABGR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ABGR")]
+		[NativeName(NativeNameType.Value, "6")]
 		ArrayorderAbgr = unchecked(6),
 
 	}
 
-	/// <summary>
-	/// Packed component layout. <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_PackedLayout")]
+	/// <summary>	/// Packed component layout. <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PackedLayout")]
 	public enum SDLPackedLayout
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		PackedlayoutNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_332")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_332")]
+		[NativeName(NativeNameType.Value, "1")]
 		Packedlayout332 = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_4444")]
+		[NativeName(NativeNameType.Value, "2")]
 		Packedlayout4444 = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_1555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_1555")]
+		[NativeName(NativeNameType.Value, "3")]
 		Packedlayout1555 = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_5551")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_5551")]
+		[NativeName(NativeNameType.Value, "4")]
 		Packedlayout5551 = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_565")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_565")]
+		[NativeName(NativeNameType.Value, "5")]
 		Packedlayout565 = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_8888")]
+		[NativeName(NativeNameType.Value, "6")]
 		Packedlayout8888 = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_2101010")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_2101010")]
+		[NativeName(NativeNameType.Value, "7")]
 		Packedlayout2101010 = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_1010102")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_1010102")]
+		[NativeName(NativeNameType.Value, "8")]
 		Packedlayout1010102 = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// Note: If you modify this list, update SDL_GetPixelFormatName() <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_PixelFormatEnum")]
+	/// <summary>	/// Note: If you modify this list, update SDL_GetPixelFormatName() <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PixelFormatEnum")]
 	public enum SDLPixelFormatEnum
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		PixelformatUnknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1LSB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1LSB")]
+		[NativeName(NativeNameType.Value, "286261504")]
 		PixelformatIndex1Lsb = unchecked(286261504),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1MSB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1MSB")]
+		[NativeName(NativeNameType.Value, "287310080")]
 		PixelformatIndex1Msb = unchecked(287310080),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4LSB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4LSB")]
+		[NativeName(NativeNameType.Value, "303039488")]
 		PixelformatIndex4Lsb = unchecked(303039488),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4MSB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4MSB")]
+		[NativeName(NativeNameType.Value, "304088064")]
 		PixelformatIndex4Msb = unchecked(304088064),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX8")]
+		[NativeName(NativeNameType.Value, "318769153")]
 		PixelformatIndex8 = unchecked(318769153),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB332")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB332")]
+		[NativeName(NativeNameType.Value, "336660481")]
 		PixelformatRgb332 = unchecked(336660481),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB4444")]
+		[NativeName(NativeNameType.Value, "353504258")]
 		PixelformatXrgb4444 = unchecked(353504258),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB444")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB4444")]
 		PixelformatRgb444 = PixelformatXrgb4444,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR4444")]
+		[NativeName(NativeNameType.Value, "357698562")]
 		PixelformatXbgr4444 = unchecked(357698562),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR444")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR4444")]
 		PixelformatBgr444 = PixelformatXbgr4444,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB1555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB1555")]
+		[NativeName(NativeNameType.Value, "353570562")]
 		PixelformatXrgb1555 = unchecked(353570562),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB555")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB1555")]
 		PixelformatRgb555 = PixelformatXrgb1555,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR1555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR1555")]
+		[NativeName(NativeNameType.Value, "357764866")]
 		PixelformatXbgr1555 = unchecked(357764866),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR555")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR1555")]
 		PixelformatBgr555 = PixelformatXbgr1555,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB4444")]
+		[NativeName(NativeNameType.Value, "355602434")]
 		PixelformatArgb4444 = unchecked(355602434),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA4444")]
+		[NativeName(NativeNameType.Value, "356651010")]
 		PixelformatRgba4444 = unchecked(356651010),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR4444")]
+		[NativeName(NativeNameType.Value, "359796738")]
 		PixelformatAbgr4444 = unchecked(359796738),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA4444")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA4444")]
+		[NativeName(NativeNameType.Value, "360845314")]
 		PixelformatBgra4444 = unchecked(360845314),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB1555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB1555")]
+		[NativeName(NativeNameType.Value, "355667970")]
 		PixelformatArgb1555 = unchecked(355667970),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA5551")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA5551")]
+		[NativeName(NativeNameType.Value, "356782082")]
 		PixelformatRgba5551 = unchecked(356782082),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR1555")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR1555")]
+		[NativeName(NativeNameType.Value, "359862274")]
 		PixelformatAbgr1555 = unchecked(359862274),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA5551")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA5551")]
+		[NativeName(NativeNameType.Value, "360976386")]
 		PixelformatBgra5551 = unchecked(360976386),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB565")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB565")]
+		[NativeName(NativeNameType.Value, "353701890")]
 		PixelformatRgb565 = unchecked(353701890),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR565")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR565")]
+		[NativeName(NativeNameType.Value, "357896194")]
 		PixelformatBgr565 = unchecked(357896194),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB24")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB24")]
+		[NativeName(NativeNameType.Value, "386930691")]
 		PixelformatRgb24 = unchecked(386930691),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR24")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR24")]
+		[NativeName(NativeNameType.Value, "390076419")]
 		PixelformatBgr24 = unchecked(390076419),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB8888")]
+		[NativeName(NativeNameType.Value, "370546692")]
 		PixelformatXrgb8888 = unchecked(370546692),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB888")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB8888")]
 		PixelformatRgb888 = PixelformatXrgb8888,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBX8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBX8888")]
+		[NativeName(NativeNameType.Value, "371595268")]
 		PixelformatRgbx8888 = unchecked(371595268),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR8888")]
+		[NativeName(NativeNameType.Value, "374740996")]
 		PixelformatXbgr8888 = unchecked(374740996),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR888")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR8888")]
 		PixelformatBgr888 = PixelformatXbgr8888,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRX8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRX8888")]
+		[NativeName(NativeNameType.Value, "375789572")]
 		PixelformatBgrx8888 = unchecked(375789572),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB8888")]
+		[NativeName(NativeNameType.Value, "372645892")]
 		PixelformatArgb8888 = unchecked(372645892),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA8888")]
+		[NativeName(NativeNameType.Value, "373694468")]
 		PixelformatRgba8888 = unchecked(373694468),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR8888")]
+		[NativeName(NativeNameType.Value, "376840196")]
 		PixelformatAbgr8888 = unchecked(376840196),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA8888")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA8888")]
+		[NativeName(NativeNameType.Value, "377888772")]
 		PixelformatBgra8888 = unchecked(377888772),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB2101010")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB2101010")]
+		[NativeName(NativeNameType.Value, "372711428")]
 		PixelformatArgb2101010 = unchecked(372711428),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA32")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_ABGR8888")]
 		PixelformatRgba32 = PixelformatAbgr8888,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB32")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_BGRA8888")]
 		PixelformatArgb32 = PixelformatBgra8888,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA32")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_ARGB8888")]
 		PixelformatBgra32 = PixelformatArgb8888,
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR32")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR32")]
+		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_RGBA8888")]
 		PixelformatAbgr32 = PixelformatRgba8888,
 
-		/// <summary>
-		/// Planar mode: Y + V + U  (3 planes) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YV12")]
+		/// <summary>		/// Planar mode: Y + V + U  (3 planes) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YV12")]
+		[NativeName(NativeNameType.Value, "842094169")]
 		PixelformatYv12 = unchecked(842094169),
 
-		/// <summary>
-		/// Planar mode: Y + U + V  (3 planes) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_IYUV")]
+		/// <summary>		/// Planar mode: Y + U + V  (3 planes) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_IYUV")]
+		[NativeName(NativeNameType.Value, "1448433993")]
 		PixelformatIyuv = unchecked(1448433993),
 
-		/// <summary>
-		/// Packed mode: Y0+U0+Y1+V0 (1 plane) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YUY2")]
+		/// <summary>		/// Packed mode: Y0+U0+Y1+V0 (1 plane) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YUY2")]
+		[NativeName(NativeNameType.Value, "844715353")]
 		PixelformatYuy2 = unchecked(844715353),
 
-		/// <summary>
-		/// Packed mode: U0+Y0+V0+Y1 (1 plane) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UYVY")]
+		/// <summary>		/// Packed mode: U0+Y0+V0+Y1 (1 plane) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UYVY")]
+		[NativeName(NativeNameType.Value, "1498831189")]
 		PixelformatUyvy = unchecked(1498831189),
 
-		/// <summary>
-		/// Packed mode: Y0+V0+Y1+U0 (1 plane) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YVYU")]
+		/// <summary>		/// Packed mode: Y0+V0+Y1+U0 (1 plane) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YVYU")]
+		[NativeName(NativeNameType.Value, "1431918169")]
 		PixelformatYvyu = unchecked(1431918169),
 
-		/// <summary>
-		/// Planar mode: Y + U/V interleaved  (2 planes) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV12")]
+		/// <summary>		/// Planar mode: Y + U/V interleaved  (2 planes) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV12")]
+		[NativeName(NativeNameType.Value, "842094158")]
 		PixelformatNv12 = unchecked(842094158),
 
-		/// <summary>
-		/// Planar mode: Y + V/U interleaved  (2 planes) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV21")]
+		/// <summary>		/// Planar mode: Y + V/U interleaved  (2 planes) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV21")]
+		[NativeName(NativeNameType.Value, "825382478")]
 		PixelformatNv21 = unchecked(825382478),
 
-		/// <summary>
-		/// Android video texture format <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_EXTERNAL_OES")]
+		/// <summary>		/// Android video texture format <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_EXTERNAL_OES")]
+		[NativeName(NativeNameType.Value, "542328143")]
 		PixelformatExternalOes = unchecked(542328143),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_BlendMode")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_BlendMode")]
 	public enum SDLBlendMode
 	{
-		/// <summary>
-		/// no blending<br/>
-		/// dstRGBA = srcRGBA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_NONE")]
+		/// <summary>		/// no blending<br/>		/// dstRGBA = srcRGBA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		BlendmodeNone = unchecked(0),
 
-		/// <summary>
-		/// alpha blending<br/>
-		/// dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))<br/>
-		/// dstA = srcA + (dstA * (1-srcA)) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_BLEND")]
+		/// <summary>		/// alpha blending<br/>		/// dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))<br/>		/// dstA = srcA + (dstA * (1-srcA)) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_BLEND")]
+		[NativeName(NativeNameType.Value, "1")]
 		BlendmodeBlend = unchecked(1),
 
-		/// <summary>
-		/// additive blending<br/>
-		/// dstRGB = (srcRGB * srcA) + dstRGB<br/>
-		/// dstA = dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_ADD")]
+		/// <summary>		/// additive blending<br/>		/// dstRGB = (srcRGB * srcA) + dstRGB<br/>		/// dstA = dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_ADD")]
+		[NativeName(NativeNameType.Value, "2")]
 		BlendmodeAdd = unchecked(2),
 
-		/// <summary>
-		/// color modulate<br/>
-		/// dstRGB = srcRGB * dstRGB<br/>
-		/// dstA = dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MOD")]
+		/// <summary>		/// color modulate<br/>		/// dstRGB = srcRGB * dstRGB<br/>		/// dstA = dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MOD")]
+		[NativeName(NativeNameType.Value, "4")]
 		BlendmodeMod = unchecked(4),
 
-		/// <summary>
-		/// color multiply<br/>
-		/// dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))<br/>
-		/// dstA = dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MUL")]
+		/// <summary>		/// color multiply<br/>		/// dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))<br/>		/// dstA = dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MUL")]
+		[NativeName(NativeNameType.Value, "8")]
 		BlendmodeMul = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_INVALID")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_INVALID")]
+		[NativeName(NativeNameType.Value, "2147483647")]
 		BlendmodeInvalid = unchecked(2147483647),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_BlendOperation")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_BlendOperation")]
 	public enum SDLBlendOperation
 	{
-		/// <summary>
-		/// dst + src: supported by all renderers <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_ADD")]
+		/// <summary>		/// dst + src: supported by all renderers <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_ADD")]
+		[NativeName(NativeNameType.Value, "1")]
 		BlendoperationAdd = unchecked(1),
 
-		/// <summary>
-		/// dst - src : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_SUBTRACT")]
+		/// <summary>		/// dst - src : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_SUBTRACT")]
+		[NativeName(NativeNameType.Value, "2")]
 		BlendoperationSubtract = unchecked(2),
 
-		/// <summary>
-		/// src - dst : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_REV_SUBTRACT")]
+		/// <summary>		/// src - dst : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_REV_SUBTRACT")]
+		[NativeName(NativeNameType.Value, "3")]
 		BlendoperationRevSubtract = unchecked(3),
 
-		/// <summary>
-		/// min(dst, src) : supported by D3D9, D3D11 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MINIMUM")]
+		/// <summary>		/// min(dst, src) : supported by D3D9, D3D11 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MINIMUM")]
+		[NativeName(NativeNameType.Value, "4")]
 		BlendoperationMinimum = unchecked(4),
 
-		/// <summary>
-		/// max(dst, src) : supported by D3D9, D3D11 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MAXIMUM")]
+		/// <summary>		/// max(dst, src) : supported by D3D9, D3D11 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MAXIMUM")]
+		[NativeName(NativeNameType.Value, "5")]
 		BlendoperationMaximum = unchecked(5),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_BlendFactor")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_BlendFactor")]
 	public enum SDLBlendFactor
 	{
-		/// <summary>
-		/// 0, 0, 0, 0 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ZERO")]
+		/// <summary>		/// 0, 0, 0, 0 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ZERO")]
+		[NativeName(NativeNameType.Value, "1")]
 		BlendfactorZero = unchecked(1),
 
-		/// <summary>
-		/// 1, 1, 1, 1 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE")]
+		/// <summary>		/// 1, 1, 1, 1 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE")]
+		[NativeName(NativeNameType.Value, "2")]
 		BlendfactorOne = unchecked(2),
 
-		/// <summary>
-		/// srcR, srcG, srcB, srcA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_COLOR")]
+		/// <summary>		/// srcR, srcG, srcB, srcA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_COLOR")]
+		[NativeName(NativeNameType.Value, "3")]
 		BlendfactorSrcColor = unchecked(3),
 
-		/// <summary>
-		/// 1-srcR, 1-srcG, 1-srcB, 1-srcA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR")]
+		/// <summary>		/// 1-srcR, 1-srcG, 1-srcB, 1-srcA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR")]
+		[NativeName(NativeNameType.Value, "4")]
 		BlendfactorOneMinusSrcColor = unchecked(4),
 
-		/// <summary>
-		/// srcA, srcA, srcA, srcA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_ALPHA")]
+		/// <summary>		/// srcA, srcA, srcA, srcA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_ALPHA")]
+		[NativeName(NativeNameType.Value, "5")]
 		BlendfactorSrcAlpha = unchecked(5),
 
-		/// <summary>
-		/// 1-srcA, 1-srcA, 1-srcA, 1-srcA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA")]
+		/// <summary>		/// 1-srcA, 1-srcA, 1-srcA, 1-srcA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA")]
+		[NativeName(NativeNameType.Value, "6")]
 		BlendfactorOneMinusSrcAlpha = unchecked(6),
 
-		/// <summary>
-		/// dstR, dstG, dstB, dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_COLOR")]
+		/// <summary>		/// dstR, dstG, dstB, dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_COLOR")]
+		[NativeName(NativeNameType.Value, "7")]
 		BlendfactorDstColor = unchecked(7),
 
-		/// <summary>
-		/// 1-dstR, 1-dstG, 1-dstB, 1-dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR")]
+		/// <summary>		/// 1-dstR, 1-dstG, 1-dstB, 1-dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR")]
+		[NativeName(NativeNameType.Value, "8")]
 		BlendfactorOneMinusDstColor = unchecked(8),
 
-		/// <summary>
-		/// dstA, dstA, dstA, dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_ALPHA")]
+		/// <summary>		/// dstA, dstA, dstA, dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_ALPHA")]
+		[NativeName(NativeNameType.Value, "9")]
 		BlendfactorDstAlpha = unchecked(9),
 
-		/// <summary>
-		/// 1-dstA, 1-dstA, 1-dstA, 1-dstA <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA")]
+		/// <summary>		/// 1-dstA, 1-dstA, 1-dstA, 1-dstA <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA")]
+		[NativeName(NativeNameType.Value, "10")]
 		BlendfactorOneMinusDstAlpha = unchecked(10),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_YUV_CONVERSION_MODE")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_YUV_CONVERSION_MODE")]
 	public enum SdlYuvConversionMode
 	{
-		/// <summary>
-		/// Full range JPEG <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_JPEG")]
+		/// <summary>		/// Full range JPEG <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_JPEG")]
+		[NativeName(NativeNameType.Value, "0")]
 		Jpeg = unchecked(0),
 
-		/// <summary>
-		/// BT.601 (the default) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_BT601")]
+		/// <summary>		/// BT.601 (the default) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_BT601")]
+		[NativeName(NativeNameType.Value, "1")]
 		Bt601 = unchecked(1),
 
-		/// <summary>
-		/// BT.709 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_BT709")]
+		/// <summary>		/// BT.709 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_BT709")]
+		[NativeName(NativeNameType.Value, "2")]
 		Bt709 = unchecked(2),
 
-		/// <summary>
-		/// BT.601 for SD content, BT.709 for HD content <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_AUTOMATIC")]
+		/// <summary>		/// BT.601 for SD content, BT.709 for HD content <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_YUV_CONVERSION_AUTOMATIC")]
+		[NativeName(NativeNameType.Value, "3")]
 		Automatic = unchecked(3),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_WindowFlags")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_WindowFlags")]
 	public enum SDLWindowFlags
 	{
-		/// <summary>
-		/// fullscreen window <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FULLSCREEN")]
+		/// <summary>		/// fullscreen window <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FULLSCREEN")]
+		[NativeName(NativeNameType.Value, "1")]
 		Fullscreen = unchecked(1),
 
-		/// <summary>
-		/// window usable with OpenGL context <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_OPENGL")]
+		/// <summary>		/// window usable with OpenGL context <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_OPENGL")]
+		[NativeName(NativeNameType.Value, "2")]
 		Opengl = unchecked(2),
 
-		/// <summary>
-		/// window is visible <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_SHOWN")]
+		/// <summary>		/// window is visible <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_SHOWN")]
+		[NativeName(NativeNameType.Value, "4")]
 		Shown = unchecked(4),
 
-		/// <summary>
-		/// window is not visible <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_HIDDEN")]
+		/// <summary>		/// window is not visible <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_HIDDEN")]
+		[NativeName(NativeNameType.Value, "8")]
 		Hidden = unchecked(8),
 
-		/// <summary>
-		/// no window decoration <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_BORDERLESS")]
+		/// <summary>		/// no window decoration <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_BORDERLESS")]
+		[NativeName(NativeNameType.Value, "16")]
 		Borderless = unchecked(16),
 
-		/// <summary>
-		/// window can be resized <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_RESIZABLE")]
+		/// <summary>		/// window can be resized <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_RESIZABLE")]
+		[NativeName(NativeNameType.Value, "32")]
 		Resizable = unchecked(32),
 
-		/// <summary>
-		/// window is minimized <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MINIMIZED")]
+		/// <summary>		/// window is minimized <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MINIMIZED")]
+		[NativeName(NativeNameType.Value, "64")]
 		Minimized = unchecked(64),
 
-		/// <summary>
-		/// window is maximized <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MAXIMIZED")]
+		/// <summary>		/// window is maximized <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MAXIMIZED")]
+		[NativeName(NativeNameType.Value, "128")]
 		Maximized = unchecked(128),
 
-		/// <summary>
-		/// window has grabbed mouse input <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_GRABBED")]
+		/// <summary>		/// window has grabbed mouse input <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_GRABBED")]
+		[NativeName(NativeNameType.Value, "256")]
 		MouseGrabbed = unchecked(256),
 
-		/// <summary>
-		/// window has input focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_INPUT_FOCUS")]
+		/// <summary>		/// window has input focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_INPUT_FOCUS")]
+		[NativeName(NativeNameType.Value, "512")]
 		InputFocus = unchecked(512),
 
-		/// <summary>
-		/// window has mouse focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_FOCUS")]
+		/// <summary>		/// window has mouse focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_FOCUS")]
+		[NativeName(NativeNameType.Value, "1024")]
 		MouseFocus = unchecked(1024),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FULLSCREEN_DESKTOP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FULLSCREEN_DESKTOP")]
+		[NativeName(NativeNameType.Value, "4097")]
 		FullscreenDesktop = unchecked(4097),
 
-		/// <summary>
-		/// window not created by SDL <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FOREIGN")]
+		/// <summary>		/// window not created by SDL <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_FOREIGN")]
+		[NativeName(NativeNameType.Value, "2048")]
 		Foreign = unchecked(2048),
 
-		/// <summary>
-		/// window should be created in high-DPI mode if supported.<br/>
-		/// On macOS NSHighResolutionCapable must be set true in the<br/>
-		/// application's Info.plist for this to have any effect. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_ALLOW_HIGHDPI")]
+		/// <summary>		/// window should be created in high-DPI mode if supported.<br/>		/// On macOS NSHighResolutionCapable must be set true in the<br/>		/// application's Info.plist for this to have any effect. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_ALLOW_HIGHDPI")]
+		[NativeName(NativeNameType.Value, "8192")]
 		AllowHighdpi = unchecked(8192),
 
-		/// <summary>
-		/// window has mouse captured (unrelated to MOUSE_GRABBED) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_CAPTURE")]
+		/// <summary>		/// window has mouse captured (unrelated to MOUSE_GRABBED) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_MOUSE_CAPTURE")]
+		[NativeName(NativeNameType.Value, "16384")]
 		MouseCapture = unchecked(16384),
 
-		/// <summary>
-		/// window should always be above others <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_ALWAYS_ON_TOP")]
+		/// <summary>		/// window should always be above others <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_ALWAYS_ON_TOP")]
+		[NativeName(NativeNameType.Value, "32768")]
 		AlwaysOnTop = unchecked(32768),
 
-		/// <summary>
-		/// window should not be added to the taskbar <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_SKIP_TASKBAR")]
+		/// <summary>		/// window should not be added to the taskbar <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_SKIP_TASKBAR")]
+		[NativeName(NativeNameType.Value, "65536")]
 		SkipTaskbar = unchecked(65536),
 
-		/// <summary>
-		/// window should be treated as a utility window <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_UTILITY")]
+		/// <summary>		/// window should be treated as a utility window <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_UTILITY")]
+		[NativeName(NativeNameType.Value, "131072")]
 		Utility = unchecked(131072),
 
-		/// <summary>
-		/// window should be treated as a tooltip <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_TOOLTIP")]
+		/// <summary>		/// window should be treated as a tooltip <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_TOOLTIP")]
+		[NativeName(NativeNameType.Value, "262144")]
 		Tooltip = unchecked(262144),
 
-		/// <summary>
-		/// window should be treated as a popup menu <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_POPUP_MENU")]
+		/// <summary>		/// window should be treated as a popup menu <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_POPUP_MENU")]
+		[NativeName(NativeNameType.Value, "524288")]
 		PopupMenu = unchecked(524288),
 
-		/// <summary>
-		/// window has grabbed keyboard input <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_KEYBOARD_GRABBED")]
+		/// <summary>		/// window has grabbed keyboard input <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_KEYBOARD_GRABBED")]
+		[NativeName(NativeNameType.Value, "1048576")]
 		KeyboardGrabbed = unchecked(1048576),
 
-		/// <summary>
-		/// window usable for Vulkan surface <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_VULKAN")]
+		/// <summary>		/// window usable for Vulkan surface <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_VULKAN")]
+		[NativeName(NativeNameType.Value, "268435456")]
 		Vulkan = unchecked(268435456),
 
-		/// <summary>
-		/// window usable for Metal view <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_METAL")]
+		/// <summary>		/// window usable for Metal view <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_METAL")]
+		[NativeName(NativeNameType.Value, "536870912")]
 		Metal = unchecked(536870912),
 
-		/// <summary>
-		/// equivalent to SDL_WINDOW_MOUSE_GRABBED for compatibility <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_INPUT_GRABBED")]
+		/// <summary>		/// equivalent to SDL_WINDOW_MOUSE_GRABBED for compatibility <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOW_INPUT_GRABBED")]
+		[NativeName(NativeNameType.Value, "SDL_WINDOW_MOUSE_GRABBED")]
 		InputGrabbed = MouseGrabbed,
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_WindowEventID")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_WindowEventID")]
 	public enum SDLWindowEventID
 	{
-		/// <summary>
-		/// Never used <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_NONE")]
+		/// <summary>		/// Never used <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		WindoweventNone = unchecked(0),
 
-		/// <summary>
-		/// Window has been shown <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SHOWN")]
+		/// <summary>		/// Window has been shown <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SHOWN")]
+		[NativeName(NativeNameType.Value, "1")]
 		WindoweventShown = unchecked(1),
 
-		/// <summary>
-		/// Window has been hidden <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIDDEN")]
+		/// <summary>		/// Window has been hidden <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIDDEN")]
+		[NativeName(NativeNameType.Value, "2")]
 		WindoweventHidden = unchecked(2),
 
-		/// <summary>
-		/// Window has been exposed and should be<br/>
-		/// redrawn <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_EXPOSED")]
+		/// <summary>		/// Window has been exposed and should be<br/>		/// redrawn <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_EXPOSED")]
+		[NativeName(NativeNameType.Value, "3")]
 		WindoweventExposed = unchecked(3),
 
-		/// <summary>
-		/// Window has been moved to data1, data2<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MOVED")]
+		/// <summary>		/// Window has been moved to data1, data2<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MOVED")]
+		[NativeName(NativeNameType.Value, "4")]
 		WindoweventMoved = unchecked(4),
 
-		/// <summary>
-		/// Window has been resized to data1xdata2 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESIZED")]
+		/// <summary>		/// Window has been resized to data1xdata2 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESIZED")]
+		[NativeName(NativeNameType.Value, "5")]
 		WindoweventResized = unchecked(5),
 
-		/// <summary>
-		/// The window size has changed, either as<br/>
-		/// a result of an API call or through the<br/>
-		/// system or user changing the window size. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SIZE_CHANGED")]
+		/// <summary>		/// The window size has changed, either as<br/>		/// a result of an API call or through the<br/>		/// system or user changing the window size. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SIZE_CHANGED")]
+		[NativeName(NativeNameType.Value, "6")]
 		WindoweventSizeChanged = unchecked(6),
 
-		/// <summary>
-		/// Window has been minimized <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MINIMIZED")]
+		/// <summary>		/// Window has been minimized <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MINIMIZED")]
+		[NativeName(NativeNameType.Value, "7")]
 		WindoweventMinimized = unchecked(7),
 
-		/// <summary>
-		/// Window has been maximized <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MAXIMIZED")]
+		/// <summary>		/// Window has been maximized <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MAXIMIZED")]
+		[NativeName(NativeNameType.Value, "8")]
 		WindoweventMaximized = unchecked(8),
 
-		/// <summary>
-		/// Window has been restored to normal size<br/>
-		/// and position <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESTORED")]
+		/// <summary>		/// Window has been restored to normal size<br/>		/// and position <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESTORED")]
+		[NativeName(NativeNameType.Value, "9")]
 		WindoweventRestored = unchecked(9),
 
-		/// <summary>
-		/// Window has gained mouse focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ENTER")]
+		/// <summary>		/// Window has gained mouse focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ENTER")]
+		[NativeName(NativeNameType.Value, "10")]
 		WindoweventEnter = unchecked(10),
 
-		/// <summary>
-		/// Window has lost mouse focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_LEAVE")]
+		/// <summary>		/// Window has lost mouse focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_LEAVE")]
+		[NativeName(NativeNameType.Value, "11")]
 		WindoweventLeave = unchecked(11),
 
-		/// <summary>
-		/// Window has gained keyboard focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_GAINED")]
+		/// <summary>		/// Window has gained keyboard focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_GAINED")]
+		[NativeName(NativeNameType.Value, "12")]
 		WindoweventFocusGained = unchecked(12),
 
-		/// <summary>
-		/// Window has lost keyboard focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_LOST")]
+		/// <summary>		/// Window has lost keyboard focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_LOST")]
+		[NativeName(NativeNameType.Value, "13")]
 		WindoweventFocusLost = unchecked(13),
 
-		/// <summary>
-		/// The window manager requests that the window be closed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_CLOSE")]
+		/// <summary>		/// The window manager requests that the window be closed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_CLOSE")]
+		[NativeName(NativeNameType.Value, "14")]
 		WindoweventClose = unchecked(14),
 
-		/// <summary>
-		/// Window is being offered a focus (should SetWindowInputFocus() on itself or a subwindow, or ignore) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_TAKE_FOCUS")]
+		/// <summary>		/// Window is being offered a focus (should SetWindowInputFocus() on itself or a subwindow, or ignore) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_TAKE_FOCUS")]
+		[NativeName(NativeNameType.Value, "15")]
 		WindoweventTakeFocus = unchecked(15),
 
-		/// <summary>
-		/// Window had a hit test that wasn't SDL_HITTEST_NORMAL. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIT_TEST")]
+		/// <summary>		/// Window had a hit test that wasn't SDL_HITTEST_NORMAL. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIT_TEST")]
+		[NativeName(NativeNameType.Value, "16")]
 		WindoweventHitTest = unchecked(16),
 
-		/// <summary>
-		/// The ICC profile of the window's display has changed. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ICCPROF_CHANGED")]
+		/// <summary>		/// The ICC profile of the window's display has changed. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ICCPROF_CHANGED")]
+		[NativeName(NativeNameType.Value, "17")]
 		WindoweventIccprofChanged = unchecked(17),
 
-		/// <summary>
-		/// Window has been moved to display data1. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_DISPLAY_CHANGED")]
+		/// <summary>		/// Window has been moved to display data1. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_DISPLAY_CHANGED")]
+		[NativeName(NativeNameType.Value, "18")]
 		WindoweventDisplayChanged = unchecked(18),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_DisplayEventID")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_DisplayEventID")]
 	public enum SDLDisplayEventID
 	{
-		/// <summary>
-		/// Never used <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_NONE")]
+		/// <summary>		/// Never used <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		DisplayeventNone = unchecked(0),
 
-		/// <summary>
-		/// Display orientation has changed to data1 <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_ORIENTATION")]
+		/// <summary>		/// Display orientation has changed to data1 <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_ORIENTATION")]
+		[NativeName(NativeNameType.Value, "1")]
 		DisplayeventOrientation = unchecked(1),
 
-		/// <summary>
-		/// Display has been added to the system <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_CONNECTED")]
+		/// <summary>		/// Display has been added to the system <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_CONNECTED")]
+		[NativeName(NativeNameType.Value, "2")]
 		DisplayeventConnected = unchecked(2),
 
-		/// <summary>
-		/// Display has been removed from the system <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_DISCONNECTED")]
+		/// <summary>		/// Display has been removed from the system <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_DISCONNECTED")]
+		[NativeName(NativeNameType.Value, "3")]
 		DisplayeventDisconnected = unchecked(3),
 
-		/// <summary>
-		/// Display has changed position <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_MOVED")]
+		/// <summary>		/// Display has changed position <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_MOVED")]
+		[NativeName(NativeNameType.Value, "4")]
 		DisplayeventMoved = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_DisplayOrientation")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_DisplayOrientation")]
 	public enum SDLDisplayOrientation
 	{
-		/// <summary>
-		/// The display orientation can't be determined <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_UNKNOWN")]
+		/// <summary>		/// The display orientation can't be determined <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// The display is in landscape mode, with the right side up, relative to portrait mode <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_LANDSCAPE")]
+		/// <summary>		/// The display is in landscape mode, with the right side up, relative to portrait mode <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_LANDSCAPE")]
+		[NativeName(NativeNameType.Value, "1")]
 		Landscape = unchecked(1),
 
-		/// <summary>
-		/// The display is in landscape mode, with the left side up, relative to portrait mode <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_LANDSCAPE_FLIPPED")]
+		/// <summary>		/// The display is in landscape mode, with the left side up, relative to portrait mode <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_LANDSCAPE_FLIPPED")]
+		[NativeName(NativeNameType.Value, "2")]
 		LandscapeFlipped = unchecked(2),
 
-		/// <summary>
-		/// The display is in portrait mode <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_PORTRAIT")]
+		/// <summary>		/// The display is in portrait mode <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_PORTRAIT")]
+		[NativeName(NativeNameType.Value, "3")]
 		Portrait = unchecked(3),
 
-		/// <summary>
-		/// The display is in portrait mode, upside down <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_PORTRAIT_FLIPPED")]
+		/// <summary>		/// The display is in portrait mode, upside down <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ORIENTATION_PORTRAIT_FLIPPED")]
+		[NativeName(NativeNameType.Value, "4")]
 		PortraitFlipped = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_FlashOperation")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_FlashOperation")]
 	public enum SDLFlashOperation
 	{
-		/// <summary>
-		/// Cancel any window flash state <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_CANCEL")]
+		/// <summary>		/// Cancel any window flash state <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_CANCEL")]
+		[NativeName(NativeNameType.Value, "0")]
 		Cancel = unchecked(0),
 
-		/// <summary>
-		/// Flash the window briefly to get attention <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_BRIEFLY")]
+		/// <summary>		/// Flash the window briefly to get attention <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_BRIEFLY")]
+		[NativeName(NativeNameType.Value, "1")]
 		Briefly = unchecked(1),
 
-		/// <summary>
-		/// Flash the window until it gets focus <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_UNTIL_FOCUSED")]
+		/// <summary>		/// Flash the window until it gets focus <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLASH_UNTIL_FOCUSED")]
+		[NativeName(NativeNameType.Value, "2")]
 		UntilFocused = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GLattr")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GLattr")]
 	public enum SDLGLattr
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_RED_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_RED_SIZE")]
+		[NativeName(NativeNameType.Value, "0")]
 		SdlGlRedSize = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_GREEN_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_GREEN_SIZE")]
+		[NativeName(NativeNameType.Value, "1")]
 		SdlGlGreenSize = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_BLUE_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_BLUE_SIZE")]
+		[NativeName(NativeNameType.Value, "2")]
 		SdlGlBlueSize = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ALPHA_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ALPHA_SIZE")]
+		[NativeName(NativeNameType.Value, "3")]
 		SdlGlAlphaSize = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_BUFFER_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_BUFFER_SIZE")]
+		[NativeName(NativeNameType.Value, "4")]
 		SdlGlBufferSize = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_DOUBLEBUFFER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_DOUBLEBUFFER")]
+		[NativeName(NativeNameType.Value, "5")]
 		SdlGlDoublebuffer = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_DEPTH_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_DEPTH_SIZE")]
+		[NativeName(NativeNameType.Value, "6")]
 		SdlGlDepthSize = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_STENCIL_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_STENCIL_SIZE")]
+		[NativeName(NativeNameType.Value, "7")]
 		SdlGlStencilSize = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_RED_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_RED_SIZE")]
+		[NativeName(NativeNameType.Value, "8")]
 		SdlGlAccumRedSize = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_GREEN_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_GREEN_SIZE")]
+		[NativeName(NativeNameType.Value, "9")]
 		SdlGlAccumGreenSize = unchecked(9),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_BLUE_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_BLUE_SIZE")]
+		[NativeName(NativeNameType.Value, "10")]
 		SdlGlAccumBlueSize = unchecked(10),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_ALPHA_SIZE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_ALPHA_SIZE")]
+		[NativeName(NativeNameType.Value, "11")]
 		SdlGlAccumAlphaSize = unchecked(11),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_STEREO")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_STEREO")]
+		[NativeName(NativeNameType.Value, "12")]
 		SdlGlStereo = unchecked(12),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLEBUFFERS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLEBUFFERS")]
+		[NativeName(NativeNameType.Value, "13")]
 		SdlGlMultisamplebuffers = unchecked(13),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLESAMPLES")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLESAMPLES")]
+		[NativeName(NativeNameType.Value, "14")]
 		SdlGlMultisamplesamples = unchecked(14),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCELERATED_VISUAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCELERATED_VISUAL")]
+		[NativeName(NativeNameType.Value, "15")]
 		SdlGlAcceleratedVisual = unchecked(15),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_RETAINED_BACKING")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_RETAINED_BACKING")]
+		[NativeName(NativeNameType.Value, "16")]
 		SdlGlRetainedBacking = unchecked(16),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MAJOR_VERSION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MAJOR_VERSION")]
+		[NativeName(NativeNameType.Value, "17")]
 		SdlGlContextMajorVersion = unchecked(17),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MINOR_VERSION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MINOR_VERSION")]
+		[NativeName(NativeNameType.Value, "18")]
 		SdlGlContextMinorVersion = unchecked(18),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_EGL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_EGL")]
+		[NativeName(NativeNameType.Value, "19")]
 		SdlGlContextEgl = unchecked(19),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FLAGS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FLAGS")]
+		[NativeName(NativeNameType.Value, "20")]
 		SdlGlContextFlags = unchecked(20),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_MASK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_MASK")]
+		[NativeName(NativeNameType.Value, "21")]
 		SdlGlContextProfileMask = unchecked(21),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_SHARE_WITH_CURRENT_CONTEXT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_SHARE_WITH_CURRENT_CONTEXT")]
+		[NativeName(NativeNameType.Value, "22")]
 		SdlGlShareWithCurrentContext = unchecked(22),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_FRAMEBUFFER_SRGB_CAPABLE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_FRAMEBUFFER_SRGB_CAPABLE")]
+		[NativeName(NativeNameType.Value, "23")]
 		SdlGlFramebufferSrgbCapable = unchecked(23),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR")]
+		[NativeName(NativeNameType.Value, "24")]
 		SdlGlContextReleaseBehavior = unchecked(24),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_NOTIFICATION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_NOTIFICATION")]
+		[NativeName(NativeNameType.Value, "25")]
 		SdlGlContextResetNotification = unchecked(25),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_NO_ERROR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_NO_ERROR")]
+		[NativeName(NativeNameType.Value, "26")]
 		SdlGlContextNoError = unchecked(26),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_FLOATBUFFERS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_FLOATBUFFERS")]
+		[NativeName(NativeNameType.Value, "27")]
 		SdlGlFloatbuffers = unchecked(27),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GLprofile")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GLprofile")]
 	public enum SDLGLprofile
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_CORE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_CORE")]
+		[NativeName(NativeNameType.Value, "1")]
 		SdlGlContextProfileCore = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_COMPATIBILITY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_COMPATIBILITY")]
+		[NativeName(NativeNameType.Value, "2")]
 		SdlGlContextProfileCompatibility = unchecked(2),
 
-		/// <summary>
-		/// GLX_CONTEXT_ES2_PROFILE_BIT_EXT <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_ES")]
+		/// <summary>		/// GLX_CONTEXT_ES2_PROFILE_BIT_EXT <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_ES")]
+		[NativeName(NativeNameType.Value, "4")]
 		SdlGlContextProfileEs = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GLcontextFlag")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GLcontextFlag")]
 	public enum SDLGLcontextFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_DEBUG_FLAG")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_DEBUG_FLAG")]
+		[NativeName(NativeNameType.Value, "1")]
 		SdlGlContextDebugFlag = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG")]
+		[NativeName(NativeNameType.Value, "2")]
 		SdlGlContextForwardCompatibleFlag = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG")]
+		[NativeName(NativeNameType.Value, "4")]
 		SdlGlContextRobustAccessFlag = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_ISOLATION_FLAG")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_ISOLATION_FLAG")]
+		[NativeName(NativeNameType.Value, "8")]
 		SdlGlContextResetIsolationFlag = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GLcontextReleaseFlag")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GLcontextReleaseFlag")]
 	public enum SDLGLcontextReleaseFlag
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		SdlGlContextReleaseBehaviorNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH")]
+		[NativeName(NativeNameType.Value, "1")]
 		SdlGlContextReleaseBehaviorFlush = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GLContextResetNotification")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GLContextResetNotification")]
 	public enum SDLGLContextResetNotification
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_NO_NOTIFICATION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_NO_NOTIFICATION")]
+		[NativeName(NativeNameType.Value, "0")]
 		NoNotification = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_LOSE_CONTEXT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_LOSE_CONTEXT")]
+		[NativeName(NativeNameType.Value, "1")]
 		LoseContext = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// Possible return values from the SDL_HitTest callback.<br/>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_HitTestResult")]
+	/// <summary>	/// Possible return values from the SDL_HitTest callback.<br/>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_HitTestResult")]
 	public enum SDLHitTestResult
 	{
-		/// <summary>
-		/// Region is normal. No special properties. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_NORMAL")]
+		/// <summary>		/// Region is normal. No special properties. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_NORMAL")]
+		[NativeName(NativeNameType.Value, "0")]
 		HittestNormal = unchecked(0),
 
-		/// <summary>
-		/// Region can drag entire window. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_DRAGGABLE")]
+		/// <summary>		/// Region can drag entire window. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_DRAGGABLE")]
+		[NativeName(NativeNameType.Value, "1")]
 		HittestDraggable = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPLEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPLEFT")]
+		[NativeName(NativeNameType.Value, "2")]
 		HittestResizeTopleft = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOP")]
+		[NativeName(NativeNameType.Value, "3")]
 		HittestResizeTop = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPRIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPRIGHT")]
+		[NativeName(NativeNameType.Value, "4")]
 		HittestResizeTopright = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_RIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_RIGHT")]
+		[NativeName(NativeNameType.Value, "5")]
 		HittestResizeRight = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMRIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMRIGHT")]
+		[NativeName(NativeNameType.Value, "6")]
 		HittestResizeBottomright = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOM")]
+		[NativeName(NativeNameType.Value, "7")]
 		HittestResizeBottom = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMLEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMLEFT")]
+		[NativeName(NativeNameType.Value, "8")]
 		HittestResizeBottomleft = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_LEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_LEFT")]
+		[NativeName(NativeNameType.Value, "9")]
 		HittestResizeLeft = unchecked(9),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// Values of this type are used to represent keyboard keys, among other places<br/>
-	/// in the <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_Scancode")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// Values of this type are used to represent keyboard keys, among other places<br/>	/// in the <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_Scancode")]
 	public enum SDLScancode
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_A")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_A")]
+		[NativeName(NativeNameType.Value, "4")]
 		Scancodea = unchecked(4),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_B")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_B")]
+		[NativeName(NativeNameType.Value, "5")]
 		Scancodeb = unchecked(5),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_C")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_C")]
+		[NativeName(NativeNameType.Value, "6")]
 		Scancodec = unchecked(6),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_D")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_D")]
+		[NativeName(NativeNameType.Value, "7")]
 		Scancoded = unchecked(7),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_E")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_E")]
+		[NativeName(NativeNameType.Value, "8")]
 		Scancodee = unchecked(8),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F")]
+		[NativeName(NativeNameType.Value, "9")]
 		Scancodef = unchecked(9),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_G")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_G")]
+		[NativeName(NativeNameType.Value, "10")]
 		Scancodeg = unchecked(10),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_H")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_H")]
+		[NativeName(NativeNameType.Value, "11")]
 		Scancodeh = unchecked(11),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_I")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_I")]
+		[NativeName(NativeNameType.Value, "12")]
 		Scancodei = unchecked(12),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_J")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_J")]
+		[NativeName(NativeNameType.Value, "13")]
 		Scancodej = unchecked(13),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_K")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_K")]
+		[NativeName(NativeNameType.Value, "14")]
 		Scancodek = unchecked(14),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_L")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_L")]
+		[NativeName(NativeNameType.Value, "15")]
 		Scancodel = unchecked(15),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_M")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_M")]
+		[NativeName(NativeNameType.Value, "16")]
 		Scancodem = unchecked(16),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_N")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_N")]
+		[NativeName(NativeNameType.Value, "17")]
 		Scancoden = unchecked(17),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_O")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_O")]
+		[NativeName(NativeNameType.Value, "18")]
 		Scancodeo = unchecked(18),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_P")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_P")]
+		[NativeName(NativeNameType.Value, "19")]
 		Scancodep = unchecked(19),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Q")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Q")]
+		[NativeName(NativeNameType.Value, "20")]
 		Scancodeq = unchecked(20),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_R")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_R")]
+		[NativeName(NativeNameType.Value, "21")]
 		Scancoder = unchecked(21),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_S")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_S")]
+		[NativeName(NativeNameType.Value, "22")]
 		Scancodes = unchecked(22),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_T")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_T")]
+		[NativeName(NativeNameType.Value, "23")]
 		Scancodet = unchecked(23),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_U")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_U")]
+		[NativeName(NativeNameType.Value, "24")]
 		Scancodeu = unchecked(24),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_V")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_V")]
+		[NativeName(NativeNameType.Value, "25")]
 		Scancodev = unchecked(25),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_W")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_W")]
+		[NativeName(NativeNameType.Value, "26")]
 		Scancodew = unchecked(26),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_X")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_X")]
+		[NativeName(NativeNameType.Value, "27")]
 		Scancodex = unchecked(27),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Y")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Y")]
+		[NativeName(NativeNameType.Value, "28")]
 		Scancodey = unchecked(28),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Z")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Z")]
+		[NativeName(NativeNameType.Value, "29")]
 		Scancodez = unchecked(29),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_1")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_1")]
+		[NativeName(NativeNameType.Value, "30")]
 		Scancode1 = unchecked(30),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_2")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_2")]
+		[NativeName(NativeNameType.Value, "31")]
 		Scancode2 = unchecked(31),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_3")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_3")]
+		[NativeName(NativeNameType.Value, "32")]
 		Scancode3 = unchecked(32),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_4")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_4")]
+		[NativeName(NativeNameType.Value, "33")]
 		Scancode4 = unchecked(33),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_5")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_5")]
+		[NativeName(NativeNameType.Value, "34")]
 		Scancode5 = unchecked(34),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_6")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_6")]
+		[NativeName(NativeNameType.Value, "35")]
 		Scancode6 = unchecked(35),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_7")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_7")]
+		[NativeName(NativeNameType.Value, "36")]
 		Scancode7 = unchecked(36),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_8")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_8")]
+		[NativeName(NativeNameType.Value, "37")]
 		Scancode8 = unchecked(37),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_9")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_9")]
+		[NativeName(NativeNameType.Value, "38")]
 		Scancode9 = unchecked(38),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_0")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_0")]
+		[NativeName(NativeNameType.Value, "39")]
 		Scancode0 = unchecked(39),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RETURN")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RETURN")]
+		[NativeName(NativeNameType.Value, "40")]
 		Return = unchecked(40),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ESCAPE")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ESCAPE")]
+		[NativeName(NativeNameType.Value, "41")]
 		Escape = unchecked(41),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BACKSPACE")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BACKSPACE")]
+		[NativeName(NativeNameType.Value, "42")]
 		Backspace = unchecked(42),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_TAB")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_TAB")]
+		[NativeName(NativeNameType.Value, "43")]
 		Tab = unchecked(43),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SPACE")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SPACE")]
+		[NativeName(NativeNameType.Value, "44")]
 		Space = unchecked(44),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MINUS")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MINUS")]
+		[NativeName(NativeNameType.Value, "45")]
 		Minus = unchecked(45),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EQUALS")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EQUALS")]
+		[NativeName(NativeNameType.Value, "46")]
 		Equals = unchecked(46),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LEFTBRACKET")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LEFTBRACKET")]
+		[NativeName(NativeNameType.Value, "47")]
 		Leftbracket = unchecked(47),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are from usage page 0x07 (USB keyboard page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RIGHTBRACKET")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are from usage page 0x07 (USB keyboard page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RIGHTBRACKET")]
+		[NativeName(NativeNameType.Value, "48")]
 		Rightbracket = unchecked(48),
 
-		/// <summary>
-		/// Located at the lower left of the return<br/>
-		/// key on ISO keyboards and at the right end<br/>
-		/// of the QWERTY row on ANSI keyboards.<br/>
-		/// Produces REVERSE SOLIDUS (backslash) and<br/>
-		/// VERTICAL LINE in a US layout, REVERSE<br/>
-		/// SOLIDUS and VERTICAL LINE in a UK Mac<br/>
-		/// layout, NUMBER SIGN and TILDE in a UK<br/>
-		/// Windows layout, DOLLAR SIGN and POUND SIGN<br/>
-		/// in a Swiss German layout, NUMBER SIGN and<br/>
-		/// APOSTROPHE in a German layout, GRAVE<br/>
-		/// ACCENT and POUND SIGN in a French Mac<br/>
-		/// layout, and ASTERISK and MICRO SIGN in a<br/>
-		/// French Windows layout.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BACKSLASH")]
+		/// <summary>		/// Located at the lower left of the return<br/>		/// key on ISO keyboards and at the right end<br/>		/// of the QWERTY row on ANSI keyboards.<br/>		/// Produces REVERSE SOLIDUS (backslash) and<br/>		/// VERTICAL LINE in a US layout, REVERSE<br/>		/// SOLIDUS and VERTICAL LINE in a UK Mac<br/>		/// layout, NUMBER SIGN and TILDE in a UK<br/>		/// Windows layout, DOLLAR SIGN and POUND SIGN<br/>		/// in a Swiss German layout, NUMBER SIGN and<br/>		/// APOSTROPHE in a German layout, GRAVE<br/>		/// ACCENT and POUND SIGN in a French Mac<br/>		/// layout, and ASTERISK and MICRO SIGN in a<br/>		/// French Windows layout.<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BACKSLASH")]
+		[NativeName(NativeNameType.Value, "49")]
 		Backslash = unchecked(49),
 
-		/// <summary>
-		/// ISO USB keyboards actually use this code<br/>
-		/// instead of 49 for the same key, but all<br/>
-		/// OSes I've seen treat the two codes<br/>
-		/// identically. So, as an implementor, unless<br/>
-		/// your keyboard generates both of those<br/>
-		/// codes and your OS treats them differently,<br/>
-		/// you should generate SDL_SCANCODE_BACKSLASH<br/>
-		/// instead of this code. As a user, you<br/>
-		/// should not rely on this code because SDL<br/>
-		/// will never generate it with most (all?)<br/>
-		/// keyboards.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NONUSHASH")]
+		/// <summary>		/// ISO USB keyboards actually use this code<br/>		/// instead of 49 for the same key, but all<br/>		/// OSes I've seen treat the two codes<br/>		/// identically. So, as an implementor, unless<br/>		/// your keyboard generates both of those<br/>		/// codes and your OS treats them differently,<br/>		/// you should generate SDL_SCANCODE_BACKSLASH<br/>		/// instead of this code. As a user, you<br/>		/// should not rely on this code because SDL<br/>		/// will never generate it with most (all?)<br/>		/// keyboards.<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NONUSHASH")]
+		[NativeName(NativeNameType.Value, "50")]
 		Nonushash = unchecked(50),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SEMICOLON")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SEMICOLON")]
+		[NativeName(NativeNameType.Value, "51")]
 		Semicolon = unchecked(51),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APOSTROPHE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APOSTROPHE")]
+		[NativeName(NativeNameType.Value, "52")]
 		Apostrophe = unchecked(52),
 
-		/// <summary>
-		/// Located in the top left corner (on both ANSI<br/>
-		/// and ISO keyboards). Produces GRAVE ACCENT and<br/>
-		/// TILDE in a US Windows layout and in US and UK<br/>
-		/// Mac layouts on ANSI keyboards, GRAVE ACCENT<br/>
-		/// and NOT SIGN in a UK Windows layout, SECTION<br/>
-		/// SIGN and PLUS-MINUS SIGN in US and UK Mac<br/>
-		/// layouts on ISO keyboards, SECTION SIGN and<br/>
-		/// DEGREE SIGN in a Swiss German layout (Mac:<br/>
-		/// only on ISO keyboards), CIRCUMFLEX ACCENT and<br/>
-		/// DEGREE SIGN in a German layout (Mac: only on<br/>
-		/// ISO keyboards), SUPERSCRIPT TWO and TILDE in a<br/>
-		/// French Windows layout, COMMERCIAL AT and<br/>
-		/// NUMBER SIGN in a French Mac layout on ISO<br/>
-		/// keyboards, and LESS-THAN SIGN and GREATER-THAN<br/>
-		/// SIGN in a Swiss German, German, or French Mac<br/>
-		/// layout on ANSI keyboards.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_GRAVE")]
+		/// <summary>		/// Located in the top left corner (on both ANSI<br/>		/// and ISO keyboards). Produces GRAVE ACCENT and<br/>		/// TILDE in a US Windows layout and in US and UK<br/>		/// Mac layouts on ANSI keyboards, GRAVE ACCENT<br/>		/// and NOT SIGN in a UK Windows layout, SECTION<br/>		/// SIGN and PLUS-MINUS SIGN in US and UK Mac<br/>		/// layouts on ISO keyboards, SECTION SIGN and<br/>		/// DEGREE SIGN in a Swiss German layout (Mac:<br/>		/// only on ISO keyboards), CIRCUMFLEX ACCENT and<br/>		/// DEGREE SIGN in a German layout (Mac: only on<br/>		/// ISO keyboards), SUPERSCRIPT TWO and TILDE in a<br/>		/// French Windows layout, COMMERCIAL AT and<br/>		/// NUMBER SIGN in a French Mac layout on ISO<br/>		/// keyboards, and LESS-THAN SIGN and GREATER-THAN<br/>		/// SIGN in a Swiss German, German, or French Mac<br/>		/// layout on ANSI keyboards.<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_GRAVE")]
+		[NativeName(NativeNameType.Value, "53")]
 		Grave = unchecked(53),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COMMA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COMMA")]
+		[NativeName(NativeNameType.Value, "54")]
 		Comma = unchecked(54),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PERIOD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PERIOD")]
+		[NativeName(NativeNameType.Value, "55")]
 		Period = unchecked(55),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SLASH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SLASH")]
+		[NativeName(NativeNameType.Value, "56")]
 		Slash = unchecked(56),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CAPSLOCK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CAPSLOCK")]
+		[NativeName(NativeNameType.Value, "57")]
 		Capslock = unchecked(57),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F1")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F1")]
+		[NativeName(NativeNameType.Value, "58")]
 		Scancodef1 = unchecked(58),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F2")]
+		[NativeName(NativeNameType.Value, "59")]
 		Scancodef2 = unchecked(59),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F3")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F3")]
+		[NativeName(NativeNameType.Value, "60")]
 		Scancodef3 = unchecked(60),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F4")]
+		[NativeName(NativeNameType.Value, "61")]
 		Scancodef4 = unchecked(61),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F5")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F5")]
+		[NativeName(NativeNameType.Value, "62")]
 		Scancodef5 = unchecked(62),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F6")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F6")]
+		[NativeName(NativeNameType.Value, "63")]
 		Scancodef6 = unchecked(63),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F7")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F7")]
+		[NativeName(NativeNameType.Value, "64")]
 		Scancodef7 = unchecked(64),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F8")]
+		[NativeName(NativeNameType.Value, "65")]
 		Scancodef8 = unchecked(65),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F9")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F9")]
+		[NativeName(NativeNameType.Value, "66")]
 		Scancodef9 = unchecked(66),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F10")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F10")]
+		[NativeName(NativeNameType.Value, "67")]
 		Scancodef10 = unchecked(67),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F11")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F11")]
+		[NativeName(NativeNameType.Value, "68")]
 		Scancodef11 = unchecked(68),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F12")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F12")]
+		[NativeName(NativeNameType.Value, "69")]
 		Scancodef12 = unchecked(69),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PRINTSCREEN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PRINTSCREEN")]
+		[NativeName(NativeNameType.Value, "70")]
 		Printscreen = unchecked(70),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SCROLLLOCK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SCROLLLOCK")]
+		[NativeName(NativeNameType.Value, "71")]
 		Scrolllock = unchecked(71),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAUSE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAUSE")]
+		[NativeName(NativeNameType.Value, "72")]
 		Pause = unchecked(72),
 
-		/// <summary>
-		/// insert on PC, help on some Mac keyboards (but<br/>
-		/// does send code 73, not 117) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INSERT")]
+		/// <summary>		/// insert on PC, help on some Mac keyboards (but<br/>		/// does send code 73, not 117) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INSERT")]
+		[NativeName(NativeNameType.Value, "73")]
 		Insert = unchecked(73),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_HOME")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_HOME")]
+		[NativeName(NativeNameType.Value, "74")]
 		Home = unchecked(74),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAGEUP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAGEUP")]
+		[NativeName(NativeNameType.Value, "75")]
 		Pageup = unchecked(75),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DELETE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DELETE")]
+		[NativeName(NativeNameType.Value, "76")]
 		Delete = unchecked(76),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_END")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_END")]
+		[NativeName(NativeNameType.Value, "77")]
 		End = unchecked(77),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAGEDOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PAGEDOWN")]
+		[NativeName(NativeNameType.Value, "78")]
 		Pagedown = unchecked(78),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RIGHT")]
+		[NativeName(NativeNameType.Value, "79")]
 		Right = unchecked(79),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LEFT")]
+		[NativeName(NativeNameType.Value, "80")]
 		Left = unchecked(80),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DOWN")]
+		[NativeName(NativeNameType.Value, "81")]
 		Down = unchecked(81),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UP")]
+		[NativeName(NativeNameType.Value, "82")]
 		Up = unchecked(82),
 
-		/// <summary>
-		/// num lock on PC, clear on Mac keyboards<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NUMLOCKCLEAR")]
+		/// <summary>		/// num lock on PC, clear on Mac keyboards<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NUMLOCKCLEAR")]
+		[NativeName(NativeNameType.Value, "83")]
 		Numlockclear = unchecked(83),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DIVIDE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DIVIDE")]
+		[NativeName(NativeNameType.Value, "84")]
 		KpDivide = unchecked(84),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MULTIPLY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MULTIPLY")]
+		[NativeName(NativeNameType.Value, "85")]
 		KpMultiply = unchecked(85),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MINUS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MINUS")]
+		[NativeName(NativeNameType.Value, "86")]
 		KpMinus = unchecked(86),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PLUS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PLUS")]
+		[NativeName(NativeNameType.Value, "87")]
 		KpPlus = unchecked(87),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_ENTER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_ENTER")]
+		[NativeName(NativeNameType.Value, "88")]
 		KpEnter = unchecked(88),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_1")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_1")]
+		[NativeName(NativeNameType.Value, "89")]
 		Kp1 = unchecked(89),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_2")]
+		[NativeName(NativeNameType.Value, "90")]
 		Kp2 = unchecked(90),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_3")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_3")]
+		[NativeName(NativeNameType.Value, "91")]
 		Kp3 = unchecked(91),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_4")]
+		[NativeName(NativeNameType.Value, "92")]
 		Kp4 = unchecked(92),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_5")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_5")]
+		[NativeName(NativeNameType.Value, "93")]
 		Kp5 = unchecked(93),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_6")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_6")]
+		[NativeName(NativeNameType.Value, "94")]
 		Kp6 = unchecked(94),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_7")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_7")]
+		[NativeName(NativeNameType.Value, "95")]
 		Kp7 = unchecked(95),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_8")]
+		[NativeName(NativeNameType.Value, "96")]
 		Kp8 = unchecked(96),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_9")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_9")]
+		[NativeName(NativeNameType.Value, "97")]
 		Kp9 = unchecked(97),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_0")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_0")]
+		[NativeName(NativeNameType.Value, "98")]
 		Kp0 = unchecked(98),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PERIOD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PERIOD")]
+		[NativeName(NativeNameType.Value, "99")]
 		KpPeriod = unchecked(99),
 
-		/// <summary>
-		/// This is the additional key that ISO<br/>
-		/// keyboards have over ANSI ones,<br/>
-		/// located between left shift and Y.<br/>
-		/// Produces GRAVE ACCENT and TILDE in a<br/>
-		/// US or UK Mac layout, REVERSE SOLIDUS<br/>
-		/// (backslash) and VERTICAL LINE in a<br/>
-		/// US or UK Windows layout, and<br/>
-		/// LESS-THAN SIGN and GREATER-THAN SIGN<br/>
-		/// in a Swiss German, German, or French<br/>
-		/// layout. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NONUSBACKSLASH")]
+		/// <summary>		/// This is the additional key that ISO<br/>		/// keyboards have over ANSI ones,<br/>		/// located between left shift and Y.<br/>		/// Produces GRAVE ACCENT and TILDE in a<br/>		/// US or UK Mac layout, REVERSE SOLIDUS<br/>		/// (backslash) and VERTICAL LINE in a<br/>		/// US or UK Windows layout, and<br/>		/// LESS-THAN SIGN and GREATER-THAN SIGN<br/>		/// in a Swiss German, German, or French<br/>		/// layout. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_NONUSBACKSLASH")]
+		[NativeName(NativeNameType.Value, "100")]
 		Nonusbackslash = unchecked(100),
 
-		/// <summary>
-		/// windows contextual menu, compose <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APPLICATION")]
+		/// <summary>		/// windows contextual menu, compose <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APPLICATION")]
+		[NativeName(NativeNameType.Value, "101")]
 		Application = unchecked(101),
 
-		/// <summary>
-		/// The USB document says this is a status flag,<br/>
-		/// not a physical key - but some Mac keyboards<br/>
-		/// do have a power key. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_POWER")]
+		/// <summary>		/// The USB document says this is a status flag,<br/>		/// not a physical key - but some Mac keyboards<br/>		/// do have a power key. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_POWER")]
+		[NativeName(NativeNameType.Value, "102")]
 		Power = unchecked(102),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EQUALS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EQUALS")]
+		[NativeName(NativeNameType.Value, "103")]
 		KpEquals = unchecked(103),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F13")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F13")]
+		[NativeName(NativeNameType.Value, "104")]
 		Scancodef13 = unchecked(104),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F14")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F14")]
+		[NativeName(NativeNameType.Value, "105")]
 		Scancodef14 = unchecked(105),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F15")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F15")]
+		[NativeName(NativeNameType.Value, "106")]
 		Scancodef15 = unchecked(106),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F16")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F16")]
+		[NativeName(NativeNameType.Value, "107")]
 		Scancodef16 = unchecked(107),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F17")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F17")]
+		[NativeName(NativeNameType.Value, "108")]
 		Scancodef17 = unchecked(108),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F18")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F18")]
+		[NativeName(NativeNameType.Value, "109")]
 		Scancodef18 = unchecked(109),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F19")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F19")]
+		[NativeName(NativeNameType.Value, "110")]
 		Scancodef19 = unchecked(110),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F20")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F20")]
+		[NativeName(NativeNameType.Value, "111")]
 		Scancodef20 = unchecked(111),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F21")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F21")]
+		[NativeName(NativeNameType.Value, "112")]
 		Scancodef21 = unchecked(112),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F22")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F22")]
+		[NativeName(NativeNameType.Value, "113")]
 		Scancodef22 = unchecked(113),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F23")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F23")]
+		[NativeName(NativeNameType.Value, "114")]
 		Scancodef23 = unchecked(114),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F24")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F24")]
+		[NativeName(NativeNameType.Value, "115")]
 		Scancodef24 = unchecked(115),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EXECUTE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EXECUTE")]
+		[NativeName(NativeNameType.Value, "116")]
 		Execute = unchecked(116),
 
-		/// <summary>
-		/// AL Integrated Help Center <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_HELP")]
+		/// <summary>		/// AL Integrated Help Center <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_HELP")]
+		[NativeName(NativeNameType.Value, "117")]
 		Help = unchecked(117),
 
-		/// <summary>
-		/// Menu (show menu) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MENU")]
+		/// <summary>		/// Menu (show menu) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MENU")]
+		[NativeName(NativeNameType.Value, "118")]
 		Menu = unchecked(118),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SELECT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SELECT")]
+		[NativeName(NativeNameType.Value, "119")]
 		Select = unchecked(119),
 
-		/// <summary>
-		/// AC Stop <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_STOP")]
+		/// <summary>		/// AC Stop <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_STOP")]
+		[NativeName(NativeNameType.Value, "120")]
 		Stop = unchecked(120),
 
-		/// <summary>
-		/// AC Redo/Repeat <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AGAIN")]
+		/// <summary>		/// AC Redo/Repeat <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AGAIN")]
+		[NativeName(NativeNameType.Value, "121")]
 		Again = unchecked(121),
 
-		/// <summary>
-		/// AC Undo <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UNDO")]
+		/// <summary>		/// AC Undo <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_UNDO")]
+		[NativeName(NativeNameType.Value, "122")]
 		Undo = unchecked(122),
 
-		/// <summary>
-		/// AC Cut <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CUT")]
+		/// <summary>		/// AC Cut <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CUT")]
+		[NativeName(NativeNameType.Value, "123")]
 		Cut = unchecked(123),
 
-		/// <summary>
-		/// AC Copy <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COPY")]
+		/// <summary>		/// AC Copy <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COPY")]
+		[NativeName(NativeNameType.Value, "124")]
 		Copy = unchecked(124),
 
-		/// <summary>
-		/// AC Paste <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PASTE")]
+		/// <summary>		/// AC Paste <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PASTE")]
+		[NativeName(NativeNameType.Value, "125")]
 		Paste = unchecked(125),
 
-		/// <summary>
-		/// AC Find <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_FIND")]
+		/// <summary>		/// AC Find <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_FIND")]
+		[NativeName(NativeNameType.Value, "126")]
 		Find = unchecked(126),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MUTE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MUTE")]
+		[NativeName(NativeNameType.Value, "127")]
 		Mute = unchecked(127),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_VOLUMEUP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_VOLUMEUP")]
+		[NativeName(NativeNameType.Value, "128")]
 		Volumeup = unchecked(128),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_VOLUMEDOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_VOLUMEDOWN")]
+		[NativeName(NativeNameType.Value, "129")]
 		Volumedown = unchecked(129),
 
-		/// <summary>
-		/// not sure whether there's a reason to enable these <br/>
-		/// SDL_SCANCODE_LOCKINGCAPSLOCK = 130,  <br/>
-		/// SDL_SCANCODE_LOCKINGNUMLOCK = 131, <br/>
-		/// SDL_SCANCODE_LOCKINGSCROLLLOCK = 132, <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_COMMA")]
+		/// <summary>		/// not sure whether there's a reason to enable these <br/>		/// SDL_SCANCODE_LOCKINGCAPSLOCK = 130,  <br/>		/// SDL_SCANCODE_LOCKINGNUMLOCK = 131, <br/>		/// SDL_SCANCODE_LOCKINGSCROLLLOCK = 132, <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_COMMA")]
+		[NativeName(NativeNameType.Value, "133")]
 		KpComma = unchecked(133),
 
-		/// <summary>
-		/// not sure whether there's a reason to enable these <br/>
-		/// SDL_SCANCODE_LOCKINGCAPSLOCK = 130,  <br/>
-		/// SDL_SCANCODE_LOCKINGNUMLOCK = 131, <br/>
-		/// SDL_SCANCODE_LOCKINGSCROLLLOCK = 132, <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EQUALSAS400")]
+		/// <summary>		/// not sure whether there's a reason to enable these <br/>		/// SDL_SCANCODE_LOCKINGCAPSLOCK = 130,  <br/>		/// SDL_SCANCODE_LOCKINGNUMLOCK = 131, <br/>		/// SDL_SCANCODE_LOCKINGSCROLLLOCK = 132, <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EQUALSAS400")]
+		[NativeName(NativeNameType.Value, "134")]
 		KpEqualsas400 = unchecked(134),
 
-		/// <summary>
-		/// used on Asian keyboards, see<br/>
-		/// footnotes in USB doc <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL1")]
+		/// <summary>		/// used on Asian keyboards, see<br/>		/// footnotes in USB doc <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL1")]
+		[NativeName(NativeNameType.Value, "135")]
 		International1 = unchecked(135),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL2")]
+		[NativeName(NativeNameType.Value, "136")]
 		International2 = unchecked(136),
 
-		/// <summary>
-		/// Yen <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL3")]
+		/// <summary>		/// Yen <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL3")]
+		[NativeName(NativeNameType.Value, "137")]
 		International3 = unchecked(137),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL4")]
+		[NativeName(NativeNameType.Value, "138")]
 		International4 = unchecked(138),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL5")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL5")]
+		[NativeName(NativeNameType.Value, "139")]
 		International5 = unchecked(139),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL6")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL6")]
+		[NativeName(NativeNameType.Value, "140")]
 		International6 = unchecked(140),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL7")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL7")]
+		[NativeName(NativeNameType.Value, "141")]
 		International7 = unchecked(141),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL8")]
+		[NativeName(NativeNameType.Value, "142")]
 		International8 = unchecked(142),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL9")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_INTERNATIONAL9")]
+		[NativeName(NativeNameType.Value, "143")]
 		International9 = unchecked(143),
 
-		/// <summary>
-		/// Hangul/English toggle <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG1")]
+		/// <summary>		/// Hangul/English toggle <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG1")]
+		[NativeName(NativeNameType.Value, "144")]
 		Lang1 = unchecked(144),
 
-		/// <summary>
-		/// Hanja conversion <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG2")]
+		/// <summary>		/// Hanja conversion <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG2")]
+		[NativeName(NativeNameType.Value, "145")]
 		Lang2 = unchecked(145),
 
-		/// <summary>
-		/// Katakana <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG3")]
+		/// <summary>		/// Katakana <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG3")]
+		[NativeName(NativeNameType.Value, "146")]
 		Lang3 = unchecked(146),
 
-		/// <summary>
-		/// Hiragana <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG4")]
+		/// <summary>		/// Hiragana <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG4")]
+		[NativeName(NativeNameType.Value, "147")]
 		Lang4 = unchecked(147),
 
-		/// <summary>
-		/// Zenkaku/Hankaku <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG5")]
+		/// <summary>		/// Zenkaku/Hankaku <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG5")]
+		[NativeName(NativeNameType.Value, "148")]
 		Lang5 = unchecked(148),
 
-		/// <summary>
-		/// reserved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG6")]
+		/// <summary>		/// reserved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG6")]
+		[NativeName(NativeNameType.Value, "149")]
 		Lang6 = unchecked(149),
 
-		/// <summary>
-		/// reserved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG7")]
+		/// <summary>		/// reserved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG7")]
+		[NativeName(NativeNameType.Value, "150")]
 		Lang7 = unchecked(150),
 
-		/// <summary>
-		/// reserved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG8")]
+		/// <summary>		/// reserved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG8")]
+		[NativeName(NativeNameType.Value, "151")]
 		Lang8 = unchecked(151),
 
-		/// <summary>
-		/// reserved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG9")]
+		/// <summary>		/// reserved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LANG9")]
+		[NativeName(NativeNameType.Value, "152")]
 		Lang9 = unchecked(152),
 
-		/// <summary>
-		/// Erase-Eaze <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ALTERASE")]
+		/// <summary>		/// Erase-Eaze <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ALTERASE")]
+		[NativeName(NativeNameType.Value, "153")]
 		Alterase = unchecked(153),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SYSREQ")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SYSREQ")]
+		[NativeName(NativeNameType.Value, "154")]
 		Sysreq = unchecked(154),
 
-		/// <summary>
-		/// AC Cancel <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CANCEL")]
+		/// <summary>		/// AC Cancel <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CANCEL")]
+		[NativeName(NativeNameType.Value, "155")]
 		Cancel = unchecked(155),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CLEAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CLEAR")]
+		[NativeName(NativeNameType.Value, "156")]
 		Clear = unchecked(156),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PRIOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PRIOR")]
+		[NativeName(NativeNameType.Value, "157")]
 		Prior = unchecked(157),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RETURN2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RETURN2")]
+		[NativeName(NativeNameType.Value, "158")]
 		Return2 = unchecked(158),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SEPARATOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SEPARATOR")]
+		[NativeName(NativeNameType.Value, "159")]
 		Separator = unchecked(159),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_OUT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_OUT")]
+		[NativeName(NativeNameType.Value, "160")]
 		Out = unchecked(160),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_OPER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_OPER")]
+		[NativeName(NativeNameType.Value, "161")]
 		Oper = unchecked(161),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CLEARAGAIN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CLEARAGAIN")]
+		[NativeName(NativeNameType.Value, "162")]
 		Clearagain = unchecked(162),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CRSEL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CRSEL")]
+		[NativeName(NativeNameType.Value, "163")]
 		Crsel = unchecked(163),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EXSEL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EXSEL")]
+		[NativeName(NativeNameType.Value, "164")]
 		Exsel = unchecked(164),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_00")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_00")]
+		[NativeName(NativeNameType.Value, "176")]
 		Kp00 = unchecked(176),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_000")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_000")]
+		[NativeName(NativeNameType.Value, "177")]
 		Kp000 = unchecked(177),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_THOUSANDSSEPARATOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_THOUSANDSSEPARATOR")]
+		[NativeName(NativeNameType.Value, "178")]
 		Thousandsseparator = unchecked(178),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DECIMALSEPARATOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DECIMALSEPARATOR")]
+		[NativeName(NativeNameType.Value, "179")]
 		Decimalseparator = unchecked(179),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CURRENCYUNIT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CURRENCYUNIT")]
+		[NativeName(NativeNameType.Value, "180")]
 		Currencyunit = unchecked(180),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CURRENCYSUBUNIT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CURRENCYSUBUNIT")]
+		[NativeName(NativeNameType.Value, "181")]
 		Currencysubunit = unchecked(181),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LEFTPAREN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LEFTPAREN")]
+		[NativeName(NativeNameType.Value, "182")]
 		KpLeftparen = unchecked(182),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_RIGHTPAREN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_RIGHTPAREN")]
+		[NativeName(NativeNameType.Value, "183")]
 		KpRightparen = unchecked(183),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LEFTBRACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LEFTBRACE")]
+		[NativeName(NativeNameType.Value, "184")]
 		KpLeftbrace = unchecked(184),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_RIGHTBRACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_RIGHTBRACE")]
+		[NativeName(NativeNameType.Value, "185")]
 		KpRightbrace = unchecked(185),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_TAB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_TAB")]
+		[NativeName(NativeNameType.Value, "186")]
 		KpTab = unchecked(186),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_BACKSPACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_BACKSPACE")]
+		[NativeName(NativeNameType.Value, "187")]
 		KpBackspace = unchecked(187),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_A")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_A")]
+		[NativeName(NativeNameType.Value, "188")]
 		Kpa = unchecked(188),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_B")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_B")]
+		[NativeName(NativeNameType.Value, "189")]
 		Kpb = unchecked(189),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_C")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_C")]
+		[NativeName(NativeNameType.Value, "190")]
 		Kpc = unchecked(190),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_D")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_D")]
+		[NativeName(NativeNameType.Value, "191")]
 		Kpd = unchecked(191),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_E")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_E")]
+		[NativeName(NativeNameType.Value, "192")]
 		Kpe = unchecked(192),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_F")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_F")]
+		[NativeName(NativeNameType.Value, "193")]
 		Kpf = unchecked(193),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_XOR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_XOR")]
+		[NativeName(NativeNameType.Value, "194")]
 		KpXor = unchecked(194),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_POWER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_POWER")]
+		[NativeName(NativeNameType.Value, "195")]
 		KpPower = unchecked(195),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PERCENT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PERCENT")]
+		[NativeName(NativeNameType.Value, "196")]
 		KpPercent = unchecked(196),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LESS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_LESS")]
+		[NativeName(NativeNameType.Value, "197")]
 		KpLess = unchecked(197),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_GREATER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_GREATER")]
+		[NativeName(NativeNameType.Value, "198")]
 		KpGreater = unchecked(198),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_AMPERSAND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_AMPERSAND")]
+		[NativeName(NativeNameType.Value, "199")]
 		KpAmpersand = unchecked(199),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DBLAMPERSAND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DBLAMPERSAND")]
+		[NativeName(NativeNameType.Value, "200")]
 		KpDblampersand = unchecked(200),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_VERTICALBAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_VERTICALBAR")]
+		[NativeName(NativeNameType.Value, "201")]
 		KpVerticalbar = unchecked(201),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DBLVERTICALBAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DBLVERTICALBAR")]
+		[NativeName(NativeNameType.Value, "202")]
 		KpDblverticalbar = unchecked(202),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_COLON")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_COLON")]
+		[NativeName(NativeNameType.Value, "203")]
 		KpColon = unchecked(203),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_HASH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_HASH")]
+		[NativeName(NativeNameType.Value, "204")]
 		KpHash = unchecked(204),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_SPACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_SPACE")]
+		[NativeName(NativeNameType.Value, "205")]
 		KpSpace = unchecked(205),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_AT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_AT")]
+		[NativeName(NativeNameType.Value, "206")]
 		KpAt = unchecked(206),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EXCLAM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_EXCLAM")]
+		[NativeName(NativeNameType.Value, "207")]
 		KpExclam = unchecked(207),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMSTORE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMSTORE")]
+		[NativeName(NativeNameType.Value, "208")]
 		KpMemstore = unchecked(208),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMRECALL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMRECALL")]
+		[NativeName(NativeNameType.Value, "209")]
 		KpMemrecall = unchecked(209),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMCLEAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMCLEAR")]
+		[NativeName(NativeNameType.Value, "210")]
 		KpMemclear = unchecked(210),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMADD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMADD")]
+		[NativeName(NativeNameType.Value, "211")]
 		KpMemadd = unchecked(211),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMSUBTRACT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMSUBTRACT")]
+		[NativeName(NativeNameType.Value, "212")]
 		KpMemsubtract = unchecked(212),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMMULTIPLY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMMULTIPLY")]
+		[NativeName(NativeNameType.Value, "213")]
 		KpMemmultiply = unchecked(213),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMDIVIDE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_MEMDIVIDE")]
+		[NativeName(NativeNameType.Value, "214")]
 		KpMemdivide = unchecked(214),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PLUSMINUS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_PLUSMINUS")]
+		[NativeName(NativeNameType.Value, "215")]
 		KpPlusminus = unchecked(215),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_CLEAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_CLEAR")]
+		[NativeName(NativeNameType.Value, "216")]
 		KpClear = unchecked(216),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_CLEARENTRY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_CLEARENTRY")]
+		[NativeName(NativeNameType.Value, "217")]
 		KpClearentry = unchecked(217),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_BINARY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_BINARY")]
+		[NativeName(NativeNameType.Value, "218")]
 		KpBinary = unchecked(218),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_OCTAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_OCTAL")]
+		[NativeName(NativeNameType.Value, "219")]
 		KpOctal = unchecked(219),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DECIMAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_DECIMAL")]
+		[NativeName(NativeNameType.Value, "220")]
 		KpDecimal = unchecked(220),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_HEXADECIMAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_HEXADECIMAL")]
+		[NativeName(NativeNameType.Value, "221")]
 		KpHexadecimal = unchecked(221),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LCTRL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LCTRL")]
+		[NativeName(NativeNameType.Value, "224")]
 		Lctrl = unchecked(224),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LSHIFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LSHIFT")]
+		[NativeName(NativeNameType.Value, "225")]
 		Lshift = unchecked(225),
 
-		/// <summary>
-		/// alt, option <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LALT")]
+		/// <summary>		/// alt, option <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LALT")]
+		[NativeName(NativeNameType.Value, "226")]
 		Lalt = unchecked(226),
 
-		/// <summary>
-		/// windows, command (apple), meta <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LGUI")]
+		/// <summary>		/// windows, command (apple), meta <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_LGUI")]
+		[NativeName(NativeNameType.Value, "227")]
 		Lgui = unchecked(227),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RCTRL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RCTRL")]
+		[NativeName(NativeNameType.Value, "228")]
 		Rctrl = unchecked(228),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RSHIFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RSHIFT")]
+		[NativeName(NativeNameType.Value, "229")]
 		Rshift = unchecked(229),
 
-		/// <summary>
-		/// alt gr, option <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RALT")]
+		/// <summary>		/// alt gr, option <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RALT")]
+		[NativeName(NativeNameType.Value, "230")]
 		Ralt = unchecked(230),
 
-		/// <summary>
-		/// windows, command (apple), meta <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RGUI")]
+		/// <summary>		/// windows, command (apple), meta <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_RGUI")]
+		[NativeName(NativeNameType.Value, "231")]
 		Rgui = unchecked(231),
 
-		/// <summary>
-		/// I'm not sure if this is really not covered<br/>
-		/// by any of the above, but since there's a<br/>
-		/// special KMOD_MODE for it I'm adding it here<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MODE")]
+		/// <summary>		/// I'm not sure if this is really not covered<br/>		/// by any of the above, but since there's a<br/>		/// special KMOD_MODE for it I'm adding it here<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MODE")]
+		[NativeName(NativeNameType.Value, "257")]
 		Mode = unchecked(257),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIONEXT")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIONEXT")]
+		[NativeName(NativeNameType.Value, "258")]
 		Audionext = unchecked(258),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOPREV")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOPREV")]
+		[NativeName(NativeNameType.Value, "259")]
 		Audioprev = unchecked(259),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOSTOP")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOSTOP")]
+		[NativeName(NativeNameType.Value, "260")]
 		Audiostop = unchecked(260),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOPLAY")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOPLAY")]
+		[NativeName(NativeNameType.Value, "261")]
 		Audioplay = unchecked(261),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOMUTE")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOMUTE")]
+		[NativeName(NativeNameType.Value, "262")]
 		Audiomute = unchecked(262),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>
-		/// There are way more keys in the spec than we can represent in the<br/>
-		/// current scancode range, so pick the ones that commonly come up in<br/>
-		/// real world usage.<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MEDIASELECT")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// See https://usb.org/sites/default/files/hut1_2.pdf<br/>		/// There are way more keys in the spec than we can represent in the<br/>		/// current scancode range, so pick the ones that commonly come up in<br/>		/// real world usage.<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MEDIASELECT")]
+		[NativeName(NativeNameType.Value, "263")]
 		Mediaselect = unchecked(263),
 
-		/// <summary>
-		/// AL Internet Browser <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_WWW")]
+		/// <summary>		/// AL Internet Browser <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_WWW")]
+		[NativeName(NativeNameType.Value, "264")]
 		Www = unchecked(264),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MAIL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_MAIL")]
+		[NativeName(NativeNameType.Value, "265")]
 		Mail = unchecked(265),
 
-		/// <summary>
-		/// AL Calculator <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CALCULATOR")]
+		/// <summary>		/// AL Calculator <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CALCULATOR")]
+		[NativeName(NativeNameType.Value, "266")]
 		Calculator = unchecked(266),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COMPUTER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_COMPUTER")]
+		[NativeName(NativeNameType.Value, "267")]
 		Computer = unchecked(267),
 
-		/// <summary>
-		/// AC Search <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_SEARCH")]
+		/// <summary>		/// AC Search <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_SEARCH")]
+		[NativeName(NativeNameType.Value, "268")]
 		AcSearch = unchecked(268),
 
-		/// <summary>
-		/// AC Home <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_HOME")]
+		/// <summary>		/// AC Home <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_HOME")]
+		[NativeName(NativeNameType.Value, "269")]
 		AcHome = unchecked(269),
 
-		/// <summary>
-		/// AC Back <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_BACK")]
+		/// <summary>		/// AC Back <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_BACK")]
+		[NativeName(NativeNameType.Value, "270")]
 		AcBack = unchecked(270),
 
-		/// <summary>
-		/// AC Forward <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_FORWARD")]
+		/// <summary>		/// AC Forward <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_FORWARD")]
+		[NativeName(NativeNameType.Value, "271")]
 		AcForward = unchecked(271),
 
-		/// <summary>
-		/// AC Stop <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_STOP")]
+		/// <summary>		/// AC Stop <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_STOP")]
+		[NativeName(NativeNameType.Value, "272")]
 		AcStop = unchecked(272),
 
-		/// <summary>
-		/// AC Refresh <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_REFRESH")]
+		/// <summary>		/// AC Refresh <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_REFRESH")]
+		[NativeName(NativeNameType.Value, "273")]
 		AcRefresh = unchecked(273),
 
-		/// <summary>
-		/// AC Bookmarks <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_BOOKMARKS")]
+		/// <summary>		/// AC Bookmarks <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AC_BOOKMARKS")]
+		[NativeName(NativeNameType.Value, "274")]
 		AcBookmarks = unchecked(274),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These are values that Christian Walther added (for mac keyboard?).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BRIGHTNESSDOWN")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These are values that Christian Walther added (for mac keyboard?).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BRIGHTNESSDOWN")]
+		[NativeName(NativeNameType.Value, "275")]
 		Brightnessdown = unchecked(275),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These are values that Christian Walther added (for mac keyboard?).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BRIGHTNESSUP")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These are values that Christian Walther added (for mac keyboard?).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_BRIGHTNESSUP")]
+		[NativeName(NativeNameType.Value, "276")]
 		Brightnessup = unchecked(276),
 
-		/// <summary>
-		/// display mirroring/dual display<br/>
-		/// switch, video mode switch <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DISPLAYSWITCH")]
+		/// <summary>		/// display mirroring/dual display<br/>		/// switch, video mode switch <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_DISPLAYSWITCH")]
+		[NativeName(NativeNameType.Value, "277")]
 		Displayswitch = unchecked(277),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMTOGGLE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMTOGGLE")]
+		[NativeName(NativeNameType.Value, "278")]
 		Kbdillumtoggle = unchecked(278),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMDOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMDOWN")]
+		[NativeName(NativeNameType.Value, "279")]
 		Kbdillumdown = unchecked(279),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMUP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KBDILLUMUP")]
+		[NativeName(NativeNameType.Value, "280")]
 		Kbdillumup = unchecked(280),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EJECT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EJECT")]
+		[NativeName(NativeNameType.Value, "281")]
 		Eject = unchecked(281),
 
-		/// <summary>
-		/// SC System Sleep <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SLEEP")]
+		/// <summary>		/// SC System Sleep <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SLEEP")]
+		[NativeName(NativeNameType.Value, "282")]
 		Sleep = unchecked(282),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APP1")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APP1")]
+		[NativeName(NativeNameType.Value, "283")]
 		App1 = unchecked(283),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APP2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_APP2")]
+		[NativeName(NativeNameType.Value, "284")]
 		App2 = unchecked(284),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOREWIND")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOREWIND")]
+		[NativeName(NativeNameType.Value, "285")]
 		Audiorewind = unchecked(285),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>
-		/// <br/>
-		/// @<br/>
-		/// { <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOFASTFORWARD")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// These values are mapped from usage page 0x0C (USB consumer page).<br/>		/// <br/>		/// @<br/>		/// { <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_AUDIOFASTFORWARD")]
+		[NativeName(NativeNameType.Value, "286")]
 		Audiofastforward = unchecked(286),
 
-		/// <summary>
-		/// Usually situated below the display on phones and<br/>
-		/// used as a multi-function feature key for selecting<br/>
-		/// a software defined function shown on the bottom left<br/>
-		/// of the display. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SOFTLEFT")]
+		/// <summary>		/// Usually situated below the display on phones and<br/>		/// used as a multi-function feature key for selecting<br/>		/// a software defined function shown on the bottom left<br/>		/// of the display. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SOFTLEFT")]
+		[NativeName(NativeNameType.Value, "287")]
 		Softleft = unchecked(287),
 
-		/// <summary>
-		/// Usually situated below the display on phones and<br/>
-		/// used as a multi-function feature key for selecting<br/>
-		/// a software defined function shown on the bottom right<br/>
-		/// of the display. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SOFTRIGHT")]
+		/// <summary>		/// Usually situated below the display on phones and<br/>		/// used as a multi-function feature key for selecting<br/>		/// a software defined function shown on the bottom right<br/>		/// of the display. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_SOFTRIGHT")]
+		[NativeName(NativeNameType.Value, "288")]
 		Softright = unchecked(288),
 
-		/// <summary>
-		/// Used for accepting phone calls. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CALL")]
+		/// <summary>		/// Used for accepting phone calls. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_CALL")]
+		[NativeName(NativeNameType.Value, "289")]
 		Call = unchecked(289),
 
-		/// <summary>
-		/// Used for rejecting phone calls. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ENDCALL")]
+		/// <summary>		/// Used for rejecting phone calls. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_ENDCALL")]
+		[NativeName(NativeNameType.Value, "290")]
 		Endcall = unchecked(290),
 
-		/// <summary>
-		/// not a key, just marks the number of scancodes<br/>
-		/// for array bounds <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_NUM_SCANCODES")]
+		/// <summary>		/// not a key, just marks the number of scancodes<br/>		/// for array bounds <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_NUM_SCANCODES")]
+		[NativeName(NativeNameType.Value, "512")]
 		NumScancodes = unchecked(512),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_KeyCode")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_KeyCode")]
 	public enum SDLKeyCode
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		SdlkUnknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN")]
+		[NativeName(NativeNameType.Value, "'\\r'")]
 		SdlkReturn = unchecked((int)'\r'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_ESCAPE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ESCAPE")]
+		[NativeName(NativeNameType.Value, "'\\x1B'")]
 		SdlkEscape = unchecked((int)'\x1B'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSPACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSPACE")]
+		[NativeName(NativeNameType.Value, "'\\b'")]
 		SdlkBackspace = unchecked((int)'\b'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_TAB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_TAB")]
+		[NativeName(NativeNameType.Value, "'\\t'")]
 		SdlkTab = unchecked((int)'\t'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SPACE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SPACE")]
+		[NativeName(NativeNameType.Value, "' '")]
 		SdlkSpace = unchecked((int)' '),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_EXCLAIM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EXCLAIM")]
+		[NativeName(NativeNameType.Value, "'!'")]
 		SdlkExclaim = unchecked((int)'!'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTEDBL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTEDBL")]
+		[NativeName(NativeNameType.Value, "'\"'")]
 		SdlkQuotedbl = unchecked((int)'"'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_HASH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_HASH")]
+		[NativeName(NativeNameType.Value, "'#'")]
 		SdlkHash = unchecked((int)'#'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PERCENT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PERCENT")]
+		[NativeName(NativeNameType.Value, "'%'")]
 		SdlkPercent = unchecked((int)'%'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_DOLLAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DOLLAR")]
+		[NativeName(NativeNameType.Value, "'$'")]
 		SdlkDollar = unchecked((int)'$'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AMPERSAND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AMPERSAND")]
+		[NativeName(NativeNameType.Value, "'&'")]
 		SdlkAmpersand = unchecked((int)'&'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTE")]
+		[NativeName(NativeNameType.Value, "'\\''")]
 		SdlkQuote = unchecked((int)'\''),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTPAREN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTPAREN")]
+		[NativeName(NativeNameType.Value, "'('")]
 		SdlkLeftparen = unchecked((int)'('),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTPAREN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTPAREN")]
+		[NativeName(NativeNameType.Value, "')'")]
 		SdlkRightparen = unchecked((int)')'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_ASTERISK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ASTERISK")]
+		[NativeName(NativeNameType.Value, "'*'")]
 		SdlkAsterisk = unchecked((int)'*'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PLUS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PLUS")]
+		[NativeName(NativeNameType.Value, "'+'")]
 		SdlkPlus = unchecked((int)'+'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_COMMA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COMMA")]
+		[NativeName(NativeNameType.Value, "','")]
 		SdlkComma = unchecked((int)','),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MINUS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MINUS")]
+		[NativeName(NativeNameType.Value, "'-'")]
 		SdlkMinus = unchecked((int)'-'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PERIOD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PERIOD")]
+		[NativeName(NativeNameType.Value, "'.'")]
 		SdlkPeriod = unchecked((int)'.'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SLASH")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SLASH")]
+		[NativeName(NativeNameType.Value, "'/'")]
 		SdlkSlash = unchecked((int)'/'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_0")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_0")]
+		[NativeName(NativeNameType.Value, "'0'")]
 		Sdlk0 = unchecked((int)'0'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_1")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_1")]
+		[NativeName(NativeNameType.Value, "'1'")]
 		Sdlk1 = unchecked((int)'1'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_2")]
+		[NativeName(NativeNameType.Value, "'2'")]
 		Sdlk2 = unchecked((int)'2'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_3")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_3")]
+		[NativeName(NativeNameType.Value, "'3'")]
 		Sdlk3 = unchecked((int)'3'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_4")]
+		[NativeName(NativeNameType.Value, "'4'")]
 		Sdlk4 = unchecked((int)'4'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_5")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_5")]
+		[NativeName(NativeNameType.Value, "'5'")]
 		Sdlk5 = unchecked((int)'5'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_6")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_6")]
+		[NativeName(NativeNameType.Value, "'6'")]
 		Sdlk6 = unchecked((int)'6'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_7")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_7")]
+		[NativeName(NativeNameType.Value, "'7'")]
 		Sdlk7 = unchecked((int)'7'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_8")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_8")]
+		[NativeName(NativeNameType.Value, "'8'")]
 		Sdlk8 = unchecked((int)'8'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_9")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_9")]
+		[NativeName(NativeNameType.Value, "'9'")]
 		Sdlk9 = unchecked((int)'9'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_COLON")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COLON")]
+		[NativeName(NativeNameType.Value, "':'")]
 		SdlkColon = unchecked((int)':'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SEMICOLON")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SEMICOLON")]
+		[NativeName(NativeNameType.Value, "';'")]
 		SdlkSemicolon = unchecked((int)';'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LESS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LESS")]
+		[NativeName(NativeNameType.Value, "'<'")]
 		SdlkLess = unchecked((int)'<'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_EQUALS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EQUALS")]
+		[NativeName(NativeNameType.Value, "'='")]
 		SdlkEquals = unchecked((int)'='),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_GREATER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_GREATER")]
+		[NativeName(NativeNameType.Value, "'>'")]
 		SdlkGreater = unchecked((int)'>'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_QUESTION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_QUESTION")]
+		[NativeName(NativeNameType.Value, "'?'")]
 		SdlkQuestion = unchecked((int)'?'),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AT")]
+		[NativeName(NativeNameType.Value, "'@'")]
 		SdlkAt = unchecked((int)'@'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTBRACKET")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTBRACKET")]
+		[NativeName(NativeNameType.Value, "'['")]
 		SdlkLeftbracket = unchecked((int)'['),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSLASH")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSLASH")]
+		[NativeName(NativeNameType.Value, "'\\\\'")]
 		SdlkBackslash = unchecked((int)'\\'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTBRACKET")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTBRACKET")]
+		[NativeName(NativeNameType.Value, "']'")]
 		SdlkRightbracket = unchecked((int)']'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CARET")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CARET")]
+		[NativeName(NativeNameType.Value, "'^'")]
 		SdlkCaret = unchecked((int)'^'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_UNDERSCORE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UNDERSCORE")]
+		[NativeName(NativeNameType.Value, "'_'")]
 		SdlkUnderscore = unchecked((int)'_'),
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_BACKQUOTE")]
+
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BACKQUOTE")]
+		[NativeName(NativeNameType.Value, "'`'")]
 		SdlkBackquote = unchecked((int)'`'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_a")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_a")]
+		[NativeName(NativeNameType.Value, "'a'")]
 		Sdlka = unchecked((int)'a'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_b")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_b")]
+		[NativeName(NativeNameType.Value, "'b'")]
 		Sdlkb = unchecked((int)'b'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_c")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_c")]
+		[NativeName(NativeNameType.Value, "'c'")]
 		Sdlkc = unchecked((int)'c'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_d")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_d")]
+		[NativeName(NativeNameType.Value, "'d'")]
 		Sdlkd = unchecked((int)'d'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_e")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_e")]
+		[NativeName(NativeNameType.Value, "'e'")]
 		Sdlke = unchecked((int)'e'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_f")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_f")]
+		[NativeName(NativeNameType.Value, "'f'")]
 		Sdlkf = unchecked((int)'f'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_g")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_g")]
+		[NativeName(NativeNameType.Value, "'g'")]
 		Sdlkg = unchecked((int)'g'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_h")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_h")]
+		[NativeName(NativeNameType.Value, "'h'")]
 		Sdlkh = unchecked((int)'h'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_i")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_i")]
+		[NativeName(NativeNameType.Value, "'i'")]
 		Sdlki = unchecked((int)'i'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_j")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_j")]
+		[NativeName(NativeNameType.Value, "'j'")]
 		Sdlkj = unchecked((int)'j'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_k")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_k")]
+		[NativeName(NativeNameType.Value, "'k'")]
 		Sdlkk = unchecked((int)'k'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_l")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_l")]
+		[NativeName(NativeNameType.Value, "'l'")]
 		Sdlkl = unchecked((int)'l'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_m")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_m")]
+		[NativeName(NativeNameType.Value, "'m'")]
 		Sdlkm = unchecked((int)'m'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_n")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_n")]
+		[NativeName(NativeNameType.Value, "'n'")]
 		Sdlkn = unchecked((int)'n'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_o")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_o")]
+		[NativeName(NativeNameType.Value, "'o'")]
 		Sdlko = unchecked((int)'o'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_p")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_p")]
+		[NativeName(NativeNameType.Value, "'p'")]
 		Sdlkp = unchecked((int)'p'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_q")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_q")]
+		[NativeName(NativeNameType.Value, "'q'")]
 		Sdlkq = unchecked((int)'q'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_r")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_r")]
+		[NativeName(NativeNameType.Value, "'r'")]
 		Sdlkr = unchecked((int)'r'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_s")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_s")]
+		[NativeName(NativeNameType.Value, "'s'")]
 		Sdlks = unchecked((int)'s'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_t")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_t")]
+		[NativeName(NativeNameType.Value, "'t'")]
 		Sdlkt = unchecked((int)'t'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_u")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_u")]
+		[NativeName(NativeNameType.Value, "'u'")]
 		Sdlku = unchecked((int)'u'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_v")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_v")]
+		[NativeName(NativeNameType.Value, "'v'")]
 		Sdlkv = unchecked((int)'v'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_w")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_w")]
+		[NativeName(NativeNameType.Value, "'w'")]
 		Sdlkw = unchecked((int)'w'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_x")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_x")]
+		[NativeName(NativeNameType.Value, "'x'")]
 		Sdlkx = unchecked((int)'x'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_y")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_y")]
+		[NativeName(NativeNameType.Value, "'y'")]
 		Sdlky = unchecked((int)'y'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_z")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_z")]
+		[NativeName(NativeNameType.Value, "'z'")]
 		Sdlkz = unchecked((int)'z'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CAPSLOCK")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CAPSLOCK")]
+		[NativeName(NativeNameType.Value, "1073741881")]
 		SdlkCapslock = unchecked(1073741881),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F1")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F1")]
+		[NativeName(NativeNameType.Value, "1073741882")]
 		Sdlkf1 = unchecked(1073741882),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F2")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F2")]
+		[NativeName(NativeNameType.Value, "1073741883")]
 		Sdlkf2 = unchecked(1073741883),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F3")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F3")]
+		[NativeName(NativeNameType.Value, "1073741884")]
 		Sdlkf3 = unchecked(1073741884),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F4")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F4")]
+		[NativeName(NativeNameType.Value, "1073741885")]
 		Sdlkf4 = unchecked(1073741885),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F5")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F5")]
+		[NativeName(NativeNameType.Value, "1073741886")]
 		Sdlkf5 = unchecked(1073741886),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F6")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F6")]
+		[NativeName(NativeNameType.Value, "1073741887")]
 		Sdlkf6 = unchecked(1073741887),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F7")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F7")]
+		[NativeName(NativeNameType.Value, "1073741888")]
 		Sdlkf7 = unchecked(1073741888),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F8")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F8")]
+		[NativeName(NativeNameType.Value, "1073741889")]
 		Sdlkf8 = unchecked(1073741889),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F9")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F9")]
+		[NativeName(NativeNameType.Value, "1073741890")]
 		Sdlkf9 = unchecked(1073741890),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F10")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F10")]
+		[NativeName(NativeNameType.Value, "1073741891")]
 		Sdlkf10 = unchecked(1073741891),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F11")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F11")]
+		[NativeName(NativeNameType.Value, "1073741892")]
 		Sdlkf11 = unchecked(1073741892),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F12")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F12")]
+		[NativeName(NativeNameType.Value, "1073741893")]
 		Sdlkf12 = unchecked(1073741893),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PRINTSCREEN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PRINTSCREEN")]
+		[NativeName(NativeNameType.Value, "1073741894")]
 		SdlkPrintscreen = unchecked(1073741894),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SCROLLLOCK")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SCROLLLOCK")]
+		[NativeName(NativeNameType.Value, "1073741895")]
 		SdlkScrolllock = unchecked(1073741895),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PAUSE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAUSE")]
+		[NativeName(NativeNameType.Value, "1073741896")]
 		SdlkPause = unchecked(1073741896),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_INSERT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_INSERT")]
+		[NativeName(NativeNameType.Value, "1073741897")]
 		SdlkInsert = unchecked(1073741897),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_HOME")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_HOME")]
+		[NativeName(NativeNameType.Value, "1073741898")]
 		SdlkHome = unchecked(1073741898),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEUP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEUP")]
+		[NativeName(NativeNameType.Value, "1073741899")]
 		SdlkPageup = unchecked(1073741899),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_DELETE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DELETE")]
+		[NativeName(NativeNameType.Value, "'\\x7F'")]
 		SdlkDelete = unchecked((int)'\x7F'),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_END")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_END")]
+		[NativeName(NativeNameType.Value, "1073741901")]
 		SdlkEnd = unchecked(1073741901),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEDOWN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEDOWN")]
+		[NativeName(NativeNameType.Value, "1073741902")]
 		SdlkPagedown = unchecked(1073741902),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHT")]
+		[NativeName(NativeNameType.Value, "1073741903")]
 		SdlkRight = unchecked(1073741903),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LEFT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LEFT")]
+		[NativeName(NativeNameType.Value, "1073741904")]
 		SdlkLeft = unchecked(1073741904),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_DOWN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DOWN")]
+		[NativeName(NativeNameType.Value, "1073741905")]
 		SdlkDown = unchecked(1073741905),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_UP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UP")]
+		[NativeName(NativeNameType.Value, "1073741906")]
 		SdlkUp = unchecked(1073741906),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_NUMLOCKCLEAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_NUMLOCKCLEAR")]
+		[NativeName(NativeNameType.Value, "1073741907")]
 		SdlkNumlockclear = unchecked(1073741907),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DIVIDE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DIVIDE")]
+		[NativeName(NativeNameType.Value, "1073741908")]
 		SdlkKpDivide = unchecked(1073741908),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MULTIPLY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MULTIPLY")]
+		[NativeName(NativeNameType.Value, "1073741909")]
 		SdlkKpMultiply = unchecked(1073741909),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MINUS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MINUS")]
+		[NativeName(NativeNameType.Value, "1073741910")]
 		SdlkKpMinus = unchecked(1073741910),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUS")]
+		[NativeName(NativeNameType.Value, "1073741911")]
 		SdlkKpPlus = unchecked(1073741911),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_ENTER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_ENTER")]
+		[NativeName(NativeNameType.Value, "1073741912")]
 		SdlkKpEnter = unchecked(1073741912),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_1")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_1")]
+		[NativeName(NativeNameType.Value, "1073741913")]
 		SdlkKp1 = unchecked(1073741913),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_2")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_2")]
+		[NativeName(NativeNameType.Value, "1073741914")]
 		SdlkKp2 = unchecked(1073741914),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_3")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_3")]
+		[NativeName(NativeNameType.Value, "1073741915")]
 		SdlkKp3 = unchecked(1073741915),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_4")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_4")]
+		[NativeName(NativeNameType.Value, "1073741916")]
 		SdlkKp4 = unchecked(1073741916),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_5")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_5")]
+		[NativeName(NativeNameType.Value, "1073741917")]
 		SdlkKp5 = unchecked(1073741917),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_6")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_6")]
+		[NativeName(NativeNameType.Value, "1073741918")]
 		SdlkKp6 = unchecked(1073741918),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_7")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_7")]
+		[NativeName(NativeNameType.Value, "1073741919")]
 		SdlkKp7 = unchecked(1073741919),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_8")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_8")]
+		[NativeName(NativeNameType.Value, "1073741920")]
 		SdlkKp8 = unchecked(1073741920),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_9")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_9")]
+		[NativeName(NativeNameType.Value, "1073741921")]
 		SdlkKp9 = unchecked(1073741921),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_0")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_0")]
+		[NativeName(NativeNameType.Value, "1073741922")]
 		SdlkKp0 = unchecked(1073741922),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERIOD")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERIOD")]
+		[NativeName(NativeNameType.Value, "1073741923")]
 		SdlkKpPeriod = unchecked(1073741923),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_APPLICATION")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APPLICATION")]
+		[NativeName(NativeNameType.Value, "1073741925")]
 		SdlkApplication = unchecked(1073741925),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_POWER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_POWER")]
+		[NativeName(NativeNameType.Value, "1073741926")]
 		SdlkPower = unchecked(1073741926),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALS")]
+		[NativeName(NativeNameType.Value, "1073741927")]
 		SdlkKpEquals = unchecked(1073741927),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F13")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F13")]
+		[NativeName(NativeNameType.Value, "1073741928")]
 		Sdlkf13 = unchecked(1073741928),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F14")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F14")]
+		[NativeName(NativeNameType.Value, "1073741929")]
 		Sdlkf14 = unchecked(1073741929),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F15")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F15")]
+		[NativeName(NativeNameType.Value, "1073741930")]
 		Sdlkf15 = unchecked(1073741930),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F16")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F16")]
+		[NativeName(NativeNameType.Value, "1073741931")]
 		Sdlkf16 = unchecked(1073741931),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F17")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F17")]
+		[NativeName(NativeNameType.Value, "1073741932")]
 		Sdlkf17 = unchecked(1073741932),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F18")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F18")]
+		[NativeName(NativeNameType.Value, "1073741933")]
 		Sdlkf18 = unchecked(1073741933),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F19")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F19")]
+		[NativeName(NativeNameType.Value, "1073741934")]
 		Sdlkf19 = unchecked(1073741934),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F20")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F20")]
+		[NativeName(NativeNameType.Value, "1073741935")]
 		Sdlkf20 = unchecked(1073741935),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F21")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F21")]
+		[NativeName(NativeNameType.Value, "1073741936")]
 		Sdlkf21 = unchecked(1073741936),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F22")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F22")]
+		[NativeName(NativeNameType.Value, "1073741937")]
 		Sdlkf22 = unchecked(1073741937),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F23")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F23")]
+		[NativeName(NativeNameType.Value, "1073741938")]
 		Sdlkf23 = unchecked(1073741938),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_F24")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F24")]
+		[NativeName(NativeNameType.Value, "1073741939")]
 		Sdlkf24 = unchecked(1073741939),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_EXECUTE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EXECUTE")]
+		[NativeName(NativeNameType.Value, "1073741940")]
 		SdlkExecute = unchecked(1073741940),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_HELP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_HELP")]
+		[NativeName(NativeNameType.Value, "1073741941")]
 		SdlkHelp = unchecked(1073741941),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MENU")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MENU")]
+		[NativeName(NativeNameType.Value, "1073741942")]
 		SdlkMenu = unchecked(1073741942),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SELECT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SELECT")]
+		[NativeName(NativeNameType.Value, "1073741943")]
 		SdlkSelect = unchecked(1073741943),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_STOP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_STOP")]
+		[NativeName(NativeNameType.Value, "1073741944")]
 		SdlkStop = unchecked(1073741944),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AGAIN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AGAIN")]
+		[NativeName(NativeNameType.Value, "1073741945")]
 		SdlkAgain = unchecked(1073741945),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_UNDO")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UNDO")]
+		[NativeName(NativeNameType.Value, "1073741946")]
 		SdlkUndo = unchecked(1073741946),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CUT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CUT")]
+		[NativeName(NativeNameType.Value, "1073741947")]
 		SdlkCut = unchecked(1073741947),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_COPY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COPY")]
+		[NativeName(NativeNameType.Value, "1073741948")]
 		SdlkCopy = unchecked(1073741948),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PASTE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PASTE")]
+		[NativeName(NativeNameType.Value, "1073741949")]
 		SdlkPaste = unchecked(1073741949),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_FIND")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_FIND")]
+		[NativeName(NativeNameType.Value, "1073741950")]
 		SdlkFind = unchecked(1073741950),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MUTE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MUTE")]
+		[NativeName(NativeNameType.Value, "1073741951")]
 		SdlkMute = unchecked(1073741951),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEUP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEUP")]
+		[NativeName(NativeNameType.Value, "1073741952")]
 		SdlkVolumeup = unchecked(1073741952),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEDOWN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEDOWN")]
+		[NativeName(NativeNameType.Value, "1073741953")]
 		SdlkVolumedown = unchecked(1073741953),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COMMA")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COMMA")]
+		[NativeName(NativeNameType.Value, "1073741957")]
 		SdlkKpComma = unchecked(1073741957),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALSAS400")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALSAS400")]
+		[NativeName(NativeNameType.Value, "1073741958")]
 		SdlkKpEqualsas400 = unchecked(1073741958),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_ALTERASE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ALTERASE")]
+		[NativeName(NativeNameType.Value, "1073741977")]
 		SdlkAlterase = unchecked(1073741977),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SYSREQ")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SYSREQ")]
+		[NativeName(NativeNameType.Value, "1073741978")]
 		SdlkSysreq = unchecked(1073741978),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CANCEL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CANCEL")]
+		[NativeName(NativeNameType.Value, "1073741979")]
 		SdlkCancel = unchecked(1073741979),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CLEAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CLEAR")]
+		[NativeName(NativeNameType.Value, "1073741980")]
 		SdlkClear = unchecked(1073741980),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_PRIOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PRIOR")]
+		[NativeName(NativeNameType.Value, "1073741981")]
 		SdlkPrior = unchecked(1073741981),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN2")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN2")]
+		[NativeName(NativeNameType.Value, "1073741982")]
 		SdlkReturn2 = unchecked(1073741982),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SEPARATOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SEPARATOR")]
+		[NativeName(NativeNameType.Value, "1073741983")]
 		SdlkSeparator = unchecked(1073741983),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_OUT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_OUT")]
+		[NativeName(NativeNameType.Value, "1073741984")]
 		SdlkOut = unchecked(1073741984),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_OPER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_OPER")]
+		[NativeName(NativeNameType.Value, "1073741985")]
 		SdlkOper = unchecked(1073741985),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CLEARAGAIN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CLEARAGAIN")]
+		[NativeName(NativeNameType.Value, "1073741986")]
 		SdlkClearagain = unchecked(1073741986),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CRSEL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CRSEL")]
+		[NativeName(NativeNameType.Value, "1073741987")]
 		SdlkCrsel = unchecked(1073741987),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_EXSEL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EXSEL")]
+		[NativeName(NativeNameType.Value, "1073741988")]
 		SdlkExsel = unchecked(1073741988),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_00")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_00")]
+		[NativeName(NativeNameType.Value, "1073742000")]
 		SdlkKp00 = unchecked(1073742000),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_000")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_000")]
+		[NativeName(NativeNameType.Value, "1073742001")]
 		SdlkKp000 = unchecked(1073742001),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_THOUSANDSSEPARATOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_THOUSANDSSEPARATOR")]
+		[NativeName(NativeNameType.Value, "1073742002")]
 		SdlkThousandsseparator = unchecked(1073742002),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_DECIMALSEPARATOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DECIMALSEPARATOR")]
+		[NativeName(NativeNameType.Value, "1073742003")]
 		SdlkDecimalseparator = unchecked(1073742003),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYUNIT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYUNIT")]
+		[NativeName(NativeNameType.Value, "1073742004")]
 		SdlkCurrencyunit = unchecked(1073742004),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYSUBUNIT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYSUBUNIT")]
+		[NativeName(NativeNameType.Value, "1073742005")]
 		SdlkCurrencysubunit = unchecked(1073742005),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTPAREN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTPAREN")]
+		[NativeName(NativeNameType.Value, "1073742006")]
 		SdlkKpLeftparen = unchecked(1073742006),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTPAREN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTPAREN")]
+		[NativeName(NativeNameType.Value, "1073742007")]
 		SdlkKpRightparen = unchecked(1073742007),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTBRACE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTBRACE")]
+		[NativeName(NativeNameType.Value, "1073742008")]
 		SdlkKpLeftbrace = unchecked(1073742008),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTBRACE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTBRACE")]
+		[NativeName(NativeNameType.Value, "1073742009")]
 		SdlkKpRightbrace = unchecked(1073742009),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_TAB")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_TAB")]
+		[NativeName(NativeNameType.Value, "1073742010")]
 		SdlkKpTab = unchecked(1073742010),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BACKSPACE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BACKSPACE")]
+		[NativeName(NativeNameType.Value, "1073742011")]
 		SdlkKpBackspace = unchecked(1073742011),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_A")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_A")]
+		[NativeName(NativeNameType.Value, "1073742012")]
 		SdlkKpa = unchecked(1073742012),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_B")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_B")]
+		[NativeName(NativeNameType.Value, "1073742013")]
 		SdlkKpb = unchecked(1073742013),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_C")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_C")]
+		[NativeName(NativeNameType.Value, "1073742014")]
 		SdlkKpc = unchecked(1073742014),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_D")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_D")]
+		[NativeName(NativeNameType.Value, "1073742015")]
 		SdlkKpd = unchecked(1073742015),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_E")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_E")]
+		[NativeName(NativeNameType.Value, "1073742016")]
 		SdlkKpe = unchecked(1073742016),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_F")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_F")]
+		[NativeName(NativeNameType.Value, "1073742017")]
 		SdlkKpf = unchecked(1073742017),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_XOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_XOR")]
+		[NativeName(NativeNameType.Value, "1073742018")]
 		SdlkKpXor = unchecked(1073742018),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_POWER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_POWER")]
+		[NativeName(NativeNameType.Value, "1073742019")]
 		SdlkKpPower = unchecked(1073742019),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERCENT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERCENT")]
+		[NativeName(NativeNameType.Value, "1073742020")]
 		SdlkKpPercent = unchecked(1073742020),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LESS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LESS")]
+		[NativeName(NativeNameType.Value, "1073742021")]
 		SdlkKpLess = unchecked(1073742021),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_GREATER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_GREATER")]
+		[NativeName(NativeNameType.Value, "1073742022")]
 		SdlkKpGreater = unchecked(1073742022),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AMPERSAND")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AMPERSAND")]
+		[NativeName(NativeNameType.Value, "1073742023")]
 		SdlkKpAmpersand = unchecked(1073742023),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLAMPERSAND")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLAMPERSAND")]
+		[NativeName(NativeNameType.Value, "1073742024")]
 		SdlkKpDblampersand = unchecked(1073742024),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_VERTICALBAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_VERTICALBAR")]
+		[NativeName(NativeNameType.Value, "1073742025")]
 		SdlkKpVerticalbar = unchecked(1073742025),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLVERTICALBAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLVERTICALBAR")]
+		[NativeName(NativeNameType.Value, "1073742026")]
 		SdlkKpDblverticalbar = unchecked(1073742026),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COLON")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COLON")]
+		[NativeName(NativeNameType.Value, "1073742027")]
 		SdlkKpColon = unchecked(1073742027),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HASH")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HASH")]
+		[NativeName(NativeNameType.Value, "1073742028")]
 		SdlkKpHash = unchecked(1073742028),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_SPACE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_SPACE")]
+		[NativeName(NativeNameType.Value, "1073742029")]
 		SdlkKpSpace = unchecked(1073742029),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AT")]
+		[NativeName(NativeNameType.Value, "1073742030")]
 		SdlkKpAt = unchecked(1073742030),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EXCLAM")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EXCLAM")]
+		[NativeName(NativeNameType.Value, "1073742031")]
 		SdlkKpExclam = unchecked(1073742031),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSTORE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSTORE")]
+		[NativeName(NativeNameType.Value, "1073742032")]
 		SdlkKpMemstore = unchecked(1073742032),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMRECALL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMRECALL")]
+		[NativeName(NativeNameType.Value, "1073742033")]
 		SdlkKpMemrecall = unchecked(1073742033),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMCLEAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMCLEAR")]
+		[NativeName(NativeNameType.Value, "1073742034")]
 		SdlkKpMemclear = unchecked(1073742034),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMADD")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMADD")]
+		[NativeName(NativeNameType.Value, "1073742035")]
 		SdlkKpMemadd = unchecked(1073742035),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSUBTRACT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSUBTRACT")]
+		[NativeName(NativeNameType.Value, "1073742036")]
 		SdlkKpMemsubtract = unchecked(1073742036),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMMULTIPLY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMMULTIPLY")]
+		[NativeName(NativeNameType.Value, "1073742037")]
 		SdlkKpMemmultiply = unchecked(1073742037),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMDIVIDE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMDIVIDE")]
+		[NativeName(NativeNameType.Value, "1073742038")]
 		SdlkKpMemdivide = unchecked(1073742038),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUSMINUS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUSMINUS")]
+		[NativeName(NativeNameType.Value, "1073742039")]
 		SdlkKpPlusminus = unchecked(1073742039),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEAR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEAR")]
+		[NativeName(NativeNameType.Value, "1073742040")]
 		SdlkKpClear = unchecked(1073742040),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEARENTRY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEARENTRY")]
+		[NativeName(NativeNameType.Value, "1073742041")]
 		SdlkKpClearentry = unchecked(1073742041),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BINARY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BINARY")]
+		[NativeName(NativeNameType.Value, "1073742042")]
 		SdlkKpBinary = unchecked(1073742042),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_OCTAL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_OCTAL")]
+		[NativeName(NativeNameType.Value, "1073742043")]
 		SdlkKpOctal = unchecked(1073742043),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DECIMAL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DECIMAL")]
+		[NativeName(NativeNameType.Value, "1073742044")]
 		SdlkKpDecimal = unchecked(1073742044),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HEXADECIMAL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HEXADECIMAL")]
+		[NativeName(NativeNameType.Value, "1073742045")]
 		SdlkKpHexadecimal = unchecked(1073742045),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LCTRL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LCTRL")]
+		[NativeName(NativeNameType.Value, "1073742048")]
 		SdlkLctrl = unchecked(1073742048),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LSHIFT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LSHIFT")]
+		[NativeName(NativeNameType.Value, "1073742049")]
 		SdlkLshift = unchecked(1073742049),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LALT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LALT")]
+		[NativeName(NativeNameType.Value, "1073742050")]
 		SdlkLalt = unchecked(1073742050),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_LGUI")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LGUI")]
+		[NativeName(NativeNameType.Value, "1073742051")]
 		SdlkLgui = unchecked(1073742051),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RCTRL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RCTRL")]
+		[NativeName(NativeNameType.Value, "1073742052")]
 		SdlkRctrl = unchecked(1073742052),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RSHIFT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RSHIFT")]
+		[NativeName(NativeNameType.Value, "1073742053")]
 		SdlkRshift = unchecked(1073742053),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RALT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RALT")]
+		[NativeName(NativeNameType.Value, "1073742054")]
 		SdlkRalt = unchecked(1073742054),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_RGUI")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RGUI")]
+		[NativeName(NativeNameType.Value, "1073742055")]
 		SdlkRgui = unchecked(1073742055),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MODE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MODE")]
+		[NativeName(NativeNameType.Value, "1073742081")]
 		SdlkMode = unchecked(1073742081),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIONEXT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIONEXT")]
+		[NativeName(NativeNameType.Value, "1073742082")]
 		SdlkAudionext = unchecked(1073742082),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPREV")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPREV")]
+		[NativeName(NativeNameType.Value, "1073742083")]
 		SdlkAudioprev = unchecked(1073742083),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOSTOP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOSTOP")]
+		[NativeName(NativeNameType.Value, "1073742084")]
 		SdlkAudiostop = unchecked(1073742084),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPLAY")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPLAY")]
+		[NativeName(NativeNameType.Value, "1073742085")]
 		SdlkAudioplay = unchecked(1073742085),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOMUTE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOMUTE")]
+		[NativeName(NativeNameType.Value, "1073742086")]
 		SdlkAudiomute = unchecked(1073742086),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MEDIASELECT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MEDIASELECT")]
+		[NativeName(NativeNameType.Value, "1073742087")]
 		SdlkMediaselect = unchecked(1073742087),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_WWW")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_WWW")]
+		[NativeName(NativeNameType.Value, "1073742088")]
 		SdlkWww = unchecked(1073742088),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_MAIL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MAIL")]
+		[NativeName(NativeNameType.Value, "1073742089")]
 		SdlkMail = unchecked(1073742089),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CALCULATOR")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CALCULATOR")]
+		[NativeName(NativeNameType.Value, "1073742090")]
 		SdlkCalculator = unchecked(1073742090),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_COMPUTER")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COMPUTER")]
+		[NativeName(NativeNameType.Value, "1073742091")]
 		SdlkComputer = unchecked(1073742091),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_SEARCH")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_SEARCH")]
+		[NativeName(NativeNameType.Value, "1073742092")]
 		SdlkAcSearch = unchecked(1073742092),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_HOME")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_HOME")]
+		[NativeName(NativeNameType.Value, "1073742093")]
 		SdlkAcHome = unchecked(1073742093),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BACK")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BACK")]
+		[NativeName(NativeNameType.Value, "1073742094")]
 		SdlkAcBack = unchecked(1073742094),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_FORWARD")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_FORWARD")]
+		[NativeName(NativeNameType.Value, "1073742095")]
 		SdlkAcForward = unchecked(1073742095),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_STOP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_STOP")]
+		[NativeName(NativeNameType.Value, "1073742096")]
 		SdlkAcStop = unchecked(1073742096),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_REFRESH")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_REFRESH")]
+		[NativeName(NativeNameType.Value, "1073742097")]
 		SdlkAcRefresh = unchecked(1073742097),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BOOKMARKS")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BOOKMARKS")]
+		[NativeName(NativeNameType.Value, "1073742098")]
 		SdlkAcBookmarks = unchecked(1073742098),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSDOWN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSDOWN")]
+		[NativeName(NativeNameType.Value, "1073742099")]
 		SdlkBrightnessdown = unchecked(1073742099),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSUP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSUP")]
+		[NativeName(NativeNameType.Value, "1073742100")]
 		SdlkBrightnessup = unchecked(1073742100),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_DISPLAYSWITCH")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DISPLAYSWITCH")]
+		[NativeName(NativeNameType.Value, "1073742101")]
 		SdlkDisplayswitch = unchecked(1073742101),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMTOGGLE")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMTOGGLE")]
+		[NativeName(NativeNameType.Value, "1073742102")]
 		SdlkKbdillumtoggle = unchecked(1073742102),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMDOWN")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMDOWN")]
+		[NativeName(NativeNameType.Value, "1073742103")]
 		SdlkKbdillumdown = unchecked(1073742103),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMUP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMUP")]
+		[NativeName(NativeNameType.Value, "1073742104")]
 		SdlkKbdillumup = unchecked(1073742104),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_EJECT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EJECT")]
+		[NativeName(NativeNameType.Value, "1073742105")]
 		SdlkEject = unchecked(1073742105),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SLEEP")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SLEEP")]
+		[NativeName(NativeNameType.Value, "1073742106")]
 		SdlkSleep = unchecked(1073742106),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_APP1")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APP1")]
+		[NativeName(NativeNameType.Value, "1073742107")]
 		SdlkApp1 = unchecked(1073742107),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_APP2")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APP2")]
+		[NativeName(NativeNameType.Value, "1073742108")]
 		SdlkApp2 = unchecked(1073742108),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOREWIND")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOREWIND")]
+		[NativeName(NativeNameType.Value, "1073742109")]
 		SdlkAudiorewind = unchecked(1073742109),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOFASTFORWARD")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOFASTFORWARD")]
+		[NativeName(NativeNameType.Value, "1073742110")]
 		SdlkAudiofastforward = unchecked(1073742110),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTLEFT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTLEFT")]
+		[NativeName(NativeNameType.Value, "1073742111")]
 		SdlkSoftleft = unchecked(1073742111),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTRIGHT")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTRIGHT")]
+		[NativeName(NativeNameType.Value, "1073742112")]
 		SdlkSoftright = unchecked(1073742112),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_CALL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CALL")]
+		[NativeName(NativeNameType.Value, "1073742113")]
 		SdlkCall = unchecked(1073742113),
 
-		/// <summary>
-		/// Skip uppercase letters<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDLK_ENDCALL")]
+		/// <summary>		/// Skip uppercase letters<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ENDCALL")]
+		[NativeName(NativeNameType.Value, "1073742114")]
 		SdlkEndcall = unchecked(1073742114),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_Keymod")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_Keymod")]
 	public enum SDLKeymod
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		KmodNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_LSHIFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_LSHIFT")]
+		[NativeName(NativeNameType.Value, "1")]
 		KmodLshift = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_RSHIFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RSHIFT")]
+		[NativeName(NativeNameType.Value, "2")]
 		KmodRshift = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_LCTRL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_LCTRL")]
+		[NativeName(NativeNameType.Value, "64")]
 		KmodLctrl = unchecked(64),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_RCTRL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RCTRL")]
+		[NativeName(NativeNameType.Value, "128")]
 		KmodRctrl = unchecked(128),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_LALT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_LALT")]
+		[NativeName(NativeNameType.Value, "256")]
 		KmodLalt = unchecked(256),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_RALT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RALT")]
+		[NativeName(NativeNameType.Value, "512")]
 		KmodRalt = unchecked(512),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_LGUI")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_LGUI")]
+		[NativeName(NativeNameType.Value, "1024")]
 		KmodLgui = unchecked(1024),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_RGUI")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RGUI")]
+		[NativeName(NativeNameType.Value, "2048")]
 		KmodRgui = unchecked(2048),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_NUM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_NUM")]
+		[NativeName(NativeNameType.Value, "4096")]
 		KmodNum = unchecked(4096),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_CAPS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_CAPS")]
+		[NativeName(NativeNameType.Value, "8192")]
 		KmodCaps = unchecked(8192),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_MODE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_MODE")]
+		[NativeName(NativeNameType.Value, "16384")]
 		KmodMode = unchecked(16384),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_SCROLL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_SCROLL")]
+		[NativeName(NativeNameType.Value, "32768")]
 		KmodScroll = unchecked(32768),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_CTRL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_CTRL")]
+		[NativeName(NativeNameType.Value, "192")]
 		KmodCtrl = unchecked(192),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_SHIFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_SHIFT")]
+		[NativeName(NativeNameType.Value, "3")]
 		KmodShift = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_ALT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_ALT")]
+		[NativeName(NativeNameType.Value, "768")]
 		KmodAlt = unchecked(768),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_GUI")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_GUI")]
+		[NativeName(NativeNameType.Value, "3072")]
 		KmodGui = unchecked(3072),
 
-		/// <summary>
-		/// This is for source-level compatibility with SDL 2.0.0. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "KMOD_RESERVED")]
+		/// <summary>		/// This is for source-level compatibility with SDL 2.0.0. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RESERVED")]
+		[NativeName(NativeNameType.Value, "KMOD_SCROLL")]
 		KmodReserved = KmodScroll,
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_SystemCursor")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_SystemCursor")]
 	public enum SDLSystemCursor
 	{
-		/// <summary>
-		/// Arrow <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_ARROW")]
+		/// <summary>		/// Arrow <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_ARROW")]
+		[NativeName(NativeNameType.Value, "0")]
 		Arrow = unchecked(0),
 
-		/// <summary>
-		/// I-beam <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_IBEAM")]
+		/// <summary>		/// I-beam <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_IBEAM")]
+		[NativeName(NativeNameType.Value, "1")]
 		Ibeam = unchecked(1),
 
-		/// <summary>
-		/// Wait <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_WAIT")]
+		/// <summary>		/// Wait <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_WAIT")]
+		[NativeName(NativeNameType.Value, "2")]
 		Wait = unchecked(2),
 
-		/// <summary>
-		/// Crosshair <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_CROSSHAIR")]
+		/// <summary>		/// Crosshair <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_CROSSHAIR")]
+		[NativeName(NativeNameType.Value, "3")]
 		Crosshair = unchecked(3),
 
-		/// <summary>
-		/// Small wait cursor (or Wait if not available) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_WAITARROW")]
+		/// <summary>		/// Small wait cursor (or Wait if not available) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_WAITARROW")]
+		[NativeName(NativeNameType.Value, "4")]
 		Waitarrow = unchecked(4),
 
-		/// <summary>
-		/// Double arrow pointing northwest and southeast <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENWSE")]
+		/// <summary>		/// Double arrow pointing northwest and southeast <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENWSE")]
+		[NativeName(NativeNameType.Value, "5")]
 		Sizenwse = unchecked(5),
 
-		/// <summary>
-		/// Double arrow pointing northeast and southwest <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENESW")]
+		/// <summary>		/// Double arrow pointing northeast and southwest <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENESW")]
+		[NativeName(NativeNameType.Value, "6")]
 		Sizenesw = unchecked(6),
 
-		/// <summary>
-		/// Double arrow pointing west and east <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZEWE")]
+		/// <summary>		/// Double arrow pointing west and east <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZEWE")]
+		[NativeName(NativeNameType.Value, "7")]
 		Sizewe = unchecked(7),
 
-		/// <summary>
-		/// Double arrow pointing north and south <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENS")]
+		/// <summary>		/// Double arrow pointing north and south <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZENS")]
+		[NativeName(NativeNameType.Value, "8")]
 		Sizens = unchecked(8),
 
-		/// <summary>
-		/// Four pointed arrow pointing north, south, east, and west <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZEALL")]
+		/// <summary>		/// Four pointed arrow pointing north, south, east, and west <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_SIZEALL")]
+		[NativeName(NativeNameType.Value, "9")]
 		Sizeall = unchecked(9),
 
-		/// <summary>
-		/// Slashed circle or crossbones <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_NO")]
+		/// <summary>		/// Slashed circle or crossbones <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_NO")]
+		[NativeName(NativeNameType.Value, "10")]
 		No = unchecked(10),
 
-		/// <summary>
-		/// Hand <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_HAND")]
+		/// <summary>		/// Hand <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSTEM_CURSOR_HAND")]
+		[NativeName(NativeNameType.Value, "11")]
 		Hand = unchecked(11),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_NUM_SYSTEM_CURSORS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_NUM_SYSTEM_CURSORS")]
+		[NativeName(NativeNameType.Value, "12")]
 		NumSystemCursors = unchecked(12),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_MouseWheelDirection")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_MouseWheelDirection")]
 	public enum SDLMouseWheelDirection
 	{
-		/// <summary>
-		/// The scroll direction is normal <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_NORMAL")]
+		/// <summary>		/// The scroll direction is normal <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_NORMAL")]
+		[NativeName(NativeNameType.Value, "0")]
 		MousewheelNormal = unchecked(0),
 
-		/// <summary>
-		/// The scroll direction is flipped / natural <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_FLIPPED")]
+		/// <summary>		/// The scroll direction is flipped / natural <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_FLIPPED")]
+		[NativeName(NativeNameType.Value, "1")]
 		MousewheelFlipped = unchecked(1),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_JoystickType")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_JoystickType")]
 	public enum SDLJoystickType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_GAMECONTROLLER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_GAMECONTROLLER")]
+		[NativeName(NativeNameType.Value, "1")]
 		Gamecontroller = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_WHEEL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_WHEEL")]
+		[NativeName(NativeNameType.Value, "2")]
 		Wheel = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_ARCADE_STICK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_ARCADE_STICK")]
+		[NativeName(NativeNameType.Value, "3")]
 		ArcadeStick = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_FLIGHT_STICK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_FLIGHT_STICK")]
+		[NativeName(NativeNameType.Value, "4")]
 		FlightStick = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_DANCE_PAD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_DANCE_PAD")]
+		[NativeName(NativeNameType.Value, "5")]
 		DancePad = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_GUITAR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_GUITAR")]
+		[NativeName(NativeNameType.Value, "6")]
 		Guitar = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_DRUM_KIT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_DRUM_KIT")]
+		[NativeName(NativeNameType.Value, "7")]
 		DrumKit = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_ARCADE_PAD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_ARCADE_PAD")]
+		[NativeName(NativeNameType.Value, "8")]
 		ArcadePad = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_THROTTLE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_TYPE_THROTTLE")]
+		[NativeName(NativeNameType.Value, "9")]
 		Throttle = unchecked(9),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_JoystickPowerLevel")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_JoystickPowerLevel")]
 	public enum SDLJoystickPowerLevel
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "-1")]
 		Unknown = unchecked(-1),
 
-		/// <summary>
-		/// <br/>
-		/// <<br/>
-		/// = 5% <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_EMPTY")]
+		/// <summary>		/// <br/>		/// <<br/>		/// = 5% <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_EMPTY")]
+		[NativeName(NativeNameType.Value, "0")]
 		Empty = unchecked(0),
 
-		/// <summary>
-		/// <br/>
-		/// <<br/>
-		/// = 20% <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_LOW")]
+		/// <summary>		/// <br/>		/// <<br/>		/// = 20% <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_LOW")]
+		[NativeName(NativeNameType.Value, "1")]
 		Low = unchecked(1),
 
-		/// <summary>
-		/// <br/>
-		/// <<br/>
-		/// = 70% <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_MEDIUM")]
+		/// <summary>		/// <br/>		/// <<br/>		/// = 70% <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_MEDIUM")]
+		[NativeName(NativeNameType.Value, "2")]
 		Medium = unchecked(2),
 
-		/// <summary>
-		/// <br/>
-		/// <<br/>
-		/// = 100% <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_FULL")]
+		/// <summary>		/// <br/>		/// <<br/>		/// = 100% <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_FULL")]
+		[NativeName(NativeNameType.Value, "3")]
 		Full = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_WIRED")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_WIRED")]
+		[NativeName(NativeNameType.Value, "4")]
 		Wired = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_MAX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYSTICK_POWER_MAX")]
+		[NativeName(NativeNameType.Value, "5")]
 		Max = unchecked(5),
 
 	}
 
-	/// <summary>
-	/// The different sensors defined by SDL<br/>
-	/// Additional sensors may be available, using platform dependent semantics.<br/>
-	/// Hare are the additional Android sensors:<br/>
-	/// https://developer.android.com/reference/android/hardware/SensorEvent.html#values<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_SensorType")]
+	/// <summary>	/// The different sensors defined by SDL<br/>	/// Additional sensors may be available, using platform dependent semantics.<br/>	/// Hare are the additional Android sensors:<br/>	/// https://developer.android.com/reference/android/hardware/SensorEvent.html#values<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_SensorType")]
 	public enum SDLSensorType
 	{
-		/// <summary>
-		/// Returned for an invalid sensor <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_INVALID")]
+		/// <summary>		/// Returned for an invalid sensor <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_INVALID")]
+		[NativeName(NativeNameType.Value, "-1")]
 		Invalid = unchecked(-1),
 
-		/// <summary>
-		/// Unknown sensor type <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_UNKNOWN")]
+		/// <summary>		/// Unknown sensor type <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// Accelerometer <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL")]
+		/// <summary>		/// Accelerometer <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL")]
+		[NativeName(NativeNameType.Value, "1")]
 		Accel = unchecked(1),
 
-		/// <summary>
-		/// Gyroscope <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO")]
+		/// <summary>		/// Gyroscope <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO")]
+		[NativeName(NativeNameType.Value, "2")]
 		Gyro = unchecked(2),
 
-		/// <summary>
-		/// Accelerometer for left Joy-Con controller and Wii nunchuk <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_L")]
+		/// <summary>		/// Accelerometer for left Joy-Con controller and Wii nunchuk <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_L")]
+		[NativeName(NativeNameType.Value, "3")]
 		Accell = unchecked(3),
 
-		/// <summary>
-		/// Gyroscope for left Joy-Con controller <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_L")]
+		/// <summary>		/// Gyroscope for left Joy-Con controller <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_L")]
+		[NativeName(NativeNameType.Value, "4")]
 		Gyrol = unchecked(4),
 
-		/// <summary>
-		/// Accelerometer for right Joy-Con controller <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_R")]
+		/// <summary>		/// Accelerometer for right Joy-Con controller <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_R")]
+		[NativeName(NativeNameType.Value, "5")]
 		Accelr = unchecked(5),
 
-		/// <summary>
-		/// Gyroscope for right Joy-Con controller <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_R")]
+		/// <summary>		/// Gyroscope for right Joy-Con controller <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_R")]
+		[NativeName(NativeNameType.Value, "6")]
 		Gyror = unchecked(6),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GameControllerType")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GameControllerType")]
 	public enum SDLGameControllerType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_XBOX360")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_XBOX360")]
+		[NativeName(NativeNameType.Value, "1")]
 		Xbox360 = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_XBOXONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_XBOXONE")]
+		[NativeName(NativeNameType.Value, "2")]
 		Xboxone = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS3")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS3")]
+		[NativeName(NativeNameType.Value, "3")]
 		Ps3 = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS4")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS4")]
+		[NativeName(NativeNameType.Value, "4")]
 		Ps4 = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_PRO")]
+		[NativeName(NativeNameType.Value, "5")]
 		NintendoSwitchPro = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_VIRTUAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_VIRTUAL")]
+		[NativeName(NativeNameType.Value, "6")]
 		Virtual = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS5")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_PS5")]
+		[NativeName(NativeNameType.Value, "7")]
 		Ps5 = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_AMAZON_LUNA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_AMAZON_LUNA")]
+		[NativeName(NativeNameType.Value, "8")]
 		AmazonLuna = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_GOOGLE_STADIA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_GOOGLE_STADIA")]
+		[NativeName(NativeNameType.Value, "9")]
 		GoogleStadia = unchecked(9),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NVIDIA_SHIELD")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NVIDIA_SHIELD")]
+		[NativeName(NativeNameType.Value, "10")]
 		NvidiaShield = unchecked(10),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_LEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_LEFT")]
+		[NativeName(NativeNameType.Value, "11")]
 		NintendoSwitchJoyconLeft = unchecked(11),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_RIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_RIGHT")]
+		[NativeName(NativeNameType.Value, "12")]
 		NintendoSwitchJoyconRight = unchecked(12),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_PAIR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_TYPE_NINTENDO_SWITCH_JOYCON_PAIR")]
+		[NativeName(NativeNameType.Value, "13")]
 		NintendoSwitchJoyconPair = unchecked(13),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GameControllerBindType")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GameControllerBindType")]
 	public enum SDLGameControllerBindType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_NONE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		BindtypeNone = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_BUTTON")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_BUTTON")]
+		[NativeName(NativeNameType.Value, "1")]
 		BindtypeButton = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_AXIS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_AXIS")]
+		[NativeName(NativeNameType.Value, "2")]
 		BindtypeAxis = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_HAT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_HAT")]
+		[NativeName(NativeNameType.Value, "3")]
 		BindtypeHat = unchecked(3),
 
 	}
 
-	/// <summary>
-	/// The list of axes available from a controller<br/>
-	/// Thumbstick axis values range from SDL_JOYSTICK_AXIS_MIN to SDL_JOYSTICK_AXIS_MAX,<br/>
-	/// and are centered within ~8000 of zero, though advanced UI will allow users to set<br/>
-	/// or autodetect the dead zone, which varies between controllers.<br/>
-	/// Trigger axis values range from 0 to SDL_JOYSTICK_AXIS_MAX.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GameControllerAxis")]
+	/// <summary>	/// The list of axes available from a controller<br/>	/// Thumbstick axis values range from SDL_JOYSTICK_AXIS_MIN to SDL_JOYSTICK_AXIS_MAX,<br/>	/// and are centered within ~8000 of zero, though advanced UI will allow users to set<br/>	/// or autodetect the dead zone, which varies between controllers.<br/>	/// Trigger axis values range from 0 to SDL_JOYSTICK_AXIS_MAX.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GameControllerAxis")]
 	public enum SDLGameControllerAxis
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_INVALID")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_INVALID")]
+		[NativeName(NativeNameType.Value, "-1")]
 		Invalid = unchecked(-1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_LEFTX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_LEFTX")]
+		[NativeName(NativeNameType.Value, "0")]
 		Leftx = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_LEFTY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_LEFTY")]
+		[NativeName(NativeNameType.Value, "1")]
 		Lefty = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_RIGHTX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_RIGHTX")]
+		[NativeName(NativeNameType.Value, "2")]
 		Rightx = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_RIGHTY")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_RIGHTY")]
+		[NativeName(NativeNameType.Value, "3")]
 		Righty = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_TRIGGERLEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_TRIGGERLEFT")]
+		[NativeName(NativeNameType.Value, "4")]
 		Triggerleft = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_TRIGGERRIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_TRIGGERRIGHT")]
+		[NativeName(NativeNameType.Value, "5")]
 		Triggerright = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_MAX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_AXIS_MAX")]
+		[NativeName(NativeNameType.Value, "6")]
 		Max = unchecked(6),
 
 	}
 
-	/// <summary>
-	/// The list of buttons available from a controller<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_GameControllerButton")]
+	/// <summary>	/// The list of buttons available from a controller<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GameControllerButton")]
 	public enum SDLGameControllerButton
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_INVALID")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_INVALID")]
+		[NativeName(NativeNameType.Value, "-1")]
 		Invalid = unchecked(-1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_A")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_A")]
+		[NativeName(NativeNameType.Value, "0")]
 		Buttona = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_B")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_B")]
+		[NativeName(NativeNameType.Value, "1")]
 		Buttonb = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_X")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_X")]
+		[NativeName(NativeNameType.Value, "2")]
 		Buttonx = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_Y")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_Y")]
+		[NativeName(NativeNameType.Value, "3")]
 		Buttony = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_BACK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_BACK")]
+		[NativeName(NativeNameType.Value, "4")]
 		Back = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_GUIDE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_GUIDE")]
+		[NativeName(NativeNameType.Value, "5")]
 		Guide = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_START")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_START")]
+		[NativeName(NativeNameType.Value, "6")]
 		Start = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_LEFTSTICK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_LEFTSTICK")]
+		[NativeName(NativeNameType.Value, "7")]
 		Leftstick = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_RIGHTSTICK")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_RIGHTSTICK")]
+		[NativeName(NativeNameType.Value, "8")]
 		Rightstick = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_LEFTSHOULDER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_LEFTSHOULDER")]
+		[NativeName(NativeNameType.Value, "9")]
 		Leftshoulder = unchecked(9),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_RIGHTSHOULDER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_RIGHTSHOULDER")]
+		[NativeName(NativeNameType.Value, "10")]
 		Rightshoulder = unchecked(10),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_UP")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_UP")]
+		[NativeName(NativeNameType.Value, "11")]
 		DpadUp = unchecked(11),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_DOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_DOWN")]
+		[NativeName(NativeNameType.Value, "12")]
 		DpadDown = unchecked(12),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_LEFT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_LEFT")]
+		[NativeName(NativeNameType.Value, "13")]
 		DpadLeft = unchecked(13),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_RIGHT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_DPAD_RIGHT")]
+		[NativeName(NativeNameType.Value, "14")]
 		DpadRight = unchecked(14),
 
-		/// <summary>
-		/// Xbox Series X share button, PS5 microphone button, Nintendo Switch Pro capture button, Amazon Luna microphone button <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_MISC1")]
+		/// <summary>		/// Xbox Series X share button, PS5 microphone button, Nintendo Switch Pro capture button, Amazon Luna microphone button <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_MISC1")]
+		[NativeName(NativeNameType.Value, "15")]
 		Misc1 = unchecked(15),
 
-		/// <summary>
-		/// Xbox Elite paddle P1 (upper left, facing the back) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE1")]
+		/// <summary>		/// Xbox Elite paddle P1 (upper left, facing the back) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE1")]
+		[NativeName(NativeNameType.Value, "16")]
 		Paddle1 = unchecked(16),
 
-		/// <summary>
-		/// Xbox Elite paddle P3 (upper right, facing the back) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE2")]
+		/// <summary>		/// Xbox Elite paddle P3 (upper right, facing the back) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE2")]
+		[NativeName(NativeNameType.Value, "17")]
 		Paddle2 = unchecked(17),
 
-		/// <summary>
-		/// Xbox Elite paddle P2 (lower left, facing the back) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE3")]
+		/// <summary>		/// Xbox Elite paddle P2 (lower left, facing the back) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE3")]
+		[NativeName(NativeNameType.Value, "18")]
 		Paddle3 = unchecked(18),
 
-		/// <summary>
-		/// Xbox Elite paddle P4 (lower right, facing the back) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE4")]
+		/// <summary>		/// Xbox Elite paddle P4 (lower right, facing the back) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_PADDLE4")]
+		[NativeName(NativeNameType.Value, "19")]
 		Paddle4 = unchecked(19),
 
-		/// <summary>
-		/// PS4/PS5 touchpad button <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_TOUCHPAD")]
+		/// <summary>		/// PS4/PS5 touchpad button <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_TOUCHPAD")]
+		[NativeName(NativeNameType.Value, "20")]
 		Touchpad = unchecked(20),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_MAX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_MAX")]
+		[NativeName(NativeNameType.Value, "21")]
 		Max = unchecked(21),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_TouchDeviceType")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_TouchDeviceType")]
 	public enum SDLTouchDeviceType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INVALID")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INVALID")]
+		[NativeName(NativeNameType.Value, "-1")]
 		Invalid = unchecked(-1),
 
-		/// <summary>
-		/// touch screen with window-relative coordinates <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_DIRECT")]
+		/// <summary>		/// touch screen with window-relative coordinates <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_DIRECT")]
+		[NativeName(NativeNameType.Value, "0")]
 		Direct = unchecked(0),
 
-		/// <summary>
-		/// trackpad with absolute device coordinates <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INDIRECT_ABSOLUTE")]
+		/// <summary>		/// trackpad with absolute device coordinates <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INDIRECT_ABSOLUTE")]
+		[NativeName(NativeNameType.Value, "1")]
 		IndirectAbsolute = unchecked(1),
 
-		/// <summary>
-		/// trackpad with screen cursor-relative coordinates <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INDIRECT_RELATIVE")]
+		/// <summary>		/// trackpad with screen cursor-relative coordinates <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TOUCH_DEVICE_INDIRECT_RELATIVE")]
+		[NativeName(NativeNameType.Value, "2")]
 		IndirectRelative = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// The types of events that can be delivered.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_EventType")]
+	/// <summary>	/// The types of events that can be delivered.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_EventType")]
 	public enum SDLEventType
 	{
-		/// <summary>
-		/// Unused (do not remove) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FIRSTEVENT")]
+		/// <summary>		/// Unused (do not remove) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FIRSTEVENT")]
+		[NativeName(NativeNameType.Value, "0")]
 		Firstevent = unchecked(0),
 
-		/// <summary>
-		/// User-requested quit <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_QUIT")]
+		/// <summary>		/// User-requested quit <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_QUIT")]
+		[NativeName(NativeNameType.Value, "256")]
 		Quit = unchecked(256),
 
-		/// <summary>
-		/// The application is being terminated by the OS<br/>
-		/// Called on iOS in applicationWillTerminate()<br/>
-		/// Called on Android in onDestroy()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_TERMINATING")]
+		/// <summary>		/// The application is being terminated by the OS<br/>		/// Called on iOS in applicationWillTerminate()<br/>		/// Called on Android in onDestroy()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_TERMINATING")]
+		[NativeName(NativeNameType.Value, "257")]
 		AppTerminating = unchecked(257),
 
-		/// <summary>
-		/// The application is low on memory, free memory if possible.<br/>
-		/// Called on iOS in applicationDidReceiveMemoryWarning()<br/>
-		/// Called on Android in onLowMemory()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_LOWMEMORY")]
+		/// <summary>		/// The application is low on memory, free memory if possible.<br/>		/// Called on iOS in applicationDidReceiveMemoryWarning()<br/>		/// Called on Android in onLowMemory()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_LOWMEMORY")]
+		[NativeName(NativeNameType.Value, "258")]
 		AppLowmemory = unchecked(258),
 
-		/// <summary>
-		/// The application is about to enter the background<br/>
-		/// Called on iOS in applicationWillResignActive()<br/>
-		/// Called on Android in onPause()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_WILLENTERBACKGROUND")]
+		/// <summary>		/// The application is about to enter the background<br/>		/// Called on iOS in applicationWillResignActive()<br/>		/// Called on Android in onPause()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_WILLENTERBACKGROUND")]
+		[NativeName(NativeNameType.Value, "259")]
 		AppWillenterbackground = unchecked(259),
 
-		/// <summary>
-		/// The application did enter the background and may not get CPU for some time<br/>
-		/// Called on iOS in applicationDidEnterBackground()<br/>
-		/// Called on Android in onPause()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_DIDENTERBACKGROUND")]
+		/// <summary>		/// The application did enter the background and may not get CPU for some time<br/>		/// Called on iOS in applicationDidEnterBackground()<br/>		/// Called on Android in onPause()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_DIDENTERBACKGROUND")]
+		[NativeName(NativeNameType.Value, "260")]
 		AppDidenterbackground = unchecked(260),
 
-		/// <summary>
-		/// The application is about to enter the foreground<br/>
-		/// Called on iOS in applicationWillEnterForeground()<br/>
-		/// Called on Android in onResume()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_WILLENTERFOREGROUND")]
+		/// <summary>		/// The application is about to enter the foreground<br/>		/// Called on iOS in applicationWillEnterForeground()<br/>		/// Called on Android in onResume()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_WILLENTERFOREGROUND")]
+		[NativeName(NativeNameType.Value, "261")]
 		AppWillenterforeground = unchecked(261),
 
-		/// <summary>
-		/// The application is now interactive<br/>
-		/// Called on iOS in applicationDidBecomeActive()<br/>
-		/// Called on Android in onResume()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_APP_DIDENTERFOREGROUND")]
+		/// <summary>		/// The application is now interactive<br/>		/// Called on iOS in applicationDidBecomeActive()<br/>		/// Called on Android in onResume()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_APP_DIDENTERFOREGROUND")]
+		[NativeName(NativeNameType.Value, "262")]
 		AppDidenterforeground = unchecked(262),
 
-		/// <summary>
-		/// The user's locale preferences have changed. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOCALECHANGED")]
+		/// <summary>		/// The user's locale preferences have changed. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOCALECHANGED")]
+		[NativeName(NativeNameType.Value, "263")]
 		Localechanged = unchecked(263),
 
-		/// <summary>
-		/// Display state change <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT")]
+		/// <summary>		/// Display state change <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT")]
+		[NativeName(NativeNameType.Value, "336")]
 		Displayevent = unchecked(336),
 
-		/// <summary>
-		/// Window state change <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT")]
+		/// <summary>		/// Window state change <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT")]
+		[NativeName(NativeNameType.Value, "512")]
 		Windowevent = unchecked(512),
 
-		/// <summary>
-		/// System specific event <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWMEVENT")]
+		/// <summary>		/// System specific event <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWMEVENT")]
+		[NativeName(NativeNameType.Value, "513")]
 		Syswmevent = unchecked(513),
 
-		/// <summary>
-		/// Key pressed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_KEYDOWN")]
+		/// <summary>		/// Key pressed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_KEYDOWN")]
+		[NativeName(NativeNameType.Value, "768")]
 		Keydown = unchecked(768),
 
-		/// <summary>
-		/// Key released <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_KEYUP")]
+		/// <summary>		/// Key released <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_KEYUP")]
+		[NativeName(NativeNameType.Value, "769")]
 		Keyup = unchecked(769),
 
-		/// <summary>
-		/// Keyboard text editing (composition) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTEDITING")]
+		/// <summary>		/// Keyboard text editing (composition) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTEDITING")]
+		[NativeName(NativeNameType.Value, "770")]
 		Textediting = unchecked(770),
 
-		/// <summary>
-		/// Keyboard text input <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTINPUT")]
+		/// <summary>		/// Keyboard text input <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTINPUT")]
+		[NativeName(NativeNameType.Value, "771")]
 		Textinput = unchecked(771),
 
-		/// <summary>
-		/// Keymap changed due to a system event such as an<br/>
-		/// input language or keyboard layout change.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_KEYMAPCHANGED")]
+		/// <summary>		/// Keymap changed due to a system event such as an<br/>		/// input language or keyboard layout change.<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_KEYMAPCHANGED")]
+		[NativeName(NativeNameType.Value, "772")]
 		Keymapchanged = unchecked(772),
 
-		/// <summary>
-		/// Extended keyboard text editing (composition) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTEDITING_EXT")]
+		/// <summary>		/// Extended keyboard text editing (composition) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTEDITING_EXT")]
+		[NativeName(NativeNameType.Value, "773")]
 		TexteditingExt = unchecked(773),
 
-		/// <summary>
-		/// Mouse moved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEMOTION")]
+		/// <summary>		/// Mouse moved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEMOTION")]
+		[NativeName(NativeNameType.Value, "1024")]
 		Mousemotion = unchecked(1024),
 
-		/// <summary>
-		/// Mouse button pressed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEBUTTONDOWN")]
+		/// <summary>		/// Mouse button pressed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEBUTTONDOWN")]
+		[NativeName(NativeNameType.Value, "1025")]
 		Mousebuttondown = unchecked(1025),
 
-		/// <summary>
-		/// Mouse button released <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEBUTTONUP")]
+		/// <summary>		/// Mouse button released <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEBUTTONUP")]
+		[NativeName(NativeNameType.Value, "1026")]
 		Mousebuttonup = unchecked(1026),
 
-		/// <summary>
-		/// Mouse wheel motion <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL")]
+		/// <summary>		/// Mouse wheel motion <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL")]
+		[NativeName(NativeNameType.Value, "1027")]
 		Mousewheel = unchecked(1027),
 
-		/// <summary>
-		/// Joystick axis motion <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYAXISMOTION")]
+		/// <summary>		/// Joystick axis motion <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYAXISMOTION")]
+		[NativeName(NativeNameType.Value, "1536")]
 		Joyaxismotion = unchecked(1536),
 
-		/// <summary>
-		/// Joystick trackball motion <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYBALLMOTION")]
+		/// <summary>		/// Joystick trackball motion <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYBALLMOTION")]
+		[NativeName(NativeNameType.Value, "1537")]
 		Joyballmotion = unchecked(1537),
 
-		/// <summary>
-		/// Joystick hat position change <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYHATMOTION")]
+		/// <summary>		/// Joystick hat position change <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYHATMOTION")]
+		[NativeName(NativeNameType.Value, "1538")]
 		Joyhatmotion = unchecked(1538),
 
-		/// <summary>
-		/// Joystick button pressed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYBUTTONDOWN")]
+		/// <summary>		/// Joystick button pressed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYBUTTONDOWN")]
+		[NativeName(NativeNameType.Value, "1539")]
 		Joybuttondown = unchecked(1539),
 
-		/// <summary>
-		/// Joystick button released <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYBUTTONUP")]
+		/// <summary>		/// Joystick button released <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYBUTTONUP")]
+		[NativeName(NativeNameType.Value, "1540")]
 		Joybuttonup = unchecked(1540),
 
-		/// <summary>
-		/// A new joystick has been inserted into the system <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYDEVICEADDED")]
+		/// <summary>		/// A new joystick has been inserted into the system <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYDEVICEADDED")]
+		[NativeName(NativeNameType.Value, "1541")]
 		Joydeviceadded = unchecked(1541),
 
-		/// <summary>
-		/// An opened joystick has been removed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYDEVICEREMOVED")]
+		/// <summary>		/// An opened joystick has been removed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYDEVICEREMOVED")]
+		[NativeName(NativeNameType.Value, "1542")]
 		Joydeviceremoved = unchecked(1542),
 
-		/// <summary>
-		/// Joystick battery level change <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_JOYBATTERYUPDATED")]
+		/// <summary>		/// Joystick battery level change <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_JOYBATTERYUPDATED")]
+		[NativeName(NativeNameType.Value, "1543")]
 		Joybatteryupdated = unchecked(1543),
 
-		/// <summary>
-		/// Game controller axis motion <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERAXISMOTION")]
+		/// <summary>		/// Game controller axis motion <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERAXISMOTION")]
+		[NativeName(NativeNameType.Value, "1616")]
 		Controlleraxismotion = unchecked(1616),
 
-		/// <summary>
-		/// Game controller button pressed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERBUTTONDOWN")]
+		/// <summary>		/// Game controller button pressed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERBUTTONDOWN")]
+		[NativeName(NativeNameType.Value, "1617")]
 		Controllerbuttondown = unchecked(1617),
 
-		/// <summary>
-		/// Game controller button released <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERBUTTONUP")]
+		/// <summary>		/// Game controller button released <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERBUTTONUP")]
+		[NativeName(NativeNameType.Value, "1618")]
 		Controllerbuttonup = unchecked(1618),
 
-		/// <summary>
-		/// A new Game controller has been inserted into the system <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEADDED")]
+		/// <summary>		/// A new Game controller has been inserted into the system <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEADDED")]
+		[NativeName(NativeNameType.Value, "1619")]
 		Controllerdeviceadded = unchecked(1619),
 
-		/// <summary>
-		/// An opened Game controller has been removed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEREMOVED")]
+		/// <summary>		/// An opened Game controller has been removed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEREMOVED")]
+		[NativeName(NativeNameType.Value, "1620")]
 		Controllerdeviceremoved = unchecked(1620),
 
-		/// <summary>
-		/// The controller mapping was updated <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEREMAPPED")]
+		/// <summary>		/// The controller mapping was updated <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERDEVICEREMAPPED")]
+		[NativeName(NativeNameType.Value, "1621")]
 		Controllerdeviceremapped = unchecked(1621),
 
-		/// <summary>
-		/// Game controller touchpad was touched <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADDOWN")]
+		/// <summary>		/// Game controller touchpad was touched <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADDOWN")]
+		[NativeName(NativeNameType.Value, "1622")]
 		Controllertouchpaddown = unchecked(1622),
 
-		/// <summary>
-		/// Game controller touchpad finger was moved <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADMOTION")]
+		/// <summary>		/// Game controller touchpad finger was moved <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADMOTION")]
+		[NativeName(NativeNameType.Value, "1623")]
 		Controllertouchpadmotion = unchecked(1623),
 
-		/// <summary>
-		/// Game controller touchpad finger was lifted <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADUP")]
+		/// <summary>		/// Game controller touchpad finger was lifted <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERTOUCHPADUP")]
+		[NativeName(NativeNameType.Value, "1624")]
 		Controllertouchpadup = unchecked(1624),
 
-		/// <summary>
-		/// Game controller sensor was updated <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERSENSORUPDATE")]
+		/// <summary>		/// Game controller sensor was updated <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLERSENSORUPDATE")]
+		[NativeName(NativeNameType.Value, "1625")]
 		Controllersensorupdate = unchecked(1625),
 
-		/// <summary>
-		/// Touch events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FINGERDOWN")]
+		/// <summary>		/// Touch events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FINGERDOWN")]
+		[NativeName(NativeNameType.Value, "1792")]
 		Fingerdown = unchecked(1792),
 
-		/// <summary>
-		/// Touch events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FINGERUP")]
+		/// <summary>		/// Touch events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FINGERUP")]
+		[NativeName(NativeNameType.Value, "1793")]
 		Fingerup = unchecked(1793),
 
-		/// <summary>
-		/// Touch events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FINGERMOTION")]
+		/// <summary>		/// Touch events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FINGERMOTION")]
+		[NativeName(NativeNameType.Value, "1794")]
 		Fingermotion = unchecked(1794),
 
-		/// <summary>
-		/// Gesture events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DOLLARGESTURE")]
+		/// <summary>		/// Gesture events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DOLLARGESTURE")]
+		[NativeName(NativeNameType.Value, "2048")]
 		Dollargesture = unchecked(2048),
 
-		/// <summary>
-		/// Gesture events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DOLLARRECORD")]
+		/// <summary>		/// Gesture events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DOLLARRECORD")]
+		[NativeName(NativeNameType.Value, "2049")]
 		Dollarrecord = unchecked(2049),
 
-		/// <summary>
-		/// Gesture events <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MULTIGESTURE")]
+		/// <summary>		/// Gesture events <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MULTIGESTURE")]
+		[NativeName(NativeNameType.Value, "2050")]
 		Multigesture = unchecked(2050),
 
-		/// <summary>
-		/// The clipboard or primary selection changed <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_CLIPBOARDUPDATE")]
+		/// <summary>		/// The clipboard or primary selection changed <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_CLIPBOARDUPDATE")]
+		[NativeName(NativeNameType.Value, "2304")]
 		Clipboardupdate = unchecked(2304),
 
-		/// <summary>
-		/// The system requests a file open <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DROPFILE")]
+		/// <summary>		/// The system requests a file open <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DROPFILE")]
+		[NativeName(NativeNameType.Value, "4096")]
 		Dropfile = unchecked(4096),
 
-		/// <summary>
-		/// text/plain drag-and-drop event <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DROPTEXT")]
+		/// <summary>		/// text/plain drag-and-drop event <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DROPTEXT")]
+		[NativeName(NativeNameType.Value, "4097")]
 		Droptext = unchecked(4097),
 
-		/// <summary>
-		/// A new set of drops is beginning (NULL filename) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DROPBEGIN")]
+		/// <summary>		/// A new set of drops is beginning (NULL filename) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DROPBEGIN")]
+		[NativeName(NativeNameType.Value, "4098")]
 		Dropbegin = unchecked(4098),
 
-		/// <summary>
-		/// Current set of drops is now complete (NULL filename) <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_DROPCOMPLETE")]
+		/// <summary>		/// Current set of drops is now complete (NULL filename) <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DROPCOMPLETE")]
+		[NativeName(NativeNameType.Value, "4099")]
 		Dropcomplete = unchecked(4099),
 
-		/// <summary>
-		/// A new audio device is available <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_AUDIODEVICEADDED")]
+		/// <summary>		/// A new audio device is available <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_AUDIODEVICEADDED")]
+		[NativeName(NativeNameType.Value, "4352")]
 		Audiodeviceadded = unchecked(4352),
 
-		/// <summary>
-		/// An audio device has been removed. <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_AUDIODEVICEREMOVED")]
+		/// <summary>		/// An audio device has been removed. <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_AUDIODEVICEREMOVED")]
+		[NativeName(NativeNameType.Value, "4353")]
 		Audiodeviceremoved = unchecked(4353),
 
-		/// <summary>
-		/// A sensor was updated <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SENSORUPDATE")]
+		/// <summary>		/// A sensor was updated <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSORUPDATE")]
+		[NativeName(NativeNameType.Value, "4608")]
 		Sensorupdate = unchecked(4608),
 
-		/// <summary>
-		/// The render targets have been reset and their contents need to be updated <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDER_TARGETS_RESET")]
+		/// <summary>		/// The render targets have been reset and their contents need to be updated <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDER_TARGETS_RESET")]
+		[NativeName(NativeNameType.Value, "8192")]
 		RenderTargetsReset = unchecked(8192),
 
-		/// <summary>
-		/// The device has been reset and all textures need to be recreated <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDER_DEVICE_RESET")]
+		/// <summary>		/// The device has been reset and all textures need to be recreated <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDER_DEVICE_RESET")]
+		[NativeName(NativeNameType.Value, "8193")]
 		RenderDeviceReset = unchecked(8193),
 
-		/// <summary>
-		/// Signals the end of an event poll cycle <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POLLSENTINEL")]
+		/// <summary>		/// Signals the end of an event poll cycle <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POLLSENTINEL")]
+		[NativeName(NativeNameType.Value, "32512")]
 		Pollsentinel = unchecked(32512),
 
-		/// <summary>
-		/// Events ::SDL_USEREVENT through ::SDL_LASTEVENT are for your use,<br/>
-		/// and should be allocated with SDL_RegisterEvents()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_USEREVENT")]
+		/// <summary>		/// Events ::SDL_USEREVENT through ::SDL_LASTEVENT are for your use,<br/>		/// and should be allocated with SDL_RegisterEvents()<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_USEREVENT")]
+		[NativeName(NativeNameType.Value, "32768")]
 		Userevent = unchecked(32768),
 
-		/// <summary>
-		/// This last event is only for bounding internal arrays<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LASTEVENT")]
+		/// <summary>		/// This last event is only for bounding internal arrays<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LASTEVENT")]
+		[NativeName(NativeNameType.Value, "65535")]
 		Lastevent = unchecked(65535),
 
 	}
 
-	/// <summary>
-	/// These are the various supported windowing subsystems<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_SYSWM_TYPE")]
+	/// <summary>	/// These are the various supported windowing subsystems<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_SYSWM_TYPE")]
 	public enum SdlSyswmType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_UNKNOWN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		Unknown = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WINDOWS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WINDOWS")]
+		[NativeName(NativeNameType.Value, "1")]
 		Windows = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_X11")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_X11")]
+		[NativeName(NativeNameType.Value, "2")]
 		Syswmx11 = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_DIRECTFB")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_DIRECTFB")]
+		[NativeName(NativeNameType.Value, "3")]
 		Directfb = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_COCOA")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_COCOA")]
+		[NativeName(NativeNameType.Value, "4")]
 		Cocoa = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_UIKIT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_UIKIT")]
+		[NativeName(NativeNameType.Value, "5")]
 		Uikit = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WAYLAND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WAYLAND")]
+		[NativeName(NativeNameType.Value, "6")]
 		Wayland = unchecked(6),
 
-		/// <summary>
-		/// no longer available, left for API/ABI compatibility. Remove in 2.1! <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_MIR")]
+		/// <summary>		/// no longer available, left for API/ABI compatibility. Remove in 2.1! <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_MIR")]
+		[NativeName(NativeNameType.Value, "7")]
 		Mir = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WINRT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_WINRT")]
+		[NativeName(NativeNameType.Value, "8")]
 		Winrt = unchecked(8),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_ANDROID")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_ANDROID")]
+		[NativeName(NativeNameType.Value, "9")]
 		Android = unchecked(9),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_VIVANTE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_VIVANTE")]
+		[NativeName(NativeNameType.Value, "10")]
 		Vivante = unchecked(10),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_OS2")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_OS2")]
+		[NativeName(NativeNameType.Value, "11")]
 		Os2 = unchecked(11),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_HAIKU")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_HAIKU")]
+		[NativeName(NativeNameType.Value, "12")]
 		Haiku = unchecked(12),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_KMSDRM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_KMSDRM")]
+		[NativeName(NativeNameType.Value, "13")]
 		Kmsdrm = unchecked(13),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_RISCOS")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_RISCOS")]
+		[NativeName(NativeNameType.Value, "14")]
 		Riscos = unchecked(14),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// @<br/>
-	/// { <br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_eventaction")]
+	/// <summary>	/// <br/>	/// @<br/>	/// { <br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_eventaction")]
 	public enum SDLEventaction
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ADDEVENT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ADDEVENT")]
+		[NativeName(NativeNameType.Value, "0")]
 		Addevent = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_PEEKEVENT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PEEKEVENT")]
+		[NativeName(NativeNameType.Value, "1")]
 		Peekevent = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_GETEVENT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GETEVENT")]
+		[NativeName(NativeNameType.Value, "2")]
 		Getevent = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_HintPriority")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_HintPriority")]
 	public enum SDLHintPriority
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HINT_DEFAULT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HINT_DEFAULT")]
+		[NativeName(NativeNameType.Value, "0")]
 		Default = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HINT_NORMAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HINT_NORMAL")]
+		[NativeName(NativeNameType.Value, "1")]
 		Normal = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_HINT_OVERRIDE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HINT_OVERRIDE")]
+		[NativeName(NativeNameType.Value, "2")]
 		Override = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// By default the application category is enabled at the INFO level,<br/>
-	/// the assert category is enabled at the WARN level, test is enabled<br/>
-	/// at the VERBOSE level and all other categories are enabled at the<br/>
-	/// CRITICAL level.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_LogCategory")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// By default the application category is enabled at the INFO level,<br/>	/// the assert category is enabled at the WARN level, test is enabled<br/>	/// at the VERBOSE level and all other categories are enabled at the<br/>	/// CRITICAL level.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_LogCategory")]
 	public enum SDLLogCategory
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_APPLICATION")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_APPLICATION")]
+		[NativeName(NativeNameType.Value, "0")]
 		Application = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_ERROR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_ERROR")]
+		[NativeName(NativeNameType.Value, "1")]
 		Error = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_ASSERT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_ASSERT")]
+		[NativeName(NativeNameType.Value, "2")]
 		Assert = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_SYSTEM")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_SYSTEM")]
+		[NativeName(NativeNameType.Value, "3")]
 		System = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_AUDIO")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_AUDIO")]
+		[NativeName(NativeNameType.Value, "4")]
 		Audio = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_VIDEO")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_VIDEO")]
+		[NativeName(NativeNameType.Value, "5")]
 		Video = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RENDER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RENDER")]
+		[NativeName(NativeNameType.Value, "6")]
 		Render = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_INPUT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_INPUT")]
+		[NativeName(NativeNameType.Value, "7")]
 		Input = unchecked(7),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_TEST")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_TEST")]
+		[NativeName(NativeNameType.Value, "8")]
 		Test = unchecked(8),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED1")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED1")]
+		[NativeName(NativeNameType.Value, "9")]
 		Reserved1 = unchecked(9),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED2")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED2")]
+		[NativeName(NativeNameType.Value, "10")]
 		Reserved2 = unchecked(10),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED3")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED3")]
+		[NativeName(NativeNameType.Value, "11")]
 		Reserved3 = unchecked(11),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED4")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED4")]
+		[NativeName(NativeNameType.Value, "12")]
 		Reserved4 = unchecked(12),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED5")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED5")]
+		[NativeName(NativeNameType.Value, "13")]
 		Reserved5 = unchecked(13),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED6")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED6")]
+		[NativeName(NativeNameType.Value, "14")]
 		Reserved6 = unchecked(14),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED7")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED7")]
+		[NativeName(NativeNameType.Value, "15")]
 		Reserved7 = unchecked(15),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED8")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED8")]
+		[NativeName(NativeNameType.Value, "16")]
 		Reserved8 = unchecked(16),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED9")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED9")]
+		[NativeName(NativeNameType.Value, "17")]
 		Reserved9 = unchecked(17),
 
-		/// <summary>
-		/// Reserved for future SDL library use <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED10")]
+		/// <summary>		/// Reserved for future SDL library use <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_RESERVED10")]
+		[NativeName(NativeNameType.Value, "18")]
 		Reserved10 = unchecked(18),
 
-		/// <summary>
-		/// Beyond this point is reserved for application use, e.g.<br/>
-		/// enum {<br/>
-		/// MYAPP_CATEGORY_AWESOME1 = SDL_LOG_CATEGORY_CUSTOM,<br/>
-		/// MYAPP_CATEGORY_AWESOME2,<br/>
-		/// MYAPP_CATEGORY_AWESOME3,<br/>
-		/// ...<br/>
-		/// };<br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_CUSTOM")]
+		/// <summary>		/// Beyond this point is reserved for application use, e.g.<br/>		/// enum {<br/>		/// MYAPP_CATEGORY_AWESOME1 = SDL_LOG_CATEGORY_CUSTOM,<br/>		/// MYAPP_CATEGORY_AWESOME2,<br/>		/// MYAPP_CATEGORY_AWESOME3,<br/>		/// ...<br/>		/// };<br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_CATEGORY_CUSTOM")]
+		[NativeName(NativeNameType.Value, "19")]
 		Custom = unchecked(19),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_LogPriority")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_LogPriority")]
 	public enum SDLLogPriority
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_VERBOSE")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_VERBOSE")]
+		[NativeName(NativeNameType.Value, "1")]
 		Verbose = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_DEBUG")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_DEBUG")]
+		[NativeName(NativeNameType.Value, "2")]
 		Debug = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_INFO")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_INFO")]
+		[NativeName(NativeNameType.Value, "3")]
 		Info = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_WARN")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_WARN")]
+		[NativeName(NativeNameType.Value, "4")]
 		Warn = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_ERROR")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_ERROR")]
+		[NativeName(NativeNameType.Value, "5")]
 		Error = unchecked(5),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_CRITICAL")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_LOG_PRIORITY_CRITICAL")]
+		[NativeName(NativeNameType.Value, "6")]
 		Critical = unchecked(6),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_NUM_LOG_PRIORITIES")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_NUM_LOG_PRIORITIES")]
+		[NativeName(NativeNameType.Value, "7")]
 		NumLogPriorities = unchecked(7),
 
 	}
 
-	/// <summary>
-	/// SDL_MessageBox flags. If supported will display warning icon, etc.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_MessageBoxFlags")]
+	/// <summary>	/// SDL_MessageBox flags. If supported will display warning icon, etc.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_MessageBoxFlags")]
 	public enum SDLMessageBoxFlags
 	{
-		/// <summary>
-		/// error dialog <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_ERROR")]
+		/// <summary>		/// error dialog <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_ERROR")]
+		[NativeName(NativeNameType.Value, "16")]
 		MessageboxError = unchecked(16),
 
-		/// <summary>
-		/// warning dialog <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_WARNING")]
+		/// <summary>		/// warning dialog <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_WARNING")]
+		[NativeName(NativeNameType.Value, "32")]
 		MessageboxWarning = unchecked(32),
 
-		/// <summary>
-		/// informational dialog <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_INFORMATION")]
+		/// <summary>		/// informational dialog <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_INFORMATION")]
+		[NativeName(NativeNameType.Value, "64")]
 		MessageboxInformation = unchecked(64),
 
-		/// <summary>
-		/// buttons placed left to right <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT")]
+		/// <summary>		/// buttons placed left to right <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT")]
+		[NativeName(NativeNameType.Value, "128")]
 		MessageboxButtonsLeftToRight = unchecked(128),
 
-		/// <summary>
-		/// buttons placed right to left <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT")]
+		/// <summary>		/// buttons placed right to left <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT")]
+		[NativeName(NativeNameType.Value, "256")]
 		MessageboxButtonsRightToLeft = unchecked(256),
 
 	}
 
-	/// <summary>
-	/// Flags for SDL_MessageBoxButtonData.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_MessageBoxButtonFlags")]
+	/// <summary>	/// Flags for SDL_MessageBoxButtonData.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_MessageBoxButtonFlags")]
 	public enum SDLMessageBoxButtonFlags
 	{
-		/// <summary>
-		/// Marks the default button when return is hit <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT")]
+		/// <summary>		/// Marks the default button when return is hit <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT")]
+		[NativeName(NativeNameType.Value, "1")]
 		MessageboxButtonReturnkeyDefault = unchecked(1),
 
-		/// <summary>
-		/// Marks the default button when escape is hit <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT")]
+		/// <summary>		/// Marks the default button when escape is hit <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT")]
+		[NativeName(NativeNameType.Value, "2")]
 		MessageboxButtonEscapekeyDefault = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_MessageBoxColorType")]
+	/// <summary>	/// To be documented.	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_MessageBoxColorType")]
 	public enum SDLMessageBoxColorType
 	{
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BACKGROUND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BACKGROUND")]
+		[NativeName(NativeNameType.Value, "0")]
 		MessageboxColorBackground = unchecked(0),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_TEXT")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_TEXT")]
+		[NativeName(NativeNameType.Value, "1")]
 		MessageboxColorText = unchecked(1),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BORDER")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BORDER")]
+		[NativeName(NativeNameType.Value, "2")]
 		MessageboxColorButtonBorder = unchecked(2),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND")]
+		[NativeName(NativeNameType.Value, "3")]
 		MessageboxColorButtonBackground = unchecked(3),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED")]
+		[NativeName(NativeNameType.Value, "4")]
 		MessageboxColorButtonSelected = unchecked(4),
 
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_MAX")]
+		/// <summary>		/// To be documented.		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_MAX")]
+		[NativeName(NativeNameType.Value, "5")]
 		MessageboxColorMax = unchecked(5),
 
 	}
 
-	/// <summary>
-	/// The basic state for the system's power supply.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_PowerState")]
+	/// <summary>	/// The basic state for the system's power supply.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PowerState")]
 	public enum SDLPowerState
 	{
-		/// <summary>
-		/// cannot determine power status <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_UNKNOWN")]
+		/// <summary>		/// cannot determine power status <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_UNKNOWN")]
+		[NativeName(NativeNameType.Value, "0")]
 		PowerstateUnknown = unchecked(0),
 
-		/// <summary>
-		/// Not plugged in, running on the battery <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_ON_BATTERY")]
+		/// <summary>		/// Not plugged in, running on the battery <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_ON_BATTERY")]
+		[NativeName(NativeNameType.Value, "1")]
 		PowerstateOnBattery = unchecked(1),
 
-		/// <summary>
-		/// Plugged in, no battery available <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_NO_BATTERY")]
+		/// <summary>		/// Plugged in, no battery available <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_NO_BATTERY")]
+		[NativeName(NativeNameType.Value, "2")]
 		PowerstateNoBattery = unchecked(2),
 
-		/// <summary>
-		/// Plugged in, charging battery <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGING")]
+		/// <summary>		/// Plugged in, charging battery <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGING")]
+		[NativeName(NativeNameType.Value, "3")]
 		PowerstateCharging = unchecked(3),
 
-		/// <summary>
-		/// Plugged in, battery charged <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGED")]
+		/// <summary>		/// Plugged in, battery charged <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGED")]
+		[NativeName(NativeNameType.Value, "4")]
 		PowerstateCharged = unchecked(4),
 
 	}
 
-	/// <summary>
-	/// Flags used when creating a rendering context<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_RendererFlags")]
+	/// <summary>	/// Flags used when creating a rendering context<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_RendererFlags")]
 	public enum SDLRendererFlags
 	{
-		/// <summary>
-		/// The renderer is a software fallback <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_SOFTWARE")]
+		/// <summary>		/// The renderer is a software fallback <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_SOFTWARE")]
+		[NativeName(NativeNameType.Value, "1")]
 		Software = unchecked(1),
 
-		/// <summary>
-		/// The renderer uses hardware<br/>
-		/// acceleration <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_ACCELERATED")]
+		/// <summary>		/// The renderer uses hardware<br/>		/// acceleration <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_ACCELERATED")]
+		[NativeName(NativeNameType.Value, "2")]
 		Accelerated = unchecked(2),
 
-		/// <summary>
-		/// Present is synchronized<br/>
-		/// with the refresh rate <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_PRESENTVSYNC")]
+		/// <summary>		/// Present is synchronized<br/>		/// with the refresh rate <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_PRESENTVSYNC")]
+		[NativeName(NativeNameType.Value, "4")]
 		Presentvsync = unchecked(4),
 
-		/// <summary>
-		/// The renderer supports<br/>
-		/// rendering to texture <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_TARGETTEXTURE")]
+		/// <summary>		/// The renderer supports<br/>		/// rendering to texture <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_RENDERER_TARGETTEXTURE")]
+		[NativeName(NativeNameType.Value, "8")]
 		Targettexture = unchecked(8),
 
 	}
 
-	/// <summary>
-	/// The scaling mode for a texture.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_ScaleMode")]
+	/// <summary>	/// The scaling mode for a texture.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_ScaleMode")]
 	public enum SDLScaleMode
 	{
-		/// <summary>
-		/// nearest pixel sampling <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeNearest")]
+		/// <summary>		/// nearest pixel sampling <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeNearest")]
+		[NativeName(NativeNameType.Value, "0")]
 		Nearest = unchecked(0),
 
-		/// <summary>
-		/// linear filtering <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeLinear")]
+		/// <summary>		/// linear filtering <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeLinear")]
+		[NativeName(NativeNameType.Value, "1")]
 		Linear = unchecked(1),
 
-		/// <summary>
-		/// anisotropic filtering <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeBest")]
+		/// <summary>		/// anisotropic filtering <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_ScaleModeBest")]
+		[NativeName(NativeNameType.Value, "2")]
 		Best = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// The access pattern allowed for a texture.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_TextureAccess")]
+	/// <summary>	/// The access pattern allowed for a texture.<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_TextureAccess")]
 	public enum SDLTextureAccess
 	{
-		/// <summary>
-		/// Changes rarely, not lockable <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STATIC")]
+		/// <summary>		/// Changes rarely, not lockable <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STATIC")]
+		[NativeName(NativeNameType.Value, "0")]
 		TextureaccessStatic = unchecked(0),
 
-		/// <summary>
-		/// Changes frequently, lockable <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STREAMING")]
+		/// <summary>		/// Changes frequently, lockable <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STREAMING")]
+		[NativeName(NativeNameType.Value, "1")]
 		TextureaccessStreaming = unchecked(1),
 
-		/// <summary>
-		/// Texture can be used as a render target <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_TARGET")]
+		/// <summary>		/// Texture can be used as a render target <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_TARGET")]
+		[NativeName(NativeNameType.Value, "2")]
 		TextureaccessTarget = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// The texture channel modulation used in SDL_RenderCopy().<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_TextureModulate")]
+	/// <summary>	/// The texture channel modulation used in SDL_RenderCopy().<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_TextureModulate")]
 	public enum SDLTextureModulate
 	{
-		/// <summary>
-		/// No modulation <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_NONE")]
+		/// <summary>		/// No modulation <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		TexturemodulateNone = unchecked(0),
 
-		/// <summary>
-		/// srcC = srcC * color <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_COLOR")]
+		/// <summary>		/// srcC = srcC * color <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_COLOR")]
+		[NativeName(NativeNameType.Value, "1")]
 		TexturemodulateColor = unchecked(1),
 
-		/// <summary>
-		/// srcA = srcA * alpha <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_ALPHA")]
+		/// <summary>		/// srcA = srcA * alpha <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_ALPHA")]
+		[NativeName(NativeNameType.Value, "2")]
 		TexturemodulateAlpha = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// Flip constants for SDL_RenderCopyEx<br/>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "SDL_RendererFlip")]
+	/// <summary>	/// Flip constants for SDL_RenderCopyEx<br/>	/// </summary>	[NativeName(NativeNameType.Enum, "SDL_RendererFlip")]
 	public enum SDLRendererFlip
 	{
-		/// <summary>
-		/// Do not flip <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_NONE")]
+		/// <summary>		/// Do not flip <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_NONE")]
+		[NativeName(NativeNameType.Value, "0")]
 		None = unchecked(0),
 
-		/// <summary>
-		/// flip horizontally <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_HORIZONTAL")]
+		/// <summary>		/// flip horizontally <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_HORIZONTAL")]
+		[NativeName(NativeNameType.Value, "1")]
 		Horizontal = unchecked(1),
 
-		/// <summary>
-		/// flip vertically <br/>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_VERTICAL")]
+		/// <summary>		/// flip vertically <br/>		/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_FLIP_VERTICAL")]
+		[NativeName(NativeNameType.Value, "2")]
 		Vertical = unchecked(2),
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// <summary>
-	/// To be documented.
-	/// </summary>
-	/// </summary>
-	[NativeName(NativeNameType.Enum, "WindowShapeMode")]
+	/// <summary>	/// <br/>	/// <summary>	/// To be documented.	/// </summary>	/// </summary>	[NativeName(NativeNameType.Enum, "WindowShapeMode")]
 	public enum WindowShapeMode
 	{
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "ShapeModeDefault")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.EnumItem, "ShapeModeDefault")]
+		[NativeName(NativeNameType.Value, "0")]
 		Default = unchecked(0),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "ShapeModeBinarizeAlpha")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.EnumItem, "ShapeModeBinarizeAlpha")]
+		[NativeName(NativeNameType.Value, "1")]
 		BinarizeAlpha = unchecked(1),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "ShapeModeReverseBinarizeAlpha")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.EnumItem, "ShapeModeReverseBinarizeAlpha")]
+		[NativeName(NativeNameType.Value, "2")]
 		ReverseBinarizeAlpha = unchecked(2),
 
-		/// <summary>
-		/// <br/>
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		/// </summary>
-		[NativeName(NativeNameType.EnumItem, "ShapeModeColorKey")]
+		/// <summary>		/// <br/>		/// <summary>		/// To be documented.		/// </summary>		/// </summary>		[NativeName(NativeNameType.EnumItem, "ShapeModeColorKey")]
+		[NativeName(NativeNameType.Value, "3")]
 		ColorKey = unchecked(3),
 
 	}

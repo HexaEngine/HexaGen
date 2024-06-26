@@ -1,6 +1,9 @@
 ﻿namespace HexaGen.Core.CSharp
 {
+    using CppAst;
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
+    using System.Xml.Serialization;
 
     [Flags]
     public enum ParameterFlags
@@ -19,9 +22,10 @@
 
     public class CsParameterInfo : ICloneable<CsParameterInfo>
     {
-        public CsParameterInfo(string name, CsType type, List<string> modifiers, List<string> attributes, Direction direction, string? defaultValue, string? fieldName)
+        public CsParameterInfo(string name, CppType cppType, CsType type, List<string> modifiers, List<string> attributes, Direction direction, string? defaultValue, string? fieldName)
         {
             Name = name;
+            CppType = cppType;
             Type = type;
             Modifiers = modifiers;
             Attributes = attributes;
@@ -30,18 +34,20 @@
             FieldName = fieldName;
         }
 
-        public CsParameterInfo(string name, CsType type, List<string> modifiers, List<string> attributes, Direction direction)
+        public CsParameterInfo(string name, CppType cppType, CsType type, List<string> modifiers, List<string> attributes, Direction direction)
         {
             Name = name;
+            CppType = cppType;
             Type = type;
             Modifiers = modifiers;
             Attributes = attributes;
             Direction = direction;
         }
 
-        public CsParameterInfo(string name, CsType type, Direction direction, string? defaultValue, string? fieldName)
+        public CsParameterInfo(string name, CppType cppType, CsType type, Direction direction, string? defaultValue, string? fieldName)
         {
             Name = name;
+            CppType = cppType;
             Type = type;
             Modifiers = new();
             Attributes = new();
@@ -50,9 +56,10 @@
             FieldName = fieldName;
         }
 
-        public CsParameterInfo(string name, CsType type, Direction direction)
+        public CsParameterInfo(string name, CppType cppType, CsType type, Direction direction)
         {
             Name = name;
+            CppType = cppType;
             Type = type;
             Modifiers = new();
             Attributes = new();
@@ -62,6 +69,10 @@
         public string Name { get; set; }
 
         public string CleanName => Name.Replace("@", string.Empty);
+
+        [XmlIgnore]
+        [JsonIgnore]
+        public CppType CppType { get; set; }
 
         public CsType Type { get; set; }
 
@@ -100,7 +111,7 @@
 
         public CsParameterInfo Clone()
         {
-            return new CsParameterInfo(Name, Type.Clone(), Modifiers.Clone(), Attributes.Clone(), Direction, DefaultValue, FieldName);
+            return new CsParameterInfo(Name, CppType, Type.Clone(), Modifiers.Clone(), Attributes.Clone(), Direction, DefaultValue, FieldName);
         }
     }
 }

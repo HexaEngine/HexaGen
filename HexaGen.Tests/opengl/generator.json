@@ -1,0 +1,46 @@
+{
+  "Namespace": "Hexa.NET.OpenGL",
+  "ApiName": "OpenGL",
+  "LibName": "OpenGL32",
+  "GenerateSizeOfStructs": false,
+  "ConstantNamingConvention": "ScreamingSnakeCase",
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "TypeMappings": {
+    "GLenum": "uint",
+    "GLboolean": "byte",
+    "GLbitfield": "uint",
+    "GLbyte": "sbyte",
+    "GLshort": "short",
+    "GLint": "int",
+    "GLsizei": "int",
+    "GLubyte": "byte",
+    "GLushort": "ushort",
+    "GLuint": "uint",
+    "GLfloat": "float",
+    "GLclampf": "float",
+    "GLdouble": "double",
+    "GLclampd": "double",
+    "GLvoid": "void",
+    "GLUnurbs": "void",
+    "GLUquadric": "void",
+    "GLUtesselator": "void"
+  }
+}

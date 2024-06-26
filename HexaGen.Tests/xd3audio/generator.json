@@ -5,6 +5,7 @@
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
+  "GenerateMetadata": true,
   "Usings": [ "System.Numerics" ],
   "BoolType": 1,
   "KnownConstantNames": {
@@ -20,6 +21,9 @@
   },
   "KnownStructMethods": {
   },
+  "IgnoredFunctions": [
+    "X3DAudioInitialize"
+  ],
   "IgnoredParts": [
     "bit"
   ],
@@ -87,10 +91,10 @@
     "LUID": "Luid",
     "IID": "Guid",
     "LPVOID": "void*",
-    "X3DAUDIO_VECTOR": "Vector4",
-    "X3DAUDIO_HANDLE": "X3DAudioHandle*"
+    "X3DAUDIO_VECTOR": "Vector3",
+    "X3DAUDIO_HANDLE": "X3DAudioHandle"
   },
   "SystemIncludeFolders": [
-    "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\Llvm\\x64\\lib\\clang\\16\\include"
+    "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\Llvm\\x64\\lib\\clang\\17\\include"
   ]
 }

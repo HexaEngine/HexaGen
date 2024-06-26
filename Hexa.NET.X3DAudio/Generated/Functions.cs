@@ -21,42 +21,24 @@ namespace Hexa.NET.X3DAudio
 		internal const string LibName = "x3daudio1_7.dll";
 
 		/// <summary>
-		/// --------------<br/>
-		/// <F<br/>
-		/// -U-N-C-T-I-O-N-S>-----------------------------------------//<br/>
-		/// initializes instance handle<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "X3DAudioInitialize")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "X3DAudioInitialize")]
-		internal static extern HResult X3DAudioInitializeNative([NativeName(NativeNameType.Param, "SpeakerChannelMask")] [NativeName(NativeNameType.Type, "UINT32")] uint speakerChannelMask, [NativeName(NativeNameType.Param, "SpeedOfSound")] [NativeName(NativeNameType.Type, "FLOAT32")] float speedOfSound, [NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "X3DAUDIO_HANDLE")] X3DAudioHandle* instance);
-
-		/// <summary>		/// --------------<br/>		/// <F<br/>		/// -U-N-C-T-I-O-N-S>-----------------------------------------//<br/>		/// initializes instance handle<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioInitialize")]
-		[return: NativeName(NativeNameType.Type, "HRESULT")]
-		public static HResult X3DAudioInitialize([NativeName(NativeNameType.Param, "SpeakerChannelMask")] [NativeName(NativeNameType.Type, "UINT32")] uint speakerChannelMask, [NativeName(NativeNameType.Param, "SpeedOfSound")] [NativeName(NativeNameType.Type, "FLOAT32")] float speedOfSound, [NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "X3DAUDIO_HANDLE")] X3DAudioHandle* instance) 
-		{
-			HResult ret = X3DAudioInitializeNative(speakerChannelMask, speedOfSound, instance);
-			return ret;
-		}
-
-		/// <summary>
 		/// calculates DSP settings with respect to 3D parameters<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[DllImport(LibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "X3DAudioCalculate")]
-		internal static extern void X3DAudioCalculateNative([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings);
+		[LibraryImport(LibName, EntryPoint = "X3DAudioCalculate")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void X3DAudioCalculateNative([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings);
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
 		{
 			X3DAudioCalculateNative(instance, pListener, pEmitter, flags, pDSPSettings);
 		}
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
 		{
 			fixed (X3DAudioListener* ppListener = &pListener)
 			{
@@ -66,7 +48,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
 		{
 			fixed (X3DAudioEmitter* ppEmitter = &pEmitter)
 			{
@@ -76,7 +58,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] X3DAudioDspSettings* pDSPSettings) 
 		{
 			fixed (X3DAudioListener* ppListener = &pListener)
 			{
@@ -89,7 +71,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
 		{
 			fixed (X3DAudioDspSettings* ppDSPSettings = &pDSPSettings)
 			{
@@ -99,7 +81,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] X3DAudioEmitter* pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
 		{
 			fixed (X3DAudioListener* ppListener = &pListener)
 			{
@@ -112,7 +94,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] X3DAudioListener* pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
 		{
 			fixed (X3DAudioEmitter* ppEmitter = &pEmitter)
 			{
@@ -125,7 +107,7 @@ namespace Hexa.NET.X3DAudio
 
 		/// <summary>		/// calculates DSP settings with respect to 3D parameters<br/>		/// </summary>		[NativeName(NativeNameType.Func, "X3DAudioCalculate")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle* instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
+		public static void X3DAudioCalculate([NativeName(NativeNameType.Param, "Instance")] [NativeName(NativeNameType.Type, "const X3DAUDIO_HANDLE")] X3DAudioHandle instance, [NativeName(NativeNameType.Param, "pListener")] [NativeName(NativeNameType.Type, "const X3DAUDIO_LISTENER*")] ref X3DAudioListener pListener, [NativeName(NativeNameType.Param, "pEmitter")] [NativeName(NativeNameType.Type, "const X3DAUDIO_EMITTER*")] ref X3DAudioEmitter pEmitter, [NativeName(NativeNameType.Param, "Flags")] [NativeName(NativeNameType.Type, "UINT32")] uint flags, [NativeName(NativeNameType.Param, "pDSPSettings")] [NativeName(NativeNameType.Type, "X3DAUDIO_DSP_SETTINGS*")] ref X3DAudioDspSettings pDSPSettings) 
 		{
 			fixed (X3DAudioListener* ppListener = &pListener)
 			{

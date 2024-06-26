@@ -289,7 +289,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Ref))
                     {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = &{cppParameter.Name})");
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name.Replace("@", string.Empty)} = &{cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + 0].Type.Name})p{cppParameter.Name}");
                         stacks++;
                     }

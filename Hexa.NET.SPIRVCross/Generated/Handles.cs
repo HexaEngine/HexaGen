@@ -38,9 +38,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcContext [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_parsed_ir")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcParsedIr : IEquatable<SpvcParsedIr>
@@ -62,9 +59,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcParsedIr [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_compiler")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcCompiler : IEquatable<SpvcCompiler>
@@ -86,9 +80,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcCompiler [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_compiler_options")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcCompilerOptions : IEquatable<SpvcCompilerOptions>
@@ -110,9 +101,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcCompilerOptions [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_resources")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcResources : IEquatable<SpvcResources>
@@ -134,9 +122,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcResources [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_type")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcType : IEquatable<SpvcType>
@@ -158,9 +143,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcType [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_constant")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcConstant : IEquatable<SpvcConstant>
@@ -182,9 +164,6 @@ namespace Hexa.NET.SPIRVCross
 		private string DebuggerDisplay => string.Format("SpvcConstant [0x{0}]", Handle.ToString("X"));
 	}
 
-	/// <summary>
-	/// To be documented.
-	/// </summary>
 	[NativeName(NativeNameType.Typedef, "spvc_set")]
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	public readonly partial struct SpvcSet : IEquatable<SpvcSet>

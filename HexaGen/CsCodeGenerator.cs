@@ -314,7 +314,7 @@
 
                 CsType csType = new(paramCsTypeName, kind);
 
-                CsParameterInfo csParameter = new(paramCsName, csType, direction);
+                CsParameterInfo csParameter = new(paramCsName, cppParameter.Type, csType, direction);
                 csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
                 csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                 overload.Parameters.Add(csParameter);

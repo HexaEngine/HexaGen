@@ -57,24 +57,28 @@
                         writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                     }
 
+                    string modifiers;
+
                     if (settings.UseLibraryImport)
                     {
                         writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
                         writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
+                        modifiers = "internal static partial";
                     }
                     else
                     {
                         writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                        modifiers = "internal static extern";
                     }
 
                     if (boolReturn)
                     {
-                        writer.WriteLine($"internal static extern {settings.GetBoolType()} {csName}Native({argumentsString});");
+                        writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
                         writer.WriteLine();
                     }
                     else
                     {
-                        writer.WriteLine($"internal static extern {header};");
+                        writer.WriteLine($"{modifiers} {header};");
                         writer.WriteLine();
                     }
 
@@ -241,7 +245,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name.Replace("@", string.Empty)} = {cppParameter.Name})");
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
                         blockCounter++;
                     }

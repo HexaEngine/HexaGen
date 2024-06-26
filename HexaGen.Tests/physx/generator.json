@@ -1,0 +1,59 @@
+{
+  "Namespace": "Hexa.NET.PhysX",
+  "ApiName": "PhysX",
+  "LibName": "shaderc_shared",
+  "Usings": [ "System.Numerics" ],
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": false,
+  "GenerateSizeOfStructs": false,
+  "GeneratePlaceholderComments": false,
+  "Defines": [
+    "NDEBUG"
+  ],
+  "KnownConstantNames": {
+  },
+  "KnownEnumValueNames": {
+    "": ""
+  },
+  "KnownEnumPrefixes": {
+  },
+  "KnownExtensionPrefixes": {
+  },
+  "KnownExtensionNames": {
+  },
+  "KnownStructMethods": {
+  },
+  "IgnoredFunctions": [
+    "PX_UNUSED",
+    "PxCreateRepXObject"
+  ],
+  "IgnoredParts": [
+    "bit"
+  ],
+  "PreserveCaps": [
+    ""
+  ],
+  "Keywords": [
+    "object",
+    "event"
+  ],
+  "TypeMappings": {
+    "uint8_t": "byte",
+    "uint16_t": "ushort",
+    "uint32_t": "uint",
+    "uint64_t": "ulong",
+    "int8_t": "sbyte",
+    "int32_t": "int",
+    "int16_t": "short",
+    "int64_t": "long",
+    "int64_t*": "long*",
+    "unsigned char": "byte",
+    "signed char": "sbyte",
+    "char": "byte",
+    "size_t": "nuint",
+    "bool": "byte",
+    "PxU16": "ushort",
+    "PxU32": "uint",
+    "PxVec3": "Vector3"
+  }
+}

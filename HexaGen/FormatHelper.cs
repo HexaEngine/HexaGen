@@ -103,6 +103,8 @@
                 else
                     return pointerType.ElementType.GetDisplayName() == type.GetDisplayName();
             }
+
+            depth = 0;
             return false;
         }
 

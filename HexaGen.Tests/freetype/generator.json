@@ -48,6 +48,7 @@
     "signed char": "sbyte",
     "char": "byte",
     "size_t": "nuint",
-    "bool": "byte"
+    "bool": "byte",
+    "FT_Angle": "int"
   }
 }

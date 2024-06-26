@@ -53,6 +53,12 @@ namespace HexaGen
             {
                 csSubName = GetCsCleanName(subClass.Name);
             }
+
+            if (parentClass.Fields.Any(x => x.Name == csSubName))
+            {
+                csSubName = parentCsName + csSubName;
+            }
+
             return csSubName;
         }
     }

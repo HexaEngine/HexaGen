@@ -734,4 +734,168 @@ namespace Hexa.NET.FreeType
 		private string DebuggerDisplay => string.Format("FTSizeRequest [0x{0}]", Handle.ToString("X"));
 	}
 
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// :<br/>
+	/// FT_Glyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// Handle to an object used to model generic glyph images.  It is a<br/>
+	/// pointer to the <br/>
+	/// _GlyphRec structure and can contain a glyph bitmap<br/>
+	/// or pointer.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "FT_Glyph")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct FTGlyph : IEquatable<FTGlyph>
+	{
+		public FTGlyph(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static FTGlyph Null => new FTGlyph(0);
+		public static implicit operator FTGlyph(nint handle) => new FTGlyph(handle);
+		public static bool operator ==(FTGlyph left, FTGlyph right) => left.Handle == right.Handle;
+		public static bool operator !=(FTGlyph left, FTGlyph right) => left.Handle != right.Handle;
+		public static bool operator ==(FTGlyph left, nint right) => left.Handle == right;
+		public static bool operator !=(FTGlyph left, nint right) => left.Handle != right;
+		public bool Equals(FTGlyph other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is FTGlyph handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("FTGlyph [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// :<br/>
+	/// FT_BitmapGlyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// A handle to an object used to model a bitmap glyph image.  This is a<br/>
+	/// 'sub-class' of <br/>
+	/// _Glyph, and a pointer to <br/>
+	/// _BitmapGlyphRec.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "FT_BitmapGlyph")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct FTBitmapGlyph : IEquatable<FTBitmapGlyph>
+	{
+		public FTBitmapGlyph(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static FTBitmapGlyph Null => new FTBitmapGlyph(0);
+		public static implicit operator FTBitmapGlyph(nint handle) => new FTBitmapGlyph(handle);
+		public static bool operator ==(FTBitmapGlyph left, FTBitmapGlyph right) => left.Handle == right.Handle;
+		public static bool operator !=(FTBitmapGlyph left, FTBitmapGlyph right) => left.Handle != right.Handle;
+		public static bool operator ==(FTBitmapGlyph left, nint right) => left.Handle == right;
+		public static bool operator !=(FTBitmapGlyph left, nint right) => left.Handle != right;
+		public bool Equals(FTBitmapGlyph other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is FTBitmapGlyph handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("FTBitmapGlyph [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// :<br/>
+	/// FT_OutlineGlyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// A handle to an object used to model an outline glyph image.  This is a<br/>
+	/// 'sub-class' of <br/>
+	/// _Glyph, and a pointer to <br/>
+	/// _OutlineGlyphRec.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "FT_OutlineGlyph")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct FTOutlineGlyph : IEquatable<FTOutlineGlyph>
+	{
+		public FTOutlineGlyph(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static FTOutlineGlyph Null => new FTOutlineGlyph(0);
+		public static implicit operator FTOutlineGlyph(nint handle) => new FTOutlineGlyph(handle);
+		public static bool operator ==(FTOutlineGlyph left, FTOutlineGlyph right) => left.Handle == right.Handle;
+		public static bool operator !=(FTOutlineGlyph left, FTOutlineGlyph right) => left.Handle != right.Handle;
+		public static bool operator ==(FTOutlineGlyph left, nint right) => left.Handle == right;
+		public static bool operator !=(FTOutlineGlyph left, nint right) => left.Handle != right;
+		public bool Equals(FTOutlineGlyph other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is FTOutlineGlyph handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("FTOutlineGlyph [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// :<br/>
+	/// FT_SvgGlyph<br/>
+	/// <br/>
+	/// :<br/>
+	/// A handle to an object used to model an SVG glyph.  This is a<br/>
+	/// 'sub-class' of <br/>
+	/// _Glyph, and a pointer to <br/>
+	/// _SvgGlyphRec.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "FT_SvgGlyph")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct FTSvgGlyph : IEquatable<FTSvgGlyph>
+	{
+		public FTSvgGlyph(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static FTSvgGlyph Null => new FTSvgGlyph(0);
+		public static implicit operator FTSvgGlyph(nint handle) => new FTSvgGlyph(handle);
+		public static bool operator ==(FTSvgGlyph left, FTSvgGlyph right) => left.Handle == right.Handle;
+		public static bool operator !=(FTSvgGlyph left, FTSvgGlyph right) => left.Handle != right.Handle;
+		public static bool operator ==(FTSvgGlyph left, nint right) => left.Handle == right;
+		public static bool operator !=(FTSvgGlyph left, nint right) => left.Handle != right;
+		public bool Equals(FTSvgGlyph other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is FTSvgGlyph handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("FTSvgGlyph [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// ************************************************************************<br/>
+	/// <br/>
+	/// :<br/>
+	/// FT_Stroker<br/>
+	/// <br/>
+	/// :<br/>
+	/// Opaque handle to a path stroker object.<br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "FT_Stroker")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct FTStroker : IEquatable<FTStroker>
+	{
+		public FTStroker(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static FTStroker Null => new FTStroker(0);
+		public static implicit operator FTStroker(nint handle) => new FTStroker(handle);
+		public static bool operator ==(FTStroker left, FTStroker right) => left.Handle == right.Handle;
+		public static bool operator !=(FTStroker left, FTStroker right) => left.Handle != right.Handle;
+		public static bool operator ==(FTStroker left, nint right) => left.Handle == right;
+		public static bool operator !=(FTStroker left, nint right) => left.Handle != right;
+		public bool Equals(FTStroker other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is FTStroker handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("FTStroker [0x{0}]", Handle.ToString("X"));
+	}
+
 }
