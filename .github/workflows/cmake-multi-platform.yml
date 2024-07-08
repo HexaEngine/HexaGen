@@ -56,7 +56,7 @@ jobs:
       run: cmake -S SDL -B SDL/build -DCMAKE_OSX_ARCHITECTURES=arm64
 
     - name: Configure SDL2 with CMake
-      if: matrix.arch == 'x86_64'
+      if: matrix.arch != 'arm64' || matrix.os != 'macos-latest'
       run: cmake -S SDL -B SDL/build
 
     - name: Build SDL2
