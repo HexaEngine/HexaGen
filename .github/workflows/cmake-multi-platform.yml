@@ -7,7 +7,21 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            arch: x86_64
+          - os: ubuntu-latest
+            arch: arm64
+          - os: windows-latest
+            arch: x86_64
+          - os: windows-latest
+            arch: x86
+          - os: windows-latest
+            arch: arm64
+          - os: macos-latest
+            arch: x86_64
+          - os: macos-latest
+            arch: arm64
     steps:
     - uses: actions/checkout@v2
       with:
@@ -37,7 +51,12 @@ jobs:
       run: |
         choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 
+    - name: Configure SDL2 with CMake for macOS ARM64
+      if: matrix.arch == 'arm64'
+      run: cmake -S SDL -B build/SDL -DCMAKE_OSX_ARCHITECTURES=arm64
+
     - name: Configure SDL2 with CMake
+      if: matrix.arch == 'x86_64'
       run: cmake -S SDL -B build/SDL
 
     - name: Build SDL2
@@ -46,9 +65,9 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.os }}-artifacts
+        name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts
         path: |
-          build/SDL/*.dll
-          build/SDL/*.so
-          build/SDL/*.dylib
+          build/SDL/Release/*.dll
+          build/SDL/lib/*.so
+          build/SDL/lib/*.dylib
         if-no-files-found: error # 'warn' or 'ignore' or 'error'
