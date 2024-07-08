@@ -1,6 +1,6 @@
 name: Build SDL2 Libraries
 
-on: [push, pull_request]
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
           - os: macos-latest
             arch: arm64
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4.1.7
       with:
         repository: 'libsdl-org/SDL'
         ref: 'release-2.30.5'
@@ -63,7 +63,7 @@ jobs:
       run: cmake --build SDL/build --config Release
 
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4.3.4
       with:
         name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts 
         path: |
