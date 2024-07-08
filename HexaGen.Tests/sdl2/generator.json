@@ -5,6 +5,9 @@
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
+  "DelegatesAsVoidPointer": true,
+  "GeneratePlaceholderComments": false,
+  "GenerateMetadata": true,
   "ConstantNamingConvention": "Unknown",
   "KnownConstantNames": {
   },

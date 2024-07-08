@@ -68,7 +68,7 @@
         {
             string filePath = Path.Combine(outputPath, "Enumerations.cs");
 
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupEnumUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupEnumUsings(), 1);
             GenContext context = new(compilation, filePath, writer);
 
             for (int i = 0; i < compilation.Enums.Count; i++)
@@ -116,13 +116,17 @@
 
             csEnum.Name = csName;
             csEnum.Comment = settings.WriteCsSummary(cppEnum.Comment);
+            csEnum.BaseType = settings.GetCsTypeName(cppEnum.IntegerType);
 
             bool noneAdded = false;
             for (int j = 0; j < cppEnum.Items.Count; j++)
             {
                 var item = ParseEnumItem(mapping, cppEnum.Items[j], j, enumNamePrefix, ref noneAdded);
                 if (item != null)
+                {
+                    settings.CustomEnumItemMapper?.Invoke(cppEnum, cppEnum.Items[j], csEnum, item);
                     csEnum.Items.Add(item);
+                }
             }
 
             return csEnum;
@@ -201,7 +205,7 @@
                 writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{csEnum.CppName.Replace("\\", "\\\\")}\")]");
             }
 
-            using (writer.PushBlock($"public enum {csEnum.Name}"))
+            using (writer.PushBlock($"public enum {csEnum.Name} : {csEnum.BaseType}"))
             {
                 for (int j = 0; j < csEnum.Items.Count; j++)
                 {

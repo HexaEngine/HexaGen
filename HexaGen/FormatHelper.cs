@@ -110,6 +110,7 @@
 
         public static bool IsType(this CppType a, CppType b)
         {
+           
             return a.GetDisplayName() == b.GetDisplayName();
         }
 

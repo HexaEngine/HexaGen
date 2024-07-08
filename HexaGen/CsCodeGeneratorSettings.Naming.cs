@@ -53,9 +53,13 @@ namespace HexaGen
                 wasNumber = char.IsDigit(c);
             }
 
-            if (sb.Length > 0 && sb[^1] == 'T')
+            if (sb.Length > 1 && sb[^1] == 'T')
             {
-                sb.Remove(sb.Length - 1, 1);
+                var c = sb[^2];
+                if (char.IsLower(c) || c == '_')
+                {
+                    sb.Remove(sb.Length - 1, 1);
+                }
             }
 
             string newName = sb.ToString();
@@ -86,9 +90,13 @@ namespace HexaGen
 
             if (removeTailingT)
             {
-                if (newName.Length > 0 && newName[^1] == 'T')
+                if (newName.Length > 1 && newName[^1] == 'T')
                 {
-                    newName = newName.Remove(newName.Length - 1, 1);
+                    var c = newName[^2];
+                    if (char.IsLower(c) || c == '_')
+                    {
+                        newName = newName.Remove(newName.Length - 1, 1);
+                    }
                 }
             }
 

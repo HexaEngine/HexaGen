@@ -63,7 +63,7 @@
                 var subClass = subClasses.Find(x => x.CppType == cppField.Type);
                 if (subClass != null && cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                 {
-                    subClass = subClasses.First(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
+                    subClass = subClasses.First(x => x.CppType == cppClass1);
                     paramCsTypeName = subClass.Name;
                     paramCsName = subClass.FieldName.ToLower();
                     fieldCsName = subClass.FieldName;

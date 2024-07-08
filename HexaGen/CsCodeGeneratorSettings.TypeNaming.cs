@@ -1,9 +1,15 @@
 ﻿using CppAst;
+using System.Text.Json.Serialization;
 
 namespace HexaGen
 {
+    public delegate void CustomEnumItemMapperDelegate(CppEnum cppEnum, CppEnumItem cppEnumItem, CsEnumMetadata csEnum, CsEnumItemMetadata csEnumItem);
+
     public partial class CsCodeGeneratorSettings
     {
+        [JsonIgnore]
+        public CustomEnumItemMapperDelegate? CustomEnumItemMapper { get; set; }
+
         public static int IndexOfUnionField(CppClass parent, CppClass union)
         {
             for (int i = 0; i < parent.Fields.Count; i++)

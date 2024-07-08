@@ -51,7 +51,7 @@
         {
             string filePath = Path.Combine(outputPath, "Constants.cs");
 
-            using CsCodeWriter writer = new(filePath, settings.Namespace, SetupConstantUsings());
+            using CsSplitCodeWriter writer = new(filePath, settings.Namespace, SetupConstantUsings());
             GenContext context = new(compilation, filePath, writer);
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {

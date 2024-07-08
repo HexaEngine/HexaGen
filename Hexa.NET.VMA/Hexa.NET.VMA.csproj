@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+	  <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+	  <EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+	  <EnableAotAnalyzer>true</EnableAotAnalyzer>
+	  <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hexa.NET.Vulkan\Hexa.NET.Vulkan.csproj" />
+    <ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
+  </ItemGroup>
+
+</Project>

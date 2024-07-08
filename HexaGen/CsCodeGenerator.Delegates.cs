@@ -53,7 +53,7 @@
             string filePath = Path.Combine(outputPath, "Delegates.cs");
 
             // Generate Delegates
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupDelegateUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupDelegateUsings(), 1);
 
             GenContext context = new(compilation, filePath, writer);
 

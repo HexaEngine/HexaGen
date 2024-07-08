@@ -1,7 +1,10 @@
 namespace HexaGen.Tests
 {
+    using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using System;
+    using System.Text;
     using Test;
 
     public class CsGeneratorTests
@@ -344,6 +347,215 @@ namespace HexaGen.Tests
             CsCodeGenerator generator = new(settings);
 
             generator.Generate(headerFile, "../../../../Hexa.NET.FreeType/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
+
+        [Test]
+        public void Vulkan()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("vulkan/generator.json");
+
+            settings.CustomEnumItemMapper = VulkanCustomEnumItemMapper;
+
+            string headerFile = "vulkan/main.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.Vulkan/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
+
+        private Dictionary<string, string> valueMap = [];
+
+        private HashSet<string> vulkanFlags = [
+             "VkMemoryPropertyFlags",
+ "VkMemoryHeapFlags",
+ "VkInstanceCreateFlags",
+ "VkSampleCountFlags",
+ "VkFormatFeatureFlags",
+ "VkAccessFlags",
+ "VkImageAspectFlags",
+ "VkDeviceCreateFlags",
+ "VkDeviceQueueCreateFlags",
+ "VkQueueFlags",
+ "VkPipelineStageFlags",
+ "VkSparseMemoryBindFlags",
+ "VkSparseImageFormatFlags",
+ "VkFenceCreateFlags",
+ "VkSemaphoreCreateFlags",
+ "VkEventCreateFlags",
+ "VkQueryPoolCreateFlags",
+ "VkQueryPipelineStatisticFlags",
+ "VkBufferCreateFlags",
+ "VkBufferUsageFlags",
+ "VkBufferViewCreateFlags",
+ "VkImageCreateFlags",
+ "VkImageUsageFlags",
+ "VkImageViewCreateFlags",
+ "VkShaderModuleCreateFlags",
+ "VkPipelineCacheCreateFlags",
+ "VkPipelineShaderStageCreateFlags",
+ "VkPipelineCreateFlags",
+ "VkPipelineLayoutCreateFlags",
+ "VkSamplerCreateFlags",
+ "VkDescriptorPoolCreateFlags",
+ "VkDescriptorSetLayoutCreateFlags",
+ "VkAttachmentDescriptionFlags",
+ "VkDependencyFlags",
+ "VkSubpassDescriptionFlags",
+ "VkRenderPassCreateFlags",
+ "VkCommandPoolCreateFlags",
+ "VkCommandPoolResetFlags",
+ "VkCommandBufferUsageFlags",
+ "VkQueryControlFlags",
+ "VkQueryResultFlags",
+ "VkCommandBufferResetFlags",
+ "VkStencilFaceFlags",
+ "VkCullModeFlags",
+ "VkDescriptorBindingFlags",
+ "VkResolveModeFlags",
+ "VkFramebufferCreateFlags",
+ "VkSemaphoreWaitFlags",
+ "VkToolPurposeFlags",
+ "VkPipelineVertexInputStateCreateFlags",
+ "VkPipelineInputAssemblyStateCreateFlags",
+ "VkPipelineTessellationStateCreateFlags",
+ "VkPipelineViewportStateCreateFlags",
+ "VkPipelineRasterizationStateCreateFlags",
+ "VkPipelineMultisampleStateCreateFlags",
+ "VkPipelineDepthStencilStateCreateFlags",
+ "VkColorComponentFlags",
+ "VkPipelineColorBlendStateCreateFlags",
+ "VkPipelineDynamicStateCreateFlags",
+ "VkShaderStageFlags",
+ "VkSubgroupFeatureFlags",
+ "VkMemoryAllocateFlags",
+ "VkDescriptorUpdateTemplateCreateFlags",
+ "VkExternalMemoryFeatureFlags",
+ "VkExternalMemoryHandleTypeFlags",
+ "VkExternalFenceHandleTypeFlags",
+ "VkExternalFenceFeatureFlags",
+ "VkExternalSemaphoreHandleTypeFlags",
+ "VkExternalSemaphoreFeatureFlags",
+ "VkPipelineCreationFeedbackFlags",
+ "VkPrivateDataSlotCreateFlags",
+ "VkPipelineStageFlags2",
+ "VkAccessFlags2",
+ "VkSubmitFlags",
+ "VkRenderingFlags",
+ "VkFormatFeatureFlags2",
+ "VkSwapchainCreateFlagsKHR",
+ "VkDeviceGroupPresentModeFlagsKHR",
+ "VkDisplayModeCreateFlagsKHR",
+ "VkDisplayPlaneAlphaFlagsKHR",
+ "VkSurfaceTransformFlagsKHR",
+ "VkDisplaySurfaceCreateFlagsKHR",
+ "VkVideoCodecOperationFlagsKHR",
+ "VkVideoChromaSubsamplingFlagsKHR",
+ "VkVideoCapabilityFlagsKHR",
+ "VkVideoSessionCreateFlagsKHR",
+ "VkVideoSessionParametersCreateFlagsKHR",
+ "VkVideoBeginCodingFlagsKHR",
+ "VkVideoEndCodingFlagsKHR",
+ "VkVideoCodingControlFlagsKHR",
+ "VkVideoDecodeCapabilityFlagsKHR",
+ "VkVideoDecodeUsageFlagsKHR",
+ "VkVideoDecodeFlagsKHR",
+ "VkSemaphoreImportFlags",
+ "VkPerformanceCounterDescriptionFlagsKHR",
+ "VkAcquireProfilingLockFlagsKHR",
+ "VkOpticalFlowGridSizeFlagsNV",
+ "VkOpticalFlowExecuteFlagsNV",
+ "VkShaderCreateFlagsEXT",
+ "VkShaderCorePropertiesFlagsAMD",
+ "VkAccelerationStructureCreateFlagsKHR",
+ "VkBuildAccelerationStructureFlagsKHR",
+ "VkDebugReportFlagsEXT",
+ "VkPipelineCoverageReductionStateCreateFlagsNV",
+ "VkHeadlessSurfaceCreateFlagsEXT",
+ "VkDescriptorPoolResetFlags",
+ "VkPresentGravityFlagsEXT",
+ "VkVideoComponentBitDepthFlagsKHR",
+ "VkExternalMemoryFeatureFlagsNV",
+ "VkIndirectStateFlagsNV",
+ "VkDebugUtilsMessageTypeFlagsEXT",
+ "VkDeviceDiagnosticsConfigFlagsNV",
+ "VkDebugUtilsMessengerCallbackDataFlagsEXT",
+ "VkDebugUtilsMessengerCreateFlagsEXT",
+ "VkPipelineDiscardRectangleStateCreateFlagsEXT",
+ "VkBuildAccelerationStructureFlagsNV",
+ "VkPipelineRasterizationConservativeStateCreateFlagsEXT",
+ "VkGraphicsPipelineLibraryFlagsEXT",
+ "VkAccelerationStructureMotionInfoFlagsNV",
+ "VkGeometryInstanceFlagsKHR",
+ "VkMemoryDecompressionMethodFlagsNV",
+ "VkDebugUtilsMessageSeverityFlagsEXT",
+ "VkAccelerationStructureMotionInstanceFlagsNV",
+ "VkImageCompressionFlagsEXT",
+ "VkImageCompressionFixedRateFlagsEXT",
+ "VkMicromapCreateFlagsEXT",
+ "VkGeometryFlagsKHR",
+ "VkDeviceAddressBindingFlagsEXT",
+ "VkPipelineCompilerControlFlagsAMD",
+ "VkPipelineCoverageToColorStateCreateFlagsNV",
+ "VkPipelineCoverageModulationStateCreateFlagsNV",
+ "VkDirectDriverLoadingFlagsLUNARG",
+ "VkOpticalFlowSessionCreateFlagsNV",
+ "VkMemoryMapFlags",
+ "VkPeerMemoryFeatureFlags",
+ "VkCommandPoolTrimFlags",
+ "VkExternalMemoryHandleTypeFlagsNV",
+ "VkCompositeAlphaFlagsKHR",
+ "VkIndirectCommandsLayoutUsageFlagsNV",
+ "VkDeviceMemoryReportFlagsEXT",
+ "VkMemoryUnmapFlagsKHR",
+ "VkPresentScalingFlagsEXT",
+ "VkBuildMicromapFlagsEXT",
+ "VkPipelineRasterizationStateStreamCreateFlagsEXT",
+ "VkConditionalRenderingFlagsEXT",
+ "VkSurfaceCounterFlagsEXT",
+ "VkValidationCacheCreateFlagsEXT",
+ "VkPipelineViewportSwizzleStateCreateFlagsNV",
+ "VkAccelerationStructureTypeNV",
+ "VkOpticalFlowUsageFlagsNV",
+ "VkPipelineRasterizationDepthClipStateCreateFlagsEXT",
+ "VkFenceImportFlags"
+            ];
+
+        private void VulkanCustomEnumItemMapper(CppEnum cppEnum, CppEnumItem cppEnumItem, CsEnumMetadata csEnum, CsEnumItemMetadata csEnumItem)
+        {
+            if (cppEnum.Name == "VkFormat")
+            {
+                if (valueMap.TryGetValue(csEnumItem.Value, out var newValue))
+                {
+                    csEnumItem.Value = newValue;
+                }
+
+                ReadOnlySpan<char> itemName = cppEnumItem.Name.AsSpan(10);
+
+                string newName = itemName.ToString();
+                valueMap[csEnumItem.Name] = newName;
+                csEnumItem.Name = newName;
+            }
+
+            if (vulkanFlags.Contains(cppEnum.Name))
+            {
+                csEnum.BaseType = "uint";
+            }
+        }
+
+        [Test]
+        public void VMA()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("vma/generator.json");
+
+            string headerFile = "vma/main.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.VMA/Generated");
             EvaluateResult(generator);
             Assert.Pass();
         }

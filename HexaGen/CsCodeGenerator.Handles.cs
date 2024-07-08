@@ -48,7 +48,7 @@
             string filePath = Path.Combine(outputPath, "Handles.cs");
 
             // Generate Functions
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupHandleUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), 1);
             GenContext context = new(compilation, filePath, writer);
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)

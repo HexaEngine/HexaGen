@@ -9,7 +9,7 @@
 
         void BeginBlock(string content);
 
-        void Dedent(int count = 1);
+        void Unindent(int count = 1);
 
         void Dispose();
 

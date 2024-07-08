@@ -40,14 +40,21 @@
 
         protected virtual bool FilterExtensionFunction(GenContext context, CppFunction cppFunction, CppTypedef typedef, bool isCustomHandle)
         {
+            if (cppFunction.IsFunctionTemplate)
+                return true;
             if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
                 return true;
             if (settings.IgnoredFunctions.Contains(cppFunction.Name))
                 return true;
             if (cppFunction.Parameters.Count == 0 || cppFunction.Parameters[0].Type.TypeKind == CppTypeKind.Pointer && !isCustomHandle)
                 return true;
-
+      
             if (cppFunction.Parameters[0].Type.GetDisplayName() == typedef.GetDisplayName())
+            {
+                return false;
+            }
+
+            if (cppFunction.Parameters[0].Type is CppQualifiedType qualifiedType && qualifiedType.ElementType.IsType(typedef))
             {
                 return false;
             }
@@ -73,10 +80,10 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
             GenContext context = new(compilation, filePath, writer);
 
-            using (writer.PushBlock($"public static unsafe class Extensions"))
+            using (writer.PushBlock($"public static unsafe partial class Extensions"))
             {
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {

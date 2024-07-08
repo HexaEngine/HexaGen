@@ -29,13 +29,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="LICENSE.txt">
+		<Content Update="LICENSE.txt">
 			<PackagePath>\</PackagePath>
 			<Pack>true</Pack>
-		</None>
-		<None Update="README.md">
+		</Content>
+		<Content Update="README.md">
 			<PackagePath>\</PackagePath>
 			<Pack>true</Pack>
-		</None>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Generated\" />
 	</ItemGroup>
 </Project>

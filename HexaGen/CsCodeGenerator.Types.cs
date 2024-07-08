@@ -61,7 +61,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), 1);
             GenContext context = new(compilation, filePath, writer);
 
             // Print All classes, structs
@@ -153,7 +153,7 @@
                             writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
                         }
 
-                        var subClass = subClasses.FirstOrDefault(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
+                        var subClass = subClasses.FirstOrDefault(x => x.CppType == cppClass1);
 
                         string csFieldName = settings.GetFieldName(cppField.Name);
                         if (isUnion)
@@ -284,10 +284,15 @@
 
                         if (subClass != null && cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                         {
-                            subClass = subClasses.First(x => x.CppType == cppClass1 && x.CppFieldName == cppField.Name);
+                            subClass = subClasses.First(x => x.CppType == cppClass1);
                             paramCsTypeName = subClass.Name;
                             paramCsName = subClass.FieldName.ToLower();
                             csFieldName = subClass.FieldName;
+                        }
+
+                        if (cppField.Type is CppArrayType arrayType && arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType && settings.DelegatesAsVoidPointer)
+                        {
+                            paramCsTypeName = "nint*";
                         }
 
                         if (subClass != null)
@@ -491,14 +496,22 @@
             {
                 string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
 
-                if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
+                if (arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType && settings.DelegatesAsVoidPointer)
                 {
-                    csFieldType = settings.GetCsTypeName(primitive, false);
+                    csFieldType = "nint";
+                }
+
+                if (arrayType.ElementType is CppTypedef typedef)
+                {
+                    if (typedef.IsPrimitive(out var primitive))
+                    {
+                        csFieldType = settings.GetCsTypeName(primitive, false);
+                    }
                 }
 
                 string unsafePrefix = string.Empty;
 
-                if (csFieldType.EndsWith('*'))
+                if (csFieldType.Contains('*'))
                 {
                     unsafePrefix = "unsafe ";
                 }
@@ -722,7 +735,7 @@
         private void WriteProperty(ICodeWriter writer, CppField field)
         {
             string csFieldName = settings.GetFieldName(field.Name);
-            settings.WriteCsSummary(field.Comment, writer);
+
             if (field.Type is CppArrayType arrayType)
             {
                 string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
@@ -742,11 +755,12 @@
                 }
                 else
                 {
-                    if (csFieldType.EndsWith('*'))
+                    if (csFieldType.Contains('*'))
                     {
-                        return;
+                        csFieldType = "nint";
                     }
 
+                    settings.WriteCsSummary(field.Comment, writer);
                     writer.WriteLine($"public unsafe Span<{csFieldType}> {csFieldName}");
                     using (writer.PushBlock(""))
                     {

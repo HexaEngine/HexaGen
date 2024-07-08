@@ -86,6 +86,7 @@
         {
             Identifier = cppName;
             CppName = cppName;
+            BaseType = "int";
         }
 
         public CsEnumMetadata(string identifier, string cppName, string? name, string? comment, List<CsEnumItemMetadata> items) : this(identifier)
@@ -94,6 +95,7 @@
             Name = name;
             Comment = comment;
             Items = items;
+            BaseType = "int";
         }
 
         public CsEnumMetadata(string identifier, string cppName, string? name, string? comment) : this(identifier)
@@ -102,6 +104,7 @@
             Name = name;
             Comment = comment;
             Items = new();
+            BaseType = "int";
         }
 
         public string Identifier { get; set; }
@@ -111,6 +114,8 @@
         public string? Name { get; set; }
 
         public string? Comment { get; set; }
+
+        public string BaseType { get; set; }
 
         public List<CsEnumItemMetadata> Items { get; set; } = new();
 

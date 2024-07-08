@@ -32,6 +32,11 @@
 
         protected virtual bool FilterFunctionIgnored(GenContext context, CppFunction cppFunction)
         {
+            if (cppFunction.IsFunctionTemplate)
+            {
+                return true;
+            }
+
             if (cppFunction.Flags == CppFunctionFlags.Inline)
             {
                 return true;
@@ -170,11 +175,18 @@
             StringBuilder sb = new();
             bool isFirst = true;
 
-            if (flags == WriteFunctionFlags.Extension && useNames)
+            if (flags == WriteFunctionFlags.Extension)
             {
                 isFirst = false;
                 var first = variation.Parameters[0];
-                sb.Append($"this {first.Type} {first.Name}");
+                if (useNames)
+                {
+                    sb.Append($"this {first.Type} {first.Name}");
+                }
+                else
+                {
+                    sb.Append($"this {first.Type}");
+                }
             }
 
             for (int i = offset; i < variation.Parameters.Count; i++)

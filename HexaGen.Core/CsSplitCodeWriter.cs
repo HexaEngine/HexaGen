@@ -168,7 +168,7 @@
 
         public void EndBlock()
         {
-            Dedent(1);
+            Unindent(1);
             WriteLine("}");
 
             if (linesWritten >= SplitThreshold && indentLevel == baseIndentLevel)
@@ -205,7 +205,7 @@
             }
         }
 
-        public void Dedent(int count = 1)
+        public void Unindent(int count = 1)
         {
             if (count > indentLevel)
                 throw new ArgumentException("count out of range.", nameof(count));

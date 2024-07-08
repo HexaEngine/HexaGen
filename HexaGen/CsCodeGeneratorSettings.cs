@@ -13,6 +13,13 @@
     using System.Text.Json.Serialization;
     using System.Xml.Linq;
 
+    public class UnexposedTypeException : Exception
+    {
+        public UnexposedTypeException(CppUnexposedType unexposedType) : base($"Cannot handle unexposed type '{unexposedType}'")
+        {
+        }
+    }
+
     public partial class CsCodeGeneratorSettings : IGeneratorSettings
     {
         public static CsCodeGeneratorSettings Default { get; } = new CsCodeGeneratorSettings()
@@ -205,6 +212,12 @@
             if (!result.EnableExperimentalOptions)
             {
                 result.GenerateConstructorsForStructs = false;
+                result.UseVTable = false;
+            }
+
+            if (result.UseVTable)
+            {
+                result.UseLibraryImport = false;
             }
 
             result.Save(file);
@@ -271,6 +284,11 @@
         /// This causes the code generator to use <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/> instead of <see cref="System.Runtime.InteropServices.DllImportAttribute"/>
         /// </summary>
         public bool UseLibraryImport { get; set; } = true;
+
+        /// <summary>
+        /// This causes the code generator to use a VTable instead of <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/> <see cref="System.Runtime.InteropServices.DllImportAttribute"/> (EXPERIMENTAL)
+        /// </summary>
+        public bool UseVTable { get; set; } = false;
 
         /// <summary>
         /// The generator will generate [NativeName] attributes.
@@ -830,7 +848,7 @@
 
             if (type is CppUnexposedType unexposedType)
             {
-                throw new();
+                throw new UnexposedTypeException(unexposedType);
             }
 
             return string.Empty;
