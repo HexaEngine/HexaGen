@@ -1,0 +1,61 @@
+name: Build and Link SDL2 Project
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: 'libsdl-org/SDL'
+        ref: 'release-2.30.5'
+        path: 'SDL'
+    
+    - name: Checkout specific commit
+      run: |
+        cd SDL
+        git checkout 2eef7ca
+
+    - name: Install dependencies on Ubuntu
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential libasound2-dev libpulse-dev libx11-dev cmake
+
+    - name: Install dependencies on macOS
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew update
+        brew install cmake
+
+    - name: Install dependencies on Windows
+      if: matrix.os == 'windows-latest'
+      run: |
+        choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+
+    - name: Configure SDL2 with CMake
+      run: cmake -S SDL -B build/SDL
+
+    - name: Build SDL2
+      run: cmake --build build/SDL --config Release
+
+    - uses: actions/checkout@v2
+      with:
+        path: 'MyProject' # Replace with your project's path or name
+
+    - name: Configure Project with CMake
+      run: cmake -S MyProject -B build/MyProject -DSDL2_DIR=build/SDL
+
+    - name: Build Project
+      run: cmake --build build/MyProject --config Release
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}-artifacts
+        path: build/MyProject/**
+        if-no-files-found: error # 'warn' or 'ignore' or 'error'
