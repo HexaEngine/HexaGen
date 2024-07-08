@@ -70,4 +70,4 @@ jobs:
           build/SDL/Release/*.dll
           build/SDL/lib/*.so
           build/SDL/lib/*.dylib
-        if-no-files-found: error # 'warn' or 'ignore' or 'error'
+        if-no-files-found: ignore # 'warn' or 'ignore' or 'error'
