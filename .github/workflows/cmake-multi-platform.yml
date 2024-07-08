@@ -52,22 +52,22 @@ jobs:
         choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 
     - name: Configure SDL2 with CMake for macOS ARM64
-      if: matrix.arch == 'arm64'
-      run: cmake -S SDL -B build/SDL -DCMAKE_OSX_ARCHITECTURES=arm64
+      if: matrix.arch == 'arm64' && matrix.os == 'macos-latest'
+      run: cmake -S SDL -B SDL/build -DCMAKE_OSX_ARCHITECTURES=arm64
 
     - name: Configure SDL2 with CMake
       if: matrix.arch == 'x86_64'
-      run: cmake -S SDL -B build/SDL
+      run: cmake -S SDL -B SDL/build
 
     - name: Build SDL2
-      run: cmake --build build/SDL --config Release
+      run: cmake --build SDL/build --config Release
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts
+        name: ${{ matrix.os }}-${{ matrix.arch }}-artifacts 
         path: |
-          build/SDL/Release/*.dll
-          build/SDL/lib/*.so
-          build/SDL/lib/*.dylib
+          SDL/build/Release/*.dll
+          SDL/build/*.so
+          SDL/build/*.dylib
         if-no-files-found: ignore # 'warn' or 'ignore' or 'error'
