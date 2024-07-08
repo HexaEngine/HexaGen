@@ -1,4 +1,4 @@
-name: Build and Link SDL2 Project
+name: Build SDL2 Libraries
 
 on: [push, pull_request]
 
@@ -14,7 +14,7 @@ jobs:
         repository: 'libsdl-org/SDL'
         ref: 'release-2.30.5'
         path: 'SDL'
-    
+
     - name: Checkout specific commit
       run: |
         cd SDL
@@ -43,19 +43,12 @@ jobs:
     - name: Build SDL2
       run: cmake --build build/SDL --config Release
 
-    - uses: actions/checkout@v2
-      with:
-        path: 'MyProject' # Replace with your project's path or name
-
-    - name: Configure Project with CMake
-      run: cmake -S MyProject -B build/MyProject -DSDL2_DIR=build/SDL
-
-    - name: Build Project
-      run: cmake --build build/MyProject --config Release
-
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.os }}-artifacts
-        path: build/MyProject/**
+        path: |
+          build/SDL/*.dll
+          build/SDL/*.so
+          build/SDL/*.dylib
         if-no-files-found: error # 'warn' or 'ignore' or 'error'
